@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A reproducible analysis of U.S. nonresident enrollment in degree-granting higher education, 2015–2024, using NCES/IPEDS data.">
+  <meta name="theme-color" content="#10263c">
+  <meta property="og:title" content="U.S. Nonresident Students in Higher Education | 2015–2024">
+  <meta property="og:description" content="A reproducible NCES/IPEDS research brief on national, state, student-level, and institutional-control enrollment trends.">
+  <meta property="og:type" content="website">
   <title>U.S. Nonresident Students in Higher Education | 2015–2024</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -115,6 +119,23 @@
             </dl>
           </div>
         </div>
+        <div class="decomposition-strip" aria-label="2015 to 2024 change decomposition">
+          <article>
+            <span>Graduate change</span>
+            <strong id="graduate-change-count">—</strong>
+            <small>students</small>
+          </article>
+          <article>
+            <span>Undergraduate change</span>
+            <strong id="undergrad-change-count">—</strong>
+            <small>students</small>
+          </article>
+          <article class="decomposition-net">
+            <span>Net national change</span>
+            <strong id="net-change-count">—</strong>
+            <small>students</small>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -155,6 +176,65 @@
       </div>
     </section>
 
+    <section class="section section-tinted" id="recovery">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">Finding 04</p>
+          <h2>The rebound is broad, but it is not complete</h2>
+          <p>Comparing 2024 with the pre-pandemic 2019 baseline shows that most states have recovered, while a meaningful minority remain below their earlier U.S. nonresident enrollment.</p>
+        </div>
+        <div class="recovery-layout">
+          <div class="recovery-summary">
+            <article>
+              <strong id="states-recovered">—</strong>
+              <span>states + DC at or above 2019</span>
+            </article>
+            <article>
+              <strong id="states-below">—</strong>
+              <span>states + DC still below 2019</span>
+            </article>
+            <p>Bars show the largest absolute gains and shortfalls from 2019 to 2024. Positive and negative labels supplement color so the direction is explicit.</p>
+          </div>
+          <div class="chart-card recovery-chart-card">
+            <h3>Largest changes since 2019</h3>
+            <p class="chart-subtitle">Change in U.S. nonresident fall enrollment</p>
+            <div id="recovery-chart" class="chart chart-recovery"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="control">
+      <div class="section-heading">
+        <p class="eyebrow">Finding 05</p>
+        <h2>The decade’s growth shifted toward private nonprofit institutions</h2>
+        <p>Private nonprofit institutions added U.S. nonresident students from 2015 to 2024 while public and private for-profit institutions declined overall. The nonprofit increase was overwhelmingly graduate enrollment.</p>
+      </div>
+      <div class="control-layout">
+        <div class="chart-card">
+          <h3>Change by institutional control, 2015–2024</h3>
+          <p class="chart-subtitle">Change in U.S. nonresident fall enrollment</p>
+          <div id="control-change-chart" class="chart chart-control"></div>
+        </div>
+        <aside class="control-panel">
+          <p class="finding-kicker">Private nonprofit shift</p>
+          <strong id="nonprofit-share-shift" class="finding-number control-finding-number">—</strong>
+          <p>share of national U.S. nonresident enrollment, 2015 → 2024</p>
+          <dl class="delta-list">
+            <div>
+              <dt>Private nonprofit graduate change</dt>
+              <dd id="nonprofit-grad-change">—</dd>
+            </div>
+            <div>
+              <dt>Private nonprofit total change</dt>
+              <dd id="nonprofit-total-change">—</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+      <p class="chart-note control-note">Institutional control comes from the same-year IPEDS directory file. Public, private nonprofit, and private for-profit totals reconcile exactly to the national series.</p>
+    </section>
+
     <section class="section section-tinted" id="institutions">
       <div class="shell">
         <div class="section-heading">
@@ -162,8 +242,13 @@
           <h2>Where 2024 enrollment is concentrated</h2>
           <p>This table is a drill-down, not a ranking of institutional performance.</p>
         </div>
+        <div class="concentration-strip">
+          <article><strong id="top10-inst-share">—</strong><span>of 2024 U.S. nonresident enrollment is at the 10 largest institutions</span></article>
+          <article><strong id="top100-inst-share">—</strong><span>is at the 100 largest institutions, showing how concentrated the national total remains</span></article>
+        </div>
         <div class="table-wrap">
           <table>
+            <caption class="sr-only">Ten institutions with the largest U.S. nonresident enrollment in the 2024 analytic universe</caption>
             <thead>
               <tr><th>Institution</th><th>State</th><th>U.S. nonresident</th><th>Share of enrollment</th></tr>
             </thead>
@@ -183,7 +268,7 @@
         <article><strong id="qa-archives">—</strong><span>official NCES source archives logged with SHA-256 hashes</span></article>
         <article><strong id="qa-years">—</strong><span>years passed the cross-year variable and aggregation audit</span></article>
         <article><strong id="qa-rows">—</strong><span>institution-year records in the normalized analytic universe</span></article>
-        <article><strong id="qa-benchmark">—</strong><span>2024 national total vs. NCES Digest benchmark after published rounding</span></article>
+        <article><strong id="qa-benchmark">—</strong><span>external NCES Digest consistency checks across 2019–2024</span></article>
       </div>
 
       <div class="method-grid">
@@ -205,6 +290,23 @@
         </div>
       </div>
 
+      <div class="benchmark-card">
+        <div class="benchmark-intro">
+          <p class="eyebrow">Release-vintage audit</p>
+          <h3>Current files do not pretend to be an older publication</h3>
+          <p>The March 2026 Digest used an earlier data vintage. The current IPEDS file was retrieved later, so subgroup counts differ slightly. The audit records those differences instead of overwriting current data to reproduce an older table.</p>
+        </div>
+        <div class="table-wrap benchmark-table-wrap">
+          <table>
+            <caption class="sr-only">Comparison of current 2024 IPEDS values with NCES Digest 2025 Table 306.10</caption>
+            <thead>
+              <tr><th>2024 metric</th><th>Current IPEDS</th><th>Digest published</th><th>Difference</th></tr>
+            </thead>
+            <tbody id="benchmark-table"></tbody>
+          </table>
+        </div>
+      </div>
+
       <details class="audit-details">
         <summary>What was checked before publication?</summary>
         <ul>
@@ -212,7 +314,8 @@
           <li>All selected enrollment records join to the same-year institutional directory.</li>
           <li>Enrollment counts are nonnegative and U.S. nonresident counts never exceed corresponding totals.</li>
           <li>Required variables and aggregation labels are verified against every year’s official data dictionary.</li>
-          <li>The 2024 national enrollment total rounds to the same published value as NCES Digest 2025 Table 306.10.</li>
+          <li>Twenty-four metric-year consistency checks compare 2019–2024 results with NCES Digest 2025 Table 306.10.</li>
+          <li>Release-vintage differences in U.S. nonresident subgroup counts are quantified and retained rather than suppressed.</li>
         </ul>
       </details>
     </section>
@@ -227,9 +330,13 @@
         <div class="download-list">
           <a href="downloads/national_year.csv"><span>National series</span><small>CSV · 2015–2024</small></a>
           <a href="downloads/state_year.csv"><span>State series</span><small>CSV · 50 states + DC</small></a>
+          <a href="downloads/state_change_summary.csv"><span>State change summary</span><small>CSV · 2015 / 2019 / 2024</small></a>
+          <a href="downloads/control_year.csv"><span>Institutional control series</span><small>CSV · public / nonprofit / for-profit</small></a>
           <a href="downloads/institutions_2024.csv"><span>2024 institution detail</span><small>CSV · degree-granting universe</small></a>
           <a href="downloads/source_manifest.csv"><span>Source manifest</span><small>CSV · URLs + SHA-256</small></a>
           <a href="downloads/schema_audit.csv"><span>Schema audit</span><small>CSV · cross-year checks</small></a>
+          <a href="downloads/benchmark_audit.csv"><span>External benchmark audit</span><small>CSV · 24 consistency checks</small></a>
+          <a href="downloads/nces_digest_2025_306_10.csv"><span>Benchmark reference</span><small>CSV · NCES Digest values</small></a>
         </div>
       </div>
     </section>
