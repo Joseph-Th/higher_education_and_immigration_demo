@@ -26,6 +26,9 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 def main() -> int:
     findings = json.loads((DATA / "findings.json").read_text(encoding="utf-8"))
+    latest_update_review = json.loads(
+        (DATA / "latest_update_review.json").read_text(encoding="utf-8")
+    )
     qa = json.loads((DATA / "qa_report.json").read_text(encoding="utf-8"))
     state_rows = read_csv(PROCESSED / "state_year.csv")
     source_manifest = read_csv(DATA / "source_manifest.csv")
@@ -53,6 +56,7 @@ def main() -> int:
 
     payload = {
         **findings,
+        "latest_update_review": latest_update_review,
         "state_series": dict(sorted(state_series.items())),
         "quality": {
             "source_archives": len(source_manifest),
@@ -100,6 +104,7 @@ def main() -> int:
         "state_change_summary.csv",
         "control_year.csv",
         "institution_change_summary.csv",
+        "latest_release_institution_review.csv",
         f"institutions_{END_YEAR}.csv",
     ):
         shutil.copy2(PROCESSED / name, DOWNLOADS / name)
@@ -109,6 +114,15 @@ def main() -> int:
     shutil.copy2(
         DATA / "reference" / "nces_digest_2025_306_10.csv",
         DOWNLOADS / "nces_digest_2025_306_10.csv",
+    )
+    shutil.copy2(
+        ROOT / "docs" / "LATEST_UPDATE_REVIEW.md",
+        DOWNLOADS / "latest_update_review.md",
+    )
+    shutil.copy2(DATA / "research_library.csv", DOWNLOADS / "research_library.csv")
+    shutil.copy2(
+        ROOT / "docs" / "RESEARCH_LIBRARY.md",
+        DOWNLOADS / "research_library.md",
     )
 
     print(f"Wrote {SITE_DATA / 'site_data.json'}")

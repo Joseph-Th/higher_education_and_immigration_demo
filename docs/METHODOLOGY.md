@@ -59,6 +59,7 @@ The derived measures are:
 6. Undergraduate and graduate U.S. nonresident counts where the source structure permits a consistent comparison.
 7. U.S. nonresident enrollment by institutional control: public, private nonprofit, and private for-profit.
 8. Endpoint institution dynamics using `UNITID` to separate change at continuing institutions from changes associated with entering or leaving the analytic universe.
+9. Latest-release QA triage comparing the newest year with the immediately preceding year, including reason-coded institution review priority.
 
 ## Aggregation rules
 
@@ -116,6 +117,21 @@ The analysis will include at minimum:
 - Separate continuing-institution change from analytic-universe entry/exit, and avoid treating entry/exit automatically as openings/closures.
 - Distinguish true changes from institution closures, mergers, UNITID restructuring, reporting changes, or missing records where possible.
 - Compare selected national totals against an independently generated IPEDS table or other NCES output before publication.
+
+### Latest-release review rules
+
+`scripts/build_update_review.py` creates a deterministic review queue for the newest year. The queue is triage, not automated error detection.
+
+For continuing institutions, review priority increases when any of these conditions apply:
+
+- absolute U.S. nonresident enrollment change is at least 250, 500, or 1,000 students for low, medium, or high priority respectively;
+- percentage change is at least 25%, 50%, or 100% from a prior-year baseline of at least 100 students;
+- a zero/nonzero endpoint discontinuity conflicts with substantial recent history; or
+- the imputation/status flag changes to or from a code other than reported (`R`) or implied zero (`Z`).
+
+Institutions entering or leaving the analytic universe are always surfaced at low priority, and move to medium priority when the affected endpoint includes at least 100 U.S. nonresident students. Multiple triggers can apply to one record; the highest priority is retained and every reason is written to the review output.
+
+The review also reconciles the newest national change independently across undergraduate/graduate components, state totals, and institution-universe accounting. A failure in any reconciliation stops the build.
 
 ### Independent benchmark
 

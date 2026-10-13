@@ -30,6 +30,7 @@ How did fall enrollment of U.S. nonresident students change nationally and acros
 5. How much of the national change is concentrated in a small number of states or institutions?
 6. How did trends differ across public, private nonprofit, and private for-profit institutions?
 7. Is the national change driven by enrollment changes at continuing institutions, or by changes in which institutions are in the analytic universe?
+8. What changed in the newest annual release, and which institution-level changes warrant analyst review before publication?
 
 ## Evidence standard
 
@@ -54,6 +55,7 @@ A short web-based brief containing:
 - undergraduate/graduate comparison if cross-year definitions permit;
 - institutional-control comparison;
 - institution endpoint-change accounting;
+- newest-release change decomposition and QA triage summary;
 - methodology and limitations;
 - source and update information.
 
@@ -68,6 +70,8 @@ A short web-based brief containing:
 - chart-generation code;
 - documentation sufficient for another analyst to reproduce the result.
 - external publication benchmark audit and release-vintage documentation.
+- generated latest-release review memo and reason-coded institution queue.
+- structured Research Library with machine-readable source metadata and generated documentation.
 - browser-level publication smoke test.
 
 ## Non-goals

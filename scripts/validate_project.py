@@ -23,6 +23,8 @@ def main() -> int:
         ("Compile Python", [PYTHON, "-m", "compileall", "-q", "scripts", "tests"]),
         ("Cross-year schema audit", [PYTHON, "scripts/audit_ipeds_schema.py"]),
         ("Build normalized analysis", [PYTHON, "scripts/build_analysis.py"]),
+        ("Build latest-release review", [PYTHON, "scripts/build_update_review.py"]),
+        ("Build research library", [PYTHON, "scripts/build_research_library.py"]),
         ("Summarize findings", [PYTHON, "scripts/summarize_findings.py"]),
         ("External publication benchmark", [PYTHON, "scripts/validate_benchmarks.py"]),
         ("Build public site data", [PYTHON, "scripts/build_site_data.py"]),

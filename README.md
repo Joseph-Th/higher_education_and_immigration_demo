@@ -15,6 +15,8 @@ How did fall enrollment of U.S. nonresident students change across the United St
 - Reproducible source-data collection and transformation scripts.
 - A transparent methodology and data-quality record.
 - Downloadable analysis tables, source lineage, schema audit, and external benchmark audit.
+- A generated latest-release review packet with reason-coded institution-level QA triage.
+- A structured Research Library describing source scope, update pattern, project use, and review date.
 - A documented annual update workflow and deployment path.
 - Separate offline data validation and browser-level publication QA lanes.
 
@@ -52,6 +54,8 @@ Build the normalized analysis outputs and public-site data:
 
 ```bash
 python scripts/build_analysis.py
+python scripts/build_update_review.py
+python scripts/build_research_library.py
 python scripts/summarize_findings.py
 python scripts/validate_benchmarks.py
 python scripts/build_site_data.py
@@ -86,6 +90,8 @@ The browser smoke test serves the built site on an ephemeral local port, renders
 - [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md): definitions for generated analysis and audit outputs.
 - [`docs/VALIDATION.md`](docs/VALIDATION.md): implemented QA checks and independent NCES benchmark.
 - [`docs/FINDINGS.md`](docs/FINDINGS.md): current analytical findings with exact supporting figures.
+- [`docs/LATEST_UPDATE_REVIEW.md`](docs/LATEST_UPDATE_REVIEW.md): generated review of the newest annual release and its QA queue.
+- [`docs/RESEARCH_LIBRARY.md`](docs/RESEARCH_LIBRARY.md): generated human-readable view of the structured source library.
 - [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md): short portfolio walkthrough and evidence map for hiring/research reviewers.
 - [`docs/UPDATE_PLAYBOOK.md`](docs/UPDATE_PLAYBOOK.md): annual release/update procedure.
 - [`docs/DATA_CALENDAR.md`](docs/DATA_CALENDAR.md): current coverage and next-release monitoring.
@@ -94,9 +100,9 @@ The browser smoke test serves the built site on an ephemeral local port, renders
 
 ## Current status
 
-The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, 14 repository tests pass, and 24 external NCES Digest consistency checks pass across 2019-2024.
+The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, 16 repository tests pass, and 24 external NCES Digest consistency checks pass across 2019-2024. The Research Library currently contains 11 live resources from NCES and the Higher Ed Immigration Portal, including the three recurring research products named in the target role; all 11 URLs were link-checked on October 13, 2026.
 
-Current substantive findings include a graduate-driven national increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, a shift toward private nonprofit institutions, and evidence that national growth occurred within continuing institutions rather than being created by a larger institution universe. The site also surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
+Current substantive findings include a graduate-driven decade-level increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, a shift toward private nonprofit institutions, and evidence that national growth occurred within continuing institutions rather than being created by a larger institution universe. The newest-release review also identifies a short-run composition shift: 2023-2024 undergraduate U.S. nonresident enrollment increased by 31,592 while graduate enrollment decreased by 2,053. The site surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
 
 The static site is ready for Cloudflare Pages deployment once a remote or direct-upload target is configured.
 

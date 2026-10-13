@@ -90,6 +90,34 @@ function dynamicsChart(container, dynamics) {
   container.replaceChildren(svg);
 }
 
+function updateChangeChart(container, review) {
+  const rows=[
+    {label:'Undergraduate',value:review.national.undergraduate_change},
+    {label:'Graduate',value:review.national.graduate_change},
+    {label:'Net change',value:review.national.absolute_change,net:true}
+  ];
+  const width=900, height=290, margin={top:22,right:120,bottom:30,left:165};
+  const center=width*.49;
+  const usable=Math.min(center-margin.left-24,width-margin.right-center-24);
+  const rowH=(height-margin.top-margin.bottom)/rows.length;
+  const max=Math.max(...rows.map(row=>Math.abs(row.value)));
+  const prior=review.coverage.prior_year, latest=review.coverage.latest_year;
+  const svg=svgEl('svg',{viewBox:`0 0 ${width} ${height}`,role:'img','aria-label':`Change in U.S. nonresident enrollment from ${prior} to ${latest}, decomposed into undergraduate, graduate, and net change`});
+  svg.appendChild(svgEl('line',{x1:center,y1:margin.top,x2:center,y2:height-margin.bottom,class:'zero-line'}));
+  rows.forEach((row,i)=>{
+    const yy=margin.top+i*rowH+8;
+    const magnitude=Math.abs(row.value)/max*usable;
+    const positive=row.value>=0;
+    const x=positive?center:center-magnitude;
+    const label=svgEl('text',{x:margin.left-12,y:yy+rowH*.45,'text-anchor':'end',class:'chart-title-label'});
+    label.textContent=row.label; svg.appendChild(label);
+    svg.appendChild(svgEl('rect',{x,y:yy,width:magnitude,height:Math.max(20,rowH-22),rx:5,class:row.net?'change-bar-net':positive?'change-bar-positive':'change-bar-negative'}));
+    const val=svgEl('text',{x:positive?x+magnitude+9:x-9,y:yy+rowH*.45,'text-anchor':positive?'start':'end',class:'bar-value'});
+    val.textContent=signedInt(row.value); svg.appendChild(val);
+  });
+  container.replaceChildren(svg);
+}
+
 function controlChangeChart(container, rows) {
   const width=900, height=300, margin={top:22,right:110,bottom:34,left:170};
   const center=width*.48;
@@ -211,6 +239,18 @@ async function init() {
   document.querySelector('#dynamics-grew').textContent=fmtInt.format(dynamics.continuing_grew);
   document.querySelector('#dynamics-declined').textContent=fmtInt.format(dynamics.continuing_declined);
   document.querySelector('#dynamics-entry-exit-net').textContent=signedInt(dynamics.entry_exit_net);
+
+  const update=data.latest_update_review;
+  updateChangeChart(document.querySelector('#update-change-chart'),update);
+  document.querySelector('#update-change-pct').textContent=signedPct(update.national.pct_change);
+  document.querySelector('#update-total-change-copy').textContent=`${signedInt(update.national.absolute_change)} students from ${update.coverage.prior_year} to ${update.coverage.latest_year}`;
+  document.querySelector('#update-undergrad-change').textContent=signedInt(update.national.undergraduate_change);
+  document.querySelector('#update-grad-change').textContent=signedInt(update.national.graduate_change);
+  document.querySelector('#update-high-priority').textContent=fmtInt.format(update.review_queue.high);
+  document.querySelector('#update-medium-priority').textContent=fmtInt.format(update.review_queue.medium);
+  document.querySelector('#update-entry-exit-net').textContent=signedInt(update.institution_accounting.entry_exit_net);
+  const topUpdateState=update.state_change.largest_gains[0];
+  document.querySelector('#update-top-state').textContent=`${topUpdateState.state} ${signedInt(topUpdateState.absolute_change)}`;
 
   const select=document.querySelector('#state-select');
   Object.keys(data.state_series).sort((a,b)=>STATE_NAMES[a].localeCompare(STATE_NAMES[b])).forEach(code=>{

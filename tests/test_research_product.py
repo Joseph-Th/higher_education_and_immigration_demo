@@ -36,6 +36,9 @@ class ResearchProductTests(unittest.TestCase):
         cls.site_data = json.loads(
             (ROOT / "site" / "data" / "site_data.json").read_text(encoding="utf-8")
         )
+        cls.update_review = json.loads(
+            (ROOT / "data" / "latest_update_review.json").read_text(encoding="utf-8")
+        )
 
     def test_expected_year_coverage(self) -> None:
         years = [int(row["year"]) for row in self.national]
@@ -184,6 +187,62 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(statuses["Entered analytic universe"], dynamics["entered_institutions"])
         self.assertEqual(statuses["Left analytic universe"], dynamics["left_institutions"])
 
+    def test_latest_release_review_reconciles(self) -> None:
+        review = self.update_review
+        national = {int(row["year"]): row for row in self.national}
+        prior_year = review["coverage"]["prior_year"]
+        latest_year = review["coverage"]["latest_year"]
+        expected_change = (
+            int(national[latest_year]["nonresident_enrollment"])
+            - int(national[prior_year]["nonresident_enrollment"])
+        )
+        self.assertEqual(review["national"]["absolute_change"], expected_change)
+        self.assertEqual(
+            review["national"]["undergraduate_change"]
+            + review["national"]["graduate_change"],
+            expected_change,
+        )
+        accounting = review["institution_accounting"]
+        self.assertEqual(
+            accounting["continuing_change"]
+            + accounting["entered_enrollment"]
+            - accounting["left_enrollment"],
+            expected_change,
+        )
+        queue = rows(ROOT / "data" / "processed" / "latest_release_institution_review.csv")
+        counts = Counter(row["review_priority"] for row in queue)
+        self.assertEqual(counts["high"], review["review_queue"]["high"])
+        self.assertEqual(counts["medium"], review["review_queue"]["medium"])
+        self.assertEqual(counts["low"], review["review_queue"]["low"])
+        self.assertEqual(
+            counts["high"] + counts["medium"] + counts["low"],
+            review["review_queue"]["flagged_total"],
+        )
+        self.assertEqual(self.site_data["latest_update_review"], review)
+
+    def test_research_library_metadata(self) -> None:
+        library = rows(ROOT / "data" / "research_library.csv")
+        ids = [row["resource_id"] for row in library]
+        self.assertEqual(len(ids), len(set(ids)))
+        essential_ids = {
+            "ipeds_complete_data",
+            "digest_306_10",
+            "portal_national_data",
+            "portal_methodology",
+            "undocumented_higher_ed_2026",
+            "immigrant_origin_2026",
+            "undocumented_hs_graduates_2026",
+        }
+        self.assertTrue(essential_ids.issubset(set(ids)))
+        self.assertTrue(all(row["url"].startswith("https://") for row in library))
+        self.assertTrue(
+            all(re.fullmatch(r"\d{4}-\d{2}-\d{2}", row["last_checked"]) for row in library)
+        )
+        rendered = (ROOT / "docs" / "RESEARCH_LIBRARY.md").read_text(encoding="utf-8")
+        for row in library:
+            self.assertIn(row["title"], rendered)
+            self.assertIn(row["url"], rendered)
+
     def test_qa_report_is_all_pass(self) -> None:
         self.assertTrue(self.qa["checks"])
         self.assertTrue(all(value == "PASS" for value in self.qa["checks"].values()))
@@ -208,12 +267,17 @@ class ResearchProductTests(unittest.TestCase):
                 "site/downloads/institution_change_summary.csv",
             ),
             (
+                "data/processed/latest_release_institution_review.csv",
+                "site/downloads/latest_release_institution_review.csv",
+            ),
+            (
                 f"data/processed/institutions_{END_YEAR}.csv",
                 f"site/downloads/institutions_{END_YEAR}.csv",
             ),
             ("data/schema_audit.csv", "site/downloads/schema_audit.csv"),
             ("data/source_manifest.csv", "site/downloads/source_manifest.csv"),
             ("data/benchmark_audit.csv", "site/downloads/benchmark_audit.csv"),
+            ("data/research_library.csv", "site/downloads/research_library.csv"),
             (
                 "data/reference/nces_digest_2025_306_10.csv",
                 "site/downloads/nces_digest_2025_306_10.csv",
@@ -221,6 +285,14 @@ class ResearchProductTests(unittest.TestCase):
         ]
         for source, public in pairs:
             self.assertEqual((ROOT / source).read_bytes(), (ROOT / public).read_bytes(), public)
+        self.assertEqual(
+            (ROOT / "docs" / "LATEST_UPDATE_REVIEW.md").read_bytes(),
+            (ROOT / "site" / "downloads" / "latest_update_review.md").read_bytes(),
+        )
+        self.assertEqual(
+            (ROOT / "docs" / "RESEARCH_LIBRARY.md").read_bytes(),
+            (ROOT / "site" / "downloads" / "research_library.md").read_bytes(),
+        )
 
     def test_static_page_local_assets_and_ids(self) -> None:
         html = (ROOT / "site" / "index.html").read_text(encoding="utf-8")

@@ -40,6 +40,8 @@ Review `data/source_manifest.csv` before continuing. Confirm:
 
 Do not overwrite an unexplained source change. If NCES replaces a file at the same URL, the changed hash is evidence of a new source vintage and should be documented.
 
+If the new release changes a source URL, resource title, update pattern, or status note, update `data/research_library.csv` and its `last_checked` date. The normal validation lane regenerates `docs/RESEARCH_LIBRARY.md` and checks the structured metadata.
+
 ## 4. Run the schema audit before analysis
 
 Run:
@@ -72,8 +74,10 @@ Then review the newly generated:
 - latest institution detail file;
 - `data/qa_report.json`;
 - `data/findings.json`.
+- `data/processed/latest_release_institution_review.csv`;
+- `docs/LATEST_UPDATE_REVIEW.md`.
 
-Investigate unusually large year-over-year changes before updating the narrative. Check whether the movement is broad-based, concentrated in a few institutions, or related to source/release changes.
+Investigate the reason-coded high- and medium-priority review queue before updating the narrative. A queue item is not automatically an error. Determine whether the movement is plausible, concentrated in a few institutions, associated with an imputation/status change, related to analytic-universe membership, or a source discontinuity that needs further review.
 
 ## 6. Refresh the external benchmark
 
@@ -103,6 +107,7 @@ At minimum, re-check:
 - institution and state concentration metrics;
 - institutional-control findings;
 - institution-universe entry/exit accounting;
+- the latest-release undergraduate/graduate decomposition and QA queue;
 - provisional/final language.
 
 The public page contains intentionally editorial year labels and latest-year download links in `site/index.html`; update those after the data rebuild rather than assuming configuration alone rewrites the prose.

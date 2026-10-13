@@ -74,11 +74,13 @@ This design is deliberate: the external publication is a validation source, not 
 - findings reconciling to source tables;
 - state change summary coverage and 2019 recovery classification;
 - institution endpoint accounting reconciling continuing institutions and universe entry/exit to national change;
+- latest-release review reconciling national, student-level, state, and institution-accounting changes and reproducing its priority counts;
+- structured Research Library metadata having unique IDs, HTTPS URLs, current review dates, and matching generated documentation;
 - QA and external benchmark checks all passing;
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **14 tests**.
+The current suite contains **16 tests**.
 
 ## One-command validation
 
@@ -101,8 +103,10 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - rendered headline metrics matching `site_data.json`;
 - all 51 state/DC selector options;
 - expected institution and benchmark table row counts;
-- rendered SVG charts, including the institution-dynamics chart;
+- rendered SVG charts, including the institution-dynamics and latest-release review charts;
+- the latest-release high-priority review count matching `site_data.json`;
 - working public CSV downloads; and
+- working public Research Library CSV/Markdown downloads; and
 - no unintended page-level horizontal overflow.
 
 Run it after `python scripts/validate_project.py` and before deployment.
@@ -116,4 +120,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable national, state, institution, institution-change, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable national, state, institution, institution-change, latest-release QA queue/memo, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.

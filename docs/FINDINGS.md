@@ -86,6 +86,18 @@ The same accounting holds for the post-pandemic comparison: continuing instituti
 
 “Entered” and “left” refer only to membership in the defined IPEDS analytic universe. These statuses can reflect mergers, UNITID restructuring, eligibility or classification changes, and actual openings or closures.
 
+## Latest release note: 2024 growth shifted back toward undergraduate enrollment
+
+The decade-level growth story is graduate-driven, but the newest annual movement is different. From 2023 to 2024:
+
+- total U.S. nonresident enrollment increased by **29,539 students (+2.9%)**;
+- undergraduate U.S. nonresident enrollment increased by **31,592**;
+- graduate U.S. nonresident enrollment decreased by **2,053**.
+
+The two student-level components reconcile exactly to the national increase. At the institution level, **3,781 continuing institutions** contribute **+29,968**, while institutions entering and leaving the analytic universe net to **-429**. Florida contributes the largest state increase (**+6,207**), followed by Kentucky (**+4,615**).
+
+The latest-release QA packet contains **27 high-priority**, **50 medium-priority**, and **213 low-priority** institution records under explicit review thresholds. These are triage records, not presumed errors. For example, University of the Cumberlands reports 4,226 U.S. nonresident students in 2022, 0 in 2023, and 4,616 in 2024; the 2023 value is marked reported (`R`), so the pipeline retains it and flags the discontinuity for analyst review.
+
 ## 7. Release vintage matters even when the universe is correct
 
 NCES Digest 2025 Table 306.10 was prepared in March 2026. This project uses IPEDS complete-data files retrieved in October 2026.

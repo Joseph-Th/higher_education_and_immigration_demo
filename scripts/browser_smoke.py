@@ -44,6 +44,10 @@ def check_downloads(base_url: str) -> None:
         "downloads/state_change_summary.csv",
         "downloads/control_year.csv",
         "downloads/institution_change_summary.csv",
+        "downloads/latest_release_institution_review.csv",
+        "downloads/latest_update_review.md",
+        "downloads/research_library.csv",
+        "downloads/research_library.md",
         "downloads/benchmark_audit.csv",
     )
     for path in paths:
@@ -90,6 +94,7 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
         "recovery-chart",
         "control-change-chart",
         "dynamics-chart",
+        "update-change-chart",
     )
     for chart_id in chart_ids:
         if page.locator(f"#{chart_id} svg").count() != 1:
@@ -99,6 +104,11 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
     continuing_text = page.locator("#dynamics-continuing-count").inner_text().strip()
     if continuing_text != expected_int(dynamics["continuing_institutions"]):
         raise AssertionError("Institution dynamics count does not match site data")
+
+    update = SITE_DATA["latest_update_review"]
+    high_text = page.locator("#update-high-priority").inner_text().strip()
+    if high_text != expected_int(update["review_queue"]["high"]):
+        raise AssertionError("Latest-release high-priority count does not match site data")
 
     overflow = page.evaluate(
         "document.documentElement.scrollWidth - document.documentElement.clientWidth"

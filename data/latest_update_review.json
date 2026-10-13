@@ -1,0 +1,415 @@
+{
+  "coverage": {
+    "prior_year": 2023,
+    "latest_year": 2024,
+    "latest_data_status": "provisional"
+  },
+  "national": {
+    "prior_nonresident": 1014598,
+    "latest_nonresident": 1044137,
+    "absolute_change": 29539,
+    "pct_change": 2.9,
+    "undergraduate_change": 31592,
+    "graduate_change": -2053
+  },
+  "institution_accounting": {
+    "prior_institutions": 3838,
+    "latest_institutions": 3797,
+    "continuing_institutions": 3781,
+    "entered_institutions": 16,
+    "left_institutions": 57,
+    "continuing_change": 29968,
+    "entered_enrollment": 163,
+    "left_enrollment": 592,
+    "entry_exit_net": -429
+  },
+  "state_change": {
+    "largest_gains": [
+      {
+        "state": "FL",
+        "prior": 52184,
+        "latest": 58391,
+        "absolute_change": 6207,
+        "pct_change": 11.9
+      },
+      {
+        "state": "KY",
+        "prior": 10750,
+        "latest": 15365,
+        "absolute_change": 4615,
+        "pct_change": 42.9
+      },
+      {
+        "state": "IN",
+        "prior": 34660,
+        "latest": 37082,
+        "absolute_change": 2422,
+        "pct_change": 7.0
+      },
+      {
+        "state": "TX",
+        "prior": 75367,
+        "latest": 77730,
+        "absolute_change": 2363,
+        "pct_change": 3.1
+      },
+      {
+        "state": "IL",
+        "prior": 53609,
+        "latest": 55755,
+        "absolute_change": 2146,
+        "pct_change": 4.0
+      },
+      {
+        "state": "GA",
+        "prior": 31724,
+        "latest": 33443,
+        "absolute_change": 1719,
+        "pct_change": 5.4
+      },
+      {
+        "state": "RI",
+        "prior": 4330,
+        "latest": 5743,
+        "absolute_change": 1413,
+        "pct_change": 32.6
+      },
+      {
+        "state": "LA",
+        "prior": 6587,
+        "latest": 7934,
+        "absolute_change": 1347,
+        "pct_change": 20.4
+      }
+    ],
+    "largest_declines": [
+      {
+        "state": "MA",
+        "prior": 70007,
+        "latest": 68570,
+        "absolute_change": -1437,
+        "pct_change": -2.1
+      },
+      {
+        "state": "CA",
+        "prior": 114703,
+        "latest": 113589,
+        "absolute_change": -1114,
+        "pct_change": -1.0
+      },
+      {
+        "state": "CT",
+        "prior": 16331,
+        "latest": 15407,
+        "absolute_change": -924,
+        "pct_change": -5.7
+      },
+      {
+        "state": "PA",
+        "prior": 45650,
+        "latest": 44983,
+        "absolute_change": -667,
+        "pct_change": -1.5
+      },
+      {
+        "state": "KS",
+        "prior": 9818,
+        "latest": 9223,
+        "absolute_change": -595,
+        "pct_change": -6.1
+      },
+      {
+        "state": "DC",
+        "prior": 10128,
+        "latest": 9743,
+        "absolute_change": -385,
+        "pct_change": -3.8
+      },
+      {
+        "state": "CO",
+        "prior": 11703,
+        "latest": 11372,
+        "absolute_change": -331,
+        "pct_change": -2.8
+      },
+      {
+        "state": "DE",
+        "prior": 5084,
+        "latest": 4767,
+        "absolute_change": -317,
+        "pct_change": -6.2
+      }
+    ]
+  },
+  "review_queue": {
+    "high": 27,
+    "medium": 50,
+    "low": 213,
+    "flagged_total": 290,
+    "historical_discontinuities": 2,
+    "top_items": [
+      {
+        "unitid": "156541",
+        "institution": "University of the Cumberlands",
+        "state": "KY",
+        "control": "Private nonprofit",
+        "status": "Continuing",
+        "nonresident_2023": 0,
+        "nonresident_2024": 4616,
+        "absolute_change": 4616,
+        "pct_change": "",
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 4714,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students | zero/nonzero discontinuity conflicts with recent history"
+      },
+      {
+        "unitid": "247834",
+        "institution": "Collin County Community College District",
+        "state": "TX",
+        "control": "Public",
+        "status": "Continuing",
+        "nonresident_2023": 433,
+        "nonresident_2024": 2689,
+        "absolute_change": 2256,
+        "pct_change": 521.02,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 616,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students | percentage change is at least 100% from a baseline of 100+"
+      },
+      {
+        "unitid": "132709",
+        "institution": "Broward College",
+        "state": "FL",
+        "control": "Public",
+        "status": "Continuing",
+        "nonresident_2023": 3369,
+        "nonresident_2024": 5374,
+        "absolute_change": 2005,
+        "pct_change": 59.51,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 1672,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students | percentage change is at least 50% from a baseline of 100+"
+      },
+      {
+        "unitid": "135717",
+        "institution": "Miami Dade College",
+        "state": "FL",
+        "control": "Public",
+        "status": "Continuing",
+        "nonresident_2023": 2947,
+        "nonresident_2024": 4405,
+        "absolute_change": 1458,
+        "pct_change": 49.47,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 3227,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students | percentage change is at least 25% from a baseline of 100+"
+      },
+      {
+        "unitid": "414878",
+        "institution": "Trine University-Regional/Non-Traditional Campuses",
+        "state": "IN",
+        "control": "Private nonprofit",
+        "status": "Continuing",
+        "nonresident_2023": 7772,
+        "nonresident_2024": 9213,
+        "absolute_change": 1441,
+        "pct_change": 18.54,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 3758,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students"
+      },
+      {
+        "unitid": "156365",
+        "institution": "Campbellsville University",
+        "state": "KY",
+        "control": "Private nonprofit",
+        "status": "Continuing",
+        "nonresident_2023": 4408,
+        "nonresident_2024": 3050,
+        "absolute_change": -1358,
+        "pct_change": -30.81,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 5825,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students | percentage change is at least 25% from a baseline of 100+"
+      },
+      {
+        "unitid": "228787",
+        "institution": "The University of Texas at Dallas",
+        "state": "TX",
+        "control": "Public",
+        "status": "Continuing",
+        "nonresident_2023": 6828,
+        "nonresident_2024": 5603,
+        "absolute_change": -1225,
+        "pct_change": -17.94,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 6929,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students"
+      },
+      {
+        "unitid": "195173",
+        "institution": "St. Francis College",
+        "state": "NY",
+        "control": "Private nonprofit",
+        "status": "Continuing",
+        "nonresident_2023": 1791,
+        "nonresident_2024": 3011,
+        "absolute_change": 1220,
+        "pct_change": 68.12,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 666,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students | percentage change is at least 50% from a baseline of 100+"
+      },
+      {
+        "unitid": "217475",
+        "institution": "Community College of Rhode Island",
+        "state": "RI",
+        "control": "Public",
+        "status": "Continuing",
+        "nonresident_2023": 12,
+        "nonresident_2024": 1188,
+        "absolute_change": 1176,
+        "pct_change": 9800.0,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 18,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students"
+      },
+      {
+        "unitid": "227216",
+        "institution": "University of North Texas",
+        "state": "TX",
+        "control": "Public",
+        "status": "Continuing",
+        "nonresident_2023": 8827,
+        "nonresident_2024": 7775,
+        "absolute_change": -1052,
+        "pct_change": -11.92,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 7105,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students"
+      },
+      {
+        "unitid": "179894",
+        "institution": "Webster University",
+        "state": "MO",
+        "control": "Private nonprofit",
+        "status": "Continuing",
+        "nonresident_2023": 2611,
+        "nonresident_2024": 3631,
+        "absolute_change": 1020,
+        "pct_change": 39.07,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 722,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 1,000 students | percentage change is at least 25% from a baseline of 100+"
+      },
+      {
+        "unitid": "110778",
+        "institution": "Sofia University",
+        "state": "CA",
+        "control": "Private for-profit",
+        "status": "Continuing",
+        "nonresident_2023": 0,
+        "nonresident_2024": 930,
+        "absolute_change": 930,
+        "pct_change": "",
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 1330,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 500 students | zero/nonzero discontinuity conflicts with recent history"
+      },
+      {
+        "unitid": "176628",
+        "institution": "Avila University",
+        "state": "MO",
+        "control": "Private nonprofit",
+        "status": "Continuing",
+        "nonresident_2023": 202,
+        "nonresident_2024": 1052,
+        "absolute_change": 850,
+        "pct_change": 420.79,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 53,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 500 students | percentage change is at least 100% from a baseline of 100+"
+      },
+      {
+        "unitid": "137564",
+        "institution": "Southeastern University",
+        "state": "FL",
+        "control": "Private nonprofit",
+        "status": "Continuing",
+        "nonresident_2023": 204,
+        "nonresident_2024": 910,
+        "absolute_change": 706,
+        "pct_change": 346.08,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 241,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 500 students | percentage change is at least 100% from a baseline of 100+"
+      },
+      {
+        "unitid": "175421",
+        "institution": "Belhaven University",
+        "state": "MS",
+        "control": "Private nonprofit",
+        "status": "Continuing",
+        "nonresident_2023": 258,
+        "nonresident_2024": 728,
+        "absolute_change": 470,
+        "pct_change": 182.17,
+        "flag_2023": "R",
+        "flag_2024": "R",
+        "flag_changed": "no",
+        "recent_historical_max": 86,
+        "review_priority": "high",
+        "review_reasons": "absolute change is at least 250 students | percentage change is at least 100% from a baseline of 100+"
+      }
+    ]
+  },
+  "flag_transitions": {
+    "R -> P": 2,
+    "R -> R": 3137,
+    "R -> Z": 126,
+    "Z -> R": 137,
+    "Z -> Z": 379
+  }
+}
