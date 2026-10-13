@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A reproducible analysis of U.S. nonresident enrollment in degree-granting higher education, 2015–2024, using NCES/IPEDS data.">
+  <title>U.S. Nonresident Students in Higher Education | 2015–2024</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to analysis</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="Project home">
+        <span class="brand-mark">IE</span>
+        <span>Higher Education Data Brief</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#findings">Findings</a>
+        <a href="#states">States</a>
+        <a href="#methods">Methods</a>
+        <a href="#downloads">Data</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">NCES / IPEDS · Fall Enrollment · 2015–2024</p>
+          <h1>U.S. nonresident enrollment recovered. Its center of gravity changed.</h1>
+          <p class="lede">A reproducible analysis of degree-granting institutions in the 50 states and District of Columbia, using the same IPEDS universe NCES uses for First Look and Digest tables.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#findings">Explore findings</a>
+            <a class="button button-secondary" href="downloads/state_year.csv">Download state data</a>
+          </div>
+          <p class="release-note">Latest year: <strong>Fall 2024 provisional</strong>. Latest Fall Enrollment file available as of October 13, 2026.</p>
+        </div>
+        <aside class="hero-note" aria-label="Definition note">
+          <span class="note-label">Important definition</span>
+          <p><strong>U.S. nonresident</strong> is an IPEDS reporting category for students who are not U.S. citizens or nationals and are in the United States on a visa or temporary basis. It is not a measure of all immigrant, undocumented, DACA, or immigrant-origin students.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="metrics shell" aria-label="Headline metrics">
+      <article class="metric-card">
+        <span class="metric-label">Fall 2024 U.S. nonresident students</span>
+        <strong class="metric-value" id="metric-total">—</strong>
+        <span class="metric-detail">degree-granting institutions</span>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Share of all fall enrollment</span>
+        <strong class="metric-value" id="metric-share">—</strong>
+        <span class="metric-detail">2024 provisional</span>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Change since 2015</span>
+        <strong class="metric-value" id="metric-change">—</strong>
+        <span class="metric-detail" id="metric-change-count">—</span>
+      </article>
+      <article class="metric-card metric-card-dark">
+        <span class="metric-label">Largest one-year decline</span>
+        <strong class="metric-value" id="metric-decline">—</strong>
+        <span class="metric-detail">pandemic-era break</span>
+      </article>
+    </section>
+
+    <section class="section shell" id="findings">
+      <div class="section-heading">
+        <p class="eyebrow">Finding 01</p>
+        <h2>The national count is above its pre-pandemic peak</h2>
+        <p>U.S. nonresident enrollment fell sharply in 2020, then recovered in three successive years. The 2024 total is now above every year in this ten-year series.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-toolbar">
+          <div>
+            <h3>U.S. nonresident fall enrollment</h3>
+            <p>Degree-granting institutions, 50 states + DC</p>
+          </div>
+          <span class="status-pill">2024 provisional</span>
+        </div>
+        <div id="national-chart" class="chart" aria-live="polite"></div>
+        <p class="chart-note">Source: NCES/IPEDS Fall Enrollment. 2024 is provisional; earlier years use final/revised files where available.</p>
+      </div>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">Finding 02</p>
+          <h2>The recovery became graduate-heavy</h2>
+          <p>Graduate U.S. nonresident enrollment grew substantially over the decade, while undergraduate enrollment remained below its 2015 level. Graduate enrollment overtook undergraduate enrollment in 2022.</p>
+        </div>
+        <div class="split-layout">
+          <div class="chart-card">
+            <h3>Undergraduate vs. graduate</h3>
+            <p class="chart-subtitle">U.S. nonresident fall enrollment by student level</p>
+            <div id="level-chart" class="chart"></div>
+          </div>
+          <div class="finding-panel">
+            <p class="finding-kicker">Composition shift</p>
+            <strong id="graduate-share" class="finding-number">—</strong>
+            <p>of U.S. nonresident students in 2024 were graduate students.</p>
+            <dl class="delta-list">
+              <div>
+                <dt>Graduate change, 2015–2024</dt>
+                <dd id="graduate-change">—</dd>
+              </div>
+              <div>
+                <dt>Undergraduate change, 2015–2024</dt>
+                <dd id="undergrad-change">—</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="states">
+      <div class="section-heading">
+        <p class="eyebrow">Finding 03</p>
+        <h2>National growth masks large state-level divergence</h2>
+        <p>New York and California still enroll the largest numbers, but their trajectories differ. Several states gained substantially while California, Oregon, Idaho, Washington, and others remained below 2015 levels.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-toolbar">
+          <div>
+            <h3>Largest state totals in 2024</h3>
+            <p>U.S. nonresident fall enrollment</p>
+          </div>
+          <span class="status-pill" id="top5-share">—</span>
+        </div>
+        <div id="state-bars" class="chart chart-bars"></div>
+      </div>
+
+      <div class="state-explorer">
+        <div class="explorer-copy">
+          <p class="eyebrow">State explorer</p>
+          <h3>Inspect a state’s ten-year path</h3>
+          <p>The state series uses institution location, not student legal residence or country of origin.</p>
+          <label for="state-select">Choose a state or DC</label>
+          <select id="state-select"></select>
+        </div>
+        <div class="explorer-panel">
+          <div class="explorer-metrics">
+            <div><span>2015</span><strong id="state-2015">—</strong></div>
+            <div><span>2024</span><strong id="state-2024">—</strong></div>
+            <div><span>Change</span><strong id="state-change">—</strong></div>
+            <div><span>2024 share</span><strong id="state-share">—</strong></div>
+          </div>
+          <div id="state-chart" class="chart chart-small"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="institutions">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">Institution detail</p>
+          <h2>Where 2024 enrollment is concentrated</h2>
+          <p>This table is a drill-down, not a ranking of institutional performance.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Institution</th><th>State</th><th>U.S. nonresident</th><th>Share of enrollment</th></tr>
+            </thead>
+            <tbody id="institution-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="methods">
+      <div class="section-heading">
+        <p class="eyebrow">Methods & quality control</p>
+        <h2>Built to be checked, not just viewed</h2>
+        <p>The analysis keeps a source manifest, hashes every NCES archive, audits schema consistency across years, records imputation flags, and independently benchmarks the headline universe against an NCES Digest table.</p>
+      </div>
+      <div class="quality-grid">
+        <article><strong id="qa-archives">—</strong><span>official NCES source archives logged with SHA-256 hashes</span></article>
+        <article><strong id="qa-years">—</strong><span>years passed the cross-year variable and aggregation audit</span></article>
+        <article><strong id="qa-rows">—</strong><span>institution-year records in the normalized analytic universe</span></article>
+        <article><strong id="qa-benchmark">—</strong><span>2024 national total vs. NCES Digest benchmark after published rounding</span></article>
+      </div>
+
+      <div class="method-grid">
+        <div>
+          <h3>Analytic universe</h3>
+          <p>Degree-granting institutions with <code>PSET4FLG</code> equal to 1 or 3, located in the 50 states and District of Columbia. NCES documents this derived flag as the selection used for First Look and Digest tables.</p>
+        </div>
+        <div>
+          <h3>Measures</h3>
+          <p><code>EFNRALT</code> measures U.S. nonresident enrollment. <code>EFTOTLT</code> is total fall enrollment. <code>EFALEVEL</code> codes 1, 2, and 12 provide all-student, undergraduate, and graduate views.</p>
+        </div>
+        <div>
+          <h3>Release handling</h3>
+          <p>Revised historical files are preferred when NCES supplies an <code>_rv</code> file. Fall 2024 is labeled provisional. Source URLs, retrieval timestamps, archive sizes, and hashes are retained.</p>
+        </div>
+        <div>
+          <h3>Limitations</h3>
+          <p>Fall Enrollment is a point-in-time snapshot. Institution structures can change. State totals reflect institution location. U.S. nonresident status does not identify all immigrant-origin populations.</p>
+        </div>
+      </div>
+
+      <details class="audit-details">
+        <summary>What was checked before publication?</summary>
+        <ul>
+          <li>No duplicate selected institution-level rows.</li>
+          <li>All selected enrollment records join to the same-year institutional directory.</li>
+          <li>Enrollment counts are nonnegative and U.S. nonresident counts never exceed corresponding totals.</li>
+          <li>Required variables and aggregation labels are verified against every year’s official data dictionary.</li>
+          <li>The 2024 national enrollment total rounds to the same published value as NCES Digest 2025 Table 306.10.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="section section-dark" id="downloads">
+      <div class="shell download-layout">
+        <div>
+          <p class="eyebrow">Reproduce it</p>
+          <h2>Data, lineage, and audit outputs are public</h2>
+          <p>The raw IPEDS archives are reproducibly downloaded from NCES and kept out of the repository. These compact outputs are enough to inspect the analysis and trace its source lineage.</p>
+        </div>
+        <div class="download-list">
+          <a href="downloads/national_year.csv"><span>National series</span><small>CSV · 2015–2024</small></a>
+          <a href="downloads/state_year.csv"><span>State series</span><small>CSV · 50 states + DC</small></a>
+          <a href="downloads/institutions_2024.csv"><span>2024 institution detail</span><small>CSV · degree-granting universe</small></a>
+          <a href="downloads/source_manifest.csv"><span>Source manifest</span><small>CSV · URLs + SHA-256</small></a>
+          <a href="downloads/schema_audit.csv"><span>Schema audit</span><small>CSV · cross-year checks</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell sources" id="sources">
+      <div class="section-heading compact">
+        <p class="eyebrow">Sources</p>
+        <h2>Primary and validation sources</h2>
+      </div>
+      <ol id="source-list"></ol>
+      <p class="fine-print">Analysis prepared as a portfolio research demonstration. This project is not affiliated with NCES or the Presidents’ Alliance.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>U.S. Nonresident Students in Higher Education</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <noscript><p class="noscript">JavaScript is required to render the charts and calculated metrics. CSV downloads remain available.</p></noscript>
+  <script src="app.js" defer></script>
+</body>
+</html>

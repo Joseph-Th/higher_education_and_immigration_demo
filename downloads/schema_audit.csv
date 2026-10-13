@@ -1,0 +1,11 @@
+year,status,enrollment_csv,directory_csv,nonresident_variable,nonresident_title,total_variable,level_all,level_undergraduate,level_graduate,state_variable,notes
+2015,PASS,ef2015a_rv.csv,hd2015.csv,EFNRALT,Nonresident alien total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
+2016,PASS,ef2016a_rv.csv,hd2016.csv,EFNRALT,Nonresident alien total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
+2017,PASS,ef2017a_rv.csv,hd2017.csv,EFNRALT,Nonresident alien total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
+2018,PASS,ef2018a_rv.csv,hd2018.csv,EFNRALT,Nonresident alien total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
+2019,PASS,ef2019a_rv.csv,hd2019.csv,EFNRALT,Nonresident alien total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
+2020,PASS,ef2020a_rv.csv,hd2020.csv,EFNRALT,Nonresident alien total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
+2021,PASS,ef2021a_rv.csv,hd2021.csv,EFNRALT,Nonresident alien total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
+2022,PASS,ef2022a_rv.csv,hd2022.csv,EFNRALT,U.S. Nonresident total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
+2023,PASS,ef2023a.csv,HD2023.csv,EFNRALT,U.S. Nonresident total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
+2024,PASS,ef2024a.csv,hd2024.csv,EFNRALT,U.S. Nonresident total,EFTOTLT,All students total,"All students, Undergraduate total","All students, Graduate",STABBR,
