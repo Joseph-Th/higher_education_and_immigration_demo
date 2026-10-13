@@ -53,6 +53,8 @@ The production trigger is a confirmed partner kickoff or refreshed data/methodol
 
 `data/production_cycle_register.csv` separately governs the shared stage sequence. Its seven stages require an entry condition, evidence record, blocking rule, exit condition, next-stage handoff, and retained record. It intentionally contains no named staff or inferred internal dates; those belong only in a real production-cycle record after kickoff.
 
+At confirmed kickoff, copy the blank `data/production_cycle_log_template.csv` into the approved working location and populate the live coordination record there. `scripts/validate_production_cycle_log.py` enforces report/stage foreign keys, controlled statuses/materiality, and closure rules. A completed partner log is operational evidence, not an automatically public artifact.
+
 This separation between a **public publication date** and a **confirmed internal production schedule** is deliberate. A recurring title does not prove that the next cycle uses the same dates, partners, methodology, or deliverables.
 
 ## Update trigger

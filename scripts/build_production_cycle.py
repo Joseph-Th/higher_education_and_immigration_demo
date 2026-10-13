@@ -6,11 +6,19 @@ import csv
 import html
 from pathlib import Path
 
+from validate_production_cycle_log import (
+    MATERIALITIES,
+    RECORD_TYPES,
+    STATUSES,
+    read_log,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 SOURCE = DATA / "production_cycle_register.csv"
 REPORTS = DATA / "recurring_report_register.csv"
+LOG_TEMPLATE = DATA / "production_cycle_log_template.csv"
 DOC_OUTPUT = ROOT / "docs" / "PRODUCTION_CYCLE.md"
 HTML_OUTPUT = ROOT / "site" / "production-cycle.html"
 
@@ -74,6 +82,9 @@ def read_stages() -> list[dict[str, str]]:
 def main() -> int:
     stages = read_stages()
     reports = read_csv(REPORTS)
+    log_rows = read_log(LOG_TEMPLATE, allow_empty=True)
+    if log_rows:
+        raise RuntimeError("Public production-cycle log template must remain empty")
     if len(reports) != 3:
         raise RuntimeError("Production-cycle packet expects the three recurring-report records")
     if any("confirm" not in row["schedule_status"].lower() for row in reports):
@@ -129,7 +140,16 @@ def main() -> int:
         [
             "## Minimum coordination record",
             "",
-            "A live cycle should retain, at minimum, a cycle identifier, report ID, stage, opened date, owner role, question or discrepancy, materiality, evidence requested, response/evidence received, decision, disclosure requirement, status, and closed date. Dates and named owners belong in the real cycle record only after kickoff; they are intentionally absent from this portfolio template.",
+            "A live cycle should retain, at minimum, a cycle identifier, report ID, stage, opened date, owner role, question or discrepancy, materiality, evidence requested, response/evidence received, decision, disclosure requirement, status, and closed date. Dates and confirmed ownership belong in the real cycle record only after kickoff; they are intentionally absent from this public blank template.",
+            "",
+            "### Blank live-cycle log template",
+            "",
+            "`data/production_cycle_log_template.csv` is an intentionally empty, public CSV template for the minimum coordination record. At real kickoff, copy it to the approved working location and validate the populated copy with `python scripts/validate_production_cycle_log.py <path> --require-records`.",
+            "",
+            f"- **Record types:** {', '.join(sorted(RECORD_TYPES))}",
+            f"- **Materiality values:** {', '.join(sorted(MATERIALITIES))}",
+            f"- **Statuses:** {', '.join(sorted(STATUSES))}",
+            "- **Handling boundary:** completed partner logs are not part of the public release allowlist and must be reviewed separately before any disclosure.",
             "",
             "## Advancement rule",
             "",
@@ -192,7 +212,7 @@ def main() -> int:
     <section class="handoff-hero"><div class="shell"><p class="eyebrow">Partner production cycle</p><h1>Work advances on evidence, not on the calendar.</h1><p class="lede">A stage-gated portfolio model for moving recurring partner research from confirmed kickoff through versioned intake, method review, QA, issue resolution, publication decision, and archival handoff.</p><div class="hero-actions"><a class="button button-primary" href="#cycle-register">Review stage controls</a><a class="button button-secondary" href="downloads/production_cycle_register.csv">Download cycle register</a></div><p class="release-note"><strong>Portfolio boundary:</strong> this is a reusable coordination template. It does not represent the Presidents' Alliance's internal project-management system, staffing, deadlines, or approval chain, and it deliberately infers no internal dates from public publication history.</p><div class="handoff-summary"><article><strong>{len(stages)}</strong><span>stage-gated controls</span></article><article><strong>{len(reports)}</strong><span>recurring products covered</span></article><article><strong>0</strong><span>inferred internal deadlines</span></article><article><strong>1</strong><span>evidence record required at every handoff</span></article></div></div></section>
     <section class="section section-tinted" id="cycle-register"><div class="shell"><div class="section-heading"><p class="eyebrow">Cycle register</p><h2>Seven gates from kickoff to archive</h2><p>Each stage has an entry condition, required record, explicit blocker, exit condition, and retained evidence. A stage cannot be completed merely because time passed.</p></div><div class="handoff-grid">{''.join(stage_cards)}</div></div></section>
     <section class="section shell"><div class="section-heading"><p class="eyebrow">Product packet</p><h2>Shared controls, product-specific evidence</h2><p>The three products remain at a pre-kickoff portfolio position until a real partner cycle is confirmed. Their existing registers supply the source-specific intake, method, and QA requirements.</p></div><div class="operations-grid">{''.join(product_cards)}</div></section>
-    <section class="section section-tinted"><div class="shell"><div class="section-heading compact"><p class="eyebrow">Coordination record</p><h2>What a live cycle must leave behind</h2></div><div class="method-grid"><article><h3>Intake manifest</h3><p>Cycle/report identifiers, delivered files, versions, source vintage, methodology package, delivery date, and completeness exceptions.</p></article><article><h3>Method-change record</h3><p>Prior/current definitions, weighting or model changes, geography, exclusions, uncertainty rules, and expected comparability impact.</p></article><article><h3>Question / discrepancy log</h3><p>Owner role, materiality, evidence request, response, decision, disclosure need, status, and closure date.</p></article><article><h3>Approval + archive</h3><p>Final reviewed outputs, methodology version, publication handoff, approval or hold decision, publication URL, and next-cycle open questions.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/production_cycle.md">Download production-cycle notes</a><a class="button button-secondary" href="research-operations.html">Product operations</a></div><p class="release-note">No named staff, internal dates, or unverified approval roles are asserted by this portfolio model. Those fields belong to the actual production record after kickoff.</p></div></section>
+    <section class="section section-tinted"><div class="shell"><div class="section-heading compact"><p class="eyebrow">Coordination record</p><h2>What a live cycle must leave behind</h2></div><div class="method-grid"><article><h3>Intake manifest</h3><p>Cycle/report identifiers, delivered files, versions, source vintage, methodology package, delivery date, and completeness exceptions.</p></article><article><h3>Method-change record</h3><p>Prior/current definitions, weighting or model changes, geography, exclusions, uncertainty rules, and expected comparability impact.</p></article><article><h3>Question / discrepancy log</h3><p>Owner role, materiality, evidence request, response, decision, disclosure need, status, and closure date.</p></article><article><h3>Approval + archive</h3><p>Final reviewed outputs, methodology version, publication handoff, approval or hold decision, publication URL, and next-cycle open questions.</p></article></div><div class="section-heading compact"><p class="eyebrow">Operational template</p><h2>Start a real cycle with a controlled log</h2><p>The downloadable CSV is intentionally empty. Copy it into the approved working location at kickoff, then validate populated records against the three report IDs, seven stage IDs, controlled record types, materiality values, statuses, and date rules.</p></div><div class="method-grid"><article><h3>Foreign-key controls</h3><p>Every populated row must reference one of the three recurring report IDs and one of the seven production stage IDs.</p></article><article><h3>Controlled record types</h3><p>{html.escape(', '.join(sorted(RECORD_TYPES)))}</p></article><article><h3>Status discipline</h3><p>{html.escape(', '.join(sorted(STATUSES)))}. Terminal records require a close date; active records cannot carry one.</p></article><article><h3>Public boundary</h3><p>The blank template is public. Completed partner logs are nonpublic by default and require a separate release decision before disclosure.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/production_cycle_log_template.csv">Download blank cycle log</a><a class="button button-secondary" href="downloads/production_cycle.md">Download production-cycle notes</a><a class="button button-secondary" href="research-operations.html">Product operations</a></div><p class="release-note">No named staff, internal dates, or unverified approval roles are asserted by this portfolio model. Those fields belong to the actual production record after kickoff.</p></div></section>
   </main>
   <footer><div class="shell footer-inner"><span>Partner Production Cycle · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
 </body>

@@ -82,6 +82,7 @@ A concise PDF version should also be available for reviewers who expect a conven
 - structured population/source crosswalk that prevents IPEDS, SEVIS, immigrant-origin, undocumented, pipeline, and refugee/asylee concepts from being treated as interchangeable.
 - structured recurring-report operations register for the three research products named in the target role, with explicit partner-confirmed scheduling, versioned intake, methodology-change review, QA gates, publication outputs, and archival handoff.
 - structured seven-stage production-cycle register that separates shared coordination gates from product-specific methodology and requires evidence at each handoff rather than inferred calendar progress.
+- blank production-cycle log template plus validator for a real kickoff record, with controlled report/stage IDs, record types, materiality, statuses, dates, and nonpublic-by-default handling for completed partner logs.
 - structured public-release register and generated data-governance page that enforce data minimization and an exact allowlist for public artifacts.
 - online Research Library URL-health checker kept separate from offline reproducibility validation.
 - online population-crosswalk source-health checker kept separate from offline reproducibility validation.

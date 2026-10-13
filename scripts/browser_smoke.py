@@ -64,6 +64,7 @@ def check_downloads(base_url: str) -> None:
         "downloads/recurring_report_register.md",
         "downloads/production_cycle_register.csv",
         "downloads/production_cycle.md",
+        "downloads/production_cycle_log_template.csv",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
         "downloads/state_profile_index.csv",
@@ -183,7 +184,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "34" not in summary or "84" not in summary:
+    if "35" not in summary or "85" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -223,6 +224,8 @@ def inspect_production_cycle(browser, base_url: str, *, width: int, height: int)
         raise AssertionError("Production cycle register download link is missing")
     if page.locator('a[href="downloads/production_cycle.md"]').count() != 1:
         raise AssertionError("Production cycle notes download link is missing")
+    if page.locator('a[href="downloads/production_cycle_log_template.csv"]').count() != 1:
+        raise AssertionError("Production cycle log template download link is missing")
     overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
     if overflow > 1:
         raise AssertionError(f"Production cycle horizontal overflow at {width}px: {overflow}px")

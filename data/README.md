@@ -67,6 +67,10 @@ Portfolio operations register for the three recurring research products named in
 
 Seven-row shared stage-gate authority for recurring partner research. Each stage records the generic coordination role, entry condition, required record, blocker, exit condition, next-stage handoff, and retained evidence. It is deliberately date-free and person-free until a real partner kickoff occurs. `scripts/build_production_cycle.py` validates the stage sequence and joins it to the three product-specific recurring-report records to generate `docs/PRODUCTION_CYCLE.md` and `site/production-cycle.html`.
 
+## `production_cycle_log_template.csv`
+
+Intentionally empty 16-field CSV template for the live coordination record described by the production-cycle controls. `scripts/validate_production_cycle_log.py` validates populated copies against the three recurring `report_id` values, seven production `stage_id` values, controlled record types/materiality/status values, ISO dates, terminal/active closure rules, and approval/hold decisions. The tracked blank template is public; completed partner logs are nonpublic by default and must stay in the approved working location unless a separate release review authorizes disclosure.
+
 ## `qa_resolution_log.csv`
 
 Manually curated analyst dispositions for a selected sample of high-priority rows from `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` verifies that each reviewed UNITID still exists in the current high-priority queue and generates `docs/QA_RESOLUTION_LOG.md` plus `qa_resolution_summary.json`.

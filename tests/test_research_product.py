@@ -26,6 +26,10 @@ from build_data_governance import (  # noqa: E402
     validate_public_tree,
 )
 from build_production_cycle import validate_stages as validate_production_stages  # noqa: E402
+from validate_production_cycle_log import (  # noqa: E402
+    FIELDS as PRODUCTION_LOG_FIELDS,
+    validate_log_rows as validate_production_log_rows,
+)
 
 
 def rows(path: Path) -> list[dict[str, str]]:
@@ -307,7 +311,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 34)
+        self.assertEqual(len(release_rows), 35)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -316,15 +320,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 84)
-        self.assertEqual(validate_public_tree(release_rows), 84)
+        self.assertEqual(len(pairs), 85)
+        self.assertEqual(validate_public_tree(release_rows), 85)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 84", rendered)
+        self.assertIn("Expanded public download files:** 85", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("84</strong><span>expanded public download files", html)
+        self.assertIn("85</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -342,7 +346,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 84)
+        self.assertEqual(validate_public_tree(release_rows), 85)
 
     def test_research_agenda_is_structured_and_rendered(self) -> None:
         agenda = rows(ROOT / "data" / "research_agenda.csv")
@@ -445,6 +449,73 @@ class ResearchProductTests(unittest.TestCase):
         for report in reports:
             self.assertIn(report["report_title"], rendered)
             self.assertIn(html_module.escape(report["report_title"]), html)
+
+    def test_production_cycle_log_template_and_validator(self) -> None:
+        template_path = ROOT / "data" / "production_cycle_log_template.csv"
+        with template_path.open("r", encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            self.assertEqual(tuple(reader.fieldnames or ()), PRODUCTION_LOG_FIELDS)
+            self.assertEqual(list(reader), [])
+
+        valid = {field: "" for field in PRODUCTION_LOG_FIELDS}
+        valid.update(
+            {
+                "cycle_id": "validator-demo-cycle",
+                "report_id": "undocumented_higher_ed",
+                "stage_id": "kickoff_scope_lock",
+                "record_id": "REC001",
+                "record_type": "stage_evidence",
+                "owner_role": "Analyst",
+                "opened_date": "2026-10-13",
+                "materiality": "not_applicable",
+                "evidence_received": "Confirmed scope record",
+                "status": "CLOSED",
+                "closed_date": "2026-10-13",
+                "notes": "In-memory validator fixture; not a partner record",
+            }
+        )
+        self.assertEqual(validate_production_log_rows([valid]), [valid])
+
+        invalid_report = dict(valid, report_id="unknown_report")
+        with self.assertRaisesRegex(RuntimeError, "Unknown recurring report_id"):
+            validate_production_log_rows([invalid_report])
+        invalid_stage = dict(valid, stage_id="unknown_stage")
+        with self.assertRaisesRegex(RuntimeError, "Unknown production stage_id"):
+            validate_production_log_rows([invalid_stage])
+        invalid_close = dict(valid, closed_date="")
+        with self.assertRaisesRegex(RuntimeError, "Terminal status requires closed_date"):
+            validate_production_log_rows([invalid_close])
+        invalid_status = dict(valid, status="DONE")
+        with self.assertRaisesRegex(RuntimeError, "Invalid status"):
+            validate_production_log_rows([invalid_status])
+        invalid_terminal_evidence = dict(valid, evidence_received="", decision="")
+        with self.assertRaisesRegex(RuntimeError, "Terminal status requires evidence or decision"):
+            validate_production_log_rows([invalid_terminal_evidence])
+        invalid_discrepancy = dict(
+            valid,
+            record_type="discrepancy",
+            materiality="high",
+            decision="",
+        )
+        with self.assertRaisesRegex(RuntimeError, "Closed discrepancy requires a decision"):
+            validate_production_log_rows([invalid_discrepancy])
+        mixed_report = dict(valid, record_id="REC002", report_id="immigrant_origin_higher_ed")
+        with self.assertRaisesRegex(RuntimeError, "mixes report IDs"):
+            validate_production_log_rows([valid, mixed_report])
+        extra_column = dict(valid)
+        extra_column[None] = ["unexpected"]
+        with self.assertRaisesRegex(RuntimeError, "extra CSV columns"):
+            validate_production_log_rows([extra_column])
+        short_row = dict(valid)
+        short_row["notes"] = None
+        with self.assertRaisesRegex(RuntimeError, "missing CSV columns"):
+            validate_production_log_rows([short_row])
+
+        rendered = (ROOT / "docs" / "PRODUCTION_CYCLE.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "production-cycle.html").read_text(encoding="utf-8")
+        self.assertIn("production_cycle_log_template.csv", rendered)
+        self.assertIn("completed partner logs are not part of the public release allowlist", rendered)
+        self.assertIn('href="downloads/production_cycle_log_template.csv"', html)
 
     def test_qa_resolution_log_tracks_current_high_priority_queue(self) -> None:
         log = rows(ROOT / "data" / "qa_resolution_log.csv")
@@ -626,10 +697,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 84)
+        self.assertEqual(len(pairs), 85)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 84)
+        self.assertEqual(validate_public_tree(release_rows), 85)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (

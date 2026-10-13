@@ -343,6 +343,31 @@ One row per shared production stage used by the recurring partner-research coord
 
 `scripts/build_production_cycle.py` validates exact seven-stage order and handoff continuity, verifies that the three recurring products retain partner-confirmed scheduling language, and generates `docs/PRODUCTION_CYCLE.md` plus `site/production-cycle.html`. The register is a portfolio coordination template, not an internal Presidents' Alliance schedule or approval chain.
 
+## `data/production_cycle_log_template.csv`
+
+Blank schema for a live recurring-report coordination log. The tracked file contains no operational records; a populated copy belongs in the approved working environment and is nonpublic by default.
+
+| Field | Definition |
+| --- | --- |
+| `cycle_id` | Identifier for one confirmed production cycle |
+| `report_id` | Foreign key to `data/recurring_report_register.csv` |
+| `stage_id` | Foreign key to `data/production_cycle_register.csv` |
+| `record_id` | Unique record identifier within a cycle |
+| `record_type` | `stage_evidence`, `question`, `discrepancy`, `decision`, `approval`, or `archive` |
+| `owner_role` | Responsible role; use the live organization's approved working record for any named contact |
+| `opened_date` | ISO date the record was opened |
+| `materiality` | `not_applicable`, `low`, `medium`, or `high` |
+| `issue_or_question` | Coordination question, discrepancy, or issue being tracked |
+| `evidence_requested` | Evidence or response needed to advance/resolve the record |
+| `evidence_received` | Evidence actually received or reviewed |
+| `decision` | Documented decision, especially for approval/hold records |
+| `disclosure_requirement` | Publication/context disclosure created by the record, if any |
+| `status` | `OPEN`, `BLOCKED`, `RESOLVED`, `APPROVED`, `HELD`, or `CLOSED` |
+| `closed_date` | ISO date required for terminal statuses and prohibited for active statuses |
+| `notes` | Additional handoff context |
+
+`scripts/validate_production_cycle_log.py` enforces exact row shape, report/stage foreign keys, one report per cycle, controlled values, date ordering, unique record IDs within a cycle, discrepancy materiality, terminal/active closure rules, closure evidence, and decision text for closed discrepancies plus approval/hold records. The public template must remain empty.
+
 ## JSON products
 
 `data/qa_report.json` contains structural checks, yearly source/flag distributions, row counts, and explicit exclusions.

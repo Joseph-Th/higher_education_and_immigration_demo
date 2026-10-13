@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 34
-**Expanded public download files:** 84
+**Registered artifact families:** 35
+**Expanded public download files:** 85
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -53,6 +53,7 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR32 | `site/downloads/data_governance.md` | Publication | Data governance note | Generated from the public release register and project handling rules |
 | PR33 | `site/downloads/production_cycle_register.csv` | Research governance | Production stage control | Portfolio coordination metadata with no partner-confidential or person-level records |
 | PR34 | `site/downloads/production_cycle.md` | Publication | Production-cycle coordination note | Generated from the stage register and public recurring-product operations metadata |
+| PR35 | `site/downloads/production_cycle_log_template.csv` | Research governance | Blank live-cycle coordination log template | Empty portfolio template containing field names only |
 
 ## Handling boundary
 

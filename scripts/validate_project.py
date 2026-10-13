@@ -28,6 +28,7 @@ def main() -> int:
         ("Build research library", [PYTHON, "scripts/build_research_library.py"]),
         ("Build population crosswalk", [PYTHON, "scripts/build_population_crosswalk.py"]),
         ("Build recurring report register", [PYTHON, "scripts/build_recurring_report_register.py"]),
+        ("Validate production cycle log template", [PYTHON, "scripts/validate_production_cycle_log.py"]),
         ("Build production cycle", [PYTHON, "scripts/build_production_cycle.py"]),
         ("Build research agenda", [PYTHON, "scripts/build_research_agenda.py"]),
         ("Summarize findings", [PYTHON, "scripts/summarize_findings.py"]),

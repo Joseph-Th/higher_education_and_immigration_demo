@@ -81,6 +81,7 @@ This design is deliberate: the external publication is a validation source, not 
 - the population/source crosswalk containing exactly the six required research concepts, HTTPS sources, an explicit undocumented-student exclusion in the IPEDS row, and matching generated Markdown/HTML;
 - the recurring-report register containing exactly the three target-role products, valid foreign keys into the Research Library and population crosswalk, partner-confirmed scheduling language, and matching Markdown/HTML;
 - the production-cycle register containing exactly seven ordered stage gates with explicit entry, blocker, exit, next-stage, and retained-evidence controls, plus generated Markdown/HTML covering all three recurring products without inferred internal deadlines;
+- the blank production-cycle log template retaining the exact 16-field schema and the validator rejecting unknown report/stage IDs, invalid statuses, and terminal records without closure dates;
 - structured Research Library metadata having unique IDs, HTTPS URLs, current review dates, and matching generated documentation;
 - Research Library population/topic and workflow-stage metadata remaining nonblank and the searchable public interface exposing the expected filters;
 - publication-handoff claims remaining unique, linked to valid Research Library IDs, tied to current headline/latest-release/QA values, and rendered consistently in Markdown/HTML;
@@ -96,7 +97,7 @@ This design is deliberate: the external publication is a validation source, not 
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **29 tests**.
+The current suite contains **30 tests**.
 
 ## One-command validation
 
@@ -123,11 +124,11 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - the latest-release high-priority review count matching `site_data.json`;
 - working public CSV downloads;
 - working public Research Library and Research Agenda CSV/Markdown, QA resolution CSV/Markdown, research memo, stakeholder briefing-note, Excel-workbook, state-profile index, and state-profile downloads;
-- working public population-crosswalk CSV/Markdown, recurring-report register CSV/Markdown, production-cycle CSV/Markdown, and PDF research-brief downloads;
+- working public population-crosswalk CSV/Markdown, recurring-report register CSV/Markdown, production-cycle CSV/Markdown, blank production-cycle log template, and PDF research-brief downloads;
 - searchable Research Library behavior, including text, resource-type, and population/topic filtering;
 - publication-handoff rendering with 11 claim/control cards, five release gates, current headline value, download, portfolio boundary, and responsive layout;
-- data-governance rendering with 34 registered artifact families, 84 expanded public files, five release controls, restricted-data boundary, governed downloads, and responsive layout;
-- production-cycle rendering with seven ordered stage controls, three recurring-product packets, zero inferred internal deadlines, governed downloads, and responsive layout;
+- data-governance rendering with 35 registered artifact families, 85 expanded public files, five release controls, restricted-data boundary, governed downloads, and responsive layout;
+- production-cycle rendering with seven ordered stage controls, three recurring-product packets, zero inferred internal deadlines, the blank live-cycle log download, governed downloads, and responsive layout;
 - anchored sections clearing the sticky header; and
 - a shareable California state-profile page rendering the correct query-selected state, ten-year series, five institution rows, profile-note link, and responsive layout; and
 - a standalone research memo rendering the validated headline and all three analyst case studies at desktop and mobile widths; and
@@ -156,4 +157,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable PDF research brief, Excel analysis workbook, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, population/source crosswalk, recurring-report operations register, stage-gated production-cycle register/notes, publication handoff, data-governance note and public-release register, stakeholder briefing note, structured/searchable Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable PDF research brief, Excel analysis workbook, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, population/source crosswalk, recurring-report operations register, stage-gated production-cycle register/notes, blank validated production-cycle log template, publication handoff, data-governance note and public-release register, stakeholder briefing note, structured/searchable Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.

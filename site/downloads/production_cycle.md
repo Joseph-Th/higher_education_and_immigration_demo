@@ -54,7 +54,16 @@ The shared stages define how work advances; the recurring-report register define
 
 ## Minimum coordination record
 
-A live cycle should retain, at minimum, a cycle identifier, report ID, stage, opened date, owner role, question or discrepancy, materiality, evidence requested, response/evidence received, decision, disclosure requirement, status, and closed date. Dates and named owners belong in the real cycle record only after kickoff; they are intentionally absent from this portfolio template.
+A live cycle should retain, at minimum, a cycle identifier, report ID, stage, opened date, owner role, question or discrepancy, materiality, evidence requested, response/evidence received, decision, disclosure requirement, status, and closed date. Dates and confirmed ownership belong in the real cycle record only after kickoff; they are intentionally absent from this public blank template.
+
+### Blank live-cycle log template
+
+`data/production_cycle_log_template.csv` is an intentionally empty, public CSV template for the minimum coordination record. At real kickoff, copy it to the approved working location and validate the populated copy with `python scripts/validate_production_cycle_log.py <path> --require-records`.
+
+- **Record types:** approval, archive, decision, discrepancy, question, stage_evidence
+- **Materiality values:** high, low, medium, not_applicable
+- **Statuses:** APPROVED, BLOCKED, CLOSED, HELD, OPEN, RESOLVED
+- **Handling boundary:** completed partner logs are not part of the public release allowlist and must be reviewed separately before any disclosure.
 
 ## Advancement rule
 
