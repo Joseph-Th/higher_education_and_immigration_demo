@@ -18,7 +18,7 @@ git push --force-with-lease origin gh-pages
 
 GitHub Pages should then be configured to serve branch `gh-pages` from `/`. After deployment, verify the public HTTPS home page, a state profile, the research memo, the methodology crosswalk, the recurring-research operations page, the searchable Research Library, the publication-handoff page, the data-governance page, the public-release register, representative CSV downloads, and the PDF brief. The deployed site must never be read back as an input to the analysis.
 
-**Verified October 13, 2026:** the public home page, California state profile, research memo, population crosswalk, recurring-research operations page, searchable Research Library, publication-handoff page, publication-handoff CSV, Research Library CSV, and PDF brief all returned HTTP 200. The deployed Research Library exposed the current population/workflow taxonomy, the publication handoff contained the expected N01-B01 control set, and the deployed site payload reported the expected 1,044,137 Fall 2024 headline value.
+**Verified October 13, 2026:** the public home page, data-governance page, public-release register, data-governance note, searchable Research Library, publication-handoff page, recurring-research operations page, current site-data payload, and PDF brief all returned HTTP 200 after publication. The deployed governance page reported 32 registered artifact families / 82 expanded downloads, the Research Library contained 13 maintained resources including the current privacy/data-minimization guidance, both handoff/operations pages linked to the governance surface, and the deployed site payload reported the expected 1,044,137 Fall 2024 headline value.
 
 ## Optional Cloudflare Pages setup
 
