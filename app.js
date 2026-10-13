@@ -183,6 +183,27 @@ function pctChange(newV, oldV) { return (newV-oldV)/oldV*100; }
 function signedPct(value) { return `${value >= 0 ? '+' : ''}${fmtPct.format(value)}%`; }
 function signedInt(value) { return `${value >= 0 ? '+' : ''}${fmtInt.format(value)}`; }
 
+const CASE_LABELS = {
+  unresolved_anomaly:'Hold the anomaly',
+  corroborated_movement:'Corroborate the direction',
+  structural_change:'Explain the structural change'
+};
+
+function renderQaCases(container, cases) {
+  const decision = value => value === 'safe_with_context' ? 'Publish with context' : 'Hold institution-specific claim';
+  cases.forEach(caseRow=>{
+    const article=document.createElement('article'); article.className='qa-case-card';
+    const kicker=document.createElement('p'); kicker.className='case-kicker'; kicker.textContent=CASE_LABELS[caseRow.case_type]||'Analyst review';
+    const title=document.createElement('h3'); title.textContent=caseRow.institution;
+    const change=document.createElement('p'); change.className='case-change'; change.textContent=`${signedInt(Number(caseRow.absolute_change))} students`;
+    const note=document.createElement('p'); note.textContent=caseRow.analyst_note;
+    const footer=document.createElement('div'); footer.className='case-footer';
+    const badge=document.createElement('span'); badge.className='case-decision'; badge.textContent=decision(caseRow.publication_class);
+    const evidence=document.createElement('a'); evidence.href=caseRow.evidence_url; evidence.target='_blank'; evidence.rel='noopener'; evidence.textContent='Review evidence';
+    footer.append(badge,evidence); article.append(kicker,title,change,note,footer); container.appendChild(article);
+  });
+}
+
 function renderState(data, code) {
   const series=data.state_series[code];
   const first=series[0], last=series[series.length-1];
@@ -258,6 +279,7 @@ async function init() {
   document.querySelector('#resolution-reviewed').textContent=fmtInt.format(resolution.reviewed_count);
   document.querySelector('#resolution-safe').textContent=fmtInt.format(resolution.safe_with_context);
   document.querySelector('#resolution-held').textContent=fmtInt.format(resolution.hold_for_confirmation);
+  renderQaCases(document.querySelector('#qa-case-studies'),resolution.case_studies);
 
   const select=document.querySelector('#state-select');
   Object.keys(data.state_series).sort((a,b)=>STATE_NAMES[a].localeCompare(STATE_NAMES[b])).forEach(code=>{

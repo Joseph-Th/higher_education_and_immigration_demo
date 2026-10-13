@@ -22,6 +22,7 @@
       <nav aria-label="Primary navigation">
         <a href="#findings">Findings</a>
         <a href="#states">States</a>
+        <a href="research-memo.html">Memo</a>
         <a href="#methods">Methods</a>
         <a href="#downloads">Data</a>
       </nav>
@@ -37,7 +38,7 @@
           <p class="lede">A reproducible analysis of degree-granting institutions in the 50 states and District of Columbia, using the same IPEDS universe NCES uses for First Look and Digest tables.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#findings">Explore findings</a>
-            <a class="button button-secondary" href="downloads/state_year.csv">Download state data</a>
+            <a class="button button-secondary" href="research-memo.html">Read research memo</a>
           </div>
           <p class="release-note">Latest year: <strong>Fall 2024 provisional</strong>. Latest Fall Enrollment file available as of October 13, 2026.</p>
         </div>
@@ -343,6 +344,12 @@
             <article><strong id="resolution-held">—</strong><span>held for direct confirmation</span></article>
           </div>
         </div>
+        <div class="case-study-heading">
+          <p class="eyebrow">Review in practice</p>
+          <h3>Three flags, three different publication decisions</h3>
+          <p>The featured cases show how the same automated queue can produce a hold, a contextual publication decision, or a documented structural explanation.</p>
+        </div>
+        <div id="qa-case-studies" class="qa-case-grid" aria-live="polite"></div>
         <p class="chart-note update-note">Review priority is deterministic triage, not an error label. Rules include large absolute changes, large percentage changes above a minimum baseline, analytic-universe entry/exit, material imputation/status changes, and discontinuities against recent history. The full reason-coded review queue is downloadable below.</p>
       </div>
     </section>
@@ -417,6 +424,8 @@
           <p>The raw IPEDS archives are reproducibly downloaded from NCES and kept out of the repository. These compact outputs are enough to inspect the analysis and trace its source lineage.</p>
         </div>
         <div class="download-list">
+          <a href="research-memo.html"><span>Research memo</span><small>HTML · findings + analyst case studies</small></a>
+          <a href="downloads/research_memo.md"><span>Research memo notes</span><small>Markdown · portable writing sample</small></a>
           <a href="downloads/ipeds_portfolio_analysis.xlsx"><span>Excel analysis workbook</span><small>XLSX · formulas / QA / state lookup</small></a>
           <a href="downloads/state_profile_index.csv"><span>State profile index</span><small>CSV · 50 states + DC</small></a>
           <a href="downloads/national_year.csv"><span>National series</span><small>CSV · 2015–2024</small></a>
