@@ -6,15 +6,18 @@ The project is designed as a compact, reproducible research product rather than 
 
 ![Research brief preview](docs/assets/research-brief-preview.png)
 
+**Live publication:** https://joseph-th.github.io/higher_education_and_immigration_demo/
+
 ## Start here
 
 For a quick review of the finished work:
 
-1. [`deliverables/research_brief.pdf`](deliverables/research_brief.pdf) - three-page policy/research writing sample with findings, analyst QA decisions, and methods/source trail.
-2. [`docs/POPULATION_CROSSWALK.md`](docs/POPULATION_CROSSWALK.md) - source-selection guide distinguishing IPEDS, immigrant-origin, SEVIS international, undocumented, pipeline, and refugee/asylee concepts.
-3. [`deliverables/ipeds_portfolio_analysis.xlsx`](deliverables/ipeds_portfolio_analysis.xlsx) - formula-driven Excel review workbook with state lookup, reconciliation, benchmark QA, and source metadata.
-4. [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) - evidence map from research responsibilities to specific files, scripts, and validation outputs.
-5. [`docs/RECURRING_REPORT_REGISTER.md`](docs/RECURRING_REPORT_REGISTER.md) - portfolio operations model for partner intake, methodology-change review, QA, publication gating, and institutional-knowledge handoff across the three recurring reports named in the target role.
+1. [Live research publication](https://joseph-th.github.io/higher_education_and_immigration_demo/) - interactive national/state analysis, methods, QA, and public downloads.
+2. [`deliverables/research_brief.pdf`](deliverables/research_brief.pdf) - three-page policy/research writing sample with findings, analyst QA decisions, and methods/source trail.
+3. [`docs/POPULATION_CROSSWALK.md`](docs/POPULATION_CROSSWALK.md) - source-selection guide distinguishing IPEDS, immigrant-origin, SEVIS international, undocumented, pipeline, and refugee/asylee concepts.
+4. [`docs/RECURRING_REPORT_REGISTER.md`](docs/RECURRING_REPORT_REGISTER.md) - portfolio operations model for partner intake, methodology-change review, QA, publication gating, and institutional-knowledge handoff across the three recurring reports named in the target role.
+5. [`deliverables/ipeds_portfolio_analysis.xlsx`](deliverables/ipeds_portfolio_analysis.xlsx) - formula-driven Excel review workbook with state lookup, reconciliation, benchmark QA, and source metadata.
+6. [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) - evidence map from research responsibilities to specific files, scripts, and validation outputs.
 
 The interactive publication is under [`site/`](site/); deployment instructions are in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
 

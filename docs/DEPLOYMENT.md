@@ -2,9 +2,11 @@
 
 The public research brief is a static site. It does not need a framework build, server process, database, or runtime secrets.
 
-## Current public fallback: GitHub Pages
+## Current public deployment: GitHub Pages
 
-When Cloudflare credentials are not available locally, the validated `site/` tree can be published from a dedicated `gh-pages` branch. `site/.nojekyll` is tracked so GitHub serves the static publication as authored rather than applying Jekyll processing rules.
+Public URL: `https://joseph-th.github.io/higher_education_and_immigration_demo/`
+
+The validated `site/` tree is published from a dedicated `gh-pages` branch. `site/.nojekyll` is tracked so GitHub serves the static publication as authored rather than applying Jekyll processing rules.
 
 The publication branch is downstream of `main`; it is never an analytical authority. Rebuild and validate on `main` first, then replace `gh-pages` with the exact validated `site/` contents. One reproducible local publication sequence is:
 
@@ -15,6 +17,8 @@ git push --force-with-lease origin gh-pages
 ```
 
 GitHub Pages should then be configured to serve branch `gh-pages` from `/`. After deployment, verify the public HTTPS home page, a state profile, the research memo, the methodology crosswalk, the recurring-research operations page, one CSV download, and the PDF brief. The deployed site must never be read back as an input to the analysis.
+
+**Verified October 13, 2026:** the public home page, California state profile, research memo, population crosswalk, recurring-research operations page, recurring-report CSV, and PDF brief all returned HTTP 200. The deployed PDF SHA-256 matched `deliverables/research_brief_manifest.json`, and the deployed site payload reported the expected 1,044,137 Fall 2024 headline value.
 
 ## Recommended Git-connected setup
 

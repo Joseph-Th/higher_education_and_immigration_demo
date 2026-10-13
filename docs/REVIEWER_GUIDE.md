@@ -2,6 +2,8 @@
 
 This repository is intended to be evaluated as a small recurring research product, not only as a coding exercise. A reviewer should be able to understand the research question, inspect the public result, trace a number to source data, and see how the product would be maintained when a new release appears.
 
+Live publication: `https://joseph-th.github.io/higher_education_and_immigration_demo/`
+
 ## Reviewer path
 
 1. Open `deliverables/research_brief.pdf`. It is the fastest reviewer-facing artifact: headline findings, analyst judgment, interpretation boundaries, and a compact source/QA trail in three pages.
