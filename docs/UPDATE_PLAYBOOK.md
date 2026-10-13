@@ -80,6 +80,7 @@ Then review the newly generated:
 - `docs/BRIEFING_NOTE.md`.
 - `docs/RESEARCH_MEMO.md` and `site/research-memo.html`.
 - `docs/POPULATION_CROSSWALK.md` and `site/methodology-crosswalk.html` when source definitions or companion-source vintages changed.
+- `data/publication_handoff.csv`, `docs/PUBLICATION_HANDOFF.md`, and `site/publication-handoff.html`.
 
 Investigate the reason-coded high- and medium-priority review queue before updating the narrative. A queue item is not automatically an error. Determine whether the movement is plausible, concentrated in a few institutions, associated with an imputation/status change, related to analytic-universe membership, or a source discontinuity that needs further review.
 
@@ -137,6 +138,8 @@ Re-read the generated briefing note as a stakeholder product. Its numbers are de
 
 Re-read the generated research memo as a publication product. Confirm that its three featured QA cases still represent an unresolved anomaly, a corroborated movement, and a documented structural change, and that the accompanying evidence still supports the stated publication decision.
 
+Review the generated publication handoff line by line before deployment. Confirm that every public claim still points to the correct authority and Research Library source, that the QA gate is satisfied, that provisional/release-vintage and population/geography disclosures remain accurate, and that any institution-level claims with unresolved evidence remain held. Treat this register as the last analytical review before public copy is promoted, not as a substitute for organizational sign-off.
+
 After the memo and interpretation are final, regenerate the reviewer-facing PDF:
 
 ```bash
@@ -149,7 +152,7 @@ Then rerun `python scripts/validate_project.py`. The PDF manifest check will fai
 
 Run `python scripts/browser_smoke.py`, then inspect desktop and mobile layouts before publication. Confirm charts, tables, links, downloads, population-crosswalk cards, and source notes render correctly. Also run `python scripts/check_population_crosswalk.py` with the other live-link checks.
 
-Cloudflare Pages can publish the `site/` directory directly. See `docs/DEPLOYMENT.md`.
+The current public deployment uses GitHub Pages from the validated `site/` tree on `gh-pages`; Cloudflare Pages remains an optional alternative. See `docs/DEPLOYMENT.md`.
 
 ## Update completion criteria
 

@@ -41,6 +41,8 @@ python scripts/check_research_library.py
 
 This separate online lane checks every URL in `data/research_library.csv`, follows redirects, and reports HTTP/network failures. HTTP 401/403 responses are reported separately as **scripted-access restrictions**, not silently treated as either success or a broken link; those resources require manual browser review. The command fails on network errors and other broken HTTP responses such as 404/5xx. It does not modify the recorded `last_checked` metadata automatically; a human source review is still required before changing that field. Keeping this check outside `scripts/validate_project.py` prevents temporary external-site outages from breaking the offline research build.
 
+The Research Library also records population/topic tags and research workflow stage. Those fields are publication metadata, not inferred population equivalences: when a methodology changes, review the tag and workflow role deliberately rather than allowing the public filter taxonomy to imply comparability.
+
 Do not advance `END_YEAR` merely because a directory file exists. The recurring analysis is ready to advance only when the Fall Enrollment data and its dictionary are available and pass the schema review.
 
 ## Recurring research-product operations
@@ -62,4 +64,6 @@ When the next Fall Enrollment archive becomes available:
 5. re-review every public finding after the data rebuild.
 
 This separation between **release detection**, **source collection**, **schema validation**, and **publication** is intentional. A newly posted file is a trigger for review, not automatic permission to publish.
+
+The final publication stage is represented by `data/publication_handoff.csv`. Its claim-level authorities, QA gates, required disclosures, and hold/context decisions should be regenerated and reviewed after every annual data refresh before the public site is deployed.
 

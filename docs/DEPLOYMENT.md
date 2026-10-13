@@ -1,4 +1,4 @@
-# Cloudflare Pages Deployment
+# Static Publication Deployment
 
 The public research brief is a static site. It does not need a framework build, server process, database, or runtime secrets.
 
@@ -16,13 +16,13 @@ git subtree split --prefix site -b gh-pages
 git push --force-with-lease origin gh-pages
 ```
 
-GitHub Pages should then be configured to serve branch `gh-pages` from `/`. After deployment, verify the public HTTPS home page, a state profile, the research memo, the methodology crosswalk, the recurring-research operations page, one CSV download, and the PDF brief. The deployed site must never be read back as an input to the analysis.
+GitHub Pages should then be configured to serve branch `gh-pages` from `/`. After deployment, verify the public HTTPS home page, a state profile, the research memo, the methodology crosswalk, the recurring-research operations page, the searchable Research Library, the publication-handoff page, representative CSV downloads, and the PDF brief. The deployed site must never be read back as an input to the analysis.
 
 **Verified October 13, 2026:** the public home page, California state profile, research memo, population crosswalk, recurring-research operations page, recurring-report CSV, and PDF brief all returned HTTP 200. The deployed PDF SHA-256 matched `deliverables/research_brief_manifest.json`, and the deployed site payload reported the expected 1,044,137 Fall 2024 headline value.
 
-## Recommended Git-connected setup
+## Optional Cloudflare Pages setup
 
-The repository now has a GitHub remote, so the recommended publication path is a Git-connected Cloudflare Pages project:
+If a Cloudflare deployment is preferred later, the same repository can be connected directly to Cloudflare Pages:
 
 1. Create a Cloudflare Pages project connected to the repository.
 2. Use the repository root as the project root.
@@ -38,6 +38,7 @@ Before each deployment, run:
 python scripts/build_pdf_brief.py
 python scripts/validate_project.py
 python scripts/browser_smoke.py
+python scripts/check_for_new_release.py
 python scripts/check_research_library.py
 python scripts/check_population_crosswalk.py
 python scripts/check_qa_evidence.py

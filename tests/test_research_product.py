@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import html as html_module
 import json
 import re
 import sys
@@ -239,13 +240,63 @@ class ResearchProductTests(unittest.TestCase):
         }
         self.assertTrue(essential_ids.issubset(set(ids)))
         self.assertTrue(all(row["url"].startswith("https://") for row in library))
+        self.assertTrue(all(row["population_tags"].strip() for row in library))
+        self.assertTrue(all(row["workflow_stage"].strip() for row in library))
         self.assertTrue(
             all(re.fullmatch(r"\d{4}-\d{2}-\d{2}", row["last_checked"]) for row in library)
         )
         rendered = (ROOT / "docs" / "RESEARCH_LIBRARY.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "research-library.html").read_text(encoding="utf-8")
         for row in library:
             self.assertIn(row["title"], rendered)
             self.assertIn(row["url"], rendered)
+            self.assertIn(html_module.escape(row["title"]), html)
+            self.assertIn(html_module.escape(row["url"], quote=True), html)
+
+    def test_research_library_public_interface(self) -> None:
+        library = rows(ROOT / "data" / "research_library.csv")
+        html = (ROOT / "site" / "research-library.html").read_text(encoding="utf-8")
+        script = (ROOT / "site" / "research-library.js").read_text(encoding="utf-8")
+        self.assertEqual(html.count('class="library-card"'), len(library))
+        self.assertIn('id="library-search"', html)
+        self.assertIn('id="library-population-filter"', html)
+        self.assertIn('id="library-type-filter"', html)
+        self.assertIn('id="library-publisher-filter"', html)
+        self.assertIn('src="research-library.js"', html)
+        self.assertIn("applyLibraryFilters", script)
+        self.assertIn("card.hidden = !show", script)
+        self.assertIn("matchesPopulation", script)
+
+    def test_publication_handoff_tracks_validated_claims(self) -> None:
+        handoff = rows(ROOT / "data" / "publication_handoff.csv")
+        ids = [row["claim_id"] for row in handoff]
+        self.assertEqual(len(handoff), 11)
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertTrue({"N01", "N05", "S01", "Q01", "M01", "B01"}.issubset(set(ids)))
+        self.assertTrue(
+            all(
+                row["publication_status"]
+                in {"READY", "READY WITH CONTEXT", "READY WITH CLAIM-LEVEL HOLDS"}
+                for row in handoff
+            )
+        )
+        library_ids = {row["resource_id"] for row in rows(ROOT / "data" / "research_library.csv")}
+        self.assertTrue(all(row["research_library_id"] in library_ids for row in handoff))
+        n01 = next(row for row in handoff if row["claim_id"] == "N01")
+        self.assertIn(f"{self.findings['headline']['latest_nonresident']:,}", n01["public_copy"])
+        n05 = next(row for row in handoff if row["claim_id"] == "N05")
+        self.assertIn(f"{self.update_review['national']['absolute_change']:+,}", n05["public_copy"])
+        q01 = next(row for row in handoff if row["claim_id"] == "Q01")
+        resolution = json.loads((ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8"))
+        self.assertIn(str(resolution["reviewed_count"]), q01["public_copy"])
+        self.assertEqual(q01["publication_status"], "READY WITH CLAIM-LEVEL HOLDS")
+        rendered = (ROOT / "docs" / "PUBLICATION_HANDOFF.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "publication-handoff.html").read_text(encoding="utf-8")
+        for row in handoff:
+            self.assertIn(row["claim_id"], rendered)
+            self.assertIn(row["public_copy"], rendered)
+            self.assertIn(html_module.escape(row["public_copy"]), html)
+        self.assertIn("does **not** represent the Presidents' Alliance's internal publication workflow", rendered)
 
     def test_research_agenda_is_structured_and_rendered(self) -> None:
         agenda = rows(ROOT / "data" / "research_agenda.csv")
@@ -512,6 +563,7 @@ class ResearchProductTests(unittest.TestCase):
             ("data/source_manifest.csv", "site/downloads/source_manifest.csv"),
             ("data/benchmark_audit.csv", "site/downloads/benchmark_audit.csv"),
             ("data/research_library.csv", "site/downloads/research_library.csv"),
+            ("data/publication_handoff.csv", "site/downloads/publication_handoff.csv"),
             ("data/research_agenda.csv", "site/downloads/research_agenda.csv"),
             ("data/population_crosswalk.csv", "site/downloads/population_crosswalk.csv"),
             (
@@ -570,6 +622,10 @@ class ResearchProductTests(unittest.TestCase):
             (ROOT / "docs" / "RESEARCH_MEMO.md").read_bytes(),
             (ROOT / "site" / "downloads" / "research_memo.md").read_bytes(),
         )
+        self.assertEqual(
+            (ROOT / "docs" / "PUBLICATION_HANDOFF.md").read_bytes(),
+            (ROOT / "site" / "downloads" / "publication_handoff.md").read_bytes(),
+        )
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -578,6 +634,8 @@ class ResearchProductTests(unittest.TestCase):
             "research-memo.html",
             "methodology-crosswalk.html",
             "research-operations.html",
+            "research-library.html",
+            "publication-handoff.html",
         ):
             html = (ROOT / "site" / page_name).read_text(encoding="utf-8")
             ids = re.findall(r'\bid="([^"]+)"', html)

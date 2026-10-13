@@ -10,12 +10,14 @@ Live publication: `https://joseph-th.github.io/higher_education_and_immigration_
 2. Open `site/index.html` through a local static server or deployed Pages URL. Read the six longitudinal findings, the latest-release review, inspect the state explorer, and open the three analyst case studies.
 3. Open `site/methodology-crosswalk.html`. This shows how the project distinguishes IPEDS U.S. nonresident data from immigrant-origin, SEVIS international, undocumented, high-school-pipeline, and refugee/asylee concepts before attempting a comparison.
 4. Open `site/research-operations.html`. This is the portfolio model for coordinating the three recurring products named in the vacancy: kickoff, versioned partner intake, method-change review, quantitative QA, discrepancy resolution, publication gating, and archival handoff.
-5. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
-6. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
-7. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
-8. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
-9. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
-10. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
+5. Open `site/research-library.html`. Search and filter by population/topic, source type, and publisher; inspect the workflow-stage metadata that distinguishes collection, methodology, validation, publication context, and recurring research.
+6. Open `site/publication-handoff.html`. This is the final pre-publication control: each public claim is tied to an authority, source, QA gate, disclosure, and publication status, including claim-level holds where institution evidence is unresolved.
+7. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
+8. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
+9. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
+10. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
+11. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
+12. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
 
 ## What the project demonstrates
 
@@ -37,8 +39,9 @@ Live publication: `https://joseph-th.github.io/higher_education_and_immigration_
 | Analyze and quality-control data in Excel | `deliverables/ipeds_portfolio_analysis.xlsx` uses formulas, structured tables, state lookup/data validation, reconciliation columns, conditional formatting, benchmark review, and charting |
 | Maintain national and state-level data products | `scripts/build_state_profiles.py` generates 51 state/DC briefs, a machine-readable profile dataset, and `state_profile_index.csv`; `state.html` provides a shareable state-level publication view |
 | Assess emerging data needs and new research opportunities | `data/research_agenda.csv` and `docs/RESEARCH_AGENDA.md` distinguish questions answerable now from questions requiring partner/population-specific data and define proposed methods and decision rules |
-| Organize a Research Library | `data/research_library.csv` and `scripts/build_research_library.py` maintain structured source metadata and generate `docs/RESEARCH_LIBRARY.md` |
-| Quality-control published numbers | `tests/test_research_product.py` checks reconciliation identities, coverage, shares, outputs, downloads, and benchmark status |
+| Organize a Research Library | `data/research_library.csv`, `scripts/build_research_library.py`, and `site/research-library.html` maintain a structured, searchable catalog with population/topic, resource-type, publisher, workflow-stage, source-role, and freshness metadata |
+| Quality-control published numbers, definitions, citations, and copy | `data/publication_handoff.csv`, `scripts/build_publication_handoff.py`, and `site/publication-handoff.html` require each public claim to name its analytical authority, source role, QA gate, disclosure, and publication decision before handoff |
+| Quality-control generated products | `tests/test_research_product.py` checks reconciliation identities, coverage, shares, outputs, downloads, foreign keys, publication handoff, and benchmark status |
 | Communicate to nontechnical readers | `site/` turns the analysis into a concise research brief with plain-language definitions and limitations |
 | Validate the published artifact | `scripts/browser_smoke.py` checks desktop/mobile rendering, interactions, downloads, console errors, and overflow |
 | Maintain a recurring product | `scripts/check_for_new_release.py`, `scripts/check_research_library.py`, `scripts/check_population_crosswalk.py`, `docs/DATA_CALENDAR.md`, and `docs/UPDATE_PLAYBOOK.md` separate live monitoring from offline validation and publication |

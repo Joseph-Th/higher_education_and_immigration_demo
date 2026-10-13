@@ -52,6 +52,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/research_brief.pdf",
         "downloads/research_library.csv",
         "downloads/research_library.md",
+        "downloads/publication_handoff.csv",
+        "downloads/publication_handoff.md",
         "downloads/research_agenda.md",
         "downloads/research_agenda.csv",
         "downloads/population_crosswalk.csv",
@@ -251,6 +253,79 @@ def inspect_research_operations(browser, base_url: str, *, width: int, height: i
     context.close()
 
 
+def inspect_research_library(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/research-library.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Research Library page failed at {width}px")
+    total = page.locator(".library-card").count()
+    if total < 10:
+        raise AssertionError(f"Research Library unexpectedly small: {total} resource cards")
+    if page.locator("#library-result-count").inner_text().strip() != f"{total} of {total} resources":
+        raise AssertionError("Research Library initial result count is incorrect")
+    page.locator("#library-search").fill("Digest")
+    visible_after_search = page.locator(".library-card:not([hidden])").count()
+    if visible_after_search < 1:
+        raise AssertionError("Research Library search returned no Digest-related resources")
+    digest_titles = page.locator(".library-card:not([hidden]) h2").all_inner_texts()
+    if not any("Digest of Education Statistics" in title for title in digest_titles):
+        raise AssertionError("Research Library search did not include the Digest benchmark")
+    page.locator("#library-reset").click()
+    if page.locator(".library-card:not([hidden])").count() != total:
+        raise AssertionError("Research Library reset did not restore all resources")
+    page.locator("#library-type-filter").select_option(label="Methodology")
+    methodology_count = page.locator(".library-card:not([hidden])").count()
+    if methodology_count <= 0 or methodology_count >= total:
+        raise AssertionError("Research Library type filter did not narrow results")
+    page.locator("#library-reset").click()
+    page.locator("#library-population-filter").select_option(label="Undocumented")
+    population_count = page.locator(".library-card:not([hidden])").count()
+    if population_count < 3 or population_count >= total:
+        raise AssertionError("Research Library population filter did not return a plausible subset")
+    visible_population_tags = page.locator(".library-card:not([hidden]) .library-population-tags").all_inner_texts()
+    if not all("Undocumented" in text or "All populations" in text for text in visible_population_tags):
+        raise AssertionError("Research Library population filter returned a mismatched card")
+    if page.locator('a[href="downloads/research_library.csv"]').count() != 1:
+        raise AssertionError("Research Library CSV download link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Research Library horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Research Library browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_publication_handoff(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/publication-handoff.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Publication handoff page failed at {width}px")
+    if page.locator(".handoff-card").count() != 11:
+        raise AssertionError("Publication handoff does not render the expected 11 claim/control cards")
+    if page.locator(".handoff-gates li").count() != 5:
+        raise AssertionError("Publication handoff does not show all five publication gates")
+    if "Portfolio demonstration" not in page.locator(".handoff-hero .release-note").inner_text():
+        raise AssertionError("Publication handoff is missing the portfolio/non-affiliation boundary")
+    if page.locator('a[href="downloads/publication_handoff.csv"]').count() != 1:
+        raise AssertionError("Publication handoff CSV download is missing")
+    if "1,044,137" not in page.locator(".handoff-card").first.inner_text():
+        raise AssertionError("Publication handoff headline card does not contain the validated national total")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Publication handoff horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Publication handoff browser errors: " + " | ".join(errors))
+    context.close()
+
+
 def inspect_state_profile(browser, base_url: str, *, width: int, height: int) -> None:
     context = browser.new_context(viewport={"width": width, "height": height})
     page = context.new_page()
@@ -307,6 +382,10 @@ def main() -> int:
                 inspect_population_crosswalk(browser, base_url, width=390, height=844)
                 inspect_research_operations(browser, base_url, width=1280, height=900)
                 inspect_research_operations(browser, base_url, width=390, height=844)
+                inspect_research_library(browser, base_url, width=1280, height=900)
+                inspect_research_library(browser, base_url, width=390, height=844)
+                inspect_publication_handoff(browser, base_url, width=1280, height=900)
+                inspect_publication_handoff(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

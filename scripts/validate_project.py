@@ -34,6 +34,7 @@ def main() -> int:
         ("Build state profiles", [PYTHON, "scripts/build_state_profiles.py"]),
         ("Build stakeholder briefing note", [PYTHON, "scripts/build_briefing_note.py"]),
         ("Build research memo", [PYTHON, "scripts/build_research_memo.py"]),
+        ("Build publication handoff", [PYTHON, "scripts/build_publication_handoff.py"]),
         ("Build public site data", [PYTHON, "scripts/build_site_data.py"]),
         (
             "Research-product tests",

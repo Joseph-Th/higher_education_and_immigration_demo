@@ -41,7 +41,11 @@ Independent validation inputs that are not used to generate the analysis. The cu
 
 ## `research_library.csv`
 
-Structured metadata for the external resources used to collect, interpret, validate, and maintain the project. It records a stable resource ID, title, publisher, resource type, scope, update pattern, project role, URL, last-checked date, and status note. `scripts/build_research_library.py` validates the schema and generates `docs/RESEARCH_LIBRARY.md`.
+Structured metadata for the external resources used to collect, interpret, validate, and maintain the project. It records a stable resource ID, title, publisher, resource type, population/topic tags, workflow stage, scope, update pattern, project role, URL, last-checked date, and status note. `scripts/build_research_library.py` validates the schema and generates both `docs/RESEARCH_LIBRARY.md` and the searchable `site/research-library.html` interface.
+
+## `publication_handoff.csv`
+
+Generated pre-publication claim register. Each row maps reviewer-facing copy to its canonical project authority, field/row locator, maintained Research Library source, QA gate, required disclosure, and publication status. It is not an input to the analysis and does not claim to represent the Presidents' Alliance's internal approval workflow. `scripts/build_publication_handoff.py` regenerates the CSV, `docs/PUBLICATION_HANDOFF.md`, and `site/publication-handoff.html` from validated current outputs.
 
 ## `research_agenda.csv`
 

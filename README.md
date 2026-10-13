@@ -16,8 +16,10 @@ For a quick review of the finished work:
 2. [`deliverables/research_brief.pdf`](deliverables/research_brief.pdf) - three-page policy/research writing sample with findings, analyst QA decisions, and methods/source trail.
 3. [`docs/POPULATION_CROSSWALK.md`](docs/POPULATION_CROSSWALK.md) - source-selection guide distinguishing IPEDS, immigrant-origin, SEVIS international, undocumented, pipeline, and refugee/asylee concepts.
 4. [`docs/RECURRING_REPORT_REGISTER.md`](docs/RECURRING_REPORT_REGISTER.md) - portfolio operations model for partner intake, methodology-change review, QA, publication gating, and institutional-knowledge handoff across the three recurring reports named in the target role.
-5. [`deliverables/ipeds_portfolio_analysis.xlsx`](deliverables/ipeds_portfolio_analysis.xlsx) - formula-driven Excel review workbook with state lookup, reconciliation, benchmark QA, and source metadata.
-6. [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) - evidence map from research responsibilities to specific files, scripts, and validation outputs.
+5. [`site/research-library.html`](site/research-library.html) - searchable Research Library with population/topic, resource-type, publisher, and workflow-stage metadata.
+6. [`site/publication-handoff.html`](site/publication-handoff.html) - pre-publication claim register tying public copy to analytical authority, source, QA gate, disclosure, and publication status.
+7. [`deliverables/ipeds_portfolio_analysis.xlsx`](deliverables/ipeds_portfolio_analysis.xlsx) - formula-driven Excel review workbook with state lookup, reconciliation, benchmark QA, and source metadata.
+8. [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) - evidence map from research responsibilities to specific files, scripts, and validation outputs.
 
 The interactive publication is under [`site/`](site/); deployment instructions are in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
 
@@ -43,6 +45,8 @@ How did fall enrollment of U.S. nonresident students change across the United St
 - A relational recurring-report register for the three named research products, linked to the Research Library and population crosswalk rather than maintained as disconnected prose.
 - A structured research agenda/data-needs register that separates immediately answerable IPEDS questions from work requiring partner or population-specific data.
 - A structured Research Library describing source scope, update pattern, project use, and review date.
+- A searchable public Research Library with population/topic tags and workflow-stage metadata, so related sources can be filtered without losing the structured CSV authority.
+- A generated publication-handoff register that traces 11 public claims/controls to their analytical authority, Research Library source, QA gate, required disclosure, and publication decision.
 - A documented annual update workflow and deployment path.
 - Separate offline data validation and browser-level publication QA lanes.
 
@@ -91,6 +95,7 @@ python scripts/validate_benchmarks.py
 python scripts/build_state_profiles.py
 python scripts/build_briefing_note.py
 python scripts/build_research_memo.py
+python scripts/build_publication_handoff.py
 python scripts/build_site_data.py
 ```
 
@@ -154,17 +159,18 @@ The live checks verify the maintained Research Library, the population-crosswalk
 - [`docs/EXCEL_WORKBOOK.md`](docs/EXCEL_WORKBOOK.md): workbook contents, authority boundaries, QA features, and maintenance notes.
 - [`docs/RESEARCH_AGENDA.md`](docs/RESEARCH_AGENDA.md): prioritized research questions, data needs, methods, outputs, and decision rules.
 - [`docs/RESEARCH_LIBRARY.md`](docs/RESEARCH_LIBRARY.md): generated human-readable view of the structured source library.
+- [`docs/PUBLICATION_HANDOFF.md`](docs/PUBLICATION_HANDOFF.md): generated pre-publication claim/QA/disclosure handoff register.
 - [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md): short portfolio walkthrough and evidence map for hiring/research reviewers.
 - [`docs/UPDATE_PLAYBOOK.md`](docs/UPDATE_PLAYBOOK.md): annual release/update procedure.
 - [`docs/DATA_CALENDAR.md`](docs/DATA_CALENDAR.md): current coverage and next-release monitoring.
-- [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md): Cloudflare Pages publication instructions.
+- [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md): current GitHub Pages publication procedure plus optional Cloudflare Pages setup.
 - [`data/README.md`](data/README.md): data directory conventions.
 
 ## Current status
 
-The research brief is built locally and passes both the complete offline validation path and browser publication QA at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, and 24 external NCES Digest consistency checks pass across 2019-2024. The latest-release workflow includes automated reason-coded triage and a manually reviewed evidence/disposition log for selected high-priority records. A standalone HTML/Markdown research memo and a three-page PDF brief are generated from the same validated findings, with the PDF bound to the exact memo source by SHA-256. A six-sheet Excel review workbook is tracked as a downstream presentation artifact and published with the site. The pipeline also generates 51 state/DC profiles with current composition, longitudinal change, top institutions, and a ten-year state series. A six-population methodology crosswalk makes source compatibility explicit before IPEDS is compared with immigrant-origin, SEVIS international, undocumented, high-school-pipeline, or refugee/asylee concepts. A separate recurring-report operations register links the three public products named in the target role to those source definitions and Research Library records, then defines versioned intake, methodology-change review, QA, publication gating, and archival handoff without inventing the organization's internal deadlines. The structured research agenda records that the methods crosswalk is complete while compatible companion trend data remain a separate research need. The Research Library contains 12 reviewed resources from NCES and the Higher Ed Immigration Portal, including the official IPEDS U.S. nonresident definition source and the three recurring research products named in the target role. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
+The research brief is built locally and passes both the complete offline validation path and browser publication QA at desktop and 390px mobile widths. The current suite contains 27 repository tests. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, and 24 external NCES Digest consistency checks pass across 2019-2024. The latest-release workflow includes automated reason-coded triage and a manually reviewed evidence/disposition log for selected high-priority records. A standalone HTML/Markdown research memo and a three-page PDF brief are generated from the same validated findings, with the PDF bound to the exact memo source by SHA-256. A six-sheet Excel review workbook is tracked as a downstream presentation artifact and published with the site. The pipeline also generates 51 state/DC profiles with current composition, longitudinal change, top institutions, and a ten-year state series. A six-population methodology crosswalk makes source compatibility explicit before IPEDS is compared with immigrant-origin, SEVIS international, undocumented, high-school-pipeline, or refugee/asylee concepts. A separate recurring-report operations register links the three public products named in the target role to those source definitions and Research Library records, then defines versioned intake, methodology-change review, QA, publication gating, and archival handoff without inventing the organization's internal deadlines. The structured research agenda records that the methods crosswalk is complete while compatible companion trend data remain a separate research need. The Research Library contains 12 reviewed resources from NCES and the Higher Ed Immigration Portal and now supports public filtering by population/topic, source type, and publisher. A generated 11-row publication-handoff register adds an explicit final control between validated analysis and public copy: each claim is tied to an authority, maintained source, QA gate, disclosure, and publication decision. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
 
 Current substantive findings include a graduate-driven decade-level increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, a shift toward private nonprofit institutions, and evidence that national growth occurred within continuing institutions rather than being created by a larger institution universe. The newest-release review also identifies a short-run composition shift: 2023-2024 undergraduate U.S. nonresident enrollment increased by 31,592 while graduate enrollment decreased by 2,053. The site surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
 
-The repository is connected to GitHub and the static `site/` output is ready for a Cloudflare Pages project connected to the `main` branch. Deployment remains a separate publication step so only a locally validated build is promoted.
+The repository is connected to GitHub and the validated `site/` tree is published to GitHub Pages from the dedicated `gh-pages` branch. Cloudflare Pages remains an optional alternative documented in `docs/DEPLOYMENT.md`. Publication stays downstream of `main` so the deployed site never becomes an analytical authority.
 

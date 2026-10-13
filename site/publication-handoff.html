@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Publication handoff register tying public higher-education data claims to sources, QA gates, disclosures, and publication decisions.">
+  <meta name="theme-color" content="#10263c">
+  <title>Publication Handoff | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to publication handoff</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Publication handoff navigation"><a href="index.html">Brief</a><a href="research-memo.html">Memo</a><a href="research-library.html">Library</a><a href="research-operations.html">Operations</a></nav></div></header>
+  <main id="main">
+    <section class="handoff-hero"><div class="shell"><p class="eyebrow">Publication handoff</p><h1>A calculation is not ready just because it ran.</h1><p class="lede">A portfolio release packet tying each public claim to its analytical authority, maintained source, QA gate, required disclosure, and publication decision.</p><div class="hero-actions"><a class="button button-primary" href="#handoff-register">Review publication register</a><a class="button button-secondary" href="downloads/publication_handoff.csv">Download handoff CSV</a></div><p class="release-note"><strong>Portfolio demonstration:</strong> this models a defensible pre-publication review. It does not represent the Presidents' Alliance's internal approval workflow.</p><div class="handoff-summary"><article><strong>11</strong><span>publication claims / controls</span></article><article><strong>51</strong><span>state + DC profiles reconciled</span></article><article><strong>24/24</strong><span>external benchmark checks</span></article><article><strong>11</strong><span>high-priority institution flags manually reviewed</span></article></div></div></section>
+    <section class="section shell"><div class="section-heading"><p class="eyebrow">Publication gate</p><h2>Five questions before copy moves to a public page</h2><p>The register makes the checks explicit so a source refresh cannot silently change population meaning, release status, arithmetic, or claim scope.</p></div><ol class="handoff-gates"><li><strong>Definition</strong><span>Does the population and denominator still mean what the copy says?</span></li><li><strong>Release</strong><span>Is the newest source final, provisional, revised, or from a different publication vintage?</span></li><li><strong>Reconcile</strong><span>Do components, states, and endpoint accounting reproduce the headline?</span></li><li><strong>Citation</strong><span>Is the maintained source appropriate as input, benchmark, methodology, or context?</span></li><li><strong>Scope</strong><span>Does unresolved QA require context or a claim-level hold before publication?</span></li></ol></section>
+    <section class="section section-tinted" id="handoff-register"><div class="shell"><div class="section-heading"><p class="eyebrow">Claim register</p><h2>Every public statement has an authority and a gate</h2><p>These rows are generated from the same validated outputs that drive the research brief. The structured CSV is the portable handoff artifact.</p></div><div class="handoff-grid">
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>N01</span><span class="handoff-status handoff-status-ready">READY</span></div>
+              <p class="case-kicker">National headline · Headline metric</p>
+              <h2>Fall 2024 U.S. nonresident enrollment: 1,044,137 students.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/processed/national_year.csv</code><br><small>year=2024; nonresident_enrollment</small></dd></div>
+                <div><dt>QA gate</dt><dd>State totals and student-level components reconcile to the national value; NCES benchmark is within threshold.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Fall 2024 is provisional.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/complete-data-files/EF2024A.zip" target="_blank" rel="noopener">Source: IPEDS Fall Enrollment 2024 Complete Data File</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>N02</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
+              <p class="case-kicker">National headline · Calculated share</p>
+              <h2>U.S. nonresident students are 5.31% of fall enrollment in the analytic universe.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/processed/national_year.csv</code><br><small>year=2024; nonresident_enrollment / total_enrollment</small></dd></div>
+                <div><dt>QA gate</dt><dd>Published percentage is recalculated from current counts in repository tests.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Share applies only to the documented degree-granting First Look/Digest universe.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/complete-data-files/EF2024A.zip" target="_blank" rel="noopener">Source: IPEDS Fall Enrollment 2024 Complete Data File</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>N03</span><span class="handoff-status handoff-status-ready">READY</span></div>
+              <p class="case-kicker">Longitudinal finding · Endpoint comparison</p>
+              <h2>U.S. nonresident enrollment is +63,400 (+6.5%) from 2015 to 2024.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/processed/national_year.csv</code><br><small>years=2015,2024; nonresident_enrollment</small></dd></div>
+                <div><dt>QA gate</dt><dd>Endpoint difference reconciles to student-level and institutional-control decompositions.</dd></div>
+                <div><dt>Required disclosure</dt><dd>The endpoint includes 2024 provisional data.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/help/complete-data-files" target="_blank" rel="noopener">Source: IPEDS Complete Data Files</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>N04</span><span class="handoff-status handoff-status-ready">READY</span></div>
+              <p class="case-kicker">Student-level finding · Component decomposition</p>
+              <h2>Across 2015-2024, graduate U.S. nonresident enrollment changed +138,765 while undergraduate enrollment changed -75,365.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/processed/national_year.csv</code><br><small>years=2015,2024; undergraduate_nonresident, graduate_nonresident</small></dd></div>
+                <div><dt>QA gate</dt><dd>Undergraduate plus graduate counts reconcile exactly to total U.S. nonresident enrollment for every year.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Student-level categories follow IPEDS aggregation codes documented in the methodology.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/help/complete-data-files" target="_blank" rel="noopener">Source: IPEDS Complete Data Files</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>N05</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
+              <p class="case-kicker">Latest release update · Year-over-year decomposition</p>
+              <h2>From 2023 to 2024, enrollment changed +29,539: undergraduate +31,592, graduate -2,053.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/latest_update_review.json</code><br><small>national absolute_change; undergraduate_change; graduate_change</small></dd></div>
+                <div><dt>QA gate</dt><dd>Student-level changes reconcile exactly to the national annual change and the institution-accounting bridge.</dd></div>
+                <div><dt>Required disclosure</dt><dd>One annual movement is not treated as evidence of a durable trend change.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/complete-data-files/EF2024A.zip" target="_blank" rel="noopener">Source: IPEDS Fall Enrollment 2024 Complete Data File</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>S01</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
+              <p class="case-kicker">State data package · Coverage / reconciliation</p>
+              <h2>33 states/DC are at or above 2019 U.S. nonresident enrollment; 18 remain below.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/processed/state_change_summary.csv</code><br><small>51 geography rows; recovery_status</small></dd></div>
+                <div><dt>QA gate</dt><dd>All 51 state/DC profiles are present and their latest counts sum exactly to 1,044,137.</dd></div>
+                <div><dt>Required disclosure</dt><dd>State is institution location, not student residence, nationality, or immigration status.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/help/complete-data-files" target="_blank" rel="noopener">Source: IPEDS Complete Data Files</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>C01</span><span class="handoff-status handoff-status-ready">READY</span></div>
+              <p class="case-kicker">Institutional-control finding · Sector comparison</p>
+              <h2>Private nonprofit institutions changed +82,825 U.S. nonresident students from 2015 to 2024.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/processed/control_year.csv</code><br><small>control=Private nonprofit; years=2015,2024</small></dd></div>
+                <div><dt>QA gate</dt><dd>Public, private nonprofit, and private for-profit totals reconcile exactly to the national series in every year.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Institutional control comes from each year&#x27;s IPEDS directory file.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/help/complete-data-files" target="_blank" rel="noopener">Source: IPEDS Complete Data Files</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>I01</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
+              <p class="case-kicker">Institution-universe finding · Endpoint accounting</p>
+              <h2>Continuing institutions contributed +66,981 to the 2015-2024 change; universe entry/exit netted -3,581.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/processed/institution_change_summary.csv</code><br><small>UNITID endpoint status and absolute_change</small></dd></div>
+                <div><dt>QA gate</dt><dd>All endpoint institution contributions sum exactly to the national change.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Universe entry/exit can reflect mergers, eligibility, or identifier restructuring, not only openings/closures.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/help/complete-data-files" target="_blank" rel="noopener">Source: IPEDS Complete Data Files</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>Q01</span><span class="handoff-status handoff-status-hold">READY WITH CLAIM-LEVEL HOLDS</span></div>
+              <p class="case-kicker">Institution-level QA · Publication gate</p>
+              <h2>11 high-priority records have manual dispositions: 2 safe with context and 9 held for confirmation.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/qa_resolution_log.csv</code><br><small>publication_class; disposition; evidence_url</small></dd></div>
+                <div><dt>QA gate</dt><dd>The required reviewed sample covers the ten highest-impact current high-priority rows; evidence links are separately health-checked.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Automated flags are triage, not corrections; held records remain in official aggregate calculations.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/help/complete-data-files" target="_blank" rel="noopener">Source: IPEDS Complete Data Files</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>M01</span><span class="handoff-status handoff-status-ready">READY</span></div>
+              <p class="case-kicker">Definition / methodology · Population boundary</p>
+              <h2>IPEDS U.S. nonresident is not a measure of undocumented, DACA, immigrant-origin, refugee/asylee, or all foreign-born students.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/population_crosswalk.csv</code><br><small>population_id=ipeds_us_nonresident; explicit_exclusions; comparison_warning</small></dd></div>
+                <div><dt>QA gate</dt><dd>Population crosswalk explicitly records inclusion, exclusion, source vintage, unit, geography, and comparison warning.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Other Portal populations require their own source systems and methods.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/report-your-data/race-ethnicity-definitions/" target="_blank" rel="noopener">Source: IPEDS Race/Ethnicity and U.S. Nonresident Definitions</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>B01</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
+              <p class="case-kicker">External validation · Benchmark status</p>
+              <h2>24/24 NCES Digest consistency checks pass for 2019-2024.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/benchmark_audit.csv</code><br><small>status=PASS across all metric-year rows</small></dd></div>
+                <div><dt>QA gate</dt><dd>Current IPEDS values stay within documented thresholds without being overwritten to match an older publication vintage.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Digest values are rounded and come from a different release vintage.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp" target="_blank" rel="noopener">Source: Digest of Education Statistics 2025 Table 306.10</a>
+            </article></div></div></section>
+    <section class="section shell"><div class="section-heading compact"><p class="eyebrow">State package</p><h2>National and state publication move together</h2></div><div class="method-grid"><article><h3>51 geographies</h3><p>All 50 states plus DC have generated publication profiles with the current series, latest share, level composition, recovery status, and leading institutions.</p></article><article><h3>Exact reconciliation</h3><p>The 51 latest state/DC counts sum exactly to the national headline of 1,044,137.</p></article><article><h3>Separate claim gate</h3><p>Institution-level anomalies remain in the official aggregates but cannot become institution-specific narrative until the evidence/disposition layer permits it.</p></article><article><h3>Method boundary</h3><p>State means institution location. The publication does not relabel it as student residence, nationality, legal status, or country of origin.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/publication_handoff.md">Download handoff notes</a><a class="button button-secondary" href="research-operations.html">Recurring research operations</a></div></section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Publication Handoff · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>

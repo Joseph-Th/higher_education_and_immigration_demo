@@ -208,6 +208,8 @@ One row per external source or reference resource maintained by the project.
 | `title` | Human-readable source title |
 | `publisher` | Publishing organization |
 | `resource_type` | Data access, release schedule, methodology, benchmark table, or raw data archive |
+| `population_tags` | Semicolon-delimited population/topic tags used by the public Research Library filter |
+| `workflow_stage` | Research lifecycle role such as source collection, methodology, validation, publication context, or recurring research |
 | `scope` | What the resource covers |
 | `update_pattern` | Expected update/release pattern |
 | `project_role` | How the project uses the resource |
@@ -216,6 +218,25 @@ One row per external source or reference resource maintained by the project.
 | `status_note` | Current release or interpretation note |
 
 `scripts/build_research_library.py` validates required fields, unique IDs, HTTPS URLs, and ISO dates before generating the human-readable Research Library.
+
+## `data/publication_handoff.csv`
+
+One row per public claim or publication control in the final pre-publication handoff demonstration.
+
+| Field | Definition |
+| --- | --- |
+| `claim_id` | Stable handoff identifier |
+| `surface` | Public product or section where the claim appears |
+| `claim_type` | Headline, calculated share, decomposition, methodology boundary, benchmark, or publication-gate category |
+| `public_copy` | Exact reviewer-facing statement approved by the generated handoff |
+| `authority` | Canonical project table/file used to calculate or govern the claim |
+| `source_locator` | Row/field/filter description for tracing the value inside the authority |
+| `research_library_id` | Foreign key to the maintained Research Library source supporting the claim's data/methodology/benchmark role |
+| `qa_gate` | Reconciliation or validation condition that must hold before publication |
+| `release_disclosure` | Population, geography, release-vintage, interpretation, or uncertainty text that must accompany the claim |
+| `publication_status` | `READY`, `READY WITH CONTEXT`, or `READY WITH CLAIM-LEVEL HOLDS` |
+
+`scripts/build_publication_handoff.py` generates this register only after the state package, benchmark checks, population crosswalk, and QA-resolution layer are internally consistent. It also generates `docs/PUBLICATION_HANDOFF.md` and the reviewer-facing `site/publication-handoff.html` page.
 
 ## `data/research_agenda.csv`
 

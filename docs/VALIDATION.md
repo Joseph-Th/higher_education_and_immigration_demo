@@ -81,6 +81,8 @@ This design is deliberate: the external publication is a validation source, not 
 - the population/source crosswalk containing exactly the six required research concepts, HTTPS sources, an explicit undocumented-student exclusion in the IPEDS row, and matching generated Markdown/HTML;
 - the recurring-report register containing exactly the three target-role products, valid foreign keys into the Research Library and population crosswalk, partner-confirmed scheduling language, and matching Markdown/HTML;
 - structured Research Library metadata having unique IDs, HTTPS URLs, current review dates, and matching generated documentation;
+- Research Library population/topic and workflow-stage metadata remaining nonblank and the searchable public interface exposing the expected filters;
+- publication-handoff claims remaining unique, linked to valid Research Library IDs, tied to current headline/latest-release/QA values, and rendered consistently in Markdown/HTML;
 - stakeholder briefing note reproducing validated headline/latest-release values and interpretation boundaries;
 - Excel workbook ZIP integrity, required six-sheet structure, formula presence, and current headline value;
 - PDF research brief structure, exact three-page count, exact public-copy equality, and SHA-256 freshness against the current generated research memo;
@@ -90,7 +92,7 @@ This design is deliberate: the external publication is a validation source, not 
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **25 tests**.
+The current suite contains **27 tests**.
 
 ## One-command validation
 
@@ -118,6 +120,8 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - working public CSV downloads;
 - working public Research Library and Research Agenda CSV/Markdown, QA resolution CSV/Markdown, research memo, stakeholder briefing-note, Excel-workbook, state-profile index, and state-profile downloads;
 - working public population-crosswalk CSV/Markdown, recurring-report register CSV/Markdown, and PDF research-brief downloads;
+- searchable Research Library behavior, including text, resource-type, and population/topic filtering;
+- publication-handoff rendering with 11 claim/control cards, five release gates, current headline value, download, portfolio boundary, and responsive layout;
 - anchored sections clearing the sticky header; and
 - a shareable California state-profile page rendering the correct query-selected state, ten-year series, five institution rows, profile-note link, and responsive layout; and
 - a standalone research memo rendering the validated headline and all three analyst case studies at desktop and mobile widths; and
@@ -146,4 +150,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable PDF research brief, Excel analysis workbook, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, population/source crosswalk, recurring-report operations register, stakeholder briefing note, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable PDF research brief, Excel analysis workbook, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, population/source crosswalk, recurring-report operations register, publication handoff, stakeholder briefing note, structured/searchable Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.
