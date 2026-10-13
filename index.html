@@ -235,7 +235,44 @@
       <p class="chart-note control-note">Institutional control comes from the same-year IPEDS directory file. Public, private nonprofit, and private for-profit totals reconcile exactly to the national series.</p>
     </section>
 
-    <section class="section section-tinted" id="institutions">
+    <section class="section section-tinted" id="dynamics">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">Finding 06</p>
+          <h2>The increase came from continuing institutions, not a bigger universe</h2>
+          <p>Matching institutions by IPEDS UNITID shows that the decade-level gain survives changes in the set of institutions included in the analytic universe. Institutions present in both 2015 and 2024 account for more growth than the national net increase, while entry and exit from the universe net slightly negative.</p>
+        </div>
+        <div class="dynamics-layout">
+          <div class="chart-card">
+            <h3>Accounting for the 2015–2024 national change</h3>
+            <p class="chart-subtitle">Contribution to change in U.S. nonresident fall enrollment</p>
+            <div id="dynamics-chart" class="chart chart-dynamics"></div>
+          </div>
+          <aside class="dynamics-panel">
+            <p class="finding-kicker">Stable institution panel</p>
+            <strong id="dynamics-continuing-count" class="finding-number dynamics-finding-number">—</strong>
+            <p>institutions were in the analytic universe in both 2015 and 2024.</p>
+            <dl class="delta-list">
+              <div>
+                <dt>Continuing institutions that grew</dt>
+                <dd id="dynamics-grew">—</dd>
+              </div>
+              <div>
+                <dt>Continuing institutions that declined</dt>
+                <dd id="dynamics-declined">—</dd>
+              </div>
+              <div>
+                <dt>Net effect of universe entry / exit</dt>
+                <dd id="dynamics-entry-exit-net">—</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+        <p class="chart-note dynamics-note">“Entered” and “left” describe membership in this IPEDS analytic universe between endpoint years. They can reflect mergers, UNITID restructuring, eligibility changes, or classification changes as well as actual institutional openings or closures.</p>
+      </div>
+    </section>
+
+    <section class="section" id="institutions">
       <div class="shell">
         <div class="section-heading">
           <p class="eyebrow">Institution detail</p>
@@ -332,6 +369,7 @@
           <a href="downloads/state_year.csv"><span>State series</span><small>CSV · 50 states + DC</small></a>
           <a href="downloads/state_change_summary.csv"><span>State change summary</span><small>CSV · 2015 / 2019 / 2024</small></a>
           <a href="downloads/control_year.csv"><span>Institutional control series</span><small>CSV · public / nonprofit / for-profit</small></a>
+          <a href="downloads/institution_change_summary.csv"><span>Institution change accounting</span><small>CSV · 2015 / 2024 UNITID panel</small></a>
           <a href="downloads/institutions_2024.csv"><span>2024 institution detail</span><small>CSV · degree-granting universe</small></a>
           <a href="downloads/source_manifest.csv"><span>Source manifest</span><small>CSV · URLs + SHA-256</small></a>
           <a href="downloads/schema_audit.csv"><span>Schema audit</span><small>CSV · cross-year checks</small></a>

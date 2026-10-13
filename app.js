@@ -62,6 +62,34 @@ function lineChart(container, series, options = {}) {
   container.replaceChildren(svg);
 }
 
+function dynamicsChart(container, dynamics) {
+  const rows=[
+    {label:'Continuing institutions',value:dynamics.continuing_change},
+    {label:'Entered universe',value:dynamics.entered_enrollment},
+    {label:'Left universe',value:-dynamics.left_enrollment},
+    {label:'Net national change',value:dynamics.national_change,net:true}
+  ];
+  const width=900, height=330, margin={top:18,right:125,bottom:28,left:190};
+  const center=width*.5;
+  const usable=Math.min(center-margin.left-20,width-margin.right-center-20);
+  const rowH=(height-margin.top-margin.bottom)/rows.length;
+  const max=Math.max(...rows.map(row=>Math.abs(row.value)));
+  const svg=svgEl('svg',{viewBox:`0 0 ${width} ${height}`,role:'img','aria-label':'Decomposition of the 2015 to 2024 national enrollment change into continuing institutions, institutions entering the analytic universe, institutions leaving the analytic universe, and net change'});
+  svg.appendChild(svgEl('line',{x1:center,y1:margin.top,x2:center,y2:height-margin.bottom,class:'zero-line'}));
+  rows.forEach((row,i)=>{
+    const yy=margin.top+i*rowH+8;
+    const magnitude=Math.abs(row.value)/max*usable;
+    const positive=row.value>=0;
+    const x=positive?center:center-magnitude;
+    const label=svgEl('text',{x:margin.left-12,y:yy+rowH*.45,'text-anchor':'end',class:'chart-title-label'});
+    label.textContent=row.label; svg.appendChild(label);
+    svg.appendChild(svgEl('rect',{x,y:yy,width:magnitude,height:Math.max(18,rowH-20),rx:5,class:row.net?'change-bar-net':positive?'change-bar-positive':'change-bar-negative'}));
+    const val=svgEl('text',{x:positive?x+magnitude+9:x-9,y:yy+rowH*.45,'text-anchor':positive?'start':'end',class:'bar-value'});
+    val.textContent=signedInt(row.value); svg.appendChild(val);
+  });
+  container.replaceChildren(svg);
+}
+
 function controlChangeChart(container, rows) {
   const width=900, height=300, margin={top:22,right:110,bottom:34,left:170};
   const center=width*.48;
@@ -176,6 +204,13 @@ async function init() {
   document.querySelector('#nonprofit-share-shift').textContent=`${fmtPct.format(nonprofit.start_national_share_pct)}% → ${fmtPct.format(nonprofit.latest_national_share_pct)}%`;
   document.querySelector('#nonprofit-grad-change').textContent=signedInt(nonprofit.graduate_change);
   document.querySelector('#nonprofit-total-change').textContent=signedInt(nonprofit.absolute_change);
+
+  const dynamics=data.institution_dynamics.decade;
+  dynamicsChart(document.querySelector('#dynamics-chart'),dynamics);
+  document.querySelector('#dynamics-continuing-count').textContent=fmtInt.format(dynamics.continuing_institutions);
+  document.querySelector('#dynamics-grew').textContent=fmtInt.format(dynamics.continuing_grew);
+  document.querySelector('#dynamics-declined').textContent=fmtInt.format(dynamics.continuing_declined);
+  document.querySelector('#dynamics-entry-exit-net').textContent=signedInt(dynamics.entry_exit_net);
 
   const select=document.querySelector('#state-select');
   Object.keys(data.state_series).sort((a,b)=>STATE_NAMES[a].localeCompare(STATE_NAMES[b])).forEach(code=>{
