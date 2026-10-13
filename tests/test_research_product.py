@@ -136,6 +136,28 @@ class ResearchProductTests(unittest.TestCase):
         )
         controls = self.findings["institution_control"]["changes"]
         self.assertEqual(sum(row["absolute_change"] for row in controls), headline["change_since_2015"])
+        dynamics = self.findings["institution_dynamics"]["decade"]
+        self.assertEqual(dynamics["national_change"], headline["change_since_2015"])
+        self.assertEqual(
+            dynamics["continuing_change"]
+            + dynamics["entered_enrollment"]
+            - dynamics["left_enrollment"],
+            dynamics["national_change"],
+        )
+        self.assertEqual(
+            dynamics["continuing_grew"]
+            + dynamics["continuing_declined"]
+            + dynamics["continuing_unchanged"],
+            dynamics["continuing_institutions"],
+        )
+
+        recovery_dynamics = self.findings["institution_dynamics"]["recovery"]
+        national = {int(row["year"]): row for row in self.national}
+        expected_recovery = (
+            int(national[END_YEAR]["nonresident_enrollment"])
+            - int(national[2019]["nonresident_enrollment"])
+        )
+        self.assertEqual(recovery_dynamics["national_change"], expected_recovery)
 
     def test_state_change_summary_has_one_row_per_geography(self) -> None:
         summary = rows(ROOT / "data" / "processed" / "state_change_summary.csv")
@@ -144,6 +166,23 @@ class ResearchProductTests(unittest.TestCase):
         statuses = Counter(row["recovery_status"] for row in summary)
         self.assertEqual(statuses[f"At or above 2019"], 33)
         self.assertEqual(statuses[f"Below 2019"], 18)
+
+    def test_institution_change_summary_reconciles(self) -> None:
+        summary = rows(ROOT / "data" / "processed" / "institution_change_summary.csv")
+        dynamics = self.findings["institution_dynamics"]["decade"]
+        self.assertEqual(
+            len(summary),
+            dynamics["continuing_institutions"]
+            + dynamics["entered_institutions"]
+            + dynamics["left_institutions"],
+        )
+        self.assertEqual(
+            sum(int(row["absolute_change"]) for row in summary),
+            dynamics["national_change"],
+        )
+        statuses = Counter(row["status"] for row in summary)
+        self.assertEqual(statuses["Entered analytic universe"], dynamics["entered_institutions"])
+        self.assertEqual(statuses["Left analytic universe"], dynamics["left_institutions"])
 
     def test_qa_report_is_all_pass(self) -> None:
         self.assertTrue(self.qa["checks"])
@@ -164,6 +203,10 @@ class ResearchProductTests(unittest.TestCase):
                 "site/downloads/state_change_summary.csv",
             ),
             ("data/processed/control_year.csv", "site/downloads/control_year.csv"),
+            (
+                "data/processed/institution_change_summary.csv",
+                "site/downloads/institution_change_summary.csv",
+            ),
             (
                 f"data/processed/institutions_{END_YEAR}.csv",
                 f"site/downloads/institutions_{END_YEAR}.csv",

@@ -16,6 +16,7 @@ How did fall enrollment of U.S. nonresident students change across the United St
 - A transparent methodology and data-quality record.
 - Downloadable analysis tables, source lineage, schema audit, and external benchmark audit.
 - A documented annual update workflow and deployment path.
+- Separate offline data validation and browser-level publication QA lanes.
 
 ## Data
 
@@ -66,6 +67,16 @@ python scripts/validate_project.py
 
 That command compiles the Python code, reruns the schema audit, rebuilds all derived data, reruns 24 NCES Digest consistency checks, regenerates the public site data, and runs the repository test suite.
 
+For browser-level publication QA, install the optional development dependency and Chromium once, then run:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m playwright install chromium
+python scripts/browser_smoke.py
+```
+
+The browser smoke test serves the built site on an ephemeral local port, renders desktop and mobile viewports, checks calculated values and interactive elements, verifies public downloads, detects JavaScript/console errors, and checks for unintended page-level horizontal overflow.
+
 ## Documentation
 
 - [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md): scope, audience, questions, and deliverables.
@@ -75,6 +86,7 @@ That command compiles the Python code, reruns the schema audit, rebuilds all der
 - [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md): definitions for generated analysis and audit outputs.
 - [`docs/VALIDATION.md`](docs/VALIDATION.md): implemented QA checks and independent NCES benchmark.
 - [`docs/FINDINGS.md`](docs/FINDINGS.md): current analytical findings with exact supporting figures.
+- [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md): short portfolio walkthrough and evidence map for hiring/research reviewers.
 - [`docs/UPDATE_PLAYBOOK.md`](docs/UPDATE_PLAYBOOK.md): annual release/update procedure.
 - [`docs/DATA_CALENDAR.md`](docs/DATA_CALENDAR.md): current coverage and next-release monitoring.
 - [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md): Cloudflare Pages publication instructions.
@@ -82,9 +94,9 @@ That command compiles the Python code, reruns the schema audit, rebuilds all der
 
 ## Current status
 
-The research brief is built locally and passes the complete offline validation path. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, 13 repository tests pass, and 24 external NCES Digest consistency checks pass across 2019-2024.
+The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, 14 repository tests pass, and 24 external NCES Digest consistency checks pass across 2019-2024.
 
-Current substantive findings include a graduate-driven national increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, and a shift in enrollment toward private nonprofit institutions. The site also surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
+Current substantive findings include a graduate-driven national increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, a shift toward private nonprofit institutions, and evidence that national growth occurred within continuing institutions rather than being created by a larger institution universe. The site also surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
 
 The static site is ready for Cloudflare Pages deployment once a remote or direct-upload target is configured.
 

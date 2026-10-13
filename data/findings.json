@@ -399,6 +399,48 @@
       }
     ]
   },
+  "institution_dynamics": {
+    "decade": {
+      "start_year": 2015,
+      "end_year": 2024,
+      "start_institutions": 4562,
+      "end_institutions": 3797,
+      "continuing_institutions": 3470,
+      "entered_institutions": 327,
+      "left_institutions": 1092,
+      "continuing_change": 66981,
+      "entered_enrollment": 10666,
+      "left_enrollment": 14247,
+      "entry_exit_net": -3581,
+      "national_change": 63400,
+      "continuing_grew": 1479,
+      "continuing_declined": 1411,
+      "continuing_unchanged": 580,
+      "continuing_gross_gains": 257836,
+      "continuing_gross_declines": -190855,
+      "top10_continuing_gains": 55659
+    },
+    "recovery": {
+      "start_year": 2019,
+      "end_year": 2024,
+      "start_institutions": 3947,
+      "end_institutions": 3797,
+      "continuing_institutions": 3613,
+      "entered_institutions": 184,
+      "left_institutions": 334,
+      "continuing_change": 75632,
+      "entered_enrollment": 2456,
+      "left_enrollment": 7009,
+      "entry_exit_net": -4553,
+      "national_change": 71079,
+      "continuing_grew": 1486,
+      "continuing_declined": 1405,
+      "continuing_unchanged": 722,
+      "continuing_gross_gains": 208387,
+      "continuing_gross_declines": -132755,
+      "top10_continuing_gains": 44168
+    }
+  },
   "top_states_latest": [
     {
       "state": "NY",

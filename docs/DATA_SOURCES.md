@@ -28,6 +28,8 @@ Files: `HD2015` through `HD2024`
 
 Purpose: institution metadata used to attach state, institution name, sector/control, and other directory fields to enrollment records.
 
+`UNITID` from the enrollment and directory files is also used to match institutions across endpoint years for the institution-dynamics analysis. A stable `UNITID` match is treated as a continuing analytic unit; nonmatches are described as entering or leaving the analytic universe, not automatically as openings or closures.
+
 ## Collection status
 
 The initial collection was completed on **October 13, 2026**. It contains 40 NCES archives: enrollment data, enrollment dictionaries, institutional directory data, and institutional directory dictionaries for each year from 2015 through 2024.

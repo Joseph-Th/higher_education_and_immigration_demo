@@ -95,6 +95,24 @@ Key fields:
 | `*_imputation_flag` | IPEDS imputation/status code for the selected all-student row |
 | `source_*_csv` | Exact raw source filenames used for the row |
 
+## `data/processed/institution_change_summary.csv`
+
+One row for every institution appearing in either the 2015 or 2024 analytic universe. The table is an accounting bridge between endpoint institution membership and the national change.
+
+| Field | Definition |
+| --- | --- |
+| `unitid` | IPEDS institution identifier used for endpoint matching |
+| `institution` | Latest available endpoint name |
+| `state` | Latest available endpoint institution location |
+| `status` | Continuing-growth/decline/unchanged, entered universe, or left universe |
+| `control_2015` | 2015 institutional control; blank if absent from 2015 universe |
+| `control_2024` | 2024 institutional control; blank if absent from 2024 universe |
+| `nonresident_2015` | 2015 U.S. nonresident enrollment; blank for universe entrants |
+| `nonresident_2024` | 2024 U.S. nonresident enrollment; blank for universe exits |
+| `absolute_change` | Endpoint contribution to national change; entrants contribute their 2024 count and exits contribute the negative of their 2015 count |
+
+The sum of `absolute_change` reconciles exactly to the national 2015→2024 change. Universe entry/exit should not be interpreted automatically as institutional opening/closure.
+
 ## `data/schema_audit.csv`
 
 One row per source year recording whether required variables and aggregation labels pass cross-year schema review, plus the selected raw filenames and historical terminology used for `EFNRALT`.
@@ -126,5 +144,5 @@ One row per downloaded NCES ZIP archive. Fields record source year/table/type, e
 
 `data/qa_report.json` contains structural checks, yearly source/flag distributions, row counts, and explicit exclusions.
 
-`data/findings.json` contains the derived findings used by the public static site: headline metrics, level decomposition, state recovery, concentration, institutional control, rankings, and national series.
+`data/findings.json` contains the derived findings used by the public static site: headline metrics, level decomposition, state recovery, concentration, institutional control, institution-universe dynamics, rankings, and national series.
 

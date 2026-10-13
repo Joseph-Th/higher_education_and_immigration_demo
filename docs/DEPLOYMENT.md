@@ -16,9 +16,10 @@ Before each deployment, run:
 
 ```bash
 python scripts/validate_project.py
+python scripts/browser_smoke.py
 ```
 
-Only deploy the generated `site/` directory after that command passes and the site has been inspected locally.
+The browser smoke test requires the optional Playwright development dependency and a local Chromium runtime. Only deploy the generated `site/` directory after both validation lanes pass and the site has been inspected locally.
 
 ## Direct upload
 

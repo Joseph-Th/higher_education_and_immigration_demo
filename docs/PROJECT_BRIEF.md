@@ -29,6 +29,7 @@ How did fall enrollment of U.S. nonresident students change nationally and acros
 4. How did undergraduate and graduate patterns differ, where the source tables support a consistent cross-year comparison?
 5. How much of the national change is concentrated in a small number of states or institutions?
 6. How did trends differ across public, private nonprofit, and private for-profit institutions?
+7. Is the national change driven by enrollment changes at continuing institutions, or by changes in which institutions are in the analytic universe?
 
 ## Evidence standard
 
@@ -47,11 +48,12 @@ Every published figure should be traceable to:
 A short web-based brief containing:
 
 - an executive summary;
-- three to five defensible findings;
+- a small set of defensible findings prioritized for policy/research readers;
 - national trend visualization;
 - state comparison visualization/table;
 - undergraduate/graduate comparison if cross-year definitions permit;
 - institutional-control comparison;
+- institution endpoint-change accounting;
 - methodology and limitations;
 - source and update information.
 
@@ -66,6 +68,7 @@ A short web-based brief containing:
 - chart-generation code;
 - documentation sufficient for another analyst to reproduce the result.
 - external publication benchmark audit and release-vintage documentation.
+- browser-level publication smoke test.
 
 ## Non-goals
 

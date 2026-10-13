@@ -70,7 +70,23 @@ Private nonprofits increased from **33.7% to 39.6%** of national U.S. nonresiden
 
 Public institutions still enroll the majority of U.S. nonresident students, but their share fell from **63.8% to 58.4%**. Their graduate enrollment grew while undergraduate enrollment fell substantially, producing a net decline of **16,087**.
 
-## 6. Release vintage matters even when the universe is correct
+## 6. The national increase is not an artifact of a larger institution universe
+
+Matching institutions by IPEDS `UNITID` between 2015 and 2024 separates change at continuing institutions from changes in analytic-universe membership.
+
+- **3,470** institutions appear in both endpoint years.
+- Those continuing institutions added **66,981** U.S. nonresident students.
+- **327** institutions entered the analytic universe and account for **10,666** students in 2024.
+- **1,092** institutions left the analytic universe and had **14,247** students in 2015.
+- Entry and exit therefore net to **-3,581**, while the full national change is **+63,400**.
+
+Among continuing institutions, **1,479 grew**, **1,411 declined**, and **580 were unchanged**. Gross gains at continuing institutions totaled **+257,836**, offset by **-190,855** in gross declines. The national increase is therefore the net result of substantial institution-level reallocation, not uniform growth.
+
+The same accounting holds for the post-pandemic comparison: continuing institutions account for **+75,632** of the **+71,079** national increase from 2019 to 2024, while entry and exit net negative.
+
+“Entered” and “left” refer only to membership in the defined IPEDS analytic universe. These statuses can reflect mergers, UNITID restructuring, eligibility or classification changes, and actual openings or closures.
+
+## 7. Release vintage matters even when the universe is correct
 
 NCES Digest 2025 Table 306.10 was prepared in March 2026. This project uses IPEDS complete-data files retrieved in October 2026.
 

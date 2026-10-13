@@ -45,6 +45,7 @@ Independent validation inputs that are not used to generate the analysis. The cu
 - `state_year.csv`: state-by-year aggregates for the 50 states and DC.
 - `state_change_summary.csv`: one-row-per-geography comparison for 2015, 2019, and 2024, including recovery status.
 - `control_year.csv`: public, private nonprofit, and private for-profit aggregates by year.
+- `institution_change_summary.csv`: endpoint UNITID panel that decomposes the 2015-2024 national change into continuing institutions and analytic-universe entry/exit.
 - `institutions_2024.csv`: latest-year institution detail in the analytic universe.
 - `institution_year.csv`: full normalized intermediate dataset; reproducible and intentionally ignored by Git because of size.
 
@@ -54,5 +55,5 @@ Independent validation inputs that are not used to generate the analysis. The cu
 
 `findings.json` is a compact machine-readable summary used to build the public research brief.
 
-It includes national headline metrics, level-change decomposition, state recovery relative to 2019, institutional-control change, state and institution concentration, state rankings, latest institution detail, and the national time series.
+It includes national headline metrics, level-change decomposition, state recovery relative to 2019, institutional-control change, institution-universe dynamics, state and institution concentration, state rankings, latest institution detail, and the national time series.
 

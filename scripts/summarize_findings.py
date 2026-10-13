@@ -43,6 +43,7 @@ def main() -> int:
     national = {int(row["year"]): row for row in read_rows("national_year.csv")}
     states = read_rows("state_year.csv")
     controls = read_rows("control_year.csv")
+    institution_history = read_rows("institution_year.csv")
     institutions = read_rows(f"institutions_{END_YEAR}.csv")
 
     first = national[min(national)]
@@ -74,6 +75,100 @@ def main() -> int:
                 ) if n(baseline, "nonresident_enrollment") else None,
             }
         )
+
+    def institution_dynamics(start_year: int, end_year: int) -> tuple[dict, list[dict]]:
+        start_rows = {
+            row["unitid"]: row
+            for row in institution_history
+            if int(row["year"]) == start_year
+        }
+        end_rows = {
+            row["unitid"]: row
+            for row in institution_history
+            if int(row["year"]) == end_year
+        }
+        continuing = set(start_rows) & set(end_rows)
+        entered = set(end_rows) - set(start_rows)
+        left = set(start_rows) - set(end_rows)
+
+        detail_rows: list[dict] = []
+        continuing_changes: list[int] = []
+        for unitid in sorted(set(start_rows) | set(end_rows)):
+            start = start_rows.get(unitid)
+            end = end_rows.get(unitid)
+            start_nr = 0 if start is None else n(start, "nonresident_enrollment")
+            end_nr = 0 if end is None else n(end, "nonresident_enrollment")
+            change = end_nr - start_nr
+            if start is not None and end is not None:
+                continuing_changes.append(change)
+                if change > 0:
+                    status = "Continuing - grew"
+                elif change < 0:
+                    status = "Continuing - declined"
+                else:
+                    status = "Continuing - unchanged"
+            elif end is not None:
+                status = "Entered analytic universe"
+            else:
+                status = "Left analytic universe"
+
+            label_row = end if end is not None else start
+            assert label_row is not None
+            detail_rows.append(
+                {
+                    "unitid": unitid,
+                    "institution": label_row["institution"],
+                    "state": label_row["state"],
+                    "status": status,
+                    f"control_{start_year}": "" if start is None else start["control"],
+                    f"control_{end_year}": "" if end is None else end["control"],
+                    f"nonresident_{start_year}": "" if start is None else start_nr,
+                    f"nonresident_{end_year}": "" if end is None else end_nr,
+                    "absolute_change": change,
+                }
+            )
+
+        continuing_change = sum(continuing_changes)
+        entered_enrollment = sum(n(end_rows[unitid], "nonresident_enrollment") for unitid in entered)
+        left_enrollment = sum(n(start_rows[unitid], "nonresident_enrollment") for unitid in left)
+        national_change = continuing_change + entered_enrollment - left_enrollment
+        expected_change = (
+            n(national[end_year], "nonresident_enrollment")
+            - n(national[start_year], "nonresident_enrollment")
+        )
+        if national_change != expected_change:
+            raise RuntimeError(
+                f"Institution dynamics do not reconcile for {start_year}-{end_year}: "
+                f"{national_change} != {expected_change}"
+            )
+
+        summary = {
+            "start_year": start_year,
+            "end_year": end_year,
+            "start_institutions": len(start_rows),
+            "end_institutions": len(end_rows),
+            "continuing_institutions": len(continuing),
+            "entered_institutions": len(entered),
+            "left_institutions": len(left),
+            "continuing_change": continuing_change,
+            "entered_enrollment": entered_enrollment,
+            "left_enrollment": left_enrollment,
+            "entry_exit_net": entered_enrollment - left_enrollment,
+            "national_change": national_change,
+            "continuing_grew": sum(change > 0 for change in continuing_changes),
+            "continuing_declined": sum(change < 0 for change in continuing_changes),
+            "continuing_unchanged": sum(change == 0 for change in continuing_changes),
+            "continuing_gross_gains": sum(change for change in continuing_changes if change > 0),
+            "continuing_gross_declines": sum(change for change in continuing_changes if change < 0),
+            "top10_continuing_gains": sum(
+                sorted((change for change in continuing_changes if change > 0), reverse=True)[:10]
+            ),
+        }
+        return summary, detail_rows
+
+    decade_dynamics, decade_institution_rows = institution_dynamics(START_YEAR, latest_year)
+    recovery_dynamics, _ = institution_dynamics(pre_pandemic_year, latest_year)
+    write_rows("institution_change_summary.csv", decade_institution_rows)
 
     state_changes = []
     for row in latest_states:
@@ -251,6 +346,10 @@ def main() -> int:
                 }
                 for year in range(START_YEAR, latest_year + 1)
             ],
+        },
+        "institution_dynamics": {
+            "decade": decade_dynamics,
+            "recovery": recovery_dynamics,
         },
         "top_states_latest": [
             {

@@ -102,13 +102,14 @@ At minimum, re-check:
 - the leading state gains/shortfalls;
 - institution and state concentration metrics;
 - institutional-control findings;
+- institution-universe entry/exit accounting;
 - provisional/final language.
 
 The public page contains intentionally editorial year labels and latest-year download links in `site/index.html`; update those after the data rebuild rather than assuming configuration alone rewrites the prose.
 
 ## 8. Visual review and deployment
 
-Serve `site/` locally and inspect desktop and mobile layouts before publication. Confirm charts, tables, links, downloads, and source notes render correctly.
+Run `python scripts/browser_smoke.py`, then inspect desktop and mobile layouts before publication. Confirm charts, tables, links, downloads, and source notes render correctly.
 
 Cloudflare Pages can publish the `site/` directory directly. See `docs/DEPLOYMENT.md`.
 

@@ -99,6 +99,7 @@ def main() -> int:
         "state_year.csv",
         "state_change_summary.csv",
         "control_year.csv",
+        "institution_change_summary.csv",
         f"institutions_{END_YEAR}.csv",
     ):
         shutil.copy2(PROCESSED / name, DOWNLOADS / name)

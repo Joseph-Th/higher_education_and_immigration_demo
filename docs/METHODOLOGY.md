@@ -10,7 +10,7 @@ Fall 2015 through Fall 2024.
 
 ## Unit of observation
 
-The raw Fall Enrollment files contain multiple rows per institution representing combinations of aggregation level and student characteristics. The analysis dataset will first be constructed at the institution-year level, then aggregated to state-year and national-year levels.
+The raw Fall Enrollment files contain multiple rows per institution representing combinations of aggregation level and student characteristics. The analysis dataset is first constructed at the institution-year level, then aggregated to state-year, institutional-control-year, and national-year levels.
 
 Institution identity will use the IPEDS `UNITID` key.
 
@@ -58,12 +58,14 @@ The derived measures are:
 5. 2015-to-2024 absolute and percentage change.
 6. Undergraduate and graduate U.S. nonresident counts where the source structure permits a consistent comparison.
 7. U.S. nonresident enrollment by institutional control: public, private nonprofit, and private for-profit.
+8. Endpoint institution dynamics using `UNITID` to separate change at continuing institutions from changes associated with entering or leaving the analytic universe.
 
 ## Aggregation rules
 
 - Institution-year values will be summed only from the verified "all students" aggregation level needed to avoid double counting.
 - State assignments will come from the same-year `HDyyyy` directory file.
 - Institutional control will come from the same-year `CONTROL` field in `HDyyyy` and is aggregated only within the same analytic universe used for national/state results.
+- Institution endpoint comparisons match on `UNITID`. For a continuing institution, contribution to change is its end-year minus start-year count. An institution appearing only in the end-year universe contributes its end-year count; an institution appearing only in the start-year universe contributes the negative of its start-year count.
 - U.S. territories and other jurisdictions are retained in raw source data and explicitly excluded from the public 50-states-plus-DC analytic universe.
 - Percentage-change rankings will use a documented minimum-baseline rule to prevent tiny starting counts from dominating the ranking.
 
@@ -111,12 +113,15 @@ The analysis will include at minimum:
 ### Trend checks
 
 - Flag unusually large year-over-year changes for manual review.
-- Distinguish true changes from institution closures, mergers, reporting changes, or missing records where possible.
+- Separate continuing-institution change from analytic-universe entry/exit, and avoid treating entry/exit automatically as openings/closures.
+- Distinguish true changes from institution closures, mergers, UNITID restructuring, reporting changes, or missing records where possible.
 - Compare selected national totals against an independently generated IPEDS table or other NCES output before publication.
 
 ### Independent benchmark
 
-The 2024 national total produced by the pipeline is **19,659,633** students. NCES Digest of Education Statistics 2025, Table 306.10 publishes **19,659.6 thousand** for the same 2024 degree-granting, 50-states-plus-DC universe. The pipeline value rounds to exactly the published value.
+The pipeline compares four national measures for each year from 2019 through 2024 against NCES Digest of Education Statistics 2025, Table 306.10: total fall enrollment, total U.S. nonresident enrollment, undergraduate U.S. nonresident enrollment, and graduate/postbaccalaureate U.S. nonresident enrollment.
+
+All **24 metric-year checks** currently pass the documented consistency thresholds. For 2024, the pipeline total is **19,659,633** versus approximately **19,659,600** after converting the Digest's rounded value. The current U.S. nonresident subgroup is **1,044,137** versus approximately **1,047,100** in the March 2026 Digest. That small subgroup difference is retained as release-vintage evidence rather than overwritten.
 
 Benchmark source: https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp
 
@@ -126,6 +131,7 @@ Benchmark source: https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp
 - Every chart must state its population, time period, and source.
 - Provisional data must be visibly labeled.
 - Notes must distinguish counts from shares and fall snapshots from full-year enrollment.
+- A separate browser smoke test must render the built site at desktop and mobile widths without console errors or unintended page-level overflow before deployment.
 
 ## Limitations to carry into the final brief
 
@@ -134,4 +140,5 @@ Benchmark source: https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp
 3. Institution reporting practices and institutional structure can change over a ten-year period.
 4. The 2024 values may be revised when final data are released.
 5. State totals describe enrollment at institutions located in a state, not necessarily students' legal residence or place of origin.
+6. `UNITID` matching is useful for endpoint accounting but does not resolve every merger, split, acquisition, or institutional restructuring; analytic-universe entry/exit is not synonymous with opening/closure.
 

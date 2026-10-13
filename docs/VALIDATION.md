@@ -73,11 +73,12 @@ This design is deliberate: the external publication is a validation source, not 
 - latest-year institution output sorted correctly;
 - findings reconciling to source tables;
 - state change summary coverage and 2019 recovery classification;
+- institution endpoint accounting reconciling continuing institutions and universe entry/exit to national change;
 - QA and external benchmark checks all passing;
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **13 tests**.
+The current suite contains **14 tests**.
 
 ## One-command validation
 
@@ -89,6 +90,23 @@ python scripts/validate_project.py
 
 This rebuilds and validates the entire offline product in dependency order. A successful run ends with `VALIDATION PASS`.
 
+## Browser publication smoke test
+
+`scripts/browser_smoke.py` is a separate publication-QA lane because it requires Playwright and an installed Chromium runtime. It is intentionally not part of the offline data-validation command.
+
+The browser test starts a local server on an ephemeral port and checks both desktop and 390px mobile viewports for:
+
+- successful site/data loading;
+- no page exceptions or console errors;
+- rendered headline metrics matching `site_data.json`;
+- all 51 state/DC selector options;
+- expected institution and benchmark table row counts;
+- rendered SVG charts, including the institution-dynamics chart;
+- working public CSV downloads; and
+- no unintended page-level horizontal overflow.
+
+Run it after `python scripts/validate_project.py` and before deployment.
+
 ## Publication checks
 
 The static brief exposes:
@@ -98,4 +116,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable national, state, institution, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable national, state, institution, institution-change, source-manifest, schema-audit, benchmark-audit, and external-reference files.
