@@ -324,6 +324,25 @@ One row per recurring research product represented in the target-role operations
 
 `scripts/build_recurring_report_register.py` validates exact product coverage, foreign keys into both source authorities, ISO dates, nonblank fields, and schedule language before generating the human-readable operations register and public workflow page.
 
+## `data/production_cycle_register.csv`
+
+One row per shared production stage used by the recurring partner-research coordination model.
+
+| Field | Definition |
+| --- | --- |
+| `stage_order` | Required sequence number from 1 through 7 |
+| `stage_id` | Stable machine-readable stage identifier |
+| `stage_label` | Reviewer-facing stage name |
+| `coordination_role` | Generic role or role pairing responsible for coordinating the stage; never a claimed internal staff assignment |
+| `entry_condition` | Evidence/state required before the stage begins |
+| `required_record` | Record/package that must be created or preserved during the stage |
+| `blocking_condition` | Condition that prevents advancement |
+| `exit_condition` | Evidence required to complete the stage |
+| `next_stage_id` | Required next stage, or `COMPLETE` after archival handoff |
+| `retained_evidence` | Record carried into the next stage and next production cycle |
+
+`scripts/build_production_cycle.py` validates exact seven-stage order and handoff continuity, verifies that the three recurring products retain partner-confirmed scheduling language, and generates `docs/PRODUCTION_CYCLE.md` plus `site/production-cycle.html`. The register is a portfolio coordination template, not an internal Presidents' Alliance schedule or approval chain.
+
 ## JSON products
 
 `data/qa_report.json` contains structural checks, yearly source/flag distributions, row counts, and explicit exclusions.

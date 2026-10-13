@@ -62,6 +62,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/population_crosswalk.md",
         "downloads/recurring_report_register.csv",
         "downloads/recurring_report_register.md",
+        "downloads/production_cycle_register.csv",
+        "downloads/production_cycle.md",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
         "downloads/state_profile_index.csv",
@@ -181,7 +183,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "32" not in summary or "82" not in summary:
+    if "34" not in summary or "84" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -196,6 +198,36 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
         raise AssertionError(f"Data governance horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Data governance browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_production_cycle(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/production-cycle.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Production cycle page failed at {width}px")
+    summary = page.locator(".handoff-summary").inner_text()
+    if "7" not in summary or "3" not in summary or "0" not in summary:
+        raise AssertionError("Production cycle summary does not show stages/products/deadline boundary")
+    if page.locator("#cycle-register .handoff-card").count() != 7:
+        raise AssertionError("Production cycle page does not render all seven stage controls")
+    if page.locator(".operations-grid .operations-card").count() != 3:
+        raise AssertionError("Production cycle page does not render all three recurring products")
+    if "does not represent the Presidents' Alliance's internal project-management system" not in page.locator(".handoff-hero .release-note").inner_text():
+        raise AssertionError("Production cycle page is missing the portfolio/non-affiliation boundary")
+    if page.locator('a[href="downloads/production_cycle_register.csv"]').count() != 1:
+        raise AssertionError("Production cycle register download link is missing")
+    if page.locator('a[href="downloads/production_cycle.md"]').count() != 1:
+        raise AssertionError("Production cycle notes download link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Production cycle horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Production cycle browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -418,6 +450,8 @@ def main() -> int:
                 inspect_publication_handoff(browser, base_url, width=390, height=844)
                 inspect_data_governance(browser, base_url, width=1280, height=900)
                 inspect_data_governance(browser, base_url, width=390, height=844)
+                inspect_production_cycle(browser, base_url, width=1280, height=900)
+                inspect_production_cycle(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

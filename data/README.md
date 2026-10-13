@@ -63,6 +63,10 @@ Structured methodology/source-selection control for six distinct immigration-rel
 
 Portfolio operations register for the three recurring research products named in the target role. Each row foreign-keys to both a `population_id` in `population_crosswalk.csv` and a `research_library_id` in `research_library.csv`, then records public-product vintage, guarded schedule status, partner context, intake requirements, methodology-change checks, QA gates, publication outputs, and the next kickoff action. The register deliberately requires the schedule text to say that milestones must be confirmed with the partner instead of inventing an internal deadline from public publication dates. `scripts/build_recurring_report_register.py` validates those relationships and generates `docs/RECURRING_REPORT_REGISTER.md` plus `site/research-operations.html`.
 
+## `production_cycle_register.csv`
+
+Seven-row shared stage-gate authority for recurring partner research. Each stage records the generic coordination role, entry condition, required record, blocker, exit condition, next-stage handoff, and retained evidence. It is deliberately date-free and person-free until a real partner kickoff occurs. `scripts/build_production_cycle.py` validates the stage sequence and joins it to the three product-specific recurring-report records to generate `docs/PRODUCTION_CYCLE.md` and `site/production-cycle.html`.
+
 ## `qa_resolution_log.csv`
 
 Manually curated analyst dispositions for a selected sample of high-priority rows from `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` verifies that each reviewed UNITID still exists in the current high-priority queue and generates `docs/QA_RESOLUTION_LOG.md` plus `qa_resolution_summary.json`.

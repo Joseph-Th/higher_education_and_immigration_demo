@@ -51,6 +51,8 @@ Do not advance `END_YEAR` merely because a directory file exists. The recurring 
 
 The production trigger is a confirmed partner kickoff or refreshed data/methodology package. At that point, the analyst should confirm partner roles, milestones, data vintage, delivery format, review windows, and sign-off ownership before treating the report as scheduled work. The generated `docs/RECURRING_REPORT_REGISTER.md` then provides the intake, method-change, QA, publication, and handoff checklist for each product.
 
+`data/production_cycle_register.csv` separately governs the shared stage sequence. Its seven stages require an entry condition, evidence record, blocking rule, exit condition, next-stage handoff, and retained record. It intentionally contains no named staff or inferred internal dates; those belong only in a real production-cycle record after kickoff.
+
 This separation between a **public publication date** and a **confirmed internal production schedule** is deliberate. A recurring title does not prove that the next cycle uses the same dates, partners, methodology, or deliverables.
 
 ## Update trigger

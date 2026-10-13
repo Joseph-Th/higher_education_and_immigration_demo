@@ -25,6 +25,7 @@ from build_data_governance import (  # noqa: E402
     validate_register_rows,
     validate_public_tree,
 )
+from build_production_cycle import validate_stages as validate_production_stages  # noqa: E402
 
 
 def rows(path: Path) -> list[dict[str, str]]:
@@ -306,7 +307,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 32)
+        self.assertEqual(len(release_rows), 34)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -315,15 +316,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 82)
-        self.assertEqual(validate_public_tree(release_rows), 82)
+        self.assertEqual(len(pairs), 84)
+        self.assertEqual(validate_public_tree(release_rows), 84)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 82", rendered)
+        self.assertIn("Expanded public download files:** 84", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("82</strong><span>expanded public download files", html)
+        self.assertIn("84</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -341,7 +342,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 82)
+        self.assertEqual(validate_public_tree(release_rows), 84)
 
     def test_research_agenda_is_structured_and_rendered(self) -> None:
         agenda = rows(ROOT / "data" / "research_agenda.csv")
@@ -405,6 +406,45 @@ class ResearchProductTests(unittest.TestCase):
         for row in register:
             self.assertIn(row["report_title"], rendered)
             self.assertIn(row["report_title"], html)
+
+    def test_production_cycle_register_is_structured_and_rendered(self) -> None:
+        cycle = rows(ROOT / "data" / "production_cycle_register.csv")
+        expected_ids = [
+            "kickoff_scope_lock",
+            "versioned_intake",
+            "method_change_review",
+            "reproduction_qa",
+            "discrepancy_resolution",
+            "publication_gate",
+            "archive_handoff",
+        ]
+        self.assertEqual([row["stage_id"] for row in cycle], expected_ids)
+        self.assertEqual([int(row["stage_order"]) for row in cycle], list(range(1, 8)))
+        self.assertIn("Confirmed production kickoff", cycle[0]["entry_condition"])
+        for index, row in enumerate(cycle[:-1]):
+            self.assertEqual(row["next_stage_id"], cycle[index + 1]["stage_id"])
+            self.assertTrue(row["required_record"].strip())
+            self.assertTrue(row["blocking_condition"].strip())
+            self.assertTrue(row["exit_condition"].strip())
+        self.assertEqual(cycle[-1]["next_stage_id"], "COMPLETE")
+
+        broken = [dict(row) for row in cycle]
+        broken[2]["next_stage_id"] = "publication_gate"
+        with self.assertRaisesRegex(RuntimeError, "Broken production-cycle handoff"):
+            validate_production_stages(broken)
+
+        reports = rows(ROOT / "data" / "recurring_report_register.csv")
+        rendered = (ROOT / "docs" / "PRODUCTION_CYCLE.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "production-cycle.html").read_text(encoding="utf-8")
+        self.assertIn("does **not** represent the Presidents' Alliance's internal", rendered)
+        self.assertIn("does not represent the Presidents' Alliance's internal project-management system", html)
+        self.assertIn("**Inferred internal deadlines:** 0", rendered)
+        for row in cycle:
+            self.assertIn(row["stage_label"], rendered)
+            self.assertIn(html_module.escape(row["stage_label"]), html)
+        for report in reports:
+            self.assertIn(report["report_title"], rendered)
+            self.assertIn(html_module.escape(report["report_title"]), html)
 
     def test_qa_resolution_log_tracks_current_high_priority_queue(self) -> None:
         log = rows(ROOT / "data" / "qa_resolution_log.csv")
@@ -586,10 +626,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 82)
+        self.assertEqual(len(pairs), 84)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 82)
+        self.assertEqual(validate_public_tree(release_rows), 84)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -598,6 +638,7 @@ class ResearchProductTests(unittest.TestCase):
             "research-memo.html",
             "methodology-crosswalk.html",
             "research-operations.html",
+            "production-cycle.html",
             "research-library.html",
             "publication-handoff.html",
             "data-governance.html",
