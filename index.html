@@ -295,6 +295,45 @@
       </div>
     </section>
 
+    <section class="section section-tinted" id="latest-update">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">Latest release review</p>
+          <h2>The newest growth shifted back toward undergraduate enrollment</h2>
+          <p>Before treating a new annual file as publication-ready, the pipeline compares it with the prior year, reconciles the change across student level, state, and institution membership, and creates a reason-coded QA triage queue.</p>
+        </div>
+        <div class="update-layout">
+          <div class="chart-card">
+            <h3>What changed from 2023 to 2024?</h3>
+            <p class="chart-subtitle">Change in U.S. nonresident fall enrollment</p>
+            <div id="update-change-chart" class="chart chart-update"></div>
+          </div>
+          <aside class="update-panel">
+            <p class="finding-kicker">Latest national movement</p>
+            <strong id="update-change-pct" class="finding-number update-finding-number">—</strong>
+            <p id="update-total-change-copy">from 2023 to 2024</p>
+            <dl class="delta-list">
+              <div>
+                <dt>Undergraduate change</dt>
+                <dd id="update-undergrad-change">—</dd>
+              </div>
+              <div>
+                <dt>Graduate change</dt>
+                <dd id="update-grad-change">—</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+        <div class="release-review-strip" aria-label="Latest release quality review metrics">
+          <article><strong id="update-high-priority">—</strong><span>high-priority institution records for analyst review</span></article>
+          <article><strong id="update-medium-priority">—</strong><span>medium-priority institution records for analyst review</span></article>
+          <article><strong id="update-entry-exit-net">—</strong><span>net enrollment effect of institutions entering/leaving the analytic universe</span></article>
+          <article><strong id="update-top-state">—</strong><span>largest state contribution to the latest national increase</span></article>
+        </div>
+        <p class="chart-note update-note">Review priority is deterministic triage, not an error label. Rules include large absolute changes, large percentage changes above a minimum baseline, analytic-universe entry/exit, material imputation/status changes, and discontinuities against recent history. The full reason-coded review queue is downloadable below.</p>
+      </div>
+    </section>
+
     <section class="section shell" id="methods">
       <div class="section-heading">
         <p class="eyebrow">Methods & quality control</p>
@@ -370,6 +409,10 @@
           <a href="downloads/state_change_summary.csv"><span>State change summary</span><small>CSV · 2015 / 2019 / 2024</small></a>
           <a href="downloads/control_year.csv"><span>Institutional control series</span><small>CSV · public / nonprofit / for-profit</small></a>
           <a href="downloads/institution_change_summary.csv"><span>Institution change accounting</span><small>CSV · 2015 / 2024 UNITID panel</small></a>
+          <a href="downloads/latest_release_institution_review.csv"><span>Latest release QA queue</span><small>CSV · 2023 / 2024 reason-coded triage</small></a>
+          <a href="downloads/latest_update_review.md"><span>Latest release review memo</span><small>Markdown · generated update packet</small></a>
+          <a href="downloads/research_library.csv"><span>Research Library</span><small>CSV · structured source metadata</small></a>
+          <a href="downloads/research_library.md"><span>Research Library guide</span><small>Markdown · source scope and project role</small></a>
           <a href="downloads/institutions_2024.csv"><span>2024 institution detail</span><small>CSV · degree-granting universe</small></a>
           <a href="downloads/source_manifest.csv"><span>Source manifest</span><small>CSV · URLs + SHA-256</small></a>
           <a href="downloads/schema_audit.csv"><span>Schema audit</span><small>CSV · cross-year checks</small></a>

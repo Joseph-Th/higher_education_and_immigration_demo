@@ -136,6 +136,17 @@ h1 { margin: 0; max-width: 900px; font-size: clamp(42px, 6vw, 76px); line-height
 .chart-dynamics { min-height: 300px; }
 .dynamics-note { max-width: 980px; color: var(--ink-soft); }
 
+.update-layout { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(290px,.5fr); gap: 18px; }
+.update-panel { background: var(--navy); color: white; border-radius: var(--radius); padding: 30px; display: flex; flex-direction: column; }
+.update-panel > p:not(.finding-kicker) { color: #d4dee7; }
+.update-finding-number { font-size: 52px; }
+.chart-update { min-height: 290px; }
+.release-review-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 18px; }
+.release-review-strip article { padding: 20px 22px; border: 1px solid var(--line); border-radius: 15px; background: white; }
+.release-review-strip strong { display: block; font-size: 28px; letter-spacing: -.035em; }
+.release-review-strip span { display: block; margin-top: 6px; color: var(--ink-soft); font-size: 12px; }
+.update-note { max-width: 1040px; color: var(--ink-soft); }
+
 .concentration-strip { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin: -8px 0 22px; }
 .concentration-strip article { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; padding: 20px 22px; background: var(--wash); border-radius: 15px; }
 .concentration-strip strong { font-size: 34px; letter-spacing: -.04em; }
@@ -202,7 +213,7 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
 
 @media (max-width: 900px) {
   nav { display: none; }
-  .hero-grid, .split-layout, .state-explorer, .download-layout, .recovery-layout, .control-layout, .dynamics-layout { grid-template-columns: 1fr; }
+  .hero-grid, .split-layout, .state-explorer, .download-layout, .recovery-layout, .control-layout, .dynamics-layout, .update-layout { grid-template-columns: 1fr; }
   .hero-grid { gap: 38px; }
   .metrics, .quality-grid { grid-template-columns: repeat(2, 1fr); }
   .explorer-copy { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -214,7 +225,7 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .hero { padding-top: 64px; }
   h1 { font-size: 43px; }
   .lede { font-size: 17px; }
-  .metrics, .quality-grid, .method-grid, .explorer-metrics, .decomposition-strip, .concentration-strip { grid-template-columns: 1fr; }
+  .metrics, .quality-grid, .method-grid, .explorer-metrics, .decomposition-strip, .concentration-strip, .release-review-strip { grid-template-columns: 1fr; }
   .metric-card { min-height: 145px; }
   .chart-card, .explorer-panel, .explorer-copy { padding: 20px; }
   .chart { min-height: 250px; }
