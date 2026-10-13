@@ -12,12 +12,13 @@ Live publication: `https://joseph-th.github.io/higher_education_and_immigration_
 4. Open `site/research-operations.html`. This is the portfolio model for coordinating the three recurring products named in the vacancy: kickoff, versioned partner intake, method-change review, quantitative QA, discrepancy resolution, publication gating, and archival handoff.
 5. Open `site/research-library.html`. Search and filter by population/topic, source type, and publisher; inspect the workflow-stage metadata that distinguishes collection, methodology, validation, publication context, and recurring research.
 6. Open `site/publication-handoff.html`. This is the final pre-publication control: each public claim is tied to an authority, source, QA gate, disclosure, and publication status, including claim-level holds where institution evidence is unresolved.
-7. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
-8. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
-9. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
-10. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
-11. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
-12. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
+7. Open `site/data-governance.html`. This shows the data-minimization boundary and exact public-release allowlist. The build rejects any file under `site/downloads/` or `site/data/` that is not explicitly approved.
+8. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
+9. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
+10. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
+11. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, `data/research_library.csv`, and `data/public_release_register.csv` to see how automated flags become analyst publication decisions and how provenance/release authority are retained.
+12. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
+13. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
 
 ## What the project demonstrates
 
@@ -41,6 +42,7 @@ Live publication: `https://joseph-th.github.io/higher_education_and_immigration_
 | Assess emerging data needs and new research opportunities | `data/research_agenda.csv` and `docs/RESEARCH_AGENDA.md` distinguish questions answerable now from questions requiring partner/population-specific data and define proposed methods and decision rules |
 | Organize a Research Library | `data/research_library.csv`, `scripts/build_research_library.py`, and `site/research-library.html` maintain a structured, searchable catalog with population/topic, resource-type, publisher, workflow-stage, source-role, and freshness metadata |
 | Quality-control published numbers, definitions, citations, and copy | `data/publication_handoff.csv`, `scripts/build_publication_handoff.py`, and `site/publication-handoff.html` require each public claim to name its analytical authority, source role, QA gate, disclosure, and publication decision before handoff |
+| Minimize sensitive data and control public release | `data/public_release_register.csv`, `scripts/build_data_governance.py`, and `site/data-governance.html` classify every public artifact, prohibit person-level/observed immigration-status data from the PUBLIC register, and fail the build on unregistered public files |
 | Quality-control generated products | `tests/test_research_product.py` checks reconciliation identities, coverage, shares, outputs, downloads, foreign keys, publication handoff, and benchmark status |
 | Communicate to nontechnical readers | `site/` turns the analysis into a concise research brief with plain-language definitions and limitations |
 | Validate the published artifact | `scripts/browser_smoke.py` checks desktop/mobile rendering, interactions, downloads, console errors, and overflow |

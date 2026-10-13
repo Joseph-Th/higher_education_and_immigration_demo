@@ -81,6 +81,7 @@ Then review the newly generated:
 - `docs/RESEARCH_MEMO.md` and `site/research-memo.html`.
 - `docs/POPULATION_CROSSWALK.md` and `site/methodology-crosswalk.html` when source definitions or companion-source vintages changed.
 - `data/publication_handoff.csv`, `docs/PUBLICATION_HANDOFF.md`, and `site/publication-handoff.html`.
+- `data/public_release_register.csv`, `docs/DATA_GOVERNANCE.md`, and `site/data-governance.html`.
 
 Investigate the reason-coded high- and medium-priority review queue before updating the narrative. A queue item is not automatically an error. Determine whether the movement is plausible, concentrated in a few institutions, associated with an imputation/status change, related to analytic-universe membership, or a source discontinuity that needs further review.
 
@@ -140,6 +141,8 @@ Re-read the generated research memo as a publication product. Confirm that its t
 
 Review the generated publication handoff line by line before deployment. Confirm that every public claim still points to the correct authority and Research Library source, that the QA gate is satisfied, that provisional/release-vintage and population/geography disclosures remain accurate, and that any institution-level claims with unresolved evidence remain held. Treat this register as the last analytical review before public copy is promoted, not as a substitute for organizational sign-off.
 
+Review `data/public_release_register.csv` whenever a filename, output family, source type, or disclosure boundary changes. A prior year's public file list is not automatic authorization for a new release. Confirm that every intended public artifact has an explicit source and release rule, that no raw or restricted partner input is registered, and that year-specific paths such as the latest institution detail file are current. The site build must fail if an unregistered file appears in the public download/data tree.
+
 After the memo and interpretation are final, regenerate the reviewer-facing PDF:
 
 ```bash
@@ -165,6 +168,7 @@ An annual update is complete only when:
 - external benchmark differences are understood and recorded;
 - public findings are re-reviewed rather than carried forward automatically;
 - the population/source crosswalk has been re-reviewed when companion-source definitions or vintages changed;
+- the public-release register has been re-reviewed and the exact allowlisted public tree passes with no unregistered files;
 - the PDF source hash matches the current generated research memo and every PDF page has been visually inspected;
 - the rendered site is inspected; and
 - the deployed site serves the same files that passed validation.

@@ -16,7 +16,7 @@ git subtree split --prefix site -b gh-pages
 git push --force-with-lease origin gh-pages
 ```
 
-GitHub Pages should then be configured to serve branch `gh-pages` from `/`. After deployment, verify the public HTTPS home page, a state profile, the research memo, the methodology crosswalk, the recurring-research operations page, the searchable Research Library, the publication-handoff page, representative CSV downloads, and the PDF brief. The deployed site must never be read back as an input to the analysis.
+GitHub Pages should then be configured to serve branch `gh-pages` from `/`. After deployment, verify the public HTTPS home page, a state profile, the research memo, the methodology crosswalk, the recurring-research operations page, the searchable Research Library, the publication-handoff page, the data-governance page, the public-release register, representative CSV downloads, and the PDF brief. The deployed site must never be read back as an input to the analysis.
 
 **Verified October 13, 2026:** the public home page, California state profile, research memo, population crosswalk, recurring-research operations page, searchable Research Library, publication-handoff page, publication-handoff CSV, Research Library CSV, and PDF brief all returned HTTP 200. The deployed Research Library exposed the current population/workflow taxonomy, the publication handoff contained the expected N01-B01 control set, and the deployed site payload reported the expected 1,044,137 Fall 2024 headline value.
 
@@ -44,7 +44,7 @@ python scripts/check_population_crosswalk.py
 python scripts/check_qa_evidence.py
 ```
 
-The PDF build and browser smoke test require the optional Playwright development dependency and a local Chromium runtime. The live-link checks are deliberately outside the offline reproducibility lane, but they should be clean or explicitly manually resolved before publication. `deliverables/research_brief_manifest.json` binds the committed PDF to the exact generated memo source; validation fails when that publication artifact is stale. Only deploy the generated `site/` directory after the required validation lanes pass and the site has been inspected locally.
+The PDF build and browser smoke test require the optional Playwright development dependency and a local Chromium runtime. The live-link checks are deliberately outside the offline reproducibility lane, but they should be clean or explicitly manually resolved before publication. `deliverables/research_brief_manifest.json` binds the committed PDF to the exact generated memo source; validation fails when that publication artifact is stale. `data/public_release_register.csv` separately governs the public data/download surface and validation fails on an unregistered public file. Only deploy the generated `site/` directory after the required validation lanes pass and the site has been inspected locally.
 
 ## Direct upload
 

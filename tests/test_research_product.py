@@ -19,6 +19,12 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 from project_config import CORE_STATES, END_YEAR, START_YEAR  # noqa: E402
+from build_data_governance import (  # noqa: E402
+    expand_pairs as expand_public_release_pairs,
+    read_register as read_public_release_register,
+    validate_register_rows,
+    validate_public_tree,
+)
 
 
 def rows(path: Path) -> list[dict[str, str]]:
@@ -298,6 +304,45 @@ class ResearchProductTests(unittest.TestCase):
             self.assertIn(html_module.escape(row["public_copy"]), html)
         self.assertIn("does **not** represent the Presidents' Alliance's internal publication workflow", rendered)
 
+    def test_public_release_register_enforces_allowlisted_publication(self) -> None:
+        release_rows = read_public_release_register()
+        self.assertEqual(len(release_rows), 32)
+        ids = [row["artifact_id"] for row in release_rows]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
+        self.assertTrue(all(row["person_level_data"] == "No" for row in release_rows))
+        self.assertTrue(all(row["immigration_status_data"] == "No" for row in release_rows))
+        self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
+        self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
+        pairs = expand_public_release_pairs(release_rows)
+        self.assertEqual(len(pairs), 82)
+        self.assertEqual(validate_public_tree(release_rows), 82)
+
+        rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
+        self.assertIn("Expanded public download files:** 82", rendered)
+        self.assertIn("restricted by default", rendered)
+        self.assertIn("Public by design does not mean publish everything.", html)
+        self.assertIn("82</strong><span>expanded public download files", html)
+
+        unsafe = [dict(row) for row in release_rows]
+        unsafe[0]["person_level_data"] = "Yes"
+        with self.assertRaisesRegex(RuntimeError, "Person-level or immigration-status data"):
+            validate_register_rows(unsafe)
+        unsafe = [dict(row) for row in release_rows]
+        unsafe[0]["immigration_status_data"] = "Yes"
+        with self.assertRaisesRegex(RuntimeError, "Person-level or immigration-status data"):
+            validate_register_rows(unsafe)
+
+        injected = ROOT / "site" / "downloads" / "__unregistered_release_test.tmp"
+        try:
+            injected.write_text("must be rejected", encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "Unregistered files"):
+                validate_public_tree(release_rows)
+        finally:
+            injected.unlink(missing_ok=True)
+        self.assertEqual(validate_public_tree(release_rows), 82)
+
     def test_research_agenda_is_structured_and_rendered(self) -> None:
         agenda = rows(ROOT / "data" / "research_agenda.csv")
         self.assertGreaterEqual(len(agenda), 6)
@@ -539,93 +584,12 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(self.site_data["quality"]["benchmark"]["checks_passed"], 24)
 
     def test_site_downloads_are_exact_copies(self) -> None:
-        pairs = [
-            ("data/processed/national_year.csv", "site/downloads/national_year.csv"),
-            ("data/processed/state_year.csv", "site/downloads/state_year.csv"),
-            (
-                "data/processed/state_change_summary.csv",
-                "site/downloads/state_change_summary.csv",
-            ),
-            ("data/processed/control_year.csv", "site/downloads/control_year.csv"),
-            (
-                "data/processed/institution_change_summary.csv",
-                "site/downloads/institution_change_summary.csv",
-            ),
-            (
-                "data/processed/latest_release_institution_review.csv",
-                "site/downloads/latest_release_institution_review.csv",
-            ),
-            (
-                f"data/processed/institutions_{END_YEAR}.csv",
-                f"site/downloads/institutions_{END_YEAR}.csv",
-            ),
-            ("data/schema_audit.csv", "site/downloads/schema_audit.csv"),
-            ("data/source_manifest.csv", "site/downloads/source_manifest.csv"),
-            ("data/benchmark_audit.csv", "site/downloads/benchmark_audit.csv"),
-            ("data/research_library.csv", "site/downloads/research_library.csv"),
-            ("data/publication_handoff.csv", "site/downloads/publication_handoff.csv"),
-            ("data/research_agenda.csv", "site/downloads/research_agenda.csv"),
-            ("data/population_crosswalk.csv", "site/downloads/population_crosswalk.csv"),
-            (
-                "data/recurring_report_register.csv",
-                "site/downloads/recurring_report_register.csv",
-            ),
-            ("data/qa_resolution_log.csv", "site/downloads/qa_resolution_log.csv"),
-            (
-                "data/processed/state_profile_index.csv",
-                "site/downloads/state_profile_index.csv",
-            ),
-            (
-                "deliverables/ipeds_portfolio_analysis.xlsx",
-                "site/downloads/ipeds_portfolio_analysis.xlsx",
-            ),
-            (
-                "deliverables/research_brief.pdf",
-                "site/downloads/research_brief.pdf",
-            ),
-            (
-                "data/reference/nces_digest_2025_306_10.csv",
-                "site/downloads/nces_digest_2025_306_10.csv",
-            ),
-        ]
-        for source, public in pairs:
-            self.assertEqual((ROOT / source).read_bytes(), (ROOT / public).read_bytes(), public)
-        self.assertEqual(
-            (ROOT / "docs" / "LATEST_UPDATE_REVIEW.md").read_bytes(),
-            (ROOT / "site" / "downloads" / "latest_update_review.md").read_bytes(),
-        )
-        self.assertEqual(
-            (ROOT / "docs" / "QA_RESOLUTION_LOG.md").read_bytes(),
-            (ROOT / "site" / "downloads" / "qa_resolution_log.md").read_bytes(),
-        )
-        self.assertEqual(
-            (ROOT / "docs" / "RESEARCH_LIBRARY.md").read_bytes(),
-            (ROOT / "site" / "downloads" / "research_library.md").read_bytes(),
-        )
-        self.assertEqual(
-            (ROOT / "docs" / "RESEARCH_AGENDA.md").read_bytes(),
-            (ROOT / "site" / "downloads" / "research_agenda.md").read_bytes(),
-        )
-        self.assertEqual(
-            (ROOT / "docs" / "POPULATION_CROSSWALK.md").read_bytes(),
-            (ROOT / "site" / "downloads" / "population_crosswalk.md").read_bytes(),
-        )
-        self.assertEqual(
-            (ROOT / "docs" / "RECURRING_REPORT_REGISTER.md").read_bytes(),
-            (ROOT / "site" / "downloads" / "recurring_report_register.md").read_bytes(),
-        )
-        self.assertEqual(
-            (ROOT / "docs" / "BRIEFING_NOTE.md").read_bytes(),
-            (ROOT / "site" / "downloads" / "briefing_note.md").read_bytes(),
-        )
-        self.assertEqual(
-            (ROOT / "docs" / "RESEARCH_MEMO.md").read_bytes(),
-            (ROOT / "site" / "downloads" / "research_memo.md").read_bytes(),
-        )
-        self.assertEqual(
-            (ROOT / "docs" / "PUBLICATION_HANDOFF.md").read_bytes(),
-            (ROOT / "site" / "downloads" / "publication_handoff.md").read_bytes(),
-        )
+        release_rows = read_public_release_register()
+        pairs = expand_public_release_pairs(release_rows)
+        self.assertEqual(len(pairs), 82)
+        for source, public, row in pairs:
+            self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
+        self.assertEqual(validate_public_tree(release_rows), 82)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -636,6 +600,7 @@ class ResearchProductTests(unittest.TestCase):
             "research-operations.html",
             "research-library.html",
             "publication-handoff.html",
+            "data-governance.html",
         ):
             html = (ROOT / "site" / page_name).read_text(encoding="utf-8")
             ids = re.findall(r'\bid="([^"]+)"', html)

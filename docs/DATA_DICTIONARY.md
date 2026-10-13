@@ -238,6 +238,25 @@ One row per public claim or publication control in the final pre-publication han
 
 `scripts/build_publication_handoff.py` generates this register only after the state package, benchmark checks, population crosswalk, and QA-resolution layer are internally consistent. It also generates `docs/PUBLICATION_HANDOFF.md` and the reviewer-facing `site/publication-handoff.html` page.
 
+## `data/public_release_register.csv`
+
+One row per approved public artifact family. This register is the authority for files copied into `site/downloads/`.
+
+| Field | Definition |
+| --- | --- |
+| `artifact_id` | Stable public-release identifier |
+| `source_path` | Canonical project source path; one `*` wildcard is permitted for a governed file family such as state profiles |
+| `public_path` | Intended path under `site/downloads/` |
+| `data_class` | Aggregate analytic data, institution-level public data, QA/audit, publication, governance, or other release class |
+| `unit_of_record` | Unit represented by one row/document/file |
+| `person_level_data` | Must be `No` for the current PUBLIC register |
+| `immigration_status_data` | Must be `No` for the current PUBLIC register |
+| `release_basis` | Why the artifact is eligible for public release |
+| `release_rule` | QA, interpretation, or handling condition required before release |
+| `release_decision` | Must be `PUBLIC` for entries in this register |
+
+`scripts/build_data_governance.py` validates the schema and handling flags, rejects raw-source paths, generates `docs/DATA_GOVERNANCE.md` and `site/data-governance.html`, copies the registered sources into the public tree, and rejects any unregistered file under `site/downloads/` or `site/data/`.
+
 ## `data/research_agenda.csv`
 
 One row per maintained research or data-needs question.

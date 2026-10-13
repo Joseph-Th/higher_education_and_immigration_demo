@@ -47,6 +47,10 @@ Structured metadata for the external resources used to collect, interpret, valid
 
 Generated pre-publication claim register. Each row maps reviewer-facing copy to its canonical project authority, field/row locator, maintained Research Library source, QA gate, required disclosure, and publication status. It is not an input to the analysis and does not claim to represent the Presidents' Alliance's internal approval workflow. `scripts/build_publication_handoff.py` regenerates the CSV, `docs/PUBLICATION_HANDOFF.md`, and `site/publication-handoff.html` from validated current outputs.
 
+## `public_release_register.csv`
+
+Structured authority for the public download tree. Each row names a canonical source, public destination, data class, unit of record, person-level/immigration-status flags, release basis, release rule, and decision. The current PUBLIC register contains no person-level records or observed immigration-status data. `scripts/build_data_governance.py` validates the register and generates the human-readable/data-governance page; `scripts/build_site_data.py` publishes only registered artifacts and fails if any unregistered file appears under `site/downloads/` or `site/data/`.
+
 ## `research_agenda.csv`
 
 Structured research-needs register. Each row records a stable research ID, priority, research question, evidence trigger, whether the current IPEDS pipeline can answer it, additional data needs, proposed method/output, decision rule, and current status. `scripts/build_research_agenda.py` validates the register and generates `docs/RESEARCH_AGENDA.md`.

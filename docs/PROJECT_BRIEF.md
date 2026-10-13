@@ -81,6 +81,7 @@ A concise PDF version should also be available for reviewers who expect a conven
 - structured Research Library with machine-readable source metadata and generated documentation.
 - structured population/source crosswalk that prevents IPEDS, SEVIS, immigrant-origin, undocumented, pipeline, and refugee/asylee concepts from being treated as interchangeable.
 - structured recurring-report operations register for the three research products named in the target role, with explicit partner-confirmed scheduling, versioned intake, methodology-change review, QA gates, publication outputs, and archival handoff.
+- structured public-release register and generated data-governance page that enforce data minimization and an exact allowlist for public artifacts.
 - online Research Library URL-health checker kept separate from offline reproducibility validation.
 - online population-crosswalk source-health checker kept separate from offline reproducibility validation.
 - reviewer-ready PDF research brief plus a source/PDF SHA-256 manifest.
@@ -90,6 +91,7 @@ A concise PDF version should also be available for reviewers who expect a conven
 
 - The project will not treat IPEDS "U.S. nonresident" as synonymous with all immigrants, all international students, undocumented students, DACA recipients, or immigrant-origin students.
 - The project will not infer immigration status beyond what the IPEDS reporting category supports.
+- The project will not collect or publish person-level immigration-status data merely because a research question concerns immigrant or undocumented students; future restricted partner inputs would remain nonpublic unless a separate release decision authorizes aggregate outputs.
 - The project will not rank institutions or states as "good" or "bad" based only on enrollment counts.
 - The first release will favor a small number of well-supported findings over a large interactive dashboard.
 

@@ -54,6 +54,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/research_library.md",
         "downloads/publication_handoff.csv",
         "downloads/publication_handoff.md",
+        "downloads/public_release_register.csv",
+        "downloads/data_governance.md",
         "downloads/research_agenda.md",
         "downloads/research_agenda.csv",
         "downloads/population_crosswalk.csv",
@@ -166,6 +168,34 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
         raise AssertionError(f"Page-level horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_data_governance(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/data-governance.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Data governance page failed at {width}px")
+    summary = page.locator(".handoff-summary").inner_text()
+    if "32" not in summary or "82" not in summary:
+        raise AssertionError("Data governance summary does not show the registered/expanded release counts")
+    if page.locator(".handoff-gates li").count() != 5:
+        raise AssertionError("Data governance page does not show all five release controls")
+    if "Any future restricted partner data would remain nonpublic by default" not in page.locator(".handoff-hero .release-note").inner_text():
+        raise AssertionError("Data governance page is missing the restricted-data boundary")
+    if page.locator('a[href="downloads/public_release_register.csv"]').count() != 1:
+        raise AssertionError("Public release register download link is missing")
+    if page.locator('a[href="downloads/data_governance.md"]').count() != 1:
+        raise AssertionError("Data governance note download link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Data governance horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Data governance browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -386,6 +416,8 @@ def main() -> int:
                 inspect_research_library(browser, base_url, width=390, height=844)
                 inspect_publication_handoff(browser, base_url, width=1280, height=900)
                 inspect_publication_handoff(browser, base_url, width=390, height=844)
+                inspect_data_governance(browser, base_url, width=1280, height=900)
+                inspect_data_governance(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

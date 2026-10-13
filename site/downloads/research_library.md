@@ -18,6 +18,7 @@ This compact library records the external sources used to collect, interpret, va
 | [Undocumented Students in U.S. Higher Education 2026](https://www.higheredimmigrationportal.org/research/undocumented-students-in-u-s-higher-education-2/) | Undocumented | Recurring research | Recurring report | Recurring | Related recurring research product named in the target role; not an input to the IPEDS series | 2026-10-13 |
 | [Securing America's Talent Pipeline: How Immigrant-Origin Students Power Higher Education](https://www.higheredimmigrationportal.org/research/securing-americas-talent-pipeline/) | Immigrant-origin | Recurring research | Recurring report | Recurring | Latest immigrant-origin research product relevant to the target role; not an input to the IPEDS series | 2026-10-13 |
 | [A Generation Threatened: Undocumented High School Students Graduate Amidst Uncertain National Climate](https://www.higheredimmigrationportal.org/research/a-generation-threatened-undocumented-high-school-students-graduate-amidst-uncertain-national-climate/) | Undocumented, K-12 pipeline | Recurring research | Recurring report | Recurring | Latest high-school-graduate research product named in the target role; not an input to the IPEDS series | 2026-10-13 |
+| [Protecting Tuition Equity: A Playbook for State Coalitions and Higher Education Institutions](https://www.presidentsalliance.org/wp-content/uploads/2026/01/Protecting-Tuition-Equity-A-Playbook-for-State-Coalitions-and-Higher-Education-Institutions-FINAL.pdf) | Undocumented, Data governance | Privacy / data governance | Practice guidance | As needed | Context for the portfolio's data-minimization and restricted-by-default handling boundary; not an analytical input | 2026-10-13 |
 
 ## Resource notes
 
@@ -128,3 +129,12 @@ This compact library records the external sources used to collect, interpret, va
 - **Scope:** Estimates of undocumented students reaching and graduating from U.S. high schools each year
 - **Project use:** Latest high-school-graduate research product named in the target role; not an input to the IPEDS series
 - **Status note:** Posted February 3 2026; estimates approximately 75000 undocumented graduates annually
+
+### Protecting Tuition Equity: A Playbook for State Coalitions and Higher Education Institutions
+
+- **Publisher:** Presidents' Alliance
+- **Population / topic:** Undocumented, Data governance
+- **Workflow stage:** Privacy / data governance
+- **Scope:** Public guidance on protecting student privacy while supporting research and advocacy
+- **Project use:** Context for the portfolio's data-minimization and restricted-by-default handling boundary; not an analytical input
+- **Status note:** Recommends avoiding personally identifiable citizenship or immigration-status data and using data minimization practices

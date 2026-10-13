@@ -54,6 +54,14 @@ A direct quantitative comparison is permitted only when the population definitio
 
 The crosswalk is a source-selection control, not an attempt to force these populations into one common series.
 
+### Data minimization and public-release boundary
+
+The current portfolio uses public administrative data and contains no person-level student records, direct student identifiers, or observed immigration-status field. Institution-level IPEDS records describe public institutional entities, not individual students.
+
+`data/public_release_register.csv` is the authority for the downloadable public artifact tree. Each registered artifact states its source, public destination, unit of record, data class, person-level/immigration-status flags, release basis, and release rule. `scripts/build_data_governance.py` rejects raw-source paths, rejects any PUBLIC registration marked as person-level or containing observed immigration-status data, copies only registered artifacts, and fails when an unregistered file appears under `site/downloads/` or `site/data/`.
+
+If future partner work requires restricted microdata, those inputs start nonpublic by default. Access, retention, disclosure, aggregation, and destruction rules would be governed by the actual partner agreement and applicable policy before analysis begins. Only separately reviewed aggregate outputs could be considered for the public-release register.
+
 ## Fall Enrollment scope
 
 IPEDS Fall Enrollment is a snapshot rather than a full-year unduplicated count. For academic reporters, the survey generally reflects the institution's official fall reporting date or October 15. Program reporters use the applicable fall reporting window specified by IPEDS.
@@ -163,6 +171,7 @@ Benchmark source: https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp
 - A separate browser smoke test must render the built site at desktop and mobile widths without console errors or unintended page-level overflow before deployment.
 - The reviewer-facing PDF brief must be regenerated when `site/research-memo.html` changes. `deliverables/research_brief_manifest.json` records both the memo and PDF SHA-256 values so a stale PDF fails repository validation.
 - The population/source crosswalk must render six required concepts and publish byte-identical CSV/Markdown downloads.
+- The public-release register must contain only explicitly approved non-person-level artifacts, and the generated public download/data trees must contain no unregistered files.
 
 ## Limitations to carry into the final brief
 
