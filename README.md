@@ -19,6 +19,7 @@ How did fall enrollment of U.S. nonresident students change across the United St
 - Downloadable analysis tables, source lineage, schema audit, and external benchmark audit.
 - A generated latest-release review packet with reason-coded institution-level QA triage.
 - An analyst-reviewed QA resolution log that documents evidence, disposition, and publication decisions for selected high-priority flags without rewriting source values.
+- A standalone research memo in Markdown and HTML that combines validated findings, interpretation boundaries, and three evidence-backed analyst case studies.
 - A generated stakeholder briefing note that translates validated findings into a concise management-facing update.
 - A reviewer-ready Excel workbook with formula-driven KPIs, state lookup, reconciliation checks, benchmark QA, and source metadata.
 - Fifty-one generated state/DC research profiles linked directly from the interactive state explorer.
@@ -69,6 +70,7 @@ python scripts/summarize_findings.py
 python scripts/validate_benchmarks.py
 python scripts/build_state_profiles.py
 python scripts/build_briefing_note.py
+python scripts/build_research_memo.py
 python scripts/build_site_data.py
 ```
 
@@ -113,6 +115,7 @@ The second command verifies every maintained Research Library URL, and the third
 - [`docs/FINDINGS.md`](docs/FINDINGS.md): current analytical findings with exact supporting figures.
 - [`docs/LATEST_UPDATE_REVIEW.md`](docs/LATEST_UPDATE_REVIEW.md): generated review of the newest annual release and its QA queue.
 - [`docs/QA_RESOLUTION_LOG.md`](docs/QA_RESOLUTION_LOG.md): evidence-backed analyst dispositions for selected high-priority annual QA flags.
+- [`docs/RESEARCH_MEMO.md`](docs/RESEARCH_MEMO.md): concise reviewer-facing writing sample built from validated findings and QA decisions.
 - [`docs/BRIEFING_NOTE.md`](docs/BRIEFING_NOTE.md): generated stakeholder briefing with implications, monitoring questions, and interpretation boundaries.
 - [`docs/EXCEL_WORKBOOK.md`](docs/EXCEL_WORKBOOK.md): workbook contents, authority boundaries, QA features, and maintenance notes.
 - [`docs/RESEARCH_AGENDA.md`](docs/RESEARCH_AGENDA.md): prioritized research questions, data needs, methods, outputs, and decision rules.
@@ -125,7 +128,7 @@ The second command verifies every maintained Research Library URL, and the third
 
 ## Current status
 
-The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, and 24 external NCES Digest consistency checks pass across 2019-2024. The latest-release workflow now includes both automated reason-coded triage and a manually reviewed evidence/disposition log for selected high-priority records. A six-sheet Excel review workbook is tracked as a downstream presentation artifact and published with the site. The pipeline also generates 51 state/DC profiles with current composition, longitudinal change, top institutions, and a ten-year state series. A structured research agenda distinguishes questions answerable with the current pipeline from those requiring population-specific or partner data. The Research Library contains 11 reviewed resources from NCES and the Higher Ed Immigration Portal, including the three recurring research products named in the target role. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
+The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, and 24 external NCES Digest consistency checks pass across 2019-2024. The latest-release workflow now includes both automated reason-coded triage and a manually reviewed evidence/disposition log for selected high-priority records. A standalone research memo is generated from the same validated outputs and promotes three contrasting QA cases into a concise writing sample. A six-sheet Excel review workbook is tracked as a downstream presentation artifact and published with the site. The pipeline also generates 51 state/DC profiles with current composition, longitudinal change, top institutions, and a ten-year state series. A structured research agenda distinguishes questions answerable with the current pipeline from those requiring population-specific or partner data. The Research Library contains 11 reviewed resources from NCES and the Higher Ed Immigration Portal, including the three recurring research products named in the target role. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
 
 Current substantive findings include a graduate-driven decade-level increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, a shift toward private nonprofit institutions, and evidence that national growth occurred within continuing institutions rather than being created by a larger institution universe. The newest-release review also identifies a short-run composition shift: 2023-2024 undergraduate U.S. nonresident enrollment increased by 31,592 while graduate enrollment decreased by 2,053. The site surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
 

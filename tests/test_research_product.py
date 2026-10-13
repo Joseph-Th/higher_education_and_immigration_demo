@@ -284,6 +284,16 @@ class ResearchProductTests(unittest.TestCase):
         )
         self.assertGreaterEqual(summary["safe_with_context"], 2)
         self.assertGreaterEqual(summary["hold_for_confirmation"], 1)
+        self.assertEqual(len(summary["case_studies"]), 3)
+        self.assertEqual(
+            {case["case_type"] for case in summary["case_studies"]},
+            {"unresolved_anomaly", "corroborated_movement", "structural_change"},
+        )
+        self.assertTrue(
+            {case["unitid"] for case in summary["case_studies"]}.issubset(
+                {row["unitid"] for row in log}
+            )
+        )
         for row in log:
             self.assertIn(row["unitid"], queue)
             self.assertEqual(queue[row["unitid"]]["review_priority"], "high")
@@ -295,6 +305,23 @@ class ResearchProductTests(unittest.TestCase):
             self.assertIn(row["institution"], rendered)
             self.assertIn(row["evidence_url"], rendered)
         self.assertEqual(self.site_data["qa_resolution_summary"], summary)
+
+    def test_research_memo_tracks_validated_outputs(self) -> None:
+        memo = (ROOT / "docs" / "RESEARCH_MEMO.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "research-memo.html").read_text(encoding="utf-8")
+        headline = self.findings["headline"]
+        latest = self.update_review["national"]
+        cases = self.site_data["qa_resolution_summary"]["case_studies"]
+        self.assertIn(f"{headline['latest_nonresident']:,}", memo)
+        self.assertIn(f"{latest['absolute_change']:+,}", memo)
+        self.assertIn("not yet evidence of a durable trend change", memo)
+        self.assertIn(f'id="memo-total">{headline["latest_nonresident"]:,}', html)
+        self.assertIn(f'id="memo-latest-change">{latest["absolute_change"]:+,}', html)
+        for case in cases:
+            self.assertIn(case["institution"], memo)
+            self.assertIn(case["evidence_url"], memo)
+            self.assertIn(case["institution"], html)
+            self.assertIn(case["evidence_url"], html)
 
     def test_briefing_note_tracks_validated_outputs(self) -> None:
         note = (ROOT / "docs" / "BRIEFING_NOTE.md").read_text(encoding="utf-8")
@@ -452,9 +479,13 @@ class ResearchProductTests(unittest.TestCase):
             (ROOT / "docs" / "BRIEFING_NOTE.md").read_bytes(),
             (ROOT / "site" / "downloads" / "briefing_note.md").read_bytes(),
         )
+        self.assertEqual(
+            (ROOT / "docs" / "RESEARCH_MEMO.md").read_bytes(),
+            (ROOT / "site" / "downloads" / "research_memo.md").read_bytes(),
+        )
 
     def test_static_page_local_assets_and_ids(self) -> None:
-        for page_name in ("index.html", "state.html"):
+        for page_name in ("index.html", "state.html", "research-memo.html"):
             html = (ROOT / "site" / page_name).read_text(encoding="utf-8")
             ids = re.findall(r'\bid="([^"]+)"', html)
             duplicates = [item for item, count in Counter(ids).items() if count > 1]

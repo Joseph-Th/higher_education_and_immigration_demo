@@ -143,6 +143,10 @@ def main() -> int:
         DOWNLOADS / "briefing_note.md",
     )
     shutil.copy2(
+        ROOT / "docs" / "RESEARCH_MEMO.md",
+        DOWNLOADS / "research_memo.md",
+    )
+    shutil.copy2(
         ROOT / "deliverables" / "ipeds_portfolio_analysis.xlsx",
         DOWNLOADS / "ipeds_portfolio_analysis.xlsx",
     )

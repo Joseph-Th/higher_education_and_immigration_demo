@@ -1,0 +1,225 @@
+"""Generate a reviewer-facing research memo from validated analytical outputs."""
+
+from __future__ import annotations
+
+import csv
+import html
+import json
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data"
+DOC_OUTPUT = ROOT / "docs" / "RESEARCH_MEMO.md"
+HTML_OUTPUT = ROOT / "site" / "research-memo.html"
+
+CASE_LABELS = {
+    "unresolved_anomaly": "Hold the anomaly",
+    "corroborated_movement": "Corroborate the direction",
+    "structural_change": "Explain the structural change",
+}
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def signed_int(value: int) -> str:
+    return f"{value:+,}" if value else "0"
+
+
+def signed_pct(value: float) -> str:
+    return f"{value:+.1f}%" if value else "0.0%"
+
+
+def decision_copy(case: dict[str, object]) -> str:
+    if case["publication_class"] == "safe_with_context":
+        return "Publish with context"
+    return "Hold institution-specific claim"
+
+
+def main() -> int:
+    findings = json.loads((DATA / "findings.json").read_text(encoding="utf-8"))
+    review = json.loads((DATA / "latest_update_review.json").read_text(encoding="utf-8"))
+    resolution = json.loads((DATA / "qa_resolution_summary.json").read_text(encoding="utf-8"))
+    benchmark = read_csv(DATA / "benchmark_audit.csv")
+
+    if not benchmark or any(row["status"] != "PASS" for row in benchmark):
+        raise RuntimeError("Cannot publish research memo while external benchmark checks fail")
+    cases = resolution.get("case_studies", [])
+    if len(cases) != 3 or {case["case_type"] for case in cases} != set(CASE_LABELS):
+        raise RuntimeError("Research memo requires the three defined analyst case-study types")
+
+    coverage = findings["coverage"]
+    headline = findings["headline"]
+    levels = findings["level_decomposition"]
+    recovery = findings["recovery"]
+    dynamics = findings["institution_dynamics"]["decade"]
+    latest = review["national"]
+    accounting = review["institution_accounting"]
+    top_gain = review["state_change"]["largest_gains"][0]
+    start_year = coverage["start_year"]
+    end_year = coverage["end_year"]
+    prior_year = review["coverage"]["prior_year"]
+
+    md = [
+        f"# Research Memo: U.S. Nonresident Enrollment in Higher Education, {start_year}-{end_year}",
+        "",
+        f"**Latest data:** Fall {end_year} ({coverage['latest_data_status']})  ",
+        "**Universe:** degree-granting institutions in the IPEDS First Look/Digest Title IV universe, 50 states + DC  ",
+        f"**QA review date:** {resolution['latest_reviewed_on']}",
+        "",
+        "## Bottom line",
+        "",
+        f"U.S. nonresident enrollment reached **{headline['latest_nonresident']:,}** in Fall {end_year}, **{headline['latest_share_pct']:.2f}%** of enrollment in the analytic universe. The national count is **{signed_int(headline['change_since_2015'])} ({signed_pct(headline['change_since_2015_pct'])})** above {start_year}, but the composition of that growth changed: the decade-level increase was entirely graduate-driven, while the newest annual increase was undergraduate-led.",
+        "",
+        f"From {prior_year} to {end_year}, U.S. nonresident enrollment increased **{signed_int(latest['absolute_change'])} ({signed_pct(latest['pct_change'])})**. Undergraduate enrollment increased **{signed_int(latest['undergraduate_change'])}**, while graduate enrollment declined **{signed_int(latest['graduate_change'])}**. That one-year reversal is worth monitoring, but it is not yet evidence of a durable trend change.",
+        "",
+        "## Three findings that matter",
+        "",
+        f"1. **The recovery is real, but it is structurally different.** Graduate enrollment is **{signed_int(levels['graduate_change_students'])}** above {start_year}, while undergraduate enrollment is **{signed_int(levels['undergraduate_change_students'])}** below it. Graduate students now make up the majority of U.S. nonresident enrollment.",
+        f"2. **Geography remains uneven.** **{recovery['states_at_or_above_baseline']}** states/DC are at or above their {recovery['baseline_year']} level, while **{recovery['states_below_baseline']}** remain below. {top_gain['state']} posted the largest {prior_year}-{end_year} increase at **{signed_int(top_gain['absolute_change'])}**.",
+        f"3. **The growth is not an artifact of a larger institution universe.** Continuing institutions contribute **{signed_int(dynamics['continuing_change'])}** over {start_year}-{end_year}; institution entry and exit net to **{signed_int(dynamics['entry_exit_net'])}**. In the latest year, continuing institutions likewise contribute **{signed_int(accounting['continuing_change'])}** of the national change.",
+        "",
+        "## Analyst judgment changes what gets published",
+        "",
+        f"The automated queue identified **{review['review_queue']['high']} high-priority** latest-release records. The manual review layer currently covers **{resolution['reviewed_count']}**, including the ten highest-impact high-priority records. The examples below show why a flag is a review request rather than an error label.",
+        "",
+    ]
+    for case in cases:
+        md.extend(
+            [
+                f"### {CASE_LABELS[str(case['case_type'])]}: {case['institution']}",
+                "",
+                f"**Observed change:** {signed_int(int(case['absolute_change']))}  ",
+                f"**Publication decision:** {decision_copy(case)}  ",
+                f"**Evidence:** [{case['evidence_label']}]({case['evidence_url']})",
+                "",
+                str(case["analyst_note"]),
+                "",
+            ]
+        )
+
+    md.extend(
+        [
+            "## Interpretation boundary",
+            "",
+            "IPEDS U.S. nonresident status is a federal reporting category, not a complete measure of international, immigrant-origin, undocumented, DACA, or foreign-born students. The analysis supports enrollment monitoring and publication QA, not causal claims about immigration policy. State totals reflect institution location, and institution structures or reporting practices can change over time.",
+            "",
+            "## Methods and evidence",
+            "",
+            f"The series uses official NCES/IPEDS Fall Enrollment and institutional directory files for {start_year}-{end_year}. Source archives are hashed and logged, required variables and aggregation labels are audited across years, state/control/student-level totals reconcile to the national series, and **{len(benchmark)}/{len(benchmark)}** independent NCES Digest consistency checks pass. The newest release also receives institution-level reason-coded triage and evidence-backed manual disposition before institution-specific claims are promoted into narrative.",
+            "",
+            "See `docs/METHODOLOGY.md`, `docs/LATEST_UPDATE_REVIEW.md`, and `docs/QA_RESOLUTION_LOG.md` for full definitions and review detail.",
+            "",
+        ]
+    )
+    DOC_OUTPUT.write_text("\n".join(md), encoding="utf-8")
+
+    case_cards = []
+    for case in cases:
+        case_cards.append(
+            f"""
+            <article class="qa-case-card">
+              <p class="case-kicker">{html.escape(CASE_LABELS[str(case['case_type'])])}</p>
+              <h3>{html.escape(str(case['institution']))}</h3>
+              <p class="case-change">{html.escape(signed_int(int(case['absolute_change'])))} students</p>
+              <p>{html.escape(str(case['analyst_note']))}</p>
+              <div class="case-footer">
+                <span class="case-decision">{html.escape(decision_copy(case))}</span>
+                <a href="{html.escape(str(case['evidence_url']), quote=True)}" target="_blank" rel="noopener">Review evidence</a>
+              </div>
+            </article>"""
+        )
+
+    html_output = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research memo on U.S. nonresident enrollment trends and publication QA using NCES/IPEDS data.">
+  <meta name="theme-color" content="#10263c">
+  <title>Research Memo | U.S. Nonresident Enrollment</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to memo</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a>
+      <nav aria-label="Research memo navigation"><a href="index.html">Brief</a><a href="index.html#states">States</a><a href="index.html#methods">Methods</a><a href="index.html#downloads">Data</a></nav>
+    </div>
+  </header>
+  <main id="main" class="memo-page">
+    <section class="memo-hero">
+      <div class="shell">
+        <p class="eyebrow">Research memo · Fall {end_year}</p>
+        <h1>Enrollment recovered. The latest growth looks different.</h1>
+        <p class="lede">A concise research and publication-QA memo on U.S. nonresident enrollment at degree-granting U.S. institutions.</p>
+        <div class="memo-meta"><span>Fall {end_year} {html.escape(str(coverage['latest_data_status']))}</span><span>{start_year}-{end_year}</span><span>50 states + DC</span></div>
+      </div>
+    </section>
+
+    <section class="shell memo-layout">
+      <article class="memo-copy">
+        <p class="eyebrow">Bottom line</p>
+        <h2>Recovery is national. Its composition is not the same as before.</h2>
+        <p>U.S. nonresident enrollment reached <strong id="memo-total">{headline['latest_nonresident']:,}</strong> in Fall {end_year}, or <strong>{headline['latest_share_pct']:.2f}%</strong> of enrollment in the analytic universe. That is <strong>{signed_int(headline['change_since_2015'])}</strong> students above {start_year}.</p>
+        <p>The newest annual movement breaks with the decade-level pattern. From {prior_year} to {end_year}, undergraduate U.S. nonresident enrollment increased <strong>{signed_int(latest['undergraduate_change'])}</strong>, while graduate enrollment declined <strong>{signed_int(latest['graduate_change'])}</strong>. The result was a net increase of <strong id="memo-latest-change">{signed_int(latest['absolute_change'])}</strong>.</p>
+
+        <h2>Three findings that matter</h2>
+        <div class="memo-findings">
+          <article><span>01</span><h3>The recovery became graduate-heavy</h3><p>Graduate enrollment is {signed_int(levels['graduate_change_students'])} above {start_year}; undergraduate enrollment is {signed_int(levels['undergraduate_change_students'])} below it.</p></article>
+          <article><span>02</span><h3>State recovery remains uneven</h3><p>{recovery['states_at_or_above_baseline']} states/DC are at or above {recovery['baseline_year']}; {recovery['states_below_baseline']} remain below. {top_gain['state']} led the latest annual increase at {signed_int(top_gain['absolute_change'])}.</p></article>
+          <article><span>03</span><h3>Institution-universe change does not explain the gain</h3><p>Continuing institutions contribute {signed_int(dynamics['continuing_change'])} over {start_year}-{end_year}, while universe entry/exit nets to {signed_int(dynamics['entry_exit_net'])}.</p></article>
+        </div>
+      </article>
+
+      <aside class="memo-facts" aria-label="Memo at a glance">
+        <p class="eyebrow">At a glance</p>
+        <dl>
+          <div><dt>Fall {end_year}</dt><dd>{headline['latest_nonresident']:,}</dd></div>
+          <div><dt>Change since {start_year}</dt><dd>{signed_pct(headline['change_since_2015_pct'])}</dd></div>
+          <div><dt>{prior_year}-{end_year}</dt><dd>{signed_pct(latest['pct_change'])}</dd></div>
+          <div><dt>High-priority QA flags</dt><dd>{review['review_queue']['high']}</dd></div>
+          <div><dt>Manually reviewed</dt><dd>{resolution['reviewed_count']}</dd></div>
+          <div><dt>NCES benchmark checks</dt><dd>{len(benchmark)}/{len(benchmark)}</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="section section-tinted memo-cases" id="analyst-cases">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">Analyst judgment</p><h2>A flag does not automatically become a finding</h2><p>The same QA process can lead to three different publication decisions. These examples are drawn from the current evidence-backed review log.</p></div>
+        <div class="qa-case-grid" id="memo-case-studies">{''.join(case_cards)}</div>
+      </div>
+    </section>
+
+    <section class="section shell memo-methods">
+      <div class="section-heading compact"><p class="eyebrow">Interpretation boundary</p><h2>What this memo can support</h2></div>
+      <div class="method-grid">
+        <article><h3>Population</h3><p>IPEDS U.S. nonresident status is a federal reporting category. It is not a complete measure of immigrant-origin, undocumented, DACA, foreign-born, or all international students.</p></article>
+        <article><h3>Use</h3><p>The analysis supports enrollment monitoring and publication QA. It does not identify the causes of enrollment change or estimate immigration-policy effects.</p></article>
+        <article><h3>Evidence</h3><p>Official source archives, schema audits, arithmetic reconciliation, external NCES benchmarking, and institution-level evidence review are kept separate so each claim can be traced to its support.</p></article>
+        <article><h3>Publication</h3><p>Unresolved institution anomalies remain in official aggregate calculations but are withheld from institution-specific narrative until directly comparable evidence is available.</p></article>
+      </div>
+      <div class="memo-actions"><a class="button button-primary" href="downloads/research_memo.md">Download memo notes</a><a class="button button-secondary" href="index.html#methods">Full methods</a></div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Research memo · U.S. Nonresident Students in Higher Education</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>
+"""
+    HTML_OUTPUT.write_text(html_output, encoding="utf-8")
+    print(f"Wrote {DOC_OUTPUT}")
+    print(f"Wrote {HTML_OUTPUT}")
+    print(
+        f"Research memo: {headline['latest_nonresident']:,} latest; "
+        f"{len(cases)} analyst cases; {len(benchmark)}/{len(benchmark)} benchmarks"
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

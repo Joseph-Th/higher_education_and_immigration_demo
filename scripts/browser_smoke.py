@@ -48,6 +48,7 @@ def check_downloads(base_url: str) -> None:
         "downloads/latest_update_review.md",
         "downloads/qa_resolution_log.csv",
         "downloads/qa_resolution_log.md",
+        "downloads/research_memo.md",
         "downloads/research_library.csv",
         "downloads/research_library.md",
         "downloads/research_agenda.md",
@@ -130,6 +131,12 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
         raise AssertionError("QA resolution safe count does not match site data")
     if page.locator("#resolution-held").inner_text().strip() != expected_int(resolution["hold_for_confirmation"]):
         raise AssertionError("QA resolution held count does not match site data")
+    if page.locator("#qa-case-studies .qa-case-card").count() != 3:
+        raise AssertionError("National brief does not render the three analyst case studies")
+    rendered_cases = page.locator("#qa-case-studies .qa-case-card h3").all_inner_texts()
+    expected_cases = [case["institution"] for case in resolution["case_studies"]]
+    if rendered_cases != expected_cases:
+        raise AssertionError("National brief analyst case studies do not match site data")
 
     page.evaluate(
         "document.documentElement.style.scrollBehavior='auto'; "
@@ -152,6 +159,33 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
         raise AssertionError(f"Page-level horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_research_memo(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/research-memo.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Research memo load failed at {width}px")
+    if page.locator("#memo-total").inner_text().strip() != expected_int(SITE_DATA["headline"]["latest_nonresident"]):
+        raise AssertionError("Research memo headline total does not match site data")
+    if page.locator("#memo-case-studies .qa-case-card").count() != 3:
+        raise AssertionError("Research memo does not show three analyst case studies")
+    expected_cases = [case["institution"] for case in SITE_DATA["qa_resolution_summary"]["case_studies"]]
+    rendered_cases = page.locator("#memo-case-studies .qa-case-card h3").all_inner_texts()
+    if rendered_cases != expected_cases:
+        raise AssertionError("Research memo case studies do not match site data")
+    if page.locator('a[href="downloads/research_memo.md"]').count() != 1:
+        raise AssertionError("Research memo download link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Research memo horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Research memo browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -205,6 +239,8 @@ def main() -> int:
                 inspect_viewport(browser, base_url, width=390, height=844)
                 inspect_state_profile(browser, base_url, width=1280, height=900)
                 inspect_state_profile(browser, base_url, width=390, height=844)
+                inspect_research_memo(browser, base_url, width=1280, height=900)
+                inspect_research_memo(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

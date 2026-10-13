@@ -78,6 +78,7 @@ Then review the newly generated:
 - `docs/LATEST_UPDATE_REVIEW.md`.
 - `data/qa_resolution_log.csv` and `docs/QA_RESOLUTION_LOG.md`;
 - `docs/BRIEFING_NOTE.md`.
+- `docs/RESEARCH_MEMO.md` and `site/research-memo.html`.
 
 Investigate the reason-coded high- and medium-priority review queue before updating the narrative. A queue item is not automatically an error. Determine whether the movement is plausible, concentrated in a few institutions, associated with an imputation/status change, related to analytic-universe membership, or a source discontinuity that needs further review.
 
@@ -128,6 +129,8 @@ Regenerate all state profiles with `python scripts/build_state_profiles.py`. Rev
 Review `data/research_agenda.csv` after the new release. Close, reframe, or reprioritize questions whose evidence trigger has changed; add new questions only when the population, decision need, required data, proposed method, and interpretation boundary can be stated explicitly. Regenerate `docs/RESEARCH_AGENDA.md` through the normal validation lane.
 
 Re-read the generated briefing note as a stakeholder product. Its numbers are derived automatically, but its monitoring questions and interpretation boundaries must still remain appropriate as the evidence changes.
+
+Re-read the generated research memo as a publication product. Confirm that its three featured QA cases still represent an unresolved anomaly, a corroborated movement, and a documented structural change, and that the accompanying evidence still supports the stated publication decision.
 
 ## 8. Visual review and deployment
 

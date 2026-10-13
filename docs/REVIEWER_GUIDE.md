@@ -2,15 +2,16 @@
 
 This repository is intended to be evaluated as a small recurring research product, not only as a coding exercise. A reviewer should be able to understand the research question, inspect the public result, trace a number to source data, and see how the product would be maintained when a new release appears.
 
-## Five-minute review path
+## Reviewer path
 
-1. Open `site/index.html` through a local static server or deployed Pages URL. Read the six longitudinal findings, the latest-release review, inspect the state explorer, and download a state-specific brief from the selector.
-2. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
-3. Read `docs/BRIEFING_NOTE.md` for the management-facing synthesis, then `docs/FINDINGS.md` for the exact numerical basis behind it.
-4. Read `docs/METHODOLOGY.md` for population definitions, universe rules, endpoint matching, and limitations.
-5. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
-6. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
-7. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
+1. Open `site/index.html` through a local static server or deployed Pages URL. Read the six longitudinal findings, the latest-release review, inspect the state explorer, and open the three analyst case studies.
+2. Open `site/research-memo.html`. It is the compact writing sample: current findings, interpretation boundaries, and three examples of how QA changes publication decisions.
+3. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
+4. Read `docs/BRIEFING_NOTE.md` for the management-facing synthesis, then `docs/FINDINGS.md` for the exact numerical basis behind it.
+5. Read `docs/METHODOLOGY.md` for population definitions, universe rules, endpoint matching, and limitations.
+6. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
+7. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
+8. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
 
 ## What the project demonstrates
 
@@ -25,6 +26,7 @@ This repository is intended to be evaluated as a small recurring research produc
 | Investigate apparent discrepancies | `scripts/validate_benchmarks.py` quantifies release-vintage differences instead of forcing current data to match an older Digest publication |
 | Review a new annual release | `scripts/build_update_review.py`, `docs/LATEST_UPDATE_REVIEW.md`, and `data/processed/latest_release_institution_review.csv` reconcile the new year and produce a reason-coded QA queue |
 | Resolve flagged records with analyst judgment | `data/qa_resolution_log.csv`, `scripts/build_qa_resolution_log.py`, and `docs/QA_RESOLUTION_LOG.md` tie selected high-priority flags to external evidence, scope checks, and explicit publication decisions |
+| Write a publication-ready research product | `scripts/build_research_memo.py`, `docs/RESEARCH_MEMO.md`, and `site/research-memo.html` turn validated findings and QA decisions into a concise reader-facing memo |
 | Brief nontechnical stakeholders | `scripts/build_briefing_note.py` generates `docs/BRIEFING_NOTE.md` directly from validated findings, QA, and benchmark outputs |
 | Analyze and quality-control data in Excel | `deliverables/ipeds_portfolio_analysis.xlsx` uses formulas, structured tables, state lookup/data validation, reconciliation columns, conditional formatting, benchmark review, and charting |
 | Maintain national and state-level data products | `scripts/build_state_profiles.py` generates 51 state/DC briefs, a machine-readable profile dataset, and `state_profile_index.csv`; `state.html` provides a shareable state-level publication view |

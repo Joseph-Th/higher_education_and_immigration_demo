@@ -244,7 +244,7 @@ One row per maintained research or data-needs question.
 
 `data/latest_update_review.json` contains the latest annual national change, student-level decomposition, institution-universe accounting, largest state changes, priority counts, top review items, and imputation/status transitions used by the public release-review section.
 
-`data/qa_resolution_summary.json` contains the reviewed sample size, counts by publication class and disposition, the reviewed UNITIDs, and the latest manual review date. It is generated from `qa_resolution_log.csv` only after reconciliation to the current annual QA queue.
+`data/qa_resolution_summary.json` contains the reviewed sample size, counts by publication class and disposition, reviewed UNITIDs, latest manual review date, and three deterministic featured case studies. The featured cases represent an unresolved anomaly, a corroborated movement, and a documented structural change; each carries the current queue change, evidence URL, analyst note, and publication class used by the public brief and research memo. The summary is generated from `qa_resolution_log.csv` only after reconciliation to the current annual QA queue.
 
 `data/state_profiles.json` contains the shareable state-profile payload used by `site/state.html`: coverage metadata plus 51 keyed profiles with latest metrics, change windows, top institutions, annual series, and corresponding Markdown filename. It is generated from `state_year.csv`, `state_change_summary.csv`, and the latest institution table rather than maintained independently.
 

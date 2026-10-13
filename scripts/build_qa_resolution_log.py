@@ -36,6 +36,38 @@ FIELDS = (
 PUBLICATION_CLASSES = {"safe_with_context", "hold_for_confirmation"}
 
 
+def featured_case(
+    rows: list[dict[str, object]],
+    *,
+    case_type: str,
+    publication_class: str,
+    disposition: str,
+) -> dict[str, object]:
+    matches = [
+        row
+        for row in rows
+        if row["publication_class"] == publication_class
+        and row["disposition"] == disposition
+    ]
+    if not matches:
+        raise RuntimeError(
+            f"Missing required featured QA case: {publication_class}/{disposition}"
+        )
+    row = max(matches, key=lambda item: abs(int(item["absolute_change"])))
+    return {
+        "case_type": case_type,
+        "unitid": row["unitid"],
+        "institution": row["institution"],
+        "state": row["state"],
+        "absolute_change": row["absolute_change"],
+        "disposition": row["disposition"],
+        "publication_class": row["publication_class"],
+        "evidence_label": row["evidence_label"],
+        "evidence_url": row["evidence_url"],
+        "analyst_note": row["analyst_note"],
+    }
+
+
 def read_rows(path: Path) -> list[dict[str, str]]:
     with path.open("r", encoding="utf-8", newline="") as handle:
         return list(csv.DictReader(handle))
@@ -99,6 +131,26 @@ def main() -> int:
 
     classes = Counter(str(row["publication_class"]) for row in joined)
     dispositions = Counter(str(row["disposition"]) for row in joined)
+    case_studies = [
+        featured_case(
+            joined,
+            case_type="unresolved_anomaly",
+            publication_class="hold_for_confirmation",
+            disposition="unresolved_discontinuity",
+        ),
+        featured_case(
+            joined,
+            case_type="corroborated_movement",
+            publication_class="safe_with_context",
+            disposition="corroborated_direction",
+        ),
+        featured_case(
+            joined,
+            case_type="structural_change",
+            publication_class="safe_with_context",
+            disposition="expected_structural_change",
+        ),
+    ]
     summary = {
         "reviewed_count": len(joined),
         "safe_with_context": classes["safe_with_context"],
@@ -107,6 +159,7 @@ def main() -> int:
         "reviewed_unitids": [row["unitid"] for row in joined],
         "required_top_10_unitids": required_top_10,
         "required_top_10_covered": True,
+        "case_studies": case_studies,
         "latest_reviewed_on": max(row["reviewed_on"] for row in joined),
     }
     JSON_OUTPUT.write_text(json.dumps(summary, indent=2), encoding="utf-8")
@@ -123,6 +176,7 @@ def main() -> int:
         f"- **{len(joined)}** high-priority records manually reviewed.",
         f"- **{classes['safe_with_context']}** are safe to discuss with explicit context.",
         f"- **{classes['hold_for_confirmation']}** remain held for institution-specific interpretation.",
+        "- Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.",
         f"- Latest review date: **{summary['latest_reviewed_on']}**.",
         "",
         "## Dispositions",

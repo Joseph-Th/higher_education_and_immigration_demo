@@ -9,6 +9,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 - **11** high-priority records manually reviewed.
 - **2** are safe to discuss with explicit context.
 - **9** remain held for institution-specific interpretation.
+- Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-13**.
 
 ## Dispositions

@@ -73,7 +73,7 @@ It includes national headline metrics, level-change decomposition, state recover
 
 `latest_update_review.json` is the newest-release review summary used by the public brief and generated review memo. It contains the newest national change, undergraduate/graduate decomposition, institution-universe accounting, state movers, review-priority counts, top review items, and imputation/status transitions.
 
-`qa_resolution_summary.json` is the compact publication summary of the manual QA disposition layer. It records the reviewed sample size and counts classified as `safe_with_context` versus `hold_for_confirmation`; it is generated from `qa_resolution_log.csv` after the log has been reconciled to the current automated queue.
+`qa_resolution_summary.json` is the compact publication summary of the manual QA disposition layer. It records the reviewed sample size, counts classified as `safe_with_context` versus `hold_for_confirmation`, and three deterministic featured case studies used by the public brief and research memo. It is generated from `qa_resolution_log.csv` after the log has been reconciled to the current automated queue.
 
 `state_profiles.json` is the machine-readable state-publication product generated from validated state and institution outputs. It contains one profile for each of the 50 states plus DC with current metrics, change windows, top institutions, and the 2015-2024 annual series. `site/state.html` reads this file to provide shareable state views; generated Markdown counterparts live in `docs/state_profiles/`.
 
