@@ -160,6 +160,13 @@ section[id] { scroll-margin-top: 76px; }
 .release-review-strip strong { display: block; font-size: 28px; letter-spacing: -.035em; }
 .release-review-strip span { display: block; margin-top: 6px; color: var(--ink-soft); font-size: 12px; }
 .update-note { max-width: 1040px; color: var(--ink-soft); }
+.resolution-callout { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(360px,.75fr); gap: 22px; margin-top: 18px; padding: 26px 28px; border: 1px solid var(--line); border-radius: var(--radius); background: #f7f9fa; }
+.resolution-callout h3 { margin: 0; font-size: 25px; letter-spacing: -.025em; }
+.resolution-callout > div > p:last-child { color: var(--ink-soft); margin-bottom: 0; }
+.resolution-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.resolution-stats article { padding: 16px; background: white; border: 1px solid var(--line); border-radius: 13px; }
+.resolution-stats strong { display: block; font-size: 27px; }
+.resolution-stats span { display: block; margin-top: 5px; color: var(--ink-soft); font-size: 11px; line-height: 1.35; }
 
 .concentration-strip { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin: -8px 0 22px; }
 .concentration-strip article { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; padding: 20px 22px; background: var(--wash); border-radius: 15px; }
@@ -227,7 +234,7 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
 
 @media (max-width: 900px) {
   nav { display: none; }
-  .hero-grid, .split-layout, .state-explorer, .download-layout, .recovery-layout, .control-layout, .dynamics-layout, .update-layout { grid-template-columns: 1fr; }
+  .hero-grid, .split-layout, .state-explorer, .download-layout, .recovery-layout, .control-layout, .dynamics-layout, .update-layout, .resolution-callout { grid-template-columns: 1fr; }
   .hero-grid { gap: 38px; }
   .metrics, .quality-grid { grid-template-columns: repeat(2, 1fr); }
   .explorer-copy { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -239,7 +246,7 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .hero { padding-top: 64px; }
   h1 { font-size: 43px; }
   .lede { font-size: 17px; }
-  .metrics, .quality-grid, .method-grid, .explorer-metrics, .decomposition-strip, .concentration-strip, .release-review-strip, .state-profile-grid, .state-profile-details { grid-template-columns: 1fr; }
+  .metrics, .quality-grid, .method-grid, .explorer-metrics, .decomposition-strip, .concentration-strip, .release-review-strip, .resolution-stats, .state-profile-grid, .state-profile-details { grid-template-columns: 1fr; }
   .metric-card { min-height: 145px; }
   .chart-card, .explorer-panel, .explorer-copy { padding: 20px; }
   .chart { min-height: 250px; }
