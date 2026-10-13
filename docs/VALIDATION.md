@@ -78,16 +78,18 @@ This design is deliberate: the external publication is a validation source, not 
 - QA resolution entries remaining tied to current high-priority queue records, using unique UNITIDs, HTTPS evidence, valid review dates, explicit publication classes, and matching generated documentation;
 - the QA resolution sample covering the ten highest-impact rows in the current deterministic high-priority queue so the core reviewed sample cannot be silently cherry-picked;
 - the generated research memo reproducing validated headline/latest-release values and the three featured analyst case studies in both Markdown and HTML;
+- the population/source crosswalk containing exactly the six required research concepts, HTTPS sources, an explicit undocumented-student exclusion in the IPEDS row, and matching generated Markdown/HTML;
 - structured Research Library metadata having unique IDs, HTTPS URLs, current review dates, and matching generated documentation;
 - stakeholder briefing note reproducing validated headline/latest-release values and interpretation boundaries;
 - Excel workbook ZIP integrity, required six-sheet structure, formula presence, and current headline value;
+- PDF research brief structure, exact three-page count, exact public-copy equality, and SHA-256 freshness against the current generated research memo;
 - 51 state/DC profiles covering exactly the analytic geographies, reconciling their latest counts to the national total, publishing byte-identical Markdown copies, and matching the machine-readable state-profile dataset;
 - structured research agenda with unique IDs, valid priorities, both current-data and external-data questions, and matching generated documentation;
 - QA and external benchmark checks all passing;
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **22 tests**.
+The current suite contains **24 tests**.
 
 ## One-command validation
 
@@ -114,14 +116,24 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - the latest-release high-priority review count matching `site_data.json`;
 - working public CSV downloads;
 - working public Research Library and Research Agenda CSV/Markdown, QA resolution CSV/Markdown, research memo, stakeholder briefing-note, Excel-workbook, state-profile index, and state-profile downloads;
+- working public population-crosswalk CSV/Markdown and PDF research-brief downloads;
 - anchored sections clearing the sticky header; and
 - a shareable California state-profile page rendering the correct query-selected state, ten-year series, five institution rows, profile-note link, and responsive layout; and
 - a standalone research memo rendering the validated headline and all three analyst case studies at desktop and mobile widths; and
+- a population/source crosswalk rendering all six required definitions at desktop and mobile widths; and
 - no unintended page-level horizontal overflow.
 
 Run it after `python scripts/validate_project.py` and before deployment.
 
 `scripts/check_qa_evidence.py` is a separate online evidence-health lane. It checks every external URL referenced by the manual QA resolution log, distinguishes HTTP 401/403 access restrictions from broken resources, and fails on broken URLs or network-level uncertainty. It remains outside the offline validation command so publication reproducibility does not depend on third-party web availability.
+
+`scripts/check_population_crosswalk.py` applies the same online-health principle to the six methodology sources referenced by `data/population_crosswalk.csv`. HTTP 401/403 responses are recorded as script-access restrictions that require manual browser review; actual broken URLs and network uncertainty fail the check. The crosswalk itself remains fully reproducible offline.
+
+## PDF publication freshness
+
+`scripts/build_pdf_brief.py` renders `site/research-memo.html` to the canonical `deliverables/research_brief.pdf` and publishes an exact copy under `site/downloads/`. The builder writes `deliverables/research_brief_manifest.json` with the memo SHA-256, PDF SHA-256, and byte size.
+
+The repository tests recalculate both hashes. This prevents a data or memo update from leaving an older PDF beside newer web content. PDF generation requires Playwright/Chromium, but freshness verification is offline once the PDF has been built.
 
 ## Publication checks
 
@@ -132,4 +144,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable Excel analysis workbook, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, stakeholder briefing note, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable PDF research brief, Excel analysis workbook, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, population/source crosswalk, stakeholder briefing note, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.

@@ -107,11 +107,13 @@ def main() -> int:
             "",
             "IPEDS U.S. nonresident status is a federal reporting category, not a complete measure of international, immigrant-origin, undocumented, DACA, or foreign-born students. The analysis supports enrollment monitoring and publication QA, not causal claims about immigration policy. State totals reflect institution location, and institution structures or reporting practices can change over time.",
             "",
+            "The project maintains `docs/POPULATION_CROSSWALK.md` to document which companion sources are appropriate for immigrant-origin, international, undocumented, high-school-pipeline, and refugee/asylee questions rather than treating those populations as interchangeable.",
+            "",
             "## Methods and evidence",
             "",
             f"The series uses official NCES/IPEDS Fall Enrollment and institutional directory files for {start_year}-{end_year}. Source archives are hashed and logged, required variables and aggregation labels are audited across years, state/control/student-level totals reconcile to the national series, and **{len(benchmark)}/{len(benchmark)}** independent NCES Digest consistency checks pass. The newest release also receives institution-level reason-coded triage and evidence-backed manual disposition before institution-specific claims are promoted into narrative.",
             "",
-            "See `docs/METHODOLOGY.md`, `docs/LATEST_UPDATE_REVIEW.md`, and `docs/QA_RESOLUTION_LOG.md` for full definitions and review detail.",
+            "See `docs/METHODOLOGY.md`, `docs/POPULATION_CROSSWALK.md`, `docs/LATEST_UPDATE_REVIEW.md`, and `docs/QA_RESOLUTION_LOG.md` for full definitions and review detail.",
             "",
         ]
     )
@@ -199,12 +201,24 @@ def main() -> int:
     <section class="section shell memo-methods">
       <div class="section-heading compact"><p class="eyebrow">Interpretation boundary</p><h2>What this memo can support</h2></div>
       <div class="method-grid">
-        <article><h3>Population</h3><p>IPEDS U.S. nonresident status is a federal reporting category. It is not a complete measure of immigrant-origin, undocumented, DACA, foreign-born, or all international students.</p></article>
+        <article><h3>Population</h3><p>IPEDS U.S. nonresident status is a federal reporting category. It is not a complete measure of immigrant-origin, undocumented, DACA, foreign-born, or all international students. The population crosswalk documents which companion source should answer each of those questions.</p></article>
         <article><h3>Use</h3><p>The analysis supports enrollment monitoring and publication QA. It does not identify the causes of enrollment change or estimate immigration-policy effects.</p></article>
         <article><h3>Evidence</h3><p>Official source archives, schema audits, arithmetic reconciliation, external NCES benchmarking, and institution-level evidence review are kept separate so each claim can be traced to its support.</p></article>
         <article><h3>Publication</h3><p>Unresolved institution anomalies remain in official aggregate calculations but are withheld from institution-specific narrative until directly comparable evidence is available.</p></article>
       </div>
-      <div class="memo-actions"><a class="button button-primary" href="downloads/research_memo.md">Download memo notes</a><a class="button button-secondary" href="index.html#methods">Full methods</a></div>
+      <div class="memo-actions"><a class="button button-primary" href="downloads/research_brief.pdf">Download PDF brief</a><a class="button button-secondary" href="methodology-crosswalk.html">Population crosswalk</a><a class="button button-secondary" href="downloads/research_memo.md">Memo notes</a><a class="button button-secondary" href="index.html#methods">Full methods</a></div>
+      <div class="memo-print-notes print-only">
+        <h2>Methods and source trail</h2>
+        <div class="memo-print-grid">
+          <article><h3>Primary measure</h3><p>The series uses NCES/IPEDS Fall Enrollment <code>EFNRALT</code> for U.S. nonresident students. The analytic universe is degree-granting institutions in the First Look/Digest Title IV selection, located in the 50 states and District of Columbia.</p></article>
+          <article><h3>Population comparability</h3><p>IPEDS U.S. nonresident, SEVIS international-student records, CPS immigrant-origin estimates, and ACS-derived undocumented-student estimates answer different questions. The project maintains a separate population/source crosswalk before any companion comparison is attempted.</p></article>
+          <article><h3>Release control</h3><p>Historical revised IPEDS files are preferred when available. Fall {end_year} is treated as provisional. Source URLs, archive sizes, retrieval records, and SHA-256 hashes are retained so later revisions can be distinguished from analysis errors.</p></article>
+          <article><h3>Independent checks</h3><p>All {len(benchmark)} NCES Digest consistency checks pass. State, institutional-control, and student-level aggregates reconcile to the national series, and institution entry/exit accounting is separated from continuing-institution change.</p></article>
+          <article><h3>Publication QA</h3><p>The latest-release queue contains {review['review_queue']['high']} high-priority records. {resolution['reviewed_count']} high-priority records have evidence-backed manual dispositions; unresolved cases remain in official aggregate calculations but are withheld from institution-specific claims.</p></article>
+          <article><h3>Use boundary</h3><p>This is an enrollment-monitoring and research-QA product. It does not estimate causal policy effects and it does not convert one immigration-related population definition into another.</p></article>
+        </div>
+        <p class="memo-print-footnote">Portfolio research demonstration. Not affiliated with NCES or the Presidents' Alliance on Higher Education and Immigration.</p>
+      </div>
     </section>
   </main>
   <footer><div class="shell footer-inner"><span>Research memo · U.S. Nonresident Students in Higher Education</span><a href="index.html">National brief</a></div></footer>

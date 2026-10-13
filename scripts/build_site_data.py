@@ -130,6 +130,7 @@ def main() -> int:
     )
     shutil.copy2(DATA / "research_library.csv", DOWNLOADS / "research_library.csv")
     shutil.copy2(DATA / "research_agenda.csv", DOWNLOADS / "research_agenda.csv")
+    shutil.copy2(DATA / "population_crosswalk.csv", DOWNLOADS / "population_crosswalk.csv")
     shutil.copy2(
         ROOT / "docs" / "RESEARCH_LIBRARY.md",
         DOWNLOADS / "research_library.md",
@@ -137,6 +138,10 @@ def main() -> int:
     shutil.copy2(
         ROOT / "docs" / "RESEARCH_AGENDA.md",
         DOWNLOADS / "research_agenda.md",
+    )
+    shutil.copy2(
+        ROOT / "docs" / "POPULATION_CROSSWALK.md",
+        DOWNLOADS / "population_crosswalk.md",
     )
     shutil.copy2(
         ROOT / "docs" / "BRIEFING_NOTE.md",
@@ -149,6 +154,10 @@ def main() -> int:
     shutil.copy2(
         ROOT / "deliverables" / "ipeds_portfolio_analysis.xlsx",
         DOWNLOADS / "ipeds_portfolio_analysis.xlsx",
+    )
+    shutil.copy2(
+        ROOT / "deliverables" / "research_brief.pdf",
+        DOWNLOADS / "research_brief.pdf",
     )
     shutil.copy2(PROCESSED / "state_profile_index.csv", DOWNLOADS / "state_profile_index.csv")
     shutil.copy2(DATA / "state_profiles.json", SITE_DATA / "state_profiles.json")

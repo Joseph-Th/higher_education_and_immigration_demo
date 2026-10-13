@@ -9,6 +9,7 @@ This compact library records the external sources used to collect, interpret, va
 | [IPEDS Complete Data Files](https://nces.ed.gov/ipeds/help/complete-data-files) | Data access | Annual and rolling releases | Primary source discovery and reproducible collection | 2026-10-13 |
 | [IPEDS Data Release Schedule](https://nces.ed.gov/ipeds/survey-components/data-release-schedule) | Release schedule | Periodic | Source-freshness and next-release monitoring | 2026-10-13 |
 | [Timing of IPEDS Data Collection](https://nces.ed.gov/ipeds/use-the-data/timing-of-ipeds-data-collection) | Methodology | Periodic | Interpret data year collection cycle and release vintage | 2026-10-13 |
+| [IPEDS Race/Ethnicity and U.S. Nonresident Definitions](https://nces.ed.gov/ipeds/report-your-data/race-ethnicity-definitions/) | Methodology | Periodic | Primary definition source for the population/source crosswalk and public interpretation boundary | 2026-10-13 |
 | [Digest of Education Statistics 2025 Table 306.10](https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp) | Benchmark table | Annual | Independent national benchmark and release-vintage audit | 2026-10-13 |
 | [IPEDS Fall Enrollment 2024 Complete Data File](https://nces.ed.gov/ipeds/complete-data-files/EF2024A.zip) | Raw data archive | Annual | Latest primary enrollment source used by the analysis | 2026-10-13 |
 | [IPEDS Institutional Directory 2024 Complete Data File](https://nces.ed.gov/ipeds/complete-data-files/HD2024.zip) | Raw data archive | Annual | Same-year institution metadata and analytic-universe join | 2026-10-13 |
@@ -40,6 +41,13 @@ This compact library records the external sources used to collect, interpret, va
 - **Scope:** IPEDS collection cycle and reporting-period timing
 - **Project use:** Interpret data year collection cycle and release vintage
 - **Status note:** Methodological timing reference
+
+### IPEDS Race/Ethnicity and U.S. Nonresident Definitions
+
+- **Publisher:** NCES
+- **Scope:** Federal IPEDS reporting definitions for race/ethnicity citizenship and U.S. nonresident classification
+- **Project use:** Primary definition source for the population/source crosswalk and public interpretation boundary
+- **Status note:** Explicitly distinguishes U.S. nonresidents from DACA undocumented and other eligible noncitizens
 
 ### Digest of Education Statistics 2025 Table 306.10
 

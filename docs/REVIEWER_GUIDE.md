@@ -4,14 +4,15 @@ This repository is intended to be evaluated as a small recurring research produc
 
 ## Reviewer path
 
-1. Open `site/index.html` through a local static server or deployed Pages URL. Read the six longitudinal findings, the latest-release review, inspect the state explorer, and open the three analyst case studies.
-2. Open `site/research-memo.html`. It is the compact writing sample: current findings, interpretation boundaries, and three examples of how QA changes publication decisions.
-3. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
-4. Read `docs/BRIEFING_NOTE.md` for the management-facing synthesis, then `docs/FINDINGS.md` for the exact numerical basis behind it.
-5. Read `docs/METHODOLOGY.md` for population definitions, universe rules, endpoint matching, and limitations.
-6. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
-7. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
-8. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
+1. Open `deliverables/research_brief.pdf`. It is the fastest reviewer-facing artifact: headline findings, analyst judgment, interpretation boundaries, and a compact source/QA trail in three pages.
+2. Open `site/index.html` through a local static server or deployed Pages URL. Read the six longitudinal findings, the latest-release review, inspect the state explorer, and open the three analyst case studies.
+3. Open `site/methodology-crosswalk.html`. This shows how the project distinguishes IPEDS U.S. nonresident data from immigrant-origin, SEVIS international, undocumented, high-school-pipeline, and refugee/asylee concepts before attempting a comparison.
+4. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
+5. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
+6. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
+7. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
+8. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
+9. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
 
 ## What the project demonstrates
 
@@ -21,12 +22,13 @@ This repository is intended to be evaluated as a small recurring research produc
 | Preserve source lineage | `data/source_manifest.csv` records retrieval time, bytes, SHA-256 hashes, and extracted files |
 | Handle changing schemas | `scripts/audit_ipeds_schema.py`, `data/schema_audit.csv`, and `docs/VARIABLE_MAPPING.md` verify required variables and labels year by year |
 | Define an analytic universe | `docs/METHODOLOGY.md` documents the degree-granting First Look/Digest universe and 50-states-plus-DC rule |
+| Distinguish populations and choose compatible sources | `data/population_crosswalk.csv`, `scripts/build_population_crosswalk.py`, and `site/methodology-crosswalk.html` document inclusion/exclusion rules, source vintages, units, and comparison warnings for six immigration-related student concepts |
 | Build reproducible transformations | `scripts/build_analysis.py` creates institution-, state-, control-, and national-level outputs from the same normalized records |
 | Perform substantive analysis | `scripts/summarize_findings.py` produces level, geography, control, concentration, recovery, and institution-dynamics findings |
 | Investigate apparent discrepancies | `scripts/validate_benchmarks.py` quantifies release-vintage differences instead of forcing current data to match an older Digest publication |
 | Review a new annual release | `scripts/build_update_review.py`, `docs/LATEST_UPDATE_REVIEW.md`, and `data/processed/latest_release_institution_review.csv` reconcile the new year and produce a reason-coded QA queue |
 | Resolve flagged records with analyst judgment | `data/qa_resolution_log.csv`, `scripts/build_qa_resolution_log.py`, and `docs/QA_RESOLUTION_LOG.md` tie selected high-priority flags to external evidence, scope checks, and explicit publication decisions |
-| Write a publication-ready research product | `scripts/build_research_memo.py`, `docs/RESEARCH_MEMO.md`, and `site/research-memo.html` turn validated findings and QA decisions into a concise reader-facing memo |
+| Write a publication-ready research product | `scripts/build_research_memo.py`, `docs/RESEARCH_MEMO.md`, `site/research-memo.html`, and `deliverables/research_brief.pdf` turn validated findings and QA decisions into web, Markdown, and reviewer-ready PDF products |
 | Brief nontechnical stakeholders | `scripts/build_briefing_note.py` generates `docs/BRIEFING_NOTE.md` directly from validated findings, QA, and benchmark outputs |
 | Analyze and quality-control data in Excel | `deliverables/ipeds_portfolio_analysis.xlsx` uses formulas, structured tables, state lookup/data validation, reconciliation columns, conditional formatting, benchmark review, and charting |
 | Maintain national and state-level data products | `scripts/build_state_profiles.py` generates 51 state/DC briefs, a machine-readable profile dataset, and `state_profile_index.csv`; `state.html` provides a shareable state-level publication view |
@@ -35,7 +37,7 @@ This repository is intended to be evaluated as a small recurring research produc
 | Quality-control published numbers | `tests/test_research_product.py` checks reconciliation identities, coverage, shares, outputs, downloads, and benchmark status |
 | Communicate to nontechnical readers | `site/` turns the analysis into a concise research brief with plain-language definitions and limitations |
 | Validate the published artifact | `scripts/browser_smoke.py` checks desktop/mobile rendering, interactions, downloads, console errors, and overflow |
-| Maintain a recurring product | `scripts/check_for_new_release.py`, `scripts/check_research_library.py`, `docs/DATA_CALENDAR.md`, and `docs/UPDATE_PLAYBOOK.md` separate live monitoring from offline validation and publication |
+| Maintain a recurring product | `scripts/check_for_new_release.py`, `scripts/check_research_library.py`, `scripts/check_population_crosswalk.py`, `docs/DATA_CALENDAR.md`, and `docs/UPDATE_PLAYBOOK.md` separate live monitoring from offline validation and publication |
 
 ## A concise project explanation
 
@@ -70,12 +72,13 @@ Optional browser publication QA:
 python scripts/browser_smoke.py
 ```
 
-Live next-release check:
+Live source/release checks:
 
 ```bash
 python scripts/check_for_new_release.py
 python scripts/check_research_library.py
+python scripts/check_population_crosswalk.py
 python scripts/check_qa_evidence.py
 ```
 
-The core validation command is intentionally offline once raw IPEDS files have been collected. Release detection, Research Library health, and QA evidence-link checks are intentionally online and separate, so changes in external websites cannot silently change the reproducibility of the current published result.
+The core validation command is intentionally offline once raw IPEDS files have been collected. Release detection, Research Library health, population-methodology source health, and QA evidence-link checks are intentionally online and separate, so changes in external websites cannot silently change the reproducibility of the current published result.

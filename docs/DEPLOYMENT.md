@@ -17,17 +17,19 @@ Repository: `https://github.com/Joseph-Th/higher_education_and_immigration_demo`
 Before each deployment, run:
 
 ```bash
+python scripts/build_pdf_brief.py
 python scripts/validate_project.py
 python scripts/browser_smoke.py
 python scripts/check_research_library.py
+python scripts/check_population_crosswalk.py
 python scripts/check_qa_evidence.py
 ```
 
-The browser smoke test requires the optional Playwright development dependency and a local Chromium runtime. The two live-link checks are deliberately outside the offline reproducibility lane, but they should be clean or explicitly manually resolved before publication. Only deploy the generated `site/` directory after the required validation lanes pass and the site has been inspected locally.
+The PDF build and browser smoke test require the optional Playwright development dependency and a local Chromium runtime. The live-link checks are deliberately outside the offline reproducibility lane, but they should be clean or explicitly manually resolved before publication. `deliverables/research_brief_manifest.json` binds the committed PDF to the exact generated memo source; validation fails when that publication artifact is stale. Only deploy the generated `site/` directory after the required validation lanes pass and the site has been inspected locally.
 
 ## Direct upload
 
-If Git integration is not desired, the contents of `site/` can be uploaded as the Pages output directory. The generated CSV downloads and `site/data/site_data.json` must be included; they are part of the published research product.
+If Git integration is not desired, the contents of `site/` can be uploaded as the Pages output directory. The generated CSV/Markdown/PDF downloads and `site/data/site_data.json` must be included; they are part of the published research product.
 
 ## Headers
 

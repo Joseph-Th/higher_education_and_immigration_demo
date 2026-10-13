@@ -98,9 +98,10 @@ def main() -> int:
         f"- **{benchmark_passed}/{len(benchmark)}** NCES Digest consistency checks pass.",
         f"- The latest release review contains **{queue['flagged_total']}** reason-coded institution records for triage.",
         f"- The Research Library contains **{len(library)}** maintained external resources spanning primary data, methodology, release monitoring, benchmarks, and related Higher Ed Immigration Portal research.",
+        "- A structured population/source crosswalk governs whether IPEDS, SEVIS, CPS immigrant-origin, and ACS-derived undocumented-student measures are directly comparable, contextual only, or a separate data need.",
         "- Exact source archives, hashes, schema checks, QA outputs, and downloadable analysis tables are retained in the repository.",
         "",
-        "For full methods and numerical detail, see `docs/METHODOLOGY.md`, `docs/FINDINGS.md`, and `docs/LATEST_UPDATE_REVIEW.md`.",
+        "For full methods and numerical detail, see `docs/METHODOLOGY.md`, `docs/POPULATION_CROSSWALK.md`, `docs/FINDINGS.md`, and `docs/LATEST_UPDATE_REVIEW.md`.",
         "",
     ]
 

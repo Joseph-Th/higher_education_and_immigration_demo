@@ -41,6 +41,19 @@ This is a specific federal reporting category and is not equivalent to:
 
 The public-facing language will use "U.S. nonresident" when referring to the IPEDS category and will explain the definition in plain language.
 
+### Companion population/source selection
+
+The project maintains `data/population_crosswalk.csv` and generated `docs/POPULATION_CROSSWALK.md` before attempting any companion analysis involving immigrant-origin, international, undocumented, high-school-pipeline, or refugee/asylee populations.
+
+A direct quantitative comparison is permitted only when the population definition, reference period, unit of analysis, geography, and denominator are compatible. Otherwise the outside source is treated as contextual evidence, a separate companion series, or a documented data need. In particular:
+
+- CPS immigrant-origin estimates describe domestic first- and second-generation students and exclude temporary-study visa holders from the first-generation estimate;
+- SEVIS international-student records use a different administrative system and timing from IPEDS;
+- undocumented-student and undocumented-high-school-graduate products rely on modeled survey estimates rather than an observed IPEDS legal-status field; and
+- the current project does not separately identify refugee/asylee students, even though those populations can be represented inside a broader immigrant-origin definition.
+
+The crosswalk is a source-selection control, not an attempt to force these populations into one common series.
+
 ## Fall Enrollment scope
 
 IPEDS Fall Enrollment is a snapshot rather than a full-year unduplicated count. For academic reporters, the survey generally reflects the institution's official fall reporting date or October 15. Program reporters use the applicable fall reporting window specified by IPEDS.
@@ -148,6 +161,8 @@ Benchmark source: https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp
 - Provisional data must be visibly labeled.
 - Notes must distinguish counts from shares and fall snapshots from full-year enrollment.
 - A separate browser smoke test must render the built site at desktop and mobile widths without console errors or unintended page-level overflow before deployment.
+- The reviewer-facing PDF brief must be regenerated when `site/research-memo.html` changes. `deliverables/research_brief_manifest.json` records both the memo and PDF SHA-256 values so a stale PDF fails repository validation.
+- The population/source crosswalk must render six required concepts and publish byte-identical CSV/Markdown downloads.
 
 ## Limitations to carry into the final brief
 

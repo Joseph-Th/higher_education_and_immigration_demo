@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import re
 import sys
@@ -228,6 +229,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(len(ids), len(set(ids)))
         essential_ids = {
             "ipeds_complete_data",
+            "ipeds_race_ethnicity_definitions",
             "digest_306_10",
             "portal_national_data",
             "portal_methodology",
@@ -254,10 +256,36 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(row["priority"] in {"High", "Medium", "Low"} for row in agenda))
         self.assertTrue(any(row["current_ipeds_fit"] == "None" for row in agenda))
         self.assertTrue(any(row["current_ipeds_fit"] == "High" for row in agenda))
+        r04 = next(row for row in agenda if row["research_id"] == "R04")
+        self.assertIn("crosswalk complete", r04["status"].lower())
         rendered = (ROOT / "docs" / "RESEARCH_AGENDA.md").read_text(encoding="utf-8")
         for row in agenda:
             self.assertIn(row["research_id"], rendered)
             self.assertIn(row["question"], rendered)
+
+    def test_population_crosswalk_is_structured_and_rendered(self) -> None:
+        crosswalk = rows(ROOT / "data" / "population_crosswalk.csv")
+        required = {
+            "ipeds_us_nonresident",
+            "immigrant_origin",
+            "international_sevis",
+            "undocumented_higher_ed",
+            "undocumented_hs_graduates",
+            "refugee_asylee",
+        }
+        self.assertEqual({row["population_id"] for row in crosswalk}, required)
+        self.assertEqual(len(crosswalk), len(required))
+        self.assertTrue(all(row["source_url"].startswith("https://") for row in crosswalk))
+        ipeds = next(row for row in crosswalk if row["population_id"] == "ipeds_us_nonresident")
+        self.assertIn("undocumented", ipeds["explicit_exclusions"].lower())
+        self.assertIn("not", ipeds["comparison_warning"].lower())
+        rendered = (ROOT / "docs" / "POPULATION_CROSSWALK.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "methodology-crosswalk.html").read_text(encoding="utf-8")
+        for row in crosswalk:
+            self.assertIn(row["population_label"], rendered)
+            self.assertIn(row["source_url"], rendered)
+            self.assertIn(row["population_label"], html)
+            self.assertIn(row["source_url"], html)
 
     def test_qa_resolution_log_tracks_current_high_priority_queue(self) -> None:
         log = rows(ROOT / "data" / "qa_resolution_log.csv")
@@ -372,6 +400,25 @@ class ResearchProductTests(unittest.TestCase):
             self.assertGreater(formula_count, 0)
             self.assertIn("1044137", values)
 
+    def test_pdf_research_brief_is_valid_and_published(self) -> None:
+        pdf = ROOT / "deliverables" / "research_brief.pdf"
+        public = ROOT / "site" / "downloads" / "research_brief.pdf"
+        manifest = json.loads(
+            (ROOT / "deliverables" / "research_brief_manifest.json").read_text(encoding="utf-8")
+        )
+        memo = ROOT / manifest["source"]
+        self.assertTrue(pdf.exists())
+        payload = pdf.read_bytes()
+        self.assertGreater(len(payload), 40_000)
+        self.assertTrue(payload.startswith(b"%PDF-"))
+        self.assertIn(b"%%EOF", payload[-2048:])
+        self.assertEqual(len(re.findall(rb"/Type\s*/Page\b", payload)), 3)
+        self.assertEqual(payload, public.read_bytes())
+        self.assertEqual(manifest["pdf_bytes"], len(payload))
+        self.assertEqual(manifest["page_count"], 3)
+        self.assertEqual(manifest["pdf_sha256"], hashlib.sha256(payload).hexdigest())
+        self.assertEqual(manifest["source_sha256"], hashlib.sha256(memo.read_bytes()).hexdigest())
+
     def test_state_profiles_cover_and_reconcile_all_geographies(self) -> None:
         index = rows(ROOT / "data" / "processed" / "state_profile_index.csv")
         self.assertEqual(len(index), 51)
@@ -443,6 +490,7 @@ class ResearchProductTests(unittest.TestCase):
             ("data/benchmark_audit.csv", "site/downloads/benchmark_audit.csv"),
             ("data/research_library.csv", "site/downloads/research_library.csv"),
             ("data/research_agenda.csv", "site/downloads/research_agenda.csv"),
+            ("data/population_crosswalk.csv", "site/downloads/population_crosswalk.csv"),
             ("data/qa_resolution_log.csv", "site/downloads/qa_resolution_log.csv"),
             (
                 "data/processed/state_profile_index.csv",
@@ -451,6 +499,10 @@ class ResearchProductTests(unittest.TestCase):
             (
                 "deliverables/ipeds_portfolio_analysis.xlsx",
                 "site/downloads/ipeds_portfolio_analysis.xlsx",
+            ),
+            (
+                "deliverables/research_brief.pdf",
+                "site/downloads/research_brief.pdf",
             ),
             (
                 "data/reference/nces_digest_2025_306_10.csv",
@@ -476,6 +528,10 @@ class ResearchProductTests(unittest.TestCase):
             (ROOT / "site" / "downloads" / "research_agenda.md").read_bytes(),
         )
         self.assertEqual(
+            (ROOT / "docs" / "POPULATION_CROSSWALK.md").read_bytes(),
+            (ROOT / "site" / "downloads" / "population_crosswalk.md").read_bytes(),
+        )
+        self.assertEqual(
             (ROOT / "docs" / "BRIEFING_NOTE.md").read_bytes(),
             (ROOT / "site" / "downloads" / "briefing_note.md").read_bytes(),
         )
@@ -485,7 +541,7 @@ class ResearchProductTests(unittest.TestCase):
         )
 
     def test_static_page_local_assets_and_ids(self) -> None:
-        for page_name in ("index.html", "state.html", "research-memo.html"):
+        for page_name in ("index.html", "state.html", "research-memo.html", "methodology-crosswalk.html"):
             html = (ROOT / "site" / page_name).read_text(encoding="utf-8")
             ids = re.findall(r'\bid="([^"]+)"', html)
             duplicates = [item for item, count in Counter(ids).items() if count > 1]

@@ -47,6 +47,10 @@ Structured metadata for the external resources used to collect, interpret, valid
 
 Structured research-needs register. Each row records a stable research ID, priority, research question, evidence trigger, whether the current IPEDS pipeline can answer it, additional data needs, proposed method/output, decision rule, and current status. `scripts/build_research_agenda.py` validates the register and generates `docs/RESEARCH_AGENDA.md`.
 
+## `population_crosswalk.csv`
+
+Structured methodology/source-selection control for six distinct immigration-related student concepts: IPEDS U.S. nonresident, immigrant-origin, SEVIS international, undocumented higher-education, undocumented high-school-graduate, and refugee/asylee students. Each row records the measure type, primary source and vintage, unit, inclusion/exclusion rules, geography, best use, comparison warning, project status, source URL, and review date. `scripts/build_population_crosswalk.py` validates the crosswalk and generates both `docs/POPULATION_CROSSWALK.md` and the public `site/methodology-crosswalk.html` page.
+
 ## `qa_resolution_log.csv`
 
 Manually curated analyst dispositions for a selected sample of high-priority rows from `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` verifies that each reviewed UNITID still exists in the current high-priority queue and generates `docs/QA_RESOLUTION_LOG.md` plus `qa_resolution_summary.json`.

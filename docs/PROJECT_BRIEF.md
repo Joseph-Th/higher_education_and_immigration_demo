@@ -60,6 +60,8 @@ A short web-based brief containing:
 - methodology and limitations;
 - source and update information.
 
+A concise PDF version should also be available for reviewers who expect a conventional policy-research publication rather than a repository or interactive site. The PDF must be generated from the same validated memo and carry a freshness check tying it to the exact source HTML.
+
 ### Reproducible research materials
 
 - source-data download script;
@@ -77,7 +79,10 @@ A short web-based brief containing:
 - generated 50-state-plus-DC profile set and machine-readable profile index.
 - structured research-needs register connecting findings and source limitations to proposed methods, outputs, and decision rules.
 - structured Research Library with machine-readable source metadata and generated documentation.
+- structured population/source crosswalk that prevents IPEDS, SEVIS, immigrant-origin, undocumented, pipeline, and refugee/asylee concepts from being treated as interchangeable.
 - online Research Library URL-health checker kept separate from offline reproducibility validation.
+- online population-crosswalk source-health checker kept separate from offline reproducibility validation.
+- reviewer-ready PDF research brief plus a source/PDF SHA-256 manifest.
 - browser-level publication smoke test.
 
 ## Non-goals

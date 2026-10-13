@@ -6,6 +6,17 @@ The project is designed as a compact, reproducible research product rather than 
 
 ![Research brief preview](docs/assets/research-brief-preview.png)
 
+## Start here
+
+For a quick review of the finished work:
+
+1. [`deliverables/research_brief.pdf`](deliverables/research_brief.pdf) - three-page policy/research writing sample with findings, analyst QA decisions, and methods/source trail.
+2. [`docs/POPULATION_CROSSWALK.md`](docs/POPULATION_CROSSWALK.md) - source-selection guide distinguishing IPEDS, immigrant-origin, SEVIS international, undocumented, pipeline, and refugee/asylee concepts.
+3. [`deliverables/ipeds_portfolio_analysis.xlsx`](deliverables/ipeds_portfolio_analysis.xlsx) - formula-driven Excel review workbook with state lookup, reconciliation, benchmark QA, and source metadata.
+4. [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) - evidence map from research responsibilities to specific files, scripts, and validation outputs.
+
+The interactive publication is under [`site/`](site/); deployment instructions are in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+
 ## Research question
 
 How did fall enrollment of U.S. nonresident students change across the United States from 2015 through 2024, and how did those changes vary by state and student level?
@@ -20,9 +31,11 @@ How did fall enrollment of U.S. nonresident students change across the United St
 - A generated latest-release review packet with reason-coded institution-level QA triage.
 - An analyst-reviewed QA resolution log that documents evidence, disposition, and publication decisions for selected high-priority flags without rewriting source values.
 - A standalone research memo in Markdown and HTML that combines validated findings, interpretation boundaries, and three evidence-backed analyst case studies.
+- A reviewer-ready three-page PDF research brief generated from the validated memo, with a source/PDF SHA-256 manifest that detects stale publication copies.
 - A generated stakeholder briefing note that translates validated findings into a concise management-facing update.
 - A reviewer-ready Excel workbook with formula-driven KPIs, state lookup, reconciliation checks, benchmark QA, and source metadata.
 - Fifty-one generated state/DC research profiles linked directly from the interactive state explorer.
+- A structured population/source crosswalk covering IPEDS U.S. nonresident, immigrant-origin, SEVIS international, undocumented higher-education, undocumented high-school-graduate, and refugee/asylee research concepts.
 - A structured research agenda/data-needs register that separates immediately answerable IPEDS questions from work requiring partner or population-specific data.
 - A structured Research Library describing source scope, update pattern, project use, and review date.
 - A documented annual update workflow and deployment path.
@@ -65,6 +78,7 @@ python scripts/build_analysis.py
 python scripts/build_update_review.py
 python scripts/build_qa_resolution_log.py
 python scripts/build_research_library.py
+python scripts/build_population_crosswalk.py
 python scripts/build_research_agenda.py
 python scripts/summarize_findings.py
 python scripts/validate_benchmarks.py
@@ -84,6 +98,17 @@ python scripts/validate_project.py
 
 That command compiles the Python code, reruns the schema audit, rebuilds all derived data, reruns 24 NCES Digest consistency checks, regenerates the public site data, and runs the repository test suite.
 
+The PDF brief is a downstream publication artifact rather than an analytical input. When the research memo changes, regenerate it after installing the optional Playwright dependency:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m playwright install chromium
+python scripts/build_pdf_brief.py
+python scripts/validate_project.py
+```
+
+`deliverables/research_brief_manifest.json` records the exact memo SHA-256 used to create the PDF. Repository validation fails if the committed PDF no longer matches the current generated memo.
+
 For browser-level publication QA, install the optional development dependency and Chromium once, then run:
 
 ```bash
@@ -99,16 +124,18 @@ Live source-health checks remain separate from offline validation:
 ```bash
 python scripts/check_for_new_release.py
 python scripts/check_research_library.py
+python scripts/check_population_crosswalk.py
 python scripts/check_qa_evidence.py
 ```
 
-The second command verifies every maintained Research Library URL, and the third checks the external evidence links used by the manual QA resolution layer. Both are intentionally separate from the offline reproducibility build. Script-blocking HTTP 401/403 responses are surfaced as access restrictions requiring manual browser review rather than misclassified as dead links.
+The live checks verify the maintained Research Library, the population-crosswalk methodology sources, and the external evidence links used by the manual QA resolution layer. They are intentionally separate from the offline reproducibility build. Script-blocking HTTP 401/403 responses are surfaced as access restrictions requiring manual browser review rather than misclassified as dead links.
 
 ## Documentation
 
 - [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md): scope, audience, questions, and deliverables.
 - [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md): source inventory and release notes.
 - [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md): definitions, analytic unit, QA/QC plan, and limitations.
+- [`docs/POPULATION_CROSSWALK.md`](docs/POPULATION_CROSSWALK.md): generated source-selection crosswalk for distinct immigration-related student populations.
 - [`docs/VARIABLE_MAPPING.md`](docs/VARIABLE_MAPPING.md): verified cross-year variables and aggregation codes.
 - [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md): definitions for generated analysis and audit outputs.
 - [`docs/VALIDATION.md`](docs/VALIDATION.md): implemented QA checks and independent NCES benchmark.
@@ -128,7 +155,7 @@ The second command verifies every maintained Research Library URL, and the third
 
 ## Current status
 
-The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, and 24 external NCES Digest consistency checks pass across 2019-2024. The latest-release workflow now includes both automated reason-coded triage and a manually reviewed evidence/disposition log for selected high-priority records. A standalone research memo is generated from the same validated outputs and promotes three contrasting QA cases into a concise writing sample. A six-sheet Excel review workbook is tracked as a downstream presentation artifact and published with the site. The pipeline also generates 51 state/DC profiles with current composition, longitudinal change, top institutions, and a ten-year state series. A structured research agenda distinguishes questions answerable with the current pipeline from those requiring population-specific or partner data. The Research Library contains 11 reviewed resources from NCES and the Higher Ed Immigration Portal, including the three recurring research products named in the target role. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
+The research brief is built locally and passes both the complete offline validation path and browser publication QA at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, and 24 external NCES Digest consistency checks pass across 2019-2024. The latest-release workflow includes automated reason-coded triage and a manually reviewed evidence/disposition log for selected high-priority records. A standalone HTML/Markdown research memo and a three-page PDF brief are generated from the same validated findings, with the PDF bound to the exact memo source by SHA-256. A six-sheet Excel review workbook is tracked as a downstream presentation artifact and published with the site. The pipeline also generates 51 state/DC profiles with current composition, longitudinal change, top institutions, and a ten-year state series. A six-population methodology crosswalk now makes source compatibility explicit before IPEDS is compared with immigrant-origin, SEVIS international, undocumented, high-school-pipeline, or refugee/asylee concepts. The structured research agenda records that this methods crosswalk is complete while compatible companion trend data remain a separate research need. The Research Library contains 12 reviewed resources from NCES and the Higher Ed Immigration Portal, including the official IPEDS U.S. nonresident definition source and the three recurring research products named in the target role. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
 
 Current substantive findings include a graduate-driven decade-level increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, a shift toward private nonprofit institutions, and evidence that national growth occurred within continuing institutions rather than being created by a larger institution universe. The newest-release review also identifies a short-run composition shift: 2023-2024 undergraduate U.S. nonresident enrollment increased by 31,592 while graduate enrollment decreased by 2,053. The site surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
 

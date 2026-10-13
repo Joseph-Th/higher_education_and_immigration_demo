@@ -49,10 +49,13 @@ def check_downloads(base_url: str) -> None:
         "downloads/qa_resolution_log.csv",
         "downloads/qa_resolution_log.md",
         "downloads/research_memo.md",
+        "downloads/research_brief.pdf",
         "downloads/research_library.csv",
         "downloads/research_library.md",
         "downloads/research_agenda.md",
         "downloads/research_agenda.csv",
+        "downloads/population_crosswalk.csv",
+        "downloads/population_crosswalk.md",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
         "downloads/state_profile_index.csv",
@@ -189,6 +192,38 @@ def inspect_research_memo(browser, base_url: str, *, width: int, height: int) ->
     context.close()
 
 
+def inspect_population_crosswalk(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/methodology-crosswalk.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Population crosswalk load failed at {width}px")
+    if page.locator(".crosswalk-card").count() != 6:
+        raise AssertionError("Population crosswalk does not show six source definitions")
+    labels = page.locator(".crosswalk-card h2").all_inner_texts()
+    required = {
+        "IPEDS U.S. nonresident",
+        "Immigrant-origin students",
+        "International students",
+        "Undocumented students in higher education",
+        "Undocumented high school graduates",
+        "Refugee/asylee students",
+    }
+    if set(labels) != required:
+        raise AssertionError("Population crosswalk labels do not match the structured source")
+    if page.locator('a[href="downloads/population_crosswalk.csv"]').count() != 1:
+        raise AssertionError("Population crosswalk CSV download link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Population crosswalk horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Population crosswalk browser errors: " + " | ".join(errors))
+    context.close()
+
+
 def inspect_state_profile(browser, base_url: str, *, width: int, height: int) -> None:
     context = browser.new_context(viewport={"width": width, "height": height})
     page = context.new_page()
@@ -241,6 +276,8 @@ def main() -> int:
                 inspect_state_profile(browser, base_url, width=390, height=844)
                 inspect_research_memo(browser, base_url, width=1280, height=900)
                 inspect_research_memo(browser, base_url, width=390, height=844)
+                inspect_population_crosswalk(browser, base_url, width=1280, height=900)
+                inspect_population_crosswalk(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:
