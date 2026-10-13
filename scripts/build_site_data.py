@@ -8,6 +8,8 @@ import shutil
 from collections import defaultdict
 from pathlib import Path
 
+from project_config import END_YEAR
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -28,7 +30,11 @@ def main() -> int:
     state_rows = read_csv(PROCESSED / "state_year.csv")
     source_manifest = read_csv(DATA / "source_manifest.csv")
     schema_audit = read_csv(DATA / "schema_audit.csv")
+    benchmark_audit = read_csv(DATA / "benchmark_audit.csv")
     schema_passed = sum(row["status"] == "PASS" for row in schema_audit)
+    benchmark_passed = sum(row["status"] == "PASS" for row in benchmark_audit)
+    if benchmark_passed != len(benchmark_audit):
+        raise RuntimeError("External benchmark audit contains failed checks")
 
     state_series: dict[str, list[dict]] = defaultdict(list)
     for row in state_rows:
@@ -42,17 +48,8 @@ def main() -> int:
         )
 
     latest_qa = next(item for item in qa["years"] if item["year"] == findings["coverage"]["end_year"])
-    latest_total = findings["headline"]["latest_total_enrollment"]
 
-    # NCES Digest 2025 table 306.10 reports the same 2024 universe in thousands,
-    # rounded to one decimal place. This is an independent publication-level
-    # benchmark rather than a second transformation of our raw files.
-    benchmark_thousands = 19659.6
-    derived_thousands = round(latest_total / 1000.0, 1)
-    if derived_thousands != benchmark_thousands:
-        raise RuntimeError(
-            f"NCES Digest benchmark mismatch: derived {derived_thousands} vs {benchmark_thousands}"
-        )
+    benchmark_latest = [row for row in benchmark_audit if int(row["year"]) == END_YEAR]
 
     payload = {
         **findings,
@@ -66,9 +63,10 @@ def main() -> int:
             "latest_nonresident_flag_counts": latest_qa["nonresident_flag_counts"],
             "benchmark": {
                 "name": "NCES Digest of Education Statistics 2025, Table 306.10",
-                "published_total_thousands": benchmark_thousands,
-                "derived_total_thousands": derived_thousands,
-                "status": "PASS",
+                "checks": len(benchmark_audit),
+                "checks_passed": benchmark_passed,
+                "latest_rows": benchmark_latest,
+                "status": "PASS" if benchmark_passed == len(benchmark_audit) else "FAIL",
                 "url": "https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp",
             },
         },
@@ -78,8 +76,8 @@ def main() -> int:
                 "url": "https://nces.ed.gov/ipeds/help/complete-data-files",
             },
             {
-                "label": "IPEDS 2024 Fall Enrollment data",
-                "url": "https://nces.ed.gov/ipeds/complete-data-files/EF2024A.zip",
+                "label": f"IPEDS {END_YEAR} Fall Enrollment data",
+                "url": f"https://nces.ed.gov/ipeds/complete-data-files/EF{END_YEAR}A.zip",
             },
             {
                 "label": "NCES Digest 2025 Table 306.10",
@@ -96,13 +94,24 @@ def main() -> int:
     DOWNLOADS.mkdir(parents=True, exist_ok=True)
     (SITE_DATA / "site_data.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    for name in ("national_year.csv", "state_year.csv", "institutions_2024.csv"):
+    for name in (
+        "national_year.csv",
+        "state_year.csv",
+        "state_change_summary.csv",
+        "control_year.csv",
+        f"institutions_{END_YEAR}.csv",
+    ):
         shutil.copy2(PROCESSED / name, DOWNLOADS / name)
     shutil.copy2(DATA / "schema_audit.csv", DOWNLOADS / "schema_audit.csv")
     shutil.copy2(DATA / "source_manifest.csv", DOWNLOADS / "source_manifest.csv")
+    shutil.copy2(DATA / "benchmark_audit.csv", DOWNLOADS / "benchmark_audit.csv")
+    shutil.copy2(
+        DATA / "reference" / "nces_digest_2025_306_10.csv",
+        DOWNLOADS / "nces_digest_2025_306_10.csv",
+    )
 
     print(f"Wrote {SITE_DATA / 'site_data.json'}")
-    print("NCES Digest 2024 total benchmark: PASS")
+    print(f"NCES Digest consistency checks: {benchmark_passed}/{len(benchmark_audit)} PASS")
     return 0
 
 

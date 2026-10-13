@@ -19,9 +19,8 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from zipfile import BadZipFile, ZipFile
 
+from project_config import END_YEAR, START_YEAR
 
-START_YEAR = 2015
-END_YEAR = 2024
 ROOT = Path(__file__).resolve().parents[1]
 RAW_ROOT = ROOT / "data" / "raw" / "ipeds"
 MANIFEST_PATH = ROOT / "data" / "source_manifest.csv"

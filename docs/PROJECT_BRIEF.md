@@ -28,6 +28,7 @@ How did fall enrollment of U.S. nonresident students change nationally and acros
 3. Which states experienced the largest percentage changes among states with a meaningful baseline population?
 4. How did undergraduate and graduate patterns differ, where the source tables support a consistent cross-year comparison?
 5. How much of the national change is concentrated in a small number of states or institutions?
+6. How did trends differ across public, private nonprofit, and private for-profit institutions?
 
 ## Evidence standard
 
@@ -50,6 +51,7 @@ A short web-based brief containing:
 - national trend visualization;
 - state comparison visualization/table;
 - undergraduate/graduate comparison if cross-year definitions permit;
+- institutional-control comparison;
 - methodology and limitations;
 - source and update information.
 
@@ -63,6 +65,7 @@ A short web-based brief containing:
 - analysis code;
 - chart-generation code;
 - documentation sufficient for another analyst to reproduce the result.
+- external publication benchmark audit and release-vintage documentation.
 
 ## Non-goals
 

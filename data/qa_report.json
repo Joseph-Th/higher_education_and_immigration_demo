@@ -194,6 +194,7 @@
   ],
   "institution_year_rows": 40549,
   "state_year_rows": 510,
+  "control_year_rows": 30,
   "excluded_jurisdiction_institution_year_counts": {
     "AS": 10,
     "FM": 10,
@@ -227,6 +228,7 @@
     "nonresident_not_greater_than_total": "PASS",
     "all_years_present": "PASS",
     "all_51_geographies_present_each_year": "PASS",
+    "all_three_controls_present_each_year": "PASS",
     "undergraduate_plus_graduate_reconciles_to_total": "PASS"
   }
 }

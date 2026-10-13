@@ -20,7 +20,7 @@ Files: `EF2015A` through `EF2024A`
 
 Purpose: institution-level fall enrollment counts by race/ethnicity, gender, attendance status, and student level.
 
-The analysis will use the U.S. nonresident category only after the relevant variables and aggregation levels are verified against each year's data dictionary.
+The analysis uses the U.S. nonresident category only after the relevant variables and aggregation levels are verified against each year's data dictionary.
 
 ### Institutional directory: `HDyyyy`
 
@@ -77,7 +77,14 @@ IPEDS defines **U.S. nonresident** as a person who is not a U.S. citizen or nati
 
 This project will therefore avoid using "immigrant," "undocumented," and "international" interchangeably with the IPEDS U.S. nonresident category.
 
-## Additional sources under consideration
+## External validation source
 
-The first analysis will remain IPEDS-only. Later contextual work may use other official or well-documented sources, but any additional source will receive its own provenance and comparability review before inclusion.
+The analytical series remains derived only from IPEDS complete-data files. An external NCES publication is used solely for validation:
+
+**NCES Digest of Education Statistics 2025, Table 306.10**  
+https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp
+
+The Digest table provides selected national enrollment values in thousands. `data/reference/nces_digest_2025_306_10.csv` contains a compact transcription of the 2019-2024 values used by the consistency audit, and `data/benchmark_audit.csv` records the comparison with the independently derived project series.
+
+The Digest was prepared in March 2026 while the project retrieved current IPEDS files in October 2026. Small subgroup differences are therefore treated as release-vintage evidence rather than as values to overwrite. See `docs/VALIDATION.md`.
 

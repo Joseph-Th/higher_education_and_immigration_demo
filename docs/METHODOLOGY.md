@@ -57,11 +57,13 @@ The derived measures are:
 4. Year-over-year absolute and percentage change.
 5. 2015-to-2024 absolute and percentage change.
 6. Undergraduate and graduate U.S. nonresident counts where the source structure permits a consistent comparison.
+7. U.S. nonresident enrollment by institutional control: public, private nonprofit, and private for-profit.
 
 ## Aggregation rules
 
 - Institution-year values will be summed only from the verified "all students" aggregation level needed to avoid double counting.
 - State assignments will come from the same-year `HDyyyy` directory file.
+- Institutional control will come from the same-year `CONTROL` field in `HDyyyy` and is aggregated only within the same analytic universe used for national/state results.
 - U.S. territories and other jurisdictions are retained in raw source data and explicitly excluded from the public 50-states-plus-DC analytic universe.
 - Percentage-change rankings will use a documented minimum-baseline rule to prevent tiny starting counts from dominating the ranking.
 

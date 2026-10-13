@@ -14,6 +14,7 @@
 }
 
 * { box-sizing: border-box; }
+.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
@@ -23,6 +24,7 @@ body {
   line-height: 1.55;
 }
 a { color: inherit; }
+a:focus-visible, button:focus-visible, select:focus-visible { outline: 3px solid rgba(11,119,110,.35); outline-offset: 3px; }
 button, select { font: inherit; }
 .shell { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
 .skip-link { position: absolute; left: -999px; top: 0; z-index: 100; background: var(--navy); color: white; padding: 10px 14px; }
@@ -93,6 +95,11 @@ h1 { margin: 0; max-width: 900px; font-size: clamp(42px, 6vw, 76px); line-height
 .delta-list > div { border-top: 1px solid rgba(255,255,255,.14); padding: 15px 0 0; margin-top: 15px; }
 .delta-list dt { color: #9fb0c0; font-size: 12px; }
 .delta-list dd { margin: 3px 0 0; font-weight: 800; font-size: 20px; }
+.decomposition-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+.decomposition-strip article { padding: 20px 22px; border: 1px solid var(--line); border-radius: 15px; background: white; }
+.decomposition-strip span, .decomposition-strip small { display: block; color: var(--ink-soft); font-size: 12px; }
+.decomposition-strip strong { display: block; margin: 7px 0 3px; font-size: 28px; letter-spacing: -.035em; }
+.decomposition-net { border-color: rgba(11,119,110,.32) !important; background: #f5fbfa !important; }
 
 .state-explorer { margin-top: 22px; display: grid; grid-template-columns: .65fr 1.35fr; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: white; }
 .explorer-copy { padding: 30px; background: #f7f9fa; border-right: 1px solid var(--line); }
@@ -105,6 +112,27 @@ h1 { margin: 0; max-width: 900px; font-size: clamp(42px, 6vw, 76px); line-height
 .explorer-metrics > div { padding: 12px 14px; background: var(--wash); border-radius: 12px; }
 .explorer-metrics span { display: block; font-size: 11px; color: var(--ink-soft); }
 .explorer-metrics strong { display: block; font-size: 20px; margin-top: 3px; }
+
+.recovery-layout { display: grid; grid-template-columns: minmax(240px,.42fr) minmax(0,1.58fr); gap: 18px; align-items: stretch; }
+.recovery-summary { display: grid; gap: 12px; }
+.recovery-summary article { padding: 24px; border-radius: var(--radius); background: var(--navy); color: white; }
+.recovery-summary strong { display: block; font-size: 48px; line-height: 1; letter-spacing: -.05em; }
+.recovery-summary span { display: block; margin-top: 8px; color: #c6d2dc; font-size: 13px; }
+.recovery-summary > p { margin: 4px 0 0; color: var(--ink-soft); font-size: 13px; }
+.recovery-chart-card { box-shadow: none; }
+.chart-recovery { min-height: 390px; }
+
+.control-layout { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(290px,.5fr); gap: 18px; }
+.control-panel { background: var(--navy); color: white; border-radius: var(--radius); padding: 30px; display: flex; flex-direction: column; }
+.control-panel > p:not(.finding-kicker) { color: #d4dee7; }
+.control-finding-number { font-size: 42px; line-height: 1.08; }
+.chart-control { min-height: 300px; }
+.control-note { max-width: 900px; margin-top: 16px !important; color: var(--ink-soft); }
+
+.concentration-strip { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin: -8px 0 22px; }
+.concentration-strip article { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; padding: 20px 22px; background: var(--wash); border-radius: 15px; }
+.concentration-strip strong { font-size: 34px; letter-spacing: -.04em; }
+.concentration-strip span { color: var(--ink-soft); font-size: 13px; }
 
 .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
 table { width: 100%; border-collapse: collapse; min-width: 720px; }
@@ -122,6 +150,12 @@ tbody tr:last-child td { border-bottom: 0; }
 .method-grid h3 { margin: 0 0 8px; }
 .method-grid p { margin: 0; color: var(--ink-soft); }
 code { background: rgba(11,119,110,.09); color: var(--accent-dark); padding: .12em .35em; border-radius: 5px; }
+.benchmark-card { margin-top: 22px; padding: 28px; border-radius: var(--radius); background: #f7f9fa; border: 1px solid var(--line); }
+.benchmark-intro { max-width: 780px; }
+.benchmark-intro h3 { margin: 0; font-size: 27px; letter-spacing: -.03em; }
+.benchmark-intro > p:last-child { color: var(--ink-soft); margin-bottom: 22px; }
+.benchmark-table-wrap { border-radius: 13px; }
+.benchmark-table-wrap table { min-width: 650px; }
 .audit-details { margin-top: 22px; border: 1px solid var(--line); border-radius: 14px; padding: 0 20px; background: white; }
 .audit-details summary { cursor: pointer; padding: 18px 0; font-weight: 800; }
 .audit-details ul { margin-top: 0; color: var(--ink-soft); }
@@ -153,10 +187,14 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
 .annotation-line { stroke: #8495a5; stroke-width: 1; stroke-dasharray: 4 4; }
 .bar { fill: var(--accent); }
 .bar:hover { fill: var(--accent-dark); }
+.change-bar-positive { fill: var(--accent); }
+.change-bar-negative { fill: var(--warm); }
+.zero-line { stroke: #8495a5; stroke-width: 1.25; }
+.bar-value { fill: var(--ink); font-size: 11px; font-weight: 700; }
 
 @media (max-width: 900px) {
   nav { display: none; }
-  .hero-grid, .split-layout, .state-explorer, .download-layout { grid-template-columns: 1fr; }
+  .hero-grid, .split-layout, .state-explorer, .download-layout, .recovery-layout, .control-layout { grid-template-columns: 1fr; }
   .hero-grid { gap: 38px; }
   .metrics, .quality-grid { grid-template-columns: repeat(2, 1fr); }
   .explorer-copy { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -168,10 +206,11 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .hero { padding-top: 64px; }
   h1 { font-size: 43px; }
   .lede { font-size: 17px; }
-  .metrics, .quality-grid, .method-grid, .explorer-metrics { grid-template-columns: 1fr; }
+  .metrics, .quality-grid, .method-grid, .explorer-metrics, .decomposition-strip, .concentration-strip { grid-template-columns: 1fr; }
   .metric-card { min-height: 145px; }
   .chart-card, .explorer-panel, .explorer-copy { padding: 20px; }
   .chart { min-height: 250px; }
   .chart-toolbar { flex-direction: column; }
+  .concentration-strip article { grid-template-columns: 1fr; gap: 4px; }
   .footer-inner { gap: 20px; }
 }

@@ -14,7 +14,8 @@ How did fall enrollment of U.S. nonresident students change across the United St
 - Interactive charts and a state explorer designed for nontechnical readers.
 - Reproducible source-data collection and transformation scripts.
 - A transparent methodology and data-quality record.
-- Downloadable analysis tables, source lineage, and schema-audit files.
+- Downloadable analysis tables, source lineage, schema audit, and external benchmark audit.
+- A documented annual update workflow and deployment path.
 
 ## Data
 
@@ -51,10 +52,19 @@ Build the normalized analysis outputs and public-site data:
 ```bash
 python scripts/build_analysis.py
 python scripts/summarize_findings.py
+python scripts/validate_benchmarks.py
 python scripts/build_site_data.py
 ```
 
 The public analysis uses degree-granting institutions in the IPEDS First Look/Digest Title IV universe (`DEGGRANT=1` and `PSET4FLG` in `1,3`) located in the 50 states and District of Columbia. This selection makes the headline national total directly benchmarkable against NCES Digest tables.
+
+For the complete offline rebuild and validation path, run:
+
+```bash
+python scripts/validate_project.py
+```
+
+That command compiles the Python code, reruns the schema audit, rebuilds all derived data, reruns 24 NCES Digest consistency checks, regenerates the public site data, and runs the repository test suite.
 
 ## Documentation
 
@@ -62,10 +72,19 @@ The public analysis uses degree-granting institutions in the IPEDS First Look/Di
 - [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md): source inventory and release notes.
 - [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md): definitions, analytic unit, QA/QC plan, and limitations.
 - [`docs/VARIABLE_MAPPING.md`](docs/VARIABLE_MAPPING.md): verified cross-year variables and aggregation codes.
+- [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md): definitions for generated analysis and audit outputs.
 - [`docs/VALIDATION.md`](docs/VALIDATION.md): implemented QA checks and independent NCES benchmark.
+- [`docs/FINDINGS.md`](docs/FINDINGS.md): current analytical findings with exact supporting figures.
+- [`docs/UPDATE_PLAYBOOK.md`](docs/UPDATE_PLAYBOOK.md): annual release/update procedure.
+- [`docs/DATA_CALENDAR.md`](docs/DATA_CALENDAR.md): current coverage and next-release monitoring.
+- [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md): Cloudflare Pages publication instructions.
 - [`data/README.md`](data/README.md): data directory conventions.
 
 ## Current status
 
-The first complete research brief is built locally. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, and the 2024 national enrollment total independently matches NCES Digest 2025 Table 306.10 after published rounding. The static site is ready for deployment once a remote/deployment target is configured.
+The research brief is built locally and passes the complete offline validation path. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, 13 repository tests pass, and 24 external NCES Digest consistency checks pass across 2019-2024.
+
+Current substantive findings include a graduate-driven national increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, and a shift in enrollment toward private nonprofit institutions. The site also surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
+
+The static site is ready for Cloudflare Pages deployment once a remote or direct-upload target is configured.
 

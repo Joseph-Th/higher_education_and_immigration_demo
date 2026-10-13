@@ -14,26 +14,23 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from project_config import CORE_STATES, END_YEAR, START_YEAR
 
-START_YEAR = 2015
-END_YEAR = 2024
 ROOT = Path(__file__).resolve().parents[1]
 RAW_ROOT = ROOT / "data" / "raw" / "ipeds"
 PROCESSED = ROOT / "data" / "processed"
 QA_PATH = ROOT / "data" / "qa_report.json"
 
-CORE_STATES = {
-    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
-    "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA",
-    "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY",
-    "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX",
-    "UT", "VT", "VA", "WA", "WV", "WI", "WY",
-}
-
 LEVELS = {
     "1": "all",
     "2": "undergraduate",
     "12": "graduate",
+}
+
+CONTROL_LABELS = {
+    "1": "Public",
+    "2": "Private nonprofit",
+    "3": "Private for-profit",
 }
 
 IMPUTATION_LABELS = {
@@ -121,7 +118,7 @@ def main() -> int:
         directory: dict[str, dict[str, str]] = {}
         hd_handle, hd_reader = read_csv(hd_path)
         try:
-            required_hd = {"UNITID", "INSTNM", "STABBR", "DEGGRANT", "PSET4FLG"}
+            required_hd = {"UNITID", "INSTNM", "STABBR", "CONTROL", "DEGGRANT", "PSET4FLG"}
             missing_hd = required_hd.difference(hd_reader.fieldnames or [])
             if missing_hd:
                 raise RuntimeError(f"Missing columns in {hd_path.name}: {sorted(missing_hd)}")
@@ -132,6 +129,7 @@ def main() -> int:
                 directory[unitid] = {
                     "institution": row["INSTNM"].strip(),
                     "state": row["STABBR"].strip(),
+                    "control": row["CONTROL"].strip(),
                     "degree_granting": row["DEGGRANT"].strip(),
                     "pset4flg": row["PSET4FLG"].strip(),
                 }
@@ -203,6 +201,9 @@ def main() -> int:
             if directory[unitid]["degree_granting"] != "1" or directory[unitid]["pset4flg"] not in {"1", "3"}:
                 excluded_universe += 1
                 continue
+            control = directory[unitid]["control"]
+            if control not in CONTROL_LABELS:
+                raise RuntimeError(f"Unexpected CONTROL={control!r} in {year}/{unitid}")
 
             core_institutions += 1
             all_row = levels["all"]
@@ -219,6 +220,7 @@ def main() -> int:
                     "unitid": unitid,
                     "institution": directory[unitid]["institution"],
                     "state": state,
+                    "control": CONTROL_LABELS[control],
                     "total_enrollment": all_row["total"],
                     "nonresident_enrollment": all_row["nonresident"],
                     "nonresident_share_pct": round(pct(all_row["nonresident"], all_row["total"]) or 0.0, 4),
@@ -254,11 +256,14 @@ def main() -> int:
             }
         )
 
-    # Aggregate state-year metrics from the normalized institution-year table.
+    # Aggregate state-year, control-year, and national-year metrics from the
+    # normalized institution-year table.
     state_acc: dict[tuple[int, str], dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    control_acc: dict[tuple[int, str], dict[str, int]] = defaultdict(lambda: defaultdict(int))
     national_acc: dict[int, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     for row in institution_year:
         key = (row["year"], row["state"])
+        control_key = (row["year"], row["control"])
         for field in (
             "total_enrollment",
             "nonresident_enrollment",
@@ -270,8 +275,10 @@ def main() -> int:
             value = row[field]
             if value != "":
                 state_acc[key][field] += int(value)
+                control_acc[control_key][field] += int(value)
                 national_acc[row["year"]][field] += int(value)
         state_acc[key]["institution_count"] += 1
+        control_acc[control_key]["institution_count"] += 1
         national_acc[row["year"]]["institution_count"] += 1
 
     state_rows: list[dict] = []
@@ -289,6 +296,23 @@ def main() -> int:
                 "undergraduate_total": values["undergraduate_total"],
                 "undergraduate_nonresident": values["undergraduate_nonresident"],
                 "graduate_total": values["graduate_total"],
+                "graduate_nonresident": values["graduate_nonresident"],
+            }
+        )
+
+    control_rows: list[dict] = []
+    for (year, control), values in sorted(control_acc.items()):
+        control_rows.append(
+            {
+                "year": year,
+                "control": control,
+                "institution_count": values["institution_count"],
+                "total_enrollment": values["total_enrollment"],
+                "nonresident_enrollment": values["nonresident_enrollment"],
+                "nonresident_share_pct": round(
+                    pct(values["nonresident_enrollment"], values["total_enrollment"]) or 0.0, 4
+                ),
+                "undergraduate_nonresident": values["undergraduate_nonresident"],
                 "graduate_nonresident": values["graduate_nonresident"],
             }
         )
@@ -315,7 +339,7 @@ def main() -> int:
         )
         previous_nr = nr
 
-    # 2024 institutional detail is small enough to expose for transparent drill-down.
+    # Latest-year institutional detail is small enough to expose for transparent drill-down.
     latest_institutions = sorted(
         (row for row in institution_year if row["year"] == END_YEAR),
         key=lambda row: (-row["nonresident_enrollment"], row["institution"]),
@@ -332,7 +356,12 @@ def main() -> int:
         list(national_rows[0].keys()),
     )
     write_csv(
-        PROCESSED / "institutions_2024.csv",
+        PROCESSED / "control_year.csv",
+        control_rows,
+        list(control_rows[0].keys()),
+    )
+    write_csv(
+        PROCESSED / f"institutions_{END_YEAR}.csv",
         latest_institutions,
         list(latest_institutions[0].keys()),
     )
@@ -357,6 +386,7 @@ def main() -> int:
         "years": qa_years,
         "institution_year_rows": len(institution_year),
         "state_year_rows": len(state_rows),
+        "control_year_rows": len(control_rows),
         "excluded_jurisdiction_institution_year_counts": dict(sorted(excluded_geographies.items())),
         "imputation_flag_labels": IMPUTATION_LABELS,
         "checks": {
@@ -366,6 +396,7 @@ def main() -> int:
             "nonresident_not_greater_than_total": "PASS",
             "all_years_present": "PASS" if len(national_rows) == END_YEAR - START_YEAR + 1 else "FAIL",
             "all_51_geographies_present_each_year": "PASS" if len(state_rows) == 51 * (END_YEAR - START_YEAR + 1) else "FAIL",
+            "all_three_controls_present_each_year": "PASS" if len(control_rows) == 3 * (END_YEAR - START_YEAR + 1) else "FAIL",
             "undergraduate_plus_graduate_reconciles_to_total": "PASS" if level_reconciliation else "FAIL",
         },
     }
@@ -373,6 +404,7 @@ def main() -> int:
 
     print(f"Built {len(institution_year):,} institution-year rows")
     print(f"Built {len(state_rows):,} state-year rows")
+    print(f"Built {len(control_rows):,} control-year rows")
     print(f"Built {len(national_rows):,} national-year rows")
     print(f"Wrote QA report to {QA_PATH}")
     return 0

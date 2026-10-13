@@ -21,6 +21,384 @@
     },
     "top5_state_share_pct": 41.6
   },
+  "level_decomposition": {
+    "graduate_change_students": 138765,
+    "undergraduate_change_students": -75365,
+    "net_change_students": 63400,
+    "graduate_change_pct": 33.3,
+    "undergraduate_change_pct": -13.4
+  },
+  "recovery": {
+    "baseline_year": 2019,
+    "states_at_or_above_baseline": 33,
+    "states_below_baseline": 18,
+    "largest_gains": [
+      {
+        "state": "IL",
+        "baseline": 41291,
+        "latest": 55755,
+        "absolute_change": 14464,
+        "pct_change": 35.0
+      },
+      {
+        "state": "TX",
+        "baseline": 63451,
+        "latest": 77730,
+        "absolute_change": 14279,
+        "pct_change": 22.5
+      },
+      {
+        "state": "IN",
+        "baseline": 24229,
+        "latest": 37082,
+        "absolute_change": 12853,
+        "pct_change": 53.0
+      },
+      {
+        "state": "FL",
+        "baseline": 46411,
+        "latest": 58391,
+        "absolute_change": 11980,
+        "pct_change": 25.8
+      },
+      {
+        "state": "MO",
+        "baseline": 16288,
+        "latest": 27436,
+        "absolute_change": 11148,
+        "pct_change": 68.4
+      },
+      {
+        "state": "GA",
+        "baseline": 25718,
+        "latest": 33443,
+        "absolute_change": 7725,
+        "pct_change": 30.0
+      },
+      {
+        "state": "NY",
+        "baseline": 109194,
+        "latest": 116228,
+        "absolute_change": 7034,
+        "pct_change": 6.4
+      },
+      {
+        "state": "MA",
+        "baseline": 61761,
+        "latest": 68570,
+        "absolute_change": 6809,
+        "pct_change": 11.0
+      }
+    ],
+    "largest_shortfalls": [
+      {
+        "state": "CA",
+        "baseline": 146871,
+        "latest": 113589,
+        "absolute_change": -33282,
+        "pct_change": -22.7
+      },
+      {
+        "state": "OR",
+        "baseline": 10109,
+        "latest": 5844,
+        "absolute_change": -4265,
+        "pct_change": -42.2
+      },
+      {
+        "state": "KS",
+        "baseline": 13065,
+        "latest": 9223,
+        "absolute_change": -3842,
+        "pct_change": -29.4
+      },
+      {
+        "state": "WA",
+        "baseline": 22099,
+        "latest": 18265,
+        "absolute_change": -3834,
+        "pct_change": -17.3
+      },
+      {
+        "state": "ID",
+        "baseline": 6925,
+        "latest": 3277,
+        "absolute_change": -3648,
+        "pct_change": -52.7
+      },
+      {
+        "state": "DC",
+        "baseline": 11537,
+        "latest": 9743,
+        "absolute_change": -1794,
+        "pct_change": -15.5
+      },
+      {
+        "state": "IA",
+        "baseline": 10414,
+        "latest": 8993,
+        "absolute_change": -1421,
+        "pct_change": -13.6
+      },
+      {
+        "state": "PA",
+        "baseline": 46060,
+        "latest": 44983,
+        "absolute_change": -1077,
+        "pct_change": -2.3
+      }
+    ]
+  },
+  "concentration": {
+    "top10_institutions_share_pct": 12.0,
+    "top100_institutions_share_pct": 50.4,
+    "top2_states_start_share_pct": 24.7,
+    "top2_states_latest_share_pct": 22.0,
+    "top5_states_start_share_pct": 42.5,
+    "top5_states_latest_share_pct": 41.6
+  },
+  "institution_control": {
+    "changes": [
+      {
+        "control": "Public",
+        "start_nonresident": 626119,
+        "latest_nonresident": 610032,
+        "absolute_change": -16087,
+        "pct_change": -2.6,
+        "start_national_share_pct": 63.8,
+        "latest_national_share_pct": 58.4,
+        "undergraduate_change": -68314,
+        "graduate_change": 52227,
+        "latest_graduate_share_pct": 47.1
+      },
+      {
+        "control": "Private nonprofit",
+        "start_nonresident": 330778,
+        "latest_nonresident": 413603,
+        "absolute_change": 82825,
+        "pct_change": 25.0,
+        "start_national_share_pct": 33.7,
+        "latest_national_share_pct": 39.6,
+        "undergraduate_change": -967,
+        "graduate_change": 83792,
+        "latest_graduate_share_pct": 62.3
+      },
+      {
+        "control": "Private for-profit",
+        "start_nonresident": 23840,
+        "latest_nonresident": 20502,
+        "absolute_change": -3338,
+        "pct_change": -14.0,
+        "start_national_share_pct": 2.4,
+        "latest_national_share_pct": 2.0,
+        "undergraduate_change": -6084,
+        "graduate_change": 2746,
+        "latest_graduate_share_pct": 54.4
+      }
+    ],
+    "series": [
+      {
+        "year": 2015,
+        "controls": {
+          "Public": {
+            "nonresident": 626119,
+            "undergraduate_nonresident": 391158,
+            "graduate_nonresident": 234961
+          },
+          "Private nonprofit": {
+            "nonresident": 330778,
+            "undergraduate_nonresident": 157013,
+            "graduate_nonresident": 173765
+          },
+          "Private for-profit": {
+            "nonresident": 23840,
+            "undergraduate_nonresident": 15430,
+            "graduate_nonresident": 8410
+          }
+        }
+      },
+      {
+        "year": 2016,
+        "controls": {
+          "Public": {
+            "nonresident": 632668,
+            "undergraduate_nonresident": 395258,
+            "graduate_nonresident": 237410
+          },
+          "Private nonprofit": {
+            "nonresident": 340706,
+            "undergraduate_nonresident": 158673,
+            "graduate_nonresident": 182033
+          },
+          "Private for-profit": {
+            "nonresident": 23009,
+            "undergraduate_nonresident": 14616,
+            "graduate_nonresident": 8393
+          }
+        }
+      },
+      {
+        "year": 2017,
+        "controls": {
+          "Public": {
+            "nonresident": 623119,
+            "undergraduate_nonresident": 394543,
+            "graduate_nonresident": 228576
+          },
+          "Private nonprofit": {
+            "nonresident": 351348,
+            "undergraduate_nonresident": 163069,
+            "graduate_nonresident": 188279
+          },
+          "Private for-profit": {
+            "nonresident": 24004,
+            "undergraduate_nonresident": 15064,
+            "graduate_nonresident": 8940
+          }
+        }
+      },
+      {
+        "year": 2018,
+        "controls": {
+          "Public": {
+            "nonresident": 609826,
+            "undergraduate_nonresident": 388535,
+            "graduate_nonresident": 221291
+          },
+          "Private nonprofit": {
+            "nonresident": 355371,
+            "undergraduate_nonresident": 161990,
+            "graduate_nonresident": 193381
+          },
+          "Private for-profit": {
+            "nonresident": 23291,
+            "undergraduate_nonresident": 13401,
+            "graduate_nonresident": 9890
+          }
+        }
+      },
+      {
+        "year": 2019,
+        "controls": {
+          "Public": {
+            "nonresident": 595929,
+            "undergraduate_nonresident": 375006,
+            "graduate_nonresident": 220923
+          },
+          "Private nonprofit": {
+            "nonresident": 356040,
+            "undergraduate_nonresident": 159864,
+            "graduate_nonresident": 196176
+          },
+          "Private for-profit": {
+            "nonresident": 21089,
+            "undergraduate_nonresident": 12204,
+            "graduate_nonresident": 8885
+          }
+        }
+      },
+      {
+        "year": 2020,
+        "controls": {
+          "Public": {
+            "nonresident": 510732,
+            "undergraduate_nonresident": 313941,
+            "graduate_nonresident": 196791
+          },
+          "Private nonprofit": {
+            "nonresident": 317809,
+            "undergraduate_nonresident": 143004,
+            "graduate_nonresident": 174805
+          },
+          "Private for-profit": {
+            "nonresident": 18539,
+            "undergraduate_nonresident": 10455,
+            "graduate_nonresident": 8084
+          }
+        }
+      },
+      {
+        "year": 2021,
+        "controls": {
+          "Public": {
+            "nonresident": 521526,
+            "undergraduate_nonresident": 293230,
+            "graduate_nonresident": 228296
+          },
+          "Private nonprofit": {
+            "nonresident": 343258,
+            "undergraduate_nonresident": 145143,
+            "graduate_nonresident": 198115
+          },
+          "Private for-profit": {
+            "nonresident": 17212,
+            "undergraduate_nonresident": 10436,
+            "graduate_nonresident": 6776
+          }
+        }
+      },
+      {
+        "year": 2022,
+        "controls": {
+          "Public": {
+            "nonresident": 562847,
+            "undergraduate_nonresident": 287830,
+            "graduate_nonresident": 275017
+          },
+          "Private nonprofit": {
+            "nonresident": 383354,
+            "undergraduate_nonresident": 152608,
+            "graduate_nonresident": 230746
+          },
+          "Private for-profit": {
+            "nonresident": 17540,
+            "undergraduate_nonresident": 9453,
+            "graduate_nonresident": 8087
+          }
+        }
+      },
+      {
+        "year": 2023,
+        "controls": {
+          "Public": {
+            "nonresident": 589402,
+            "undergraduate_nonresident": 294264,
+            "graduate_nonresident": 295138
+          },
+          "Private nonprofit": {
+            "nonresident": 405743,
+            "undergraduate_nonresident": 152853,
+            "graduate_nonresident": 252890
+          },
+          "Private for-profit": {
+            "nonresident": 19453,
+            "undergraduate_nonresident": 9527,
+            "graduate_nonresident": 9926
+          }
+        }
+      },
+      {
+        "year": 2024,
+        "controls": {
+          "Public": {
+            "nonresident": 610032,
+            "undergraduate_nonresident": 322844,
+            "graduate_nonresident": 287188
+          },
+          "Private nonprofit": {
+            "nonresident": 413603,
+            "undergraduate_nonresident": 156046,
+            "graduate_nonresident": 257557
+          },
+          "Private for-profit": {
+            "nonresident": 20502,
+            "undergraduate_nonresident": 9346,
+            "graduate_nonresident": 11156
+          }
+        }
+      }
+    ]
+  },
   "top_states_latest": [
     {
       "state": "NY",
@@ -3571,8 +3949,58 @@
     },
     "benchmark": {
       "name": "NCES Digest of Education Statistics 2025, Table 306.10",
-      "published_total_thousands": 19659.6,
-      "derived_total_thousands": 19659.6,
+      "checks": 24,
+      "checks_passed": 24,
+      "latest_rows": [
+        {
+          "year": "2024",
+          "metric": "total_enrollment",
+          "current_ipeds_value": "19659633",
+          "digest_published_thousands": "19659.6",
+          "digest_approx_students": "19659600",
+          "difference_students": "33",
+          "difference_pct": "0.0002",
+          "consistency_threshold_pct": "0.02",
+          "status": "PASS",
+          "digest_release_status": "provisional"
+        },
+        {
+          "year": "2024",
+          "metric": "nonresident_enrollment",
+          "current_ipeds_value": "1044137",
+          "digest_published_thousands": "1047.1",
+          "digest_approx_students": "1047100",
+          "difference_students": "-2963",
+          "difference_pct": "-0.2830",
+          "consistency_threshold_pct": "1.00",
+          "status": "PASS",
+          "digest_release_status": "provisional"
+        },
+        {
+          "year": "2024",
+          "metric": "undergraduate_nonresident",
+          "current_ipeds_value": "488236",
+          "digest_published_thousands": "490.9",
+          "digest_approx_students": "490900",
+          "difference_students": "-2664",
+          "difference_pct": "-0.5427",
+          "consistency_threshold_pct": "1.00",
+          "status": "PASS",
+          "digest_release_status": "provisional"
+        },
+        {
+          "year": "2024",
+          "metric": "graduate_nonresident",
+          "current_ipeds_value": "555901",
+          "digest_published_thousands": "556.1",
+          "digest_approx_students": "556100",
+          "difference_students": "-199",
+          "difference_pct": "-0.0358",
+          "consistency_threshold_pct": "1.00",
+          "status": "PASS",
+          "digest_release_status": "provisional"
+        }
+      ],
       "status": "PASS",
       "url": "https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp"
     }

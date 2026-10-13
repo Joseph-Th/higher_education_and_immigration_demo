@@ -14,7 +14,7 @@ The project treats reproducibility and validation as part of the research produc
 `scripts/audit_ipeds_schema.py` checks every year for:
 
 - `UNITID`, `EFALEVEL`, `EFTOTLT`, and `EFNRALT` in Fall Enrollment;
-- `UNITID`, `INSTNM`, `STABBR`, `DEGGRANT`, and `PSET4FLG` in the institutional directory;
+- `UNITID`, `INSTNM`, `STABBR`, `CONTROL`, `DEGGRANT`, and `PSET4FLG` in the institutional directory;
 - the expected meanings of `EFALEVEL` codes 1, 2, and 12.
 
 All ten years currently pass.
@@ -34,13 +34,60 @@ The resulting analytic dataset contains 40,549 institution-year records and 510 
 
 ## Independent publication benchmark
 
-The pipeline's 2024 total fall enrollment is **19,659,633**.
+`scripts/validate_benchmarks.py` compares independently derived national results against selected rows from NCES Digest of Education Statistics 2025, Table 306.10.
 
-NCES Digest of Education Statistics 2025, Table 306.10 reports **19,659.6 thousand** students for 2024 in the degree-granting, 50-states-plus-DC universe. Our result rounds to exactly **19,659.6 thousand**.
+The audit covers four measures for each year from 2019 through 2024:
+
+- total fall enrollment;
+- U.S. nonresident enrollment;
+- undergraduate U.S. nonresident enrollment;
+- graduate/postbaccalaureate U.S. nonresident enrollment.
+
+This produces **24 metric-year checks**. All currently pass their documented consistency thresholds.
+
+The thresholds are intentionally stricter for the total-enrollment universe (0.02%) than for subgroup counts (1.0%). The Digest values are rounded to one decimal thousand and were prepared from a different publication vintage than the files currently posted by IPEDS, so subgroup equality is not expected to be exact.
+
+For 2024:
+
+- current total fall enrollment is **19,659,633** versus approximately **19,659,600** in the Digest, a **+0.0002%** difference;
+- current U.S. nonresident enrollment is **1,044,137** versus approximately **1,047,100**, a **-0.2830%** difference;
+- current undergraduate U.S. nonresident enrollment is **488,236** versus approximately **490,900**, a **-0.5427%** difference;
+- current graduate U.S. nonresident enrollment is **555,901** versus approximately **556,100**, a **-0.0358%** difference.
 
 Source: https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp
 
-The public site build fails if this benchmark no longer matches, preventing a silently changed analytic universe from being published.
+The audit output is committed as `data/benchmark_audit.csv`. The public-site data build refuses to proceed if any benchmark check has failed.
+
+This design is deliberate: the external publication is a validation source, not an input. Current IPEDS values are never overwritten merely to reproduce an older Digest vintage.
+
+## Repository test suite
+
+`tests/test_research_product.py` verifies the generated research product after the pipeline is rebuilt. Current checks include:
+
+- year coverage;
+- all 50 states plus DC in every year;
+- state aggregates reconciling exactly to national totals;
+- public, private nonprofit, and private for-profit aggregates reconciling exactly to national totals;
+- undergraduate + graduate values reconciling to total enrollment;
+- published shares recalculating from counts;
+- latest-year institution output sorted correctly;
+- findings reconciling to source tables;
+- state change summary coverage and 2019 recovery classification;
+- QA and external benchmark checks all passing;
+- public download files exactly matching the generated source outputs;
+- local site assets existing and HTML IDs remaining unique.
+
+The current suite contains **13 tests**.
+
+## One-command validation
+
+Run:
+
+```bash
+python scripts/validate_project.py
+```
+
+This rebuilds and validates the entire offline product in dependency order. A successful run ends with `VALIDATION PASS`.
 
 ## Publication checks
 
@@ -51,4 +98,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable national, state, institution, source-manifest, and schema-audit files.
+- downloadable national, state, institution, source-manifest, schema-audit, benchmark-audit, and external-reference files.

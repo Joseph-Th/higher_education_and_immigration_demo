@@ -1,0 +1,126 @@
+# Annual Update Playbook
+
+This project is designed to behave like a recurring higher-education data product. The update process is explicit so a new IPEDS release can be incorporated without silently changing definitions or rewriting prior results.
+
+## 1. Confirm the new release
+
+Before changing code, verify on the NCES/IPEDS Complete Data Files page that both of these files are available for the new fall year:
+
+- `EFyyyyA`: Fall Enrollment by race/ethnicity, gender, attendance status, and level of student.
+- `HDyyyy`: institutional directory information.
+
+For a quick endpoint check, run `python scripts/check_for_new_release.py`. Treat its result as a release-detection aid, then confirm status and documentation on NCES before updating the analysis.
+
+Record whether NCES identifies the release as provisional or final/revised.
+
+## 2. Advance the project year
+
+Edit only `scripts/project_config.py`:
+
+- set `END_YEAR` to the new fall year;
+- set `LATEST_DATA_STATUS` to the documented release status.
+
+The collection, schema audit, analysis, findings, site-data build, and tests all use these shared constants.
+
+## 3. Retrieve sources and preserve provenance
+
+Run:
+
+```bash
+python scripts/fetch_ipeds.py
+```
+
+Review `data/source_manifest.csv` before continuing. Confirm:
+
+- four new records exist for the new year: enrollment data, enrollment dictionary, directory data, and directory dictionary;
+- URLs point to NCES;
+- retrieval timestamps are current;
+- SHA-256 hashes are populated;
+- the expected CSV/XLSX files were extracted.
+
+Do not overwrite an unexplained source change. If NCES replaces a file at the same URL, the changed hash is evidence of a new source vintage and should be documented.
+
+## 4. Run the schema audit before analysis
+
+Run:
+
+```bash
+python scripts/audit_ipeds_schema.py
+```
+
+Review the new row in `data/schema_audit.csv`. Specifically verify:
+
+- `EFNRALT`, `EFTOTLT`, and `EFALEVEL` still exist;
+- `EFALEVEL` codes 1, 2, and 12 retain their expected meanings;
+- `CONTROL`, `DEGGRANT`, `PSET4FLG`, and state fields remain available;
+- terminology or definition changes are reflected in `docs/VARIABLE_MAPPING.md` and `docs/METHODOLOGY.md`.
+
+If a variable or label changes, stop. Do not make the new year fit the old schema by assumption.
+
+## 5. Rebuild and inspect changes
+
+Run the complete offline validation:
+
+```bash
+python scripts/validate_project.py
+```
+
+Then review the newly generated:
+
+- `data/processed/national_year.csv`;
+- `data/processed/state_year.csv`;
+- latest institution detail file;
+- `data/qa_report.json`;
+- `data/findings.json`.
+
+Investigate unusually large year-over-year changes before updating the narrative. Check whether the movement is broad-based, concentrated in a few institutions, or related to source/release changes.
+
+## 6. Refresh the external benchmark
+
+When a new Digest Table 306.10 becomes available, add its selected-year values to `data/reference/nces_digest_2025_306_10.csv` or replace that reference with the newer Digest edition and update its provenance note.
+
+The benchmark is an independent consistency check, not an input to the analysis. Never alter current IPEDS values merely to make them reproduce an older publication vintage.
+
+If current files and the Digest disagree:
+
+1. quantify the difference;
+2. check whether the publications use different source vintages or release statuses;
+3. verify the analytic universe;
+4. document the difference; and
+5. retain the current-source result unless there is evidence the pipeline is wrong.
+
+## 7. Update public interpretation
+
+Re-read every public claim after the rebuild. A chart may update correctly while its title or prose becomes false.
+
+At minimum, re-check:
+
+- whether the latest year is still the series peak;
+- the largest annual decline/growth year;
+- undergraduate versus graduate composition;
+- the number of states above the pre-pandemic baseline;
+- the leading state gains/shortfalls;
+- institution and state concentration metrics;
+- institutional-control findings;
+- provisional/final language.
+
+The public page contains intentionally editorial year labels and latest-year download links in `site/index.html`; update those after the data rebuild rather than assuming configuration alone rewrites the prose.
+
+## 8. Visual review and deployment
+
+Serve `site/` locally and inspect desktop and mobile layouts before publication. Confirm charts, tables, links, downloads, and source notes render correctly.
+
+Cloudflare Pages can publish the `site/` directory directly. See `docs/DEPLOYMENT.md`.
+
+## Update completion criteria
+
+An annual update is complete only when:
+
+- provenance is current;
+- schema checks pass or documented changes are resolved;
+- all automated QA checks pass;
+- external benchmark differences are understood and recorded;
+- public findings are re-reviewed rather than carried forward automatically;
+- the rendered site is inspected; and
+- the deployed site serves the same files that passed validation.
+

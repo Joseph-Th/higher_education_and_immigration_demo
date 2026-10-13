@@ -13,15 +13,14 @@ import sys
 
 from openpyxl import load_workbook
 
+from project_config import END_YEAR, START_YEAR
 
-START_YEAR = 2015
-END_YEAR = 2024
 ROOT = Path(__file__).resolve().parents[1]
 RAW_ROOT = ROOT / "data" / "raw" / "ipeds"
 OUTPUT = ROOT / "data" / "schema_audit.csv"
 
 EF_REQUIRED = ("UNITID", "EFALEVEL", "EFTOTLT", "EFNRALT")
-HD_REQUIRED = ("UNITID", "INSTNM", "STABBR", "DEGGRANT", "PSET4FLG")
+HD_REQUIRED = ("UNITID", "INSTNM", "STABBR", "CONTROL", "DEGGRANT", "PSET4FLG")
 EXPECTED_LEVELS = {
     "1": "All students total",
     "2": "All students, Undergraduate total",
