@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Read-only SQLite analysis and reconciliation queries over validated IPEDS portfolio outputs."><meta name="theme-color" content="#10263c"><title>SQL Analysis | Higher Education Data Brief</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+  <a class="skip-link" href="#main">Skip to SQL analysis</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="SQL analysis navigation"><a href="index.html">Brief</a><a href="research-memo.html">Memo</a><a href="publication-handoff.html">Handoff</a><a href="data-governance.html">Governance</a></nav></div></header>
+  <main id="main">
+    <section class="handoff-hero"><div class="shell"><p class="eyebrow">SQL analysis</p><h1>Query the validated outputs, then reconcile the answers.</h1><p class="lede">Six read-only SQLite queries demonstrate common analyst patterns including joins, grouping, conditional aggregation, CTEs, ranking, and window functions. Every query has an independent check against the canonical CSV outputs.</p><div class="hero-actions"><a class="button button-primary" href="#query-catalog">Review SQL checks</a><a class="button button-secondary" href="downloads/portfolio_queries.sql">Download query pack</a></div><p class="release-note"><strong>Authority boundary:</strong> SQLite is rebuilt in memory from validated CSV outputs and is never stored or treated as a second source of truth.</p><div class="handoff-summary"><article><strong>6</strong><span>read-only queries</span></article><article><strong>6/6</strong><span>independent checks passed</span></article><article><strong>5</strong><span>source tables loaded</span></article><article><strong>0</strong><span>stored database artifacts</span></article></div></div></section>
+    <section class="section section-tinted" id="query-catalog"><div class="shell"><div class="section-heading"><p class="eyebrow">Query catalog</p><h2>Business-style questions with reproducible SQL</h2><p>The query pack is public and SELECT-only. The builder rejects mutation/DDL statements and stops the build if any reconciliation check fails.</p></div><div class="handoff-grid">
+            <article class="handoff-card" data-query-id="Q01">
+              <div class="handoff-card-head"><span>Q01</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+              <p class="case-kicker">CTE, LAG window function, CASE, arithmetic</p>
+              <h2>National year-over-year change</h2>
+              <dl class="handoff-meta">
+                <div><dt>Rows returned</dt><dd>10</dd></div>
+                <div><dt>Independent check</dt><dd>latest annual change</dd></div>
+                <div><dt>Observed</dt><dd>29539</dd></div>
+                <div><dt>Why it matters</dt><dd>Latest SQL LAG difference matches canonical national CSV</dd></div>
+              </dl>
+            </article>
+            <article class="handoff-card" data-query-id="Q02">
+              <div class="handoff-card-head"><span>Q02</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+              <p class="case-kicker">CTE, conditional aggregation, CASE, RANK</p>
+              <h2>State recovery from 2019 to 2024</h2>
+              <dl class="handoff-meta">
+                <div><dt>Rows returned</dt><dd>51</dd></div>
+                <div><dt>Independent check</dt><dd>states/DC at or above 2019</dd></div>
+                <div><dt>Observed</dt><dd>33</dd></div>
+                <div><dt>Why it matters</dt><dd>SQL recovery classification matches canonical state CSV</dd></div>
+              </dl>
+            </article>
+            <article class="handoff-card" data-query-id="Q03">
+              <div class="handoff-card-head"><span>Q03</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+              <p class="case-kicker">CTE, conditional aggregation, ROUND, RANK</p>
+              <h2>Institutional-control decade change</h2>
+              <dl class="handoff-meta">
+                <div><dt>Rows returned</dt><dd>3</dd></div>
+                <div><dt>Independent check</dt><dd>largest control-group decade increase</dd></div>
+                <div><dt>Observed</dt><dd>Private nonprofit|82825</dd></div>
+                <div><dt>Why it matters</dt><dd>SQL control ranking matches canonical control CSV</dd></div>
+              </dl>
+            </article>
+            <article class="handoff-card" data-query-id="Q04">
+              <div class="handoff-card-head"><span>Q04</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+              <p class="case-kicker">JOIN, ROW_NUMBER, cumulative SUM window</p>
+              <h2>Largest 2024 institutions and national share</h2>
+              <dl class="handoff-meta">
+                <div><dt>Rows returned</dt><dd>20</dd></div>
+                <div><dt>Independent check</dt><dd>largest latest-year institution</dd></div>
+                <div><dt>Observed</dt><dd>New York University|19202</dd></div>
+                <div><dt>Why it matters</dt><dd>SQL institution ranking matches canonical institution CSV</dd></div>
+              </dl>
+            </article>
+            <article class="handoff-card" data-query-id="Q05">
+              <div class="handoff-card-head"><span>Q05</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+              <p class="case-kicker">CTE, CASE classification, GROUP BY, SUM window</p>
+              <h2>Institution-universe change accounting</h2>
+              <dl class="handoff-meta">
+                <div><dt>Rows returned</dt><dd>2</dd></div>
+                <div><dt>Independent check</dt><dd>institution-universe change accounting</dd></div>
+                <div><dt>Observed</dt><dd>66981|-3581|63400</dd></div>
+                <div><dt>Why it matters</dt><dd>SQL continuing/entry-exit accounting reconciles to the national decade change</dd></div>
+              </dl>
+            </article>
+            <article class="handoff-card" data-query-id="Q06">
+              <div class="handoff-card-head"><span>Q06</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+              <p class="case-kicker">CTE, GROUP BY, JOIN, reconciliation deltas</p>
+              <h2>State totals reconcile to national totals</h2>
+              <dl class="handoff-meta">
+                <div><dt>Rows returned</dt><dd>10</dd></div>
+                <div><dt>Independent check</dt><dd>maximum state-to-national reconciliation delta</dd></div>
+                <div><dt>Observed</dt><dd>0</dd></div>
+                <div><dt>Why it matters</dt><dd>Every SQL state sum exactly matches the national CSV</dd></div>
+              </dl>
+            </article></div></div></section>
+    <section class="section shell"><div class="section-heading compact"><p class="eyebrow">Independent checks</p><h2>SQL results are compared with the CSV authorities</h2><p>Expected values are calculated directly from the validated source CSVs rather than copied from the SQL results.</p></div><div class="table-wrap"><table><thead><tr><th>Query</th><th>Check</th><th>Expected</th><th>Observed</th><th>Status</th></tr></thead><tbody><tr><td>Q01</td><td>latest annual change</td><td>29539</td><td>29539</td><td>PASS</td></tr><tr><td>Q02</td><td>states/DC at or above 2019</td><td>33</td><td>33</td><td>PASS</td></tr><tr><td>Q03</td><td>largest control-group decade increase</td><td>Private nonprofit|82825</td><td>Private nonprofit|82825</td><td>PASS</td></tr><tr><td>Q04</td><td>largest latest-year institution</td><td>New York University|19202</td><td>New York University|19202</td><td>PASS</td></tr><tr><td>Q05</td><td>institution-universe change accounting</td><td>66981|-3581|63400</td><td>66981|-3581|63400</td><td>PASS</td></tr><tr><td>Q06</td><td>maximum state-to-national reconciliation delta</td><td>0</td><td>0</td><td>PASS</td></tr></tbody></table></div><div class="memo-actions"><a class="button button-primary" href="downloads/sql_analysis_audit.csv">Download audit CSV</a><a class="button button-secondary" href="downloads/sql_analysis.md">Download SQL notes</a></div></section>
+    <section class="section section-tinted"><div class="shell"><div class="section-heading compact"><p class="eyebrow">Implementation boundary</p><h2>SQL adds a second way to interrogate the data, not a second authority</h2></div><div class="method-grid"><article><h3>Canonical inputs</h3><p>National, state, control, latest-institution, and institution-change CSVs remain the validated analytical outputs.</p></article><article><h3>Ephemeral database</h3><p>The SQLite database exists only for one build process and is recreated from source on every run.</p></article><article><h3>Read-only query pack</h3><p>The parser accepts only SELECT/WITH queries and rejects mutation, schema-change, attachment, and PRAGMA statements.</p></article><article><h3>Independent reconciliation</h3><p>Each query is checked against values calculated separately from the CSV sources before publication.</p></article></div></div></section>
+  </main>
+  <footer><div class="shell footer-inner"><span>SQL Analysis · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
+</body></html>
