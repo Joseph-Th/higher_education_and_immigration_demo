@@ -27,6 +27,7 @@ def main() -> int:
         ("Build research library", [PYTHON, "scripts/build_research_library.py"]),
         ("Summarize findings", [PYTHON, "scripts/summarize_findings.py"]),
         ("External publication benchmark", [PYTHON, "scripts/validate_benchmarks.py"]),
+        ("Build stakeholder briefing note", [PYTHON, "scripts/build_briefing_note.py"]),
         ("Build public site data", [PYTHON, "scripts/build_site_data.py"]),
         (
             "Research-product tests",

@@ -31,6 +31,16 @@ The script checks the NCES Complete Data Files endpoint for the next year's:
 
 The check is deliberately **not** part of `scripts/validate_project.py` because reproducibility of the current release should not depend on network availability or the state of a future NCES release.
 
+## Research Library health check
+
+Run:
+
+```bash
+python scripts/check_research_library.py
+```
+
+This separate online lane checks every URL in `data/research_library.csv`, follows redirects, and reports HTTP/network failures. HTTP 401/403 responses are reported separately as **scripted-access restrictions**, not silently treated as either success or a broken link; those resources require manual browser review. The command fails on network errors and other broken HTTP responses such as 404/5xx. It does not modify the recorded `last_checked` metadata automatically; a human source review is still required before changing that field. Keeping this check outside `scripts/validate_project.py` prevents temporary external-site outages from breaking the offline research build.
+
 Do not advance `END_YEAR` merely because a directory file exists. The recurring analysis is ready to advance only when the Fall Enrollment data and its dictionary are available and pass the schema review.
 
 ## Update trigger

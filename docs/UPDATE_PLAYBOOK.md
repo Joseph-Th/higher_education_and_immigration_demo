@@ -76,6 +76,7 @@ Then review the newly generated:
 - `data/findings.json`.
 - `data/processed/latest_release_institution_review.csv`;
 - `docs/LATEST_UPDATE_REVIEW.md`.
+- `docs/BRIEFING_NOTE.md`.
 
 Investigate the reason-coded high- and medium-priority review queue before updating the narrative. A queue item is not automatically an error. Determine whether the movement is plausible, concentrated in a few institutions, associated with an imputation/status change, related to analytic-universe membership, or a source discontinuity that needs further review.
 
@@ -111,6 +112,8 @@ At minimum, re-check:
 - provisional/final language.
 
 The public page contains intentionally editorial year labels and latest-year download links in `site/index.html`; update those after the data rebuild rather than assuming configuration alone rewrites the prose.
+
+Re-read the generated briefing note as a stakeholder product. Its numbers are derived automatically, but its monitoring questions and interpretation boundaries must still remain appropriate as the evidence changes.
 
 ## 8. Visual review and deployment
 

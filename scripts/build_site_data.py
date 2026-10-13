@@ -124,6 +124,10 @@ def main() -> int:
         ROOT / "docs" / "RESEARCH_LIBRARY.md",
         DOWNLOADS / "research_library.md",
     )
+    shutil.copy2(
+        ROOT / "docs" / "BRIEFING_NOTE.md",
+        DOWNLOADS / "briefing_note.md",
+    )
 
     print(f"Wrote {SITE_DATA / 'site_data.json'}")
     print(f"NCES Digest consistency checks: {benchmark_passed}/{len(benchmark_audit)} PASS")

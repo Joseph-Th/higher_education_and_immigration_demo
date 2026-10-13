@@ -243,6 +243,18 @@ class ResearchProductTests(unittest.TestCase):
             self.assertIn(row["title"], rendered)
             self.assertIn(row["url"], rendered)
 
+    def test_briefing_note_tracks_validated_outputs(self) -> None:
+        note = (ROOT / "docs" / "BRIEFING_NOTE.md").read_text(encoding="utf-8")
+        headline = self.findings["headline"]
+        latest = self.update_review["national"]
+        queue = self.update_review["review_queue"]
+        self.assertIn(f"{headline['latest_nonresident']:,} students", note)
+        self.assertIn(f"{latest['absolute_change']:+,} students", note)
+        self.assertIn(f"{latest['undergraduate_change']:+,}", note)
+        self.assertIn(f"{latest['graduate_change']:+,}", note)
+        self.assertIn(f"{queue['high']} high-priority", note)
+        self.assertIn("IPEDS U.S. nonresident status should not be used as a proxy", note)
+
     def test_qa_report_is_all_pass(self) -> None:
         self.assertTrue(self.qa["checks"])
         self.assertTrue(all(value == "PASS" for value in self.qa["checks"].values()))
@@ -292,6 +304,10 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(
             (ROOT / "docs" / "RESEARCH_LIBRARY.md").read_bytes(),
             (ROOT / "site" / "downloads" / "research_library.md").read_bytes(),
+        )
+        self.assertEqual(
+            (ROOT / "docs" / "BRIEFING_NOTE.md").read_bytes(),
+            (ROOT / "site" / "downloads" / "briefing_note.md").read_bytes(),
         )
 
     def test_static_page_local_assets_and_ids(self) -> None:

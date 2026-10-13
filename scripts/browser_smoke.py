@@ -48,6 +48,7 @@ def check_downloads(base_url: str) -> None:
         "downloads/latest_update_review.md",
         "downloads/research_library.csv",
         "downloads/research_library.md",
+        "downloads/briefing_note.md",
         "downloads/benchmark_audit.csv",
     )
     for path in paths:
@@ -109,6 +110,20 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
     high_text = page.locator("#update-high-priority").inner_text().strip()
     if high_text != expected_int(update["review_queue"]["high"]):
         raise AssertionError("Latest-release high-priority count does not match site data")
+
+    page.evaluate(
+        "document.documentElement.style.scrollBehavior='auto'; "
+        "document.querySelector('#downloads').scrollIntoView()"
+    )
+    anchor_geometry = page.evaluate(
+        "({sectionTop: document.querySelector('#downloads').getBoundingClientRect().top, "
+        "headerBottom: document.querySelector('.site-header').getBoundingClientRect().bottom})"
+    )
+    if anchor_geometry["sectionTop"] < anchor_geometry["headerBottom"]:
+        raise AssertionError(
+            f"Sticky header obscures anchored section at {width}px: "
+            f"sectionTop={anchor_geometry['sectionTop']}, headerBottom={anchor_geometry['headerBottom']}"
+        )
 
     overflow = page.evaluate(
         "document.documentElement.scrollWidth - document.documentElement.clientWidth"

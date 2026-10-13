@@ -76,11 +76,12 @@ This design is deliberate: the external publication is a validation source, not 
 - institution endpoint accounting reconciling continuing institutions and universe entry/exit to national change;
 - latest-release review reconciling national, student-level, state, and institution-accounting changes and reproducing its priority counts;
 - structured Research Library metadata having unique IDs, HTTPS URLs, current review dates, and matching generated documentation;
+- stakeholder briefing note reproducing validated headline/latest-release values and interpretation boundaries;
 - QA and external benchmark checks all passing;
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **16 tests**.
+The current suite contains **17 tests**.
 
 ## One-command validation
 
@@ -105,8 +106,9 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - expected institution and benchmark table row counts;
 - rendered SVG charts, including the institution-dynamics and latest-release review charts;
 - the latest-release high-priority review count matching `site_data.json`;
-- working public CSV downloads; and
-- working public Research Library CSV/Markdown downloads; and
+- working public CSV downloads;
+- working public Research Library CSV/Markdown and stakeholder briefing-note downloads;
+- anchored sections clearing the sticky header; and
 - no unintended page-level horizontal overflow.
 
 Run it after `python scripts/validate_project.py` and before deployment.
@@ -120,4 +122,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable national, state, institution, institution-change, latest-release QA queue/memo, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable national, state, institution, institution-change, latest-release QA queue/memo, stakeholder briefing note, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.

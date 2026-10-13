@@ -71,7 +71,9 @@ A short web-based brief containing:
 - documentation sufficient for another analyst to reproduce the result.
 - external publication benchmark audit and release-vintage documentation.
 - generated latest-release review memo and reason-coded institution queue.
+- generated stakeholder briefing note built from validated findings rather than separately maintained figures.
 - structured Research Library with machine-readable source metadata and generated documentation.
+- online Research Library URL-health checker kept separate from offline reproducibility validation.
 - browser-level publication smoke test.
 
 ## Non-goals

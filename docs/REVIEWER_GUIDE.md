@@ -5,7 +5,7 @@ This repository is intended to be evaluated as a small recurring research produc
 ## Five-minute review path
 
 1. Open `site/index.html` through a local static server or deployed Pages URL. Read the six longitudinal findings, the latest-release review, and inspect the state explorer.
-2. Read `docs/FINDINGS.md` for the exact numerical basis behind the public narrative.
+2. Read `docs/BRIEFING_NOTE.md` for the management-facing synthesis, then `docs/FINDINGS.md` for the exact numerical basis behind it.
 3. Read `docs/METHODOLOGY.md` for population definitions, universe rules, endpoint matching, and limitations.
 4. Inspect `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see provenance, validation evidence, and source organization.
 5. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
@@ -23,11 +23,12 @@ This repository is intended to be evaluated as a small recurring research produc
 | Perform substantive analysis | `scripts/summarize_findings.py` produces level, geography, control, concentration, recovery, and institution-dynamics findings |
 | Investigate apparent discrepancies | `scripts/validate_benchmarks.py` quantifies release-vintage differences instead of forcing current data to match an older Digest publication |
 | Review a new annual release | `scripts/build_update_review.py`, `docs/LATEST_UPDATE_REVIEW.md`, and `data/processed/latest_release_institution_review.csv` reconcile the new year and produce a reason-coded QA queue |
+| Brief nontechnical stakeholders | `scripts/build_briefing_note.py` generates `docs/BRIEFING_NOTE.md` directly from validated findings, QA, and benchmark outputs |
 | Organize a Research Library | `data/research_library.csv` and `scripts/build_research_library.py` maintain structured source metadata and generate `docs/RESEARCH_LIBRARY.md` |
 | Quality-control published numbers | `tests/test_research_product.py` checks reconciliation identities, coverage, shares, outputs, downloads, and benchmark status |
 | Communicate to nontechnical readers | `site/` turns the analysis into a concise research brief with plain-language definitions and limitations |
 | Validate the published artifact | `scripts/browser_smoke.py` checks desktop/mobile rendering, interactions, downloads, console errors, and overflow |
-| Maintain a recurring product | `scripts/check_for_new_release.py`, `docs/DATA_CALENDAR.md`, and `docs/UPDATE_PLAYBOOK.md` separate release detection from validation and publication |
+| Maintain a recurring product | `scripts/check_for_new_release.py`, `scripts/check_research_library.py`, `docs/DATA_CALENDAR.md`, and `docs/UPDATE_PLAYBOOK.md` separate live monitoring from offline validation and publication |
 
 ## A concise project explanation
 

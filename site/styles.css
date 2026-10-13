@@ -66,6 +66,7 @@ h1 { margin: 0; max-width: 900px; font-size: clamp(42px, 6vw, 76px); line-height
 .metric-detail { margin-top: 8px; color: var(--ink-soft); font-size: 12px; }
 
 .section { padding: 96px 0; }
+section[id] { scroll-margin-top: 76px; }
 .section-tinted { background: var(--wash); padding: 96px 0; }
 .section-dark { background: var(--navy); color: white; padding: 88px 0; }
 .section-heading { max-width: 790px; margin-bottom: 38px; }
