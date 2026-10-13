@@ -1,0 +1,3598 @@
+{
+  "coverage": {
+    "start_year": 2015,
+    "end_year": 2024,
+    "geography": "50 states and District of Columbia",
+    "latest_data_status": "provisional"
+  },
+  "headline": {
+    "latest_nonresident": 1044137,
+    "latest_total_enrollment": 19659633,
+    "latest_share_pct": 5.31,
+    "change_since_2015": 63400,
+    "change_since_2015_pct": 6.5,
+    "largest_yoy_decline": {
+      "year": 2020,
+      "pct": -12.9
+    },
+    "strongest_yoy_growth": {
+      "year": 2022,
+      "pct": 9.3
+    },
+    "top5_state_share_pct": 41.6
+  },
+  "top_states_latest": [
+    {
+      "state": "NY",
+      "nonresident": 116228,
+      "share_of_state_enrollment_pct": 10.11
+    },
+    {
+      "state": "CA",
+      "nonresident": 113589,
+      "share_of_state_enrollment_pct": 4.25
+    },
+    {
+      "state": "TX",
+      "nonresident": 77730,
+      "share_of_state_enrollment_pct": 4.65
+    },
+    {
+      "state": "MA",
+      "nonresident": 68570,
+      "share_of_state_enrollment_pct": 14.23
+    },
+    {
+      "state": "FL",
+      "nonresident": 58391,
+      "share_of_state_enrollment_pct": 5.58
+    },
+    {
+      "state": "IL",
+      "nonresident": 55755,
+      "share_of_state_enrollment_pct": 7.71
+    },
+    {
+      "state": "PA",
+      "nonresident": 44983,
+      "share_of_state_enrollment_pct": 7.08
+    },
+    {
+      "state": "IN",
+      "nonresident": 37082,
+      "share_of_state_enrollment_pct": 7.75
+    },
+    {
+      "state": "GA",
+      "nonresident": 33443,
+      "share_of_state_enrollment_pct": 5.63
+    },
+    {
+      "state": "OH",
+      "nonresident": 33106,
+      "share_of_state_enrollment_pct": 5.43
+    }
+  ],
+  "largest_state_absolute_growth": [
+    {
+      "state": "FL",
+      "2015": 43850,
+      "2024": 58391,
+      "absolute_change": 14541,
+      "pct_change": 33.2
+    },
+    {
+      "state": "IL",
+      "2015": 42101,
+      "2024": 55755,
+      "absolute_change": 13654,
+      "pct_change": 32.4
+    },
+    {
+      "state": "MA",
+      "2015": 55155,
+      "2024": 68570,
+      "absolute_change": 13415,
+      "pct_change": 24.3
+    },
+    {
+      "state": "GA",
+      "2015": 20895,
+      "2024": 33443,
+      "absolute_change": 12548,
+      "pct_change": 60.1
+    },
+    {
+      "state": "NY",
+      "2015": 104945,
+      "2024": 116228,
+      "absolute_change": 11283,
+      "pct_change": 10.8
+    },
+    {
+      "state": "IN",
+      "2015": 27104,
+      "2024": 37082,
+      "absolute_change": 9978,
+      "pct_change": 36.8
+    },
+    {
+      "state": "KY",
+      "2015": 7114,
+      "2024": 15365,
+      "absolute_change": 8251,
+      "pct_change": 116.0
+    },
+    {
+      "state": "MD",
+      "2015": 19412,
+      "2024": 26147,
+      "absolute_change": 6735,
+      "pct_change": 34.7
+    },
+    {
+      "state": "MO",
+      "2015": 21690,
+      "2024": 27436,
+      "absolute_change": 5746,
+      "pct_change": 26.5
+    },
+    {
+      "state": "TX",
+      "2015": 72878,
+      "2024": 77730,
+      "absolute_change": 4852,
+      "pct_change": 6.7
+    }
+  ],
+  "largest_state_absolute_decline": [
+    {
+      "state": "CA",
+      "2015": 137633,
+      "2024": 113589,
+      "absolute_change": -24044,
+      "pct_change": -17.5
+    },
+    {
+      "state": "OR",
+      "2015": 12382,
+      "2024": 5844,
+      "absolute_change": -6538,
+      "pct_change": -52.8
+    },
+    {
+      "state": "ID",
+      "2015": 9509,
+      "2024": 3277,
+      "absolute_change": -6232,
+      "pct_change": -65.5
+    },
+    {
+      "state": "WA",
+      "2015": 23049,
+      "2024": 18265,
+      "absolute_change": -4784,
+      "pct_change": -20.8
+    },
+    {
+      "state": "MI",
+      "2015": 33394,
+      "2024": 29161,
+      "absolute_change": -4233,
+      "pct_change": -12.7
+    },
+    {
+      "state": "IA",
+      "2015": 13094,
+      "2024": 8993,
+      "absolute_change": -4101,
+      "pct_change": -31.3
+    },
+    {
+      "state": "KS",
+      "2015": 13259,
+      "2024": 9223,
+      "absolute_change": -4036,
+      "pct_change": -30.4
+    },
+    {
+      "state": "OK",
+      "2015": 11293,
+      "2024": 8550,
+      "absolute_change": -2743,
+      "pct_change": -24.3
+    },
+    {
+      "state": "WV",
+      "2015": 4181,
+      "2024": 3012,
+      "absolute_change": -1169,
+      "pct_change": -28.0
+    },
+    {
+      "state": "NE",
+      "2015": 5525,
+      "2024": 4381,
+      "absolute_change": -1144,
+      "pct_change": -20.7
+    }
+  ],
+  "top_institutions_latest": [
+    {
+      "institution": "New York University",
+      "state": "NY",
+      "nonresident": 19202,
+      "share_pct": 33.79
+    },
+    {
+      "institution": "Columbia University in the City of New York",
+      "state": "NY",
+      "nonresident": 13812,
+      "share_pct": 39.27
+    },
+    {
+      "institution": "Georgia Institute of Technology-Main Campus",
+      "state": "GA",
+      "nonresident": 13496,
+      "share_pct": 25.29
+    },
+    {
+      "institution": "University of Illinois Urbana-Champaign",
+      "state": "IL",
+      "nonresident": 13350,
+      "share_pct": 22.54
+    },
+    {
+      "institution": "Arizona State University Campus Immersion",
+      "state": "AZ",
+      "nonresident": 12563,
+      "share_pct": 15.74
+    },
+    {
+      "institution": "University of Southern California",
+      "state": "CA",
+      "nonresident": 12374,
+      "share_pct": 26.57
+    },
+    {
+      "institution": "Northeastern University",
+      "state": "MA",
+      "nonresident": 11530,
+      "share_pct": 35.42
+    },
+    {
+      "institution": "Purdue University-Main Campus",
+      "state": "IN",
+      "nonresident": 9967,
+      "share_pct": 16.99
+    },
+    {
+      "institution": "Boston University",
+      "state": "MA",
+      "nonresident": 9910,
+      "share_pct": 26.26
+    },
+    {
+      "institution": "Trine University-Regional/Non-Traditional Campuses",
+      "state": "IN",
+      "nonresident": 9213,
+      "share_pct": 93.36
+    },
+    {
+      "institution": "University of Michigan-Ann Arbor",
+      "state": "MI",
+      "nonresident": 8667,
+      "share_pct": 16.4
+    },
+    {
+      "institution": "Johns Hopkins University",
+      "state": "MD",
+      "nonresident": 8152,
+      "share_pct": 26.98
+    },
+    {
+      "institution": "University of California-San Diego",
+      "state": "CA",
+      "nonresident": 8029,
+      "share_pct": 18.14
+    },
+    {
+      "institution": "Harvard University",
+      "state": "MA",
+      "nonresident": 8013,
+      "share_pct": 26.48
+    },
+    {
+      "institution": "University of Washington-Seattle Campus",
+      "state": "WA",
+      "nonresident": 7963,
+      "share_pct": 13.97
+    }
+  ],
+  "national_series": [
+    {
+      "year": 2015,
+      "nonresident": 980737,
+      "total": 19988204,
+      "share_pct": 4.91,
+      "undergraduate_nonresident": 563601,
+      "graduate_nonresident": 417136
+    },
+    {
+      "year": 2016,
+      "nonresident": 996383,
+      "total": 19846904,
+      "share_pct": 5.02,
+      "undergraduate_nonresident": 568547,
+      "graduate_nonresident": 427836
+    },
+    {
+      "year": 2017,
+      "nonresident": 998471,
+      "total": 19778151,
+      "share_pct": 5.05,
+      "undergraduate_nonresident": 572676,
+      "graduate_nonresident": 425795
+    },
+    {
+      "year": 2018,
+      "nonresident": 988488,
+      "total": 19651412,
+      "share_pct": 5.03,
+      "undergraduate_nonresident": 563926,
+      "graduate_nonresident": 424562
+    },
+    {
+      "year": 2019,
+      "nonresident": 973058,
+      "total": 19630178,
+      "share_pct": 4.96,
+      "undergraduate_nonresident": 547074,
+      "graduate_nonresident": 425984
+    },
+    {
+      "year": 2020,
+      "nonresident": 847080,
+      "total": 19027410,
+      "share_pct": 4.45,
+      "undergraduate_nonresident": 467400,
+      "graduate_nonresident": 379680
+    },
+    {
+      "year": 2021,
+      "nonresident": 881996,
+      "total": 18658756,
+      "share_pct": 4.73,
+      "undergraduate_nonresident": 448809,
+      "graduate_nonresident": 433187
+    },
+    {
+      "year": 2022,
+      "nonresident": 963741,
+      "total": 18583497,
+      "share_pct": 5.19,
+      "undergraduate_nonresident": 449891,
+      "graduate_nonresident": 513850
+    },
+    {
+      "year": 2023,
+      "nonresident": 1014598,
+      "total": 19039584,
+      "share_pct": 5.33,
+      "undergraduate_nonresident": 456644,
+      "graduate_nonresident": 557954
+    },
+    {
+      "year": 2024,
+      "nonresident": 1044137,
+      "total": 19659633,
+      "share_pct": 5.31,
+      "undergraduate_nonresident": 488236,
+      "graduate_nonresident": 555901
+    }
+  ],
+  "state_series": {
+    "AK": [
+      {
+        "year": 2015,
+        "nonresident": 589,
+        "total": 31373,
+        "share_pct": 1.88
+      },
+      {
+        "year": 2016,
+        "nonresident": 542,
+        "total": 28436,
+        "share_pct": 1.91
+      },
+      {
+        "year": 2017,
+        "nonresident": 556,
+        "total": 26905,
+        "share_pct": 2.07
+      },
+      {
+        "year": 2018,
+        "nonresident": 523,
+        "total": 25692,
+        "share_pct": 2.04
+      },
+      {
+        "year": 2019,
+        "nonresident": 459,
+        "total": 23353,
+        "share_pct": 1.97
+      },
+      {
+        "year": 2020,
+        "nonresident": 375,
+        "total": 22106,
+        "share_pct": 1.7
+      },
+      {
+        "year": 2021,
+        "nonresident": 360,
+        "total": 20929,
+        "share_pct": 1.72
+      },
+      {
+        "year": 2022,
+        "nonresident": 366,
+        "total": 20146,
+        "share_pct": 1.82
+      },
+      {
+        "year": 2023,
+        "nonresident": 417,
+        "total": 22904,
+        "share_pct": 1.82
+      },
+      {
+        "year": 2024,
+        "nonresident": 374,
+        "total": 22726,
+        "share_pct": 1.65
+      }
+    ],
+    "AL": [
+      {
+        "year": 2015,
+        "nonresident": 8199,
+        "total": 302959,
+        "share_pct": 2.71
+      },
+      {
+        "year": 2016,
+        "nonresident": 9183,
+        "total": 304052,
+        "share_pct": 3.02
+      },
+      {
+        "year": 2017,
+        "nonresident": 8925,
+        "total": 306817,
+        "share_pct": 2.91
+      },
+      {
+        "year": 2018,
+        "nonresident": 8883,
+        "total": 304182,
+        "share_pct": 2.92
+      },
+      {
+        "year": 2019,
+        "nonresident": 9102,
+        "total": 303023,
+        "share_pct": 3.0
+      },
+      {
+        "year": 2020,
+        "nonresident": 7615,
+        "total": 292241,
+        "share_pct": 2.61
+      },
+      {
+        "year": 2021,
+        "nonresident": 7464,
+        "total": 292752,
+        "share_pct": 2.55
+      },
+      {
+        "year": 2022,
+        "nonresident": 8488,
+        "total": 294009,
+        "share_pct": 2.89
+      },
+      {
+        "year": 2023,
+        "nonresident": 9148,
+        "total": 303836,
+        "share_pct": 3.01
+      },
+      {
+        "year": 2024,
+        "nonresident": 9490,
+        "total": 311238,
+        "share_pct": 3.05
+      }
+    ],
+    "AR": [
+      {
+        "year": 2015,
+        "nonresident": 5804,
+        "total": 168402,
+        "share_pct": 3.45
+      },
+      {
+        "year": 2016,
+        "nonresident": 6277,
+        "total": 167235,
+        "share_pct": 3.75
+      },
+      {
+        "year": 2017,
+        "nonresident": 5698,
+        "total": 163963,
+        "share_pct": 3.48
+      },
+      {
+        "year": 2018,
+        "nonresident": 5095,
+        "total": 160644,
+        "share_pct": 3.17
+      },
+      {
+        "year": 2019,
+        "nonresident": 4788,
+        "total": 158567,
+        "share_pct": 3.02
+      },
+      {
+        "year": 2020,
+        "nonresident": 4124,
+        "total": 149296,
+        "share_pct": 2.76
+      },
+      {
+        "year": 2021,
+        "nonresident": 4494,
+        "total": 148161,
+        "share_pct": 3.03
+      },
+      {
+        "year": 2022,
+        "nonresident": 5308,
+        "total": 154807,
+        "share_pct": 3.43
+      },
+      {
+        "year": 2023,
+        "nonresident": 5560,
+        "total": 155612,
+        "share_pct": 3.57
+      },
+      {
+        "year": 2024,
+        "nonresident": 5771,
+        "total": 161700,
+        "share_pct": 3.57
+      }
+    ],
+    "AZ": [
+      {
+        "year": 2015,
+        "nonresident": 20266,
+        "total": 650422,
+        "share_pct": 3.12
+      },
+      {
+        "year": 2016,
+        "nonresident": 20023,
+        "total": 608086,
+        "share_pct": 3.29
+      },
+      {
+        "year": 2017,
+        "nonresident": 20199,
+        "total": 591122,
+        "share_pct": 3.42
+      },
+      {
+        "year": 2018,
+        "nonresident": 19958,
+        "total": 581985,
+        "share_pct": 3.43
+      },
+      {
+        "year": 2019,
+        "nonresident": 17452,
+        "total": 609144,
+        "share_pct": 2.87
+      },
+      {
+        "year": 2020,
+        "nonresident": 14760,
+        "total": 599798,
+        "share_pct": 2.46
+      },
+      {
+        "year": 2021,
+        "nonresident": 16411,
+        "total": 613533,
+        "share_pct": 2.67
+      },
+      {
+        "year": 2022,
+        "nonresident": 19433,
+        "total": 623863,
+        "share_pct": 3.11
+      },
+      {
+        "year": 2023,
+        "nonresident": 20667,
+        "total": 651339,
+        "share_pct": 3.17
+      },
+      {
+        "year": 2024,
+        "nonresident": 21053,
+        "total": 683757,
+        "share_pct": 3.08
+      }
+    ],
+    "CA": [
+      {
+        "year": 2015,
+        "nonresident": 137633,
+        "total": 2687410,
+        "share_pct": 5.12
+      },
+      {
+        "year": 2016,
+        "nonresident": 141040,
+        "total": 2700445,
+        "share_pct": 5.22
+      },
+      {
+        "year": 2017,
+        "nonresident": 146788,
+        "total": 2724446,
+        "share_pct": 5.39
+      },
+      {
+        "year": 2018,
+        "nonresident": 146924,
+        "total": 2723547,
+        "share_pct": 5.39
+      },
+      {
+        "year": 2019,
+        "nonresident": 146871,
+        "total": 2714753,
+        "share_pct": 5.41
+      },
+      {
+        "year": 2020,
+        "nonresident": 126428,
+        "total": 2596230,
+        "share_pct": 4.87
+      },
+      {
+        "year": 2021,
+        "nonresident": 122966,
+        "total": 2483180,
+        "share_pct": 4.95
+      },
+      {
+        "year": 2022,
+        "nonresident": 115544,
+        "total": 2486128,
+        "share_pct": 4.65
+      },
+      {
+        "year": 2023,
+        "nonresident": 114703,
+        "total": 2587168,
+        "share_pct": 4.43
+      },
+      {
+        "year": 2024,
+        "nonresident": 113589,
+        "total": 2672807,
+        "share_pct": 4.25
+      }
+    ],
+    "CO": [
+      {
+        "year": 2015,
+        "nonresident": 11420,
+        "total": 352270,
+        "share_pct": 3.24
+      },
+      {
+        "year": 2016,
+        "nonresident": 11938,
+        "total": 356492,
+        "share_pct": 3.35
+      },
+      {
+        "year": 2017,
+        "nonresident": 12450,
+        "total": 364512,
+        "share_pct": 3.42
+      },
+      {
+        "year": 2018,
+        "nonresident": 12198,
+        "total": 364873,
+        "share_pct": 3.34
+      },
+      {
+        "year": 2019,
+        "nonresident": 11698,
+        "total": 372428,
+        "share_pct": 3.14
+      },
+      {
+        "year": 2020,
+        "nonresident": 9484,
+        "total": 366583,
+        "share_pct": 2.59
+      },
+      {
+        "year": 2021,
+        "nonresident": 10205,
+        "total": 350327,
+        "share_pct": 2.91
+      },
+      {
+        "year": 2022,
+        "nonresident": 11178,
+        "total": 350802,
+        "share_pct": 3.19
+      },
+      {
+        "year": 2023,
+        "nonresident": 11703,
+        "total": 362052,
+        "share_pct": 3.23
+      },
+      {
+        "year": 2024,
+        "nonresident": 11372,
+        "total": 371053,
+        "share_pct": 3.06
+      }
+    ],
+    "CT": [
+      {
+        "year": 2015,
+        "nonresident": 11473,
+        "total": 200564,
+        "share_pct": 5.72
+      },
+      {
+        "year": 2016,
+        "nonresident": 11884,
+        "total": 198996,
+        "share_pct": 5.97
+      },
+      {
+        "year": 2017,
+        "nonresident": 11395,
+        "total": 198578,
+        "share_pct": 5.74
+      },
+      {
+        "year": 2018,
+        "nonresident": 11157,
+        "total": 198307,
+        "share_pct": 5.63
+      },
+      {
+        "year": 2019,
+        "nonresident": 11318,
+        "total": 194755,
+        "share_pct": 5.81
+      },
+      {
+        "year": 2020,
+        "nonresident": 9979,
+        "total": 187773,
+        "share_pct": 5.31
+      },
+      {
+        "year": 2021,
+        "nonresident": 11052,
+        "total": 185631,
+        "share_pct": 5.95
+      },
+      {
+        "year": 2022,
+        "nonresident": 14461,
+        "total": 188801,
+        "share_pct": 7.66
+      },
+      {
+        "year": 2023,
+        "nonresident": 16331,
+        "total": 195165,
+        "share_pct": 8.37
+      },
+      {
+        "year": 2024,
+        "nonresident": 15407,
+        "total": 195025,
+        "share_pct": 7.9
+      }
+    ],
+    "DC": [
+      {
+        "year": 2015,
+        "nonresident": 10205,
+        "total": 93972,
+        "share_pct": 10.86
+      },
+      {
+        "year": 2016,
+        "nonresident": 10542,
+        "total": 93040,
+        "share_pct": 11.33
+      },
+      {
+        "year": 2017,
+        "nonresident": 10921,
+        "total": 95999,
+        "share_pct": 11.38
+      },
+      {
+        "year": 2018,
+        "nonresident": 11035,
+        "total": 97776,
+        "share_pct": 11.29
+      },
+      {
+        "year": 2019,
+        "nonresident": 11537,
+        "total": 98909,
+        "share_pct": 11.66
+      },
+      {
+        "year": 2020,
+        "nonresident": 10125,
+        "total": 97481,
+        "share_pct": 10.39
+      },
+      {
+        "year": 2021,
+        "nonresident": 9500,
+        "total": 99435,
+        "share_pct": 9.55
+      },
+      {
+        "year": 2022,
+        "nonresident": 9830,
+        "total": 99309,
+        "share_pct": 9.9
+      },
+      {
+        "year": 2023,
+        "nonresident": 10128,
+        "total": 100204,
+        "share_pct": 10.11
+      },
+      {
+        "year": 2024,
+        "nonresident": 9743,
+        "total": 100489,
+        "share_pct": 9.7
+      }
+    ],
+    "DE": [
+      {
+        "year": 2015,
+        "nonresident": 5449,
+        "total": 60392,
+        "share_pct": 9.02
+      },
+      {
+        "year": 2016,
+        "nonresident": 5540,
+        "total": 61139,
+        "share_pct": 9.06
+      },
+      {
+        "year": 2017,
+        "nonresident": 4898,
+        "total": 60338,
+        "share_pct": 8.12
+      },
+      {
+        "year": 2018,
+        "nonresident": 4303,
+        "total": 60010,
+        "share_pct": 7.17
+      },
+      {
+        "year": 2019,
+        "nonresident": 4179,
+        "total": 59983,
+        "share_pct": 6.97
+      },
+      {
+        "year": 2020,
+        "nonresident": 3879,
+        "total": 58678,
+        "share_pct": 6.61
+      },
+      {
+        "year": 2021,
+        "nonresident": 3582,
+        "total": 56251,
+        "share_pct": 6.37
+      },
+      {
+        "year": 2022,
+        "nonresident": 4321,
+        "total": 57022,
+        "share_pct": 7.58
+      },
+      {
+        "year": 2023,
+        "nonresident": 5084,
+        "total": 59136,
+        "share_pct": 8.6
+      },
+      {
+        "year": 2024,
+        "nonresident": 4767,
+        "total": 57823,
+        "share_pct": 8.24
+      }
+    ],
+    "FL": [
+      {
+        "year": 2015,
+        "nonresident": 43850,
+        "total": 1083570,
+        "share_pct": 4.05
+      },
+      {
+        "year": 2016,
+        "nonresident": 45640,
+        "total": 1075527,
+        "share_pct": 4.24
+      },
+      {
+        "year": 2017,
+        "nonresident": 46435,
+        "total": 1073338,
+        "share_pct": 4.33
+      },
+      {
+        "year": 2018,
+        "nonresident": 46097,
+        "total": 1067147,
+        "share_pct": 4.32
+      },
+      {
+        "year": 2019,
+        "nonresident": 46411,
+        "total": 1055664,
+        "share_pct": 4.4
+      },
+      {
+        "year": 2020,
+        "nonresident": 41759,
+        "total": 1027124,
+        "share_pct": 4.07
+      },
+      {
+        "year": 2021,
+        "nonresident": 43544,
+        "total": 1004538,
+        "share_pct": 4.33
+      },
+      {
+        "year": 2022,
+        "nonresident": 48524,
+        "total": 999721,
+        "share_pct": 4.85
+      },
+      {
+        "year": 2023,
+        "nonresident": 52184,
+        "total": 988643,
+        "share_pct": 5.28
+      },
+      {
+        "year": 2024,
+        "nonresident": 58391,
+        "total": 1046427,
+        "share_pct": 5.58
+      }
+    ],
+    "GA": [
+      {
+        "year": 2015,
+        "nonresident": 20895,
+        "total": 530711,
+        "share_pct": 3.94
+      },
+      {
+        "year": 2016,
+        "nonresident": 21659,
+        "total": 533073,
+        "share_pct": 4.06
+      },
+      {
+        "year": 2017,
+        "nonresident": 22939,
+        "total": 538124,
+        "share_pct": 4.26
+      },
+      {
+        "year": 2018,
+        "nonresident": 24399,
+        "total": 543141,
+        "share_pct": 4.49
+      },
+      {
+        "year": 2019,
+        "nonresident": 25718,
+        "total": 553779,
+        "share_pct": 4.64
+      },
+      {
+        "year": 2020,
+        "nonresident": 25279,
+        "total": 547387,
+        "share_pct": 4.62
+      },
+      {
+        "year": 2021,
+        "nonresident": 28322,
+        "total": 544364,
+        "share_pct": 5.2
+      },
+      {
+        "year": 2022,
+        "nonresident": 30294,
+        "total": 541604,
+        "share_pct": 5.59
+      },
+      {
+        "year": 2023,
+        "nonresident": 31724,
+        "total": 563855,
+        "share_pct": 5.63
+      },
+      {
+        "year": 2024,
+        "nonresident": 33443,
+        "total": 594207,
+        "share_pct": 5.63
+      }
+    ],
+    "HI": [
+      {
+        "year": 2015,
+        "nonresident": 4071,
+        "total": 69332,
+        "share_pct": 5.87
+      },
+      {
+        "year": 2016,
+        "nonresident": 3915,
+        "total": 65843,
+        "share_pct": 5.95
+      },
+      {
+        "year": 2017,
+        "nonresident": 3933,
+        "total": 64125,
+        "share_pct": 6.13
+      },
+      {
+        "year": 2018,
+        "nonresident": 3982,
+        "total": 61855,
+        "share_pct": 6.44
+      },
+      {
+        "year": 2019,
+        "nonresident": 3797,
+        "total": 60437,
+        "share_pct": 6.28
+      },
+      {
+        "year": 2020,
+        "nonresident": 3414,
+        "total": 59693,
+        "share_pct": 5.72
+      },
+      {
+        "year": 2021,
+        "nonresident": 3573,
+        "total": 60076,
+        "share_pct": 5.95
+      },
+      {
+        "year": 2022,
+        "nonresident": 4044,
+        "total": 58841,
+        "share_pct": 6.87
+      },
+      {
+        "year": 2023,
+        "nonresident": 3745,
+        "total": 59572,
+        "share_pct": 6.29
+      },
+      {
+        "year": 2024,
+        "nonresident": 4087,
+        "total": 61396,
+        "share_pct": 6.66
+      }
+    ],
+    "IA": [
+      {
+        "year": 2015,
+        "nonresident": 13094,
+        "total": 275106,
+        "share_pct": 4.76
+      },
+      {
+        "year": 2016,
+        "nonresident": 13101,
+        "total": 266513,
+        "share_pct": 4.92
+      },
+      {
+        "year": 2017,
+        "nonresident": 12716,
+        "total": 260801,
+        "share_pct": 4.88
+      },
+      {
+        "year": 2018,
+        "nonresident": 11344,
+        "total": 254049,
+        "share_pct": 4.47
+      },
+      {
+        "year": 2019,
+        "nonresident": 10414,
+        "total": 218033,
+        "share_pct": 4.78
+      },
+      {
+        "year": 2020,
+        "nonresident": 8401,
+        "total": 203370,
+        "share_pct": 4.13
+      },
+      {
+        "year": 2021,
+        "nonresident": 8479,
+        "total": 203274,
+        "share_pct": 4.17
+      },
+      {
+        "year": 2022,
+        "nonresident": 8582,
+        "total": 202862,
+        "share_pct": 4.23
+      },
+      {
+        "year": 2023,
+        "nonresident": 9005,
+        "total": 204437,
+        "share_pct": 4.4
+      },
+      {
+        "year": 2024,
+        "nonresident": 8993,
+        "total": 206570,
+        "share_pct": 4.35
+      }
+    ],
+    "ID": [
+      {
+        "year": 2015,
+        "nonresident": 9509,
+        "total": 121109,
+        "share_pct": 7.85
+      },
+      {
+        "year": 2016,
+        "nonresident": 9316,
+        "total": 123796,
+        "share_pct": 7.53
+      },
+      {
+        "year": 2017,
+        "nonresident": 10968,
+        "total": 131803,
+        "share_pct": 8.32
+      },
+      {
+        "year": 2018,
+        "nonresident": 8635,
+        "total": 123482,
+        "share_pct": 6.99
+      },
+      {
+        "year": 2019,
+        "nonresident": 6925,
+        "total": 121966,
+        "share_pct": 5.68
+      },
+      {
+        "year": 2020,
+        "nonresident": 9272,
+        "total": 122993,
+        "share_pct": 7.54
+      },
+      {
+        "year": 2021,
+        "nonresident": 3105,
+        "total": 126334,
+        "share_pct": 2.46
+      },
+      {
+        "year": 2022,
+        "nonresident": 3184,
+        "total": 125249,
+        "share_pct": 2.54
+      },
+      {
+        "year": 2023,
+        "nonresident": 3124,
+        "total": 127673,
+        "share_pct": 2.45
+      },
+      {
+        "year": 2024,
+        "nonresident": 3277,
+        "total": 135596,
+        "share_pct": 2.42
+      }
+    ],
+    "IL": [
+      {
+        "year": 2015,
+        "nonresident": 42101,
+        "total": 802211,
+        "share_pct": 5.25
+      },
+      {
+        "year": 2016,
+        "nonresident": 42922,
+        "total": 777720,
+        "share_pct": 5.52
+      },
+      {
+        "year": 2017,
+        "nonresident": 42539,
+        "total": 757001,
+        "share_pct": 5.62
+      },
+      {
+        "year": 2018,
+        "nonresident": 41407,
+        "total": 738448,
+        "share_pct": 5.61
+      },
+      {
+        "year": 2019,
+        "nonresident": 41291,
+        "total": 718505,
+        "share_pct": 5.75
+      },
+      {
+        "year": 2020,
+        "nonresident": 36861,
+        "total": 682002,
+        "share_pct": 5.4
+      },
+      {
+        "year": 2021,
+        "nonresident": 41967,
+        "total": 675788,
+        "share_pct": 6.21
+      },
+      {
+        "year": 2022,
+        "nonresident": 49259,
+        "total": 677546,
+        "share_pct": 7.27
+      },
+      {
+        "year": 2023,
+        "nonresident": 53609,
+        "total": 695632,
+        "share_pct": 7.71
+      },
+      {
+        "year": 2024,
+        "nonresident": 55755,
+        "total": 722990,
+        "share_pct": 7.71
+      }
+    ],
+    "IN": [
+      {
+        "year": 2015,
+        "nonresident": 27104,
+        "total": 426364,
+        "share_pct": 6.36
+      },
+      {
+        "year": 2016,
+        "nonresident": 27172,
+        "total": 419284,
+        "share_pct": 6.48
+      },
+      {
+        "year": 2017,
+        "nonresident": 25297,
+        "total": 398802,
+        "share_pct": 6.34
+      },
+      {
+        "year": 2018,
+        "nonresident": 24251,
+        "total": 388193,
+        "share_pct": 6.25
+      },
+      {
+        "year": 2019,
+        "nonresident": 24229,
+        "total": 422922,
+        "share_pct": 5.73
+      },
+      {
+        "year": 2020,
+        "nonresident": 20265,
+        "total": 435425,
+        "share_pct": 4.65
+      },
+      {
+        "year": 2021,
+        "nonresident": 22164,
+        "total": 429791,
+        "share_pct": 5.16
+      },
+      {
+        "year": 2022,
+        "nonresident": 27618,
+        "total": 436380,
+        "share_pct": 6.33
+      },
+      {
+        "year": 2023,
+        "nonresident": 34660,
+        "total": 458217,
+        "share_pct": 7.56
+      },
+      {
+        "year": 2024,
+        "nonresident": 37082,
+        "total": 478538,
+        "share_pct": 7.75
+      }
+    ],
+    "KS": [
+      {
+        "year": 2015,
+        "nonresident": 13259,
+        "total": 219994,
+        "share_pct": 6.03
+      },
+      {
+        "year": 2016,
+        "nonresident": 12888,
+        "total": 215832,
+        "share_pct": 5.97
+      },
+      {
+        "year": 2017,
+        "nonresident": 12750,
+        "total": 213997,
+        "share_pct": 5.96
+      },
+      {
+        "year": 2018,
+        "nonresident": 12898,
+        "total": 212734,
+        "share_pct": 6.06
+      },
+      {
+        "year": 2019,
+        "nonresident": 13065,
+        "total": 208520,
+        "share_pct": 6.27
+      },
+      {
+        "year": 2020,
+        "nonresident": 11218,
+        "total": 193119,
+        "share_pct": 5.81
+      },
+      {
+        "year": 2021,
+        "nonresident": 8121,
+        "total": 193688,
+        "share_pct": 4.19
+      },
+      {
+        "year": 2022,
+        "nonresident": 9345,
+        "total": 186939,
+        "share_pct": 5.0
+      },
+      {
+        "year": 2023,
+        "nonresident": 9818,
+        "total": 189129,
+        "share_pct": 5.19
+      },
+      {
+        "year": 2024,
+        "nonresident": 9223,
+        "total": 196412,
+        "share_pct": 4.7
+      }
+    ],
+    "KY": [
+      {
+        "year": 2015,
+        "nonresident": 7114,
+        "total": 255722,
+        "share_pct": 2.78
+      },
+      {
+        "year": 2016,
+        "nonresident": 7393,
+        "total": 255062,
+        "share_pct": 2.9
+      },
+      {
+        "year": 2017,
+        "nonresident": 10650,
+        "total": 258498,
+        "share_pct": 4.12
+      },
+      {
+        "year": 2018,
+        "nonresident": 16680,
+        "total": 262544,
+        "share_pct": 6.35
+      },
+      {
+        "year": 2019,
+        "nonresident": 15650,
+        "total": 266545,
+        "share_pct": 5.87
+      },
+      {
+        "year": 2020,
+        "nonresident": 13074,
+        "total": 261408,
+        "share_pct": 5.0
+      },
+      {
+        "year": 2021,
+        "nonresident": 13328,
+        "total": 257504,
+        "share_pct": 5.18
+      },
+      {
+        "year": 2022,
+        "nonresident": 13378,
+        "total": 261750,
+        "share_pct": 5.11
+      },
+      {
+        "year": 2023,
+        "nonresident": 10750,
+        "total": 274278,
+        "share_pct": 3.92
+      },
+      {
+        "year": 2024,
+        "nonresident": 15365,
+        "total": 285903,
+        "share_pct": 5.37
+      }
+    ],
+    "LA": [
+      {
+        "year": 2015,
+        "nonresident": 7511,
+        "total": 245305,
+        "share_pct": 3.06
+      },
+      {
+        "year": 2016,
+        "nonresident": 7330,
+        "total": 239278,
+        "share_pct": 3.06
+      },
+      {
+        "year": 2017,
+        "nonresident": 7235,
+        "total": 241567,
+        "share_pct": 3.0
+      },
+      {
+        "year": 2018,
+        "nonresident": 7205,
+        "total": 241296,
+        "share_pct": 2.99
+      },
+      {
+        "year": 2019,
+        "nonresident": 7252,
+        "total": 243748,
+        "share_pct": 2.98
+      },
+      {
+        "year": 2020,
+        "nonresident": 6406,
+        "total": 243291,
+        "share_pct": 2.63
+      },
+      {
+        "year": 2021,
+        "nonresident": 6491,
+        "total": 239745,
+        "share_pct": 2.71
+      },
+      {
+        "year": 2022,
+        "nonresident": 6598,
+        "total": 238083,
+        "share_pct": 2.77
+      },
+      {
+        "year": 2023,
+        "nonresident": 6587,
+        "total": 244661,
+        "share_pct": 2.69
+      },
+      {
+        "year": 2024,
+        "nonresident": 7934,
+        "total": 254545,
+        "share_pct": 3.12
+      }
+    ],
+    "MA": [
+      {
+        "year": 2015,
+        "nonresident": 55155,
+        "total": 510512,
+        "share_pct": 10.8
+      },
+      {
+        "year": 2016,
+        "nonresident": 58591,
+        "total": 505722,
+        "share_pct": 11.59
+      },
+      {
+        "year": 2017,
+        "nonresident": 60732,
+        "total": 503539,
+        "share_pct": 12.06
+      },
+      {
+        "year": 2018,
+        "nonresident": 61655,
+        "total": 500076,
+        "share_pct": 12.33
+      },
+      {
+        "year": 2019,
+        "nonresident": 61761,
+        "total": 492875,
+        "share_pct": 12.53
+      },
+      {
+        "year": 2020,
+        "nonresident": 55708,
+        "total": 473374,
+        "share_pct": 11.77
+      },
+      {
+        "year": 2021,
+        "nonresident": 61502,
+        "total": 478503,
+        "share_pct": 12.85
+      },
+      {
+        "year": 2022,
+        "nonresident": 66793,
+        "total": 468947,
+        "share_pct": 14.24
+      },
+      {
+        "year": 2023,
+        "nonresident": 70007,
+        "total": 471438,
+        "share_pct": 14.85
+      },
+      {
+        "year": 2024,
+        "nonresident": 68570,
+        "total": 481947,
+        "share_pct": 14.23
+      }
+    ],
+    "MD": [
+      {
+        "year": 2015,
+        "nonresident": 19412,
+        "total": 368750,
+        "share_pct": 5.26
+      },
+      {
+        "year": 2016,
+        "nonresident": 20925,
+        "total": 371335,
+        "share_pct": 5.64
+      },
+      {
+        "year": 2017,
+        "nonresident": 21776,
+        "total": 368673,
+        "share_pct": 5.91
+      },
+      {
+        "year": 2018,
+        "nonresident": 22210,
+        "total": 365952,
+        "share_pct": 6.07
+      },
+      {
+        "year": 2019,
+        "nonresident": 21988,
+        "total": 359562,
+        "share_pct": 6.12
+      },
+      {
+        "year": 2020,
+        "nonresident": 19659,
+        "total": 352734,
+        "share_pct": 5.57
+      },
+      {
+        "year": 2021,
+        "nonresident": 21854,
+        "total": 339614,
+        "share_pct": 6.43
+      },
+      {
+        "year": 2022,
+        "nonresident": 24600,
+        "total": 333543,
+        "share_pct": 7.38
+      },
+      {
+        "year": 2023,
+        "nonresident": 25450,
+        "total": 344956,
+        "share_pct": 7.38
+      },
+      {
+        "year": 2024,
+        "nonresident": 26147,
+        "total": 353603,
+        "share_pct": 7.39
+      }
+    ],
+    "ME": [
+      {
+        "year": 2015,
+        "nonresident": 1601,
+        "total": 71719,
+        "share_pct": 2.23
+      },
+      {
+        "year": 2016,
+        "nonresident": 1558,
+        "total": 72116,
+        "share_pct": 2.16
+      },
+      {
+        "year": 2017,
+        "nonresident": 1530,
+        "total": 71811,
+        "share_pct": 2.13
+      },
+      {
+        "year": 2018,
+        "nonresident": 1459,
+        "total": 71773,
+        "share_pct": 2.03
+      },
+      {
+        "year": 2019,
+        "nonresident": 1507,
+        "total": 71701,
+        "share_pct": 2.1
+      },
+      {
+        "year": 2020,
+        "nonresident": 1437,
+        "total": 69837,
+        "share_pct": 2.06
+      },
+      {
+        "year": 2021,
+        "nonresident": 1605,
+        "total": 69503,
+        "share_pct": 2.31
+      },
+      {
+        "year": 2022,
+        "nonresident": 1711,
+        "total": 71475,
+        "share_pct": 2.39
+      },
+      {
+        "year": 2023,
+        "nonresident": 1892,
+        "total": 76277,
+        "share_pct": 2.48
+      },
+      {
+        "year": 2024,
+        "nonresident": 2121,
+        "total": 80932,
+        "share_pct": 2.62
+      }
+    ],
+    "MI": [
+      {
+        "year": 2015,
+        "nonresident": 33394,
+        "total": 601462,
+        "share_pct": 5.55
+      },
+      {
+        "year": 2016,
+        "nonresident": 32501,
+        "total": 583034,
+        "share_pct": 5.57
+      },
+      {
+        "year": 2017,
+        "nonresident": 30652,
+        "total": 558072,
+        "share_pct": 5.49
+      },
+      {
+        "year": 2018,
+        "nonresident": 29617,
+        "total": 540750,
+        "share_pct": 5.48
+      },
+      {
+        "year": 2019,
+        "nonresident": 27778,
+        "total": 525511,
+        "share_pct": 5.29
+      },
+      {
+        "year": 2020,
+        "nonresident": 23620,
+        "total": 490115,
+        "share_pct": 4.82
+      },
+      {
+        "year": 2021,
+        "nonresident": 24109,
+        "total": 481696,
+        "share_pct": 5.0
+      },
+      {
+        "year": 2022,
+        "nonresident": 27714,
+        "total": 466540,
+        "share_pct": 5.94
+      },
+      {
+        "year": 2023,
+        "nonresident": 29353,
+        "total": 472727,
+        "share_pct": 6.21
+      },
+      {
+        "year": 2024,
+        "nonresident": 29161,
+        "total": 481467,
+        "share_pct": 6.06
+      }
+    ],
+    "MN": [
+      {
+        "year": 2015,
+        "nonresident": 15092,
+        "total": 430466,
+        "share_pct": 3.51
+      },
+      {
+        "year": 2016,
+        "nonresident": 16363,
+        "total": 422793,
+        "share_pct": 3.87
+      },
+      {
+        "year": 2017,
+        "nonresident": 16007,
+        "total": 412966,
+        "share_pct": 3.88
+      },
+      {
+        "year": 2018,
+        "nonresident": 15262,
+        "total": 409005,
+        "share_pct": 3.73
+      },
+      {
+        "year": 2019,
+        "nonresident": 14715,
+        "total": 402729,
+        "share_pct": 3.65
+      },
+      {
+        "year": 2020,
+        "nonresident": 12906,
+        "total": 395705,
+        "share_pct": 3.26
+      },
+      {
+        "year": 2021,
+        "nonresident": 13023,
+        "total": 380343,
+        "share_pct": 3.42
+      },
+      {
+        "year": 2022,
+        "nonresident": 13634,
+        "total": 373298,
+        "share_pct": 3.65
+      },
+      {
+        "year": 2023,
+        "nonresident": 14153,
+        "total": 387686,
+        "share_pct": 3.65
+      },
+      {
+        "year": 2024,
+        "nonresident": 14226,
+        "total": 411192,
+        "share_pct": 3.46
+      }
+    ],
+    "MO": [
+      {
+        "year": 2015,
+        "nonresident": 21690,
+        "total": 409999,
+        "share_pct": 5.29
+      },
+      {
+        "year": 2016,
+        "nonresident": 20409,
+        "total": 401098,
+        "share_pct": 5.09
+      },
+      {
+        "year": 2017,
+        "nonresident": 17636,
+        "total": 385483,
+        "share_pct": 4.58
+      },
+      {
+        "year": 2018,
+        "nonresident": 16715,
+        "total": 374401,
+        "share_pct": 4.46
+      },
+      {
+        "year": 2019,
+        "nonresident": 16288,
+        "total": 362713,
+        "share_pct": 4.49
+      },
+      {
+        "year": 2020,
+        "nonresident": 13079,
+        "total": 342645,
+        "share_pct": 3.82
+      },
+      {
+        "year": 2021,
+        "nonresident": 16634,
+        "total": 336571,
+        "share_pct": 4.94
+      },
+      {
+        "year": 2022,
+        "nonresident": 21169,
+        "total": 333431,
+        "share_pct": 6.35
+      },
+      {
+        "year": 2023,
+        "nonresident": 26720,
+        "total": 338334,
+        "share_pct": 7.9
+      },
+      {
+        "year": 2024,
+        "nonresident": 27436,
+        "total": 341837,
+        "share_pct": 8.03
+      }
+    ],
+    "MS": [
+      {
+        "year": 2015,
+        "nonresident": 3350,
+        "total": 174183,
+        "share_pct": 1.92
+      },
+      {
+        "year": 2016,
+        "nonresident": 3553,
+        "total": 172588,
+        "share_pct": 2.06
+      },
+      {
+        "year": 2017,
+        "nonresident": 3243,
+        "total": 171824,
+        "share_pct": 1.89
+      },
+      {
+        "year": 2018,
+        "nonresident": 3138,
+        "total": 169360,
+        "share_pct": 1.85
+      },
+      {
+        "year": 2019,
+        "nonresident": 3082,
+        "total": 166974,
+        "share_pct": 1.85
+      },
+      {
+        "year": 2020,
+        "nonresident": 2621,
+        "total": 162596,
+        "share_pct": 1.61
+      },
+      {
+        "year": 2021,
+        "nonresident": 2769,
+        "total": 158670,
+        "share_pct": 1.75
+      },
+      {
+        "year": 2022,
+        "nonresident": 2946,
+        "total": 155950,
+        "share_pct": 1.89
+      },
+      {
+        "year": 2023,
+        "nonresident": 3363,
+        "total": 157909,
+        "share_pct": 2.13
+      },
+      {
+        "year": 2024,
+        "nonresident": 4513,
+        "total": 164258,
+        "share_pct": 2.75
+      }
+    ],
+    "MT": [
+      {
+        "year": 2015,
+        "nonresident": 1751,
+        "total": 50799,
+        "share_pct": 3.45
+      },
+      {
+        "year": 2016,
+        "nonresident": 1668,
+        "total": 50918,
+        "share_pct": 3.28
+      },
+      {
+        "year": 2017,
+        "nonresident": 1490,
+        "total": 50642,
+        "share_pct": 2.94
+      },
+      {
+        "year": 2018,
+        "nonresident": 1373,
+        "total": 49363,
+        "share_pct": 2.78
+      },
+      {
+        "year": 2019,
+        "nonresident": 1197,
+        "total": 48066,
+        "share_pct": 2.49
+      },
+      {
+        "year": 2020,
+        "nonresident": 817,
+        "total": 45459,
+        "share_pct": 1.8
+      },
+      {
+        "year": 2021,
+        "nonresident": 817,
+        "total": 47063,
+        "share_pct": 1.74
+      },
+      {
+        "year": 2022,
+        "nonresident": 854,
+        "total": 47178,
+        "share_pct": 1.81
+      },
+      {
+        "year": 2023,
+        "nonresident": 813,
+        "total": 47529,
+        "share_pct": 1.71
+      },
+      {
+        "year": 2024,
+        "nonresident": 841,
+        "total": 48321,
+        "share_pct": 1.74
+      }
+    ],
+    "NC": [
+      {
+        "year": 2015,
+        "nonresident": 19531,
+        "total": 562442,
+        "share_pct": 3.47
+      },
+      {
+        "year": 2016,
+        "nonresident": 19584,
+        "total": 561415,
+        "share_pct": 3.49
+      },
+      {
+        "year": 2017,
+        "nonresident": 19498,
+        "total": 564111,
+        "share_pct": 3.46
+      },
+      {
+        "year": 2018,
+        "nonresident": 19584,
+        "total": 563122,
+        "share_pct": 3.48
+      },
+      {
+        "year": 2019,
+        "nonresident": 20059,
+        "total": 568745,
+        "share_pct": 3.53
+      },
+      {
+        "year": 2020,
+        "nonresident": 16764,
+        "total": 557430,
+        "share_pct": 3.01
+      },
+      {
+        "year": 2021,
+        "nonresident": 18579,
+        "total": 555851,
+        "share_pct": 3.34
+      },
+      {
+        "year": 2022,
+        "nonresident": 20928,
+        "total": 553434,
+        "share_pct": 3.78
+      },
+      {
+        "year": 2023,
+        "nonresident": 21618,
+        "total": 562694,
+        "share_pct": 3.84
+      },
+      {
+        "year": 2024,
+        "nonresident": 22256,
+        "total": 581741,
+        "share_pct": 3.83
+      }
+    ],
+    "ND": [
+      {
+        "year": 2015,
+        "nonresident": 2901,
+        "total": 53834,
+        "share_pct": 5.39
+      },
+      {
+        "year": 2016,
+        "nonresident": 2729,
+        "total": 54203,
+        "share_pct": 5.03
+      },
+      {
+        "year": 2017,
+        "nonresident": 2512,
+        "total": 53749,
+        "share_pct": 4.67
+      },
+      {
+        "year": 2018,
+        "nonresident": 2383,
+        "total": 53285,
+        "share_pct": 4.47
+      },
+      {
+        "year": 2019,
+        "nonresident": 2284,
+        "total": 52388,
+        "share_pct": 4.36
+      },
+      {
+        "year": 2020,
+        "nonresident": 2087,
+        "total": 51308,
+        "share_pct": 4.07
+      },
+      {
+        "year": 2021,
+        "nonresident": 2317,
+        "total": 50968,
+        "share_pct": 4.55
+      },
+      {
+        "year": 2022,
+        "nonresident": 2335,
+        "total": 51081,
+        "share_pct": 4.57
+      },
+      {
+        "year": 2023,
+        "nonresident": 2393,
+        "total": 51487,
+        "share_pct": 4.65
+      },
+      {
+        "year": 2024,
+        "nonresident": 2562,
+        "total": 53473,
+        "share_pct": 4.79
+      }
+    ],
+    "NE": [
+      {
+        "year": 2015,
+        "nonresident": 5525,
+        "total": 136091,
+        "share_pct": 4.06
+      },
+      {
+        "year": 2016,
+        "nonresident": 5894,
+        "total": 136098,
+        "share_pct": 4.33
+      },
+      {
+        "year": 2017,
+        "nonresident": 5744,
+        "total": 135710,
+        "share_pct": 4.23
+      },
+      {
+        "year": 2018,
+        "nonresident": 5347,
+        "total": 134938,
+        "share_pct": 3.96
+      },
+      {
+        "year": 2019,
+        "nonresident": 5110,
+        "total": 135507,
+        "share_pct": 3.77
+      },
+      {
+        "year": 2020,
+        "nonresident": 4184,
+        "total": 135026,
+        "share_pct": 3.1
+      },
+      {
+        "year": 2021,
+        "nonresident": 3965,
+        "total": 133899,
+        "share_pct": 2.96
+      },
+      {
+        "year": 2022,
+        "nonresident": 4028,
+        "total": 134816,
+        "share_pct": 2.99
+      },
+      {
+        "year": 2023,
+        "nonresident": 4256,
+        "total": 137601,
+        "share_pct": 3.09
+      },
+      {
+        "year": 2024,
+        "nonresident": 4381,
+        "total": 140343,
+        "share_pct": 3.12
+      }
+    ],
+    "NH": [
+      {
+        "year": 2015,
+        "nonresident": 3256,
+        "total": 123508,
+        "share_pct": 2.64
+      },
+      {
+        "year": 2016,
+        "nonresident": 3377,
+        "total": 133159,
+        "share_pct": 2.54
+      },
+      {
+        "year": 2017,
+        "nonresident": 3214,
+        "total": 149184,
+        "share_pct": 2.15
+      },
+      {
+        "year": 2018,
+        "nonresident": 2982,
+        "total": 160750,
+        "share_pct": 1.86
+      },
+      {
+        "year": 2019,
+        "nonresident": 4045,
+        "total": 169412,
+        "share_pct": 2.39
+      },
+      {
+        "year": 2020,
+        "nonresident": 4856,
+        "total": 188447,
+        "share_pct": 2.58
+      },
+      {
+        "year": 2021,
+        "nonresident": 4783,
+        "total": 198460,
+        "share_pct": 2.41
+      },
+      {
+        "year": 2022,
+        "nonresident": 4695,
+        "total": 214591,
+        "share_pct": 2.19
+      },
+      {
+        "year": 2023,
+        "nonresident": 5073,
+        "total": 234735,
+        "share_pct": 2.16
+      },
+      {
+        "year": 2024,
+        "nonresident": 5255,
+        "total": 240941,
+        "share_pct": 2.18
+      }
+    ],
+    "NJ": [
+      {
+        "year": 2015,
+        "nonresident": 21054,
+        "total": 423759,
+        "share_pct": 4.97
+      },
+      {
+        "year": 2016,
+        "nonresident": 21783,
+        "total": 421386,
+        "share_pct": 5.17
+      },
+      {
+        "year": 2017,
+        "nonresident": 21678,
+        "total": 419037,
+        "share_pct": 5.17
+      },
+      {
+        "year": 2018,
+        "nonresident": 21135,
+        "total": 414416,
+        "share_pct": 5.1
+      },
+      {
+        "year": 2019,
+        "nonresident": 21945,
+        "total": 413175,
+        "share_pct": 5.31
+      },
+      {
+        "year": 2020,
+        "nonresident": 19616,
+        "total": 392316,
+        "share_pct": 5.0
+      },
+      {
+        "year": 2021,
+        "nonresident": 20086,
+        "total": 381057,
+        "share_pct": 5.27
+      },
+      {
+        "year": 2022,
+        "nonresident": 22765,
+        "total": 378510,
+        "share_pct": 6.01
+      },
+      {
+        "year": 2023,
+        "nonresident": 24297,
+        "total": 385338,
+        "share_pct": 6.31
+      },
+      {
+        "year": 2024,
+        "nonresident": 25171,
+        "total": 393316,
+        "share_pct": 6.4
+      }
+    ],
+    "NM": [
+      {
+        "year": 2015,
+        "nonresident": 3994,
+        "total": 138248,
+        "share_pct": 2.89
+      },
+      {
+        "year": 2016,
+        "nonresident": 3734,
+        "total": 134607,
+        "share_pct": 2.77
+      },
+      {
+        "year": 2017,
+        "nonresident": 3469,
+        "total": 129595,
+        "share_pct": 2.68
+      },
+      {
+        "year": 2018,
+        "nonresident": 3296,
+        "total": 123297,
+        "share_pct": 2.67
+      },
+      {
+        "year": 2019,
+        "nonresident": 3094,
+        "total": 121711,
+        "share_pct": 2.54
+      },
+      {
+        "year": 2020,
+        "nonresident": 2896,
+        "total": 110095,
+        "share_pct": 2.63
+      },
+      {
+        "year": 2021,
+        "nonresident": 2787,
+        "total": 107098,
+        "share_pct": 2.6
+      },
+      {
+        "year": 2022,
+        "nonresident": 2962,
+        "total": 109982,
+        "share_pct": 2.69
+      },
+      {
+        "year": 2023,
+        "nonresident": 3133,
+        "total": 110655,
+        "share_pct": 2.83
+      },
+      {
+        "year": 2024,
+        "nonresident": 3252,
+        "total": 114483,
+        "share_pct": 2.84
+      }
+    ],
+    "NV": [
+      {
+        "year": 2015,
+        "nonresident": 2436,
+        "total": 116101,
+        "share_pct": 2.1
+      },
+      {
+        "year": 2016,
+        "nonresident": 2359,
+        "total": 116030,
+        "share_pct": 2.03
+      },
+      {
+        "year": 2017,
+        "nonresident": 2346,
+        "total": 117574,
+        "share_pct": 2.0
+      },
+      {
+        "year": 2018,
+        "nonresident": 2274,
+        "total": 117798,
+        "share_pct": 1.93
+      },
+      {
+        "year": 2019,
+        "nonresident": 2101,
+        "total": 119771,
+        "share_pct": 1.75
+      },
+      {
+        "year": 2020,
+        "nonresident": 1709,
+        "total": 116660,
+        "share_pct": 1.46
+      },
+      {
+        "year": 2021,
+        "nonresident": 1710,
+        "total": 115237,
+        "share_pct": 1.48
+      },
+      {
+        "year": 2022,
+        "nonresident": 1718,
+        "total": 113588,
+        "share_pct": 1.51
+      },
+      {
+        "year": 2023,
+        "nonresident": 1824,
+        "total": 115946,
+        "share_pct": 1.57
+      },
+      {
+        "year": 2024,
+        "nonresident": 1996,
+        "total": 121009,
+        "share_pct": 1.65
+      }
+    ],
+    "NY": [
+      {
+        "year": 2015,
+        "nonresident": 104945,
+        "total": 1290684,
+        "share_pct": 8.13
+      },
+      {
+        "year": 2016,
+        "nonresident": 106476,
+        "total": 1278950,
+        "share_pct": 8.33
+      },
+      {
+        "year": 2017,
+        "nonresident": 107818,
+        "total": 1266023,
+        "share_pct": 8.52
+      },
+      {
+        "year": 2018,
+        "nonresident": 108384,
+        "total": 1256108,
+        "share_pct": 8.63
+      },
+      {
+        "year": 2019,
+        "nonresident": 109194,
+        "total": 1241173,
+        "share_pct": 8.8
+      },
+      {
+        "year": 2020,
+        "nonresident": 94936,
+        "total": 1190402,
+        "share_pct": 7.98
+      },
+      {
+        "year": 2021,
+        "nonresident": 101858,
+        "total": 1152919,
+        "share_pct": 8.83
+      },
+      {
+        "year": 2022,
+        "nonresident": 110492,
+        "total": 1124435,
+        "share_pct": 9.83
+      },
+      {
+        "year": 2023,
+        "nonresident": 114952,
+        "total": 1135209,
+        "share_pct": 10.13
+      },
+      {
+        "year": 2024,
+        "nonresident": 116228,
+        "total": 1150167,
+        "share_pct": 10.11
+      }
+    ],
+    "OH": [
+      {
+        "year": 2015,
+        "nonresident": 34111,
+        "total": 664623,
+        "share_pct": 5.13
+      },
+      {
+        "year": 2016,
+        "nonresident": 34020,
+        "total": 658043,
+        "share_pct": 5.17
+      },
+      {
+        "year": 2017,
+        "nonresident": 32035,
+        "total": 649586,
+        "share_pct": 4.93
+      },
+      {
+        "year": 2018,
+        "nonresident": 31414,
+        "total": 644733,
+        "share_pct": 4.87
+      },
+      {
+        "year": 2019,
+        "nonresident": 29848,
+        "total": 656226,
+        "share_pct": 4.55
+      },
+      {
+        "year": 2020,
+        "nonresident": 25297,
+        "total": 653630,
+        "share_pct": 3.87
+      },
+      {
+        "year": 2021,
+        "nonresident": 27345,
+        "total": 646322,
+        "share_pct": 4.23
+      },
+      {
+        "year": 2022,
+        "nonresident": 30033,
+        "total": 612256,
+        "share_pct": 4.91
+      },
+      {
+        "year": 2023,
+        "nonresident": 32293,
+        "total": 603443,
+        "share_pct": 5.35
+      },
+      {
+        "year": 2024,
+        "nonresident": 33106,
+        "total": 609662,
+        "share_pct": 5.43
+      }
+    ],
+    "OK": [
+      {
+        "year": 2015,
+        "nonresident": 11293,
+        "total": 211117,
+        "share_pct": 5.35
+      },
+      {
+        "year": 2016,
+        "nonresident": 11937,
+        "total": 208333,
+        "share_pct": 5.73
+      },
+      {
+        "year": 2017,
+        "nonresident": 10068,
+        "total": 202150,
+        "share_pct": 4.98
+      },
+      {
+        "year": 2018,
+        "nonresident": 9484,
+        "total": 196023,
+        "share_pct": 4.84
+      },
+      {
+        "year": 2019,
+        "nonresident": 8566,
+        "total": 192648,
+        "share_pct": 4.45
+      },
+      {
+        "year": 2020,
+        "nonresident": 7361,
+        "total": 189214,
+        "share_pct": 3.89
+      },
+      {
+        "year": 2021,
+        "nonresident": 7154,
+        "total": 183888,
+        "share_pct": 3.89
+      },
+      {
+        "year": 2022,
+        "nonresident": 7693,
+        "total": 184448,
+        "share_pct": 4.17
+      },
+      {
+        "year": 2023,
+        "nonresident": 7630,
+        "total": 188885,
+        "share_pct": 4.04
+      },
+      {
+        "year": 2024,
+        "nonresident": 8550,
+        "total": 198353,
+        "share_pct": 4.31
+      }
+    ],
+    "OR": [
+      {
+        "year": 2015,
+        "nonresident": 12382,
+        "total": 240649,
+        "share_pct": 5.15
+      },
+      {
+        "year": 2016,
+        "nonresident": 12399,
+        "total": 236851,
+        "share_pct": 5.23
+      },
+      {
+        "year": 2017,
+        "nonresident": 12114,
+        "total": 229988,
+        "share_pct": 5.27
+      },
+      {
+        "year": 2018,
+        "nonresident": 11052,
+        "total": 228089,
+        "share_pct": 4.85
+      },
+      {
+        "year": 2019,
+        "nonresident": 10109,
+        "total": 225552,
+        "share_pct": 4.48
+      },
+      {
+        "year": 2020,
+        "nonresident": 7451,
+        "total": 203319,
+        "share_pct": 3.66
+      },
+      {
+        "year": 2021,
+        "nonresident": 6584,
+        "total": 196546,
+        "share_pct": 3.35
+      },
+      {
+        "year": 2022,
+        "nonresident": 6437,
+        "total": 195247,
+        "share_pct": 3.3
+      },
+      {
+        "year": 2023,
+        "nonresident": 6021,
+        "total": 198057,
+        "share_pct": 3.04
+      },
+      {
+        "year": 2024,
+        "nonresident": 5844,
+        "total": 202530,
+        "share_pct": 2.89
+      }
+    ],
+    "PA": [
+      {
+        "year": 2015,
+        "nonresident": 45790,
+        "total": 736163,
+        "share_pct": 6.22
+      },
+      {
+        "year": 2016,
+        "nonresident": 46045,
+        "total": 725682,
+        "share_pct": 6.35
+      },
+      {
+        "year": 2017,
+        "nonresident": 47149,
+        "total": 717025,
+        "share_pct": 6.58
+      },
+      {
+        "year": 2018,
+        "nonresident": 46922,
+        "total": 700100,
+        "share_pct": 6.7
+      },
+      {
+        "year": 2019,
+        "nonresident": 46060,
+        "total": 693169,
+        "share_pct": 6.64
+      },
+      {
+        "year": 2020,
+        "nonresident": 39414,
+        "total": 667548,
+        "share_pct": 5.9
+      },
+      {
+        "year": 2021,
+        "nonresident": 41089,
+        "total": 648445,
+        "share_pct": 6.34
+      },
+      {
+        "year": 2022,
+        "nonresident": 44726,
+        "total": 634709,
+        "share_pct": 7.05
+      },
+      {
+        "year": 2023,
+        "nonresident": 45650,
+        "total": 634255,
+        "share_pct": 7.2
+      },
+      {
+        "year": 2024,
+        "nonresident": 44983,
+        "total": 634928,
+        "share_pct": 7.08
+      }
+    ],
+    "RI": [
+      {
+        "year": 2015,
+        "nonresident": 5050,
+        "total": 82292,
+        "share_pct": 6.14
+      },
+      {
+        "year": 2016,
+        "nonresident": 4952,
+        "total": 83348,
+        "share_pct": 5.94
+      },
+      {
+        "year": 2017,
+        "nonresident": 4821,
+        "total": 82765,
+        "share_pct": 5.82
+      },
+      {
+        "year": 2018,
+        "nonresident": 4573,
+        "total": 80731,
+        "share_pct": 5.66
+      },
+      {
+        "year": 2019,
+        "nonresident": 4504,
+        "total": 80221,
+        "share_pct": 5.61
+      },
+      {
+        "year": 2020,
+        "nonresident": 3747,
+        "total": 77087,
+        "share_pct": 4.86
+      },
+      {
+        "year": 2021,
+        "nonresident": 4022,
+        "total": 74629,
+        "share_pct": 5.39
+      },
+      {
+        "year": 2022,
+        "nonresident": 4363,
+        "total": 74413,
+        "share_pct": 5.86
+      },
+      {
+        "year": 2023,
+        "nonresident": 4330,
+        "total": 74836,
+        "share_pct": 5.79
+      },
+      {
+        "year": 2024,
+        "nonresident": 5743,
+        "total": 75601,
+        "share_pct": 7.6
+      }
+    ],
+    "SC": [
+      {
+        "year": 2015,
+        "nonresident": 5093,
+        "total": 249655,
+        "share_pct": 2.04
+      },
+      {
+        "year": 2016,
+        "nonresident": 5277,
+        "total": 246563,
+        "share_pct": 2.14
+      },
+      {
+        "year": 2017,
+        "nonresident": 5151,
+        "total": 246416,
+        "share_pct": 2.09
+      },
+      {
+        "year": 2018,
+        "nonresident": 5294,
+        "total": 239978,
+        "share_pct": 2.21
+      },
+      {
+        "year": 2019,
+        "nonresident": 5347,
+        "total": 241572,
+        "share_pct": 2.21
+      },
+      {
+        "year": 2020,
+        "nonresident": 4774,
+        "total": 235078,
+        "share_pct": 2.03
+      },
+      {
+        "year": 2021,
+        "nonresident": 5219,
+        "total": 235206,
+        "share_pct": 2.22
+      },
+      {
+        "year": 2022,
+        "nonresident": 5972,
+        "total": 242722,
+        "share_pct": 2.46
+      },
+      {
+        "year": 2023,
+        "nonresident": 5929,
+        "total": 249588,
+        "share_pct": 2.38
+      },
+      {
+        "year": 2024,
+        "nonresident": 5900,
+        "total": 255535,
+        "share_pct": 2.31
+      }
+    ],
+    "SD": [
+      {
+        "year": 2015,
+        "nonresident": 1827,
+        "total": 53664,
+        "share_pct": 3.4
+      },
+      {
+        "year": 2016,
+        "nonresident": 2015,
+        "total": 53683,
+        "share_pct": 3.75
+      },
+      {
+        "year": 2017,
+        "nonresident": 1918,
+        "total": 53620,
+        "share_pct": 3.58
+      },
+      {
+        "year": 2018,
+        "nonresident": 1816,
+        "total": 53365,
+        "share_pct": 3.4
+      },
+      {
+        "year": 2019,
+        "nonresident": 1715,
+        "total": 51941,
+        "share_pct": 3.3
+      },
+      {
+        "year": 2020,
+        "nonresident": 1354,
+        "total": 50849,
+        "share_pct": 2.66
+      },
+      {
+        "year": 2021,
+        "nonresident": 1443,
+        "total": 51084,
+        "share_pct": 2.82
+      },
+      {
+        "year": 2022,
+        "nonresident": 1718,
+        "total": 51311,
+        "share_pct": 3.35
+      },
+      {
+        "year": 2023,
+        "nonresident": 2076,
+        "total": 51807,
+        "share_pct": 4.01
+      },
+      {
+        "year": 2024,
+        "nonresident": 2703,
+        "total": 54167,
+        "share_pct": 4.99
+      }
+    ],
+    "TN": [
+      {
+        "year": 2015,
+        "nonresident": 9881,
+        "total": 323869,
+        "share_pct": 3.05
+      },
+      {
+        "year": 2016,
+        "nonresident": 9403,
+        "total": 321752,
+        "share_pct": 2.92
+      },
+      {
+        "year": 2017,
+        "nonresident": 9062,
+        "total": 323157,
+        "share_pct": 2.8
+      },
+      {
+        "year": 2018,
+        "nonresident": 8575,
+        "total": 322064,
+        "share_pct": 2.66
+      },
+      {
+        "year": 2019,
+        "nonresident": 8064,
+        "total": 324528,
+        "share_pct": 2.48
+      },
+      {
+        "year": 2020,
+        "nonresident": 6722,
+        "total": 316397,
+        "share_pct": 2.12
+      },
+      {
+        "year": 2021,
+        "nonresident": 8117,
+        "total": 307852,
+        "share_pct": 2.64
+      },
+      {
+        "year": 2022,
+        "nonresident": 9668,
+        "total": 308030,
+        "share_pct": 3.14
+      },
+      {
+        "year": 2023,
+        "nonresident": 10429,
+        "total": 315174,
+        "share_pct": 3.31
+      },
+      {
+        "year": 2024,
+        "nonresident": 11100,
+        "total": 325353,
+        "share_pct": 3.41
+      }
+    ],
+    "TX": [
+      {
+        "year": 2015,
+        "nonresident": 72878,
+        "total": 1579614,
+        "share_pct": 4.61
+      },
+      {
+        "year": 2016,
+        "nonresident": 70929,
+        "total": 1605498,
+        "share_pct": 4.42
+      },
+      {
+        "year": 2017,
+        "nonresident": 69900,
+        "total": 1630520,
+        "share_pct": 4.29
+      },
+      {
+        "year": 2018,
+        "nonresident": 67025,
+        "total": 1641985,
+        "share_pct": 4.08
+      },
+      {
+        "year": 2019,
+        "nonresident": 63451,
+        "total": 1660470,
+        "share_pct": 3.82
+      },
+      {
+        "year": 2020,
+        "nonresident": 54399,
+        "total": 1601407,
+        "share_pct": 3.4
+      },
+      {
+        "year": 2021,
+        "nonresident": 60385,
+        "total": 1565382,
+        "share_pct": 3.86
+      },
+      {
+        "year": 2022,
+        "nonresident": 72055,
+        "total": 1566606,
+        "share_pct": 4.6
+      },
+      {
+        "year": 2023,
+        "nonresident": 75367,
+        "total": 1610466,
+        "share_pct": 4.68
+      },
+      {
+        "year": 2024,
+        "nonresident": 77730,
+        "total": 1670447,
+        "share_pct": 4.65
+      }
+    ],
+    "UT": [
+      {
+        "year": 2015,
+        "nonresident": 7397,
+        "total": 292995,
+        "share_pct": 2.52
+      },
+      {
+        "year": 2016,
+        "nonresident": 7306,
+        "total": 311450,
+        "share_pct": 2.35
+      },
+      {
+        "year": 2017,
+        "nonresident": 7271,
+        "total": 331996,
+        "share_pct": 2.19
+      },
+      {
+        "year": 2018,
+        "nonresident": 7158,
+        "total": 359772,
+        "share_pct": 1.99
+      },
+      {
+        "year": 2019,
+        "nonresident": 7399,
+        "total": 381186,
+        "share_pct": 1.94
+      },
+      {
+        "year": 2020,
+        "nonresident": 6552,
+        "total": 395572,
+        "share_pct": 1.66
+      },
+      {
+        "year": 2021,
+        "nonresident": 7235,
+        "total": 390028,
+        "share_pct": 1.85
+      },
+      {
+        "year": 2022,
+        "nonresident": 7751,
+        "total": 401304,
+        "share_pct": 1.93
+      },
+      {
+        "year": 2023,
+        "nonresident": 8534,
+        "total": 436354,
+        "share_pct": 1.96
+      },
+      {
+        "year": 2024,
+        "nonresident": 9233,
+        "total": 474505,
+        "share_pct": 1.95
+      }
+    ],
+    "VA": [
+      {
+        "year": 2015,
+        "nonresident": 18271,
+        "total": 569752,
+        "share_pct": 3.21
+      },
+      {
+        "year": 2016,
+        "nonresident": 19613,
+        "total": 557444,
+        "share_pct": 3.52
+      },
+      {
+        "year": 2017,
+        "nonresident": 19588,
+        "total": 554120,
+        "share_pct": 3.54
+      },
+      {
+        "year": 2018,
+        "nonresident": 19553,
+        "total": 552041,
+        "share_pct": 3.54
+      },
+      {
+        "year": 2019,
+        "nonresident": 19244,
+        "total": 557064,
+        "share_pct": 3.45
+      },
+      {
+        "year": 2020,
+        "nonresident": 16220,
+        "total": 555898,
+        "share_pct": 2.92
+      },
+      {
+        "year": 2021,
+        "nonresident": 16862,
+        "total": 546697,
+        "share_pct": 3.08
+      },
+      {
+        "year": 2022,
+        "nonresident": 19151,
+        "total": 546240,
+        "share_pct": 3.51
+      },
+      {
+        "year": 2023,
+        "nonresident": 21448,
+        "total": 560229,
+        "share_pct": 3.83
+      },
+      {
+        "year": 2024,
+        "nonresident": 22500,
+        "total": 574729,
+        "share_pct": 3.91
+      }
+    ],
+    "VT": [
+      {
+        "year": 2015,
+        "nonresident": 1692,
+        "total": 43865,
+        "share_pct": 3.86
+      },
+      {
+        "year": 2016,
+        "nonresident": 1758,
+        "total": 44719,
+        "share_pct": 3.93
+      },
+      {
+        "year": 2017,
+        "nonresident": 1894,
+        "total": 43855,
+        "share_pct": 4.32
+      },
+      {
+        "year": 2018,
+        "nonresident": 1694,
+        "total": 42914,
+        "share_pct": 3.95
+      },
+      {
+        "year": 2019,
+        "nonresident": 1574,
+        "total": 41186,
+        "share_pct": 3.82
+      },
+      {
+        "year": 2020,
+        "nonresident": 1302,
+        "total": 39646,
+        "share_pct": 3.28
+      },
+      {
+        "year": 2021,
+        "nonresident": 1364,
+        "total": 40415,
+        "share_pct": 3.38
+      },
+      {
+        "year": 2022,
+        "nonresident": 1363,
+        "total": 39989,
+        "share_pct": 3.41
+      },
+      {
+        "year": 2023,
+        "nonresident": 1286,
+        "total": 39073,
+        "share_pct": 3.29
+      },
+      {
+        "year": 2024,
+        "nonresident": 1289,
+        "total": 38343,
+        "share_pct": 3.36
+      }
+    ],
+    "WA": [
+      {
+        "year": 2015,
+        "nonresident": 23049,
+        "total": 364844,
+        "share_pct": 6.32
+      },
+      {
+        "year": 2016,
+        "nonresident": 23451,
+        "total": 366547,
+        "share_pct": 6.4
+      },
+      {
+        "year": 2017,
+        "nonresident": 23433,
+        "total": 367943,
+        "share_pct": 6.37
+      },
+      {
+        "year": 2018,
+        "nonresident": 22908,
+        "total": 366296,
+        "share_pct": 6.25
+      },
+      {
+        "year": 2019,
+        "nonresident": 22099,
+        "total": 363019,
+        "share_pct": 6.09
+      },
+      {
+        "year": 2020,
+        "nonresident": 18544,
+        "total": 334137,
+        "share_pct": 5.55
+      },
+      {
+        "year": 2021,
+        "nonresident": 17018,
+        "total": 321430,
+        "share_pct": 5.29
+      },
+      {
+        "year": 2022,
+        "nonresident": 17698,
+        "total": 312038,
+        "share_pct": 5.67
+      },
+      {
+        "year": 2023,
+        "nonresident": 18002,
+        "total": 318037,
+        "share_pct": 5.66
+      },
+      {
+        "year": 2024,
+        "nonresident": 18265,
+        "total": 331375,
+        "share_pct": 5.51
+      }
+    ],
+    "WI": [
+      {
+        "year": 2015,
+        "nonresident": 12084,
+        "total": 350255,
+        "share_pct": 3.45
+      },
+      {
+        "year": 2016,
+        "nonresident": 12033,
+        "total": 341717,
+        "share_pct": 3.52
+      },
+      {
+        "year": 2017,
+        "nonresident": 12154,
+        "total": 340301,
+        "share_pct": 3.57
+      },
+      {
+        "year": 2018,
+        "nonresident": 12415,
+        "total": 336409,
+        "share_pct": 3.69
+      },
+      {
+        "year": 2019,
+        "nonresident": 12213,
+        "total": 332817,
+        "share_pct": 3.67
+      },
+      {
+        "year": 2020,
+        "nonresident": 10284,
+        "total": 318807,
+        "share_pct": 3.23
+      },
+      {
+        "year": 2021,
+        "nonresident": 10830,
+        "total": 315438,
+        "share_pct": 3.43
+      },
+      {
+        "year": 2022,
+        "nonresident": 12284,
+        "total": 316519,
+        "share_pct": 3.88
+      },
+      {
+        "year": 2023,
+        "nonresident": 13599,
+        "total": 320213,
+        "share_pct": 4.25
+      },
+      {
+        "year": 2024,
+        "nonresident": 14040,
+        "total": 327978,
+        "share_pct": 4.28
+      }
+    ],
+    "WV": [
+      {
+        "year": 2015,
+        "nonresident": 4181,
+        "total": 150897,
+        "share_pct": 2.77
+      },
+      {
+        "year": 2016,
+        "nonresident": 4332,
+        "total": 146608,
+        "share_pct": 2.95
+      },
+      {
+        "year": 2017,
+        "nonresident": 4272,
+        "total": 142966,
+        "share_pct": 2.99
+      },
+      {
+        "year": 2018,
+        "nonresident": 3903,
+        "total": 140103,
+        "share_pct": 2.79
+      },
+      {
+        "year": 2019,
+        "nonresident": 3690,
+        "total": 139159,
+        "share_pct": 2.65
+      },
+      {
+        "year": 2020,
+        "nonresident": 3330,
+        "total": 137731,
+        "share_pct": 2.42
+      },
+      {
+        "year": 2021,
+        "nonresident": 3084,
+        "total": 132194,
+        "share_pct": 2.33
+      },
+      {
+        "year": 2022,
+        "nonresident": 2995,
+        "total": 133033,
+        "share_pct": 2.25
+      },
+      {
+        "year": 2023,
+        "nonresident": 2962,
+        "total": 134941,
+        "share_pct": 2.19
+      },
+      {
+        "year": 2024,
+        "nonresident": 3012,
+        "total": 136816,
+        "share_pct": 2.2
+      }
+    ],
+    "WY": [
+      {
+        "year": 2015,
+        "nonresident": 1125,
+        "total": 34205,
+        "share_pct": 3.29
+      },
+      {
+        "year": 2016,
+        "nonresident": 1104,
+        "total": 33365,
+        "share_pct": 3.31
+      },
+      {
+        "year": 2017,
+        "nonresident": 1004,
+        "total": 33014,
+        "share_pct": 3.04
+      },
+      {
+        "year": 2018,
+        "nonresident": 914,
+        "total": 32510,
+        "share_pct": 2.81
+      },
+      {
+        "year": 2019,
+        "nonresident": 871,
+        "total": 32373,
+        "share_pct": 2.69
+      },
+      {
+        "year": 2020,
+        "nonresident": 716,
+        "total": 30943,
+        "share_pct": 2.31
+      },
+      {
+        "year": 2021,
+        "nonresident": 719,
+        "total": 30447,
+        "share_pct": 2.36
+      },
+      {
+        "year": 2022,
+        "nonresident": 735,
+        "total": 29971,
+        "share_pct": 2.45
+      },
+      {
+        "year": 2023,
+        "nonresident": 798,
+        "total": 30192,
+        "share_pct": 2.64
+      },
+      {
+        "year": 2024,
+        "nonresident": 907,
+        "total": 31079,
+        "share_pct": 2.92
+      }
+    ]
+  },
+  "quality": {
+    "source_archives": 40,
+    "schema_years_passed": 10,
+    "institution_year_rows": 40549,
+    "latest_institutions": 3797,
+    "latest_total_flag_counts": {
+      "P": 2,
+      "R": 3795
+    },
+    "latest_nonresident_flag_counts": {
+      "P": 2,
+      "R": 3281,
+      "Z": 514
+    },
+    "benchmark": {
+      "name": "NCES Digest of Education Statistics 2025, Table 306.10",
+      "published_total_thousands": 19659.6,
+      "derived_total_thousands": 19659.6,
+      "status": "PASS",
+      "url": "https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp"
+    }
+  },
+  "sources": [
+    {
+      "label": "IPEDS Complete Data Files",
+      "url": "https://nces.ed.gov/ipeds/help/complete-data-files"
+    },
+    {
+      "label": "IPEDS 2024 Fall Enrollment data",
+      "url": "https://nces.ed.gov/ipeds/complete-data-files/EF2024A.zip"
+    },
+    {
+      "label": "NCES Digest 2025 Table 306.10",
+      "url": "https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp"
+    },
+    {
+      "label": "IPEDS release schedule",
+      "url": "https://nces.ed.gov/ipeds/survey-components/data-release-schedule"
+    }
+  ]
+}

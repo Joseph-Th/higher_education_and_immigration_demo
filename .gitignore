@@ -1,4 +1,5 @@
 data/raw/ipeds/
+data/processed/institution_year.csv
 __pycache__/
 *.pyc
 .DS_Store

@@ -1,0 +1,232 @@
+{
+  "analytic_universe": "Degree-granting institutions in the IPEDS First Look/Digest Title IV universe (PSET4FLG 1 or 3), located in the 50 states and District of Columbia",
+  "years": [
+    {
+      "year": 2015,
+      "source_enrollment_csv": "ef2015a_rv.csv",
+      "source_directory_csv": "hd2015.csv",
+      "selected_level_rows": 16279,
+      "institutions_in_analytic_universe": 4562,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 2508,
+      "institutions_with_undergraduate_row": 4279,
+      "institutions_with_graduate_row": 2041,
+      "nonresident_flag_counts": {
+        "N": 4,
+        "R": 3771,
+        "Z": 787
+      },
+      "total_flag_counts": {
+        "N": 4,
+        "R": 4558
+      }
+    },
+    {
+      "year": 2016,
+      "source_enrollment_csv": "ef2016a_rv.csv",
+      "source_directory_csv": "hd2016.csv",
+      "selected_level_rows": 15459,
+      "institutions_in_analytic_universe": 4358,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 2305,
+      "institutions_with_undergraduate_row": 4077,
+      "institutions_with_graduate_row": 2035,
+      "nonresident_flag_counts": {
+        "N": 1,
+        "R": 3656,
+        "Z": 701
+      },
+      "total_flag_counts": {
+        "N": 1,
+        "R": 4357
+      }
+    },
+    {
+      "year": 2017,
+      "source_enrollment_csv": "ef2017a_rv.csv",
+      "source_directory_csv": "hd2017.csv",
+      "selected_level_rows": 15175,
+      "institutions_in_analytic_universe": 4298,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 2228,
+      "institutions_with_undergraduate_row": 4019,
+      "institutions_with_graduate_row": 2042,
+      "nonresident_flag_counts": {
+        "N": 21,
+        "R": 3572,
+        "Z": 705
+      },
+      "total_flag_counts": {
+        "N": 21,
+        "R": 4277
+      }
+    },
+    {
+      "year": 2018,
+      "source_enrollment_csv": "ef2018a_rv.csv",
+      "source_directory_csv": "hd2018.csv",
+      "selected_level_rows": 14495,
+      "institutions_in_analytic_universe": 4034,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 2174,
+      "institutions_with_undergraduate_row": 3763,
+      "institutions_with_graduate_row": 1993,
+      "nonresident_flag_counts": {
+        "N": 1,
+        "P": 1,
+        "R": 3448,
+        "Z": 584
+      },
+      "total_flag_counts": {
+        "N": 1,
+        "P": 1,
+        "R": 4032
+      }
+    },
+    {
+      "year": 2019,
+      "source_enrollment_csv": "ef2019a_rv.csv",
+      "source_directory_csv": "hd2019.csv",
+      "selected_level_rows": 14126,
+      "institutions_in_analytic_universe": 3947,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 2086,
+      "institutions_with_undergraduate_row": 3681,
+      "institutions_with_graduate_row": 1967,
+      "nonresident_flag_counts": {
+        "P": 1,
+        "R": 3438,
+        "Z": 508
+      },
+      "total_flag_counts": {
+        "P": 1,
+        "R": 3946
+      }
+    },
+    {
+      "year": 2020,
+      "source_enrollment_csv": "ef2020a_rv.csv",
+      "source_directory_csv": "hd2020.csv",
+      "selected_level_rows": 14021,
+      "institutions_in_analytic_universe": 3928,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 2054,
+      "institutions_with_undergraduate_row": 3666,
+      "institutions_with_graduate_row": 1964,
+      "nonresident_flag_counts": {
+        "N": 1,
+        "R": 3361,
+        "Z": 566
+      },
+      "total_flag_counts": {
+        "N": 1,
+        "R": 3927
+      }
+    },
+    {
+      "year": 2021,
+      "source_enrollment_csv": "ef2021a_rv.csv",
+      "source_directory_csv": "hd2021.csv",
+      "selected_level_rows": 13880,
+      "institutions_in_analytic_universe": 3893,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 2020,
+      "institutions_with_undergraduate_row": 3638,
+      "institutions_with_graduate_row": 1967,
+      "nonresident_flag_counts": {
+        "R": 3351,
+        "Z": 542
+      },
+      "total_flag_counts": {
+        "R": 3893
+      }
+    },
+    {
+      "year": 2022,
+      "source_enrollment_csv": "ef2022a_rv.csv",
+      "source_directory_csv": "hd2022.csv",
+      "selected_level_rows": 13732,
+      "institutions_in_analytic_universe": 3894,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 1951,
+      "institutions_with_undergraduate_row": 3647,
+      "institutions_with_graduate_row": 1953,
+      "nonresident_flag_counts": {
+        "C": 1,
+        "R": 3366,
+        "Z": 527
+      },
+      "total_flag_counts": {
+        "C": 1,
+        "R": 3893
+      }
+    },
+    {
+      "year": 2023,
+      "source_enrollment_csv": "ef2023a.csv",
+      "source_directory_csv": "HD2023.csv",
+      "selected_level_rows": 13608,
+      "institutions_in_analytic_universe": 3838,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 1943,
+      "institutions_with_undergraduate_row": 3594,
+      "institutions_with_graduate_row": 1945,
+      "nonresident_flag_counts": {
+        "P": 2,
+        "R": 3303,
+        "Z": 533
+      },
+      "total_flag_counts": {
+        "P": 2,
+        "R": 3836
+      }
+    },
+    {
+      "year": 2024,
+      "source_enrollment_csv": "ef2024a.csv",
+      "source_directory_csv": "hd2024.csv",
+      "selected_level_rows": 13460,
+      "institutions_in_analytic_universe": 3797,
+      "excluded_in_50_states_dc_outside_degree_granting_first_look_universe": 1911,
+      "institutions_with_undergraduate_row": 3554,
+      "institutions_with_graduate_row": 1933,
+      "nonresident_flag_counts": {
+        "P": 2,
+        "R": 3281,
+        "Z": 514
+      },
+      "total_flag_counts": {
+        "P": 2,
+        "R": 3795
+      }
+    }
+  ],
+  "institution_year_rows": 40549,
+  "state_year_rows": 510,
+  "excluded_jurisdiction_institution_year_counts": {
+    "AS": 10,
+    "FM": 10,
+    "GU": 30,
+    "MH": 10,
+    "MP": 10,
+    "PR": 1351,
+    "PW": 10,
+    "VI": 10
+  },
+  "imputation_flag_labels": {
+    "A": "Not applicable",
+    "B": "Institution left item blank",
+    "C": "Analyst corrected reported value",
+    "D": "Do not know",
+    "G": "Data generated from other data values",
+    "H": "Value not derived - data not usable",
+    "J": "Logical imputation",
+    "K": "Ratio adjustment",
+    "L": "Imputed using Group Median",
+    "N": "Imputed using Nearest Neighbor",
+    "P": "Imputed using Carry Forward",
+    "R": "Reported",
+    "Z": "Implied zero",
+    "": "Blank/unknown"
+  },
+  "checks": {
+    "duplicate_selected_rows": "PASS",
+    "directory_join_coverage": "PASS",
+    "nonnegative_counts": "PASS",
+    "nonresident_not_greater_than_total": "PASS",
+    "all_years_present": "PASS",
+    "all_51_geographies_present_each_year": "PASS",
+    "undergraduate_plus_graduate_reconciles_to_total": "PASS"
+  }
+}

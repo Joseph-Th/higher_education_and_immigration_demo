@@ -21,7 +21,7 @@ RAW_ROOT = ROOT / "data" / "raw" / "ipeds"
 OUTPUT = ROOT / "data" / "schema_audit.csv"
 
 EF_REQUIRED = ("UNITID", "EFALEVEL", "EFTOTLT", "EFNRALT")
-HD_REQUIRED = ("UNITID", "INSTNM", "STABBR")
+HD_REQUIRED = ("UNITID", "INSTNM", "STABBR", "DEGGRANT", "PSET4FLG")
 EXPECTED_LEVELS = {
     "1": "All students total",
     "2": "All students, Undergraduate total",

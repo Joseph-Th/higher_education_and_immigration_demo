@@ -28,6 +28,8 @@ These rows are mutually useful views of the same institution's enrollment. They 
 | Institution identifier | `UNITID` | Join key |
 | Institution name | `INSTNM` | Human-readable institution label and QA |
 | State/jurisdiction | `STABBR` | State-level aggregation |
+| Degree-granting status | `DEGGRANT` | Restrict analytic universe to degree-granting institutions (`1`) |
+| First Look/Digest universe | `PSET4FLG` | Restrict analytic universe to NCES First Look/Digest Title IV selection (`1` or `3`) |
 
 Additional institutional characteristics will be added only if a research question requires them and their cross-year definitions are reviewed first.
 

@@ -1,0 +1,394 @@
+{
+  "coverage": {
+    "start_year": 2015,
+    "end_year": 2024,
+    "geography": "50 states and District of Columbia",
+    "latest_data_status": "provisional"
+  },
+  "headline": {
+    "latest_nonresident": 1044137,
+    "latest_total_enrollment": 19659633,
+    "latest_share_pct": 5.31,
+    "change_since_2015": 63400,
+    "change_since_2015_pct": 6.5,
+    "largest_yoy_decline": {
+      "year": 2020,
+      "pct": -12.9
+    },
+    "strongest_yoy_growth": {
+      "year": 2022,
+      "pct": 9.3
+    },
+    "top5_state_share_pct": 41.6
+  },
+  "top_states_latest": [
+    {
+      "state": "NY",
+      "nonresident": 116228,
+      "share_of_state_enrollment_pct": 10.11
+    },
+    {
+      "state": "CA",
+      "nonresident": 113589,
+      "share_of_state_enrollment_pct": 4.25
+    },
+    {
+      "state": "TX",
+      "nonresident": 77730,
+      "share_of_state_enrollment_pct": 4.65
+    },
+    {
+      "state": "MA",
+      "nonresident": 68570,
+      "share_of_state_enrollment_pct": 14.23
+    },
+    {
+      "state": "FL",
+      "nonresident": 58391,
+      "share_of_state_enrollment_pct": 5.58
+    },
+    {
+      "state": "IL",
+      "nonresident": 55755,
+      "share_of_state_enrollment_pct": 7.71
+    },
+    {
+      "state": "PA",
+      "nonresident": 44983,
+      "share_of_state_enrollment_pct": 7.08
+    },
+    {
+      "state": "IN",
+      "nonresident": 37082,
+      "share_of_state_enrollment_pct": 7.75
+    },
+    {
+      "state": "GA",
+      "nonresident": 33443,
+      "share_of_state_enrollment_pct": 5.63
+    },
+    {
+      "state": "OH",
+      "nonresident": 33106,
+      "share_of_state_enrollment_pct": 5.43
+    }
+  ],
+  "largest_state_absolute_growth": [
+    {
+      "state": "FL",
+      "2015": 43850,
+      "2024": 58391,
+      "absolute_change": 14541,
+      "pct_change": 33.2
+    },
+    {
+      "state": "IL",
+      "2015": 42101,
+      "2024": 55755,
+      "absolute_change": 13654,
+      "pct_change": 32.4
+    },
+    {
+      "state": "MA",
+      "2015": 55155,
+      "2024": 68570,
+      "absolute_change": 13415,
+      "pct_change": 24.3
+    },
+    {
+      "state": "GA",
+      "2015": 20895,
+      "2024": 33443,
+      "absolute_change": 12548,
+      "pct_change": 60.1
+    },
+    {
+      "state": "NY",
+      "2015": 104945,
+      "2024": 116228,
+      "absolute_change": 11283,
+      "pct_change": 10.8
+    },
+    {
+      "state": "IN",
+      "2015": 27104,
+      "2024": 37082,
+      "absolute_change": 9978,
+      "pct_change": 36.8
+    },
+    {
+      "state": "KY",
+      "2015": 7114,
+      "2024": 15365,
+      "absolute_change": 8251,
+      "pct_change": 116.0
+    },
+    {
+      "state": "MD",
+      "2015": 19412,
+      "2024": 26147,
+      "absolute_change": 6735,
+      "pct_change": 34.7
+    },
+    {
+      "state": "MO",
+      "2015": 21690,
+      "2024": 27436,
+      "absolute_change": 5746,
+      "pct_change": 26.5
+    },
+    {
+      "state": "TX",
+      "2015": 72878,
+      "2024": 77730,
+      "absolute_change": 4852,
+      "pct_change": 6.7
+    }
+  ],
+  "largest_state_absolute_decline": [
+    {
+      "state": "CA",
+      "2015": 137633,
+      "2024": 113589,
+      "absolute_change": -24044,
+      "pct_change": -17.5
+    },
+    {
+      "state": "OR",
+      "2015": 12382,
+      "2024": 5844,
+      "absolute_change": -6538,
+      "pct_change": -52.8
+    },
+    {
+      "state": "ID",
+      "2015": 9509,
+      "2024": 3277,
+      "absolute_change": -6232,
+      "pct_change": -65.5
+    },
+    {
+      "state": "WA",
+      "2015": 23049,
+      "2024": 18265,
+      "absolute_change": -4784,
+      "pct_change": -20.8
+    },
+    {
+      "state": "MI",
+      "2015": 33394,
+      "2024": 29161,
+      "absolute_change": -4233,
+      "pct_change": -12.7
+    },
+    {
+      "state": "IA",
+      "2015": 13094,
+      "2024": 8993,
+      "absolute_change": -4101,
+      "pct_change": -31.3
+    },
+    {
+      "state": "KS",
+      "2015": 13259,
+      "2024": 9223,
+      "absolute_change": -4036,
+      "pct_change": -30.4
+    },
+    {
+      "state": "OK",
+      "2015": 11293,
+      "2024": 8550,
+      "absolute_change": -2743,
+      "pct_change": -24.3
+    },
+    {
+      "state": "WV",
+      "2015": 4181,
+      "2024": 3012,
+      "absolute_change": -1169,
+      "pct_change": -28.0
+    },
+    {
+      "state": "NE",
+      "2015": 5525,
+      "2024": 4381,
+      "absolute_change": -1144,
+      "pct_change": -20.7
+    }
+  ],
+  "top_institutions_latest": [
+    {
+      "institution": "New York University",
+      "state": "NY",
+      "nonresident": 19202,
+      "share_pct": 33.79
+    },
+    {
+      "institution": "Columbia University in the City of New York",
+      "state": "NY",
+      "nonresident": 13812,
+      "share_pct": 39.27
+    },
+    {
+      "institution": "Georgia Institute of Technology-Main Campus",
+      "state": "GA",
+      "nonresident": 13496,
+      "share_pct": 25.29
+    },
+    {
+      "institution": "University of Illinois Urbana-Champaign",
+      "state": "IL",
+      "nonresident": 13350,
+      "share_pct": 22.54
+    },
+    {
+      "institution": "Arizona State University Campus Immersion",
+      "state": "AZ",
+      "nonresident": 12563,
+      "share_pct": 15.74
+    },
+    {
+      "institution": "University of Southern California",
+      "state": "CA",
+      "nonresident": 12374,
+      "share_pct": 26.57
+    },
+    {
+      "institution": "Northeastern University",
+      "state": "MA",
+      "nonresident": 11530,
+      "share_pct": 35.42
+    },
+    {
+      "institution": "Purdue University-Main Campus",
+      "state": "IN",
+      "nonresident": 9967,
+      "share_pct": 16.99
+    },
+    {
+      "institution": "Boston University",
+      "state": "MA",
+      "nonresident": 9910,
+      "share_pct": 26.26
+    },
+    {
+      "institution": "Trine University-Regional/Non-Traditional Campuses",
+      "state": "IN",
+      "nonresident": 9213,
+      "share_pct": 93.36
+    },
+    {
+      "institution": "University of Michigan-Ann Arbor",
+      "state": "MI",
+      "nonresident": 8667,
+      "share_pct": 16.4
+    },
+    {
+      "institution": "Johns Hopkins University",
+      "state": "MD",
+      "nonresident": 8152,
+      "share_pct": 26.98
+    },
+    {
+      "institution": "University of California-San Diego",
+      "state": "CA",
+      "nonresident": 8029,
+      "share_pct": 18.14
+    },
+    {
+      "institution": "Harvard University",
+      "state": "MA",
+      "nonresident": 8013,
+      "share_pct": 26.48
+    },
+    {
+      "institution": "University of Washington-Seattle Campus",
+      "state": "WA",
+      "nonresident": 7963,
+      "share_pct": 13.97
+    }
+  ],
+  "national_series": [
+    {
+      "year": 2015,
+      "nonresident": 980737,
+      "total": 19988204,
+      "share_pct": 4.91,
+      "undergraduate_nonresident": 563601,
+      "graduate_nonresident": 417136
+    },
+    {
+      "year": 2016,
+      "nonresident": 996383,
+      "total": 19846904,
+      "share_pct": 5.02,
+      "undergraduate_nonresident": 568547,
+      "graduate_nonresident": 427836
+    },
+    {
+      "year": 2017,
+      "nonresident": 998471,
+      "total": 19778151,
+      "share_pct": 5.05,
+      "undergraduate_nonresident": 572676,
+      "graduate_nonresident": 425795
+    },
+    {
+      "year": 2018,
+      "nonresident": 988488,
+      "total": 19651412,
+      "share_pct": 5.03,
+      "undergraduate_nonresident": 563926,
+      "graduate_nonresident": 424562
+    },
+    {
+      "year": 2019,
+      "nonresident": 973058,
+      "total": 19630178,
+      "share_pct": 4.96,
+      "undergraduate_nonresident": 547074,
+      "graduate_nonresident": 425984
+    },
+    {
+      "year": 2020,
+      "nonresident": 847080,
+      "total": 19027410,
+      "share_pct": 4.45,
+      "undergraduate_nonresident": 467400,
+      "graduate_nonresident": 379680
+    },
+    {
+      "year": 2021,
+      "nonresident": 881996,
+      "total": 18658756,
+      "share_pct": 4.73,
+      "undergraduate_nonresident": 448809,
+      "graduate_nonresident": 433187
+    },
+    {
+      "year": 2022,
+      "nonresident": 963741,
+      "total": 18583497,
+      "share_pct": 5.19,
+      "undergraduate_nonresident": 449891,
+      "graduate_nonresident": 513850
+    },
+    {
+      "year": 2023,
+      "nonresident": 1014598,
+      "total": 19039584,
+      "share_pct": 5.33,
+      "undergraduate_nonresident": 456644,
+      "graduate_nonresident": 557954
+    },
+    {
+      "year": 2024,
+      "nonresident": 1044137,
+      "total": 19659633,
+      "share_pct": 5.31,
+      "undergraduate_nonresident": 488236,
+      "graduate_nonresident": 555901
+    }
+  ]
+}
