@@ -4,7 +4,7 @@ The public research brief is a static site. It does not need a framework build, 
 
 ## Recommended Git-connected setup
 
-After the repository has a Git remote:
+The repository now has a GitHub remote, so the recommended publication path is a Git-connected Cloudflare Pages project:
 
 1. Create a Cloudflare Pages project connected to the repository.
 2. Use the repository root as the project root.
@@ -12,14 +12,18 @@ After the repository has a Git remote:
 4. Set the build output directory to `site`.
 5. Deploy the `main` branch.
 
+Repository: `https://github.com/Joseph-Th/higher_education_and_immigration_demo`
+
 Before each deployment, run:
 
 ```bash
 python scripts/validate_project.py
 python scripts/browser_smoke.py
+python scripts/check_research_library.py
+python scripts/check_qa_evidence.py
 ```
 
-The browser smoke test requires the optional Playwright development dependency and a local Chromium runtime. Only deploy the generated `site/` directory after both validation lanes pass and the site has been inspected locally.
+The browser smoke test requires the optional Playwright development dependency and a local Chromium runtime. The two live-link checks are deliberately outside the offline reproducibility lane, but they should be clean or explicitly manually resolved before publication. Only deploy the generated `site/` directory after the required validation lanes pass and the site has been inspected locally.
 
 ## Direct upload
 

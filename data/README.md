@@ -47,6 +47,10 @@ Structured metadata for the external resources used to collect, interpret, valid
 
 Structured research-needs register. Each row records a stable research ID, priority, research question, evidence trigger, whether the current IPEDS pipeline can answer it, additional data needs, proposed method/output, decision rule, and current status. `scripts/build_research_agenda.py` validates the register and generates `docs/RESEARCH_AGENDA.md`.
 
+## `qa_resolution_log.csv`
+
+Manually curated analyst dispositions for a selected sample of high-priority rows from `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` verifies that each reviewed UNITID still exists in the current high-priority queue and generates `docs/QA_RESOLUTION_LOG.md` plus `qa_resolution_summary.json`.
+
 ## `processed/`
 
 - `national_year.csv`: 2015-2024 national trend used by the public brief.
@@ -68,6 +72,8 @@ Structured research-needs register. Each row records a stable research ID, prior
 It includes national headline metrics, level-change decomposition, state recovery relative to 2019, institutional-control change, institution-universe dynamics, state and institution concentration, state rankings, latest institution detail, and the national time series.
 
 `latest_update_review.json` is the newest-release review summary used by the public brief and generated review memo. It contains the newest national change, undergraduate/graduate decomposition, institution-universe accounting, state movers, review-priority counts, top review items, and imputation/status transitions.
+
+`qa_resolution_summary.json` is the compact publication summary of the manual QA disposition layer. It records the reviewed sample size and counts classified as `safe_with_context` versus `hold_for_confirmation`; it is generated from `qa_resolution_log.csv` after the log has been reconciled to the current automated queue.
 
 `state_profiles.json` is the machine-readable state-publication product generated from validated state and institution outputs. It contains one profile for each of the 50 states plus DC with current metrics, change windows, top institutions, and the 2015-2024 annual series. `site/state.html` reads this file to provide shareable state views; generated Markdown counterparts live in `docs/state_profiles/`.
 

@@ -76,9 +76,16 @@ Then review the newly generated:
 - `data/findings.json`.
 - `data/processed/latest_release_institution_review.csv`;
 - `docs/LATEST_UPDATE_REVIEW.md`.
+- `data/qa_resolution_log.csv` and `docs/QA_RESOLUTION_LOG.md`;
 - `docs/BRIEFING_NOTE.md`.
 
 Investigate the reason-coded high- and medium-priority review queue before updating the narrative. A queue item is not automatically an error. Determine whether the movement is plausible, concentrated in a few institutions, associated with an imputation/status change, related to analytic-universe membership, or a source discontinuity that needs further review.
+
+For institution-level claims, update `data/qa_resolution_log.csv` with the evidence review. Use official institutional, system, regulator, or primary-source documentation when possible. Outside counts must not be treated as exact IPEDS benchmarks unless their population, reference date, geography, and inclusion rules are demonstrably comparable. Classify reviewed records as `safe_with_context` only when the evidence supports the direction or structural interpretation; otherwise use `hold_for_confirmation`. Never edit the IPEDS value merely to make it agree with an outside source.
+
+Run `python scripts/build_qa_resolution_log.py` after editing the log. The build will fail if a reviewed UNITID is no longer in the current high-priority queue, which is intentional: manual dispositions belong to a specific release and must be reconsidered when the queue changes.
+
+The required reviewed sample must include the ten highest-impact current high-priority rows in queue order; additional cases can be included for distinct structural scenarios such as confirmed closures. Run `python scripts/check_qa_evidence.py` before publication to catch broken evidence links. HTTP 401/403 results require manual browser verification rather than automatic removal of the evidence record.
 
 ## 6. Refresh the external benchmark
 
@@ -109,6 +116,7 @@ At minimum, re-check:
 - institutional-control findings;
 - institution-universe entry/exit accounting;
 - the latest-release undergraduate/graduate decomposition and QA queue;
+- manual QA dispositions and whether previously reviewed institution-level claims remain publishable;
 - provisional/final language.
 
 The public page contains intentionally editorial year labels and latest-year download links in `site/index.html`; update those after the data rebuild rather than assuming configuration alone rewrites the prose.
@@ -134,6 +142,7 @@ An annual update is complete only when:
 - provenance is current;
 - schema checks pass or documented changes are resolved;
 - all automated QA checks pass;
+- institution-specific claims derived from flagged rows have an explicit current disposition or remain withheld;
 - external benchmark differences are understood and recorded;
 - public findings are re-reviewed rather than carried forward automatically;
 - the rendered site is inspected; and

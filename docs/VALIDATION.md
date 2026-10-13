@@ -75,6 +75,8 @@ This design is deliberate: the external publication is a validation source, not 
 - state change summary coverage and 2019 recovery classification;
 - institution endpoint accounting reconciling continuing institutions and universe entry/exit to national change;
 - latest-release review reconciling national, student-level, state, and institution-accounting changes and reproducing its priority counts;
+- QA resolution entries remaining tied to current high-priority queue records, using unique UNITIDs, HTTPS evidence, valid review dates, explicit publication classes, and matching generated documentation;
+- the QA resolution sample covering the ten highest-impact rows in the current deterministic high-priority queue so the core reviewed sample cannot be silently cherry-picked;
 - structured Research Library metadata having unique IDs, HTTPS URLs, current review dates, and matching generated documentation;
 - stakeholder briefing note reproducing validated headline/latest-release values and interpretation boundaries;
 - Excel workbook ZIP integrity, required six-sheet structure, formula presence, and current headline value;
@@ -84,7 +86,7 @@ This design is deliberate: the external publication is a validation source, not 
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **20 tests**.
+The current suite contains **21 tests**.
 
 ## One-command validation
 
@@ -110,12 +112,14 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - rendered SVG charts, including the institution-dynamics and latest-release review charts;
 - the latest-release high-priority review count matching `site_data.json`;
 - working public CSV downloads;
-- working public Research Library and Research Agenda CSV/Markdown, stakeholder briefing-note, Excel-workbook, state-profile index, and state-profile downloads;
+- working public Research Library and Research Agenda CSV/Markdown, QA resolution CSV/Markdown, stakeholder briefing-note, Excel-workbook, state-profile index, and state-profile downloads;
 - anchored sections clearing the sticky header; and
 - a shareable California state-profile page rendering the correct query-selected state, ten-year series, five institution rows, profile-note link, and responsive layout; and
 - no unintended page-level horizontal overflow.
 
 Run it after `python scripts/validate_project.py` and before deployment.
+
+`scripts/check_qa_evidence.py` is a separate online evidence-health lane. It checks every external URL referenced by the manual QA resolution log, distinguishes HTTP 401/403 access restrictions from broken resources, and fails on broken URLs or network-level uncertainty. It remains outside the offline validation command so publication reproducibility does not depend on third-party web availability.
 
 ## Publication checks
 
@@ -126,4 +130,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable Excel analysis workbook, national, state, institution, institution-change, latest-release QA queue/memo, stakeholder briefing note, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable Excel analysis workbook, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, stakeholder briefing note, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.

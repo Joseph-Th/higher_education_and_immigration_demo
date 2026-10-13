@@ -1,0 +1,41 @@
+{
+  "reviewed_count": 11,
+  "safe_with_context": 2,
+  "hold_for_confirmation": 9,
+  "dispositions": {
+    "context_support_only": 3,
+    "corroborated_baseline": 1,
+    "corroborated_direction": 1,
+    "expected_structural_change": 1,
+    "external_scope_mismatch": 2,
+    "unresolved_discontinuity": 2,
+    "unresolved_large_change": 1
+  },
+  "reviewed_unitids": [
+    "156541",
+    "247834",
+    "132709",
+    "135717",
+    "414878",
+    "156365",
+    "228787",
+    "195173",
+    "217475",
+    "227216",
+    "195234"
+  ],
+  "required_top_10_unitids": [
+    "156541",
+    "247834",
+    "132709",
+    "135717",
+    "414878",
+    "156365",
+    "228787",
+    "195173",
+    "217475",
+    "227216"
+  ],
+  "required_top_10_covered": true,
+  "latest_reviewed_on": "2026-10-13"
+}

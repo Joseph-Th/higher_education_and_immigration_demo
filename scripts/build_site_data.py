@@ -29,6 +29,9 @@ def main() -> int:
     latest_update_review = json.loads(
         (DATA / "latest_update_review.json").read_text(encoding="utf-8")
     )
+    qa_resolution_summary = json.loads(
+        (DATA / "qa_resolution_summary.json").read_text(encoding="utf-8")
+    )
     qa = json.loads((DATA / "qa_report.json").read_text(encoding="utf-8"))
     state_rows = read_csv(PROCESSED / "state_year.csv")
     source_manifest = read_csv(DATA / "source_manifest.csv")
@@ -57,6 +60,7 @@ def main() -> int:
     payload = {
         **findings,
         "latest_update_review": latest_update_review,
+        "qa_resolution_summary": qa_resolution_summary,
         "state_series": dict(sorted(state_series.items())),
         "quality": {
             "source_archives": len(source_manifest),
@@ -118,6 +122,11 @@ def main() -> int:
     shutil.copy2(
         ROOT / "docs" / "LATEST_UPDATE_REVIEW.md",
         DOWNLOADS / "latest_update_review.md",
+    )
+    shutil.copy2(DATA / "qa_resolution_log.csv", DOWNLOADS / "qa_resolution_log.csv")
+    shutil.copy2(
+        ROOT / "docs" / "QA_RESOLUTION_LOG.md",
+        DOWNLOADS / "qa_resolution_log.md",
     )
     shutil.copy2(DATA / "research_library.csv", DOWNLOADS / "research_library.csv")
     shutil.copy2(DATA / "research_agenda.csv", DOWNLOADS / "research_agenda.csv")

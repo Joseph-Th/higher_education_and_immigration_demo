@@ -4,6 +4,8 @@ Portfolio research project analyzing national and state-level enrollment trends 
 
 The project is designed as a compact, reproducible research product rather than a generic dashboard. It emphasizes source quality, data definitions, QA/QC, methodological documentation, clear writing, and communication of limitations.
 
+![Research brief preview](docs/assets/research-brief-preview.png)
+
 ## Research question
 
 How did fall enrollment of U.S. nonresident students change across the United States from 2015 through 2024, and how did those changes vary by state and student level?
@@ -16,6 +18,7 @@ How did fall enrollment of U.S. nonresident students change across the United St
 - A transparent methodology and data-quality record.
 - Downloadable analysis tables, source lineage, schema audit, and external benchmark audit.
 - A generated latest-release review packet with reason-coded institution-level QA triage.
+- An analyst-reviewed QA resolution log that documents evidence, disposition, and publication decisions for selected high-priority flags without rewriting source values.
 - A generated stakeholder briefing note that translates validated findings into a concise management-facing update.
 - A reviewer-ready Excel workbook with formula-driven KPIs, state lookup, reconciliation checks, benchmark QA, and source metadata.
 - Fifty-one generated state/DC research profiles linked directly from the interactive state explorer.
@@ -59,6 +62,7 @@ Build the normalized analysis outputs and public-site data:
 ```bash
 python scripts/build_analysis.py
 python scripts/build_update_review.py
+python scripts/build_qa_resolution_log.py
 python scripts/build_research_library.py
 python scripts/build_research_agenda.py
 python scripts/summarize_findings.py
@@ -93,9 +97,10 @@ Live source-health checks remain separate from offline validation:
 ```bash
 python scripts/check_for_new_release.py
 python scripts/check_research_library.py
+python scripts/check_qa_evidence.py
 ```
 
-The second command verifies every maintained Research Library URL and reports redirects/status without making a live website a dependency of the reproducible analysis build. Script-blocking HTTP 401/403 responses are surfaced as access restrictions requiring manual browser review rather than misclassified as dead links.
+The second command verifies every maintained Research Library URL, and the third checks the external evidence links used by the manual QA resolution layer. Both are intentionally separate from the offline reproducibility build. Script-blocking HTTP 401/403 responses are surfaced as access restrictions requiring manual browser review rather than misclassified as dead links.
 
 ## Documentation
 
@@ -107,6 +112,7 @@ The second command verifies every maintained Research Library URL and reports re
 - [`docs/VALIDATION.md`](docs/VALIDATION.md): implemented QA checks and independent NCES benchmark.
 - [`docs/FINDINGS.md`](docs/FINDINGS.md): current analytical findings with exact supporting figures.
 - [`docs/LATEST_UPDATE_REVIEW.md`](docs/LATEST_UPDATE_REVIEW.md): generated review of the newest annual release and its QA queue.
+- [`docs/QA_RESOLUTION_LOG.md`](docs/QA_RESOLUTION_LOG.md): evidence-backed analyst dispositions for selected high-priority annual QA flags.
 - [`docs/BRIEFING_NOTE.md`](docs/BRIEFING_NOTE.md): generated stakeholder briefing with implications, monitoring questions, and interpretation boundaries.
 - [`docs/EXCEL_WORKBOOK.md`](docs/EXCEL_WORKBOOK.md): workbook contents, authority boundaries, QA features, and maintenance notes.
 - [`docs/RESEARCH_AGENDA.md`](docs/RESEARCH_AGENDA.md): prioritized research questions, data needs, methods, outputs, and decision rules.
@@ -119,9 +125,9 @@ The second command verifies every maintained Research Library URL and reports re
 
 ## Current status
 
-The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, 20 repository tests pass, and 24 external NCES Digest consistency checks pass across 2019-2024. A six-sheet Excel review workbook is tracked as a downstream presentation artifact and published with the site. The pipeline also generates 51 state/DC profiles with current composition, longitudinal change, top institutions, and a ten-year state series. A structured research agenda distinguishes questions answerable with the current pipeline from those requiring population-specific or partner data. The Research Library contains 11 reviewed resources from NCES and the Higher Ed Immigration Portal, including the three recurring research products named in the target role. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
+The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, and 24 external NCES Digest consistency checks pass across 2019-2024. The latest-release workflow now includes both automated reason-coded triage and a manually reviewed evidence/disposition log for selected high-priority records. A six-sheet Excel review workbook is tracked as a downstream presentation artifact and published with the site. The pipeline also generates 51 state/DC profiles with current composition, longitudinal change, top institutions, and a ten-year state series. A structured research agenda distinguishes questions answerable with the current pipeline from those requiring population-specific or partner data. The Research Library contains 11 reviewed resources from NCES and the Higher Ed Immigration Portal, including the three recurring research products named in the target role. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
 
 Current substantive findings include a graduate-driven decade-level increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, a shift toward private nonprofit institutions, and evidence that national growth occurred within continuing institutions rather than being created by a larger institution universe. The newest-release review also identifies a short-run composition shift: 2023-2024 undergraduate U.S. nonresident enrollment increased by 31,592 while graduate enrollment decreased by 2,053. The site surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
 
-The static site is ready for Cloudflare Pages deployment once a remote or direct-upload target is configured.
+The repository is connected to GitHub and the static `site/` output is ready for a Cloudflare Pages project connected to the `main` branch. Deployment remains a separate publication step so only a locally validated build is promoted.
 

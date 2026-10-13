@@ -46,6 +46,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/institution_change_summary.csv",
         "downloads/latest_release_institution_review.csv",
         "downloads/latest_update_review.md",
+        "downloads/qa_resolution_log.csv",
+        "downloads/qa_resolution_log.md",
         "downloads/research_library.csv",
         "downloads/research_library.md",
         "downloads/research_agenda.md",
@@ -121,6 +123,13 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
     high_text = page.locator("#update-high-priority").inner_text().strip()
     if high_text != expected_int(update["review_queue"]["high"]):
         raise AssertionError("Latest-release high-priority count does not match site data")
+    resolution = SITE_DATA["qa_resolution_summary"]
+    if page.locator("#resolution-reviewed").inner_text().strip() != expected_int(resolution["reviewed_count"]):
+        raise AssertionError("QA resolution reviewed count does not match site data")
+    if page.locator("#resolution-safe").inner_text().strip() != expected_int(resolution["safe_with_context"]):
+        raise AssertionError("QA resolution safe count does not match site data")
+    if page.locator("#resolution-held").inner_text().strip() != expected_int(resolution["hold_for_confirmation"]):
+        raise AssertionError("QA resolution held count does not match site data")
 
     page.evaluate(
         "document.documentElement.style.scrollBehavior='auto'; "

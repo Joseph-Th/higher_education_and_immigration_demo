@@ -8,7 +8,7 @@ This repository is intended to be evaluated as a small recurring research produc
 2. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
 3. Read `docs/BRIEFING_NOTE.md` for the management-facing synthesis, then `docs/FINDINGS.md` for the exact numerical basis behind it.
 4. Read `docs/METHODOLOGY.md` for population definitions, universe rules, endpoint matching, and limitations.
-5. Inspect `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see provenance, validation evidence, and source organization.
+5. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
 6. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
 7. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
 
@@ -24,6 +24,7 @@ This repository is intended to be evaluated as a small recurring research produc
 | Perform substantive analysis | `scripts/summarize_findings.py` produces level, geography, control, concentration, recovery, and institution-dynamics findings |
 | Investigate apparent discrepancies | `scripts/validate_benchmarks.py` quantifies release-vintage differences instead of forcing current data to match an older Digest publication |
 | Review a new annual release | `scripts/build_update_review.py`, `docs/LATEST_UPDATE_REVIEW.md`, and `data/processed/latest_release_institution_review.csv` reconcile the new year and produce a reason-coded QA queue |
+| Resolve flagged records with analyst judgment | `data/qa_resolution_log.csv`, `scripts/build_qa_resolution_log.py`, and `docs/QA_RESOLUTION_LOG.md` tie selected high-priority flags to external evidence, scope checks, and explicit publication decisions |
 | Brief nontechnical stakeholders | `scripts/build_briefing_note.py` generates `docs/BRIEFING_NOTE.md` directly from validated findings, QA, and benchmark outputs |
 | Analyze and quality-control data in Excel | `deliverables/ipeds_portfolio_analysis.xlsx` uses formulas, structured tables, state lookup/data validation, reconciliation columns, conditional formatting, benchmark review, and charting |
 | Maintain national and state-level data products | `scripts/build_state_profiles.py` generates 51 state/DC briefs, a machine-readable profile dataset, and `state_profile_index.csv`; `state.html` provides a shareable state-level publication view |
@@ -71,6 +72,8 @@ Live next-release check:
 
 ```bash
 python scripts/check_for_new_release.py
+python scripts/check_research_library.py
+python scripts/check_qa_evidence.py
 ```
 
-The first command is intentionally offline once raw IPEDS files have been collected. The release checker is intentionally online and separate, so a future NCES posting cannot silently change the reproducibility of the current published result.
+The core validation command is intentionally offline once raw IPEDS files have been collected. Release detection, Research Library health, and QA evidence-link checks are intentionally online and separate, so changes in external websites cannot silently change the reproducibility of the current published result.

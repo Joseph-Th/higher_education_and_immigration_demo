@@ -152,6 +152,25 @@ Key fields:
 
 The file is a review queue, not a list of source-data errors.
 
+## `data/qa_resolution_log.csv`
+
+One row per manually reviewed institution selected from the current high-priority annual QA queue. This is an analyst-decision record, not a corrected-data table.
+
+| Field | Definition |
+| --- | --- |
+| `unitid` | IPEDS institution identifier; must remain present in the current high-priority review queue |
+| `institution` | Institution name, checked against the current queue to catch identity/name drift |
+| `reviewed_on` | ISO date of the analyst evidence review |
+| `disposition` | Short analytical conclusion such as `corroborated_direction`, `expected_structural_change`, `external_scope_mismatch`, or `unresolved_discontinuity` |
+| `publication_class` | `safe_with_context` or `hold_for_confirmation` |
+| `evidence_label` | Human-readable description of the outside evidence source |
+| `evidence_url` | HTTPS source used during manual review |
+| `analyst_note` | Explanation of what the evidence does and does not establish, including population-scope caveats |
+
+`safe_with_context` does not mean the external source exactly reproduces IPEDS. It means the reviewed evidence supports discussing the direction or structural event with explicit limitations. `hold_for_confirmation` preserves the official IPEDS value in aggregate analysis while preventing an unresolved institution-level movement from being promoted into narrative as though it had been independently verified.
+
+The build script requires every reviewed UNITID to remain a current high-priority row. A new annual release therefore forces stale dispositions to be revisited rather than silently carrying them forward.
+
 ## `data/schema_audit.csv`
 
 One row per source year recording whether required variables and aggregation labels pass cross-year schema review, plus the selected raw filenames and historical terminology used for `EFNRALT`.
@@ -224,6 +243,8 @@ One row per maintained research or data-needs question.
 `data/findings.json` contains the derived findings used by the public static site: headline metrics, level decomposition, state recovery, concentration, institutional control, institution-universe dynamics, rankings, and national series.
 
 `data/latest_update_review.json` contains the latest annual national change, student-level decomposition, institution-universe accounting, largest state changes, priority counts, top review items, and imputation/status transitions used by the public release-review section.
+
+`data/qa_resolution_summary.json` contains the reviewed sample size, counts by publication class and disposition, the reviewed UNITIDs, and the latest manual review date. It is generated from `qa_resolution_log.csv` only after reconciliation to the current annual QA queue.
 
 `data/state_profiles.json` contains the shareable state-profile payload used by `site/state.html`: coverage metadata plus 51 keyed profiles with latest metrics, change windows, top institutions, annual series, and corresponding Markdown filename. It is generated from `state_year.csv`, `state_change_summary.csv`, and the latest institution table rather than maintained independently.
 

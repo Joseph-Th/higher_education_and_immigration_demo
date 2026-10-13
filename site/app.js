@@ -254,6 +254,10 @@ async function init() {
   document.querySelector('#update-entry-exit-net').textContent=signedInt(update.institution_accounting.entry_exit_net);
   const topUpdateState=update.state_change.largest_gains[0];
   document.querySelector('#update-top-state').textContent=`${topUpdateState.state} ${signedInt(topUpdateState.absolute_change)}`;
+  const resolution=data.qa_resolution_summary;
+  document.querySelector('#resolution-reviewed').textContent=fmtInt.format(resolution.reviewed_count);
+  document.querySelector('#resolution-safe').textContent=fmtInt.format(resolution.safe_with_context);
+  document.querySelector('#resolution-held').textContent=fmtInt.format(resolution.hold_for_confirmation);
 
   const select=document.querySelector('#state-select');
   Object.keys(data.state_series).sort((a,b)=>STATE_NAMES[a].localeCompare(STATE_NAMES[b])).forEach(code=>{

@@ -259,6 +259,43 @@ class ResearchProductTests(unittest.TestCase):
             self.assertIn(row["research_id"], rendered)
             self.assertIn(row["question"], rendered)
 
+    def test_qa_resolution_log_tracks_current_high_priority_queue(self) -> None:
+        log = rows(ROOT / "data" / "qa_resolution_log.csv")
+        queue = {
+            row["unitid"]: row
+            for row in rows(ROOT / "data" / "processed" / "latest_release_institution_review.csv")
+        }
+        summary = json.loads(
+            (ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(len(log), 11)
+        self.assertEqual(len({row["unitid"] for row in log}), len(log))
+        self.assertEqual(summary["reviewed_count"], len(log))
+        self.assertTrue(summary["required_top_10_covered"])
+        expected_top_10 = [
+            row["unitid"]
+            for row in rows(ROOT / "data" / "processed" / "latest_release_institution_review.csv")
+            if row["review_priority"] == "high"
+        ][:10]
+        self.assertEqual(summary["required_top_10_unitids"], expected_top_10)
+        self.assertTrue(set(expected_top_10).issubset({row["unitid"] for row in log}))
+        self.assertEqual(
+            summary["safe_with_context"] + summary["hold_for_confirmation"], len(log)
+        )
+        self.assertGreaterEqual(summary["safe_with_context"], 2)
+        self.assertGreaterEqual(summary["hold_for_confirmation"], 1)
+        for row in log:
+            self.assertIn(row["unitid"], queue)
+            self.assertEqual(queue[row["unitid"]]["review_priority"], "high")
+            self.assertEqual(queue[row["unitid"]]["institution"], row["institution"])
+            self.assertIn(row["publication_class"], {"safe_with_context", "hold_for_confirmation"})
+            self.assertTrue(row["evidence_url"].startswith("https://"))
+        rendered = (ROOT / "docs" / "QA_RESOLUTION_LOG.md").read_text(encoding="utf-8")
+        for row in log:
+            self.assertIn(row["institution"], rendered)
+            self.assertIn(row["evidence_url"], rendered)
+        self.assertEqual(self.site_data["qa_resolution_summary"], summary)
+
     def test_briefing_note_tracks_validated_outputs(self) -> None:
         note = (ROOT / "docs" / "BRIEFING_NOTE.md").read_text(encoding="utf-8")
         headline = self.findings["headline"]
@@ -379,6 +416,7 @@ class ResearchProductTests(unittest.TestCase):
             ("data/benchmark_audit.csv", "site/downloads/benchmark_audit.csv"),
             ("data/research_library.csv", "site/downloads/research_library.csv"),
             ("data/research_agenda.csv", "site/downloads/research_agenda.csv"),
+            ("data/qa_resolution_log.csv", "site/downloads/qa_resolution_log.csv"),
             (
                 "data/processed/state_profile_index.csv",
                 "site/downloads/state_profile_index.csv",
@@ -397,6 +435,10 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(
             (ROOT / "docs" / "LATEST_UPDATE_REVIEW.md").read_bytes(),
             (ROOT / "site" / "downloads" / "latest_update_review.md").read_bytes(),
+        )
+        self.assertEqual(
+            (ROOT / "docs" / "QA_RESOLUTION_LOG.md").read_bytes(),
+            (ROOT / "site" / "downloads" / "qa_resolution_log.md").read_bytes(),
         )
         self.assertEqual(
             (ROOT / "docs" / "RESEARCH_LIBRARY.md").read_bytes(),
