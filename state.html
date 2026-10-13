@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="State-level U.S. nonresident enrollment profile using NCES/IPEDS Fall Enrollment data.">
+  <meta name="theme-color" content="#10263c">
+  <title>State Enrollment Profile | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to state profile</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Back to project home">
+        <span class="brand-mark">IE</span>
+        <span>Higher Education Data Brief</span>
+      </a>
+      <nav aria-label="State profile navigation">
+        <a href="index.html#states">All states</a>
+        <a href="index.html#methods">Methods</a>
+        <a href="index.html#downloads">Data</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="state-profile-main">
+    <section class="state-profile-hero">
+      <div class="shell">
+        <p class="eyebrow" id="state-profile-eyebrow">NCES / IPEDS · State profile</p>
+        <h1 id="state-profile-title">State enrollment profile</h1>
+        <p class="lede" id="state-profile-lede">Loading state data…</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="index.html#states">Back to state explorer</a>
+          <a class="button button-secondary" id="state-markdown-link" href="downloads/state_profiles/AZ.md">Download profile notes</a>
+        </div>
+        <p class="release-note">Latest year: <strong id="state-profile-status">Fall 2024 provisional</strong>. State is based on institution location.</p>
+      </div>
+    </section>
+
+    <section class="metrics shell state-profile-metrics" aria-label="State headline metrics">
+      <article class="metric-card"><span class="metric-label" id="profile-total-label">Latest U.S. nonresident</span><strong class="metric-value" id="profile-total">—</strong><span class="metric-detail" id="profile-institutions">—</span></article>
+      <article class="metric-card"><span class="metric-label">Share of state enrollment</span><strong class="metric-value" id="profile-share">—</strong><span class="metric-detail">analytic universe</span></article>
+      <article class="metric-card"><span class="metric-label">Change since 2019</span><strong class="metric-value" id="profile-recovery-change">—</strong><span class="metric-detail" id="profile-recovery-status">—</span></article>
+      <article class="metric-card metric-card-dark"><span class="metric-label">Latest annual change</span><strong class="metric-value" id="profile-latest-change">—</strong><span class="metric-detail" id="profile-latest-years">—</span></article>
+    </section>
+
+    <section class="section shell state-profile-grid">
+      <article class="chart-card state-trend-card">
+        <div class="chart-toolbar">
+          <div><h2>Ten-year enrollment path</h2><p>U.S. nonresident fall enrollment</p></div>
+          <span class="status-pill" id="profile-recovery-pill">—</span>
+        </div>
+        <div id="profile-trend-chart" class="chart chart-small"></div>
+      </article>
+      <aside class="state-composition-card">
+        <p class="finding-kicker" id="profile-composition-label">Latest composition</p>
+        <strong class="finding-number" id="profile-grad-share">—</strong>
+        <p>of U.S. nonresident students are graduate students.</p>
+        <dl class="delta-list">
+          <div><dt>Undergraduate</dt><dd id="profile-undergrad">—</dd></div>
+          <div><dt>Graduate</dt><dd id="profile-grad">—</dd></div>
+          <div><dt id="profile-start-change-label">Change since start</dt><dd id="profile-decade-change">—</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="shell state-profile-details">
+        <div>
+          <div class="section-heading compact"><p class="eyebrow">Institution detail</p><h2>Largest institutions in the state</h2><p>This is enrollment concentration, not a performance ranking.</p></div>
+          <div class="table-wrap">
+            <table>
+              <caption class="sr-only">Largest institutions by U.S. nonresident enrollment</caption>
+              <thead><tr><th>Institution</th><th>Control</th><th>U.S. nonresident</th><th>Share of enrollment</th></tr></thead>
+              <tbody id="profile-institution-table"></tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <div class="section-heading compact"><p class="eyebrow">Annual series</p><h2>Underlying state data</h2><p>Counts are drawn from the same validated state series as the national brief.</p></div>
+          <div class="table-wrap state-series-wrap">
+            <table>
+              <caption class="sr-only">Annual state U.S. nonresident enrollment series</caption>
+              <thead><tr><th>Year</th><th>U.S. nonresident</th><th>Share</th><th>Undergrad</th><th>Graduate</th></tr></thead>
+              <tbody id="profile-series-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell method-section">
+      <div class="section-heading compact"><p class="eyebrow">Interpret carefully</p><h2>What this profile does and does not measure</h2></div>
+      <div class="method-grid">
+        <article><h3>Definition</h3><p>IPEDS U.S. nonresident is a reporting category for students in the United States on a visa or temporary basis. It is not a complete measure of immigrant-origin, undocumented, DACA, or foreign-born students.</p></article>
+        <article><h3>Geography</h3><p>State assignment is based on institution location, not student residence, nationality, or immigration status.</p></article>
+        <article><h3>Comparability</h3><p>Institution eligibility, classifications, reporting practices, mergers, and UNITID structures can change. The project documents the common analytic universe and validates annual aggregates.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><span id="state-footer-label">State enrollment profile</span><a href="index.html">National brief</a></div></footer>
+  <script src="state.js" defer></script>
+</body>
+</html>
