@@ -5,6 +5,8 @@ import json
 import re
 import sys
 import unittest
+import zipfile
+import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -255,6 +257,43 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn(f"{queue['high']} high-priority", note)
         self.assertIn("IPEDS U.S. nonresident status should not be used as a proxy", note)
 
+    def test_excel_workbook_is_valid_and_formula_driven(self) -> None:
+        workbook = ROOT / "deliverables" / "ipeds_portfolio_analysis.xlsx"
+        self.assertTrue(workbook.exists())
+        self.assertGreater(workbook.stat().st_size, 20_000)
+        expected_sheets = [
+            "Executive Summary",
+            "National Trend",
+            "State Review",
+            "Institution Control",
+            "QA & Benchmark",
+            "Source Library",
+        ]
+        with zipfile.ZipFile(workbook) as archive:
+            self.assertIsNone(archive.testzip())
+            root = ET.fromstring(archive.read("xl/workbook.xml"))
+            namespace = {"main": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+            sheet_names = [
+                element.attrib["name"]
+                for element in root.findall("main:sheets/main:sheet", namespace)
+            ]
+            self.assertEqual(sheet_names, expected_sheets)
+            worksheet_roots = [
+                ET.fromstring(archive.read(name))
+                for name in archive.namelist()
+                if name.startswith("xl/worksheets/sheet") and name.endswith(".xml")
+            ]
+            formula_count = sum(
+                len(sheet.findall(".//main:f", namespace)) for sheet in worksheet_roots
+            )
+            values = {
+                element.text
+                for sheet in worksheet_roots
+                for element in sheet.findall(".//main:v", namespace)
+            }
+            self.assertGreater(formula_count, 0)
+            self.assertIn("1044137", values)
+
     def test_qa_report_is_all_pass(self) -> None:
         self.assertTrue(self.qa["checks"])
         self.assertTrue(all(value == "PASS" for value in self.qa["checks"].values()))
@@ -290,6 +329,10 @@ class ResearchProductTests(unittest.TestCase):
             ("data/source_manifest.csv", "site/downloads/source_manifest.csv"),
             ("data/benchmark_audit.csv", "site/downloads/benchmark_audit.csv"),
             ("data/research_library.csv", "site/downloads/research_library.csv"),
+            (
+                "deliverables/ipeds_portfolio_analysis.xlsx",
+                "site/downloads/ipeds_portfolio_analysis.xlsx",
+            ),
             (
                 "data/reference/nces_digest_2025_306_10.csv",
                 "site/downloads/nces_digest_2025_306_10.csv",

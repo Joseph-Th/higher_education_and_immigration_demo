@@ -17,6 +17,7 @@ How did fall enrollment of U.S. nonresident students change across the United St
 - Downloadable analysis tables, source lineage, schema audit, and external benchmark audit.
 - A generated latest-release review packet with reason-coded institution-level QA triage.
 - A generated stakeholder briefing note that translates validated findings into a concise management-facing update.
+- A reviewer-ready Excel workbook with formula-driven KPIs, state lookup, reconciliation checks, benchmark QA, and source metadata.
 - A structured Research Library describing source scope, update pattern, project use, and review date.
 - A documented annual update workflow and deployment path.
 - Separate offline data validation and browser-level publication QA lanes.
@@ -103,6 +104,7 @@ The second command verifies every maintained Research Library URL and reports re
 - [`docs/FINDINGS.md`](docs/FINDINGS.md): current analytical findings with exact supporting figures.
 - [`docs/LATEST_UPDATE_REVIEW.md`](docs/LATEST_UPDATE_REVIEW.md): generated review of the newest annual release and its QA queue.
 - [`docs/BRIEFING_NOTE.md`](docs/BRIEFING_NOTE.md): generated stakeholder briefing with implications, monitoring questions, and interpretation boundaries.
+- [`docs/EXCEL_WORKBOOK.md`](docs/EXCEL_WORKBOOK.md): workbook contents, authority boundaries, QA features, and maintenance notes.
 - [`docs/RESEARCH_LIBRARY.md`](docs/RESEARCH_LIBRARY.md): generated human-readable view of the structured source library.
 - [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md): short portfolio walkthrough and evidence map for hiring/research reviewers.
 - [`docs/UPDATE_PLAYBOOK.md`](docs/UPDATE_PLAYBOOK.md): annual release/update procedure.
@@ -112,7 +114,7 @@ The second command verifies every maintained Research Library URL and reports re
 
 ## Current status
 
-The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, 17 repository tests pass, and 24 external NCES Digest consistency checks pass across 2019-2024. The Research Library contains 11 reviewed resources from NCES and the Higher Ed Immigration Portal, including the three recurring research products named in the target role. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
+The research brief is built locally and passes both the complete offline validation path and the browser publication smoke test at desktop and 390px mobile widths. Primary-source collection covers 2015-2024 with 40 official NCES data/dictionary archives and SHA-256 provenance. The cross-year schema audit passes all ten years, the normalized analytic universe contains 40,549 institution-year records, 18 repository tests pass, and 24 external NCES Digest consistency checks pass across 2019-2024. A six-sheet Excel review workbook is tracked as a downstream presentation artifact and published with the site. The Research Library contains 11 reviewed resources from NCES and the Higher Ed Immigration Portal, including the three recurring research products named in the target role. Portal pages that block scripted requests are explicitly routed to manual browser review instead of being treated as broken links.
 
 Current substantive findings include a graduate-driven decade-level increase, 33 states/DC at or above their 2019 U.S. nonresident enrollment by 2024, concentration of roughly half of national U.S. nonresident enrollment in the 100 largest institutions, a shift toward private nonprofit institutions, and evidence that national growth occurred within continuing institutions rather than being created by a larger institution universe. The newest-release review also identifies a short-run composition shift: 2023-2024 undergraduate U.S. nonresident enrollment increased by 31,592 while graduate enrollment decreased by 2,053. The site surfaces small release-vintage differences between the March 2026 Digest and the later IPEDS files instead of forcing the current data to reproduce an older publication.
 

@@ -77,11 +77,12 @@ This design is deliberate: the external publication is a validation source, not 
 - latest-release review reconciling national, student-level, state, and institution-accounting changes and reproducing its priority counts;
 - structured Research Library metadata having unique IDs, HTTPS URLs, current review dates, and matching generated documentation;
 - stakeholder briefing note reproducing validated headline/latest-release values and interpretation boundaries;
+- Excel workbook ZIP integrity, required six-sheet structure, formula presence, and current headline value;
 - QA and external benchmark checks all passing;
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **17 tests**.
+The current suite contains **18 tests**.
 
 ## One-command validation
 
@@ -107,7 +108,7 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - rendered SVG charts, including the institution-dynamics and latest-release review charts;
 - the latest-release high-priority review count matching `site_data.json`;
 - working public CSV downloads;
-- working public Research Library CSV/Markdown and stakeholder briefing-note downloads;
+- working public Research Library CSV/Markdown, stakeholder briefing-note, and Excel-workbook downloads;
 - anchored sections clearing the sticky header; and
 - no unintended page-level horizontal overflow.
 
@@ -122,4 +123,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable national, state, institution, institution-change, latest-release QA queue/memo, stakeholder briefing note, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable Excel analysis workbook, national, state, institution, institution-change, latest-release QA queue/memo, stakeholder briefing note, structured Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.

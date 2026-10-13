@@ -113,6 +113,8 @@ At minimum, re-check:
 
 The public page contains intentionally editorial year labels and latest-year download links in `site/index.html`; update those after the data rebuild rather than assuming configuration alone rewrites the prose.
 
+Refresh `deliverables/ipeds_portfolio_analysis.xlsx` from the validated current outputs after the analytical narrative is settled. The workbook is a downstream presentation artifact, not an input to the analysis. Recheck its formulas, state lookup, reconciliation columns, benchmark sheet, source metadata, and chart before publication.
+
 Re-read the generated briefing note as a stakeholder product. Its numbers are derived automatically, but its monitoring questions and interpretation boundaries must still remain appropriate as the evidence changes.
 
 ## 8. Visual review and deployment

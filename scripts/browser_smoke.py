@@ -49,6 +49,7 @@ def check_downloads(base_url: str) -> None:
         "downloads/research_library.csv",
         "downloads/research_library.md",
         "downloads/briefing_note.md",
+        "downloads/ipeds_portfolio_analysis.xlsx",
         "downloads/benchmark_audit.csv",
     )
     for path in paths:
