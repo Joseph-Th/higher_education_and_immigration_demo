@@ -52,6 +52,7 @@ A short web-based brief containing:
 - a small set of defensible findings prioritized for policy/research readers;
 - national trend visualization;
 - state comparison visualization/table;
+- generated state/DC profile briefs for repeatable state-level publication;
 - undergraduate/graduate comparison if cross-year definitions permit;
 - institutional-control comparison;
 - institution endpoint-change accounting;
@@ -73,6 +74,8 @@ A short web-based brief containing:
 - generated latest-release review memo and reason-coded institution queue.
 - generated stakeholder briefing note built from validated findings rather than separately maintained figures.
 - reviewer-ready Excel workbook demonstrating formula-based analysis, lookup, QA/QC, presentation, and source organization.
+- generated 50-state-plus-DC profile set and machine-readable profile index.
+- structured research-needs register connecting findings and source limitations to proposed methods, outputs, and decision rules.
 - structured Research Library with machine-readable source metadata and generated documentation.
 - online Research Library URL-health checker kept separate from offline reproducibility validation.
 - browser-level publication smoke test.

@@ -115,6 +115,10 @@ The public page contains intentionally editorial year labels and latest-year dow
 
 Refresh `deliverables/ipeds_portfolio_analysis.xlsx` from the validated current outputs after the analytical narrative is settled. The workbook is a downstream presentation artifact, not an input to the analysis. Recheck its formulas, state lookup, reconciliation columns, benchmark sheet, source metadata, and chart before publication.
 
+Regenerate all state profiles with `python scripts/build_state_profiles.py`. Review the profile index for outliers, then spot-check at least one growing state, one declining state, and one small-count state. Confirm the state explorer links to the matching generated profile after browser QA.
+
+Review `data/research_agenda.csv` after the new release. Close, reframe, or reprioritize questions whose evidence trigger has changed; add new questions only when the population, decision need, required data, proposed method, and interpretation boundary can be stated explicitly. Regenerate `docs/RESEARCH_AGENDA.md` through the normal validation lane.
+
 Re-read the generated briefing note as a stakeholder product. Its numbers are derived automatically, but its monitoring questions and interpretation boundaries must still remain appropriate as the evidence changes.
 
 ## 8. Visual review and deployment

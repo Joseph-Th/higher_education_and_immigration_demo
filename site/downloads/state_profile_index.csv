@@ -1,0 +1,52 @@
+state,state_name,start_year,baseline_year,latest_year,latest_nonresident,latest_share_pct,change_since_start,change_pct_since_start,change_since_baseline,change_pct_since_baseline,recovery_status,year_over_year_change,year_over_year_pct,graduate_share_pct,top_institution,top_institution_nonresident,profile_file
+AL,Alabama,2015,2019,2024,9490,3.05,1291,15.7,388,4.3,At or above 2019,342,3.7,59.6,University of Alabama at Birmingham,1873,AL.md
+AK,Alaska,2015,2019,2024,374,1.65,-215,-36.5,-85,-18.5,Below 2019,-43,-10.3,33.2,University of Alaska Fairbanks,168,AK.md
+AZ,Arizona,2015,2019,2024,21053,3.08,787,3.9,3601,20.6,At or above 2019,386,1.9,51.1,Arizona State University Campus Immersion,12563,AZ.md
+AR,Arkansas,2015,2019,2024,5771,3.57,-33,-0.6,983,20.5,At or above 2019,211,3.8,46.2,Arkansas State University,1277,AR.md
+CA,California,2015,2019,2024,113589,4.25,-24044,-17.5,-33282,-22.7,Below 2019,-1114,-1.0,49.4,University of Southern California,12374,CA.md
+CO,Colorado,2015,2019,2024,11372,3.06,-48,-0.4,-326,-2.8,Below 2019,-331,-2.8,45.5,University of Colorado Boulder,2495,CO.md
+CT,Connecticut,2015,2019,2024,15407,7.90,3934,34.3,4089,36.1,At or above 2019,-924,-5.7,70.5,Yale University,3776,CT.md
+DE,Delaware,2015,2019,2024,4767,8.24,-682,-12.5,588,14.1,At or above 2019,-317,-6.2,65.3,University of Delaware,2760,DE.md
+DC,District of Columbia,2015,2019,2024,9743,9.70,-462,-4.5,-1794,-15.5,Below 2019,-385,-3.8,66.6,George Washington University,3673,DC.md
+FL,Florida,2015,2019,2024,58391,5.58,14541,33.2,11980,25.8,At or above 2019,6207,11.9,31.4,Broward College,5374,FL.md
+GA,Georgia,2015,2019,2024,33443,5.63,12548,60.1,7725,30.0,At or above 2019,1719,5.4,62.3,Georgia Institute of Technology-Main Campus,13496,GA.md
+HI,Hawaii,2015,2019,2024,4087,6.66,16,0.4,290,7.6,At or above 2019,342,9.1,18.5,Brigham Young University-Hawaii,1762,HI.md
+ID,Idaho,2015,2019,2024,3277,2.42,-6232,-65.5,-3648,-52.7,Below 2019,153,4.9,20.1,Brigham Young University-Idaho,1301,ID.md
+IL,Illinois,2015,2019,2024,55755,7.71,13654,32.4,14464,35.0,At or above 2019,2146,4.0,62.4,University of Illinois Urbana-Champaign,13350,IL.md
+IN,Indiana,2015,2019,2024,37082,7.75,9978,36.8,12853,53.0,At or above 2019,2422,7.0,69.1,Purdue University-Main Campus,9967,IN.md
+IA,Iowa,2015,2019,2024,8993,4.35,-4101,-31.3,-1421,-13.6,Below 2019,-12,-0.1,47.2,Iowa State University,2871,IA.md
+KS,Kansas,2015,2019,2024,9223,4.70,-4036,-30.4,-3842,-29.4,Below 2019,-595,-6.1,34.7,Wichita State University,2855,KS.md
+KY,Kentucky,2015,2019,2024,15365,5.37,8251,116.0,-285,-1.8,Below 2019,4615,42.9,79.9,University of the Cumberlands,4616,KY.md
+LA,Louisiana,2015,2019,2024,7934,3.12,423,5.6,682,9.4,At or above 2019,1347,20.4,45.1,Louisiana State University and Agricultural & Mechanical College,1744,LA.md
+ME,Maine,2015,2019,2024,2121,2.62,520,32.5,614,40.7,At or above 2019,229,12.1,22.0,University of Maine,570,ME.md
+MD,Maryland,2015,2019,2024,26147,7.39,6735,34.7,4159,18.9,At or above 2019,697,2.7,56.8,Johns Hopkins University,8152,MD.md
+MA,Massachusetts,2015,2019,2024,68570,14.23,13415,24.3,6809,11.0,At or above 2019,-1437,-2.1,61.6,Northeastern University,11530,MA.md
+MI,Michigan,2015,2019,2024,29161,6.06,-4233,-12.7,1383,5.0,At or above 2019,-192,-0.7,53.4,University of Michigan-Ann Arbor,8667,MI.md
+MN,Minnesota,2015,2019,2024,14226,3.46,-866,-5.7,-489,-3.3,Below 2019,73,0.5,43.0,University of Minnesota-Twin Cities,5410,MN.md
+MS,Mississippi,2015,2019,2024,4513,2.75,1163,34.7,1431,46.4,At or above 2019,1150,34.2,57.5,Mississippi State University,934,MS.md
+MO,Missouri,2015,2019,2024,27436,8.03,5746,26.5,11148,68.4,At or above 2019,716,2.7,73.6,Washington University in St Louis,4512,MO.md
+MT,Montana,2015,2019,2024,841,1.74,-910,-52.0,-356,-29.7,Below 2019,28,3.4,45.2,Montana State University,419,MT.md
+NE,Nebraska,2015,2019,2024,4381,3.12,-1144,-20.7,-729,-14.3,Below 2019,125,2.9,44.2,University of Nebraska-Lincoln,1663,NE.md
+NV,Nevada,2015,2019,2024,1996,1.65,-440,-18.1,-105,-5.0,Below 2019,172,9.4,55.8,University of Nevada-Las Vegas,1004,NV.md
+NH,New Hampshire,2015,2019,2024,5255,2.18,1999,61.4,1210,29.9,At or above 2019,182,3.6,63.7,New England College,1801,NH.md
+NJ,New Jersey,2015,2019,2024,25171,6.40,4117,19.6,3226,14.7,At or above 2019,874,3.6,51.0,Rutgers University-New Brunswick,5286,NJ.md
+NM,New Mexico,2015,2019,2024,3252,2.84,-742,-18.6,158,5.1,At or above 2019,119,3.8,46.7,University of New Mexico-Main Campus,1129,NM.md
+NY,New York,2015,2019,2024,116228,10.11,11283,10.8,7034,6.4,At or above 2019,1276,1.1,56.5,New York University,19202,NY.md
+NC,North Carolina,2015,2019,2024,22256,3.83,2725,14.0,2197,11.0,At or above 2019,638,3.0,52.0,Duke University,4516,NC.md
+ND,North Dakota,2015,2019,2024,2562,4.79,-339,-11.7,278,12.2,At or above 2019,169,7.1,51.6,University of North Dakota,915,ND.md
+OH,Ohio,2015,2019,2024,33106,5.43,-1005,-2.9,3258,10.9,At or above 2019,813,2.5,47.9,Ohio State University-Main Campus,6289,OH.md
+OK,Oklahoma,2015,2019,2024,8550,4.31,-2743,-24.3,-16,-0.2,Below 2019,920,12.1,46.2,University of Oklahoma-Norman Campus,1818,OK.md
+OR,Oregon,2015,2019,2024,5844,2.89,-6538,-52.8,-4265,-42.2,Below 2019,-177,-2.9,51.9,Oregon State University,2197,OR.md
+PA,Pennsylvania,2015,2019,2024,44983,7.08,-807,-1.8,-1077,-2.3,Below 2019,-667,-1.5,57.4,Pennsylvania State University-Main Campus,7539,PA.md
+RI,Rhode Island,2015,2019,2024,5743,7.60,693,13.7,1239,27.5,At or above 2019,1413,32.6,36.5,Brown University,2470,RI.md
+SC,South Carolina,2015,2019,2024,5900,2.31,807,15.8,553,10.3,At or above 2019,-29,-0.5,53.6,Clemson University,1695,SC.md
+SD,South Dakota,2015,2019,2024,2703,4.99,876,47.9,988,57.6,At or above 2019,627,30.2,43.4,South Dakota State University,826,SD.md
+TN,Tennessee,2015,2019,2024,11100,3.41,1219,12.3,3036,37.6,At or above 2019,671,6.4,52.0,Vanderbilt University,1838,TN.md
+TX,Texas,2015,2019,2024,77730,4.65,4852,6.7,14279,22.5,At or above 2019,2363,3.1,52.4,University of North Texas,7775,TX.md
+UT,Utah,2015,2019,2024,9233,1.95,1836,24.8,1834,24.8,At or above 2019,699,8.2,25.6,University of Utah,3138,UT.md
+VT,Vermont,2015,2019,2024,1289,3.36,-403,-23.8,-285,-18.1,Below 2019,3,0.2,24.4,University of Vermont,452,VT.md
+VA,Virginia,2015,2019,2024,22500,3.91,4229,23.1,3256,16.9,At or above 2019,1052,4.9,46.0,George Mason University,4259,VA.md
+WA,Washington,2015,2019,2024,18265,5.51,-4784,-20.8,-3834,-17.3,Below 2019,263,1.5,34.0,University of Washington-Seattle Campus,7963,WA.md
+WV,West Virginia,2015,2019,2024,3012,2.20,-1169,-28.0,-678,-18.4,Below 2019,50,1.7,34.3,West Virginia University,984,WV.md
+WI,Wisconsin,2015,2019,2024,14040,4.28,1956,16.2,1827,15.0,At or above 2019,441,3.2,47.8,University of Wisconsin-Madison,7955,WI.md
+WY,Wyoming,2015,2019,2024,907,2.92,-218,-19.4,36,4.1,At or above 2019,109,13.7,48.2,University of Wyoming,586,WY.md

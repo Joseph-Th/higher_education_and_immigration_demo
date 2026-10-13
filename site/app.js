@@ -191,6 +191,9 @@ function renderState(data, code) {
   document.querySelector('#state-2024').textContent=fmtInt.format(last.nonresident);
   document.querySelector('#state-change').textContent=signedPct(change);
   document.querySelector('#state-share').textContent=`${fmtPct.format(last.share_pct)}%`;
+  const profileLink=document.querySelector('#state-profile-link');
+  profileLink.href=`state.html?state=${code}`;
+  profileLink.textContent=`Open ${STATE_NAMES[code]} state profile`;
   lineChart(document.querySelector('#state-chart'), [{name:code,values:series.map(d=>({year:d.year,value:d.nonresident}))}], {height:240, minValue:0, ariaLabel:`${STATE_NAMES[code]} U.S. nonresident enrollment, 2015 to 2024`, valueFormatter:v=>`${Math.round(v/1000)}k`});
 }
 

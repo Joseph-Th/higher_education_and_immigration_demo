@@ -245,6 +245,20 @@ class ResearchProductTests(unittest.TestCase):
             self.assertIn(row["title"], rendered)
             self.assertIn(row["url"], rendered)
 
+    def test_research_agenda_is_structured_and_rendered(self) -> None:
+        agenda = rows(ROOT / "data" / "research_agenda.csv")
+        self.assertGreaterEqual(len(agenda), 6)
+        ids = [row["research_id"] for row in agenda]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertTrue({"R01", "R02", "R04", "R05"}.issubset(set(ids)))
+        self.assertTrue(all(row["priority"] in {"High", "Medium", "Low"} for row in agenda))
+        self.assertTrue(any(row["current_ipeds_fit"] == "None" for row in agenda))
+        self.assertTrue(any(row["current_ipeds_fit"] == "High" for row in agenda))
+        rendered = (ROOT / "docs" / "RESEARCH_AGENDA.md").read_text(encoding="utf-8")
+        for row in agenda:
+            self.assertIn(row["research_id"], rendered)
+            self.assertIn(row["question"], rendered)
+
     def test_briefing_note_tracks_validated_outputs(self) -> None:
         note = (ROOT / "docs" / "BRIEFING_NOTE.md").read_text(encoding="utf-8")
         headline = self.findings["headline"]
@@ -294,6 +308,41 @@ class ResearchProductTests(unittest.TestCase):
             self.assertGreater(formula_count, 0)
             self.assertIn("1044137", values)
 
+    def test_state_profiles_cover_and_reconcile_all_geographies(self) -> None:
+        index = rows(ROOT / "data" / "processed" / "state_profile_index.csv")
+        self.assertEqual(len(index), 51)
+        self.assertEqual({row["state"] for row in index}, CORE_STATES)
+        latest_national = int(self.national[-1]["nonresident_enrollment"])
+        self.assertEqual(sum(int(row["latest_nonresident"]) for row in index), latest_national)
+        profile_dir = ROOT / "docs" / "state_profiles"
+        self.assertEqual({path.stem for path in profile_dir.glob("*.md")}, CORE_STATES)
+        az = next(row for row in index if row["state"] == "AZ")
+        az_summary = next(
+            row
+            for row in rows(ROOT / "data" / "processed" / "state_change_summary.csv")
+            if row["state"] == "AZ"
+        )
+        self.assertEqual(az["latest_nonresident"], az_summary[f"nonresident_{END_YEAR}"])
+        self.assertEqual(int(az["latest_year"]), END_YEAR)
+        self.assertEqual(int(az["start_year"]), START_YEAR)
+        az_text = (profile_dir / "AZ.md").read_text(encoding="utf-8")
+        self.assertIn("Arizona (AZ)", az_text)
+        self.assertIn(f"{int(az['latest_nonresident']):,}", az_text)
+        self.assertIn("IPEDS U.S. nonresident status is not a complete measure", az_text)
+        profile_json = json.loads((ROOT / "data" / "state_profiles.json").read_text(encoding="utf-8"))
+        self.assertEqual(set(profile_json["profiles"]), CORE_STATES)
+        self.assertEqual(profile_json["profiles"]["AZ"]["latest"]["nonresident_enrollment"], int(az["latest_nonresident"]))
+        self.assertEqual(
+            (ROOT / "data" / "state_profiles.json").read_bytes(),
+            (ROOT / "site" / "data" / "state_profiles.json").read_bytes(),
+        )
+        public_dir = ROOT / "site" / "downloads" / "state_profiles"
+        for state in CORE_STATES:
+            self.assertEqual(
+                (profile_dir / f"{state}.md").read_bytes(),
+                (public_dir / f"{state}.md").read_bytes(),
+            )
+
     def test_qa_report_is_all_pass(self) -> None:
         self.assertTrue(self.qa["checks"])
         self.assertTrue(all(value == "PASS" for value in self.qa["checks"].values()))
@@ -329,6 +378,11 @@ class ResearchProductTests(unittest.TestCase):
             ("data/source_manifest.csv", "site/downloads/source_manifest.csv"),
             ("data/benchmark_audit.csv", "site/downloads/benchmark_audit.csv"),
             ("data/research_library.csv", "site/downloads/research_library.csv"),
+            ("data/research_agenda.csv", "site/downloads/research_agenda.csv"),
+            (
+                "data/processed/state_profile_index.csv",
+                "site/downloads/state_profile_index.csv",
+            ),
             (
                 "deliverables/ipeds_portfolio_analysis.xlsx",
                 "site/downloads/ipeds_portfolio_analysis.xlsx",
@@ -349,22 +403,28 @@ class ResearchProductTests(unittest.TestCase):
             (ROOT / "site" / "downloads" / "research_library.md").read_bytes(),
         )
         self.assertEqual(
+            (ROOT / "docs" / "RESEARCH_AGENDA.md").read_bytes(),
+            (ROOT / "site" / "downloads" / "research_agenda.md").read_bytes(),
+        )
+        self.assertEqual(
             (ROOT / "docs" / "BRIEFING_NOTE.md").read_bytes(),
             (ROOT / "site" / "downloads" / "briefing_note.md").read_bytes(),
         )
 
     def test_static_page_local_assets_and_ids(self) -> None:
-        html = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
-        ids = re.findall(r'\bid="([^"]+)"', html)
-        duplicates = [item for item, count in Counter(ids).items() if count > 1]
-        self.assertEqual(duplicates, [])
+        for page_name in ("index.html", "state.html"):
+            html = (ROOT / "site" / page_name).read_text(encoding="utf-8")
+            ids = re.findall(r'\bid="([^"]+)"', html)
+            duplicates = [item for item, count in Counter(ids).items() if count > 1]
+            self.assertEqual(duplicates, [], page_name)
 
-        local_refs = re.findall(r'(?:href|src)="([^"]+)"', html)
-        for ref in local_refs:
-            if ref.startswith(("http://", "https://", "#")):
-                continue
-            target = ROOT / "site" / ref
-            self.assertTrue(target.exists(), f"missing local site asset: {ref}")
+            local_refs = re.findall(r'(?:href|src)="([^"]+)"', html)
+            for ref in local_refs:
+                if ref.startswith(("http://", "https://", "#")):
+                    continue
+                path_only = ref.split("?", 1)[0].split("#", 1)[0]
+                target = ROOT / "site" / path_only
+                self.assertTrue(target.exists(), f"missing local site asset in {page_name}: {ref}")
 
 
 if __name__ == "__main__":

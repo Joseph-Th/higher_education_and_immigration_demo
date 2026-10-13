@@ -120,9 +120,14 @@ def main() -> int:
         DOWNLOADS / "latest_update_review.md",
     )
     shutil.copy2(DATA / "research_library.csv", DOWNLOADS / "research_library.csv")
+    shutil.copy2(DATA / "research_agenda.csv", DOWNLOADS / "research_agenda.csv")
     shutil.copy2(
         ROOT / "docs" / "RESEARCH_LIBRARY.md",
         DOWNLOADS / "research_library.md",
+    )
+    shutil.copy2(
+        ROOT / "docs" / "RESEARCH_AGENDA.md",
+        DOWNLOADS / "research_agenda.md",
     )
     shutil.copy2(
         ROOT / "docs" / "BRIEFING_NOTE.md",
@@ -132,6 +137,12 @@ def main() -> int:
         ROOT / "deliverables" / "ipeds_portfolio_analysis.xlsx",
         DOWNLOADS / "ipeds_portfolio_analysis.xlsx",
     )
+    shutil.copy2(PROCESSED / "state_profile_index.csv", DOWNLOADS / "state_profile_index.csv")
+    shutil.copy2(DATA / "state_profiles.json", SITE_DATA / "state_profiles.json")
+    state_profiles = DOWNLOADS / "state_profiles"
+    if state_profiles.exists():
+        shutil.rmtree(state_profiles)
+    shutil.copytree(ROOT / "docs" / "state_profiles", state_profiles)
 
     print(f"Wrote {SITE_DATA / 'site_data.json'}")
     print(f"NCES Digest consistency checks: {benchmark_passed}/{len(benchmark_audit)} PASS")

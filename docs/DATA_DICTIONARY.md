@@ -59,6 +59,26 @@ One row for each of the 50 states plus DC. This is a reviewer-friendly compariso
 | `recovery_status` | `At or above 2019` or `Below 2019` |
 | `nonresident_share_pct_2024` | Latest U.S. nonresident share of total state fall enrollment |
 
+## `data/processed/state_profile_index.csv`
+
+One row per state/DC used to inventory the 51 generated state publication products.
+
+| Field | Definition |
+| --- | --- |
+| `state` / `state_name` | Geography code and display name |
+| `start_year` / `baseline_year` / `latest_year` | Long-run start, recovery baseline, and current release year |
+| `latest_nonresident` | Latest-year U.S. nonresident enrollment |
+| `latest_share_pct` | Latest U.S. nonresident share of total enrollment |
+| `change_since_start` / `change_pct_since_start` | Long-run absolute/percentage change |
+| `change_since_baseline` / `change_pct_since_baseline` | Change from the pre-pandemic baseline |
+| `recovery_status` | At/above or below 2019 |
+| `year_over_year_change` / `year_over_year_pct` | Latest annual movement |
+| `graduate_share_pct` | Graduate share of latest U.S. nonresident enrollment |
+| `top_institution` / `top_institution_nonresident` | Largest latest-year institution by U.S. nonresident count |
+| `profile_file` | Generated Markdown profile filename |
+
+The sum of `latest_nonresident` across all 51 rows reconciles exactly to the latest national total.
+
 ## `data/processed/control_year.csv`
 
 Three rows per year, one for each institutional-control category.
@@ -178,6 +198,25 @@ One row per external source or reference resource maintained by the project.
 
 `scripts/build_research_library.py` validates required fields, unique IDs, HTTPS URLs, and ISO dates before generating the human-readable Research Library.
 
+## `data/research_agenda.csv`
+
+One row per maintained research or data-needs question.
+
+| Field | Definition |
+| --- | --- |
+| `research_id` | Stable agenda identifier |
+| `priority` | `High`, `Medium`, or `Low` |
+| `question` | Research question stated for review/planning |
+| `evidence_trigger` | Finding, QA observation, source limitation, or recurring product need motivating the question |
+| `current_ipeds_fit` | Whether the current IPEDS pipeline can answer the question directly (`High`), cannot answer it (`None`), or can only support the workflow (`Support`) |
+| `additional_data_needed` | Additional release, partner dataset, population-specific source, or contextual documentation required |
+| `proposed_method` | Planned analytical approach |
+| `proposed_output` | Intended research product |
+| `decision_rule` | Evidence rule governing escalation/publication/interpretation |
+| `status` | Current readiness or monitoring status |
+
+`scripts/build_research_agenda.py` validates nonblank fields, unique IDs, and priority values before generating `docs/RESEARCH_AGENDA.md`.
+
 ## JSON products
 
 `data/qa_report.json` contains structural checks, yearly source/flag distributions, row counts, and explicit exclusions.
@@ -185,4 +224,6 @@ One row per external source or reference resource maintained by the project.
 `data/findings.json` contains the derived findings used by the public static site: headline metrics, level decomposition, state recovery, concentration, institutional control, institution-universe dynamics, rankings, and national series.
 
 `data/latest_update_review.json` contains the latest annual national change, student-level decomposition, institution-universe accounting, largest state changes, priority counts, top review items, and imputation/status transitions used by the public release-review section.
+
+`data/state_profiles.json` contains the shareable state-profile payload used by `site/state.html`: coverage metadata plus 51 keyed profiles with latest metrics, change windows, top institutions, annual series, and corresponding Markdown filename. It is generated from `state_year.csv`, `state_change_summary.csv`, and the latest institution table rather than maintained independently.
 

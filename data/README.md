@@ -43,11 +43,16 @@ Independent validation inputs that are not used to generate the analysis. The cu
 
 Structured metadata for the external resources used to collect, interpret, validate, and maintain the project. It records a stable resource ID, title, publisher, resource type, scope, update pattern, project role, URL, last-checked date, and status note. `scripts/build_research_library.py` validates the schema and generates `docs/RESEARCH_LIBRARY.md`.
 
+## `research_agenda.csv`
+
+Structured research-needs register. Each row records a stable research ID, priority, research question, evidence trigger, whether the current IPEDS pipeline can answer it, additional data needs, proposed method/output, decision rule, and current status. `scripts/build_research_agenda.py` validates the register and generates `docs/RESEARCH_AGENDA.md`.
+
 ## `processed/`
 
 - `national_year.csv`: 2015-2024 national trend used by the public brief.
 - `state_year.csv`: state-by-year aggregates for the 50 states and DC.
 - `state_change_summary.csv`: one-row-per-geography comparison for 2015, 2019, and 2024, including recovery status.
+- `state_profile_index.csv`: one-row-per-geography publication index with latest counts/shares, long-run and post-2019 changes, latest annual change, graduate share, leading institution, and generated profile filename.
 - `control_year.csv`: public, private nonprofit, and private for-profit aggregates by year.
 - `institution_change_summary.csv`: endpoint UNITID panel that decomposes the 2015-2024 national change into continuing institutions and analytic-universe entry/exit.
 - `latest_release_institution_review.csv`: newest-year institution comparison with deterministic review priority and reason fields.
@@ -63,4 +68,6 @@ Structured metadata for the external resources used to collect, interpret, valid
 It includes national headline metrics, level-change decomposition, state recovery relative to 2019, institutional-control change, institution-universe dynamics, state and institution concentration, state rankings, latest institution detail, and the national time series.
 
 `latest_update_review.json` is the newest-release review summary used by the public brief and generated review memo. It contains the newest national change, undergraduate/graduate decomposition, institution-universe accounting, state movers, review-priority counts, top review items, and imputation/status transitions.
+
+`state_profiles.json` is the machine-readable state-publication product generated from validated state and institution outputs. It contains one profile for each of the 50 states plus DC with current metrics, change windows, top institutions, and the 2015-2024 annual series. `site/state.html` reads this file to provide shareable state views; generated Markdown counterparts live in `docs/state_profiles/`.
 

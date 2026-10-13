@@ -78,11 +78,13 @@ This design is deliberate: the external publication is a validation source, not 
 - structured Research Library metadata having unique IDs, HTTPS URLs, current review dates, and matching generated documentation;
 - stakeholder briefing note reproducing validated headline/latest-release values and interpretation boundaries;
 - Excel workbook ZIP integrity, required six-sheet structure, formula presence, and current headline value;
+- 51 state/DC profiles covering exactly the analytic geographies, reconciling their latest counts to the national total, publishing byte-identical Markdown copies, and matching the machine-readable state-profile dataset;
+- structured research agenda with unique IDs, valid priorities, both current-data and external-data questions, and matching generated documentation;
 - QA and external benchmark checks all passing;
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **18 tests**.
+The current suite contains **20 tests**.
 
 ## One-command validation
 
@@ -108,8 +110,9 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - rendered SVG charts, including the institution-dynamics and latest-release review charts;
 - the latest-release high-priority review count matching `site_data.json`;
 - working public CSV downloads;
-- working public Research Library CSV/Markdown, stakeholder briefing-note, and Excel-workbook downloads;
+- working public Research Library and Research Agenda CSV/Markdown, stakeholder briefing-note, Excel-workbook, state-profile index, and state-profile downloads;
 - anchored sections clearing the sticky header; and
+- a shareable California state-profile page rendering the correct query-selected state, ten-year series, five institution rows, profile-note link, and responsive layout; and
 - no unintended page-level horizontal overflow.
 
 Run it after `python scripts/validate_project.py` and before deployment.

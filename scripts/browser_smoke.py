@@ -48,8 +48,12 @@ def check_downloads(base_url: str) -> None:
         "downloads/latest_update_review.md",
         "downloads/research_library.csv",
         "downloads/research_library.md",
+        "downloads/research_agenda.md",
+        "downloads/research_agenda.csv",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
+        "downloads/state_profile_index.csv",
+        "downloads/state_profiles/AZ.md",
         "downloads/benchmark_audit.csv",
     )
     for path in paths:
@@ -83,6 +87,12 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
         raise AssertionError("Rendered headline total does not match site_data.json")
     if page.locator("#state-select option").count() != 51:
         raise AssertionError("State explorer does not contain all 50 states plus DC")
+    page.locator("#state-select").select_option("CA")
+    profile_link = page.locator("#state-profile-link")
+    if profile_link.get_attribute("href") != "state.html?state=CA":
+        raise AssertionError("State profile link did not follow state selection")
+    if "California" not in profile_link.inner_text():
+        raise AssertionError("State profile link label did not follow state selection")
     if page.locator("#institution-table tr").count() != 10:
         raise AssertionError("Institution table does not contain the expected 10 rows")
     if page.locator("#benchmark-table tr").count() != 4:
@@ -136,6 +146,34 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
     context.close()
 
 
+def inspect_state_profile(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/state.html?state=CA", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"State profile load failed at {width}px")
+    page.wait_for_function("document.querySelector('#profile-total').textContent.trim() !== '—'")
+    if "California" not in page.locator("#state-profile-title").inner_text():
+        raise AssertionError("State profile did not honor query parameter")
+    if page.locator("#profile-institution-table tr").count() != 5:
+        raise AssertionError("State profile does not show five institution rows")
+    if page.locator("#profile-series-table tr").count() != 10:
+        raise AssertionError("State profile does not show ten annual rows")
+    if page.locator("#profile-trend-chart svg").count() != 1:
+        raise AssertionError("State profile trend chart did not render")
+    if not page.locator("#state-markdown-link").get_attribute("href").endswith("/CA.md"):
+        raise AssertionError("State profile Markdown link is incorrect")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"State profile horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("State profile browser errors: " + " | ".join(errors))
+    context.close()
+
+
 def main() -> int:
     handler = partial(QuietHandler, directory=str(SITE))
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
@@ -156,6 +194,8 @@ def main() -> int:
             try:
                 inspect_viewport(browser, base_url, width=1280, height=900)
                 inspect_viewport(browser, base_url, width=390, height=844)
+                inspect_state_profile(browser, base_url, width=1280, height=900)
+                inspect_state_profile(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

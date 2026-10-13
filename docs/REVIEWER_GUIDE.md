@@ -4,7 +4,7 @@ This repository is intended to be evaluated as a small recurring research produc
 
 ## Five-minute review path
 
-1. Open `site/index.html` through a local static server or deployed Pages URL. Read the six longitudinal findings, the latest-release review, and inspect the state explorer.
+1. Open `site/index.html` through a local static server or deployed Pages URL. Read the six longitudinal findings, the latest-release review, inspect the state explorer, and download a state-specific brief from the selector.
 2. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
 3. Read `docs/BRIEFING_NOTE.md` for the management-facing synthesis, then `docs/FINDINGS.md` for the exact numerical basis behind it.
 4. Read `docs/METHODOLOGY.md` for population definitions, universe rules, endpoint matching, and limitations.
@@ -26,6 +26,8 @@ This repository is intended to be evaluated as a small recurring research produc
 | Review a new annual release | `scripts/build_update_review.py`, `docs/LATEST_UPDATE_REVIEW.md`, and `data/processed/latest_release_institution_review.csv` reconcile the new year and produce a reason-coded QA queue |
 | Brief nontechnical stakeholders | `scripts/build_briefing_note.py` generates `docs/BRIEFING_NOTE.md` directly from validated findings, QA, and benchmark outputs |
 | Analyze and quality-control data in Excel | `deliverables/ipeds_portfolio_analysis.xlsx` uses formulas, structured tables, state lookup/data validation, reconciliation columns, conditional formatting, benchmark review, and charting |
+| Maintain national and state-level data products | `scripts/build_state_profiles.py` generates 51 state/DC briefs, a machine-readable profile dataset, and `state_profile_index.csv`; `state.html` provides a shareable state-level publication view |
+| Assess emerging data needs and new research opportunities | `data/research_agenda.csv` and `docs/RESEARCH_AGENDA.md` distinguish questions answerable now from questions requiring partner/population-specific data and define proposed methods and decision rules |
 | Organize a Research Library | `data/research_library.csv` and `scripts/build_research_library.py` maintain structured source metadata and generate `docs/RESEARCH_LIBRARY.md` |
 | Quality-control published numbers | `tests/test_research_product.py` checks reconciliation identities, coverage, shares, outputs, downloads, and benchmark status |
 | Communicate to nontechnical readers | `site/` turns the analysis into a concise research brief with plain-language definitions and limitations |
