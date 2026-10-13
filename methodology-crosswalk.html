@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Population and source crosswalk for higher-education immigration data, including IPEDS, immigrant-origin, international, undocumented, and refugee/asylee measures.">
+  <meta name="theme-color" content="#10263c">
+  <title>Population & Source Crosswalk | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to crosswalk</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Crosswalk navigation"><a href="index.html">Brief</a><a href="research-memo.html">Memo</a><a href="index.html#methods">Methods</a><a href="index.html#downloads">Data</a></nav></div></header>
+  <main id="main">
+    <section class="crosswalk-hero"><div class="shell"><p class="eyebrow">Methods crosswalk</p><h1>Similar labels do not mean the same population.</h1><p class="lede">A source-selection guide for IPEDS U.S. nonresident, immigrant-origin, international, undocumented, high-school pipeline, and refugee/asylee research.</p><div class="hero-actions"><a class="button button-primary" href="#crosswalk-cards">Compare definitions</a><a class="button button-secondary" href="downloads/population_crosswalk.csv">Download structured crosswalk</a></div></div></section>
+    <section class="section shell crosswalk-intro"><div class="section-heading"><p class="eyebrow">Decision rule</p><h2>Compare only after definitions and denominators line up</h2><p>The current project uses IPEDS because it provides a consistent annual institution-reported series. Other Portal populations often require survey estimation, legal-status modeling, or different administrative systems. Those sources can answer important questions, but they should not be merged into one series merely because all relate to immigration and higher education.</p></div><div class="crosswalk-rule-grid"><article><strong>1</strong><span>Check population definition</span></article><article><strong>2</strong><span>Check reference period</span></article><article><strong>3</strong><span>Check geography and unit</span></article><article><strong>4</strong><span>Check denominator and exclusions</span></article></div></section>
+    <section class="section section-tinted" id="crosswalk-cards"><div class="shell"><div class="section-heading"><p class="eyebrow">Population definitions</p><h2>Six research concepts, six different measurement rules</h2><p>Each card states what the source measures, what it excludes, and whether the current IPEDS analysis can support a direct comparison.</p></div><div class="crosswalk-grid">
+            <article class="crosswalk-card" id="population-ipeds_us_nonresident">
+              <div class="crosswalk-card-head">
+                <p class="case-kicker">Primary analytic measure</p>
+                <h2>IPEDS U.S. nonresident</h2>
+                <p class="crosswalk-measure">Institution-reported administrative count</p>
+              </div>
+              <dl class="crosswalk-definition-list">
+                <div><dt>Current source / vintage</dt><dd>NCES IPEDS Fall Enrollment<br><small>Fall 2024 provisional</small></dd></div>
+                <div><dt>Who is included?</dt><dd>Students who are not U.S. citizens or nationals and are in the United States on a visa or temporary basis without the right to remain indefinitely</dd></div>
+                <div><dt>What is excluded or not identified?</dt><dd>DACA recipients, undocumented students, and other eligible noncitizens are not reported in this category</dd></div>
+                <div><dt>Best use</dt><dd>Annual institution/state/national enrollment monitoring</dd></div>
+              </dl>
+              <div class="crosswalk-warning"><strong>Comparison rule</strong><p>Do not treat this as a count of all international, immigrant-origin, undocumented, refugee, or foreign-born students</p></div>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/report-your-data/race-ethnicity-definitions/" target="_blank" rel="noopener">Review source methodology</a>
+            </article>
+            <article class="crosswalk-card" id="population-immigrant_origin">
+              <div class="crosswalk-card-head">
+                <p class="case-kicker">Contextual comparison only</p>
+                <h2>Immigrant-origin students</h2>
+                <p class="crosswalk-measure">Survey estimate</p>
+              </div>
+              <dl class="crosswalk-definition-list">
+                <div><dt>Current source / vintage</dt><dd>Presidents&#x27; Alliance / Migration Policy Institute using U.S. Census Bureau CPS October Supplement<br><small>2023 CPS used by 2026 report</small></dd></div>
+                <div><dt>Who is included?</dt><dd>First-generation immigrants plus second-generation immigrants; first generation includes naturalized citizens, permanent residents, refugees, asylees/asylum seekers, TPS recipients, undocumented people, and other domestic immigrant residents</dd></div>
+                <div><dt>What is excluded or not identified?</dt><dd>International students in the U.S. on nonimmigrant student visas for temporary study are excluded from the first-generation immigrant estimate</dd></div>
+                <div><dt>Best use</dt><dd>Measure domestic immigrant-origin participation in higher education</dd></div>
+              </dl>
+              <div class="crosswalk-warning"><strong>Comparison rule</strong><p>This is a household-survey population estimate with a broader concept than IPEDS U.S. nonresident; the two series should not be added or substituted</p></div>
+              <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/research/securing-americas-talent-pipeline/" target="_blank" rel="noopener">Review source methodology</a>
+            </article>
+            <article class="crosswalk-card" id="population-international_sevis">
+              <div class="crosswalk-card-head">
+                <p class="case-kicker">Companion source for future comparison</p>
+                <h2>International students</h2>
+                <p class="crosswalk-measure">Administrative SEVIS record count</p>
+              </div>
+              <dl class="crosswalk-definition-list">
+                <div><dt>Current source / vintage</dt><dd>U.S. Department of Homeland Security SEVIS Data Mapping Tool via Higher Ed Immigration Portal<br><small>October 2025 Portal figures</small></dd></div>
+                <div><dt>Who is included?</dt><dd>Associates, bachelors, masters, and doctorate level international-student records at SEVIS-certified institutions</dd></div>
+                <div><dt>What is excluded or not identified?</dt><dd>Portal totals exclude vocational programs, primary/secondary school, flight school, and language training</dd></div>
+                <div><dt>Best use</dt><dd>Current international-student monitoring</dd></div>
+              </dl>
+              <div class="crosswalk-warning"><strong>Comparison rule</strong><p>SEVIS, Open Doors, and IPEDS use different timing, coverage, and reporting concepts; counts are not directly interchangeable</p></div>
+              <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/methodology/" target="_blank" rel="noopener">Review source methodology</a>
+            </article>
+            <article class="crosswalk-card" id="population-undocumented_higher_ed">
+              <div class="crosswalk-card-head">
+                <p class="case-kicker">Companion source for future comparison</p>
+                <h2>Undocumented students in higher education</h2>
+                <p class="crosswalk-measure">Modeled survey estimate</p>
+              </div>
+              <dl class="crosswalk-definition-list">
+                <div><dt>Current source / vintage</dt><dd>Presidents&#x27; Alliance / American Immigration Council using ACS microdata<br><small>2026 fact sheet; report-specific methodology controls exact vintage</small></dd></div>
+                <div><dt>Who is included?</dt><dd>ACS microdata are modeled to identify people likely to be undocumented and enrolled in postsecondary education; DACA-eligible students are estimated as a subset</dd></div>
+                <div><dt>What is excluded or not identified?</dt><dd>Potential international students are excluded using demographic, school-attendance, duration-of-stay, and work criteria</dd></div>
+                <div><dt>Best use</dt><dd>Estimate the scale and composition of undocumented college enrollment</dd></div>
+              </dl>
+              <div class="crosswalk-warning"><strong>Comparison rule</strong><p>This is an estimated legal-status population, not an observed administrative category; do not compare one-for-one with IPEDS U.S. nonresident counts</p></div>
+              <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/research/undocumented-students-in-u-s-higher-education-2/" target="_blank" rel="noopener">Review source methodology</a>
+            </article>
+            <article class="crosswalk-card" id="population-undocumented_hs_graduates">
+              <div class="crosswalk-card-head">
+                <p class="case-kicker">Research-agenda companion source</p>
+                <h2>Undocumented high school graduates</h2>
+                <p class="crosswalk-measure">Modeled pipeline estimate</p>
+              </div>
+              <dl class="crosswalk-definition-list">
+                <div><dt>Current source / vintage</dt><dd>Presidents&#x27; Alliance / Migration Policy Institute using ACS plus NCES graduation rates<br><small>2019-early 2023 pooled ACS used by 2026 report</small></dd></div>
+                <div><dt>Who is included?</dt><dd>Undocumented high-school students under age 22 are estimated from ACS; differential graduation rates are then applied to estimate annual graduates</dd></div>
+                <div><dt>What is excluded or not identified?</dt><dd>This is not a cohort linkage to students later observed in higher education</dd></div>
+                <div><dt>Best use</dt><dd>Assess the potential higher-education access pipeline</dd></div>
+              </dl>
+              <div class="crosswalk-warning"><strong>Comparison rule</strong><p>Do not interpret the annual graduate estimate as a transition rate into college or as the same population observed in higher-education enrollment data</p></div>
+              <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/research/a-generation-threatened-undocumented-high-school-students-graduate-amidst-uncertain-national-climate/" target="_blank" rel="noopener">Review source methodology</a>
+            </article>
+            <article class="crosswalk-card" id="population-refugee_asylee">
+              <div class="crosswalk-card-head">
+                <p class="case-kicker">Explicit measurement gap</p>
+                <h2>Refugee/asylee students</h2>
+                <p class="crosswalk-measure">Population embedded within broader immigrant-origin measures</p>
+              </div>
+              <dl class="crosswalk-definition-list">
+                <div><dt>Current source / vintage</dt><dd>Presidents&#x27; Alliance / Migration Policy Institute immigrant-origin framework<br><small>2023 CPS used by 2026 report</small></dd></div>
+                <div><dt>Who is included?</dt><dd>The first-generation immigrant category explicitly includes resettled refugees, asylees, and asylum seekers among other domestic immigrant groups</dd></div>
+                <div><dt>What is excluded or not identified?</dt><dd>The current project does not separately identify refugee/asylee students, and IPEDS U.S. nonresident is not a refugee-status measure</dd></div>
+                <div><dt>Best use</dt><dd>Identify a documented measurement gap before making refugee-specific claims</dd></div>
+              </dl>
+              <div class="crosswalk-warning"><strong>Comparison rule</strong><p>A refugee/asylee estimate requires a source designed to identify that status; neither the current IPEDS series nor the aggregate immigrant-origin total isolates it</p></div>
+              <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/research/securing-americas-talent-pipeline/" target="_blank" rel="noopener">Review source methodology</a>
+            </article></div></div></section>
+    <section class="section shell"><div class="section-heading compact"><p class="eyebrow">Research implication</p><h2>Use the right source for the question</h2></div><div class="method-grid"><article><h3>Current longitudinal series</h3><p>Use IPEDS U.S. nonresident when the question is annual institution/state/national enrollment under the IPEDS reporting definition.</p></article><article><h3>Domestic immigrant-origin students</h3><p>Use the CPS/MPI framework when the question concerns first- and second-generation domestic students rather than temporary-study visa holders.</p></article><article><h3>Undocumented students</h3><p>Use report-specific ACS-based estimates and preserve their modeled-estimate limitations instead of treating IPEDS visa categories as a proxy.</p></article><article><h3>Refugee/asylee students</h3><p>Do not make subgroup claims from this project. A population-specific source is needed because the current series does not identify refugee or asylum status.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/population_crosswalk.md">Download methodology notes</a><a class="button button-secondary" href="index.html#methods">Return to project methods</a></div></section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Population & Source Crosswalk</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>

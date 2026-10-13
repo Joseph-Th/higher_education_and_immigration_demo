@@ -48,8 +48,10 @@ The institution leaves the 2024 analytic universe after reporting 115 U.S. nonre
 
 IPEDS U.S. nonresident status is a federal reporting category, not a complete measure of international, immigrant-origin, undocumented, DACA, or foreign-born students. The analysis supports enrollment monitoring and publication QA, not causal claims about immigration policy. State totals reflect institution location, and institution structures or reporting practices can change over time.
 
+The project maintains `docs/POPULATION_CROSSWALK.md` to document which companion sources are appropriate for immigrant-origin, international, undocumented, high-school-pipeline, and refugee/asylee questions rather than treating those populations as interchangeable.
+
 ## Methods and evidence
 
 The series uses official NCES/IPEDS Fall Enrollment and institutional directory files for 2015-2024. Source archives are hashed and logged, required variables and aggregation labels are audited across years, state/control/student-level totals reconcile to the national series, and **24/24** independent NCES Digest consistency checks pass. The newest release also receives institution-level reason-coded triage and evidence-backed manual disposition before institution-specific claims are promoted into narrative.
 
-See `docs/METHODOLOGY.md`, `docs/LATEST_UPDATE_REVIEW.md`, and `docs/QA_RESOLUTION_LOG.md` for full definitions and review detail.
+See `docs/METHODOLOGY.md`, `docs/POPULATION_CROSSWALK.md`, `docs/LATEST_UPDATE_REVIEW.md`, and `docs/QA_RESOLUTION_LOG.md` for full definitions and review detail.
