@@ -5,7 +5,9 @@ import hashlib
 import html as html_module
 import json
 import re
+import sqlite3
 import sys
+import tempfile
 import unittest
 import zipfile
 import xml.etree.ElementTree as ET
@@ -29,6 +31,11 @@ from build_production_cycle import validate_stages as validate_production_stages
 from validate_production_cycle_log import (  # noqa: E402
     FIELDS as PRODUCTION_LOG_FIELDS,
     validate_log_rows as validate_production_log_rows,
+)
+from build_sql_analysis import (  # noqa: E402
+    EXPECTED_QUERY_IDS,
+    build_connection as build_sql_connection,
+    read_queries as read_sql_queries,
 )
 
 
@@ -311,7 +318,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 35)
+        self.assertEqual(len(release_rows), 38)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -320,15 +327,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 85)
-        self.assertEqual(validate_public_tree(release_rows), 85)
+        self.assertEqual(len(pairs), 88)
+        self.assertEqual(validate_public_tree(release_rows), 88)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 85", rendered)
+        self.assertIn("Expanded public download files:** 88", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("85</strong><span>expanded public download files", html)
+        self.assertIn("88</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -346,7 +353,49 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 85)
+        self.assertEqual(validate_public_tree(release_rows), 88)
+
+    def test_sql_analysis_executes_and_reconciles(self) -> None:
+        specs = read_sql_queries()
+        self.assertEqual(tuple(spec.query_id for spec in specs), EXPECTED_QUERY_IDS)
+        sql_text = (ROOT / "sql" / "portfolio_queries.sql").read_text(encoding="utf-8").upper()
+        for keyword in ("WITH", "LAG(", "RANK()", "JOIN", "CASE", "SUM("):
+            self.assertIn(keyword, sql_text)
+
+        audit = rows(ROOT / "data" / "sql_analysis_audit.csv")
+        self.assertEqual([row["query_id"] for row in audit], list(EXPECTED_QUERY_IDS))
+        self.assertEqual(len(audit), 6)
+        self.assertTrue(all(row["status"] == "PASS" for row in audit))
+        self.assertEqual(next(row for row in audit if row["query_id"] == "Q01")["observed_value"], "29539")
+        self.assertEqual(next(row for row in audit if row["query_id"] == "Q02")["observed_value"], "33")
+        self.assertEqual(next(row for row in audit if row["query_id"] == "Q05")["observed_value"], "66981|-3581|63400")
+        self.assertEqual(next(row for row in audit if row["query_id"] == "Q06")["observed_value"], "0")
+
+        rendered = (ROOT / "docs" / "SQL_ANALYSIS.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "sql-analysis.html").read_text(encoding="utf-8")
+        self.assertIn("**Query checks passed:** 6/6", rendered)
+        self.assertIn("SQLite database on every run", rendered)
+        for spec in specs:
+            self.assertIn(spec.title, rendered)
+            self.assertIn(html_module.escape(spec.title), html)
+        self.assertIn('href="downloads/portfolio_queries.sql"', html)
+
+        connection = build_sql_connection()
+        try:
+            self.assertEqual(connection.execute("PRAGMA query_only").fetchone()[0], 1)
+            with self.assertRaises(sqlite3.OperationalError):
+                connection.execute("DELETE FROM national_year")
+        finally:
+            connection.close()
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            unsafe = Path(temp_dir) / "unsafe.sql"
+            unsafe.write_text(
+                "-- QUERY: Q01 | Unsafe | mutation\nDELETE FROM national_year;\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(RuntimeError, "non-read-only"):
+                read_sql_queries(unsafe)
 
     def test_research_agenda_is_structured_and_rendered(self) -> None:
         agenda = rows(ROOT / "data" / "research_agenda.csv")
@@ -697,10 +746,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 85)
+        self.assertEqual(len(pairs), 88)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 85)
+        self.assertEqual(validate_public_tree(release_rows), 88)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -710,6 +759,7 @@ class ResearchProductTests(unittest.TestCase):
             "methodology-crosswalk.html",
             "research-operations.html",
             "production-cycle.html",
+            "sql-analysis.html",
             "research-library.html",
             "publication-handoff.html",
             "data-governance.html",

@@ -1,0 +1,7 @@
+query_id,title,skills,row_count,check_name,expected_value,observed_value,status,notes
+Q01,National year-over-year change,"CTE, LAG window function, CASE, arithmetic",10,latest annual change,29539,29539,PASS,Latest SQL LAG difference matches canonical national CSV
+Q02,State recovery from 2019 to 2024,"CTE, conditional aggregation, CASE, RANK",51,states/DC at or above 2019,33,33,PASS,SQL recovery classification matches canonical state CSV
+Q03,Institutional-control decade change,"CTE, conditional aggregation, ROUND, RANK",3,largest control-group decade increase,Private nonprofit|82825,Private nonprofit|82825,PASS,SQL control ranking matches canonical control CSV
+Q04,Largest 2024 institutions and national share,"JOIN, ROW_NUMBER, cumulative SUM window",20,largest latest-year institution,New York University|19202,New York University|19202,PASS,SQL institution ranking matches canonical institution CSV
+Q05,Institution-universe change accounting,"CTE, CASE classification, GROUP BY, SUM window",2,institution-universe change accounting,66981|-3581|63400,66981|-3581|63400,PASS,SQL continuing/entry-exit accounting reconciles to the national decade change
+Q06,State totals reconcile to national totals,"CTE, GROUP BY, JOIN, reconciliation deltas",10,maximum state-to-national reconciliation delta,0,0,PASS,Every SQL state sum exactly matches the national CSV

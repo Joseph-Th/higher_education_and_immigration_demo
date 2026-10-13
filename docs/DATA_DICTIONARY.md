@@ -368,6 +368,24 @@ Blank schema for a live recurring-report coordination log. The tracked file cont
 
 `scripts/validate_production_cycle_log.py` enforces exact row shape, report/stage foreign keys, one report per cycle, controlled values, date ordering, unique record IDs within a cycle, discrepancy materiality, terminal/active closure rules, closure evidence, and decision text for closed discrepancies plus approval/hold records. The public template must remain empty.
 
+## `data/sql_analysis_audit.csv`
+
+One row per query executed from `sql/portfolio_queries.sql` against the transient SQLite analysis layer.
+
+| Field | Definition |
+| --- | --- |
+| `query_id` | Stable ordered query identifier (`Q01`-`Q06`) |
+| `title` | Reviewer-facing purpose of the query |
+| `skills` | SQL constructs demonstrated by the query |
+| `row_count` | Number of rows returned by the SQL query |
+| `check_name` | Independent reconciliation condition applied to the query result |
+| `expected_value` | Value calculated directly from canonical processed CSVs |
+| `observed_value` | Value produced by the SQL query result |
+| `status` | `PASS` only when expected and observed values are identical |
+| `notes` | Short explanation of the reconciliation |
+
+`scripts/build_sql_analysis.py` creates an in-memory SQLite database from the national, state, control, latest-institution, and institution-change CSV outputs, executes exactly six SELECT/WITH queries, rejects SQL mutation/DDL/attachment/PRAGMA statements, writes this audit, and generates `docs/SQL_ANALYSIS.md` plus `site/sql-analysis.html`. The SQLite database is ephemeral and is never an analytical authority or public artifact.
+
 ## JSON products
 
 `data/qa_report.json` contains structural checks, yearly source/flag distributions, row counts, and explicit exclusions.

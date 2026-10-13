@@ -71,6 +71,10 @@ Seven-row shared stage-gate authority for recurring partner research. Each stage
 
 Intentionally empty 16-field CSV template for the live coordination record described by the production-cycle controls. `scripts/validate_production_cycle_log.py` validates populated copies against the three recurring `report_id` values, seven production `stage_id` values, controlled record types/materiality/status values, ISO dates, terminal/active closure rules, and approval/hold decisions. The tracked blank template is public; completed partner logs are nonpublic by default and must stay in the approved working location unless a separate release review authorizes disclosure.
 
+## `sql_analysis_audit.csv`
+
+One row per public SQL portfolio query. The audit records the query ID/title, demonstrated SQL skills, returned row count, independently calculated expected value, observed SQL value, status, and reconciliation note. `scripts/build_sql_analysis.py` rebuilds an in-memory SQLite database from five canonical processed CSVs, executes `sql/portfolio_queries.sql`, rejects non-read-only SQL, and fails if any expected/observed check differs. No SQLite database file is stored or published.
+
 ## `qa_resolution_log.csv`
 
 Manually curated analyst dispositions for a selected sample of high-priority rows from `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` verifies that each reviewed UNITID still exists in the current high-priority queue and generates `docs/QA_RESOLUTION_LOG.md` plus `qa_resolution_summary.json`.
