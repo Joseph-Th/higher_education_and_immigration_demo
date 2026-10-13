@@ -56,6 +56,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/research_agenda.csv",
         "downloads/population_crosswalk.csv",
         "downloads/population_crosswalk.md",
+        "downloads/recurring_report_register.csv",
+        "downloads/recurring_report_register.md",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
         "downloads/state_profile_index.csv",
@@ -224,6 +226,31 @@ def inspect_population_crosswalk(browser, base_url: str, *, width: int, height: 
     context.close()
 
 
+def inspect_research_operations(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/research-operations.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Research operations page failed at {width}px")
+    if page.locator(".operations-card").count() != 3:
+        raise AssertionError("Research operations page does not show all three recurring products")
+    if page.locator(".lifecycle-grid li").count() != 7:
+        raise AssertionError("Research operations lifecycle does not contain seven controls")
+    if "Portfolio demonstration" not in page.locator(".operations-hero .release-note").inner_text():
+        raise AssertionError("Research operations page is missing its portfolio/non-affiliation boundary")
+    if page.locator('a[href="downloads/recurring_report_register.csv"]').count() != 1:
+        raise AssertionError("Recurring-report CSV download link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Research operations horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Research operations browser errors: " + " | ".join(errors))
+    context.close()
+
+
 def inspect_state_profile(browser, base_url: str, *, width: int, height: int) -> None:
     context = browser.new_context(viewport={"width": width, "height": height})
     page = context.new_page()
@@ -278,6 +305,8 @@ def main() -> int:
                 inspect_research_memo(browser, base_url, width=390, height=844)
                 inspect_population_crosswalk(browser, base_url, width=1280, height=900)
                 inspect_population_crosswalk(browser, base_url, width=390, height=844)
+                inspect_research_operations(browser, base_url, width=1280, height=900)
+                inspect_research_operations(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

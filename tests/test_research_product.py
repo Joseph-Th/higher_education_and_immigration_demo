@@ -287,6 +287,29 @@ class ResearchProductTests(unittest.TestCase):
             self.assertIn(row["population_label"], html)
             self.assertIn(row["source_url"], html)
 
+    def test_recurring_report_register_is_relational_and_rendered(self) -> None:
+        register = rows(ROOT / "data" / "recurring_report_register.csv")
+        library_ids = {row["resource_id"] for row in rows(ROOT / "data" / "research_library.csv")}
+        population_ids = {row["population_id"] for row in rows(ROOT / "data" / "population_crosswalk.csv")}
+        required = {
+            "undocumented_higher_ed",
+            "immigrant_origin_higher_ed",
+            "undocumented_hs_graduates",
+        }
+        self.assertEqual({row["report_id"] for row in register}, required)
+        self.assertEqual(len(register), 3)
+        self.assertTrue(all(row["research_library_id"] in library_ids for row in register))
+        self.assertTrue(all(row["population_id"] in population_ids for row in register))
+        self.assertTrue(all("confirm" in row["schedule_status"].lower() for row in register))
+        self.assertTrue(all("sign-off" in row["next_action"].lower() for row in register))
+        rendered = (ROOT / "docs" / "RECURRING_REPORT_REGISTER.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "research-operations.html").read_text(encoding="utf-8")
+        self.assertIn("does **not** claim access to", rendered)
+        self.assertIn("does not represent the Presidents' Alliance's internal schedule", html)
+        for row in register:
+            self.assertIn(row["report_title"], rendered)
+            self.assertIn(row["report_title"], html)
+
     def test_qa_resolution_log_tracks_current_high_priority_queue(self) -> None:
         log = rows(ROOT / "data" / "qa_resolution_log.csv")
         queue = {
@@ -491,6 +514,10 @@ class ResearchProductTests(unittest.TestCase):
             ("data/research_library.csv", "site/downloads/research_library.csv"),
             ("data/research_agenda.csv", "site/downloads/research_agenda.csv"),
             ("data/population_crosswalk.csv", "site/downloads/population_crosswalk.csv"),
+            (
+                "data/recurring_report_register.csv",
+                "site/downloads/recurring_report_register.csv",
+            ),
             ("data/qa_resolution_log.csv", "site/downloads/qa_resolution_log.csv"),
             (
                 "data/processed/state_profile_index.csv",
@@ -532,6 +559,10 @@ class ResearchProductTests(unittest.TestCase):
             (ROOT / "site" / "downloads" / "population_crosswalk.md").read_bytes(),
         )
         self.assertEqual(
+            (ROOT / "docs" / "RECURRING_REPORT_REGISTER.md").read_bytes(),
+            (ROOT / "site" / "downloads" / "recurring_report_register.md").read_bytes(),
+        )
+        self.assertEqual(
             (ROOT / "docs" / "BRIEFING_NOTE.md").read_bytes(),
             (ROOT / "site" / "downloads" / "briefing_note.md").read_bytes(),
         )
@@ -541,7 +572,13 @@ class ResearchProductTests(unittest.TestCase):
         )
 
     def test_static_page_local_assets_and_ids(self) -> None:
-        for page_name in ("index.html", "state.html", "research-memo.html", "methodology-crosswalk.html"):
+        for page_name in (
+            "index.html",
+            "state.html",
+            "research-memo.html",
+            "methodology-crosswalk.html",
+            "research-operations.html",
+        ):
             html = (ROOT / "site" / page_name).read_text(encoding="utf-8")
             ids = re.findall(r'\bid="([^"]+)"', html)
             duplicates = [item for item, count in Counter(ids).items() if count > 1]

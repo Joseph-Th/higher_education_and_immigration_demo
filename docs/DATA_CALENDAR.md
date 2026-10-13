@@ -43,6 +43,14 @@ This separate online lane checks every URL in `data/research_library.csv`, follo
 
 Do not advance `END_YEAR` merely because a directory file exists. The recurring analysis is ready to advance only when the Fall Enrollment data and its dictionary are available and pass the schema review.
 
+## Recurring research-product operations
+
+`data/recurring_report_register.csv` is the portfolio tracking layer for the three recurring products named in the target role. It records the latest public product/date and current publicly documented source vintage, but it intentionally does **not** infer the Presidents' Alliance's internal next deadline from those dates.
+
+The production trigger is a confirmed partner kickoff or refreshed data/methodology package. At that point, the analyst should confirm partner roles, milestones, data vintage, delivery format, review windows, and sign-off ownership before treating the report as scheduled work. The generated `docs/RECURRING_REPORT_REGISTER.md` then provides the intake, method-change, QA, publication, and handoff checklist for each product.
+
+This separation between a **public publication date** and a **confirmed internal production schedule** is deliberate. A recurring title does not prove that the next cycle uses the same dates, partners, methodology, or deliverables.
+
 ## Update trigger
 
 When the next Fall Enrollment archive becomes available:

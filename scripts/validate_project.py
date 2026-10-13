@@ -27,6 +27,7 @@ def main() -> int:
         ("Build QA resolution log", [PYTHON, "scripts/build_qa_resolution_log.py"]),
         ("Build research library", [PYTHON, "scripts/build_research_library.py"]),
         ("Build population crosswalk", [PYTHON, "scripts/build_population_crosswalk.py"]),
+        ("Build recurring report register", [PYTHON, "scripts/build_recurring_report_register.py"]),
         ("Build research agenda", [PYTHON, "scripts/build_research_agenda.py"]),
         ("Summarize findings", [PYTHON, "scripts/summarize_findings.py"]),
         ("External publication benchmark", [PYTHON, "scripts/validate_benchmarks.py"]),

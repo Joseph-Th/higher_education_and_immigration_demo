@@ -259,6 +259,31 @@ One row per population/source concept governed by the project's comparability ru
 
 `scripts/build_population_crosswalk.py` validates exact concept coverage, unique IDs, nonblank metadata, HTTPS URLs, ISO dates, and the explicit IPEDS undocumented-student exclusion before generating `docs/POPULATION_CROSSWALK.md` and `site/methodology-crosswalk.html`.
 
+## `data/recurring_report_register.csv`
+
+One row per recurring research product represented in the target-role operations demonstration.
+
+| Field | Definition |
+| --- | --- |
+| `report_id` | Stable project identifier for the recurring product |
+| `report_title` | Public product name |
+| `population_id` | Foreign key to `data/population_crosswalk.csv` |
+| `research_library_id` | Foreign key to `data/research_library.csv` |
+| `partner_context` | Publicly grounded partner context plus instruction to reconfirm roles at kickoff |
+| `latest_publication_date` | ISO date of the current public product |
+| `latest_data_vintage` | Current source/data vintage known from public methodology |
+| `schedule_status` | Guarded scheduling rule that requires confirmation with the partner rather than inferred deadlines |
+| `portfolio_stage` | Current state of this portfolio operations model |
+| `monitoring_trigger` | Event that begins the next production-cycle review |
+| `intake_requirements` | Versioned files and documentation required from the partner/source package |
+| `method_change_check` | Definitions, assumptions, vintages, weights/models, or geography that must be compared with the prior product |
+| `qa_gate` | Reproduction/reconciliation work required before publication |
+| `publication_outputs` | Expected report/Portal/archive products after approval |
+| `next_action` | Partner-confirmed kickoff action required before the next production cycle |
+| `last_reviewed` | ISO date of the portfolio review |
+
+`scripts/build_recurring_report_register.py` validates exact product coverage, foreign keys into both source authorities, ISO dates, nonblank fields, and schedule language before generating the human-readable operations register and public workflow page.
+
 ## JSON products
 
 `data/qa_report.json` contains structural checks, yearly source/flag distributions, row counts, and explicit exclusions.

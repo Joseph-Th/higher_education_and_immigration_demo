@@ -51,6 +51,10 @@ Structured research-needs register. Each row records a stable research ID, prior
 
 Structured methodology/source-selection control for six distinct immigration-related student concepts: IPEDS U.S. nonresident, immigrant-origin, SEVIS international, undocumented higher-education, undocumented high-school-graduate, and refugee/asylee students. Each row records the measure type, primary source and vintage, unit, inclusion/exclusion rules, geography, best use, comparison warning, project status, source URL, and review date. `scripts/build_population_crosswalk.py` validates the crosswalk and generates both `docs/POPULATION_CROSSWALK.md` and the public `site/methodology-crosswalk.html` page.
 
+## `recurring_report_register.csv`
+
+Portfolio operations register for the three recurring research products named in the target role. Each row foreign-keys to both a `population_id` in `population_crosswalk.csv` and a `research_library_id` in `research_library.csv`, then records public-product vintage, guarded schedule status, partner context, intake requirements, methodology-change checks, QA gates, publication outputs, and the next kickoff action. The register deliberately requires the schedule text to say that milestones must be confirmed with the partner instead of inventing an internal deadline from public publication dates. `scripts/build_recurring_report_register.py` validates those relationships and generates `docs/RECURRING_REPORT_REGISTER.md` plus `site/research-operations.html`.
+
 ## `qa_resolution_log.csv`
 
 Manually curated analyst dispositions for a selected sample of high-priority rows from `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` verifies that each reviewed UNITID still exists in the current high-priority queue and generates `docs/QA_RESOLUTION_LOG.md` plus `qa_resolution_summary.json`.

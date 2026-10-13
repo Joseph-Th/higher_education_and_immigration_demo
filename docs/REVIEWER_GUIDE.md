@@ -7,12 +7,13 @@ This repository is intended to be evaluated as a small recurring research produc
 1. Open `deliverables/research_brief.pdf`. It is the fastest reviewer-facing artifact: headline findings, analyst judgment, interpretation boundaries, and a compact source/QA trail in three pages.
 2. Open `site/index.html` through a local static server or deployed Pages URL. Read the six longitudinal findings, the latest-release review, inspect the state explorer, and open the three analyst case studies.
 3. Open `site/methodology-crosswalk.html`. This shows how the project distinguishes IPEDS U.S. nonresident data from immigrant-origin, SEVIS international, undocumented, high-school-pipeline, and refugee/asylee concepts before attempting a comparison.
-4. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
-5. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
-6. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
-7. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
-8. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
-9. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
+4. Open `site/research-operations.html`. This is the portfolio model for coordinating the three recurring products named in the vacancy: kickoff, versioned partner intake, method-change review, quantitative QA, discrepancy resolution, publication gating, and archival handoff.
+5. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
+6. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
+7. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
+8. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, and `data/research_library.csv` to see how automated flags become analyst publication decisions and how provenance is retained.
+9. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
+10. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
 
 ## What the project demonstrates
 
@@ -23,6 +24,7 @@ This repository is intended to be evaluated as a small recurring research produc
 | Handle changing schemas | `scripts/audit_ipeds_schema.py`, `data/schema_audit.csv`, and `docs/VARIABLE_MAPPING.md` verify required variables and labels year by year |
 | Define an analytic universe | `docs/METHODOLOGY.md` documents the degree-granting First Look/Digest universe and 50-states-plus-DC rule |
 | Distinguish populations and choose compatible sources | `data/population_crosswalk.csv`, `scripts/build_population_crosswalk.py`, and `site/methodology-crosswalk.html` document inclusion/exclusion rules, source vintages, units, and comparison warnings for six immigration-related student concepts |
+| Coordinate recurring partner research products | `data/recurring_report_register.csv`, `scripts/build_recurring_report_register.py`, and `site/research-operations.html` model versioned intake, methodology-change review, QA gates, publication outputs, partner-confirmed scheduling, and archival handoff for the three recurring reports named in the role |
 | Build reproducible transformations | `scripts/build_analysis.py` creates institution-, state-, control-, and national-level outputs from the same normalized records |
 | Perform substantive analysis | `scripts/summarize_findings.py` produces level, geography, control, concentration, recovery, and institution-dynamics findings |
 | Investigate apparent discrepancies | `scripts/validate_benchmarks.py` quantifies release-vintage differences instead of forcing current data to match an older Digest publication |
