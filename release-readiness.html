@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Consolidated release-readiness controls separating the current publication decision from permission to advance the IPEDS analysis year.">
+  <meta name="theme-color" content="#10263c">
+  <title>Release Readiness | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to release readiness</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Release readiness navigation"><a href="index.html">Brief</a><a href="freshness-monitor.html">Freshness</a><a href="publication-handoff.html">Handoff</a><a href="data-governance.html">Governance</a></nav></div></header>
+  <main id="main">
+    <section class="handoff-hero" data-current-decision="READY_WITH_CLAIM_LEVEL_HOLDS" data-year-decision="HOLD_YEAR_ADVANCE"><div class="shell"><p class="eyebrow">Release control</p><h1>Current publication readiness and next-year readiness are different decisions.</h1><p class="lede">This control matrix consolidates analytical QA, benchmarks, institution review, publication handoff, public-release governance, artifact freshness, source routing, and the candidate-year package gate without allowing one decision to stand in for the other.</p><div class="hero-actions"><a class="button button-primary" href="#readiness-gates">Review gates</a><a class="button button-secondary" href="downloads/release_readiness.csv">Download control matrix</a></div><p class="release-note"><strong>Portfolio boundary:</strong> this is a reproducible project control, not the Presidents' Alliance's internal approval process or organizational sign-off.</p><div class="handoff-summary"><article><strong>READY WITH CLAIM-LEVEL HOLDS</strong><span>current 2024 publication</span></article><article><strong>HOLD YEAR ADVANCE</strong><span>candidate 2025 year advance</span></article><article><strong>21</strong><span>institution-specific claims still held</span></article><article><strong>2/4</strong><span>candidate-year package assets available</span></article></div></div></section>
+    <section class="section shell"><div class="section-heading"><p class="eyebrow">Decision separation</p><h2>A hold can be narrow without becoming a blanket publication failure.</h2><p>The current aggregate release is ready because its analytical, benchmark, handoff, governance, artifact, and routing controls pass. Institution-specific explanations remain held where evidence is insufficient. Separately, the candidate-year package is incomplete, so the project must not change the analysis year.</p></div><div class="method-grid"><article><h3>Current release</h3><p><strong>READY WITH CLAIM-LEVEL HOLDS</strong><br>Aggregate publication can proceed with the existing institution-level claim holds intact.</p></article><article><h3>Year advance</h3><p><strong>HOLD YEAR ADVANCE</strong><br>Only 2 of 4 required candidate-year assets are available.</p></article><article><h3>Claim holds</h3><p><strong>21</strong><br>Held institution-specific explanations do not rewrite or remove the official aggregate IPEDS values.</p></article><article><h3>Snapshot time</h3><p><strong>2026-10-14T15:06:36+00:00</strong><br>The next-year package result is a dated observation, not a continuously live status.</p></article></div></section>
+    <section class="section section-tinted" id="readiness-gates"><div class="shell"><div class="section-heading"><p class="eyebrow">Control matrix</p><h2>Eight gates with explicit blocking scope.</h2><p>Seven controls govern the current release. The candidate-package gate governs whether the project may begin a year advance. A future failure stops only the decision whose blocker column applies.</p></div><div class="handoff-grid">
+          <article class="handoff-card" data-readiness-gate="A01">
+            <div class="handoff-card-head"><span>A01</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+            <p class="case-kicker">Current release</p>
+            <h2>Analytical QA</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>8/8 structural/arithmetic pipeline checks PASS.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/qa_report.json</code></dd></div>
+              <div><dt>Next action</dt><dd>Keep the current analytical outputs only while every QA check remains PASS.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-readiness-gate="A02">
+            <div class="handoff-card-head"><span>A02</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+            <p class="case-kicker">Current release</p>
+            <h2>External benchmark</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>24/24 NCES Digest consistency checks PASS.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/benchmark_audit.csv</code></dd></div>
+              <div><dt>Next action</dt><dd>Investigate any future failed benchmark before changing public interpretation.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-readiness-gate="A03">
+            <div class="handoff-card-head"><span>A03</span><span class="handoff-status handoff-status-hold">PASS WITH CLAIM HOLDS</span></div>
+            <p class="case-kicker">Current release</p>
+            <h2>High-priority institution review</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>27/27 high-priority records reviewed; 6 safe with context and 21 institution-specific claims held.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/qa_resolution_summary.json</code></dd></div>
+              <div><dt>Next action</dt><dd>Keep held institution movements out of institution-specific explanatory narrative until directly confirmed.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-readiness-gate="A04">
+            <div class="handoff-card-head"><span>A04</span><span class="handoff-status handoff-status-hold">PASS WITH CLAIM HOLDS</span></div>
+            <p class="case-kicker">Current release</p>
+            <h2>Publication handoff</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>14 publication claims/controls have valid authorities, QA gates, disclosures, and release statuses; Q01 preserves claim-level holds.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/publication_handoff.csv</code></dd></div>
+              <div><dt>Next action</dt><dd>Rebuild and re-read the handoff whenever data, definitions, sources, or public copy change.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-readiness-gate="A05">
+            <div class="handoff-card-head"><span>A05</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+            <p class="case-kicker">Current release</p>
+            <h2>Public release register</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>58 artifact families are explicitly PUBLIC; none contain person-level or observed immigration-status data.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/public_release_register.csv</code></dd></div>
+              <div><dt>Next action</dt><dd>Run data-governance publication after this build so the public download tree is copied and checked byte-for-byte.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-readiness-gate="A06">
+            <div class="handoff-card-head"><span>A06</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+            <p class="case-kicker">Current release</p>
+            <h2>Presentation artifact freshness</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>PDF manifest matches its source and 3-page file; PowerPoint manifest matches its builder, 6 sources, and 6-slide file.</dd></div>
+              <div><dt>Authority</dt><dd><code>deliverables/research_brief_manifest.json; deliverables/management_briefing_manifest.json</code></dd></div>
+              <div><dt>Next action</dt><dd>Rebuild and visually review the PDF or deck when any bound source or builder changes.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-readiness-gate="A07">
+            <div class="handoff-card-head"><span>A07</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+            <p class="case-kicker">Current release</p>
+            <h2>Maintained-source routing coverage</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>17/17 Research Library sources have an explicit refresh/escalation route.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/source_update_triage.csv</code></dd></div>
+              <div><dt>Next action</dt><dd>Route a changed source by method/governance impact before treating a new date or file as a new finding.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-readiness-gate="Y01">
+            <div class="handoff-card-head"><span>Y01</span><span class="handoff-status handoff-status-hold">HOLD</span></div>
+            <p class="case-kicker">Year advance</p>
+            <h2>Candidate 2025 IPEDS package</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>2/4 required candidate-year assets available at 2026-10-14T15:06:36+00:00; snapshot decision=HOLD_YEAR_ADVANCE.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/release_monitor_snapshot.json</code></dd></div>
+              <div><dt>Next action</dt><dd>Keep END_YEAR=2024; recheck when the missing Fall Enrollment package assets are published.</dd></div>
+            </dl>
+          </article></div></div></section>
+    <section class="section shell"><div class="section-heading compact"><p class="eyebrow">Operating rule</p><h2>Ready now does not mean advance the year.</h2></div><div class="method-grid"><article><h3>Publish current data</h3><p>Keep the current aggregate publication available while its seven current-release gates remain satisfied.</p></article><article><h3>Respect claim-level holds</h3><p>Do not promote a held institution movement into explanatory narrative merely because aggregate publication is ready.</p></article><article><h3>Wait for the complete package</h3><p>Keep <code>END_YEAR=2024</code> until all four candidate assets are available; availability then starts schema review rather than automatic publication.</p></article><article><h3>Exact public tree</h3><p>The downstream data-governance build and repository/browser checks enforce the allowlisted public copies byte-for-byte.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/release_readiness.csv">Download readiness CSV</a><a class="button button-secondary" href="downloads/release_readiness.md">Download readiness note</a><a class="button button-secondary" href="freshness-monitor.html">Next-year freshness</a><a class="button button-secondary" href="publication-handoff.html">Publication handoff</a></div></section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Release Readiness · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>
