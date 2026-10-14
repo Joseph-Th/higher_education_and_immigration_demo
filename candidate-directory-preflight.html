@@ -18,7 +18,7 @@
         <h1>The directory side passes its structural checks. The analysis year still does not advance.</h1>
         <p class="lede">The available candidate-year institutional directory and dictionary preserve every field required by the current join/filter logic and show only a four-institution net change in the directory-side eligible set. Fall Enrollment is still missing, so this is readiness evidence, not a 2025 enrollment result.</p>
         <div class="hero-actions"><a class="button button-primary" href="#continuity">Review continuity</a><a class="button button-secondary" href="downloads/candidate_directory_preflight.json">Download preflight JSON</a></div>
-        <p class="release-note"><strong>Decision boundary:</strong> captured 2026-10-14T16:24:27+00:00. This preflight never substitutes for the missing Fall Enrollment data/dictionary or the full annual schema review. Year advance remains <code>HOLD_YEAR_ADVANCE</code>.</p>
+        <p class="release-note"><strong>Decision boundary:</strong> captured 2026-10-14T17:13:53+00:00. This preflight never substitutes for the missing Fall Enrollment data/dictionary or the full annual schema review. Year advance remains <code>HOLD_YEAR_ADVANCE</code>.</p>
         <div class="handoff-summary">
           <article><strong>PASS</strong><span>directory structural preflight</span></article>
           <article><strong>6/6</strong><span>required directory fields preserved</span></article>
@@ -29,7 +29,7 @@
     </section>
 
     <section class="section shell">
-      <div class="section-heading"><p class="eyebrow">Required variables</p><h2>The current directory join/filter fields survive the candidate schema.</h2><p>Each variable is present in both the candidate CSV and its NCES dictionary. This check is deliberately narrower than full annual schema review.</p></div>
+      <div class="section-heading"><p class="eyebrow">Required variables</p><h2>The current directory join/filter fields survive the candidate schema.</h2><p>Each required variable is present in both the candidate CSV and its NCES dictionary. The full field set also reconciles 70/70, with no data-only or dictionary-only variables. This check remains narrower than full annual schema review.</p></div>
       <div class="method-grid"><article><h3><code>UNITID</code></h3><p>Unique identification number of the institution</p></article><article><h3><code>INSTNM</code></h3><p>Institution (entity) name</p></article><article><h3><code>STABBR</code></h3><p>State abbreviation</p></article><article><h3><code>CONTROL</code></h3><p>Control of institution</p></article><article><h3><code>DEGGRANT</code></h3><p>Degree-granting status</p></article><article><h3><code>PSET4FLG</code></h3><p>Postsecondary and Title IV institution indicator</p></article></div>
     </section>
 
@@ -48,6 +48,7 @@
           <article><h3>Shared-record changes</h3><p><strong>3</strong> state changes<br><strong>6</strong> control changes<br><strong>41</strong> name-string changes</p></article>
           <article><h3>Core geography</h3><p><strong>51/51</strong> states/DC represented<br><strong>0</strong> duplicate UNITIDs</p></article>
         </div>
+        <div class="methods-crosswalk-callout"><div><p class="eyebrow">Institution-level review queue</p><h3>154 affected UNITIDs are already classified for the next full-package QA pass.</h3><p>The queue separates directory-side entries/exits from shared name, state, and control changes. Current 2024 exposure at the 56 frame leavers is 612 U.S. nonresident students; that is a review-priority measure, not a projected 2025 loss.</p></div><a class="button button-secondary" href="candidate-directory-changes.html">Open change review</a></div>
       </div>
     </section>
 
@@ -75,7 +76,7 @@
         <article><h3>hd2025.xlsx</h3><p>139,157 archive bytes<br><code class="hash-code">dc454aa6fbc246f3d47d773cd02ebe3b5efcedacbd2f71c54ff39f5844215343</code></p></article>
       </div>
       <div class="methods-crosswalk-callout"><div><p class="eyebrow">What remains blocked</p><h3>No 2025 enrollment claims yet</h3><p><code>EF2025A.zip</code> and its dictionary are still required. Once the full package is available, preserve all source hashes, run the cross-year schema audit, rebuild the analysis, and only then apply the pre-specified R01 persistence rule.</p></div><a class="button button-secondary" href="freshness-monitor.html">Review release monitor</a></div>
-      <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_directory_preflight.json">Download JSON</a><a class="button button-secondary" href="downloads/candidate_directory_preflight.md">Download notes</a></div>
+      <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_directory_preflight.json">Download JSON</a><a class="button button-secondary" href="downloads/candidate_directory_preflight.md">Download notes</a><a class="button button-secondary" href="candidate-directory-changes.html">Institution change review</a></div>
     </section>
   </main>
   <footer><div class="shell footer-inner"><span>Candidate Directory Preflight · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>

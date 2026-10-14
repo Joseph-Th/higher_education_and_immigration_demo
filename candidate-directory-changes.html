@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Institution-level structural review of candidate-year IPEDS directory entries, exits, control changes, state changes, and name changes before Fall Enrollment is available.">
+  <meta name="theme-color" content="#10263c">
+  <title>Candidate Directory Changes | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to candidate directory changes</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Candidate directory change navigation"><a href="index.html">Brief</a><a href="candidate-directory-preflight.html">Preflight</a><a href="freshness-monitor.html">Freshness</a><a href="release-readiness.html">Release readiness</a></nav></div></header>
+  <main id="main">
+    <section class="handoff-hero">
+      <div class="shell">
+        <p class="eyebrow">Candidate 2025 directory change review</p>
+        <h1>Directory changes are review signals, not enrollment findings.</h1>
+        <p class="lede">The candidate directory has 52 eligible-frame entries, 56 exits, and 46 shared UNITIDs with changed names, states, or institutional control. This review identifies where the next full update needs extra reconciliation before any 2025 enrollment interpretation.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#frame-turnover">Review frame turnover</a><a class="button button-secondary" href="downloads/candidate_directory_change_review.csv">Download full change review</a></div>
+        <p class="release-note"><strong>Boundary:</strong> Directory structural observation only; do not infer institutional opening/closure or 2025 enrollment movement. Fall Enrollment is still missing, so year advancement remains <code>HOLD_YEAR_ADVANCE</code>.</p>
+        <div class="handoff-summary">
+          <article><strong>154</strong><span>affected UNITIDs in the captured review</span></article>
+          <article><strong>52 / 56</strong><span>directory-eligible entries / exits</span></article>
+          <article><strong>612</strong><span>2024 nonresident students at frame leavers</span></article>
+          <article><strong>1,069</strong><span>2024 nonresident students at control-change UNITIDs</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="frame-turnover">
+      <div class="section-heading"><p class="eyebrow">Eligible-frame turnover</p><h2>Entry and exit reasons are structural and auditable.</h2><p>Reason counts can overlap when a UNITID changes more than one eligibility field. A record entering or leaving the directory-side eligible frame does not establish an opening, closure, or enrollment change.</p></div>
+      <div class="method-grid">
+        <article><h3>Entry reasons</h3><div class="table-wrap compact-table"><table><thead><tr><th>Reason</th><th>UNITIDs</th></tr></thead><tbody><tr><td>New directory record</td><td>35</td></tr><tr><td>Degree-granting status became eligible</td><td>11</td></tr><tr><td>Title IV / First Look status became eligible</td><td>6</td></tr></tbody></table></div></article>
+        <article><h3>Exit reasons</h3><div class="table-wrap compact-table"><table><thead><tr><th>Reason</th><th>UNITIDs</th></tr></thead><tbody><tr><td>Title IV / First Look status became ineligible</td><td>38</td></tr><tr><td>Directory record absent in candidate file</td><td>15</td></tr><tr><td>Degree-granting status became ineligible</td><td>3</td></tr></tbody></table></div></article>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="leaver-exposure">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">Current-year exposure</p><h2>Only current 2024 counts are used to prioritize the next review.</h2><p>54 of 56 frame leavers appear in the current canonical institution analysis. Together they contain 612 U.S. nonresident students and 17,593 total students in 2024. Those counts are not projected 2025 losses.</p></div>
+        <div class="table-wrap"><table><thead><tr><th>UNITID</th><th>Institution</th><th>State</th><th>Structural reason</th><th>Current nonresident</th><th>Current total</th></tr></thead><tbody><tr><td>114354</td><td>FIDM-Fashion Institute of Design &amp; Merchandising</td><td>CA</td><td>Title IV / First Look status became ineligible</td><td>128</td><td>564</td></tr><tr><td>214564</td><td>Salus University</td><td>PA</td><td>Title IV / First Look status became ineligible</td><td>106</td><td>1,106</td></tr><tr><td>218238</td><td>Limestone University</td><td>SC</td><td>Directory record absent in candidate file</td><td>89</td><td>1,807</td></tr><tr><td>108852</td><td>American Academy of Dramatic Arts-Los Angeles</td><td>CA</td><td>Title IV / First Look status became ineligible</td><td>39</td><td>112</td></tr><tr><td>148876</td><td>St. Augustine College</td><td>IL</td><td>Title IV / First Look status became ineligible</td><td>30</td><td>810</td></tr><tr><td>421841</td><td>New York Conservatory for Dramatic Arts</td><td>NY</td><td>Title IV / First Look status became ineligible</td><td>29</td><td>251</td></tr><tr><td>199698</td><td>St. Andrews University</td><td>NC</td><td>Directory record absent in candidate file</td><td>29</td><td>676</td></tr><tr><td>477039</td><td>West Coast University-Texas</td><td>TX</td><td>Title IV / First Look status became ineligible</td><td>29</td><td>1,887</td></tr><tr><td>216463</td><td>Trinity Anglican Seminary</td><td>PA</td><td>Title IV / First Look status became ineligible</td><td>23</td><td>169</td></tr><tr><td>239512</td><td>Northland College</td><td>WI</td><td>Directory record absent in candidate file</td><td>21</td><td>286</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="control-changes">
+      <div class="section-heading"><p class="eyebrow">Control comparability</p><h2>Six shared UNITIDs change institutional control.</h2><p>These rows carry 1,069 current-year U.S. nonresident students. Reconcile them before interpreting candidate-year public/nonprofit/for-profit movement.</p></div>
+      <div class="table-wrap"><table><thead><tr><th>UNITID</th><th>Institution</th><th>State</th><th>Current control</th><th>Candidate control</th><th>Current nonresident</th></tr></thead><tbody><tr><td>104717</td><td>Grand Canyon University</td><td>AZ</td><td>Private for-profit</td><td>Private nonprofit</td><td>967</td></tr><tr><td>154022</td><td>The University of Arizona Global Campus</td><td>CA</td><td>Private for-profit</td><td>Public</td><td>96</td></tr><tr><td>154518</td><td>Waldorf University</td><td>IA</td><td>Private for-profit</td><td>Private nonprofit</td><td>6</td></tr><tr><td>377652</td><td>Valley College-Beckley</td><td>WV</td><td>Private for-profit</td><td>Private nonprofit</td><td>0</td></tr><tr><td>494250</td><td>Valley College-Cleveland</td><td>OH</td><td>Private for-profit</td><td>Private nonprofit</td><td>0</td></tr><tr><td>377661</td><td>Valley College-Martinsburg</td><td>WV</td><td>Private for-profit</td><td>Private nonprofit</td><td>0</td></tr></tbody></table></div>
+    </section>
+
+    <section class="section section-tinted" id="state-changes">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">State comparability</p><h2>Three shared UNITIDs change state codes.</h2><p>They carry 193 current-year U.S. nonresident students. A directory state change is an attribution review flag, not evidence that students moved.</p></div>
+        <div class="table-wrap"><table><thead><tr><th>UNITID</th><th>Institution</th><th>Current state</th><th>Candidate state</th><th>Current nonresident</th></tr></thead><tbody><tr><td>154022</td><td>The University of Arizona Global Campus</td><td>CA</td><td>AZ</td><td>96</td></tr><tr><td>167792</td><td>Simon&#x27;s Rock at Bard College</td><td>MA</td><td>NY</td><td>91</td></tr><tr><td>443331</td><td>West Coast University-Texas</td><td>CA</td><td>TX</td><td>6</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="name-continuity">
+      <div class="section-heading"><p class="eyebrow">Label continuity</p><h2>UNITID continuity prevents name changes from becoming false institution entries.</h2><p>41 shared eligible UNITIDs change institution-name strings, representing 10,184 current-year U.S. nonresident students. The ten largest current exposures are shown below; the full governed CSV contains every affected record.</p></div>
+      <div class="table-wrap"><table><thead><tr><th>UNITID</th><th>Current name</th><th>Candidate name</th><th>Current nonresident</th></tr></thead><tbody><tr><td>225423</td><td>Houston Community College</td><td>Houston City College</td><td>4,670</td></tr><tr><td>157216</td><td>Lindsey Wilson College</td><td>Lindsey Wilson University</td><td>2,027</td></tr><tr><td>166656</td><td>MCPHS University</td><td>Massachusetts College of Pharmacy and Health Sciences</td><td>866</td></tr><tr><td>236610</td><td>Shoreline Community College</td><td>Shoreline College</td><td>615</td></tr><tr><td>134495</td><td>Hillsborough Community College</td><td>Hillsborough College</td><td>409</td></tr><tr><td>213020</td><td>Indiana University of Pennsylvania-Main Campus</td><td>Indiana University of Pennsylvania</td><td>373</td></tr><tr><td>115773</td><td>Humphreys University-Stockton and Modesto Campuses</td><td>Humphreys University</td><td>288</td></tr><tr><td>176053</td><td>Mississippi College</td><td>Mississippi Christian University</td><td>160</td></tr><tr><td>225502</td><td>University of Houston-Victoria</td><td>Texas A&amp;M University-Victoria</td><td>145</td></tr><tr><td>195474</td><td>Siena College</td><td>Siena University</td><td>122</td></tr></tbody></table></div>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">Next-release controls</p><h2>The review queue is ready before the enrollment file arrives.</h2></div>
+        <div class="method-grid">
+          <article><h3>Rebuild the full join</h3><p>When Fall Enrollment arrives, determine which directory-side entries and exits actually enter the candidate analytic universe.</p></article>
+          <article><h3>Reconcile category moves</h3><p>Apply control and state changes before interpreting subgroup movement so reclassification is not mistaken for enrollment change.</p></article>
+          <article><h3>Keep UNITID continuity</h3><p>Carry institution identity across name changes instead of treating renamed records as new institutions.</p></article>
+          <article><h3>Re-capture revisions</h3><p>If NCES replaces either candidate directory archive, rerun the live capture and require the CSV hash and preflight snapshot to move together.</p></article>
+        </div>
+        <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_directory_change_review.csv">Download change review CSV</a><a class="button button-secondary" href="downloads/candidate_directory_change_review.md">Download review note</a><a class="button button-secondary" href="candidate-directory-preflight.html">Directory preflight</a></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Candidate Directory Changes · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>
