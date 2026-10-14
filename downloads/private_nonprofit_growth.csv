@@ -664,7 +664,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 175139,United Theological Seminary of the Twin Cities,MN,MN,Private nonprofit in both endpoints,5,6,1,0,1,none,,not high-priority in latest release queue,720,0.0,99.99,Other positive contributors
 175227,Dunwoody College of Technology,MN,MN,Private nonprofit in both endpoints,1,9,8,8,0,none,,not high-priority in latest release queue,531,0.01,99.48,Other positive contributors
 175281,Mitchell Hamline School of Law,MN,MN,Private nonprofit in both endpoints,14,17,3,0,3,none,,not high-priority in latest release queue,640,0.0,99.9,Other positive contributors
-175421,Belhaven University,MS,MS,Private nonprofit in both endpoints,82,728,646,-56,702,high,hold_for_confirmation,hold_for_confirmation,47,0.47,69.62,Other positive contributors
+175421,Belhaven University,MS,MS,Private nonprofit in both endpoints,82,728,646,-56,702,high,safe_with_context,safe_with_context,47,0.47,69.62,Other positive contributors
 175430,Blue Mountain Christian University,MS,MS,Private nonprofit in both endpoints,4,12,8,7,1,none,,not high-priority in latest release queue,529,0.01,99.47,Other positive contributors
 175980,Millsaps College,MS,MS,Private nonprofit in both endpoints,33,19,-14,-20,6,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 176053,Mississippi College,MS,MS,Private nonprofit in both endpoints,496,160,-336,-96,-240,none,,not high-priority in latest release queue,,,,Nonpositive contribution
