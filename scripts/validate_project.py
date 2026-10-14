@@ -46,6 +46,7 @@ def main() -> int:
         ("Build stakeholder briefing note", [PYTHON, "scripts/build_briefing_note.py"]),
         ("Build research memo", [PYTHON, "scripts/build_research_memo.py"]),
         ("Build publication handoff", [PYTHON, "scripts/build_publication_handoff.py"]),
+        ("Build release readiness", [PYTHON, "scripts/build_release_readiness.py"]),
         ("Build data governance", [PYTHON, "scripts/build_data_governance.py"]),
         ("Build public site data", [PYTHON, "scripts/build_site_data.py"]),
         (

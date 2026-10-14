@@ -111,6 +111,10 @@ Dated output from `scripts/check_for_new_release.py --write-snapshot ...`. It re
 
 Ten generated monitoring rows combining the captured NCES release observation with maintained Research Library, population-crosswalk, and recurring-report review metadata. The register contains four candidate-file observations, one annual year-advance gate, two source-review controls, and three recurring-product monitoring triggers. `scripts/build_freshness_monitor.py` writes the CSV, `docs/FRESHNESS_MONITOR.md`, and `site/freshness-monitor.html` without inventing deadlines or treating a working URL as a completed methodology review.
 
+## `release_readiness.csv`
+
+Eight generated release controls built by `scripts/build_release_readiness.py`. Seven gates govern whether the current validated publication may remain public; one gate governs whether the configured analysis year may advance. The matrix combines analytical QA, NCES benchmark status, complete high-priority institution review, publication handoff, public-release registration, PDF/PowerPoint freshness, Research Library routing coverage, and the dated candidate-year package observation. A current decision of `READY_WITH_CLAIM_LEVEL_HOLDS` preserves institution-specific narrative holds without invalidating aggregate publication, while `HOLD_YEAR_ADVANCE` keeps `END_YEAR` unchanged until the complete candidate package can enter schema review. The builder also writes `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
+
 ## `qa_resolution_log.csv`
 
 Manually curated analyst dispositions for every high-priority row in `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` requires complete current high-priority coverage and generates `docs/QA_RESOLUTION_LOG.md`, `qa_resolution_summary.json`, and `site/qa-review.html`.

@@ -559,6 +559,24 @@ One row per release/freshness monitoring control generated from the captured rel
 
 `scripts/build_freshness_monitor.py` validates `data/release_monitor_snapshot.json`, requires exactly four candidate-year files, derives package readiness from those observations, rejects a mismatched release decision, and generates the CSV plus `docs/FRESHNESS_MONITOR.md` and `site/freshness-monitor.html`. Recurring-product rows preserve event triggers rather than inferring internal deadlines.
 
+## `data/release_readiness.csv`
+
+Eight generated release-control rows that consolidate the project's independent analytical, publication, governance, artifact-freshness, source-routing, and candidate-year gates while keeping current-publication readiness separate from permission to advance the analysis year.
+
+| Field | Definition |
+| --- | --- |
+| `gate_id` | Stable ordered control identifier (`A01`-`A07`, `Y01`) |
+| `gate_scope` | Decision surface governed by the row: current release or year advance |
+| `gate_name` | Human-readable control name |
+| `status` | Controlled result: `PASS`, `PASS_WITH_CLAIM_HOLDS`, or `HOLD` |
+| `blocks_current_release` | Whether a `HOLD` on this control prevents publication of the current validated release |
+| `blocks_year_advance` | Whether a `HOLD` on this control prevents changing the configured analysis year |
+| `evidence` | Reconciled current evidence supporting the control result |
+| `authority` | Canonical project file or manifest used by the control |
+| `next_action` | Bounded action required if the evidence changes or the gate remains held |
+
+`scripts/build_release_readiness.py` requires all core analytical and benchmark checks to pass, complete current high-priority institution-review coverage, the full 14-row publication handoff, one-for-one Research Library routing, valid public-release registration, current PDF/PowerPoint freshness manifests, and a release snapshot that reconciles to the four candidate-year file observations. The current-release summary may be `READY_WITH_CLAIM_LEVEL_HOLDS` while institution-specific explanations remain gated; the independent year-advance summary remains `HOLD_YEAR_ADVANCE` until the complete candidate package is available and schema review can begin. The builder generates `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
+
 ## JSON products
 
 `data/release_monitor_snapshot.json` is a dated online observation rather than an offline analytical input. It records the current/candidate years, UTC check time, Fall Enrollment and directory readiness, complete-package readiness, release decision, and the four candidate-file HTTP observations. It is written only when `scripts/check_for_new_release.py --write-snapshot ...` is run explicitly; normal offline validation consumes but does not refresh it.

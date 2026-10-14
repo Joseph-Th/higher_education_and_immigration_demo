@@ -457,7 +457,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 56)
+        self.assertEqual(len(release_rows), 58)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -466,15 +466,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 106)
-        self.assertEqual(validate_public_tree(release_rows), 106)
+        self.assertEqual(len(pairs), 108)
+        self.assertEqual(validate_public_tree(release_rows), 108)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 106", rendered)
+        self.assertIn("Expanded public download files:** 108", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("106</strong><span>expanded public download files", html)
+        self.assertIn("108</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -492,7 +492,39 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 106)
+        self.assertEqual(validate_public_tree(release_rows), 108)
+
+    def test_release_readiness_separates_current_publication_from_year_advance(self) -> None:
+        readiness = rows(ROOT / "data" / "release_readiness.csv")
+        self.assertEqual(
+            [row["gate_id"] for row in readiness],
+            ["A01", "A02", "A03", "A04", "A05", "A06", "A07", "Y01"],
+        )
+        self.assertEqual(len(readiness), 8)
+        by_id = {row["gate_id"]: row for row in readiness}
+        self.assertEqual(by_id["A03"]["status"], "PASS_WITH_CLAIM_HOLDS")
+        self.assertEqual(by_id["A04"]["status"], "PASS_WITH_CLAIM_HOLDS")
+        self.assertEqual(by_id["Y01"]["status"], "HOLD")
+        self.assertEqual(by_id["Y01"]["blocks_current_release"], "No")
+        self.assertEqual(by_id["Y01"]["blocks_year_advance"], "Yes")
+        self.assertIn("27/27", by_id["A03"]["evidence"])
+        self.assertIn("58 artifact families", by_id["A05"]["evidence"])
+        self.assertIn("2/4", by_id["Y01"]["evidence"])
+        self.assertTrue(
+            all(
+                row["status"] != "HOLD"
+                for row in readiness
+                if row["blocks_current_release"] == "Yes"
+            )
+        )
+        rendered = (ROOT / "docs" / "RELEASE_READINESS.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "release-readiness.html").read_text(encoding="utf-8")
+        self.assertIn("`READY_WITH_CLAIM_LEVEL_HOLDS`", rendered)
+        self.assertIn("`HOLD_YEAR_ADVANCE`", rendered)
+        self.assertIn("partial candidate-year package blocks changing `END_YEAR`", rendered)
+        self.assertEqual(html.count('data-readiness-gate="'), 8)
+        self.assertIn("READY_WITH_CLAIM_LEVEL_HOLDS", html)
+        self.assertIn("HOLD_YEAR_ADVANCE", html)
 
     def test_freshness_monitor_preserves_release_gate_and_trigger_boundaries(self) -> None:
         snapshot = json.loads(
@@ -1205,10 +1237,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 106)
+        self.assertEqual(len(pairs), 108)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 106)
+        self.assertEqual(validate_public_tree(release_rows), 108)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -1228,6 +1260,7 @@ class ResearchProductTests(unittest.TestCase):
             "source-update-triage.html",
             "planning-scenarios.html",
             "freshness-monitor.html",
+            "release-readiness.html",
             "research-library.html",
             "publication-handoff.html",
             "data-governance.html",

@@ -85,6 +85,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/release_monitor_snapshot.json",
         "downloads/freshness_monitor.csv",
         "downloads/freshness_monitor.md",
+        "downloads/release_readiness.csv",
+        "downloads/release_readiness.md",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
         "downloads/management_briefing_deck.pptx",
@@ -323,7 +325,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "56" not in summary or "106" not in summary:
+    if "58" not in summary or "108" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -338,6 +340,45 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
         raise AssertionError(f"Data governance horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Data governance browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_release_readiness(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/release-readiness.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Release readiness page failed at {width}px")
+    if page.locator('[data-readiness-gate]').count() != 8:
+        raise AssertionError("Release readiness does not render all eight gates")
+    hero = page.locator(".handoff-hero")
+    if hero.get_attribute("data-current-decision") != "READY_WITH_CLAIM_LEVEL_HOLDS":
+        raise AssertionError("Release readiness current-publication machine decision is incorrect")
+    if hero.get_attribute("data-year-decision") != "HOLD_YEAR_ADVANCE":
+        raise AssertionError("Release readiness year-advance machine decision is incorrect")
+    summary = page.locator(".handoff-summary").inner_text()
+    for expected in ("READY WITH CLAIM-LEVEL HOLDS", "HOLD YEAR ADVANCE", "21", "2/4"):
+        if expected not in summary:
+            raise AssertionError(f"Release readiness summary is missing {expected}")
+    gate_text = page.locator("#readiness-gates").inner_text()
+    for expected in ("A01", "A07", "Y01", "27/27", "58 artifact families", "17/17"):
+        if expected not in gate_text:
+            raise AssertionError(f"Release readiness gate matrix is missing {expected}")
+    if page.locator('a[href="downloads/release_readiness.csv"]').count() != 2:
+        raise AssertionError("Release readiness CSV links are missing")
+    if page.locator('a[href="downloads/release_readiness.md"]').count() != 1:
+        raise AssertionError("Release readiness Markdown link is missing")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "not the Presidents' Alliance's internal approval process" not in boundary:
+        raise AssertionError("Release readiness page is missing its portfolio/non-affiliation boundary")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Release readiness horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Release readiness browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -841,6 +882,8 @@ def main() -> int:
                 inspect_research_library(browser, base_url, width=390, height=844)
                 inspect_publication_handoff(browser, base_url, width=1280, height=900)
                 inspect_publication_handoff(browser, base_url, width=390, height=844)
+                inspect_release_readiness(browser, base_url, width=1280, height=900)
+                inspect_release_readiness(browser, base_url, width=390, height=844)
                 inspect_data_governance(browser, base_url, width=1280, height=900)
                 inspect_data_governance(browser, base_url, width=390, height=844)
                 inspect_production_cycle(browser, base_url, width=1280, height=900)
