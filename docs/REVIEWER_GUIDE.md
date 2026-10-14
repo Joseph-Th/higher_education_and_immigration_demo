@@ -17,11 +17,12 @@ Live publication: `https://joseph-th.github.io/higher_education_and_immigration_
 9. Open `deliverables/ipeds_portfolio_analysis.xlsx`. Review the formula-driven executive summary, change the state lookup dropdown, and inspect the reconciliation/benchmark sheets.
 10. Open `deliverables/management_briefing_deck.pptx`. Review the six-slide management story: KPI summary, national trend, state recovery, structural drivers, and interpretation/QA guardrails.
 11. Open `site/sql-analysis.html`. Inspect the six read-only queries and their independent checks, then open `sql/portfolio_queries.sql` to see CTEs, joins, conditional aggregation, ranking, and window functions in executable form.
-12. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
-13. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
-14. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, `data/sql_analysis_audit.csv`, `data/research_library.csv`, `data/production_cycle_register.csv`, `data/production_cycle_log_template.csv`, and `data/public_release_register.csv` to see how automated flags become analyst publication decisions and how coordination/provenance/release authority are retained.
-15. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
-16. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
+12. Open `site/ad-hoc-analysis.html`. Review the three constructed management questions and how each one is narrowed to the minimum useful calculation, tied to a source authority, reconciled, and returned as a short response without inventing a requester or deadline.
+13. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
+14. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
+15. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, `data/sql_analysis_audit.csv`, `data/ad_hoc_analysis_results.csv`, `data/research_library.csv`, `data/production_cycle_register.csv`, `data/production_cycle_log_template.csv`, and `data/public_release_register.csv` to see how automated flags become analyst publication decisions and how coordination/provenance/release authority are retained.
+16. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
+17. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
 
 ## What the project demonstrates
 
@@ -45,6 +46,7 @@ Live publication: `https://joseph-th.github.io/higher_education_and_immigration_
 | Analyze and quality-control data in Excel | `deliverables/ipeds_portfolio_analysis.xlsx` uses formulas, structured tables, state lookup/data validation, reconciliation columns, conditional formatting, benchmark review, and charting |
 | Build management-ready PowerPoint reporting | `deliverables/management_briefing_deck.pptx`, `scripts/build_management_deck.py`, and `deliverables/management_briefing_manifest.json` turn validated outputs into a six-slide KPI/trend/geography/driver/QA briefing with source and builder freshness hashes |
 | Query and reconcile data in SQL | `sql/portfolio_queries.sql`, `scripts/build_sql_analysis.py`, `data/sql_analysis_audit.csv`, and `site/sql-analysis.html` demonstrate read-only joins, grouping, CTEs, conditional aggregation, ranking, and window functions with six independent checks against canonical CSV outputs |
+| Answer bounded ad hoc management questions | `scripts/build_ad_hoc_analysis.py`, `data/ad_hoc_analysis_results.csv`, `docs/AD_HOC_ANALYSIS.md`, and `site/ad-hoc-analysis.html` show three explicitly simulated request-to-response cases with source selection, minimal calculation, reconciliation, and concise delivery |
 | Maintain national and state-level data products | `scripts/build_state_profiles.py` generates 51 state/DC briefs, a machine-readable profile dataset, and `state_profile_index.csv`; `state.html` provides a shareable state-level publication view |
 | Assess emerging data needs and new research opportunities | `data/research_agenda.csv` and `docs/RESEARCH_AGENDA.md` distinguish questions answerable now from questions requiring partner/population-specific data and define proposed methods and decision rules |
 | Organize a Research Library | `data/research_library.csv`, `scripts/build_research_library.py`, and `site/research-library.html` maintain a structured, searchable catalog with population/topic, resource-type, publisher, workflow-stage, source-role, and freshness metadata |

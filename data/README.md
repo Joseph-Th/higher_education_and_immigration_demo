@@ -75,6 +75,10 @@ Intentionally empty 16-field CSV template for the live coordination record descr
 
 One row per public SQL portfolio query. The audit records the query ID/title, demonstrated SQL skills, returned row count, independently calculated expected value, observed SQL value, status, and reconciliation note. `scripts/build_sql_analysis.py` rebuilds an in-memory SQLite database from five canonical processed CSVs, executes `sql/portfolio_queries.sql`, rejects non-read-only SQL, and fails if any expected/observed check differs. No SQLite database file is stored or published.
 
+## `ad_hoc_analysis_results.csv`
+
+Three generated rows representing explicitly simulated one-off management questions. Each row records the business question, generic decision use, concise answer, supporting detail, validated source authority, reconciliation check, and `PASS` status. `scripts/build_ad_hoc_analysis.py` calculates the answers from the canonical state/control/national CSVs and generates `docs/AD_HOC_ANALYSIS.md` plus `site/ad-hoc-analysis.html`. The scenarios contain no real requester, deadline, SLA, or client/employment-history claim.
+
 ## `qa_resolution_log.csv`
 
 Manually curated analyst dispositions for a selected sample of high-priority rows from `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` verifies that each reviewed UNITID still exists in the current high-priority queue and generates `docs/QA_RESOLUTION_LOG.md` plus `qa_resolution_summary.json`.

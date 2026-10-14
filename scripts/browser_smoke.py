@@ -68,6 +68,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/portfolio_queries.sql",
         "downloads/sql_analysis_audit.csv",
         "downloads/sql_analysis.md",
+        "downloads/ad_hoc_analysis_results.csv",
+        "downloads/ad_hoc_analysis.md",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
         "downloads/management_briefing_deck.pptx",
@@ -188,7 +190,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "39" not in summary or "89" not in summary:
+    if "41" not in summary or "91" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -203,6 +205,41 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
         raise AssertionError(f"Data governance horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Data governance browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_ad_hoc_analysis(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/ad-hoc-analysis.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Ad hoc analysis page failed at {width}px")
+    if page.locator('[data-case-id]').count() != 3:
+        raise AssertionError("Ad hoc analysis page does not render all three case cards")
+    summary = page.locator(".handoff-summary").inner_text()
+    if "3" not in summary or "3/3" not in summary:
+        raise AssertionError("Ad hoc analysis summary does not show case/check counts")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "not real client requests" not in boundary or "employment-history claims" not in boundary:
+        raise AssertionError("Ad hoc analysis page is missing its simulation boundary")
+    if page.locator('a[href="downloads/ad_hoc_analysis_results.csv"]').count() != 2:
+        raise AssertionError("Ad hoc result CSV links are missing")
+    if page.locator('a[href="downloads/ad_hoc_analysis.md"]').count() != 1:
+        raise AssertionError("Ad hoc casebook Markdown link is missing")
+    if "86.5%" not in page.locator('[data-case-id="A01"]').inner_text():
+        raise AssertionError("A01 concentration result is missing")
+    if "+29,539" not in page.locator('[data-case-id="A02"]').inner_text():
+        raise AssertionError("A02 national reconciliation is missing")
+    if "+63,400" not in page.locator('[data-case-id="A03"]').inner_text():
+        raise AssertionError("A03 control reconciliation is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Ad hoc analysis horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Ad hoc analysis browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -494,6 +531,8 @@ def main() -> int:
                 inspect_production_cycle(browser, base_url, width=390, height=844)
                 inspect_sql_analysis(browser, base_url, width=1280, height=900)
                 inspect_sql_analysis(browser, base_url, width=390, height=844)
+                inspect_ad_hoc_analysis(browser, base_url, width=1280, height=900)
+                inspect_ad_hoc_analysis(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

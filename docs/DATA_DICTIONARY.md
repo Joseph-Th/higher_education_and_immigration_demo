@@ -386,6 +386,23 @@ One row per query executed from `sql/portfolio_queries.sql` against the transien
 
 `scripts/build_sql_analysis.py` creates an in-memory SQLite database from the national, state, control, latest-institution, and institution-change CSV outputs, executes exactly six SELECT/WITH queries, rejects SQL mutation/DDL/attachment/PRAGMA statements, writes this audit, and generates `docs/SQL_ANALYSIS.md` plus `site/sql-analysis.html`. The SQLite database is ephemeral and is never an analytical authority or public artifact.
 
+## `data/ad_hoc_analysis_results.csv`
+
+One row per explicitly simulated ad hoc management question.
+
+| Field | Definition |
+| --- | --- |
+| `case_id` | Stable ordered case identifier (`A01`-`A03`) |
+| `business_question` | Constructed management question used to demonstrate bounded analysis |
+| `decision_use` | Generic explanation of how the answer could guide follow-up analysis or communication; not a claim about a real stakeholder |
+| `primary_answer` | Concise answer produced from validated analytical outputs |
+| `response_detail` | Small amount of supporting context needed to interpret the answer |
+| `source_authority` | Canonical processed CSV path(s) used for the calculation |
+| `qa_check` | Reconciliation or accounting identity used to validate the result |
+| `status` | `PASS` only when the case calculation and required reconciliation succeed |
+
+`scripts/build_ad_hoc_analysis.py` regenerates all three cases from the validated state, control, and national outputs and writes the CSV, `docs/AD_HOC_ANALYSIS.md`, and `site/ad-hoc-analysis.html`. The generated products must retain the explicit portfolio-simulation boundary and must not introduce real or invented requester identities, deadlines, SLAs, or employment-history claims.
+
 ## JSON products
 
 `data/qa_report.json` contains structural checks, yearly source/flag distributions, row counts, and explicit exclusions.

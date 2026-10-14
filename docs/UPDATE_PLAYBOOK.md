@@ -131,6 +131,8 @@ Regenerate `deliverables/management_briefing_deck.pptx` with `python scripts/bui
 
 Rebuild the SQL analysis with `python scripts/build_sql_analysis.py` after the processed CSV outputs are current. Review `sql/portfolio_queries.sql` if a source schema, year coverage, or analytical question changed; all six queries must still execute as read-only SELECT/WITH statements and every row in `data/sql_analysis_audit.csv` must remain `PASS`. The SQLite database is transient and should not be promoted into a separate source-of-truth file.
 
+Regenerate the ad hoc casebook with `python scripts/build_ad_hoc_analysis.py`. Confirm that the three simulated questions still represent useful bounded management requests, every case-level QA check is `PASS`, and the page/notes continue to state that the scenarios are not real client requests, SLAs, or employment-history claims. Update a scenario only when it can still be answered directly from a validated authority and reconciled transparently.
+
 Regenerate all state profiles with `python scripts/build_state_profiles.py`. Review the profile index for outliers, then spot-check at least one growing state, one declining state, and one small-count state. Confirm the state explorer links to the matching generated profile after browser QA.
 
 Review `data/research_agenda.csv` after the new release. Close, reframe, or reprioritize questions whose evidence trigger has changed; add new questions only when the population, decision need, required data, proposed method, and interpretation boundary can be stated explicitly. Regenerate `docs/RESEARCH_AGENDA.md` through the normal validation lane.
@@ -172,6 +174,7 @@ An annual update is complete only when:
 - external benchmark differences are understood and recorded;
 - public findings are re-reviewed rather than carried forward automatically;
 - the SQL query pack executes against the refreshed processed outputs and every independent reconciliation check is `PASS`;
+- the three ad hoc portfolio scenarios have been regenerated from the refreshed outputs, all case-level checks pass, and the simulation boundary remains explicit;
 - the PowerPoint deck has been regenerated from the refreshed validated outputs, its source/builder/PPTX hashes are current, and all six slides have been visually inspected;
 - the population/source crosswalk has been re-reviewed when companion-source definitions or vintages changed;
 - the public-release register has been re-reviewed and the exact allowlisted public tree passes with no unregistered files;

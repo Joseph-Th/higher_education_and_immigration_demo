@@ -24,6 +24,7 @@ def main() -> int:
         ("Cross-year schema audit", [PYTHON, "scripts/audit_ipeds_schema.py"]),
         ("Build normalized analysis", [PYTHON, "scripts/build_analysis.py"]),
         ("Build SQL analysis", [PYTHON, "scripts/build_sql_analysis.py"]),
+        ("Build ad hoc analysis casebook", [PYTHON, "scripts/build_ad_hoc_analysis.py"]),
         ("Build latest-release review", [PYTHON, "scripts/build_update_review.py"]),
         ("Build QA resolution log", [PYTHON, "scripts/build_qa_resolution_log.py"]),
         ("Build research library", [PYTHON, "scripts/build_research_library.py"]),
