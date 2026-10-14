@@ -76,6 +76,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/ad_hoc_analysis.md",
         "downloads/state_recovery_analysis.csv",
         "downloads/state_recovery_analysis.md",
+        "downloads/undergraduate_shift_baseline.csv",
+        "downloads/undergraduate_shift_baseline.md",
         "downloads/private_nonprofit_growth.csv",
         "downloads/private_nonprofit_growth.md",
         "downloads/population_trend_comparison.csv",
@@ -315,6 +317,49 @@ def inspect_state_recovery(browser, base_url: str, *, width: int, height: int) -
     context.close()
 
 
+def inspect_undergraduate_shift(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/undergraduate-shift.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Undergraduate shift page failed at {width}px")
+    summary = page.locator(".handoff-summary").inner_text()
+    for expected in ("+31,592", "45/51", "3", "20.6%"):
+        if expected not in summary:
+            raise AssertionError(f"Undergraduate shift summary is missing {expected}")
+    if page.locator("#annual-context tbody tr").count() != 9:
+        raise AssertionError("Undergraduate shift annual context does not contain all nine intervals")
+    tables = page.locator("#state-breadth tbody")
+    if tables.count() != 2 or tables.nth(0).locator("tr").count() != 10 or tables.nth(1).locator("tr").count() != 6:
+        raise AssertionError("Undergraduate shift state tables do not contain 10 gains and 6 declines")
+    first_gain = tables.nth(0).locator("tr").first.inner_text()
+    if "Florida" not in first_gain or "+6,418" not in first_gain:
+        raise AssertionError("Undergraduate shift gain table does not begin with the validated Florida result")
+    first_decline = tables.nth(1).locator("tr").first.inner_text()
+    if "California" not in first_decline or "-1,490" not in first_decline:
+        raise AssertionError("Undergraduate shift decline table does not begin with the validated California result")
+    body_text = page.locator("main").inner_text()
+    for expected in ("Public +28,580", "entry/exit nets to -340", "largest positive annual undergraduate movement"):
+        if expected not in body_text:
+            raise AssertionError(f"Undergraduate shift page is missing validated context {expected}")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "does not establish persistence or causation" not in boundary or "R01 remains open" not in boundary:
+        raise AssertionError("Undergraduate shift page is missing its persistence boundary")
+    if page.locator('a[href="downloads/undergraduate_shift_baseline.csv"]').count() != 2:
+        raise AssertionError("Undergraduate shift CSV links are missing")
+    if page.locator('a[href="downloads/undergraduate_shift_baseline.md"]').count() != 1:
+        raise AssertionError("Undergraduate shift Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Undergraduate shift horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Undergraduate shift browser errors: " + " | ".join(errors))
+    context.close()
+
+
 def inspect_data_governance(browser, base_url: str, *, width: int, height: int) -> None:
     context = browser.new_context(viewport={"width": width, "height": height})
     page = context.new_page()
@@ -325,7 +370,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "58" not in summary or "108" not in summary:
+    if "60" not in summary or "110" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -364,7 +409,7 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
         if expected not in summary:
             raise AssertionError(f"Release readiness summary is missing {expected}")
     gate_text = page.locator("#readiness-gates").inner_text()
-    for expected in ("A01", "A07", "Y01", "27/27", "58 artifact families", "17/17"):
+    for expected in ("A01", "A07", "Y01", "27/27", "60 artifact families", "17/17"):
         if expected not in gate_text:
             raise AssertionError(f"Release readiness gate matrix is missing {expected}")
     if page.locator('a[href="downloads/release_readiness.csv"]').count() != 2:
@@ -794,8 +839,8 @@ def inspect_publication_handoff(browser, base_url: str, *, width: int, height: i
     response = page.goto(f"{base_url}/publication-handoff.html", wait_until="networkidle")
     if response is None or not response.ok:
         raise AssertionError(f"Publication handoff page failed at {width}px")
-    if page.locator(".handoff-card").count() != 14:
-        raise AssertionError("Publication handoff does not render the expected 14 claim/control cards")
+    if page.locator(".handoff-card").count() != 15:
+        raise AssertionError("Publication handoff does not render the expected 15 claim/control cards")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Publication handoff does not show all five publication gates")
     if "Portfolio demonstration" not in page.locator(".handoff-hero .release-note").inner_text():
@@ -805,7 +850,7 @@ def inspect_publication_handoff(browser, base_url: str, *, width: int, height: i
     if "1,044,137" not in page.locator(".handoff-card").first.inner_text():
         raise AssertionError("Publication handoff headline card does not contain the validated national total")
     handoff_text = page.locator("#handoff-register").inner_text()
-    for expected in ("M02", "P01", "G01", "70.7%", "70.4%", "not addable", "zero inferred internal deadlines"):
+    for expected in ("N06", "M02", "P01", "G01", "+31,592", "45 of 51 states/DC", "70.7%", "70.4%", "not addable", "zero inferred internal deadlines"):
         if expected not in handoff_text:
             raise AssertionError(f"Publication handoff is missing expanded control {expected}")
     overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
@@ -894,6 +939,8 @@ def main() -> int:
                 inspect_ad_hoc_analysis(browser, base_url, width=390, height=844)
                 inspect_state_recovery(browser, base_url, width=1280, height=900)
                 inspect_state_recovery(browser, base_url, width=390, height=844)
+                inspect_undergraduate_shift(browser, base_url, width=1280, height=900)
+                inspect_undergraduate_shift(browser, base_url, width=390, height=844)
                 inspect_private_nonprofit_growth(browser, base_url, width=1280, height=900)
                 inspect_private_nonprofit_growth(browser, base_url, width=390, height=844)
                 inspect_qa_review(browser, base_url, width=1280, height=900)

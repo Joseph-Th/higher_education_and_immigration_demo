@@ -84,6 +84,7 @@ Then review the newly generated:
 - `docs/BRIEFING_NOTE.md`.
 - `docs/RESEARCH_MEMO.md` and `site/research-memo.html`.
 - `docs/POPULATION_CROSSWALK.md` and `site/methodology-crosswalk.html` when source definitions or companion-source vintages changed.
+- `data/undergraduate_shift_baseline.csv`, `docs/UNDERGRADUATE_SHIFT_BASELINE.md`, and `site/undergraduate-shift.html` as the fixed R01 comparison baseline.
 - `data/publication_handoff.csv`, `docs/PUBLICATION_HANDOFF.md`, and `site/publication-handoff.html`.
 - `data/release_readiness.csv`, `docs/RELEASE_READINESS.md`, and `site/release-readiness.html`.
 - `data/public_release_register.csv`, `docs/DATA_GOVERNANCE.md`, and `site/data-governance.html`.
@@ -140,6 +141,8 @@ Regenerate the ad hoc casebook with `python scripts/build_ad_hoc_analysis.py`. C
 
 Regenerate the planning/variance artifact with `python scripts/build_planning_scenarios.py`. Confirm the 2024 backtest still reconciles exactly to the current national authority, the three forward planning cases remain ordered from lower to upper, and no future scenario is presented as an observed or statistically predicted IPEDS value. When a new actual year becomes available, convert the prior forward case into an actual-versus-plan variance review before rolling the scenarios forward.
 
+For R01, preserve `data/undergraduate_shift_baseline.csv` as the fixed 2023-2024 comparison rather than rolling its endpoint years forward. The baseline establishes +31,592 national undergraduate change, growth in 45 of 51 states/DC, the institutional-control decomposition, institution-continuity accounting, and concentration measures before the next release is observed. Once a complete new Fall Enrollment and directory package passes schema review, calculate the new latest-year undergraduate change separately and classify the shift as broadly persistent only if national undergraduate change remains positive and at least 26 of 51 states/DC also show undergraduate growth. Report magnitude and concentration separately and do not infer a cause from persistence alone.
+
 Regenerate all state profiles with `python scripts/build_state_profiles.py`. Review the profile index for outliers, then spot-check at least one growing state, one declining state, and one small-count state. Confirm the state explorer links to the matching generated profile after browser QA.
 
 Review `data/research_agenda.csv` after the new release. Close, reframe, or reprioritize questions whose evidence trigger has changed; add new questions only when the population, decision need, required data, proposed method, and interpretation boundary can be stated explicitly. Regenerate `docs/RESEARCH_AGENDA.md` through the normal validation lane.
@@ -190,6 +193,7 @@ An annual update is complete only when:
 - the SQL query pack executes against the refreshed processed outputs and every independent reconciliation check is `PASS`;
 - the three ad hoc portfolio scenarios have been regenerated from the refreshed outputs, all case-level checks pass, and the simulation boundary remains explicit;
 - the planning/variance artifact has been regenerated from the refreshed national series, the backtest reconciles, and forward scenarios remain explicitly non-predictive;
+- the fixed 2023-2024 R01 undergraduate baseline still reconciles and, after a later complete release becomes available, the new latest-year result has been evaluated separately against the pre-specified national-direction and majority-of-states persistence rule rather than overwriting the baseline;
 - the PowerPoint deck has been regenerated from the refreshed validated outputs, its source/builder/PPTX hashes are current, and all six slides have been visually inspected;
 - the population/source crosswalk has been re-reviewed when companion-source definitions or vintages changed;
 - the source-update triage register still covers every maintained Research Library resource and the applied route matches the kind of source change observed;

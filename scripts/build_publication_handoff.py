@@ -61,6 +61,7 @@ def main() -> int:
     population_trends = read_csv(DATA / "population_trend_comparison.csv")
     pipeline = read_csv(DATA / "undocumented_pipeline_comparison.csv")
     source_triage = read_csv(DATA / "source_update_triage.csv")
+    undergraduate_baseline = read_csv(DATA / "undergraduate_shift_baseline.csv")
     library = {row["resource_id"]: row for row in read_csv(DATA / "research_library.csv")}
     crosswalk = {row["population_id"]: row for row in read_csv(DATA / "population_crosswalk.csv")}
 
@@ -107,6 +108,21 @@ def main() -> int:
     status = findings["coverage"]["latest_data_status"]
     nonprofit = controls["Private nonprofit"]
     benchmark_passed = sum(row["status"] == "PASS" for row in benchmark)
+    if len(undergraduate_baseline) != 51:
+        raise RuntimeError("Publication handoff requires the complete 51-state/DC R01 baseline")
+    baseline_undergraduate_change = sum(
+        int(row["undergraduate_change"]) for row in undergraduate_baseline
+    )
+    baseline_positive_states = sum(
+        int(row["undergraduate_change"]) > 0 for row in undergraduate_baseline
+    )
+    baseline_public_change = sum(
+        int(row["public_undergraduate_change"]) for row in undergraduate_baseline
+    )
+    if baseline_undergraduate_change != latest["undergraduate_change"]:
+        raise RuntimeError("Publication handoff R01 baseline does not reconcile to latest undergraduate change")
+    if baseline_positive_states != 45:
+        raise RuntimeError("Publication handoff R01 state breadth changed unexpectedly")
 
     rows = [
         {
@@ -167,6 +183,18 @@ def main() -> int:
             "research_library_id": f"ef{END_YEAR}a",
             "qa_gate": "Student-level changes reconcile exactly to the national annual change and the institution-accounting bridge.",
             "release_disclosure": "One annual movement is not treated as evidence of a durable trend change.",
+            "publication_status": "READY WITH CONTEXT",
+        },
+        {
+            "claim_id": "N06",
+            "surface": "R01 current-data baseline",
+            "claim_type": "Latest-year breadth / persistence baseline",
+            "public_copy": f"The {prior_year}-{END_YEAR} undergraduate increase was {signed_int(baseline_undergraduate_change)} and was positive in {baseline_positive_states} of 51 states/DC; public institutions contributed {signed_int(baseline_public_change)}.",
+            "authority": "data/undergraduate_shift_baseline.csv",
+            "source_locator": "51 state/DC rows; undergraduate_change; public_undergraduate_change; institution-continuity accounting",
+            "research_library_id": f"ef{END_YEAR}a",
+            "qa_gate": "State, institutional-control, and institution-continuity undergraduate decompositions reconcile to the national latest-year change; annual history fixes the pre-next-release baseline.",
+            "release_disclosure": "This establishes the 2024 comparison baseline but does not answer persistence; the next complete Fall Enrollment release must pass schema review before R01 is classified.",
             "publication_status": "READY WITH CONTEXT",
         },
         {
@@ -300,9 +328,9 @@ def main() -> int:
         "",
         "This is a portfolio demonstration of the final QA/QC handoff between validated analysis and a public data-page refresh. It does **not** represent the Presidents' Alliance's internal publication workflow or approval chain.",
         "",
-        f"**Current release:** Fall {END_YEAR} ({status})  ",
-        f"**Claim/register rows:** {len(rows)}  ",
-        f"**State/DC profiles:** {len(states)}  ",
+        f"**Current release:** Fall {END_YEAR} ({status})",
+        f"**Claim/register rows:** {len(rows)}",
+        f"**State/DC profiles:** {len(states)}",
         f"**External benchmark checks:** {benchmark_passed}/{len(benchmark)} PASS",
         "",
         "## Publication claims",

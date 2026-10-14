@@ -519,6 +519,35 @@ One row per maintained Research Library resource. The register implements R07 by
 
 `scripts/build_source_update_triage.py` requires exact one-for-one coverage of the Research Library, validates the controlled routes, requires R07 to remain linked to the implemented product, and generates `docs/SOURCE_UPDATE_TRIAGE.md` plus `site/source-update-triage.html`. The routing model does not infer internal partner schedules or approval processes.
 
+## `data/undergraduate_shift_baseline.csv`
+
+One fixed 2023-2024 R01 baseline row per state/DC. The product is intentionally anchored to those years even after the project later advances, so the next complete Fall Enrollment release can be compared against a pre-specified baseline.
+
+| Field | Definition |
+| --- | --- |
+| `state` / `state_name` | Two-letter geography code and readable state/DC name |
+| `undergraduate_2023` / `undergraduate_2024` | Endpoint undergraduate U.S. nonresident enrollment used by the fixed baseline |
+| `undergraduate_change` | 2024 minus 2023 undergraduate enrollment |
+| `graduate_change` | 2024 minus 2023 graduate enrollment |
+| `total_change` | 2024 minus 2023 total U.S. nonresident enrollment; must equal undergraduate plus graduate change |
+| `undergraduate_direction` | `Increase`, `Decline`, or `Flat` based on `undergraduate_change` |
+| `public_undergraduate_change` | Undergraduate change at public institutions in the state, using endpoint control classification |
+| `private_nonprofit_undergraduate_change` | Undergraduate change at private nonprofit institutions |
+| `private_forprofit_undergraduate_change` | Undergraduate change at private for-profit institutions |
+| `continuing_undergraduate_change` | Undergraduate change among UNITIDs present in the state's analytic universe in both 2023 and 2024 |
+| `entered_undergraduate_enrollment` | 2024 undergraduate enrollment at UNITIDs entering the state's endpoint analytic universe |
+| `exited_undergraduate_enrollment` | 2023 undergraduate enrollment at UNITIDs exiting the state's endpoint analytic universe; subtracted in the accounting identity |
+| `undergraduate_accounting_net` | `continuing + entered - exited`; must equal `undergraduate_change` |
+| `directional_institution_movement` | Gross institution movement in the state's undergraduate net direction |
+| `offsetting_institution_movement` | Gross institution movement opposite the state's undergraduate net direction |
+| `top3_directional_contribution` | Sum of the three largest institution contributions aligned with the state's net undergraduate direction |
+| `top3_directional_share_pct` | Top-three directional contribution divided by gross directional institution movement |
+| `positive_state_rank` | Rank among states/DC with positive undergraduate change; blank for nonpositive states |
+| `share_of_gross_positive_state_pct` | Positive state's contribution to gross positive state undergraduate movement |
+| `cumulative_positive_state_share_pct` | Cumulative gross-positive state share through that positive-state rank |
+
+`scripts/build_undergraduate_shift_baseline.py` validates all 51 geographies, reconciles student level, institutional control, and institution-continuity accounting independently, fixes the 2015-2024 annual comparison history, and generates `docs/UNDERGRADUATE_SHIFT_BASELINE.md` plus `site/undergraduate-shift.html`. The output is a persistence baseline rather than evidence that the shift persisted. The next complete Fall Enrollment release must pass schema review before R01 can be classified under the pre-specified national-direction and majority-of-states rule.
+
 ## `data/planning_scenarios.csv`
 
 One backtest row plus three forward planning-scenario rows generated from the validated national series.
@@ -575,7 +604,7 @@ Eight generated release-control rows that consolidate the project's independent 
 | `authority` | Canonical project file or manifest used by the control |
 | `next_action` | Bounded action required if the evidence changes or the gate remains held |
 
-`scripts/build_release_readiness.py` requires all core analytical and benchmark checks to pass, complete current high-priority institution-review coverage, the full 14-row publication handoff, one-for-one Research Library routing, valid public-release registration, current PDF/PowerPoint freshness manifests, and a release snapshot that reconciles to the four candidate-year file observations. The current-release summary may be `READY_WITH_CLAIM_LEVEL_HOLDS` while institution-specific explanations remain gated; the independent year-advance summary remains `HOLD_YEAR_ADVANCE` until the complete candidate package is available and schema review can begin. The builder generates `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
+`scripts/build_release_readiness.py` requires all core analytical and benchmark checks to pass, complete current high-priority institution-review coverage, the full 15-row publication handoff, one-for-one Research Library routing, valid public-release registration, current PDF/PowerPoint freshness manifests, and a release snapshot that reconciles to the four candidate-year file observations. The current-release summary may be `READY_WITH_CLAIM_LEVEL_HOLDS` while institution-specific explanations remain gated; the independent year-advance summary remains `HOLD_YEAR_ADVANCE` until the complete candidate package is available and schema review can begin. The builder generates `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
 
 ## JSON products
 

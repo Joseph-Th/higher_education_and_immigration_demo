@@ -99,6 +99,10 @@ One row per public SQL portfolio query. The audit records the query ID/title, de
 
 Three generated rows representing explicitly simulated one-off management questions. Each row records the business question, generic decision use, concise answer, supporting detail, validated source authority, reconciliation check, and `PASS` status. `scripts/build_ad_hoc_analysis.py` calculates the answers from the canonical state/control/national CSVs and generates `docs/AD_HOC_ANALYSIS.md` plus `site/ad-hoc-analysis.html`. The scenarios contain no real requester, deadline, SLA, or client/employment-history claim.
 
+## `undergraduate_shift_baseline.csv`
+
+Fifty-one generated state/DC rows forming the fixed 2023-2024 R01 comparison baseline. Each row records undergraduate, graduate, and total latest-year change; decomposes undergraduate movement independently by institutional control and institution continuity; measures gross directional versus offsetting institution movement; and ranks positive state contributions to gross positive state movement. `scripts/build_undergraduate_shift_baseline.py` also fixes the 2015-2024 annual context, validates +31,592 undergraduate / -2,053 graduate / +29,539 total change, and generates `docs/UNDERGRADUATE_SHIFT_BASELINE.md` plus `site/undergraduate-shift.html`. The artifact does not roll forward when `END_YEAR` changes: it remains the 2023-2024 baseline against which the next complete Fall Enrollment release will be tested.
+
 ## `planning_scenarios.csv`
 
 Four generated rows for planning support: one 2024 backtest and three 2025 planning cases. The backtest applies the 2021-2023 CAGR to the 2023 actual, records the resulting 2024 baseline, and compares it with the known 2024 actual. The forward cases apply three transparent historical growth windows to the 2024 actual and deliberately leave future actual/variance fields blank. `scripts/build_planning_scenarios.py` generates the CSV, `docs/PLANNING_SCENARIOS.md`, and `site/planning-scenarios.html`; the artifact is a planning exercise rather than a predictive model.

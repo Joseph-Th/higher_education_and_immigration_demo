@@ -4,7 +4,7 @@ This portfolio control consolidates the project gates required to distinguish a 
 
 - **Current 2024 publication decision:** `READY_WITH_CLAIM_LEVEL_HOLDS`
 - **Candidate 2025 year-advance decision:** `HOLD_YEAR_ADVANCE`
-- **Candidate package observation:** 2/4 required assets available at `2026-10-14T15:06:36+00:00`
+- **Candidate package observation:** 2/4 required assets available at `2026-10-14T15:33:16+00:00`
 - **Institution-specific claims still held:** 21
 
 The current aggregate publication can remain release-ready while named institution explanations are held. Separately, a partial candidate-year package blocks changing `END_YEAR`; it does not invalidate the already-validated current-year publication.
@@ -16,11 +16,11 @@ The current aggregate publication can remain release-ready while named instituti
 | A01 | Current release | Analytical QA | PASS | Yes | No | 8/8 structural/arithmetic pipeline checks PASS. |
 | A02 | Current release | External benchmark | PASS | Yes | No | 24/24 NCES Digest consistency checks PASS. |
 | A03 | Current release | High-priority institution review | PASS_WITH_CLAIM_HOLDS | Yes | No | 27/27 high-priority records reviewed; 6 safe with context and 21 institution-specific claims held. |
-| A04 | Current release | Publication handoff | PASS_WITH_CLAIM_HOLDS | Yes | No | 14 publication claims/controls have valid authorities, QA gates, disclosures, and release statuses; Q01 preserves claim-level holds. |
-| A05 | Current release | Public release register | PASS | Yes | No | 58 artifact families are explicitly PUBLIC; none contain person-level or observed immigration-status data. |
+| A04 | Current release | Publication handoff | PASS_WITH_CLAIM_HOLDS | Yes | No | 15 publication claims/controls have valid authorities, QA gates, disclosures, and release statuses; Q01 preserves claim-level holds. |
+| A05 | Current release | Public release register | PASS | Yes | No | 60 artifact families are explicitly PUBLIC; none contain person-level or observed immigration-status data. |
 | A06 | Current release | Presentation artifact freshness | PASS | Yes | No | PDF manifest matches its source and 3-page file; PowerPoint manifest matches its builder, 6 sources, and 6-slide file. |
 | A07 | Current release | Maintained-source routing coverage | PASS | Yes | No | 17/17 Research Library sources have an explicit refresh/escalation route. |
-| Y01 | Year advance | Candidate 2025 IPEDS package | HOLD | No | Yes | 2/4 required candidate-year assets available at 2026-10-14T15:06:36+00:00; snapshot decision=HOLD_YEAR_ADVANCE. |
+| Y01 | Year advance | Candidate 2025 IPEDS package | HOLD | No | Yes | 2/4 required candidate-year assets available at 2026-10-14T15:33:16+00:00; snapshot decision=HOLD_YEAR_ADVANCE. |
 
 ## Decision boundary
 

@@ -31,7 +31,8 @@ How did fall enrollment of U.S. nonresident students change nationally and acros
 6. How did trends differ across public, private nonprofit, and private for-profit institutions?
 7. Is the national change driven by enrollment changes at continuing institutions, or by changes in which institutions are in the analytic universe?
 8. What changed in the newest annual release, and which institution-level changes warrant analyst review before publication?
-9. Where do public 2023 undocumented high-school graduate and undocumented higher-education estimates overlap geographically, and what can that same-year ecological context support without being misread as an individual transition rate?
+9. How broad was the 2023-2024 undergraduate increase across states, institutional controls, and institutions, and what fixed baseline should be used to test persistence when the next Fall Enrollment release arrives?
+10. Where do public 2023 undocumented high-school graduate and undocumented higher-education estimates overlap geographically, and what can that same-year ecological context support without being misread as an individual transition rate?
 
 ## Evidence standard
 
@@ -81,6 +82,7 @@ A concise PDF version should also be available for reviewers who expect a conven
 - public six-query SQL analysis pack demonstrating joins, CTEs, grouping, conditional aggregation, ranking, and window functions against an ephemeral SQLite database rebuilt from validated CSV outputs.
 - explicit three-case ad hoc analysis casebook demonstrating how bounded management questions are clarified, answered from validated authorities, reconciled, and returned concisely without fabricating requesters, deadlines, or client history.
 - state recovery decomposition that explains the 2019-2024 state outcomes with exact undergraduate/graduate, institutional-control, and institution-continuity accounting plus a concentration measure for leading institution contributors.
+- fixed 2023-2024 undergraduate-shift baseline for R01 that measures state breadth, institutional-control and institution-continuity accounting, state/institution concentration, and the 2015-2024 annual context while preserving the next-release persistence decision as pending.
 - private-nonprofit growth concentration analysis that reconciles institution endpoint contributions to the sector total, separates undergraduate/graduate change, measures concentration against gross positive movement, and carries current latest-release QA gates for named institutions.
 - planning-scenario and variance artifact that backtests a transparent historical-growth baseline against the known 2024 actual and presents three 2025 planning anchors without claiming a predictive model or observed future value.
 - dated release/freshness monitoring artifact that preserves the current next-year NCES availability observation, applies a complete-package year-advance gate, retains source-review dates, and exposes recurring-product triggers without inventing future deadlines.

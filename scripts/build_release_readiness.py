@@ -50,6 +50,7 @@ EXPECTED_HANDOFF_IDS = {
     "N03",
     "N04",
     "N05",
+    "N06",
     "S01",
     "C01",
     "I01",
