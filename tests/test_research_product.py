@@ -303,7 +303,7 @@ class ResearchProductTests(unittest.TestCase):
         by_unitid = {row["unitid"]: row for row in analysis}
         self.assertEqual(by_unitid["414878"]["narrative_gate"], "safe_with_context")
         self.assertEqual(by_unitid["156541"]["narrative_gate"], "hold_for_confirmation")
-        self.assertEqual(by_unitid["179894"]["narrative_gate"], "high-priority review unresolved")
+        self.assertEqual(by_unitid["179894"]["narrative_gate"], "safe_with_context")
         self.assertEqual(by_unitid["195173"]["narrative_gate"], "hold_for_confirmation")
         self.assertEqual(
             by_unitid["488679"]["endpoint_status"],
@@ -319,7 +319,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("**729** positive contributors", rendered)
         self.assertIn("Broadly distributed beyond the top 10", html)
         self.assertIn("Hold for confirmation", html)
-        self.assertIn("High-priority review unresolved", html)
+        self.assertIn("Safe with context", html)
 
     def test_institution_change_summary_reconciles(self) -> None:
         summary = rows(ROOT / "data" / "processed" / "institution_change_summary.csv")
@@ -806,9 +806,23 @@ class ResearchProductTests(unittest.TestCase):
         summary = json.loads(
             (ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(len(log), 11)
+        high_priority = [row for row in queue.values() if row["review_priority"] == "high"]
+        high_priority_order = [
+            row["unitid"]
+            for row in rows(ROOT / "data" / "processed" / "latest_release_institution_review.csv")
+            if row["review_priority"] == "high"
+        ]
+        self.assertEqual(len(log), 27)
+        self.assertEqual(len(log), len(high_priority))
+        self.assertEqual([row["unitid"] for row in log], high_priority_order)
         self.assertEqual(len({row["unitid"] for row in log}), len(log))
         self.assertEqual(summary["reviewed_count"], len(log))
+        self.assertEqual(summary["high_priority_total"], len(high_priority))
+        self.assertEqual(summary["coverage_pct"], 100.0)
+        self.assertTrue(summary["required_high_priority_covered"])
+        self.assertEqual(set(summary["required_high_priority_unitids"]), {row["unitid"] for row in high_priority})
+        self.assertEqual(summary["safe_with_context"], 6)
+        self.assertEqual(summary["hold_for_confirmation"], 21)
         self.assertTrue(summary["required_top_10_covered"])
         expected_top_10 = [
             row["unitid"]
@@ -820,8 +834,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(
             summary["safe_with_context"] + summary["hold_for_confirmation"], len(log)
         )
-        self.assertGreaterEqual(summary["safe_with_context"], 2)
-        self.assertGreaterEqual(summary["hold_for_confirmation"], 1)
+        self.assertEqual(set(queue_row["unitid"] for queue_row in high_priority), {row["unitid"] for row in log})
         self.assertEqual(len(summary["case_studies"]), 3)
         self.assertEqual(
             {case["case_type"] for case in summary["case_studies"]},
@@ -839,9 +852,14 @@ class ResearchProductTests(unittest.TestCase):
             self.assertIn(row["publication_class"], {"safe_with_context", "hold_for_confirmation"})
             self.assertTrue(row["evidence_url"].startswith("https://"))
         rendered = (ROOT / "docs" / "QA_RESOLUTION_LOG.md").read_text(encoding="utf-8")
+        qa_html = (ROOT / "site" / "qa-review.html").read_text(encoding="utf-8")
         for row in log:
             self.assertIn(row["institution"], rendered)
             self.assertIn(row["evidence_url"], rendered)
+            self.assertIn(html_module.escape(row["institution"]), qa_html)
+            self.assertIn(html_module.escape(row["evidence_url"], quote=True), qa_html)
+        self.assertIn("27/27", qa_html)
+        self.assertIn("100%", qa_html)
         self.assertEqual(self.site_data["qa_resolution_summary"], summary)
 
     def test_research_memo_tracks_validated_outputs(self) -> None:
@@ -1051,6 +1069,7 @@ class ResearchProductTests(unittest.TestCase):
             "ad-hoc-analysis.html",
             "state-recovery.html",
             "private-nonprofit-growth.html",
+            "qa-review.html",
             "planning-scenarios.html",
             "freshness-monitor.html",
             "research-library.html",

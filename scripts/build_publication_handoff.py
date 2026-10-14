@@ -186,7 +186,7 @@ def main() -> int:
             "authority": "data/qa_resolution_log.csv",
             "source_locator": "publication_class; disposition; evidence_url",
             "research_library_id": "ipeds_complete_data",
-            "qa_gate": "The required reviewed sample covers the ten highest-impact current high-priority rows; evidence links are separately health-checked.",
+            "qa_gate": f"All {resolution['high_priority_total']} current high-priority rows have explicit publication dispositions; evidence links are separately health-checked.",
             "release_disclosure": "Automated flags are triage, not corrections; held records remain in official aggregate calculations.",
             "publication_status": "READY WITH CLAIM-LEVEL HOLDS",
         },

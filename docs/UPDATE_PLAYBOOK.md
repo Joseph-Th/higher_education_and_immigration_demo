@@ -91,7 +91,7 @@ For institution-level claims, update `data/qa_resolution_log.csv` with the evide
 
 Run `python scripts/build_qa_resolution_log.py` after editing the log. The build will fail if a reviewed UNITID is no longer in the current high-priority queue, which is intentional: manual dispositions belong to a specific release and must be reconsidered when the queue changes.
 
-The required reviewed sample must include the ten highest-impact current high-priority rows in queue order; additional cases can be included for distinct structural scenarios such as confirmed closures. Run `python scripts/check_qa_evidence.py` before publication to catch broken evidence links. HTTP 401/403 results require manual browser verification rather than automatic removal of the evidence record.
+The QA resolution log must cover every current high-priority row in queue order. The build fails when a high-priority record lacks a disposition, when a reviewed record is no longer high priority, or when the evidence record is structurally invalid. Run `python scripts/check_qa_evidence.py` before publication to catch broken evidence links. HTTP 401/403 results require manual browser verification rather than automatic removal of the evidence record.
 
 ## 6. Refresh the external benchmark
 

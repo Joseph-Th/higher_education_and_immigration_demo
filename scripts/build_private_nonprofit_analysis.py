@@ -56,7 +56,6 @@ def gate_label(value: object) -> str:
     labels = {
         "safe_with_context": "Safe with context",
         "hold_for_confirmation": "Hold for confirmation",
-        "high-priority review unresolved": "High-priority review unresolved",
         "not high-priority in latest release queue": "Not high-priority in latest release queue",
     }
     return labels.get(str(value), str(value).replace("_", " ").capitalize())
@@ -141,7 +140,11 @@ def build_rows() -> list[dict[str, object]]:
         resolution_row = resolution.get(unitid)
         publication_class = resolution_row["publication_class"] if resolution_row else ""
         if review_priority == "high":
-            narrative_gate = publication_class or "high-priority review unresolved"
+            if not publication_class:
+                raise RuntimeError(
+                    f"High-priority latest-release record lacks QA resolution for UNITID {unitid}"
+                )
+            narrative_gate = publication_class
         else:
             narrative_gate = "not high-priority in latest release queue"
 

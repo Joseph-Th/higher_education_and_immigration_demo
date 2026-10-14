@@ -154,6 +154,8 @@ Institutions entering or leaving the analytic universe are always surfaced at lo
 
 The review also reconciles the newest national change independently across undergraduate/graduate components, state totals, and institution-universe accounting. A failure in any reconciliation stops the build.
 
+`scripts/build_qa_resolution_log.py` is the separate analyst-disposition gate for the current high-priority queue. It requires every high-priority UNITID to have an evidence-backed `safe_with_context` or `hold_for_confirmation` decision in the same deterministic queue order, rejects missing or extra records, and never rewrites an IPEDS value. A new release therefore invalidates stale manual dispositions until the refreshed high-priority queue has been reviewed again.
+
 ### Independent benchmark
 
 The pipeline compares four national measures for each year from 2019 through 2024 against NCES Digest of Education Statistics 2025, Table 306.10: total fall enrollment, total U.S. nonresident enrollment, undergraduate U.S. nonresident enrollment, and graduate/postbaccalaureate U.S. nonresident enrollment.

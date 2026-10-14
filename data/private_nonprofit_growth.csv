@@ -9,7 +9,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 101541,Judson College,AL,,Left private-nonprofit endpoint universe,7,0,-7,-7,0,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
 101675,Miles College,AL,AL,Private nonprofit in both endpoints,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 101693,University of Mobile,AL,AL,Private nonprofit in both endpoints,70,32,-38,-41,3,none,,not high-priority in latest release queue,,,,Nonpositive contribution
-101912,Oakwood University,AL,AL,Private nonprofit in both endpoints,119,0,-119,-118,-1,high,,high-priority review unresolved,,,,Nonpositive contribution
+101912,Oakwood University,AL,AL,Private nonprofit in both endpoints,119,0,-119,-118,-1,high,hold_for_confirmation,hold_for_confirmation,,,,Nonpositive contribution
 102049,Samford University,AL,AL,Private nonprofit in both endpoints,144,72,-72,-56,-16,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 102058,Selma University,AL,,Left private-nonprofit endpoint universe,0,0,0,0,0,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
 102234,Spring Hill College,AL,AL,Private nonprofit in both endpoints,41,93,52,49,3,none,,not high-priority in latest release queue,261,0.04,94.82,Other positive contributors
@@ -232,7 +232,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 137272,St. John Vianney College Seminary,FL,FL,Private nonprofit in both endpoints,14,6,-8,-6,-2,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 137476,St. Thomas University,FL,FL,Private nonprofit in both endpoints,326,456,130,154,-24,none,,not high-priority in latest release queue,134,0.09,87.45,Other positive contributors
 137546,Stetson University,FL,FL,Private nonprofit in both endpoints,223,249,26,26,0,none,,not high-priority in latest release queue,365,0.02,97.64,Other positive contributors
-137564,Southeastern University,FL,FL,Private nonprofit in both endpoints,72,910,838,705,133,high,,high-priority review unresolved,37,0.61,64.38,Other positive contributors
+137564,Southeastern University,FL,FL,Private nonprofit in both endpoints,72,910,838,705,133,high,hold_for_confirmation,hold_for_confirmation,37,0.61,64.38,Other positive contributors
 137777,Talmudic College of Florida,FL,FL,Private nonprofit in both endpoints,9,1,-8,-7,-1,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 137801,Everest University-Tampa,FL,,Left private-nonprofit endpoint universe,0,0,0,0,0,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
 137810,Everest University-Largo,FL,,Left private-nonprofit endpoint universe,0,0,0,0,0,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
@@ -664,7 +664,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 175139,United Theological Seminary of the Twin Cities,MN,MN,Private nonprofit in both endpoints,5,6,1,0,1,none,,not high-priority in latest release queue,720,0.0,99.99,Other positive contributors
 175227,Dunwoody College of Technology,MN,MN,Private nonprofit in both endpoints,1,9,8,8,0,none,,not high-priority in latest release queue,531,0.01,99.48,Other positive contributors
 175281,Mitchell Hamline School of Law,MN,MN,Private nonprofit in both endpoints,14,17,3,0,3,none,,not high-priority in latest release queue,640,0.0,99.9,Other positive contributors
-175421,Belhaven University,MS,MS,Private nonprofit in both endpoints,82,728,646,-56,702,high,,high-priority review unresolved,47,0.47,69.62,Other positive contributors
+175421,Belhaven University,MS,MS,Private nonprofit in both endpoints,82,728,646,-56,702,high,hold_for_confirmation,hold_for_confirmation,47,0.47,69.62,Other positive contributors
 175430,Blue Mountain Christian University,MS,MS,Private nonprofit in both endpoints,4,12,8,7,1,none,,not high-priority in latest release queue,529,0.01,99.47,Other positive contributors
 175980,Millsaps College,MS,MS,Private nonprofit in both endpoints,33,19,-14,-20,6,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 176053,Mississippi College,MS,MS,Private nonprofit in both endpoints,496,160,-336,-96,-240,none,,not high-priority in latest release queue,,,,Nonpositive contribution
@@ -675,7 +675,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 176479,William Carey University,MS,MS,Private nonprofit in both endpoints,94,270,176,66,110,none,,not high-priority in latest release queue,108,0.13,84.63,Other positive contributors
 176600,Aquinas Institute of Theology,MO,MO,Private nonprofit in both endpoints,6,2,-4,0,-4,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 176619,Assemblies of God Theological Seminary,MO,,Left private-nonprofit endpoint universe,13,0,-13,0,-13,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
-176628,Avila University,MO,MO,Private nonprofit in both endpoints,195,1052,857,-87,944,high,,high-priority review unresolved,35,0.62,63.16,Other positive contributors
+176628,Avila University,MO,MO,Private nonprofit in both endpoints,195,1052,857,-87,944,high,safe_with_context,safe_with_context,35,0.62,63.16,Other positive contributors
 176664,Mission University,MO,MO,Private nonprofit in both endpoints,3,6,3,5,-2,none,,not high-priority in latest release queue,639,0.0,99.9,Other positive contributors
 176770,Cox College,MO,MO,Private nonprofit in both endpoints,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 176789,Calvary University,MO,MO,Private nonprofit in both endpoints,2,8,6,2,4,none,,not high-priority in latest release queue,561,0.0,99.64,Other positive contributors
@@ -719,7 +719,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 179548,Stephens College,MO,MO,Private nonprofit in both endpoints,2,2,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 179812,Kansas City University,MO,MO,Private nonprofit in both endpoints,33,110,77,0,77,none,,not high-priority in latest release queue,194,0.06,91.7,Other positive contributors
 179867,Washington University in St Louis,MO,MO,Private nonprofit in both endpoints,2797,4512,1715,152,1563,none,,not high-priority in latest release queue,19,1.25,49.2,Positive contributors 11-25
-179894,Webster University,MO,MO,Private nonprofit in both endpoints,520,3631,3111,262,2849,high,,high-priority review unresolved,8,2.26,30.26,Top 10 positive contributors
+179894,Webster University,MO,MO,Private nonprofit in both endpoints,520,3631,3111,262,2849,high,safe_with_context,safe_with_context,8,2.26,30.26,Top 10 positive contributors
 179919,Wentworth Military Academy and College,MO,,Left private-nonprofit endpoint universe,1,0,-1,-1,0,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
 179946,Westminster College,MO,MO,Private nonprofit in both endpoints,148,19,-129,-129,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 179955,William Jewell College,MO,MO,Private nonprofit in both endpoints,48,53,5,4,1,none,,not high-priority in latest release queue,600,0.0,99.79,Other positive contributors
@@ -1210,7 +1210,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 217536,Salve Regina University,RI,RI,Private nonprofit in both endpoints,54,80,26,42,-16,none,,not high-priority in latest release queue,364,0.02,97.62,Other positive contributors
 217606,Northpoint Bible College,MA,MA,Private nonprofit in both endpoints,16,8,-8,-4,-4,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 217624,Allen University,SC,SC,Private nonprofit in both endpoints,1,9,8,8,0,none,,not high-priority in latest release queue,527,0.01,99.46,Other positive contributors
-217633,Anderson University,SC,SC,Private nonprofit in both endpoints,30,0,-30,-22,-8,high,,high-priority review unresolved,,,,Nonpositive contribution
+217633,Anderson University,SC,SC,Private nonprofit in both endpoints,30,0,-30,-22,-8,high,hold_for_confirmation,hold_for_confirmation,,,,Nonpositive contribution
 217688,Charleston Southern University,SC,SC,Private nonprofit in both endpoints,22,102,80,52,28,none,,not high-priority in latest release queue,189,0.06,91.42,Other positive contributors
 217721,Benedict College,SC,SC,Private nonprofit in both endpoints,0,165,165,161,4,low,,not high-priority in latest release queue,114,0.12,85.37,Other positive contributors
 217749,Bob Jones University,,SC,Entered private-nonprofit endpoint universe,0,224,224,171,53,none,,not high-priority in latest release queue,97,0.16,83.08,Other positive contributors
@@ -1249,7 +1249,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 219806,Carson-Newman University,TN,TN,Private nonprofit in both endpoints,119,109,-10,4,-14,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 219833,Christian Brothers University,TN,TN,Private nonprofit in both endpoints,183,460,277,-1,278,none,,not high-priority in latest release queue,82,0.2,80.38,Other positive contributors
 219842,Pentecostal Theological Seminary,TN,TN,Private nonprofit in both endpoints,34,92,58,0,58,none,,not high-priority in latest release queue,245,0.04,94.19,Other positive contributors
-219949,Cumberland University,TN,TN,Private nonprofit in both endpoints,60,591,531,96,435,high,,high-priority review unresolved,54,0.39,72.48,Other positive contributors
+219949,Cumberland University,TN,TN,Private nonprofit in both endpoints,60,591,531,96,435,high,hold_for_confirmation,hold_for_confirmation,54,0.39,72.48,Other positive contributors
 219976,Lipscomb University,TN,TN,Private nonprofit in both endpoints,79,131,52,31,21,none,,not high-priority in latest release queue,257,0.04,94.66,Other positive contributors
 220181,Fisk University,TN,TN,Private nonprofit in both endpoints,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 220206,Welch College,TN,TN,Private nonprofit in both endpoints,27,4,-23,-24,1,none,,not high-priority in latest release queue,,,,Nonpositive contribution
@@ -1748,7 +1748,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 487311,Jones Technical Institute,,FL,Entered private-nonprofit endpoint universe,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 487524,Husson University,ME,ME,Private nonprofit in both endpoints,103,73,-30,-9,-21,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 487603,Northwest University-Center for Online and Extended Education,WA,WA,Private nonprofit in both endpoints,13,7,-6,-10,4,none,,not high-priority in latest release queue,,,,Nonpositive contribution
-487649,California Institute of Advanced Management,CA,CA,Private nonprofit in both endpoints,0,338,338,0,338,high,,high-priority review unresolved,73,0.25,78.41,Other positive contributors
+487649,California Institute of Advanced Management,CA,CA,Private nonprofit in both endpoints,0,338,338,0,338,high,hold_for_confirmation,hold_for_confirmation,73,0.25,78.41,Other positive contributors
 487658,Academy of Interactive Entertainment,,LA,Entered private-nonprofit endpoint universe,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 487667,Shepherd University,CA,,Left private-nonprofit endpoint universe,177,0,-177,-123,-54,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
 487746,Yeshiva Zichron Aryeh,,NY,Entered private-nonprofit endpoint universe,0,1,1,1,0,none,,not high-priority in latest release queue,728,0.0,100.0,Other positive contributors

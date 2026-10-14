@@ -154,7 +154,7 @@ The file is a review queue, not a list of source-data errors.
 
 ## `data/qa_resolution_log.csv`
 
-One row per manually reviewed institution selected from the current high-priority annual QA queue. This is an analyst-decision record, not a corrected-data table.
+One row per institution in the current high-priority annual QA queue. This is an analyst-decision record, not a corrected-data table.
 
 | Field | Definition |
 | --- | --- |
@@ -169,7 +169,7 @@ One row per manually reviewed institution selected from the current high-priorit
 
 `safe_with_context` does not mean the external source exactly reproduces IPEDS. It means the reviewed evidence supports discussing the direction or structural event with explicit limitations. `hold_for_confirmation` preserves the official IPEDS value in aggregate analysis while preventing an unresolved institution-level movement from being promoted into narrative as though it had been independently verified.
 
-The build script requires every reviewed UNITID to remain a current high-priority row. A new annual release therefore forces stale dispositions to be revisited rather than silently carrying them forward.
+The build script requires the log to cover every current high-priority UNITID in the same deterministic queue order and rejects extra or missing records. A new annual release therefore forces stale dispositions to be revisited rather than silently carrying them forward.
 
 ## `data/schema_audit.csv`
 
@@ -501,7 +501,7 @@ One row per release/freshness monitoring control generated from the captured rel
 
 `data/latest_update_review.json` contains the latest annual national change, student-level decomposition, institution-universe accounting, largest state changes, priority counts, top review items, and imputation/status transitions used by the public release-review section.
 
-`data/qa_resolution_summary.json` contains the reviewed sample size, counts by publication class and disposition, reviewed UNITIDs, latest manual review date, and three deterministic featured case studies. The featured cases represent an unresolved anomaly, a corroborated movement, and a documented structural change; each carries the current queue change, evidence URL, analyst note, and publication class used by the public brief and research memo. The summary is generated from `qa_resolution_log.csv` only after reconciliation to the current annual QA queue.
+`data/qa_resolution_summary.json` contains the full high-priority queue size, review coverage percentage, counts by publication class and disposition, reviewed UNITIDs, latest manual review date, and three deterministic featured case studies. The featured cases represent an unresolved anomaly, a corroborated movement, and a documented structural change; each carries the current queue change, evidence URL, analyst note, and publication class used by the public brief and research memo. The summary is generated from `qa_resolution_log.csv` only after every current high-priority queue record has a reconciled disposition.
 
 `data/state_profiles.json` contains the shareable state-profile payload used by `site/state.html`: coverage metadata plus 51 keyed profiles with latest metrics, change windows, top institutions, annual series, and corresponding Markdown filename. It is generated from `state_year.csv`, `state_change_summary.csv`, and the latest institution table rather than maintained independently.
 

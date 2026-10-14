@@ -84,7 +84,7 @@ def main() -> int:
         "",
         "## Analyst judgment changes what gets published",
         "",
-        f"The automated queue identified **{review['review_queue']['high']} high-priority** latest-release records. The manual review layer currently covers **{resolution['reviewed_count']}**, including the ten highest-impact high-priority records. The examples below show why a flag is a review request rather than an error label.",
+        f"The automated queue identified **{review['review_queue']['high']} high-priority** latest-release records. The manual review layer now covers **{resolution['reviewed_count']}/{resolution['high_priority_total']}** of them: **{resolution['safe_with_context']}** are safe to discuss with explicit context and **{resolution['hold_for_confirmation']}** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.",
         "",
     ]
     for case in cases:

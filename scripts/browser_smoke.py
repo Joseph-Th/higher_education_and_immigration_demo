@@ -213,8 +213,8 @@ def inspect_private_nonprofit_growth(browser, base_url: str, *, width: int, heig
     if "Trine University-Regional/Non-Traditional Campuses" not in first or "+9,167" not in first or "Safe with context" not in first:
         raise AssertionError("Private nonprofit leading-contributor row does not match validated output")
     table_text = table.inner_text()
-    if "Hold for confirmation" not in table_text or "High-priority review unresolved" not in table_text:
-        raise AssertionError("Private nonprofit ranking does not preserve latest-release QA holds")
+    if "Hold for confirmation" not in table_text or "Safe with context" not in table_text:
+        raise AssertionError("Private nonprofit ranking does not preserve latest-release QA gates")
     if "Entered endpoint sector universe" not in table_text:
         raise AssertionError("Private nonprofit ranking does not disclose endpoint-sector entry")
     boundary = page.locator(".handoff-hero .release-note").inner_text()
@@ -229,6 +229,43 @@ def inspect_private_nonprofit_growth(browser, base_url: str, *, width: int, heig
         raise AssertionError(f"Private nonprofit horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Private nonprofit browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_qa_review(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/qa-review.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"QA review page failed at {width}px")
+    summary = page.locator(".handoff-summary").inner_text()
+    for expected in ("27/27", "6", "21", "100%"):
+        if expected not in summary:
+            raise AssertionError(f"QA review summary is missing {expected}")
+    table = page.locator(".section-tinted tbody")
+    if table.locator("tr").count() != 27:
+        raise AssertionError("QA review page does not render all 27 high-priority records")
+    table_text = table.inner_text()
+    for expected in ("Webster University", "Reformed University", "Safe with context", "Hold for confirmation"):
+        if expected not in table_text:
+            raise AssertionError(f"QA review table is missing {expected}")
+    if table.locator('a[target="_blank"]').count() != 27:
+        raise AssertionError("QA review table does not expose evidence for every high-priority record")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "request for review, not an error label" not in boundary:
+        raise AssertionError("QA review page is missing its flag interpretation boundary")
+    if page.locator('a[href="downloads/qa_resolution_log.csv"]').count() != 2:
+        raise AssertionError("QA review CSV links are missing")
+    if page.locator('a[href="downloads/qa_resolution_log.md"]').count() != 1:
+        raise AssertionError("QA review Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"QA review horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("QA review browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -696,6 +733,8 @@ def main() -> int:
                 inspect_state_recovery(browser, base_url, width=390, height=844)
                 inspect_private_nonprofit_growth(browser, base_url, width=1280, height=900)
                 inspect_private_nonprofit_growth(browser, base_url, width=390, height=844)
+                inspect_qa_review(browser, base_url, width=1280, height=900)
+                inspect_qa_review(browser, base_url, width=390, height=844)
                 inspect_planning_scenarios(browser, base_url, width=1280, height=900)
                 inspect_planning_scenarios(browser, base_url, width=390, height=844)
                 inspect_freshness_monitor(browser, base_url, width=1280, height=900)

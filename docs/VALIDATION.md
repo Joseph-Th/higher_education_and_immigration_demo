@@ -76,7 +76,7 @@ This design is deliberate: the external publication is a validation source, not 
 - institution endpoint accounting reconciling continuing institutions and universe entry/exit to national change;
 - latest-release review reconciling national, student-level, state, and institution-accounting changes and reproducing its priority counts;
 - QA resolution entries remaining tied to current high-priority queue records, using unique UNITIDs, HTTPS evidence, valid review dates, explicit publication classes, and matching generated documentation;
-- the QA resolution sample covering the ten highest-impact rows in the current deterministic high-priority queue so the core reviewed sample cannot be silently cherry-picked;
+- the QA resolution layer covering all 27 current high-priority rows, with exact 100% queue coverage, 6 `safe_with_context` decisions, 21 `hold_for_confirmation` decisions, and a generated public review page so high-impact records cannot be silently cherry-picked;
 - the generated research memo reproducing validated headline/latest-release values and the three featured analyst case studies in both Markdown and HTML;
 - the population/source crosswalk containing exactly the six required research concepts, HTTPS sources, an explicit undocumented-student exclusion in the IPEDS row, and matching generated Markdown/HTML;
 - the recurring-report register containing exactly the three target-role products, valid foreign keys into the Research Library and population crosswalk, partner-confirmed scheduling language, and matching Markdown/HTML;
@@ -141,6 +141,7 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - ad-hoc-analysis rendering with three simulated request cards, three passing checks, explicit no-real-requester/no-deadline boundary, governed downloads, and responsive layout;
 - state-recovery rendering with the 33/18 recovery split, 2019-2024 national reconciliation, student-level and institutional-control drivers, largest-gain/shortfall tables, explicit accounting-not-causality boundary, governed downloads, and responsive layout;
 - private-nonprofit growth rendering with the +82,825 sector change, +83,792 graduate contribution, 729 positive contributors, 34.5% top-10 gross-positive share, current institution QA holds, governed downloads, and responsive layout;
+- complete institution-QA rendering with 27/27 high-priority records, 6 context-cleared decisions, 21 holds, evidence links for every record, the flag-not-error boundary, governed downloads, and responsive layout;
 - planning-scenarios rendering with the -4.0% backtest variance, all three forward planning values, explicit non-predictive boundary, governed downloads, and responsive layout;
 - freshness-monitor rendering with the 2/4 candidate-file state, HOLD year-advance gate, four release cards, three recurring-product trigger cards, dated/not-continuously-live boundary, governed downloads, and responsive layout;
 - anchored sections clearing the sticky header; and

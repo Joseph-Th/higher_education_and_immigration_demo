@@ -93,7 +93,7 @@ Ten generated monitoring rows combining the captured NCES release observation wi
 
 ## `qa_resolution_log.csv`
 
-Manually curated analyst dispositions for a selected sample of high-priority rows from `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` verifies that each reviewed UNITID still exists in the current high-priority queue and generates `docs/QA_RESOLUTION_LOG.md` plus `qa_resolution_summary.json`.
+Manually curated analyst dispositions for every high-priority row in `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` requires complete current high-priority coverage and generates `docs/QA_RESOLUTION_LOG.md`, `qa_resolution_summary.json`, and `site/qa-review.html`.
 
 ## `processed/`
 
@@ -117,7 +117,7 @@ It includes national headline metrics, level-change decomposition, state recover
 
 `latest_update_review.json` is the newest-release review summary used by the public brief and generated review memo. It contains the newest national change, undergraduate/graduate decomposition, institution-universe accounting, state movers, review-priority counts, top review items, and imputation/status transitions.
 
-`qa_resolution_summary.json` is the compact publication summary of the manual QA disposition layer. It records the reviewed sample size, counts classified as `safe_with_context` versus `hold_for_confirmation`, and three deterministic featured case studies used by the public brief and research memo. It is generated from `qa_resolution_log.csv` after the log has been reconciled to the current automated queue.
+`qa_resolution_summary.json` is the compact publication summary of the manual QA disposition layer. It records the full high-priority queue size and coverage percentage, counts classified as `safe_with_context` versus `hold_for_confirmation`, disposition counts, and three deterministic featured case studies used by the public brief and research memo. It is generated from `qa_resolution_log.csv` only after the log has been reconciled to every current high-priority queue record.
 
 `state_profiles.json` is the machine-readable state-publication product generated from validated state and institution outputs. It contains one profile for each of the 50 states plus DC with current metrics, change windows, top institutions, and the 2015-2024 annual series. `site/state.html` reads this file to provide shareable state views; generated Markdown counterparts live in `docs/state_profiles/`.
 

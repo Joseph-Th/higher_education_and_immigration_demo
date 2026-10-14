@@ -9,7 +9,7 @@ This register turns findings, QA observations, source limitations, and recurring
 | R01 | High | Does the 2024 undergraduate-led increase persist in the next Fall Enrollment release? | High | Monitor next release |
 | R02 | High | Why have some states recovered above 2019 while others remain below? | High | Implemented in state recovery analysis |
 | R04 | High | How do IPEDS U.S. nonresident trends compare with undocumented and immigrant-origin student estimates? | None | Methods crosswalk complete; compatible trend data still needed |
-| R05 | High | Which large institution-level annual changes reflect substantive movement versus reporting or classification discontinuity? | High | Ready for analyst review |
+| R05 | High | Which large institution-level annual changes reflect substantive movement versus reporting or classification discontinuity? | High | Implemented in complete high-priority QA review |
 | R03 | Medium | Is private nonprofit growth broad-based or concentrated among a small set of institutions? | High | Implemented in private nonprofit growth analysis |
 | R06 | Medium | What does the undocumented high-school graduate pipeline imply for higher-education access questions? | None | Requires partner/population data |
 | R07 | Medium | Which external source updates should trigger Portal refreshes or new research products? | Support | Ongoing monitoring |
@@ -53,10 +53,10 @@ This register turns findings, QA observations, source limitations, and recurring
 - **Evidence trigger:** The 2023-2024 review queue contains 27 high-priority and 50 medium-priority institution records.
 - **Current IPEDS fit:** High
 - **Additional data needed:** Current and revised IPEDS files plus institution-level contextual documentation when needed
-- **Proposed method:** Resolve reason-coded review items using recent history, imputation/status fields, universe membership, and source-vintage checks; document disposition.
-- **Proposed output:** QA resolution log and release memo
-- **Decision rule:** Institution-specific movements enter public narrative only after high-priority flags are resolved or explicitly caveated.
-- **Status:** Ready for analyst review
+- **Proposed method:** Resolve every high-priority review item using recent history, imputation/status fields, universe membership, source-vintage checks, and institution-level evidence; retain an explicit publication disposition for each record.
+- **Proposed output:** Complete high-priority QA review and release memo
+- **Decision rule:** Institution-specific movements enter public narrative only after high-priority flags are resolved or explicitly caveated; aggregate source values are never rewritten by the review layer.
+- **Status:** Implemented in complete high-priority QA review
 
 ### Medium priority
 
