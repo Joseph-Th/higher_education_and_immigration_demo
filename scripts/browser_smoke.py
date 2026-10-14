@@ -753,8 +753,8 @@ def inspect_publication_handoff(browser, base_url: str, *, width: int, height: i
     response = page.goto(f"{base_url}/publication-handoff.html", wait_until="networkidle")
     if response is None or not response.ok:
         raise AssertionError(f"Publication handoff page failed at {width}px")
-    if page.locator(".handoff-card").count() != 11:
-        raise AssertionError("Publication handoff does not render the expected 11 claim/control cards")
+    if page.locator(".handoff-card").count() != 14:
+        raise AssertionError("Publication handoff does not render the expected 14 claim/control cards")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Publication handoff does not show all five publication gates")
     if "Portfolio demonstration" not in page.locator(".handoff-hero .release-note").inner_text():
@@ -763,6 +763,10 @@ def inspect_publication_handoff(browser, base_url: str, *, width: int, height: i
         raise AssertionError("Publication handoff CSV download is missing")
     if "1,044,137" not in page.locator(".handoff-card").first.inner_text():
         raise AssertionError("Publication handoff headline card does not contain the validated national total")
+    handoff_text = page.locator("#handoff-register").inner_text()
+    for expected in ("M02", "P01", "G01", "70.7%", "70.4%", "not addable", "zero inferred internal deadlines"):
+        if expected not in handoff_text:
+            raise AssertionError(f"Publication handoff is missing expanded control {expected}")
     overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
     if overflow > 1:
         raise AssertionError(f"Publication handoff horizontal overflow at {width}px: {overflow}px")

@@ -417,9 +417,9 @@ class ResearchProductTests(unittest.TestCase):
     def test_publication_handoff_tracks_validated_claims(self) -> None:
         handoff = rows(ROOT / "data" / "publication_handoff.csv")
         ids = [row["claim_id"] for row in handoff]
-        self.assertEqual(len(handoff), 11)
+        self.assertEqual(len(handoff), 14)
         self.assertEqual(len(ids), len(set(ids)))
-        self.assertTrue({"N01", "N05", "S01", "Q01", "M01", "B01"}.issubset(set(ids)))
+        self.assertTrue({"N01", "N05", "S01", "Q01", "M01", "M02", "P01", "G01", "B01"}.issubset(set(ids)))
         self.assertTrue(
             all(
                 row["publication_status"]
@@ -437,6 +437,16 @@ class ResearchProductTests(unittest.TestCase):
         resolution = json.loads((ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8"))
         self.assertIn(str(resolution["reviewed_count"]), q01["public_copy"])
         self.assertEqual(q01["publication_status"], "READY WITH CLAIM-LEVEL HOLDS")
+        m02 = next(row for row in handoff if row["claim_id"] == "M02")
+        self.assertIn("not addable", m02["public_copy"])
+        self.assertIn("no 2021-2023 undocumented trend", m02["public_copy"])
+        p01 = next(row for row in handoff if row["claim_id"] == "P01")
+        self.assertIn("70.7%", p01["public_copy"])
+        self.assertIn("70.4%", p01["public_copy"])
+        self.assertIn("not a college-going rate", p01["release_disclosure"])
+        g01 = next(row for row in handoff if row["claim_id"] == "G01")
+        self.assertIn("All 17 maintained Research Library sources", g01["public_copy"])
+        self.assertIn("zero inferred internal deadlines", g01["public_copy"])
         rendered = (ROOT / "docs" / "PUBLICATION_HANDOFF.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "publication-handoff.html").read_text(encoding="utf-8")
         for row in handoff:

@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv
 import html
 import json
+from collections import Counter
 from pathlib import Path
 
 from project_config import END_YEAR, START_YEAR
@@ -57,6 +58,9 @@ def main() -> int:
     resolution = json.loads((DATA / "qa_resolution_summary.json").read_text(encoding="utf-8"))
     benchmark = read_csv(DATA / "benchmark_audit.csv")
     states = read_csv(PROCESSED / "state_profile_index.csv")
+    population_trends = read_csv(DATA / "population_trend_comparison.csv")
+    pipeline = read_csv(DATA / "undocumented_pipeline_comparison.csv")
+    source_triage = read_csv(DATA / "source_update_triage.csv")
     library = {row["resource_id"]: row for row in read_csv(DATA / "research_library.csv")}
     crosswalk = {row["population_id"]: row for row in read_csv(DATA / "population_crosswalk.csv")}
 
@@ -69,6 +73,29 @@ def main() -> int:
     ipeds_definition = crosswalk["ipeds_us_nonresident"]
     if "undocumented" not in ipeds_definition["explicit_exclusions"].lower():
         raise RuntimeError("Publication handoff requires the IPEDS population exclusion to remain explicit")
+    if len(population_trends) != 12:
+        raise RuntimeError("Publication handoff requires the complete 12-row bounded population comparison")
+    undocumented_segments = {
+        row["trend_segment"]
+        for row in population_trends
+        if row["population_id"] == "undocumented_higher_ed"
+    }
+    if undocumented_segments != {"undocumented_2019_2021", "undocumented_2023_2024"}:
+        raise RuntimeError("Publication handoff requires the undocumented source-vintage break")
+    if len(pipeline) != 10:
+        raise RuntimeError("Publication handoff requires all ten R06 state comparison rows")
+    pipeline_hs = sum(int(row["high_school_graduates_annual_2023"]) for row in pipeline)
+    pipeline_he = sum(int(row["higher_ed_enrollment_2023"]) for row in pipeline)
+    if (pipeline_hs, pipeline_he) != (53_000, 358_836):
+        raise RuntimeError("Publication handoff R06 aggregate values do not reconcile")
+    if not all("NOT a transition rate" in row["interpretation_gate"] for row in pipeline):
+        raise RuntimeError("Publication handoff requires the R06 stock/flow interpretation gate")
+    triage_ids = {row["resource_id"] for row in source_triage}
+    if triage_ids != set(library) or len(source_triage) != len(library):
+        raise RuntimeError("Publication handoff requires complete Research Library source-update routing")
+    triage_counts = Counter(row["baseline_route"] for row in source_triage)
+    if triage_counts["ROUTINE_REFRESH"] != 8 or triage_counts["METHODOLOGY_REVIEW"] != 3:
+        raise RuntimeError("Publication handoff source-update route counts changed unexpectedly")
 
     headline = findings["headline"]
     levels = findings["level_decomposition"]
@@ -201,6 +228,42 @@ def main() -> int:
             "qa_gate": "Population crosswalk explicitly records inclusion, exclusion, source vintage, unit, geography, and comparison warning.",
             "release_disclosure": "Other Portal populations require their own source systems and methods.",
             "publication_status": "READY",
+        },
+        {
+            "claim_id": "M02",
+            "surface": "Population trend comparison",
+            "claim_type": "Non-addability / vintage gate",
+            "public_copy": "Companion IPEDS, immigrant-origin, and undocumented-student values remain separate and are not addable; no 2021-2023 undocumented trend is calculated.",
+            "authority": "data/population_trend_comparison.csv",
+            "source_locator": "population_id; trend_segment; comparison_class; comparison_note",
+            "research_library_id": "portal_methodology",
+            "qa_gate": "The comparison contains 12 validated rows and preserves separate undocumented 2019-2021 and 2023-2024 source segments.",
+            "release_disclosure": "Population definitions, denominators, source vintages, and geography differ; cross-population arithmetic is contextual only.",
+            "publication_status": "READY WITH CONTEXT",
+        },
+        {
+            "claim_id": "P01",
+            "surface": "Undocumented pipeline context",
+            "claim_type": "Ecological stock / flow comparison",
+            "public_copy": "Across the ten overlapping 2023 states, 53,000 annual undocumented high-school graduates represent 70.7% of the national estimate and 358,836 undocumented higher-education students represent 70.4%.",
+            "authority": "data/undocumented_pipeline_comparison.csv",
+            "source_locator": "10 state rows; separate 75,000 high-school and 510,000 higher-education national denominators",
+            "research_library_id": "undocumented_hs_graduates_2026",
+            "qa_gate": "All ten state rows reconcile to the fixed R06 source values and every row retains the stock/flow NOT-a-transition-rate interpretation gate.",
+            "release_disclosure": "High-school graduates are an annual flow and higher-education enrollment is a stock; the comparison is ecological, non-causal, and not a college-going rate.",
+            "publication_status": "READY WITH CONTEXT",
+        },
+        {
+            "claim_id": "G01",
+            "surface": "Source update governance",
+            "claim_type": "Refresh / escalation control",
+            "public_copy": f"All {len(source_triage)} maintained Research Library sources have an explicit update route: {triage_counts['ROUTINE_REFRESH']} routine-refresh baselines and {triage_counts['METHODOLOGY_REVIEW']} methodology-review baselines, with zero inferred internal deadlines.",
+            "authority": "data/source_update_triage.csv",
+            "source_locator": "one row per Research Library resource_id; baseline_route; escalation rules",
+            "research_library_id": "ipeds_release_schedule",
+            "qa_gate": "The routing register covers the Research Library one-for-one with controlled routes and explicit methodology/new-research escalation conditions.",
+            "release_disclosure": "This is a portfolio routing model, not the Presidents' Alliance's internal refresh schedule, approval workflow, or partner delivery calendar.",
+            "publication_status": "READY WITH CONTEXT",
         },
         {
             "claim_id": "B01",

@@ -12,7 +12,7 @@
   <a class="skip-link" href="#main">Skip to publication handoff</a>
   <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Publication handoff navigation"><a href="index.html">Brief</a><a href="research-memo.html">Memo</a><a href="research-library.html">Library</a><a href="research-operations.html">Operations</a></nav></div></header>
   <main id="main">
-    <section class="handoff-hero"><div class="shell"><p class="eyebrow">Publication handoff</p><h1>A calculation is not ready just because it ran.</h1><p class="lede">A portfolio release packet tying each public claim to its analytical authority, maintained source, QA gate, required disclosure, and publication decision.</p><div class="hero-actions"><a class="button button-primary" href="#handoff-register">Review publication register</a><a class="button button-secondary" href="downloads/publication_handoff.csv">Download handoff CSV</a></div><p class="release-note"><strong>Portfolio demonstration:</strong> this models a defensible pre-publication review. It does not represent the Presidents' Alliance's internal approval workflow.</p><div class="handoff-summary"><article><strong>11</strong><span>publication claims / controls</span></article><article><strong>51</strong><span>state + DC profiles reconciled</span></article><article><strong>24/24</strong><span>external benchmark checks</span></article><article><strong>27</strong><span>high-priority institution flags manually reviewed</span></article></div></div></section>
+    <section class="handoff-hero"><div class="shell"><p class="eyebrow">Publication handoff</p><h1>A calculation is not ready just because it ran.</h1><p class="lede">A portfolio release packet tying each public claim to its analytical authority, maintained source, QA gate, required disclosure, and publication decision.</p><div class="hero-actions"><a class="button button-primary" href="#handoff-register">Review publication register</a><a class="button button-secondary" href="downloads/publication_handoff.csv">Download handoff CSV</a></div><p class="release-note"><strong>Portfolio demonstration:</strong> this models a defensible pre-publication review. It does not represent the Presidents' Alliance's internal approval workflow.</p><div class="handoff-summary"><article><strong>14</strong><span>publication claims / controls</span></article><article><strong>51</strong><span>state + DC profiles reconciled</span></article><article><strong>24/24</strong><span>external benchmark checks</span></article><article><strong>27</strong><span>high-priority institution flags manually reviewed</span></article></div></div></section>
     <section class="section shell"><div class="section-heading"><p class="eyebrow">Publication gate</p><h2>Five questions before copy moves to a public page</h2><p>The register makes the checks explicit so a source refresh cannot silently change population meaning, release status, arithmetic, or claim scope.</p></div><ol class="handoff-gates"><li><strong>Definition</strong><span>Does the population and denominator still mean what the copy says?</span></li><li><strong>Release</strong><span>Is the newest source final, provisional, revised, or from a different publication vintage?</span></li><li><strong>Reconcile</strong><span>Do components, states, and endpoint accounting reproduce the headline?</span></li><li><strong>Citation</strong><span>Is the maintained source appropriate as input, benchmark, methodology, or context?</span></li><li><strong>Scope</strong><span>Does unresolved QA require context or a claim-level hold before publication?</span></li></ol></section>
     <section class="section section-tinted" id="handoff-register"><div class="shell"><div class="section-heading"><p class="eyebrow">Claim register</p><h2>Every public statement has an authority and a gate</h2><p>These rows are generated from the same validated outputs that drive the research brief. The structured CSV is the portable handoff artifact.</p></div><div class="handoff-grid">
             <article class="handoff-card">
@@ -124,6 +124,39 @@
                 <div><dt>Required disclosure</dt><dd>Other Portal populations require their own source systems and methods.</dd></div>
               </dl>
               <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/report-your-data/race-ethnicity-definitions/" target="_blank" rel="noopener">Source: IPEDS Race/Ethnicity and U.S. Nonresident Definitions</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>M02</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
+              <p class="case-kicker">Population trend comparison · Non-addability / vintage gate</p>
+              <h2>Companion IPEDS, immigrant-origin, and undocumented-student values remain separate and are not addable; no 2021-2023 undocumented trend is calculated.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/population_trend_comparison.csv</code><br><small>population_id; trend_segment; comparison_class; comparison_note</small></dd></div>
+                <div><dt>QA gate</dt><dd>The comparison contains 12 validated rows and preserves separate undocumented 2019-2021 and 2023-2024 source segments.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Population definitions, denominators, source vintages, and geography differ; cross-population arithmetic is contextual only.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/methodology/" target="_blank" rel="noopener">Source: Higher Ed Immigration Portal Methodology</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>P01</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
+              <p class="case-kicker">Undocumented pipeline context · Ecological stock / flow comparison</p>
+              <h2>Across the ten overlapping 2023 states, 53,000 annual undocumented high-school graduates represent 70.7% of the national estimate and 358,836 undocumented higher-education students represent 70.4%.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/undocumented_pipeline_comparison.csv</code><br><small>10 state rows; separate 75,000 high-school and 510,000 higher-education national denominators</small></dd></div>
+                <div><dt>QA gate</dt><dd>All ten state rows reconcile to the fixed R06 source values and every row retains the stock/flow NOT-a-transition-rate interpretation gate.</dd></div>
+                <div><dt>Required disclosure</dt><dd>High-school graduates are an annual flow and higher-education enrollment is a stock; the comparison is ecological, non-causal, and not a college-going rate.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/wp-content/uploads/2026/02/A-Geneation-Threatened-Undocumented-High-School-Students-Graduate-Feb-2026-final.pdf" target="_blank" rel="noopener">Source: A Generation Threatened: Undocumented High School Students Graduate Amidst Uncertain National Climate</a>
+            </article>
+            <article class="handoff-card">
+              <div class="handoff-card-head"><span>G01</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
+              <p class="case-kicker">Source update governance · Refresh / escalation control</p>
+              <h2>All 17 maintained Research Library sources have an explicit update route: 8 routine-refresh baselines and 3 methodology-review baselines, with zero inferred internal deadlines.</h2>
+              <dl class="handoff-meta">
+                <div><dt>Authority</dt><dd><code>data/source_update_triage.csv</code><br><small>one row per Research Library resource_id; baseline_route; escalation rules</small></dd></div>
+                <div><dt>QA gate</dt><dd>The routing register covers the Research Library one-for-one with controlled routes and explicit methodology/new-research escalation conditions.</dd></div>
+                <div><dt>Required disclosure</dt><dd>This is a portfolio routing model, not the Presidents&#x27; Alliance&#x27;s internal refresh schedule, approval workflow, or partner delivery calendar.</dd></div>
+              </dl>
+              <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/survey-components/data-release-schedule" target="_blank" rel="noopener">Source: IPEDS Data Release Schedule</a>
             </article>
             <article class="handoff-card">
               <div class="handoff-card-head"><span>B01</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
