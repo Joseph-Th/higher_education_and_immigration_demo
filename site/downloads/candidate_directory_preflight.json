@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-14T16:24:27+00:00",
+  "checked_at_utc": "2026-10-14T17:13:53+00:00",
   "current_analysis_end_year": 2024,
   "candidate_next_year": 2025,
   "preflight_scope": "candidate institutional directory only; not Fall Enrollment",
@@ -37,6 +37,10 @@
   "missing_required_dictionary_fields": [],
   "candidate_directory_rows": 5985,
   "candidate_field_count": 70,
+  "candidate_dictionary_variable_count": 70,
+  "candidate_full_field_dictionary_match": true,
+  "candidate_fields_missing_from_dictionary": [],
+  "candidate_dictionary_variables_missing_from_data": [],
   "candidate_core_states_dc_count": 51,
   "candidate_duplicate_unitid_count": 0,
   "candidate_directory_eligible_rows": 3864,
@@ -77,6 +81,30 @@
     "shared_state_changes": 3,
     "shared_name_changes": 41
   },
-  "release_monitor_checked_at_utc": "2026-10-14T16:19:56+00:00",
+  "change_review": {
+    "csv_path": "data/candidate_directory_change_review.csv",
+    "csv_sha256": "0dd98f80f4c2daaca69951cad325e84af12abd4b9bc4026a1bfe81b0a45edc6a",
+    "row_count": 154,
+    "entered_directory_eligible": 52,
+    "left_directory_eligible": 56,
+    "shared_attribute_change_rows": 46,
+    "entry_reason_counts": {
+      "degree_granting_status_gained": 11,
+      "new_directory_record": 35,
+      "title_iv_first_look_status_gained": 6
+    },
+    "exit_reason_counts": {
+      "degree_granting_status_lost": 3,
+      "directory_record_absent": 15,
+      "title_iv_first_look_status_lost": 38
+    },
+    "current_analysis_present_leavers": 54,
+    "current_nonresident_exposure_leavers": 612,
+    "current_total_enrollment_exposure_leavers": 17593,
+    "current_nonresident_exposure_control_changes": 1069,
+    "current_nonresident_exposure_state_changes": 193,
+    "current_nonresident_exposure_name_changes": 10184
+  },
+  "release_monitor_checked_at_utc": "2026-10-14T17:13:49+00:00",
   "release_monitor_decision": "HOLD_YEAR_ADVANCE"
 }

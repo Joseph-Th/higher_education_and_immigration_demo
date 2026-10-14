@@ -183,10 +183,17 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
         raise RuntimeError("Candidate directory preflight release decision is stale")
     if directory_preflight.get("missing_required_data_fields") != [] or directory_preflight.get("missing_required_dictionary_fields") != []:
         raise RuntimeError("Candidate directory preflight required-field checks are not clean")
+    if directory_preflight.get("candidate_full_field_dictionary_match") is not True:
+        raise RuntimeError("Candidate directory preflight full field/dictionary parity failed")
+    if int(directory_preflight.get("candidate_dictionary_variable_count", -1)) != int(directory_preflight.get("candidate_field_count", -2)):
+        raise RuntimeError("Candidate directory preflight field/dictionary counts do not reconcile")
     if int(directory_preflight.get("candidate_core_states_dc_count", 0)) != 51:
         raise RuntimeError("Candidate directory preflight must cover all 50 states plus DC")
     if int(directory_preflight.get("candidate_duplicate_unitid_count", -1)) != 0:
         raise RuntimeError("Candidate directory preflight contains duplicate UNITIDs")
+    change_review = directory_preflight.get("change_review")
+    if not isinstance(change_review, dict) or int(change_review.get("row_count", 0)) <= 0:
+        raise RuntimeError("Candidate directory institution-change review metadata is missing")
 
     rows = [
         {
@@ -281,9 +288,10 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
                 f"{available_count}/{len(file_rows)} required candidate-year assets available at "
                 f"{snapshot['checked_at_utc']}; candidate directory preflight={directory_preflight['status']} "
                 f"with {int(directory_preflight['candidate_directory_eligible_rows']):,} directory-eligible rows; "
+                f"{int(change_review['row_count']):,} institution change-review rows; "
                 f"snapshot decision={snapshot['release_decision']}."
             ),
-            "authority": "data/release_monitor_snapshot.json; data/candidate_directory_preflight.json",
+            "authority": "data/release_monitor_snapshot.json; data/candidate_directory_preflight.json; data/candidate_directory_change_review.csv",
             "next_action": (
                 "Begin schema review before changing END_YEAR."
                 if package_ready

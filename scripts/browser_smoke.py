@@ -87,6 +87,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/release_monitor_snapshot.json",
         "downloads/candidate_directory_preflight.json",
         "downloads/candidate_directory_preflight.md",
+        "downloads/candidate_directory_change_review.csv",
+        "downloads/candidate_directory_change_review.md",
         "downloads/freshness_monitor.csv",
         "downloads/freshness_monitor.md",
         "downloads/release_readiness.csv",
@@ -372,7 +374,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "62" not in summary or "112" not in summary:
+    if "64" not in summary or "114" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -411,7 +413,7 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
         if expected not in summary:
             raise AssertionError(f"Release readiness summary is missing {expected}")
     gate_text = page.locator("#readiness-gates").inner_text()
-    for expected in ("A01", "A07", "Y01", "27/27", "62 artifact families", "17/17", "preflight=PASS", "3,864"):
+    for expected in ("A01", "A07", "Y01", "27/27", "64 artifact families", "17/17", "preflight=PASS", "3,864", "154 institution change-review rows"):
         if expected not in gate_text:
             raise AssertionError(f"Release readiness gate matrix is missing {expected}")
     if page.locator('a[href="downloads/release_readiness.csv"]').count() != 2:
@@ -485,7 +487,7 @@ def inspect_freshness_monitor(browser, base_url: str, *, width: int, height: int
     if "does not advance the project year" not in release_text or "Fall 2024" not in release_text:
         raise AssertionError("Freshness monitor is missing the current incomplete-package gate")
     preflight_text = page.locator("#directory-preflight").inner_text()
-    for expected in ("6/6", "3,864", "3,812", "-4", "72 → 70", "DFRCGID", "DFRCUSCG"):
+    for expected in ("6/6", "70/70", "3,864", "3,812", "-4", "154", "612", "72 → 70", "DFRCGID", "DFRCUSCG"):
         if expected not in preflight_text:
             raise AssertionError(f"Freshness monitor directory preflight is missing {expected}")
     if page.locator('a[href="candidate-directory-preflight.html"]').count() < 1:
@@ -522,7 +524,7 @@ def inspect_candidate_directory_preflight(browser, base_url: str, *, width: int,
         if expected not in continuity:
             raise AssertionError(f"Candidate directory continuity is missing {expected}")
     body = page.locator("main").inner_text()
-    for expected in ("72 → 70", "DFRCGID", "DFRCUSCG", "EF2025A.zip", "No 2025 enrollment claims yet"):
+    for expected in ("70/70", "154", "612", "72 → 70", "DFRCGID", "DFRCUSCG", "EF2025A.zip", "No 2025 enrollment claims yet"):
         if expected not in body:
             raise AssertionError(f"Candidate directory preflight body is missing {expected}")
     boundary = page.locator(".handoff-hero .release-note").inner_text()
@@ -537,6 +539,61 @@ def inspect_candidate_directory_preflight(browser, base_url: str, *, width: int,
         raise AssertionError(f"Candidate directory preflight horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Candidate directory preflight browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_candidate_directory_changes(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/candidate-directory-changes.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Candidate directory change review page failed at {width}px")
+    summary = page.locator(".handoff-hero .handoff-summary").inner_text()
+    for expected in ("154", "52 / 56", "612", "1,069"):
+        if expected not in summary:
+            raise AssertionError(f"Candidate directory change review summary is missing {expected}")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    for expected in ("do not infer institutional opening/closure", "2025 enrollment movement", "HOLD_YEAR_ADVANCE"):
+        if expected not in boundary:
+            raise AssertionError(f"Candidate directory change review boundary is missing {expected}")
+    frame_text = page.locator("#frame-turnover").inner_text()
+    for expected in ("New directory record", "35", "Title IV / First Look status became ineligible", "38", "Directory record absent", "15"):
+        if expected not in frame_text:
+            raise AssertionError(f"Candidate directory frame-turnover section is missing {expected}")
+    leaver_text = page.locator("#leaver-exposure").inner_text()
+    for expected in ("FIDM-Fashion Institute of Design & Merchandising", "128", "17,593", "not projected 2025 losses"):
+        if expected not in leaver_text:
+            raise AssertionError(f"Candidate directory leaver section is missing {expected}")
+    if page.locator("#leaver-exposure tbody tr").count() != 10:
+        raise AssertionError("Candidate directory leaver table does not show ten priority rows")
+    control_text = page.locator("#control-changes").inner_text()
+    for expected in ("Grand Canyon University", "967", "Private for-profit", "Private nonprofit", "The University of Arizona Global Campus", "Public"):
+        if expected not in control_text:
+            raise AssertionError(f"Candidate directory control section is missing {expected}")
+    if page.locator("#control-changes tbody tr").count() != 6:
+        raise AssertionError("Candidate directory control table does not contain six shared control changes")
+    state_text = page.locator("#state-changes").inner_text()
+    for expected in ("The University of Arizona Global Campus", "CA", "AZ", "Simon's Rock at Bard College", "MA", "NY", "West Coast University-Texas"):
+        if expected not in state_text:
+            raise AssertionError(f"Candidate directory state section is missing {expected}")
+    if page.locator("#state-changes tbody tr").count() != 3:
+        raise AssertionError("Candidate directory state table does not contain three shared state changes")
+    name_text = page.locator("#name-continuity").inner_text()
+    for expected in ("Houston Community College", "Houston City College", "4,670", "10,184"):
+        if expected not in name_text:
+            raise AssertionError(f"Candidate directory name section is missing {expected}")
+    if page.locator('a[href="downloads/candidate_directory_change_review.csv"]').count() != 2:
+        raise AssertionError("Candidate directory change-review CSV links are missing")
+    if page.locator('a[href="downloads/candidate_directory_change_review.md"]').count() != 1:
+        raise AssertionError("Candidate directory change-review Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Candidate directory change review horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Candidate directory change review browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -995,6 +1052,8 @@ def main() -> int:
                 inspect_freshness_monitor(browser, base_url, width=390, height=844)
                 inspect_candidate_directory_preflight(browser, base_url, width=1280, height=900)
                 inspect_candidate_directory_preflight(browser, base_url, width=390, height=844)
+                inspect_candidate_directory_changes(browser, base_url, width=1280, height=900)
+                inspect_candidate_directory_changes(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

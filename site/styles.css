@@ -212,6 +212,8 @@ section[id] { scroll-margin-top: 76px; }
 
 .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
 table { width: 100%; border-collapse: collapse; min-width: 720px; }
+.compact-table table { min-width: 0; }
+.compact-table th, .compact-table td { padding: 12px 14px; }
 th, td { padding: 15px 18px; border-bottom: 1px solid var(--line); text-align: left; }
 th { background: #f7f9fa; color: var(--ink-soft); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
 td:nth-child(3), td:nth-child(4), th:nth-child(3), th:nth-child(4) { text-align: right; }

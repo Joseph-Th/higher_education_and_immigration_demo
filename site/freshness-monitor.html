@@ -18,7 +18,7 @@
         <h1>Know what changed before advancing the analysis year.</h1>
         <p class="lede">A dated monitoring snapshot separates source availability from publication permission: detect a release, preserve the observation, then run schema and methodology review before using it.</p>
         <div class="hero-actions"><a class="button button-primary" href="#release-readiness">Review release gate</a><a class="button button-secondary" href="downloads/freshness_monitor.csv">Download monitoring register</a></div>
-        <p class="release-note"><strong>Snapshot boundary:</strong> checked 2026-10-14T16:19:56+00:00. This page is not continuously live, and recurring-product deadlines are not inferred from prior publication dates.</p>
+        <p class="release-note"><strong>Snapshot boundary:</strong> checked 2026-10-14T17:13:49+00:00. This page is not continuously live, and recurring-product deadlines are not inferred from prior publication dates.</p>
         <div class="handoff-summary">
           <article><strong>2/4</strong><span>2025 package assets available</span></article>
           <article><strong>HOLD YEAR ADVANCE</strong><span>analysis-year decision</span></article>
@@ -70,13 +70,14 @@
     </section>
     <section class="section section-tinted" id="directory-preflight">
       <div class="shell">
-        <div class="section-heading"><p class="eyebrow">Candidate directory preflight</p><h2>The available directory side has already cleared a bounded structural check.</h2><p>All six fields required by the current directory join/filter are present in both the candidate CSV and dictionary. That reduces one update risk while preserving the full-package gate.</p></div>
+        <div class="section-heading"><p class="eyebrow">Candidate directory preflight</p><h2>The available directory side has already cleared a bounded structural check.</h2><p>All six fields required by the current directory join/filter are present in both the candidate CSV and dictionary, and the full 70/70 field set aligns. That reduces one update risk while preserving the full-package gate.</p></div>
         <div class="handoff-summary">
           <article><strong>6/6</strong><span>required directory fields preserved</span></article>
           <article><strong>3,864</strong><span>candidate directory-eligible rows</span></article>
           <article><strong>3,812</strong><span>shared eligible UNITIDs</span></article>
           <article><strong>-4</strong><span>net eligible-row change vs 2024</span></article>
         </div>
+        <div class="methods-crosswalk-callout"><div><p class="eyebrow">Institution review queue</p><h3>154 affected UNITIDs captured before Fall Enrollment arrives.</h3><p>The queue contains 52 directory-side entries, 56 exits, and 46 shared attribute-change rows. Current 2024 U.S. nonresident exposure at frame leavers is 612; it is not a projected 2025 loss.</p></div><a class="button button-secondary" href="candidate-directory-changes.html">Open change review</a></div>
         <div class="methods-crosswalk-callout"><div><p class="eyebrow">Schema delta</p><h3>72 → 70 fields</h3><p>Removed nonrequired fields: DFRCGID, DFRCUSCG. Required fields are preserved, but the full annual schema audit still runs when Fall Enrollment arrives.</p></div><a class="button button-secondary" href="candidate-directory-preflight.html">Open full preflight</a></div>
       </div>
     </section>

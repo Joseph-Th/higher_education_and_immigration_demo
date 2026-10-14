@@ -10,6 +10,7 @@ separate required package component.
 from __future__ import annotations
 
 import html
+import hashlib
 import json
 from pathlib import Path
 
@@ -22,6 +23,7 @@ SNAPSHOT_PATH = DATA / "candidate_directory_preflight.json"
 RELEASE_SNAPSHOT_PATH = DATA / "release_monitor_snapshot.json"
 DOC_OUTPUT = ROOT / "docs" / "CANDIDATE_DIRECTORY_PREFLIGHT.md"
 HTML_OUTPUT = ROOT / "site" / "candidate-directory-preflight.html"
+CHANGE_REVIEW_PATH = DATA / "candidate_directory_change_review.csv"
 
 REQUIRED_FIELDS = ("UNITID", "INSTNM", "STABBR", "CONTROL", "DEGGRANT", "PSET4FLG")
 CONTROL_LABELS = ("Public", "Private nonprofit", "Private for-profit")
@@ -51,6 +53,12 @@ def validate_snapshot() -> dict[str, object]:
         raise RuntimeError("Candidate directory data is missing required fields")
     if payload.get("missing_required_dictionary_fields") != []:
         raise RuntimeError("Candidate directory dictionary is missing required fields")
+    if payload.get("candidate_full_field_dictionary_match") is not True:
+        raise RuntimeError("Candidate directory data/dictionary field sets do not match")
+    if payload.get("candidate_fields_missing_from_dictionary") != []:
+        raise RuntimeError("Candidate directory contains fields missing from the dictionary")
+    if payload.get("candidate_dictionary_variables_missing_from_data") != []:
+        raise RuntimeError("Candidate directory dictionary contains variables missing from data")
 
     titles = payload.get("required_field_titles")
     if not isinstance(titles, dict) or set(titles) != set(REQUIRED_FIELDS):
@@ -60,9 +68,12 @@ def validate_snapshot() -> dict[str, object]:
 
     candidate_rows = int(payload["candidate_directory_rows"])
     candidate_fields = int(payload["candidate_field_count"])
+    dictionary_fields = int(payload["candidate_dictionary_variable_count"])
     candidate_eligible = int(payload["candidate_directory_eligible_rows"])
     if candidate_rows <= 0 or candidate_fields <= 0 or candidate_eligible <= 0:
         raise RuntimeError("Candidate directory structural counts must be positive")
+    if dictionary_fields != candidate_fields:
+        raise RuntimeError("Candidate directory data/dictionary field counts do not reconcile")
     if int(payload["candidate_core_states_dc_count"]) != 51:
         raise RuntimeError("Candidate directory must cover all 50 states plus DC")
     if int(payload["candidate_duplicate_unitid_count"]) != 0:
@@ -109,6 +120,27 @@ def validate_snapshot() -> dict[str, object]:
     if removed.intersection(REQUIRED_FIELDS):
         raise RuntimeError("A required directory field appears in the removed-field set")
 
+    change_review = payload.get("change_review")
+    if not isinstance(change_review, dict):
+        raise RuntimeError("Candidate directory preflight is missing change-review metadata")
+    if change_review.get("csv_path") != "data/candidate_directory_change_review.csv":
+        raise RuntimeError("Candidate directory change-review path is unexpected")
+    if not CHANGE_REVIEW_PATH.is_file():
+        raise RuntimeError("Candidate directory change-review CSV is missing")
+    review_bytes = CHANGE_REVIEW_PATH.read_bytes()
+    if hashlib.sha256(review_bytes).hexdigest() != change_review.get("csv_sha256"):
+        raise RuntimeError("Candidate directory change-review CSV does not match the preflight hash")
+    if int(change_review.get("entered_directory_eligible", -1)) != entering:
+        raise RuntimeError("Candidate directory change-review entry count does not reconcile")
+    if int(change_review.get("left_directory_eligible", -1)) != leaving:
+        raise RuntimeError("Candidate directory change-review exit count does not reconcile")
+    if int(change_review.get("shared_attribute_change_rows", -1)) < max(
+        int(continuity["shared_control_changes"]),
+        int(continuity["shared_state_changes"]),
+        int(continuity["shared_name_changes"]),
+    ):
+        raise RuntimeError("Candidate directory change-review shared rows cannot cover the continuity changes")
+
     source = payload.get("candidate_source")
     if not isinstance(source, dict):
         raise RuntimeError("Candidate directory source metadata is missing")
@@ -136,6 +168,7 @@ def write_markdown(payload: dict[str, object]) -> None:
     schema = payload["schema_delta"]
     source = payload["candidate_source"]
     candidate_controls = payload["candidate_control_counts"]
+    change_review = payload["change_review"]
     current_controls = current["control_counts"]
     current_year = int(payload["current_analysis_end_year"])
     candidate_year = int(payload["candidate_next_year"])
@@ -156,7 +189,7 @@ def write_markdown(payload: dict[str, object]) -> None:
         "",
         "## What passed",
         "",
-        f"The candidate directory contains **{int(payload['candidate_directory_rows']):,} rows**, all **51 states/DC**, zero duplicate UNITIDs, and **6/6 directory variables** required by the current analysis. The same variables are present in the candidate dictionary.",
+        f"The candidate directory contains **{int(payload['candidate_directory_rows']):,} rows**, all **51 states/DC**, zero duplicate UNITIDs, and **6/6 directory variables** required by the current analysis. The candidate CSV and dictionary also match across **{int(payload['candidate_field_count'])}/{int(payload['candidate_dictionary_variable_count'])} total fields/variables** with no data-only or dictionary-only variables.",
         "",
         "| Required field | Candidate dictionary title |",
         "| --- | --- |",
@@ -178,6 +211,8 @@ def write_markdown(payload: dict[str, object]) -> None:
             f"| Core states/DC represented | {int(current['core_states_dc_count'])} | {int(payload['candidate_core_states_dc_count'])} | 0 |",
             "",
             f"Among directory-eligible UNITIDs, **{int(continuity['shared_unitids']):,}** are shared across {current_year}-{candidate_year}, **{int(continuity['entering_unitids']):,}** enter the directory-side eligible set, and **{int(continuity['leaving_unitids']):,}** leave it, for a net change of **{signed(int(continuity['net_change']))}**. Among shared UNITIDs, {int(continuity['shared_control_changes'])} change control, {int(continuity['shared_state_changes'])} change state, and {int(continuity['shared_name_changes'])} have a changed institution name string.",
+            "",
+            f"A hashed institution-level change review now covers **{int(change_review['row_count']):,} affected UNITIDs**. It records structural entry/exit reasons, shared attribute changes, and current-year exposure needed for the eventual full-package QA pass. The {int(change_review['left_directory_eligible']):,} directory-side leavers include {int(change_review['current_analysis_present_leavers']):,} current-analysis institutions with **{int(change_review['current_nonresident_exposure_leavers']):,} current-year U.S. nonresident students**. Those are review-priority counts, not projected candidate-year losses. See `docs/CANDIDATE_DIRECTORY_CHANGE_REVIEW.md`.",
             "",
             "### Control composition",
             "",
@@ -218,6 +253,7 @@ def write_html(payload: dict[str, object]) -> None:
     schema = payload["schema_delta"]
     source = payload["candidate_source"]
     candidate_controls = payload["candidate_control_counts"]
+    change_review = payload["change_review"]
     current_controls = current["control_counts"]
     current_year = int(payload["current_analysis_end_year"])
     candidate_year = int(payload["candidate_next_year"])
@@ -265,7 +301,7 @@ def write_html(payload: dict[str, object]) -> None:
     </section>
 
     <section class="section shell">
-      <div class="section-heading"><p class="eyebrow">Required variables</p><h2>The current directory join/filter fields survive the candidate schema.</h2><p>Each variable is present in both the candidate CSV and its NCES dictionary. This check is deliberately narrower than full annual schema review.</p></div>
+      <div class="section-heading"><p class="eyebrow">Required variables</p><h2>The current directory join/filter fields survive the candidate schema.</h2><p>Each required variable is present in both the candidate CSV and its NCES dictionary. The full field set also reconciles {int(payload['candidate_field_count'])}/{int(payload['candidate_dictionary_variable_count'])}, with no data-only or dictionary-only variables. This check remains narrower than full annual schema review.</p></div>
       <div class="method-grid">{required_cards}</div>
     </section>
 
@@ -284,6 +320,7 @@ def write_html(payload: dict[str, object]) -> None:
           <article><h3>Shared-record changes</h3><p><strong>{int(continuity['shared_state_changes'])}</strong> state changes<br><strong>{int(continuity['shared_control_changes'])}</strong> control changes<br><strong>{int(continuity['shared_name_changes'])}</strong> name-string changes</p></article>
           <article><h3>Core geography</h3><p><strong>{int(payload['candidate_core_states_dc_count'])}/51</strong> states/DC represented<br><strong>{int(payload['candidate_duplicate_unitid_count'])}</strong> duplicate UNITIDs</p></article>
         </div>
+        <div class="methods-crosswalk-callout"><div><p class="eyebrow">Institution-level review queue</p><h3>{int(change_review['row_count']):,} affected UNITIDs are already classified for the next full-package QA pass.</h3><p>The queue separates directory-side entries/exits from shared name, state, and control changes. Current {current_year} exposure at the {int(change_review['left_directory_eligible']):,} frame leavers is {int(change_review['current_nonresident_exposure_leavers']):,} U.S. nonresident students; that is a review-priority measure, not a projected {candidate_year} loss.</p></div><a class="button button-secondary" href="candidate-directory-changes.html">Open change review</a></div>
       </div>
     </section>
 
@@ -311,7 +348,7 @@ def write_html(payload: dict[str, object]) -> None:
         <article><h3>{html.escape(str(source['dictionary_member']))}</h3><p>{int(source['dictionary_archive_bytes']):,} archive bytes<br><code class="hash-code">{html.escape(str(source['dictionary_sha256']))}</code></p></article>
       </div>
       <div class="methods-crosswalk-callout"><div><p class="eyebrow">What remains blocked</p><h3>No {candidate_year} enrollment claims yet</h3><p><code>EF{candidate_year}A.zip</code> and its dictionary are still required. Once the full package is available, preserve all source hashes, run the cross-year schema audit, rebuild the analysis, and only then apply the pre-specified R01 persistence rule.</p></div><a class="button button-secondary" href="freshness-monitor.html">Review release monitor</a></div>
-      <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_directory_preflight.json">Download JSON</a><a class="button button-secondary" href="downloads/candidate_directory_preflight.md">Download notes</a></div>
+      <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_directory_preflight.json">Download JSON</a><a class="button button-secondary" href="downloads/candidate_directory_preflight.md">Download notes</a><a class="button button-secondary" href="candidate-directory-changes.html">Institution change review</a></div>
     </section>
   </main>
   <footer><div class="shell footer-inner"><span>Candidate Directory Preflight · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>

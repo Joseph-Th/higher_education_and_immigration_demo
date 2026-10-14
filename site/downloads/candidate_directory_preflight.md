@@ -2,7 +2,7 @@
 
 This is a **partial-package structural preflight**, not an analysis-year advance. It uses the available candidate-year IPEDS institutional directory and dictionary to reduce directory-side uncertainty while Fall Enrollment remains unavailable.
 
-- **Captured:** 2026-10-14T16:24:27+00:00
+- **Captured:** 2026-10-14T17:13:53+00:00
 - **Preflight status:** PASS
 - **Current published analysis year:** 2024
 - **Candidate year:** 2025
@@ -11,7 +11,7 @@ This is a **partial-package structural preflight**, not an analysis-year advance
 
 ## What passed
 
-The candidate directory contains **5,985 rows**, all **51 states/DC**, zero duplicate UNITIDs, and **6/6 directory variables** required by the current analysis. The same variables are present in the candidate dictionary.
+The candidate directory contains **5,985 rows**, all **51 states/DC**, zero duplicate UNITIDs, and **6/6 directory variables** required by the current analysis. The candidate CSV and dictionary also match across **70/70 total fields/variables** with no data-only or dictionary-only variables.
 
 | Required field | Candidate dictionary title |
 | --- | --- |
@@ -34,6 +34,8 @@ The candidate directory contains **5,985 rows**, all **51 states/DC**, zero dupl
 | Core states/DC represented | 51 | 51 | 0 |
 
 Among directory-eligible UNITIDs, **3,812** are shared across 2024-2025, **52** enter the directory-side eligible set, and **56** leave it, for a net change of **-4**. Among shared UNITIDs, 6 change control, 3 change state, and 41 have a changed institution name string.
+
+A hashed institution-level change review now covers **154 affected UNITIDs**. It records structural entry/exit reasons, shared attribute changes, and current-year exposure needed for the eventual full-package QA pass. The 56 directory-side leavers include 54 current-analysis institutions with **612 current-year U.S. nonresident students**. Those are review-priority counts, not projected candidate-year losses. See `docs/CANDIDATE_DIRECTORY_CHANGE_REVIEW.md`.
 
 ### Control composition
 

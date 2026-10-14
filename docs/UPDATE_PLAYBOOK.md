@@ -69,10 +69,11 @@ If the candidate institutional directory and dictionary arrive before Fall Enrol
 python scripts/check_for_new_release.py --write-snapshot data/release_monitor_snapshot.json
 python scripts/check_candidate_directory.py --write-snapshot data/candidate_directory_preflight.json
 python scripts/build_candidate_directory_preflight.py
+python scripts/build_candidate_directory_change_review.py
 python scripts/build_freshness_monitor.py
 ```
 
-The preflight may validate required directory fields, dictionary titles, 50-states-plus-DC coverage, UNITID uniqueness, current directory-side eligibility, control/state/name continuity, archive hashes, and schema additions/removals. It must not add candidate archives to `data/source_manifest.csv`, call the directory-side frame the final analytic universe, calculate candidate-year enrollment, resolve R01, or change `END_YEAR`. Those actions remain blocked until the Fall Enrollment data and dictionary are available and the complete annual package enters the normal collection/schema/QA workflow.
+The preflight may validate required directory fields, full data/dictionary field parity, dictionary titles, 50-states-plus-DC coverage, UNITID uniqueness, current directory-side eligibility, control/state/name continuity, archive hashes, and schema additions/removals. The live capture also writes `data/candidate_directory_change_review.csv`, which classifies every directory-side entry/exit and every shared eligible attribute change, attaches only canonical current-year enrollment exposure, and is SHA-256-bound to the preflight snapshot. Review that queue before the enrollment package arrives so control/state/name continuity issues are already known. Current-year exposure is a prioritization device, not a candidate-year estimate. Directory absence does not prove closure, directory entry does not prove a new institution, and state/control/name changes do not by themselves establish student movement. The preflight must not add candidate archives to `data/source_manifest.csv`, call the directory-side frame the final analytic universe, calculate candidate-year enrollment, resolve R01, or change `END_YEAR`. Those actions remain blocked until the Fall Enrollment data and dictionary are available and the complete annual package enters the normal collection/schema/QA workflow.
 
 ## 5. Rebuild and inspect changes
 

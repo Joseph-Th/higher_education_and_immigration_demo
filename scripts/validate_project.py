@@ -29,6 +29,7 @@ def main() -> int:
         ("Build undergraduate shift baseline", [PYTHON, "scripts/build_undergraduate_shift_baseline.py"]),
         ("Build planning scenarios", [PYTHON, "scripts/build_planning_scenarios.py"]),
         ("Build candidate directory preflight", [PYTHON, "scripts/build_candidate_directory_preflight.py"]),
+        ("Build candidate directory change review", [PYTHON, "scripts/build_candidate_directory_change_review.py"]),
         ("Build freshness monitor", [PYTHON, "scripts/build_freshness_monitor.py"]),
         ("Build latest-release review", [PYTHON, "scripts/build_update_review.py"]),
         ("Build QA resolution log", [PYTHON, "scripts/build_qa_resolution_log.py"]),

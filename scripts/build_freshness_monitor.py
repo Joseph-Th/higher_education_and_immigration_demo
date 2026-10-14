@@ -113,10 +113,17 @@ def load_directory_preflight(snapshot: dict[str, object]) -> dict[str, object]:
         raise RuntimeError("Directory preflight must be PASS and must not authorize year advancement")
     if preflight.get("missing_required_data_fields") != [] or preflight.get("missing_required_dictionary_fields") != []:
         raise RuntimeError("Directory preflight required-field checks are not clean")
+    if preflight.get("candidate_full_field_dictionary_match") is not True:
+        raise RuntimeError("Directory preflight full data/dictionary field set does not match")
+    if int(preflight.get("candidate_dictionary_variable_count", -1)) != int(preflight.get("candidate_field_count", -2)):
+        raise RuntimeError("Directory preflight data/dictionary field counts do not reconcile")
     if int(preflight.get("candidate_core_states_dc_count", 0)) != 51:
         raise RuntimeError("Directory preflight must cover all 50 states plus DC")
     if int(preflight.get("candidate_duplicate_unitid_count", -1)) != 0:
         raise RuntimeError("Directory preflight contains duplicate UNITIDs")
+    change_review = preflight.get("change_review")
+    if not isinstance(change_review, dict) or int(change_review.get("row_count", 0)) <= 0:
+        raise RuntimeError("Directory preflight change-review metadata is missing")
     return preflight
 
 
@@ -161,6 +168,7 @@ def build_rows() -> tuple[list[MonitorRow], dict[str, object]]:
     available_count = sum(row.status == "AVAILABLE" for row in file_rows)
     package_ready = bool(snapshot["package_ready"])
     continuity = preflight["eligible_universe_continuity"]
+    change_review = preflight["change_review"]
     directory_preflight = MonitorRow(
         monitor_id="D01",
         monitor_area="Candidate directory preflight",
@@ -169,9 +177,10 @@ def build_rows() -> tuple[list[MonitorRow], dict[str, object]]:
         status="PASS",
         evidence=(
             "6/6 required directory fields preserved in data and dictionary; "
+            f"{int(preflight['candidate_field_count'])}/{int(preflight['candidate_dictionary_variable_count'])} full data/dictionary fields align; "
             f"{int(preflight['candidate_directory_eligible_rows']):,} directory-eligible rows; "
-            f"{int(continuity['shared_unitids']):,} shared UNITIDs; net eligible change "
-            f"{int(continuity['net_change']):+d}."
+            f"{int(continuity['shared_unitids']):,} shared UNITIDs; net eligible change {int(continuity['net_change']):+d}; "
+            f"{int(change_review['row_count']):,} affected UNITIDs in the hashed change-review queue."
         ),
         trigger="Both candidate-year directory assets are available before the complete annual package.",
         next_action=(
@@ -288,7 +297,7 @@ def write_markdown(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
         "",
         "## Candidate directory preflight",
         "",
-        f"The available candidate-year directory has already passed a bounded structural preflight: {directory_preflight.evidence} This reduces directory-side uncertainty but does not convert a partial package into an enrollment release. See `docs/CANDIDATE_DIRECTORY_PREFLIGHT.md` for the field, continuity, archive-hash, and schema-delta detail.",
+        f"The available candidate-year directory has already passed a bounded structural preflight: {directory_preflight.evidence} This reduces directory-side uncertainty but does not convert a partial package into an enrollment release. See `docs/CANDIDATE_DIRECTORY_PREFLIGHT.md` for the field, continuity, archive-hash, and schema-delta detail and `docs/CANDIDATE_DIRECTORY_CHANGE_REVIEW.md` for the institution-level entry/exit and attribute-change queue.",
         "",
         "## Operational rule",
         "",
@@ -300,6 +309,7 @@ def write_markdown(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
         "python scripts/check_for_new_release.py --write-snapshot data/release_monitor_snapshot.json",
         "python scripts/check_candidate_directory.py --write-snapshot data/candidate_directory_preflight.json",
         "python scripts/build_candidate_directory_preflight.py",
+        "python scripts/build_candidate_directory_change_review.py",
         "python scripts/build_freshness_monitor.py",
         "```",
         "",
@@ -313,6 +323,7 @@ def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
     preflight = load_directory_preflight(snapshot)
     continuity = preflight["eligible_universe_continuity"]
     schema_delta = preflight["schema_delta"]
+    change_review = preflight["change_review"]
     release_rows = [row for row in rows if row.monitor_area == "NCES release package"]
     gate = next(row for row in rows if row.monitor_id == "G01")
     available = sum(row.status == "AVAILABLE" for row in release_rows)
@@ -397,13 +408,14 @@ def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
     </section>
     <section class="section section-tinted" id="directory-preflight">
       <div class="shell">
-        <div class="section-heading"><p class="eyebrow">Candidate directory preflight</p><h2>The available directory side has already cleared a bounded structural check.</h2><p>All six fields required by the current directory join/filter are present in both the candidate CSV and dictionary. That reduces one update risk while preserving the full-package gate.</p></div>
+        <div class="section-heading"><p class="eyebrow">Candidate directory preflight</p><h2>The available directory side has already cleared a bounded structural check.</h2><p>All six fields required by the current directory join/filter are present in both the candidate CSV and dictionary, and the full {int(preflight['candidate_field_count'])}/{int(preflight['candidate_dictionary_variable_count'])} field set aligns. That reduces one update risk while preserving the full-package gate.</p></div>
         <div class="handoff-summary">
           <article><strong>6/6</strong><span>required directory fields preserved</span></article>
           <article><strong>{int(preflight['candidate_directory_eligible_rows']):,}</strong><span>candidate directory-eligible rows</span></article>
           <article><strong>{int(continuity['shared_unitids']):,}</strong><span>shared eligible UNITIDs</span></article>
           <article><strong>{int(continuity['net_change']):+d}</strong><span>net eligible-row change vs {current}</span></article>
         </div>
+        <div class="methods-crosswalk-callout"><div><p class="eyebrow">Institution review queue</p><h3>{int(change_review['row_count']):,} affected UNITIDs captured before Fall Enrollment arrives.</h3><p>The queue contains {int(change_review['entered_directory_eligible']):,} directory-side entries, {int(change_review['left_directory_eligible']):,} exits, and {int(change_review['shared_attribute_change_rows']):,} shared attribute-change rows. Current {current} U.S. nonresident exposure at frame leavers is {int(change_review['current_nonresident_exposure_leavers']):,}; it is not a projected {candidate} loss.</p></div><a class="button button-secondary" href="candidate-directory-changes.html">Open change review</a></div>
         <div class="methods-crosswalk-callout"><div><p class="eyebrow">Schema delta</p><h3>{int(preflight['current_reference']['field_count'])} → {int(preflight['candidate_field_count'])} fields</h3><p>Removed nonrequired fields: {html.escape(', '.join(schema_delta['removed_fields']) or 'None')}. Required fields are preserved, but the full annual schema audit still runs when Fall Enrollment arrives.</p></div><a class="button button-secondary" href="candidate-directory-preflight.html">Open full preflight</a></div>
       </div>
     </section>
