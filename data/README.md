@@ -59,6 +59,14 @@ Structured research-needs register. Each row records a stable research ID, prior
 
 Structured methodology/source-selection control for six distinct immigration-related student concepts: IPEDS U.S. nonresident, immigrant-origin, SEVIS international, undocumented higher-education, undocumented high-school-graduate, and refugee/asylee students. Each row records the measure type, primary source and vintage, unit, inclusion/exclusion rules, geography, best use, comparison warning, project status, source URL, and review date. `scripts/build_population_crosswalk.py` validates the crosswalk and generates both `docs/POPULATION_CROSSWALK.md` and the public `site/methodology-crosswalk.html` page.
 
+## `population_trend_reference.csv`
+
+Curated public aggregate observations used by the bounded R04 comparison. It contains no person-level data. Each row retains the population definition, observation year, published estimate/share where available, source vintage, method-compatible `trend_segment`, source-reported change where applicable, Research Library foreign key, URL, and interpretation note. Historical and current undocumented estimates intentionally use separate trend segments until model equivalence is established.
+
+## `population_trend_comparison.csv`
+
+Generated national comparison table built by `scripts/build_population_trends.py` from the canonical 2019-2024 IPEDS national series plus `population_trend_reference.csv`. It calculates change only within compatible segments and generates `docs/POPULATION_TREND_COMPARISON.md` plus `site/population-trends.html`. Cross-population values are scale context only and are never added into a combined immigration-related enrollment total.
+
 ## `recurring_report_register.csv`
 
 Portfolio operations register for the three recurring research products named in the target role. Each row foreign-keys to both a `population_id` in `population_crosswalk.csv` and a `research_library_id` in `research_library.csv`, then records public-product vintage, guarded schedule status, partner context, intake requirements, methodology-change checks, QA gates, publication outputs, and the next kickoff action. The register deliberately requires the schedule text to say that milestones must be confirmed with the partner instead of inventing an internal deadline from public publication dates. `scripts/build_recurring_report_register.py` validates those relationships and generates `docs/RECURRING_REPORT_REGISTER.md` plus `site/research-operations.html`.

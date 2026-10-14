@@ -451,6 +451,32 @@ One row per UNITID present in the private-nonprofit analytic universe in 2015 or
 
 `scripts/build_private_nonprofit_analysis.py` reconciles the 2015 and 2024 institution totals to `control_year.csv`, requires undergraduate plus graduate contributions to match every institution endpoint change, requires gross positive movement minus gross negative movement to match the +82,825 sector net change, and generates `docs/PRIVATE_NONPROFIT_GROWTH.md` plus `site/private-nonprofit-growth.html`. The public decision rule labels the shift concentrated only when the top 10 institutions account for at least 50% of gross positive movement; that threshold is an explicit project rule rather than a universal statistical standard. Endpoint entry/exit can reflect control-category or analytic-universe changes and must not be interpreted automatically as campus opening/closure.
 
+## `data/population_trend_reference.csv`
+
+Six curated public aggregate observations used to bound the R04 comparison: two immigrant-origin observations (2000/2023), two historical undocumented-student observations (2019/2021), and two current undocumented-student observations (2023/2024). This file is a provenance-controlled analytical input, not a person-level dataset and not a merged population series.
+
+Key fields include `reference_id`, `population_id`, `observation_year`, `estimate`, `share_pct`, `source_vintage`, `trend_segment`, `reported_change_pct`, `research_library_id`, `source_url`, and `comparison_note`. The `trend_segment` field is a hard arithmetic boundary: the historical and current undocumented estimates are deliberately assigned to different segments so the build cannot calculate an unsupported 2021-2023 trend.
+
+## `data/population_trend_comparison.csv`
+
+Twelve generated population-year rows combining the six canonical IPEDS national observations for 2019-2024 with the six curated external aggregate observations above. The file preserves each population's measurement system and source vintage instead of normalizing unlike populations into a single total.
+
+| Field | Definition |
+| --- | --- |
+| `population_id` / `population_label` | Population concept and display label |
+| `observation_year` / `estimate` | Published or canonical national observation |
+| `share_pct` | Published population share where available; IPEDS share is recalculated from the canonical national series |
+| `measurement` / `source_vintage` | Measurement system and exact source period used for the observation |
+| `trend_segment` | Method-compatible segment within which change may be calculated |
+| `segment_start_year` / `segment_start_value` | First observation in that compatible segment |
+| `within_segment_change` / `within_segment_change_pct` | Arithmetic change from the segment start; never calculated across different segments |
+| `reported_change_pct` | Source-reported percentage when the published rounded counts do not reproduce it exactly |
+| `research_library_id` / `source_url` | Maintained source foreign key and public provenance URL |
+| `comparison_class` | Primary IPEDS series or contextual companion series |
+| `comparison_note` | Interpretation boundary retained with the row |
+
+`scripts/build_population_trends.py` validates all external observations and Research Library foreign keys, derives IPEDS rows directly from `national_year.csv`, requires separate undocumented 2019-2021 and 2023-2024 segments, and generates `docs/POPULATION_TREND_COMPARISON.md` plus `site/population-trends.html`. Cross-population counts are contextual only and must not be added, subtracted, or treated as mutually exclusive components.
+
 ## `data/planning_scenarios.csv`
 
 One backtest row plus three forward planning-scenario rows generated from the validated national series.

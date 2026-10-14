@@ -7,7 +7,7 @@ This is a portfolio operations model for the three recurring research products n
 | Product | Population | Latest publication | Current data vintage | Portfolio stage |
 | --- | --- | --- | --- | --- |
 | [Undocumented Students in U.S. Higher Education](https://www.higheredimmigrationportal.org/research/undocumented-students-in-u-s-higher-education-2/) | Undocumented students in higher education | 2026-05-28 | Report-specific ACS microdata vintage; confirm the exact vintage from the current partner package before analysis | Current public product and methodology reference reviewed |
-| [Immigrant-Origin Students in Higher Education](https://www.higheredimmigrationportal.org/research/securing-americas-talent-pipeline/) | Immigrant-origin students | 2026-05-05 | 2023 Current Population Survey October Supplement used by the current 2026 report | Current public product and methodology reference reviewed |
+| [Immigrant-Origin Students in Higher Education](https://www.presidentsalliance.org/wp-content/uploads/2026/05/Securing-Americas-Talent-Pipeline-May-2026.pdf) | Immigrant-origin students | 2026-05-05 | 2023 Current Population Survey October Supplement used by the current 2026 report | Current public product and methodology reference reviewed |
 | [Undocumented Students Graduating High School](https://www.higheredimmigrationportal.org/research/a-generation-threatened-undocumented-high-school-students-graduate-amidst-uncertain-national-climate/) | Undocumented high school graduates | 2026-02-03 | 2019-early 2023 pooled ACS inputs plus NCES graduation-rate assumptions used by the current 2026 report | Current public product and methodology reference reviewed |
 
 ## Shared production lifecycle

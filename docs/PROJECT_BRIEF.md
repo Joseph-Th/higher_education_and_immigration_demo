@@ -87,6 +87,7 @@ A concise PDF version should also be available for reviewers who expect a conven
 - structured research-needs register connecting findings and source limitations to proposed methods, outputs, and decision rules.
 - structured Research Library with machine-readable source metadata and generated documentation.
 - structured population/source crosswalk that prevents IPEDS, SEVIS, immigrant-origin, undocumented, pipeline, and refugee/asylee concepts from being treated as interchangeable.
+- bounded national population-trend comparison that uses the crosswalk as a hard gate, retains separate method-compatible trend segments, and prevents unlike immigration-related populations from being combined into a single enrollment series.
 - structured recurring-report operations register for the three research products named in the target role, with explicit partner-confirmed scheduling, versioned intake, methodology-change review, QA gates, publication outputs, and archival handoff.
 - structured seven-stage production-cycle register that separates shared coordination gates from product-specific methodology and requires evidence at each handoff rather than inferred calendar progress.
 - blank production-cycle log template plus validator for a real kickoff record, with controlled report/stage IDs, record types, materiality, statuses, dates, and nonpublic-by-default handling for completed partner logs.

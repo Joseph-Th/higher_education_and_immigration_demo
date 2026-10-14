@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 50
-**Expanded public download files:** 100
+**Registered artifact families:** 52
+**Expanded public download files:** 102
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -69,6 +69,8 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR48 | `site/downloads/state_recovery_analysis.md` | Publication | State recovery analysis note | Generated from the validated state recovery decomposition |
 | PR49 | `site/downloads/private_nonprofit_growth.csv` | Analysis output | Private nonprofit institution contribution | Generated from validated public control and institution-level IPEDS outputs plus the current institution QA gate |
 | PR50 | `site/downloads/private_nonprofit_growth.md` | Publication | Private nonprofit growth concentration note | Generated from the validated private-nonprofit institution contribution analysis |
+| PR51 | `site/downloads/population_trend_comparison.csv` | Analysis output | Population-year aggregate comparison row | Generated from the canonical IPEDS national series plus curated public aggregate reference observations for immigrant-origin and undocumented students |
+| PR52 | `site/downloads/population_trend_comparison.md` | Publication | Bounded national population trend comparison note | Generated from validated separate population series with explicit definition and vintage boundaries |
 
 ## Handling boundary
 

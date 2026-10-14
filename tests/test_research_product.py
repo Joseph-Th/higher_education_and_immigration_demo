@@ -447,7 +447,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 50)
+        self.assertEqual(len(release_rows), 52)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -456,15 +456,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 100)
-        self.assertEqual(validate_public_tree(release_rows), 100)
+        self.assertEqual(len(pairs), 102)
+        self.assertEqual(validate_public_tree(release_rows), 102)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 100", rendered)
+        self.assertIn("Expanded public download files:** 102", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("100</strong><span>expanded public download files", html)
+        self.assertIn("102</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -482,7 +482,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 100)
+        self.assertEqual(validate_public_tree(release_rows), 102)
 
     def test_freshness_monitor_preserves_release_gate_and_trigger_boundaries(self) -> None:
         snapshot = json.loads(
@@ -635,7 +635,11 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(any(row["current_ipeds_fit"] == "None" for row in agenda))
         self.assertTrue(any(row["current_ipeds_fit"] == "High" for row in agenda))
         r04 = next(row for row in agenda if row["research_id"] == "R04")
-        self.assertIn("crosswalk complete", r04["status"].lower())
+        self.assertEqual(
+            r04["status"],
+            "Implemented as bounded national population trend comparison",
+        )
+        self.assertIn("not addable", r04["decision_rule"].lower())
         r02 = next(row for row in agenda if row["research_id"] == "R02")
         self.assertEqual(r02["status"], "Implemented in state recovery analysis")
         self.assertEqual(r02["proposed_output"], "State recovery decomposition brief")
@@ -667,6 +671,55 @@ class ResearchProductTests(unittest.TestCase):
             self.assertIn(row["source_url"], rendered)
             self.assertIn(row["population_label"], html)
             self.assertIn(row["source_url"], html)
+
+    def test_population_trend_comparison_keeps_population_boundaries(self) -> None:
+        reference = rows(ROOT / "data" / "population_trend_reference.csv")
+        comparison = rows(ROOT / "data" / "population_trend_comparison.csv")
+        self.assertEqual(len(reference), 6)
+        self.assertEqual(len(comparison), 12)
+        self.assertEqual(len({row["reference_id"] for row in reference}), 6)
+        self.assertTrue(all(row["source_url"].startswith("https://") for row in reference))
+
+        by_key = {
+            (row["population_id"], int(row["observation_year"])): row
+            for row in comparison
+        }
+        self.assertEqual(int(by_key[("ipeds_us_nonresident", 2019)]["estimate"]), 973058)
+        self.assertEqual(int(by_key[("ipeds_us_nonresident", 2023)]["estimate"]), 1014598)
+        self.assertEqual(int(by_key[("ipeds_us_nonresident", 2024)]["estimate"]), 1044137)
+        self.assertEqual(by_key[("ipeds_us_nonresident", 2024)]["within_segment_change_pct"], "7.3")
+        self.assertEqual(int(by_key[("immigrant_origin", 2000)]["estimate"]), 2900000)
+        self.assertEqual(int(by_key[("immigrant_origin", 2023)]["estimate"]), 5991000)
+        self.assertEqual(by_key[("immigrant_origin", 2023)]["reported_change_pct"], "107.0")
+        self.assertEqual(int(by_key[("undocumented_higher_ed", 2019)]["estimate"]), 427000)
+        self.assertEqual(int(by_key[("undocumented_higher_ed", 2021)]["estimate"]), 408000)
+        self.assertEqual(by_key[("undocumented_higher_ed", 2021)]["reported_change_pct"], "-4.2")
+        self.assertEqual(int(by_key[("undocumented_higher_ed", 2023)]["estimate"]), 510000)
+        self.assertEqual(int(by_key[("undocumented_higher_ed", 2024)]["estimate"]), 525000)
+        self.assertEqual(by_key[("undocumented_higher_ed", 2024)]["within_segment_change_pct"], "2.94")
+
+        undocumented_segments = {
+            row["trend_segment"]
+            for row in comparison
+            if row["population_id"] == "undocumented_higher_ed"
+        }
+        self.assertEqual(
+            undocumented_segments,
+            {"undocumented_2019_2021", "undocumented_2023_2024"},
+        )
+        library_ids = {row["resource_id"] for row in rows(ROOT / "data" / "research_library.csv")}
+        self.assertTrue(all(row["research_library_id"] in library_ids for row in comparison))
+        agenda = {row["research_id"]: row for row in rows(ROOT / "data" / "research_agenda.csv")}
+        self.assertEqual(
+            agenda["R04"]["status"],
+            "Implemented as bounded national population trend comparison",
+        )
+        rendered = (ROOT / "docs" / "POPULATION_TREND_COMPARISON.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "population-trends.html").read_text(encoding="utf-8")
+        self.assertIn("must not be added", rendered)
+        self.assertIn("does **not** calculate a 2021-2023 undocumented trend", rendered)
+        self.assertIn("NOT ADDABLE", html)
+        self.assertIn("no 2021–2023 undocumented trend is calculated", html)
 
     def test_recurring_report_register_is_relational_and_rendered(self) -> None:
         register = rows(ROOT / "data" / "recurring_report_register.csv")
@@ -1052,10 +1105,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 100)
+        self.assertEqual(len(pairs), 102)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 100)
+        self.assertEqual(validate_public_tree(release_rows), 102)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -1070,6 +1123,7 @@ class ResearchProductTests(unittest.TestCase):
             "state-recovery.html",
             "private-nonprofit-growth.html",
             "qa-review.html",
+            "population-trends.html",
             "planning-scenarios.html",
             "freshness-monitor.html",
             "research-library.html",

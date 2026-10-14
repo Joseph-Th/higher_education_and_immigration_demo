@@ -33,6 +33,7 @@ def main() -> int:
         ("Build private nonprofit growth analysis", [PYTHON, "scripts/build_private_nonprofit_analysis.py"]),
         ("Build research library", [PYTHON, "scripts/build_research_library.py"]),
         ("Build population crosswalk", [PYTHON, "scripts/build_population_crosswalk.py"]),
+        ("Build population trend comparison", [PYTHON, "scripts/build_population_trends.py"]),
         ("Build recurring report register", [PYTHON, "scripts/build_recurring_report_register.py"]),
         ("Validate production cycle log template", [PYTHON, "scripts/validate_production_cycle_log.py"]),
         ("Build production cycle", [PYTHON, "scripts/build_production_cycle.py"]),

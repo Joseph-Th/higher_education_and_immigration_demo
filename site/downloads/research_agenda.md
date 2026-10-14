@@ -8,7 +8,7 @@ This register turns findings, QA observations, source limitations, and recurring
 | --- | --- | --- | --- | --- |
 | R01 | High | Does the 2024 undergraduate-led increase persist in the next Fall Enrollment release? | High | Monitor next release |
 | R02 | High | Why have some states recovered above 2019 while others remain below? | High | Implemented in state recovery analysis |
-| R04 | High | How do IPEDS U.S. nonresident trends compare with undocumented and immigrant-origin student estimates? | None | Methods crosswalk complete; compatible trend data still needed |
+| R04 | High | How do IPEDS U.S. nonresident trends compare with undocumented and immigrant-origin student estimates? | None | Implemented as bounded national population trend comparison |
 | R05 | High | Which large institution-level annual changes reflect substantive movement versus reporting or classification discontinuity? | High | Implemented in complete high-priority QA review |
 | R03 | Medium | Is private nonprofit growth broad-based or concentrated among a small set of institutions? | High | Implemented in private nonprofit growth analysis |
 | R06 | Medium | What does the undocumented high-school graduate pipeline imply for higher-education access questions? | None | Requires partner/population data |
@@ -42,11 +42,11 @@ This register turns findings, QA observations, source limitations, and recurring
 
 - **Evidence trigger:** IPEDS U.S. nonresident is explicitly not a measure of undocumented, DACA, immigrant-origin, or all foreign-born students.
 - **Current IPEDS fit:** None
-- **Additional data needed:** Population-specific Presidents' Alliance / partner estimates and their methodology/source files
-- **Proposed method:** Use the completed population/source crosswalk first, then compare aggregate trends only where populations, years, geography, and denominators are sufficiently compatible.
-- **Proposed output:** Methods crosswalk complete; companion brief next
-- **Decision rule:** Do not combine populations into one series unless definitions and denominators support a defensible comparison.
-- **Status:** Methods crosswalk complete; compatible trend data still needed
+- **Additional data needed:** Current published national estimates support a bounded comparison; method-equivalent microdata and aligned geography would be required for deeper cross-series or state analysis.
+- **Proposed method:** Keep the populations as separate series; compare change only within method-compatible source segments; use same-year national levels for scale context without adding, subtracting, or treating one population as a proxy for another.
+- **Proposed output:** National population trend comparison note
+- **Decision rule:** Direct arithmetic is permitted only within a compatible population/source segment. Cross-population levels are contextual and not addable; state comparison remains held when geography or denominator definitions differ.
+- **Status:** Implemented as bounded national population trend comparison
 
 #### R05 · Which large institution-level annual changes reflect substantive movement versus reporting or classification discontinuity?
 

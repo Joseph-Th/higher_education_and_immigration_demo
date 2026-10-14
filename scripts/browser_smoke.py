@@ -74,6 +74,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/state_recovery_analysis.md",
         "downloads/private_nonprofit_growth.csv",
         "downloads/private_nonprofit_growth.md",
+        "downloads/population_trend_comparison.csv",
+        "downloads/population_trend_comparison.md",
         "downloads/planning_scenarios.csv",
         "downloads/planning_scenarios.md",
         "downloads/release_monitor_snapshot.json",
@@ -317,7 +319,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "50" not in summary or "100" not in summary:
+    if "52" not in summary or "102" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -381,7 +383,7 @@ def inspect_freshness_monitor(browser, base_url: str, *, width: int, height: int
     if page.locator('[data-product-monitor]').count() != 3:
         raise AssertionError("Freshness monitor does not render all three recurring-product triggers")
     summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("2/4", "HOLD YEAR ADVANCE", "13", "3"):
+    for expected in ("2/4", "HOLD YEAR ADVANCE", "15", "3"):
         if expected not in summary:
             raise AssertionError(f"Freshness monitor summary is missing {expected}")
     boundary = page.locator(".handoff-hero .release-note").inner_text()
@@ -563,6 +565,39 @@ def inspect_population_crosswalk(browser, base_url: str, *, width: int, height: 
     context.close()
 
 
+def inspect_population_trends(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/population-trends.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Population trend comparison failed at {width}px")
+    summary = page.locator(".handoff-hero .handoff-summary").inner_text()
+    for expected in ("+7.3%", "+107%", "+2.9%", "3"):
+        if expected not in summary:
+            raise AssertionError(f"Population trend summary is missing {expected}")
+    same_year = page.locator("#same-year").inner_text()
+    for expected in ("1,014,598", "5,991,000", "510,000", "NOT ADDABLE"):
+        if expected not in same_year:
+            raise AssertionError(f"Population trend same-year section is missing {expected}")
+    if "no 2021–2023 undocumented trend is calculated" not in page.locator("main").inner_text():
+        raise AssertionError("Population trend page is missing its undocumented-vintage break")
+    if page.locator("table tbody tr").count() != 6:
+        raise AssertionError("Population trend page does not show the six-year IPEDS context")
+    if page.locator('a[href="downloads/population_trend_comparison.csv"]').count() != 2:
+        raise AssertionError("Population trend CSV links are missing")
+    if page.locator('a[href="downloads/population_trend_comparison.md"]').count() != 1:
+        raise AssertionError("Population trend Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Population trend horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Population trend browser errors: " + " | ".join(errors))
+    context.close()
+
+
 def inspect_research_operations(browser, base_url: str, *, width: int, height: int) -> None:
     context = browser.new_context(viewport={"width": width, "height": height})
     page = context.new_page()
@@ -715,6 +750,8 @@ def main() -> int:
                 inspect_research_memo(browser, base_url, width=390, height=844)
                 inspect_population_crosswalk(browser, base_url, width=1280, height=900)
                 inspect_population_crosswalk(browser, base_url, width=390, height=844)
+                inspect_population_trends(browser, base_url, width=1280, height=900)
+                inspect_population_trends(browser, base_url, width=390, height=844)
                 inspect_research_operations(browser, base_url, width=1280, height=900)
                 inspect_research_operations(browser, base_url, width=390, height=844)
                 inspect_research_library(browser, base_url, width=1280, height=900)
