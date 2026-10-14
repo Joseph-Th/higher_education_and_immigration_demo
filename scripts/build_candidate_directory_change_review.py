@@ -585,7 +585,7 @@ def write_html(rows: list[dict[str, str]], snapshot: dict[str, object], summary:
           <article><h3>Keep UNITID continuity</h3><p>Carry institution identity across name changes instead of treating renamed records as new institutions.</p></article>
           <article><h3>Re-capture revisions</h3><p>If NCES replaces either candidate directory archive, rerun the live capture and require the CSV hash and preflight snapshot to move together.</p></article>
         </div>
-        <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_directory_change_review.csv">Download change review CSV</a><a class="button button-secondary" href="downloads/candidate_directory_change_review.md">Download review note</a><a class="button button-secondary" href="candidate-directory-preflight.html">Directory preflight</a></div>
+        <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_directory_change_review.csv">Download change review CSV</a><a class="button button-secondary" href="downloads/candidate_directory_change_review.md">Download review note</a><a class="button button-secondary" href="candidate-year-watchlist.html">Carry-forward QA watchlist</a><a class="button button-secondary" href="candidate-directory-preflight.html">Directory preflight</a></div>
       </div>
     </section>
   </main>

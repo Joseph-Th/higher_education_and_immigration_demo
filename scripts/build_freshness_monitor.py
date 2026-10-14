@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 SNAPSHOT_PATH = DATA / "release_monitor_snapshot.json"
 DIRECTORY_PREFLIGHT_PATH = DATA / "candidate_directory_preflight.json"
+CANDIDATE_WATCHLIST_PATH = DATA / "candidate_year_qa_watchlist.csv"
 CSV_OUTPUT = DATA / "freshness_monitor.csv"
 DOC_OUTPUT = ROOT / "docs" / "FRESHNESS_MONITOR.md"
 HTML_OUTPUT = ROOT / "site" / "freshness-monitor.html"
@@ -127,9 +128,37 @@ def load_directory_preflight(snapshot: dict[str, object]) -> dict[str, object]:
     return preflight
 
 
+def load_candidate_watchlist() -> tuple[list[dict[str, str]], dict[str, int]]:
+    rows = read_csv(CANDIDATE_WATCHLIST_PATH)
+    if len(rows) != 226 or len({row["unitid"] for row in rows}) != 226:
+        raise RuntimeError("Candidate-year QA watchlist must contain 226 unique UNITIDs")
+    high = [row for row in rows if row["current_review_priority"] == "high"]
+    medium = [row for row in rows if row["current_review_priority"] == "medium"]
+    candidate = [row for row in rows if row["candidate_change_class"]]
+    medium_overlap = [
+        row for row in rows
+        if row["carry_forward_group"] == "CURRENT_MEDIUM_PLUS_DIRECTORY_CHANGE"
+    ]
+    high_overlap = [
+        row for row in rows
+        if row["carry_forward_group"] == "CURRENT_HIGH_PLUS_DIRECTORY_CHANGE"
+    ]
+    if (len(high), len(medium), len(candidate), len(medium_overlap), len(high_overlap)) != (27, 50, 154, 5, 0):
+        raise RuntimeError("Candidate-year QA watchlist source/overlap counts do not reconcile")
+    return rows, {
+        "rows": len(rows),
+        "high": len(high),
+        "medium": len(medium),
+        "candidate": len(candidate),
+        "medium_overlap": len(medium_overlap),
+        "high_overlap": len(high_overlap),
+    }
+
+
 def build_rows() -> tuple[list[MonitorRow], dict[str, object]]:
     snapshot = load_snapshot()
     preflight = load_directory_preflight(snapshot)
+    _, watchlist = load_candidate_watchlist()
     checked_date = str(snapshot["checked_at_utc"])[:10]
     candidate = int(snapshot["candidate_next_year"])
     current = int(snapshot["current_analysis_end_year"])
@@ -180,7 +209,8 @@ def build_rows() -> tuple[list[MonitorRow], dict[str, object]]:
             f"{int(preflight['candidate_field_count'])}/{int(preflight['candidate_dictionary_variable_count'])} full data/dictionary fields align; "
             f"{int(preflight['candidate_directory_eligible_rows']):,} directory-eligible rows; "
             f"{int(continuity['shared_unitids']):,} shared UNITIDs; net eligible change {int(continuity['net_change']):+d}; "
-            f"{int(change_review['row_count']):,} affected UNITIDs in the hashed change-review queue."
+            f"{int(change_review['row_count']):,} affected UNITIDs in the hashed change-review queue; "
+            f"{watchlist['rows']:,} carry-forward QA rows with {watchlist['medium_overlap']} current medium-priority/directory overlaps."
         ),
         trigger="Both candidate-year directory assets are available before the complete annual package.",
         next_action=(
@@ -273,6 +303,7 @@ def write_markdown(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
     available = sum(row.status == "AVAILABLE" for row in rows if row.monitor_area == "NCES release package")
     gate = next(row for row in rows if row.monitor_id == "G01")
     directory_preflight = next(row for row in rows if row.monitor_id == "D01")
+    _, watchlist = load_candidate_watchlist()
     lines = [
         "# Release and Freshness Monitor",
         "",
@@ -297,7 +328,7 @@ def write_markdown(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
         "",
         "## Candidate directory preflight",
         "",
-        f"The available candidate-year directory has already passed a bounded structural preflight: {directory_preflight.evidence} This reduces directory-side uncertainty but does not convert a partial package into an enrollment release. See `docs/CANDIDATE_DIRECTORY_PREFLIGHT.md` for the field, continuity, archive-hash, and schema-delta detail and `docs/CANDIDATE_DIRECTORY_CHANGE_REVIEW.md` for the institution-level entry/exit and attribute-change queue.",
+        f"The available candidate-year directory has already passed a bounded structural preflight: {directory_preflight.evidence} This reduces directory-side uncertainty but does not convert a partial package into an enrollment release. See `docs/CANDIDATE_DIRECTORY_PREFLIGHT.md` for the field, continuity, archive-hash, and schema-delta detail, `docs/CANDIDATE_DIRECTORY_CHANGE_REVIEW.md` for the institution-level entry/exit and attribute-change queue, and `docs/CANDIDATE_YEAR_QA_WATCHLIST.md` for the {watchlist['rows']}-UNITID carry-forward union of current high/medium QA signals with candidate directory changes.",
         "",
         "## Operational rule",
         "",
@@ -310,6 +341,9 @@ def write_markdown(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
         "python scripts/check_candidate_directory.py --write-snapshot data/candidate_directory_preflight.json",
         "python scripts/build_candidate_directory_preflight.py",
         "python scripts/build_candidate_directory_change_review.py",
+        "python scripts/build_update_review.py",
+        "python scripts/build_qa_resolution_log.py",
+        "python scripts/build_candidate_year_qa_watchlist.py",
         "python scripts/build_freshness_monitor.py",
         "```",
         "",
@@ -324,6 +358,7 @@ def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
     continuity = preflight["eligible_universe_continuity"]
     schema_delta = preflight["schema_delta"]
     change_review = preflight["change_review"]
+    _, watchlist = load_candidate_watchlist()
     release_rows = [row for row in rows if row.monitor_area == "NCES release package"]
     gate = next(row for row in rows if row.monitor_id == "G01")
     available = sum(row.status == "AVAILABLE" for row in release_rows)
@@ -416,6 +451,7 @@ def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
           <article><strong>{int(continuity['net_change']):+d}</strong><span>net eligible-row change vs {current}</span></article>
         </div>
         <div class="methods-crosswalk-callout"><div><p class="eyebrow">Institution review queue</p><h3>{int(change_review['row_count']):,} affected UNITIDs captured before Fall Enrollment arrives.</h3><p>The queue contains {int(change_review['entered_directory_eligible']):,} directory-side entries, {int(change_review['left_directory_eligible']):,} exits, and {int(change_review['shared_attribute_change_rows']):,} shared attribute-change rows. Current {current} U.S. nonresident exposure at frame leavers is {int(change_review['current_nonresident_exposure_leavers']):,}; it is not a projected {candidate} loss.</p></div><a class="button button-secondary" href="candidate-directory-changes.html">Open change review</a></div>
+        <div class="methods-crosswalk-callout"><div><p class="eyebrow">Carry-forward QA</p><h3>{watchlist['rows']:,} unique UNITIDs are queued for the next full-package institution review.</h3><p>The union contains {watchlist['high']} current high-priority rows, {watchlist['medium']} current medium-priority rows, and {watchlist['candidate']} candidate directory changes. {watchlist['medium_overlap']} medium-priority rows overlap the directory changes; no current high-priority row does. Existing dispositions are context only, not standing approval for {candidate}.</p></div><a class="button button-secondary" href="candidate-year-watchlist.html">Open QA watchlist</a></div>
         <div class="methods-crosswalk-callout"><div><p class="eyebrow">Schema delta</p><h3>{int(preflight['current_reference']['field_count'])} → {int(preflight['candidate_field_count'])} fields</h3><p>Removed nonrequired fields: {html.escape(', '.join(schema_delta['removed_fields']) or 'None')}. Required fields are preserved, but the full annual schema audit still runs when Fall Enrollment arrives.</p></div><a class="button button-secondary" href="candidate-directory-preflight.html">Open full preflight</a></div>
       </div>
     </section>

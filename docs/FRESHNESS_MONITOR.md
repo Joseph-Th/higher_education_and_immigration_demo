@@ -2,7 +2,7 @@
 
 This is a **dated portfolio monitoring snapshot**, not a continuously live dashboard. The NCES availability observation is captured by the separate online release checker; the offline build preserves and validates that observation without making network access a reproducibility dependency.
 
-- **Captured check:** 2026-10-14T17:13:49+00:00
+- **Captured check:** 2026-10-14T19:21:26+00:00
 - **Current analysis end year:** 2024
 - **Candidate next year:** 2025
 - **Candidate package:** 2/4 required files available
@@ -26,7 +26,7 @@ This is a **dated portfolio monitoring snapshot**, not a continuously live dashb
 
 ## Candidate directory preflight
 
-The available candidate-year directory has already passed a bounded structural preflight: 6/6 required directory fields preserved in data and dictionary; 70/70 full data/dictionary fields align; 3,864 directory-eligible rows; 3,812 shared UNITIDs; net eligible change -4; 154 affected UNITIDs in the hashed change-review queue. This reduces directory-side uncertainty but does not convert a partial package into an enrollment release. See `docs/CANDIDATE_DIRECTORY_PREFLIGHT.md` for the field, continuity, archive-hash, and schema-delta detail and `docs/CANDIDATE_DIRECTORY_CHANGE_REVIEW.md` for the institution-level entry/exit and attribute-change queue.
+The available candidate-year directory has already passed a bounded structural preflight: 6/6 required directory fields preserved in data and dictionary; 70/70 full data/dictionary fields align; 3,864 directory-eligible rows; 3,812 shared UNITIDs; net eligible change -4; 154 affected UNITIDs in the hashed change-review queue; 226 carry-forward QA rows with 5 current medium-priority/directory overlaps. This reduces directory-side uncertainty but does not convert a partial package into an enrollment release. See `docs/CANDIDATE_DIRECTORY_PREFLIGHT.md` for the field, continuity, archive-hash, and schema-delta detail, `docs/CANDIDATE_DIRECTORY_CHANGE_REVIEW.md` for the institution-level entry/exit and attribute-change queue, and `docs/CANDIDATE_YEAR_QA_WATCHLIST.md` for the 226-UNITID carry-forward union of current high/medium QA signals with candidate directory changes.
 
 ## Operational rule
 
@@ -39,5 +39,8 @@ python scripts/check_for_new_release.py --write-snapshot data/release_monitor_sn
 python scripts/check_candidate_directory.py --write-snapshot data/candidate_directory_preflight.json
 python scripts/build_candidate_directory_preflight.py
 python scripts/build_candidate_directory_change_review.py
+python scripts/build_update_review.py
+python scripts/build_qa_resolution_log.py
+python scripts/build_candidate_year_qa_watchlist.py
 python scripts/build_freshness_monitor.py
 ```

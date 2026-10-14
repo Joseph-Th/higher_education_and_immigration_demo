@@ -620,6 +620,31 @@ One row per UNITID affected by candidate-directory eligible-frame turnover or by
 
 `scripts/build_candidate_directory_change_review.py` validates the captured hash, row semantics, deterministic ordering, current-year exposure fields against `data/processed/institutions_2024.csv`, and all preflight reconciliation counts before generating `docs/CANDIDATE_DIRECTORY_CHANGE_REVIEW.md` and `site/candidate-directory-changes.html`.
 
+## `data/candidate_year_qa_watchlist.csv`
+
+One row per unique UNITID carried into the next complete Fall Enrollment institution-level QA pass. The file is a deterministic union of every current high/medium latest-release review row and every candidate-directory structural-change row. It does not introduce a new risk score and it does not treat candidate-directory structure as candidate-year enrollment evidence.
+
+| Field | Definition |
+| --- | --- |
+| `review_order` | Deterministic 1-based next-review order using existing QA priority first, cross-signal overlap next, then candidate-only current exposure |
+| `unitid` | IPEDS institution identifier used to deduplicate current and candidate signals |
+| `current_institution` / `candidate_institution` | Current analytical institution label and candidate-directory label when available |
+| `current_state` / `candidate_state` | Current analytical state and candidate-directory state when available |
+| `current_control` / `candidate_control` | Current analytical institutional-control label and candidate-directory control when available |
+| `carry_forward_group` | Existing-signal group: current high plus directory change, current high, current medium plus directory change, current medium, or candidate-directory change only |
+| `current_review_priority` | Current latest-release `high` / `medium` priority; blank for candidate-directory-only rows |
+| `latest_release_change` / `latest_release_pct_change` | Current 2023-2024 U.S. nonresident change and percent change when the row comes from the latest-release queue |
+| `latest_review_reasons` | Current reason-coded annual-review trigger text |
+| `flag_2023` / `flag_2024` | Current/prior IPEDS reporting-status or imputation flags retained from the latest-release review |
+| `candidate_change_class` / `candidate_change_reasons` | Candidate-directory structural class and reason codes when the UNITID is in the directory change review |
+| `current_2024_nonresident` | Current canonical 2024 U.S. nonresident enrollment used only as review context/prioritization, never a 2025 estimate |
+| `current_2024_total_enrollment` | Current canonical 2024 total enrollment when available from the candidate directory change review |
+| `high_priority_publication_class` / `high_priority_disposition` | Evidence-backed current-release high-priority publication fields; blank for medium and candidate-only rows and never inherited as future approval |
+| `next_release_action` | Explicit reconciliation/revalidation action to apply when the complete candidate-year Fall Enrollment package is built |
+| `interpretation_boundary` | Fixed rule blocking candidate-year enrollment, opening/closure, and continued-publication-eligibility inference from watchlist membership |
+
+`scripts/build_candidate_year_qa_watchlist.py` validates 27 current high-priority rows, 50 medium-priority rows, 154 candidate-directory structural changes, five medium/directory overlaps, zero high/directory overlaps, 226 unique UNITIDs, exact current high-priority publication-class coverage, current-value reconciliation for overlap rows, and the fixed no-future-inference boundary before generating the CSV, `docs/CANDIDATE_YEAR_QA_WATCHLIST.md`, and `site/candidate-year-watchlist.html`.
+
 ## `data/release_readiness.csv`
 
 Eight generated release-control rows that consolidate the project's independent analytical, publication, governance, artifact-freshness, source-routing, and candidate-year gates while keeping current-publication readiness separate from permission to advance the analysis year.
@@ -636,7 +661,7 @@ Eight generated release-control rows that consolidate the project's independent 
 | `authority` | Canonical project file or manifest used by the control |
 | `next_action` | Bounded action required if the evidence changes or the gate remains held |
 
-`scripts/build_release_readiness.py` requires all core analytical and benchmark checks to pass, complete current high-priority institution-review coverage, the full 15-row publication handoff, one-for-one Research Library routing, valid public-release registration, current PDF/PowerPoint freshness manifests, and a release snapshot that reconciles to the four candidate-year file observations. The current-release summary may be `READY_WITH_CLAIM_LEVEL_HOLDS` while institution-specific explanations remain gated; the independent year-advance summary remains `HOLD_YEAR_ADVANCE` until the complete candidate package is available and schema review can begin. The builder generates `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
+`scripts/build_release_readiness.py` requires all core analytical and benchmark checks to pass, complete current high-priority institution-review coverage, the full 16-row publication handoff, one-for-one Research Library routing, valid public-release registration, current PDF/PowerPoint freshness manifests, and a release snapshot that reconciles to the four candidate-year file observations. The current-release summary may be `READY_WITH_CLAIM_LEVEL_HOLDS` while institution-specific explanations remain gated; the independent year-advance summary remains `HOLD_YEAR_ADVANCE` until the complete candidate package is available and schema review can begin. The builder generates `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
 
 ## JSON products
 

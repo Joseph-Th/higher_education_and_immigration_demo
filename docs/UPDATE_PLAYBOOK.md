@@ -70,10 +70,13 @@ python scripts/check_for_new_release.py --write-snapshot data/release_monitor_sn
 python scripts/check_candidate_directory.py --write-snapshot data/candidate_directory_preflight.json
 python scripts/build_candidate_directory_preflight.py
 python scripts/build_candidate_directory_change_review.py
+python scripts/build_update_review.py
+python scripts/build_qa_resolution_log.py
+python scripts/build_candidate_year_qa_watchlist.py
 python scripts/build_freshness_monitor.py
 ```
 
-The preflight may validate required directory fields, full data/dictionary field parity, dictionary titles, 50-states-plus-DC coverage, UNITID uniqueness, current directory-side eligibility, control/state/name continuity, archive hashes, and schema additions/removals. The live capture also writes `data/candidate_directory_change_review.csv`, which classifies every directory-side entry/exit and every shared eligible attribute change, attaches only canonical current-year enrollment exposure, and is SHA-256-bound to the preflight snapshot. Review that queue before the enrollment package arrives so control/state/name continuity issues are already known. Current-year exposure is a prioritization device, not a candidate-year estimate. Directory absence does not prove closure, directory entry does not prove a new institution, and state/control/name changes do not by themselves establish student movement. The preflight must not add candidate archives to `data/source_manifest.csv`, call the directory-side frame the final analytic universe, calculate candidate-year enrollment, resolve R01, or change `END_YEAR`. Those actions remain blocked until the Fall Enrollment data and dictionary are available and the complete annual package enters the normal collection/schema/QA workflow.
+The preflight may validate required directory fields, full data/dictionary field parity, dictionary titles, 50-states-plus-DC coverage, UNITID uniqueness, current directory-side eligibility, control/state/name continuity, archive hashes, and schema additions/removals. The live capture also writes `data/candidate_directory_change_review.csv`, which classifies every directory-side entry/exit and every shared eligible attribute change, attaches only canonical current-year enrollment exposure, and is SHA-256-bound to the preflight snapshot. Review that queue before the enrollment package arrives so control/state/name continuity issues are already known. Then build `data/candidate_year_qa_watchlist.csv`: it unions every current high/medium annual-review signal with every candidate-directory structural change and deduplicates by UNITID. Existing high-priority publication dispositions are retained only as historical/current-release context. They must be revalidated against the next complete release and must never be inherited as standing approval. Current-year exposure is a prioritization device, not a candidate-year estimate. Directory absence does not prove closure, directory entry does not prove a new institution, and state/control/name changes do not by themselves establish student movement. The preflight and watchlist must not add candidate archives to `data/source_manifest.csv`, call the directory-side frame the final analytic universe, calculate candidate-year enrollment, resolve R01, or change `END_YEAR`. Those actions remain blocked until the Fall Enrollment data and dictionary are available and the complete annual package enters the normal collection/schema/QA workflow.
 
 ## 5. Rebuild and inspect changes
 
@@ -93,6 +96,7 @@ Then review the newly generated:
 - `data/processed/latest_release_institution_review.csv`;
 - `docs/LATEST_UPDATE_REVIEW.md`.
 - `data/qa_resolution_log.csv` and `docs/QA_RESOLUTION_LOG.md`;
+- `data/candidate_year_qa_watchlist.csv`, `docs/CANDIDATE_YEAR_QA_WATCHLIST.md`, and `site/candidate-year-watchlist.html`;
 - `docs/BRIEFING_NOTE.md`.
 - `docs/RESEARCH_MEMO.md` and `site/research-memo.html`.
 - `docs/POPULATION_CROSSWALK.md` and `site/methodology-crosswalk.html` when source definitions or companion-source vintages changed.
@@ -108,6 +112,8 @@ For institution-level claims, update `data/qa_resolution_log.csv` with the evide
 Run `python scripts/build_qa_resolution_log.py` after editing the log. The build will fail if a reviewed UNITID is no longer in the current high-priority queue, which is intentional: manual dispositions belong to a specific release and must be reconsidered when the queue changes.
 
 The QA resolution log must cover every current high-priority row in queue order. The build fails when a high-priority record lacks a disposition, when a reviewed record is no longer high priority, or when the evidence record is structurally invalid. Run `python scripts/check_qa_evidence.py` before publication to catch broken evidence links. HTTP 401/403 results require manual browser verification rather than automatic removal of the evidence record.
+
+The candidate-year watchlist is deliberately broader than the current high-priority publication review. It carries forward all current high and medium signals plus all candidate-directory structural changes so the next full-package institution QA pass has an explicit starting set. Do not convert watchlist membership into a claim that an institution will gain, lose, open, close, or remain publication-safe in the candidate year. Re-run the annual review rules and evidence checks after the full candidate-year Fall Enrollment join is built.
 
 ## 6. Refresh the external benchmark
 

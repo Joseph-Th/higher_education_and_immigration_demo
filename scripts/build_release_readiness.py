@@ -55,6 +55,7 @@ EXPECTED_HANDOFF_IDS = {
     "C01",
     "I01",
     "Q01",
+    "Q02",
     "M01",
     "M02",
     "P01",
@@ -124,6 +125,7 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
     directory_preflight = json.loads(
         (DATA / "candidate_directory_preflight.json").read_text(encoding="utf-8")
     )
+    candidate_watchlist = read_csv(DATA / "candidate_year_qa_watchlist.csv")
 
     if not qa.get("checks") or any(value != "PASS" for value in qa["checks"].values()):
         raise RuntimeError("Release readiness requires all analytical QA checks to pass")
@@ -194,6 +196,23 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
     change_review = directory_preflight.get("change_review")
     if not isinstance(change_review, dict) or int(change_review.get("row_count", 0)) <= 0:
         raise RuntimeError("Candidate directory institution-change review metadata is missing")
+    if len(candidate_watchlist) != 226 or len({row["unitid"] for row in candidate_watchlist}) != 226:
+        raise RuntimeError("Candidate-year QA watchlist must contain 226 unique UNITIDs")
+    watchlist_high = [row for row in candidate_watchlist if row["current_review_priority"] == "high"]
+    watchlist_medium = [row for row in candidate_watchlist if row["current_review_priority"] == "medium"]
+    watchlist_candidate = [row for row in candidate_watchlist if row["candidate_change_class"]]
+    watchlist_medium_overlap = [
+        row for row in candidate_watchlist
+        if row["carry_forward_group"] == "CURRENT_MEDIUM_PLUS_DIRECTORY_CHANGE"
+    ]
+    watchlist_high_overlap = [
+        row for row in candidate_watchlist
+        if row["carry_forward_group"] == "CURRENT_HIGH_PLUS_DIRECTORY_CHANGE"
+    ]
+    if (len(watchlist_high), len(watchlist_medium), len(watchlist_candidate)) != (27, 50, 154):
+        raise RuntimeError("Candidate-year QA watchlist source counts do not reconcile")
+    if len(watchlist_medium_overlap) != 5 or watchlist_high_overlap:
+        raise RuntimeError("Candidate-year QA watchlist overlap counts do not reconcile")
 
     rows = [
         {
@@ -289,9 +308,10 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
                 f"{snapshot['checked_at_utc']}; candidate directory preflight={directory_preflight['status']} "
                 f"with {int(directory_preflight['candidate_directory_eligible_rows']):,} directory-eligible rows; "
                 f"{int(change_review['row_count']):,} institution change-review rows; "
+                f"{len(candidate_watchlist):,} carry-forward QA rows including {len(watchlist_medium_overlap)} medium-priority/directory overlaps; "
                 f"snapshot decision={snapshot['release_decision']}."
             ),
-            "authority": "data/release_monitor_snapshot.json; data/candidate_directory_preflight.json; data/candidate_directory_change_review.csv",
+            "authority": "data/release_monitor_snapshot.json; data/candidate_directory_preflight.json; data/candidate_directory_change_review.csv; data/candidate_year_qa_watchlist.csv",
             "next_action": (
                 "Begin schema review before changing END_YEAR."
                 if package_ready

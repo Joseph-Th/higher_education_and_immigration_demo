@@ -89,6 +89,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/candidate_directory_preflight.md",
         "downloads/candidate_directory_change_review.csv",
         "downloads/candidate_directory_change_review.md",
+        "downloads/candidate_year_qa_watchlist.csv",
+        "downloads/candidate_year_qa_watchlist.md",
         "downloads/freshness_monitor.csv",
         "downloads/freshness_monitor.md",
         "downloads/release_readiness.csv",
@@ -374,7 +376,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "64" not in summary or "114" not in summary:
+    if "66" not in summary or "116" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -413,7 +415,7 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
         if expected not in summary:
             raise AssertionError(f"Release readiness summary is missing {expected}")
     gate_text = page.locator("#readiness-gates").inner_text()
-    for expected in ("A01", "A07", "Y01", "27/27", "64 artifact families", "17/17", "preflight=PASS", "3,864", "154 institution change-review rows"):
+    for expected in ("A01", "A07", "Y01", "27/27", "66 artifact families", "17/17", "preflight=PASS", "3,864", "154 institution change-review rows", "226 carry-forward QA rows", "5 medium-priority/directory overlaps"):
         if expected not in gate_text:
             raise AssertionError(f"Release readiness gate matrix is missing {expected}")
     if page.locator('a[href="downloads/release_readiness.csv"]').count() != 2:
@@ -487,11 +489,13 @@ def inspect_freshness_monitor(browser, base_url: str, *, width: int, height: int
     if "does not advance the project year" not in release_text or "Fall 2024" not in release_text:
         raise AssertionError("Freshness monitor is missing the current incomplete-package gate")
     preflight_text = page.locator("#directory-preflight").inner_text()
-    for expected in ("6/6", "70/70", "3,864", "3,812", "-4", "154", "612", "72 → 70", "DFRCGID", "DFRCUSCG"):
+    for expected in ("6/6", "70/70", "3,864", "3,812", "-4", "154", "612", "226", "5 medium-priority", "72 → 70", "DFRCGID", "DFRCUSCG"):
         if expected not in preflight_text:
             raise AssertionError(f"Freshness monitor directory preflight is missing {expected}")
     if page.locator('a[href="candidate-directory-preflight.html"]').count() < 1:
         raise AssertionError("Freshness monitor candidate directory preflight link is missing")
+    if page.locator('a[href="candidate-year-watchlist.html"]').count() != 1:
+        raise AssertionError("Freshness monitor candidate-year QA watchlist link is missing")
     if page.locator('a[href="downloads/release_monitor_snapshot.json"]').count() != 1:
         raise AssertionError("Release-monitor snapshot download link is missing")
     if page.locator('a[href="downloads/freshness_monitor.csv"]').count() != 2:
@@ -594,6 +598,80 @@ def inspect_candidate_directory_changes(browser, base_url: str, *, width: int, h
         raise AssertionError(f"Candidate directory change review horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Candidate directory change review browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_candidate_year_watchlist(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/candidate-year-watchlist.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Candidate-year QA watchlist page failed at {width}px")
+
+    summary = page.locator(".handoff-hero .handoff-summary").inner_text()
+    for expected in ("226", "27", "5", "154"):
+        if expected not in summary:
+            raise AssertionError(f"Candidate-year QA watchlist summary is missing {expected}")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    for expected in (
+        "do not infer 2025 enrollment movement",
+        "institutional opening/closure",
+        "continued publication eligibility",
+        "full 2025 Fall Enrollment package",
+    ):
+        if expected not in boundary:
+            raise AssertionError(f"Candidate-year QA watchlist boundary is missing {expected}")
+
+    main_text = page.locator("main").inner_text()
+    for expected in ("27 current high-priority rows + 50 current medium-priority rows + 154 candidate directory changes - 5 overlaps = 226", "No current high-priority record overlaps"):
+        if expected not in main_text:
+            raise AssertionError(f"Candidate-year QA watchlist union is missing {expected}")
+
+    overlap = page.locator("#overlap")
+    if overlap.locator("tbody tr").count() != 5:
+        raise AssertionError("Candidate-year QA watchlist overlap table does not contain five rows")
+    overlap_text = overlap.inner_text()
+    for expected in (
+        "2,443",
+        "Lindsey Wilson College",
+        "FIDM-Fashion Institute of Design & Merchandising",
+        "Humphreys University-Stockton and Modesto Campuses",
+        "City College-Hollywood",
+        "City College-Altamonte Springs",
+    ):
+        if expected not in overlap_text:
+            raise AssertionError(f"Candidate-year QA overlap section is missing {expected}")
+
+    high = page.locator("#current-high")
+    if high.locator("tbody tr").count() != 10:
+        raise AssertionError("Candidate-year QA watchlist current-high table does not contain ten rows")
+    high_text = high.inner_text()
+    for expected in ("University of the Cumberlands", "+4,616", "Hold for confirmation", "Trine University-Regional/Non-Traditional Campuses", "Safe with context"):
+        if expected not in high_text:
+            raise AssertionError(f"Candidate-year QA current-high section is missing {expected}")
+
+    candidate_only = page.locator("#candidate-only")
+    if candidate_only.locator("tbody tr").count() != 10:
+        raise AssertionError("Candidate-year QA watchlist candidate-only table does not contain ten rows")
+    candidate_text = candidate_only.inner_text()
+    for expected in ("9,326", "Houston Community College", "Houston City College", "4,670", "Grand Canyon University", "967"):
+        if expected not in candidate_text:
+            raise AssertionError(f"Candidate-year QA candidate-only section is missing {expected}")
+
+    if page.locator('a[href="downloads/candidate_year_qa_watchlist.csv"]').count() != 2:
+        raise AssertionError("Candidate-year QA watchlist CSV links are missing")
+    if page.locator('a[href="downloads/candidate_year_qa_watchlist.md"]').count() != 1:
+        raise AssertionError("Candidate-year QA watchlist Markdown link is missing")
+    if "Carry forward the question, not the answer." not in main_text:
+        raise AssertionError("Candidate-year QA watchlist revalidation rule is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Candidate-year QA watchlist horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Candidate-year QA watchlist browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -940,8 +1018,8 @@ def inspect_publication_handoff(browser, base_url: str, *, width: int, height: i
     response = page.goto(f"{base_url}/publication-handoff.html", wait_until="networkidle")
     if response is None or not response.ok:
         raise AssertionError(f"Publication handoff page failed at {width}px")
-    if page.locator(".handoff-card").count() != 15:
-        raise AssertionError("Publication handoff does not render the expected 15 claim/control cards")
+    if page.locator(".handoff-card").count() != 16:
+        raise AssertionError("Publication handoff does not render the expected 16 claim/control cards")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Publication handoff does not show all five publication gates")
     if "Portfolio demonstration" not in page.locator(".handoff-hero .release-note").inner_text():
@@ -951,7 +1029,7 @@ def inspect_publication_handoff(browser, base_url: str, *, width: int, height: i
     if "1,044,137" not in page.locator(".handoff-card").first.inner_text():
         raise AssertionError("Publication handoff headline card does not contain the validated national total")
     handoff_text = page.locator("#handoff-register").inner_text()
-    for expected in ("N06", "M02", "P01", "G01", "+31,592", "45 of 51 states/DC", "70.7%", "70.4%", "not addable", "zero inferred internal deadlines"):
+    for expected in ("N06", "Q02", "M02", "P01", "G01", "+31,592", "45 of 51 states/DC", "226 unique UNITIDs", "five medium/directory overlaps", "no high/directory overlap", "70.7%", "70.4%", "not addable", "zero inferred internal deadlines"):
         if expected not in handoff_text:
             raise AssertionError(f"Publication handoff is missing expanded control {expected}")
     overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
@@ -1054,6 +1132,8 @@ def main() -> int:
                 inspect_candidate_directory_preflight(browser, base_url, width=390, height=844)
                 inspect_candidate_directory_changes(browser, base_url, width=1280, height=900)
                 inspect_candidate_directory_changes(browser, base_url, width=390, height=844)
+                inspect_candidate_year_watchlist(browser, base_url, width=1280, height=900)
+                inspect_candidate_year_watchlist(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

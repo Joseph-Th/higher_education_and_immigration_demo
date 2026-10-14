@@ -13,6 +13,7 @@ This register turns findings, QA observations, source limitations, and recurring
 | R03 | Medium | Is private nonprofit growth broad-based or concentrated among a small set of institutions? | High | Implemented in private nonprofit growth analysis |
 | R06 | Medium | What does the undocumented high-school graduate pipeline imply for higher-education access questions? | None | Implemented as bounded 2023 state pipeline context |
 | R07 | Medium | Which external source updates should trigger Portal refreshes or new research products? | Support | Implemented as source-update triage register |
+| R08 | Medium | Which institution-level QA signals should carry forward into the next complete Fall Enrollment release? | Support | Implemented as candidate-year QA carry-forward watchlist |
 
 ## Detailed research cards
 
@@ -89,6 +90,16 @@ This register turns findings, QA observations, source limitations, and recurring
 - **Proposed output:** Source-update triage register and routing note
 - **Decision rule:** Treat metadata/date-only change as non-analytical; route same-method new values to routine refresh; escalate definition, denominator, model, schema, geography, privacy, or material conclusion changes before publication.
 - **Status:** Implemented as source-update triage register
+
+#### R08 · Which institution-level QA signals should carry forward into the next complete Fall Enrollment release?
+
+- **Evidence trigger:** The current 2023-2024 queue contains 27 high-priority and 50 medium-priority records, while the available 2025 directory review contains 154 structural-change UNITIDs; five medium-priority records overlap the candidate directory changes and no current high-priority record does.
+- **Current IPEDS fit:** Support
+- **Additional data needed:** Current latest-release QA, evidence-backed high-priority dispositions, and the candidate directory are sufficient to create a pre-release watchlist; the complete 2025 Fall Enrollment package is still required to resolve the next-release outcome.
+- **Proposed method:** Union every current high/medium QA row with every candidate directory structural-change UNITID; preserve current publication dispositions only as context, surface cross-signal overlaps, and carry forward explicit next-release actions without inventing candidate-year enrollment values.
+- **Proposed output:** Candidate-year QA carry-forward watchlist
+- **Decision rule:** Every current high/medium QA row or candidate directory structural change enters the next full-package reconciliation. Existing publication dispositions are revalidated rather than inherited, and directory structure alone never establishes candidate-year enrollment movement or opening/closure.
+- **Status:** Implemented as candidate-year QA carry-forward watchlist
 
 ## Governance principles
 

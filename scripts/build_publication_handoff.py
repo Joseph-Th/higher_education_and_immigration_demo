@@ -62,6 +62,7 @@ def main() -> int:
     pipeline = read_csv(DATA / "undocumented_pipeline_comparison.csv")
     source_triage = read_csv(DATA / "source_update_triage.csv")
     undergraduate_baseline = read_csv(DATA / "undergraduate_shift_baseline.csv")
+    candidate_watchlist = read_csv(DATA / "candidate_year_qa_watchlist.csv")
     library = {row["resource_id"]: row for row in read_csv(DATA / "research_library.csv")}
     crosswalk = {row["population_id"]: row for row in read_csv(DATA / "population_crosswalk.csv")}
 
@@ -123,6 +124,27 @@ def main() -> int:
         raise RuntimeError("Publication handoff R01 baseline does not reconcile to latest undergraduate change")
     if baseline_positive_states != 45:
         raise RuntimeError("Publication handoff R01 state breadth changed unexpectedly")
+    if len(candidate_watchlist) != 226 or len({row["unitid"] for row in candidate_watchlist}) != 226:
+        raise RuntimeError("Publication handoff requires the complete 226-row candidate-year QA watchlist")
+    candidate_watchlist_high = [row for row in candidate_watchlist if row["current_review_priority"] == "high"]
+    candidate_watchlist_medium = [row for row in candidate_watchlist if row["current_review_priority"] == "medium"]
+    candidate_watchlist_directory = [row for row in candidate_watchlist if row["candidate_change_class"]]
+    candidate_watchlist_overlap = [
+        row for row in candidate_watchlist
+        if row["carry_forward_group"] == "CURRENT_MEDIUM_PLUS_DIRECTORY_CHANGE"
+    ]
+    candidate_watchlist_high_overlap = [
+        row for row in candidate_watchlist
+        if row["carry_forward_group"] == "CURRENT_HIGH_PLUS_DIRECTORY_CHANGE"
+    ]
+    if (
+        len(candidate_watchlist_high),
+        len(candidate_watchlist_medium),
+        len(candidate_watchlist_directory),
+        len(candidate_watchlist_overlap),
+        len(candidate_watchlist_high_overlap),
+    ) != (27, 50, 154, 5, 0):
+        raise RuntimeError("Publication handoff candidate-year QA watchlist counts do not reconcile")
 
     rows = [
         {
@@ -244,6 +266,18 @@ def main() -> int:
             "qa_gate": f"All {resolution['high_priority_total']} current high-priority rows have explicit publication dispositions; evidence links are separately health-checked.",
             "release_disclosure": "Automated flags are triage, not corrections; held records remain in official aggregate calculations.",
             "publication_status": "READY WITH CLAIM-LEVEL HOLDS",
+        },
+        {
+            "claim_id": "Q02",
+            "surface": "Candidate-year institution QA",
+            "claim_type": "Carry-forward review control",
+            "public_copy": "The next full-package institution QA watchlist contains 226 unique UNITIDs: 27 current high-priority rows, 50 medium-priority rows, and 154 candidate-directory structural changes with five medium/directory overlaps and no high/directory overlap.",
+            "authority": "data/candidate_year_qa_watchlist.csv",
+            "source_locator": "226 unique UNITIDs; carry_forward_group; current_review_priority; candidate_change_class; next_release_action",
+            "research_library_id": "ipeds_complete_data",
+            "qa_gate": "The watchlist reconciles 27 + 50 + 154 - 5 to 226 unique UNITIDs, preserves all current high-priority dispositions only as context, and contains no candidate-year enrollment values.",
+            "release_disclosure": "This is pre-release triage, not a 2025 enrollment finding or standing institution-publication approval; every row must be revalidated after the complete Fall Enrollment build.",
+            "publication_status": "READY WITH CONTEXT",
         },
         {
             "claim_id": "M01",
