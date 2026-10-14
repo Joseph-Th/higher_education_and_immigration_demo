@@ -7,7 +7,7 @@ This register turns findings, QA observations, source limitations, and recurring
 | ID | Priority | Research question | Current IPEDS fit | Status |
 | --- | --- | --- | --- | --- |
 | R01 | High | Does the 2024 undergraduate-led increase persist in the next Fall Enrollment release? | High | Monitor next release |
-| R02 | High | Why have some states recovered above 2019 while others remain below? | High | Ready with current data |
+| R02 | High | Why have some states recovered above 2019 while others remain below? | High | Implemented in state recovery analysis |
 | R04 | High | How do IPEDS U.S. nonresident trends compare with undocumented and immigrant-origin student estimates? | None | Methods crosswalk complete; compatible trend data still needed |
 | R05 | High | Which large institution-level annual changes reflect substantive movement versus reporting or classification discontinuity? | High | Ready for analyst review |
 | R03 | Medium | Is private nonprofit growth broad-based or concentrated among a small set of institutions? | High | Ready with current data |
@@ -33,10 +33,10 @@ This register turns findings, QA observations, source limitations, and recurring
 - **Evidence trigger:** 33 states/DC are at or above 2019 U.S. nonresident enrollment and 18 remain below.
 - **Current IPEDS fit:** High
 - **Additional data needed:** Current institution-level IPEDS files are sufficient for first-pass decomposition
-- **Proposed method:** Decompose state change by institution, institutional control, and undergraduate/graduate level; inspect concentration among leading contributors.
-- **Proposed output:** Comparative state recovery brief
+- **Proposed method:** Decompose state change by institution continuity, institutional control, and undergraduate/graduate level; inspect concentration among leading contributors.
+- **Proposed output:** State recovery decomposition brief
 - **Decision rule:** Prioritize states with the largest absolute gains and shortfalls, then test whether change is broad-based or concentrated in a few institutions.
-- **Status:** Ready with current data
+- **Status:** Implemented in state recovery analysis
 
 #### R04 · How do IPEDS U.S. nonresident trends compare with undocumented and immigrant-origin student estimates?
 
