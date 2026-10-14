@@ -152,6 +152,28 @@ Key fields:
 
 The file is a review queue, not a list of source-data errors.
 
+## `data/medium_priority_review.csv`
+
+One row per current `medium` record in `data/processed/latest_release_institution_review.csv`. The table is a routing layer, not a second scoring model: it preserves the existing annual-review reasons, assigns one evidence-review route, and attaches candidate-directory overlap when the same UNITID also has a structural-change signal.
+
+| Field | Definition |
+| --- | --- |
+| `review_order` | Deterministic 1-based order by review route, absolute current annual change, then UNITID |
+| `unitid` | IPEDS institution identifier |
+| `institution` / `state` / `control` | Current analytical institution label and attributes from the latest-release review |
+| `status` | Current annual endpoint status: continuing or entered analytic universe in the present medium queue |
+| `nonresident_2023` / `nonresident_2024` | Current annual endpoint U.S. nonresident values |
+| `absolute_change` / `pct_change` | Current annual change measures inherited from the latest-release review |
+| `flag_2023` / `flag_2024` / `flag_changed` | Current annual IPEDS imputation/reporting-status context |
+| `review_reasons` | Original medium-priority trigger reasons from `build_update_review.py`; never rewritten by this routing layer |
+| `review_route` | Exactly one of `PERCENTAGE_MOVEMENT`, `ABSOLUTE_MOVEMENT`, `ABSOLUTE_AND_PERCENTAGE`, or `STRUCTURAL_OR_REPORTING` |
+| `candidate_directory_overlap` | `yes` when the UNITID also appears in the candidate-directory structural-change review |
+| `candidate_change_class` / `candidate_change_reasons` | Candidate-directory structural context when overlap is present; blank otherwise |
+| `next_review_step` | Route-specific evidence task to perform before institution-specific interpretation |
+| `interpretation_boundary` | Fixed rule stating that medium-priority flags are triage signals, not source corrections or publication clearance |
+
+`scripts/build_medium_priority_review.py` validates all 50 medium rows, exact 28/11/8/3 route counts, 25 positive / 23 negative / 2 zero-change rows, +7,806 positive versus -9,241 negative movement, five exact candidate-directory overlaps representing 2,443 current-year U.S. nonresident students, and the no-new-score/no-clearance boundary before generating the CSV, `docs/MEDIUM_PRIORITY_REVIEW.md`, and `site/medium-priority-review.html`.
+
 ## `data/qa_resolution_log.csv`
 
 One row per institution in the current high-priority annual QA queue. This is an analyst-decision record, not a corrected-data table.
@@ -661,7 +683,7 @@ Eight generated release-control rows that consolidate the project's independent 
 | `authority` | Canonical project file or manifest used by the control |
 | `next_action` | Bounded action required if the evidence changes or the gate remains held |
 
-`scripts/build_release_readiness.py` requires all core analytical and benchmark checks to pass, complete current high-priority institution-review coverage, the full 16-row publication handoff, one-for-one Research Library routing, valid public-release registration, current PDF/PowerPoint freshness manifests, and a release snapshot that reconciles to the four candidate-year file observations. The current-release summary may be `READY_WITH_CLAIM_LEVEL_HOLDS` while institution-specific explanations remain gated; the independent year-advance summary remains `HOLD_YEAR_ADVANCE` until the complete candidate package is available and schema review can begin. The builder generates `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
+`scripts/build_release_readiness.py` requires all core analytical and benchmark checks to pass, complete current high-priority institution-review coverage, the full 17-row publication handoff, one-for-one Research Library routing, valid public-release registration, current PDF/PowerPoint freshness manifests, and a release snapshot that reconciles to the four candidate-year file observations. The current-release summary may be `READY_WITH_CLAIM_LEVEL_HOLDS` while institution-specific explanations remain gated; the independent year-advance summary remains `HOLD_YEAR_ADVANCE` until the complete candidate package is available and schema review can begin. The builder generates `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
 
 ## JSON products
 

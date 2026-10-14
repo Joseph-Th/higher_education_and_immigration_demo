@@ -63,6 +63,7 @@ def main() -> int:
     source_triage = read_csv(DATA / "source_update_triage.csv")
     undergraduate_baseline = read_csv(DATA / "undergraduate_shift_baseline.csv")
     candidate_watchlist = read_csv(DATA / "candidate_year_qa_watchlist.csv")
+    medium_review = read_csv(DATA / "medium_priority_review.csv")
     library = {row["resource_id"]: row for row in read_csv(DATA / "research_library.csv")}
     crosswalk = {row["population_id"]: row for row in read_csv(DATA / "population_crosswalk.csv")}
 
@@ -145,6 +146,21 @@ def main() -> int:
         len(candidate_watchlist_high_overlap),
     ) != (27, 50, 154, 5, 0):
         raise RuntimeError("Publication handoff candidate-year QA watchlist counts do not reconcile")
+    if len(medium_review) != 50 or len({row["unitid"] for row in medium_review}) != 50:
+        raise RuntimeError("Publication handoff requires the complete 50-row medium-priority QA routing table")
+    medium_routes = Counter(row["review_route"] for row in medium_review)
+    if medium_routes != Counter(
+        {
+            "PERCENTAGE_MOVEMENT": 28,
+            "ABSOLUTE_MOVEMENT": 11,
+            "ABSOLUTE_AND_PERCENTAGE": 8,
+            "STRUCTURAL_OR_REPORTING": 3,
+        }
+    ):
+        raise RuntimeError("Publication handoff medium-priority QA route counts do not reconcile")
+    medium_overlap = [row for row in medium_review if row["candidate_directory_overlap"] == "yes"]
+    if len(medium_overlap) != 5:
+        raise RuntimeError("Publication handoff medium-priority candidate-directory overlap count changed")
 
     rows = [
         {
@@ -277,6 +293,18 @@ def main() -> int:
             "research_library_id": "ipeds_complete_data",
             "qa_gate": "The watchlist reconciles 27 + 50 + 154 - 5 to 226 unique UNITIDs, preserves all current high-priority dispositions only as context, and contains no candidate-year enrollment values.",
             "release_disclosure": "This is pre-release triage, not a 2025 enrollment finding or standing institution-publication approval; every row must be revalidated after the complete Fall Enrollment build.",
+            "publication_status": "READY WITH CONTEXT",
+        },
+        {
+            "claim_id": "Q03",
+            "surface": "Medium-priority institution QA",
+            "claim_type": "Evidence-routing control",
+            "public_copy": "All 50 current medium-priority institution flags are routed from their existing trigger reasons: 28 percentage-movement, 11 absolute-movement, 8 combined absolute/percentage, and 3 structural/reporting-context cases; five also have candidate-directory structural changes.",
+            "authority": "data/medium_priority_review.csv",
+            "source_locator": "50 current medium rows; review_route; candidate_directory_overlap; next_review_step",
+            "research_library_id": "ipeds_complete_data",
+            "qa_gate": "Every medium-priority row maps to exactly one non-severity route derived from its existing annual-review reasons; five candidate-directory overlaps are retained as evidence context without changing priority.",
+            "release_disclosure": "This routing layer does not correct IPEDS values, add a new risk score, or grant institution-specific publication clearance; evidence review is still required before narrative use.",
             "publication_status": "READY WITH CONTEXT",
         },
         {

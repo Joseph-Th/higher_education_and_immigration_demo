@@ -31,6 +31,7 @@ def main() -> int:
         ("Build candidate directory preflight", [PYTHON, "scripts/build_candidate_directory_preflight.py"]),
         ("Build candidate directory change review", [PYTHON, "scripts/build_candidate_directory_change_review.py"]),
         ("Build latest-release review", [PYTHON, "scripts/build_update_review.py"]),
+        ("Build medium-priority QA triage", [PYTHON, "scripts/build_medium_priority_review.py"]),
         ("Build QA resolution log", [PYTHON, "scripts/build_qa_resolution_log.py"]),
         ("Build candidate-year QA watchlist", [PYTHON, "scripts/build_candidate_year_qa_watchlist.py"]),
         ("Build freshness monitor", [PYTHON, "scripts/build_freshness_monitor.py"]),

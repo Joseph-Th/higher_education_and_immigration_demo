@@ -71,6 +71,7 @@ python scripts/check_candidate_directory.py --write-snapshot data/candidate_dire
 python scripts/build_candidate_directory_preflight.py
 python scripts/build_candidate_directory_change_review.py
 python scripts/build_update_review.py
+python scripts/build_medium_priority_review.py
 python scripts/build_qa_resolution_log.py
 python scripts/build_candidate_year_qa_watchlist.py
 python scripts/build_freshness_monitor.py
@@ -96,6 +97,7 @@ Then review the newly generated:
 - `data/processed/latest_release_institution_review.csv`;
 - `docs/LATEST_UPDATE_REVIEW.md`.
 - `data/qa_resolution_log.csv` and `docs/QA_RESOLUTION_LOG.md`;
+- `data/medium_priority_review.csv`, `docs/MEDIUM_PRIORITY_REVIEW.md`, and `site/medium-priority-review.html`;
 - `data/candidate_year_qa_watchlist.csv`, `docs/CANDIDATE_YEAR_QA_WATCHLIST.md`, and `site/candidate-year-watchlist.html`;
 - `docs/BRIEFING_NOTE.md`.
 - `docs/RESEARCH_MEMO.md` and `site/research-memo.html`.
@@ -106,6 +108,8 @@ Then review the newly generated:
 - `data/public_release_register.csv`, `docs/DATA_GOVERNANCE.md`, and `site/data-governance.html`.
 
 Investigate the reason-coded high- and medium-priority review queue before updating the narrative. A queue item is not automatically an error. Determine whether the movement is plausible, concentrated in a few institutions, associated with an imputation/status change, related to analytic-universe membership, or a source discontinuity that needs further review.
+
+Run `python scripts/build_medium_priority_review.py` after the annual review build. Its four routes come directly from the reasons that already produced the medium priority: structural/reporting context, absolute plus percentage movement, absolute movement, or percentage movement. Treat the route as an evidence task, not a new severity score. A candidate-directory overlap means the structural and enrollment signals should be reviewed together; it does not upgrade the row, correct the source, or grant publication clearance.
 
 For institution-level claims, update `data/qa_resolution_log.csv` with the evidence review. Use official institutional, system, regulator, or primary-source documentation when possible. Outside counts must not be treated as exact IPEDS benchmarks unless their population, reference date, geography, and inclusion rules are demonstrably comparable. Classify reviewed records as `safe_with_context` only when the evidence supports the direction or structural interpretation; otherwise use `hold_for_confirmation`. Never edit the IPEDS value merely to make it agree with an outside source.
 

@@ -501,9 +501,9 @@ class ResearchProductTests(unittest.TestCase):
     def test_publication_handoff_tracks_validated_claims(self) -> None:
         handoff = rows(ROOT / "data" / "publication_handoff.csv")
         ids = [row["claim_id"] for row in handoff]
-        self.assertEqual(len(handoff), 16)
+        self.assertEqual(len(handoff), 17)
         self.assertEqual(len(ids), len(set(ids)))
-        self.assertTrue({"N01", "N05", "N06", "S01", "Q01", "Q02", "M01", "M02", "P01", "G01", "B01"}.issubset(set(ids)))
+        self.assertTrue({"N01", "N05", "N06", "S01", "Q01", "Q02", "Q03", "M01", "M02", "P01", "G01", "B01"}.issubset(set(ids)))
         self.assertTrue(
             all(
                 row["publication_status"]
@@ -532,6 +532,13 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("not a 2025 enrollment finding", q02["release_disclosure"])
         self.assertIn("revalidated", q02["release_disclosure"])
         self.assertEqual(q02["publication_status"], "READY WITH CONTEXT")
+        q03 = next(row for row in handoff if row["claim_id"] == "Q03")
+        self.assertIn("All 50 current medium-priority institution flags", q03["public_copy"])
+        self.assertIn("28 percentage-movement", q03["public_copy"])
+        self.assertIn("five also have candidate-directory structural changes", q03["public_copy"])
+        self.assertIn("does not correct IPEDS values", q03["release_disclosure"])
+        self.assertIn("publication clearance", q03["release_disclosure"])
+        self.assertEqual(q03["publication_status"], "READY WITH CONTEXT")
         m02 = next(row for row in handoff if row["claim_id"] == "M02")
         self.assertIn("not addable", m02["public_copy"])
         self.assertIn("no 2021-2023 undocumented trend", m02["public_copy"])
@@ -552,7 +559,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 66)
+        self.assertEqual(len(release_rows), 68)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -561,15 +568,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 116)
-        self.assertEqual(validate_public_tree(release_rows), 116)
+        self.assertEqual(len(pairs), 118)
+        self.assertEqual(validate_public_tree(release_rows), 118)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 116", rendered)
+        self.assertIn("Expanded public download files:** 118", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("116</strong><span>expanded public download files", html)
+        self.assertIn("118</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -587,7 +594,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 116)
+        self.assertEqual(validate_public_tree(release_rows), 118)
 
     def test_release_readiness_separates_current_publication_from_year_advance(self) -> None:
         readiness = rows(ROOT / "data" / "release_readiness.csv")
@@ -603,7 +610,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_id["Y01"]["blocks_current_release"], "No")
         self.assertEqual(by_id["Y01"]["blocks_year_advance"], "Yes")
         self.assertIn("27/27", by_id["A03"]["evidence"])
-        self.assertIn("66 artifact families", by_id["A05"]["evidence"])
+        self.assertIn("68 artifact families", by_id["A05"]["evidence"])
         self.assertIn("2/4", by_id["Y01"]["evidence"])
         self.assertIn("candidate directory preflight=PASS", by_id["Y01"]["evidence"])
         self.assertIn("3,864 directory-eligible rows", by_id["Y01"]["evidence"])
@@ -975,6 +982,86 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("not standing approval", html)
         self.assertIn("Carry forward the question, not the answer.", html)
 
+    def test_medium_priority_review_routes_existing_signals_without_clearance(self) -> None:
+        review = rows(ROOT / "data" / "medium_priority_review.csv")
+        self.assertEqual(len(review), 50)
+        self.assertEqual(len({row["unitid"] for row in review}), 50)
+        self.assertEqual([int(row["review_order"]) for row in review], list(range(1, 51)))
+
+        routes = Counter(row["review_route"] for row in review)
+        self.assertEqual(
+            routes,
+            Counter(
+                {
+                    "PERCENTAGE_MOVEMENT": 28,
+                    "ABSOLUTE_MOVEMENT": 11,
+                    "ABSOLUTE_AND_PERCENTAGE": 8,
+                    "STRUCTURAL_OR_REPORTING": 3,
+                }
+            ),
+        )
+        self.assertEqual(
+            Counter(row["status"] for row in review),
+            Counter({"Continuing": 49, "Entered analytic universe": 1}),
+        )
+        self.assertEqual(
+            Counter(row["control"] for row in review),
+            Counter({"Public": 24, "Private nonprofit": 22, "Private for-profit": 4}),
+        )
+
+        gains = [int(row["absolute_change"]) for row in review if int(row["absolute_change"]) > 0]
+        declines = [int(row["absolute_change"]) for row in review if int(row["absolute_change"]) < 0]
+        zero = [row for row in review if int(row["absolute_change"]) == 0]
+        self.assertEqual((len(gains), len(declines), len(zero)), (25, 23, 2))
+        self.assertEqual(sum(gains), 7_806)
+        self.assertEqual(-sum(declines), 9_241)
+        self.assertEqual(sum(gains) + sum(declines), -1_435)
+        self.assertEqual(sum(abs(int(row["absolute_change"])) for row in review), 17_047)
+
+        overlap = [row for row in review if row["candidate_directory_overlap"] == "yes"]
+        self.assertEqual(len(overlap), 5)
+        self.assertEqual(
+            {row["unitid"] for row in overlap},
+            {"157216", "114354", "115773", "244233", "417327"},
+        )
+        self.assertEqual(sum(int(row["nonresident_2024"] or 0) for row in overlap), 2_443)
+
+        structural = [row for row in review if row["review_route"] == "STRUCTURAL_OR_REPORTING"]
+        self.assertEqual({row["unitid"] for row in structural}, {"159948", "244233", "417327"})
+        by_unitid = {row["unitid"]: row for row in review}
+        self.assertEqual(by_unitid["159948"]["status"], "Entered analytic universe")
+        self.assertEqual(by_unitid["244233"]["flag_2023"], "R")
+        self.assertEqual(by_unitid["244233"]["flag_2024"], "P")
+        self.assertEqual(by_unitid["417327"]["flag_2023"], "R")
+        self.assertEqual(by_unitid["417327"]["flag_2024"], "P")
+        self.assertEqual(by_unitid["157216"]["review_route"], "ABSOLUTE_AND_PERCENTAGE")
+        self.assertEqual(by_unitid["114354"]["review_route"], "PERCENTAGE_MOVEMENT")
+        self.assertTrue(all("publication clearance" in row["interpretation_boundary"] for row in review))
+        self.assertTrue(all(row["next_review_step"].strip() for row in review))
+
+        rendered = (ROOT / "docs" / "MEDIUM_PRIORITY_REVIEW.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "medium-priority-review.html").read_text(encoding="utf-8")
+        self.assertIn("50 current medium-priority", rendered)
+        self.assertIn("<strong>50</strong><span>current medium-priority rows", html)
+        for expected in (
+            "28 rows",
+            "11 rows",
+            "8 rows",
+            "3 rows",
+            "2,443",
+            "+7,806",
+            "-9,241",
+            "17,047",
+            "-1,435",
+            "New Orleans Baptist Theological Seminary",
+            "Lindsey Wilson College",
+        ):
+            self.assertIn(expected, rendered)
+            self.assertIn(expected, html)
+        self.assertIn("not a national trend estimate", rendered)
+        self.assertIn("none is a severity grade", html)
+        self.assertIn("No automatic clearance", html)
+
     def test_planning_scenarios_reconcile_and_remain_non_predictive(self) -> None:
         scenario_rows = rows(ROOT / "data" / "planning_scenarios.csv")
         self.assertEqual(
@@ -1115,6 +1202,11 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(r08["proposed_output"], "Candidate-year QA carry-forward watchlist")
         self.assertIn("revalidated rather than inherited", r08["decision_rule"])
         self.assertIn("five medium-priority records overlap", r08["evidence_trigger"])
+        r09 = next(row for row in agenda if row["research_id"] == "R09")
+        self.assertEqual(r09["status"], "Implemented as medium-priority QA triage")
+        self.assertEqual(r09["proposed_output"], "Medium-priority institution QA triage note")
+        self.assertIn("exactly one non-severity review route", r09["decision_rule"])
+        self.assertIn("28 are percentage-movement cases", r09["evidence_trigger"])
         rendered = (ROOT / "docs" / "RESEARCH_AGENDA.md").read_text(encoding="utf-8")
         for row in agenda:
             self.assertIn(row["research_id"], rendered)
@@ -1671,10 +1763,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 116)
+        self.assertEqual(len(pairs), 118)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 116)
+        self.assertEqual(validate_public_tree(release_rows), 118)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -1691,6 +1783,7 @@ class ResearchProductTests(unittest.TestCase):
             "candidate-directory-preflight.html",
             "candidate-directory-changes.html",
             "candidate-year-watchlist.html",
+            "medium-priority-review.html",
             "private-nonprofit-growth.html",
             "qa-review.html",
             "population-trends.html",

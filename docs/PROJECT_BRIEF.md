@@ -76,6 +76,7 @@ A concise PDF version should also be available for reviewers who expect a conven
 - documentation sufficient for another analyst to reproduce the result.
 - external publication benchmark audit and release-vintage documentation.
 - generated latest-release review memo and reason-coded institution queue.
+- medium-priority QA triage that routes all 50 current medium rows from their existing reason codes into four non-severity evidence-review paths, quantifies mixed-direction movement, and surfaces candidate-directory overlap without assigning a publication disposition.
 - generated stakeholder briefing note built from validated findings rather than separately maintained figures.
 - reviewer-ready Excel workbook demonstrating formula-based analysis, lookup, QA/QC, presentation, and source organization.
 - reviewer-ready six-slide PowerPoint management briefing generated from validated KPI, trend, geography, driver, and QA outputs with a source/builder freshness manifest.

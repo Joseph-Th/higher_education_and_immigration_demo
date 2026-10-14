@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 66
-**Expanded public download files:** 116
+**Registered artifact families:** 68
+**Expanded public download files:** 118
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -85,6 +85,8 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR64 | `site/downloads/candidate_directory_change_review.md` | Publication | Candidate directory institution-change review note | Generated from the hashed candidate directory change-review CSV and validated preflight snapshot |
 | PR65 | `site/downloads/candidate_year_qa_watchlist.csv` | QA / audit | Candidate-year institution carry-forward row | Generated from the current latest-release high/medium QA queue the evidence-backed high-priority disposition layer and the candidate directory structural-change review |
 | PR66 | `site/downloads/candidate_year_qa_watchlist.md` | Publication | Candidate-year QA carry-forward note | Generated from the validated candidate-year QA watchlist |
+| PR67 | `site/downloads/medium_priority_review.csv` | QA / audit | Medium-priority institution QA routing row | Generated from the current latest-release medium-priority queue plus candidate-directory overlap context |
+| PR68 | `site/downloads/medium_priority_review.md` | Publication | Medium-priority institution QA triage note | Generated from the validated medium-priority QA routing table |
 
 ## Handling boundary
 
