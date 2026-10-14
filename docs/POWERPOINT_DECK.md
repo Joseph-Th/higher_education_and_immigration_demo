@@ -9,11 +9,11 @@ The deck is a **downstream presentation artifact**. It does not define the proje
 ## Slide structure
 
 1. **Cover / reporting frame** — reporting period, headline population definition, and current total.
-2. **Executive summary** — four KPI cards plus the latest undergraduate/graduate and institution-accounting decomposition.
+2. **Executive summary** — four KPI cards plus the latest undergraduate/graduate and institution-accounting decomposition, including the fixed R01 state-breadth baseline.
 3. **National trend** — 2015-2024 trend plus decade student-level composition.
 4. **Geography** — states/DC at or above the 2019 baseline, largest gains, and largest shortfalls.
 5. **Drivers** — institutional-control change and continuing-institution versus universe-entry/exit accounting.
-6. **Interpretation and QA** — management takeaways, refresh cadence, population/vintage boundaries, and analytical-authority rules.
+6. **Interpretation and QA** — management takeaways, the pre-specified R01 next-release persistence rule, population/vintage boundaries, and analytical-authority rules.
 
 ## Rebuild
 

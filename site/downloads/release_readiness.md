@@ -18,7 +18,7 @@ The current aggregate publication can remain release-ready while named instituti
 | A03 | Current release | High-priority institution review | PASS_WITH_CLAIM_HOLDS | Yes | No | 27/27 high-priority records reviewed; 6 safe with context and 21 institution-specific claims held. |
 | A04 | Current release | Publication handoff | PASS_WITH_CLAIM_HOLDS | Yes | No | 15 publication claims/controls have valid authorities, QA gates, disclosures, and release statuses; Q01 preserves claim-level holds. |
 | A05 | Current release | Public release register | PASS | Yes | No | 60 artifact families are explicitly PUBLIC; none contain person-level or observed immigration-status data. |
-| A06 | Current release | Presentation artifact freshness | PASS | Yes | No | PDF manifest matches its source and 3-page file; PowerPoint manifest matches its builder, 6 sources, and 6-slide file. |
+| A06 | Current release | Presentation artifact freshness | PASS | Yes | No | PDF manifest matches its source and 3-page file; PowerPoint manifest matches its builder, 7 sources, and 6-slide file. |
 | A07 | Current release | Maintained-source routing coverage | PASS | Yes | No | 17/17 Research Library sources have an explicit refresh/escalation route. |
 | Y01 | Year advance | Candidate 2025 IPEDS package | HOLD | No | Yes | 2/4 required candidate-year assets available at 2026-10-14T15:33:16+00:00; snapshot decision=HOLD_YEAR_ADVANCE. |
 

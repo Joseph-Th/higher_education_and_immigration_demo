@@ -44,12 +44,15 @@ def main() -> int:
     review = json.loads((DATA / "latest_update_review.json").read_text(encoding="utf-8"))
     resolution = json.loads((DATA / "qa_resolution_summary.json").read_text(encoding="utf-8"))
     benchmark = read_csv(DATA / "benchmark_audit.csv")
+    undergraduate_baseline = read_csv(DATA / "undergraduate_shift_baseline.csv")
 
     if not benchmark or any(row["status"] != "PASS" for row in benchmark):
         raise RuntimeError("Cannot publish research memo while external benchmark checks fail")
     cases = resolution.get("case_studies", [])
     if len(cases) != 3 or {case["case_type"] for case in cases} != set(CASE_LABELS):
         raise RuntimeError("Research memo requires the three defined analyst case-study types")
+    if len(undergraduate_baseline) != 51:
+        raise RuntimeError("Research memo requires the complete 51-state/DC undergraduate baseline")
 
     coverage = findings["coverage"]
     headline = findings["headline"]
@@ -62,6 +65,13 @@ def main() -> int:
     start_year = coverage["start_year"]
     end_year = coverage["end_year"]
     prior_year = review["coverage"]["prior_year"]
+    baseline_undergraduate_change = sum(int(row["undergraduate_change"]) for row in undergraduate_baseline)
+    baseline_positive_states = sum(int(row["undergraduate_change"]) > 0 for row in undergraduate_baseline)
+    baseline_public_change = sum(int(row["public_undergraduate_change"]) for row in undergraduate_baseline)
+    if baseline_undergraduate_change != latest["undergraduate_change"]:
+        raise RuntimeError("Research memo undergraduate baseline does not reconcile to latest-year change")
+    if baseline_positive_states != 45:
+        raise RuntimeError("Research memo undergraduate state breadth changed unexpectedly")
 
     md = [
         f"# Research Memo: U.S. Nonresident Enrollment in Higher Education, {start_year}-{end_year}",
@@ -74,7 +84,7 @@ def main() -> int:
         "",
         f"U.S. nonresident enrollment reached **{headline['latest_nonresident']:,}** in Fall {end_year}, **{headline['latest_share_pct']:.2f}%** of enrollment in the analytic universe. The national count is **{signed_int(headline['change_since_2015'])} ({signed_pct(headline['change_since_2015_pct'])})** above {start_year}, but the composition of that growth changed: the decade-level increase was entirely graduate-driven, while the newest annual increase was undergraduate-led.",
         "",
-        f"From {prior_year} to {end_year}, U.S. nonresident enrollment increased **{signed_int(latest['absolute_change'])} ({signed_pct(latest['pct_change'])})**. Undergraduate enrollment increased **{signed_int(latest['undergraduate_change'])}**, while graduate enrollment declined **{signed_int(latest['graduate_change'])}**. That one-year reversal is worth monitoring, but it is not yet evidence of a durable trend change.",
+        f"From {prior_year} to {end_year}, U.S. nonresident enrollment increased **{signed_int(latest['absolute_change'])} ({signed_pct(latest['pct_change'])})**. Undergraduate enrollment increased **{signed_int(latest['undergraduate_change'])}**, with growth in **{baseline_positive_states} of 51 states/DC** and **{signed_int(baseline_public_change)}** contributed by public institutions, while graduate enrollment declined **{signed_int(latest['graduate_change'])}**. R01 remains a fixed baseline, not a persistence finding: the next complete release must remain positive nationally and in at least **26 of 51 states/DC** before the project calls the shift broadly persistent.",
         "",
         "## Three findings that matter",
         "",
@@ -168,7 +178,7 @@ def main() -> int:
         <p class="eyebrow">Bottom line</p>
         <h2>Recovery is national. Its composition is not the same as before.</h2>
         <p>U.S. nonresident enrollment reached <strong id="memo-total">{headline['latest_nonresident']:,}</strong> in Fall {end_year}, or <strong>{headline['latest_share_pct']:.2f}%</strong> of enrollment in the analytic universe. That is <strong>{signed_int(headline['change_since_2015'])}</strong> students above {start_year}.</p>
-        <p>The newest annual movement breaks with the decade-level pattern. From {prior_year} to {end_year}, undergraduate U.S. nonresident enrollment increased <strong>{signed_int(latest['undergraduate_change'])}</strong>, while graduate enrollment declined <strong>{signed_int(latest['graduate_change'])}</strong>. The result was a net increase of <strong id="memo-latest-change">{signed_int(latest['absolute_change'])}</strong>.</p>
+        <p>The newest annual movement breaks with the decade-level pattern. Undergraduate enrollment increased <strong>{signed_int(latest['undergraduate_change'])}</strong> in <strong>{baseline_positive_states} of 51 states/DC</strong>, with public institutions contributing <strong>{signed_int(baseline_public_change)}</strong>; graduate enrollment declined <strong>{signed_int(latest['graduate_change'])}</strong>, producing a net <strong id="memo-latest-change">{signed_int(latest['absolute_change'])}</strong>. <strong>R01 remains a fixed baseline:</strong> call the shift broadly persistent only if the next complete release is positive nationally and in at least <strong>26 of 51 states/DC</strong>.</p>
 
         <h2>Three findings that matter</h2>
         <div class="memo-findings">

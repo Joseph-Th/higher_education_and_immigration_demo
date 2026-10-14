@@ -1,22 +1,25 @@
 {
   "builder": "scripts/build_management_deck.py",
-  "builder_sha256": "db24342a82ed858fb8da8a6628cbf44a902fe72e001513aeb20b0cc6142b07b2",
+  "builder_sha256": "1df833e157cd23ab5a46447adc002b51f78b38fd45c94a37401a6cd0108ea84a",
   "source_sha256": {
     "data/processed/national_year.csv": "800c805dc4241c70070ff7962fb1abc7faa602735af6796adaca9de8bcc7f892",
     "data/processed/state_change_summary.csv": "943d1102a624dbcace52a371ba5c41d4ecbadf9e79e6475f140b28cd0a5f4edf",
     "data/processed/control_year.csv": "5df7c936e4e649f8250bde0b7557a9a17b4ba8f20262299a8b8b15b3f8f066c5",
     "data/processed/institution_change_summary.csv": "28e029794f53bf1076c1f623108a8a376656aafc2fa8694b79335decc609b932",
+    "data/undergraduate_shift_baseline.csv": "2de0abda5110b4b2352a028440dcadc527c84a6bc452a30149765985cba87de0",
     "data/findings.json": "c9c4f4948113353576e4be8b82ef3596b153059a77b600305f9ec569957544d7",
     "data/latest_update_review.json": "7a1d00482ff0fa998561b57dea3c45de495406e0e2a78e22ddb73c4b835ab69e"
   },
-  "pptx_sha256": "4f7bad8c18f79db3f2950cf17b0a4eee34aa6e7b53c830c34cefe883414c6217",
-  "pptx_bytes": 43841,
+  "pptx_sha256": "e6a98e3f75906eda1d156fe8d79bc80ec109eedac85f6d0e5e531171de291361",
+  "pptx_bytes": 43880,
   "slide_count": 6,
   "metrics": {
     "latest_nonresident": 1044137,
     "latest_year": 2024,
     "latest_yoy_change": 29539,
     "states_recovered": 33,
+    "undergraduate_positive_states": 45,
+    "undergraduate_latest_change": 31592,
     "decade_change": 63400,
     "slide_count": 6
   }

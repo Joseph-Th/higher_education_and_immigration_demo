@@ -33,6 +33,7 @@ SOURCE_PATHS = (
     "data/processed/state_change_summary.csv",
     "data/processed/control_year.csv",
     "data/processed/institution_change_summary.csv",
+    "data/undergraduate_shift_baseline.csv",
     "data/findings.json",
     "data/latest_update_review.json",
 )
@@ -287,6 +288,7 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     national = read_csv(PROCESSED / "national_year.csv")
     findings = json.loads((DATA / "findings.json").read_text(encoding="utf-8"))
     update = json.loads((DATA / "latest_update_review.json").read_text(encoding="utf-8"))
+    undergraduate_baseline = read_csv(DATA / "undergraduate_shift_baseline.csv")
 
     headline = findings["headline"]
     latest = national[-1]
@@ -295,6 +297,13 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     level = findings["level_decomposition"]
     control = findings["institution_control"]["changes"]
     dynamics = findings["institution_dynamics"]["decade"]
+    if len(undergraduate_baseline) != 51:
+        raise RuntimeError("Management deck requires the complete 51-state/DC undergraduate baseline")
+    baseline_undergraduate_change = sum(int(row["undergraduate_change"]) for row in undergraduate_baseline)
+    baseline_positive_states = sum(int(row["undergraduate_change"]) > 0 for row in undergraduate_baseline)
+    baseline_public_change = sum(int(row["public_undergraduate_change"]) for row in undergraduate_baseline)
+    if baseline_undergraduate_change != update["national"]["undergraduate_change"]:
+        raise RuntimeError("Management deck undergraduate baseline does not reconcile to latest-year change")
 
     prs = Presentation()
     prs.slide_width = Inches(SLIDE_W)
@@ -341,9 +350,9 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
 
     add_box(slide, 0.68, 3.7, 12.0, 2.75, fill=WHITE, line=LINE)
     add_text(slide, "What changed in the latest release", 0.98, 3.98, 4.2, 0.32, size=15, color=NAVY, bold=True)
-    add_bullet(slide, 0.98, 4.48, 3.55, "Undergraduate growth led", f"Undergraduate U.S. nonresident enrollment increased {fmt_int(update['national']['undergraduate_change'], signed=True)} in 2024.", index="01")
+    add_bullet(slide, 0.98, 4.48, 3.55, "Undergraduate growth led", f"Undergraduate enrollment increased {fmt_int(update['national']['undergraduate_change'], signed=True)} across {baseline_positive_states} of 51 states/DC; public institutions contributed {fmt_int(baseline_public_change, signed=True)}.", index="01")
     add_bullet(slide, 4.55, 4.48, 3.65, "Graduate enrollment edged down", f"Graduate enrollment changed {fmt_int(update['national']['graduate_change'], signed=True)}, so the net gain was not graduate-driven in the latest year.", index="02")
-    add_bullet(slide, 8.35, 4.48, 3.85, "Most movement was within existing institutions", f"Continuing institutions accounted for {fmt_int(update['institution_accounting']['continuing_change'], signed=True)}; entry/exit netted {fmt_int(update['institution_accounting']['entry_exit_net'], signed=True)}.", index="03")
+    add_bullet(slide, 8.35, 4.48, 3.85, "Existing institutions drove the gain", f"Continuing institutions accounted for {fmt_int(update['institution_accounting']['continuing_change'], signed=True)}; entry/exit netted {fmt_int(update['institution_accounting']['entry_exit_net'], signed=True)}.", index="03")
     add_footer(slide, 2)
 
     # Slide 3: national trend
@@ -426,7 +435,7 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     add_bullet(slide, 1.0, 2.9, 4.75, "Latest direction", f"2024 U.S. nonresident enrollment increased {fmt_int(update['national']['absolute_change'], signed=True)} ({fmt_pct(update['national']['pct_change'], signed=True)}) from 2023.")
     add_bullet(slide, 1.0, 3.78, 4.75, "Recovery pattern", f"{recovery['states_at_or_above_baseline']} states/DC are at or above 2019, but {recovery['states_below_baseline']} remain below the pre-pandemic baseline.")
     add_bullet(slide, 1.0, 4.66, 4.75, "Structural driver", "Over the full decade, growth was graduate-heavy and concentrated in private nonprofit institutions and continuing institutions.")
-    add_bullet(slide, 1.0, 5.54, 4.75, "Next reporting cycle", "When a new IPEDS release arrives, rerun schema, QA, benchmark, SQL, and publication checks before refreshing this deck.")
+    add_bullet(slide, 1.0, 5.54, 4.75, "Next reporting cycle", "R01 is pre-specified: call the undergraduate shift broadly persistent only if the next complete release is positive nationally and in at least 26 of 51 states/DC.")
 
     add_box(slide, 6.78, 2.02, 5.9, 4.72, fill=WASH, line=LINE)
     add_text(slide, "Guardrails before reuse", 7.1, 2.3, 4.9, 0.32, size=14, color=NAVY, bold=True)
@@ -446,6 +455,8 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
         "latest_year": int(latest["year"]),
         "latest_yoy_change": int(latest["nonresident_enrollment"]) - int(prior["nonresident_enrollment"]),
         "states_recovered": recovery["states_at_or_above_baseline"],
+        "undergraduate_positive_states": baseline_positive_states,
+        "undergraduate_latest_change": baseline_undergraduate_change,
         "decade_change": headline["change_since_2015"],
         "slide_count": len(prs.slides),
     }

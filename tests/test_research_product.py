@@ -1147,7 +1147,7 @@ class ResearchProductTests(unittest.TestCase):
         cases = self.site_data["qa_resolution_summary"]["case_studies"]
         self.assertIn(f"{headline['latest_nonresident']:,}", memo)
         self.assertIn(f"{latest['absolute_change']:+,}", memo)
-        self.assertIn("not yet evidence of a durable trend change", memo)
+        self.assertIn("fixed baseline, not a persistence finding", memo)
         self.assertIn(f'id="memo-total">{headline["latest_nonresident"]:,}', html)
         self.assertIn(f'id="memo-latest-change">{latest["absolute_change"]:+,}', html)
         for case in cases:
@@ -1251,6 +1251,10 @@ class ResearchProductTests(unittest.TestCase):
         for expected in (
             "1,044,137",
             "+29,539",
+            "+31,592",
+            "45 of 51 states/DC",
+            "+28,580",
+            "26 of 51 states/DC",
             "33 of 51",
             "+82,825",
             "+66,981",
@@ -1261,6 +1265,9 @@ class ResearchProductTests(unittest.TestCase):
             self.assertIn(expected, text)
         self.assertEqual(manifest["metrics"]["latest_nonresident"], 1_044_137)
         self.assertEqual(manifest["metrics"]["states_recovered"], 33)
+        self.assertEqual(manifest["metrics"]["undergraduate_positive_states"], 45)
+        self.assertEqual(manifest["metrics"]["undergraduate_latest_change"], 31_592)
+        self.assertIn("data/undergraduate_shift_baseline.csv", manifest["source_sha256"])
 
     def test_pdf_research_brief_is_valid_and_published(self) -> None:
         pdf = ROOT / "deliverables" / "research_brief.pdf"
@@ -1280,6 +1287,10 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(manifest["page_count"], 3)
         self.assertEqual(manifest["pdf_sha256"], hashlib.sha256(payload).hexdigest())
         self.assertEqual(manifest["source_sha256"], hashlib.sha256(memo.read_bytes()).hexdigest())
+        memo_text = (ROOT / "docs" / "RESEARCH_MEMO.md").read_text(encoding="utf-8")
+        self.assertIn("45 of 51 states/DC", memo_text)
+        self.assertIn("+28,580", memo_text)
+        self.assertIn("26 of 51 states/DC", memo_text)
 
     def test_state_profiles_cover_and_reconcile_all_geographies(self) -> None:
         index = rows(ROOT / "data" / "processed" / "state_profile_index.csv")
