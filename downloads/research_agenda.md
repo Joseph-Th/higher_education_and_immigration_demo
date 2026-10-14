@@ -6,7 +6,7 @@ This register turns findings, QA observations, source limitations, and recurring
 
 | ID | Priority | Research question | Current IPEDS fit | Status |
 | --- | --- | --- | --- | --- |
-| R01 | High | Does the 2024 undergraduate-led increase persist in the next Fall Enrollment release? | High | Monitor next release |
+| R01 | High | Does the 2024 undergraduate-led increase persist in the next Fall Enrollment release? | High | Baseline implemented; monitor next release |
 | R02 | High | Why have some states recovered above 2019 while others remain below? | High | Implemented in state recovery analysis |
 | R04 | High | How do IPEDS U.S. nonresident trends compare with undocumented and immigrant-origin student estimates? | None | Implemented as bounded national population trend comparison |
 | R05 | High | Which large institution-level annual changes reflect substantive movement versus reporting or classification discontinuity? | High | Implemented in complete high-priority QA review |
@@ -20,13 +20,13 @@ This register turns findings, QA observations, source limitations, and recurring
 
 #### R01 · Does the 2024 undergraduate-led increase persist in the next Fall Enrollment release?
 
-- **Evidence trigger:** 2023-2024 undergraduate U.S. nonresident enrollment increased by 31,592 while graduate enrollment declined by 2,053.
+- **Evidence trigger:** 2023-2024 undergraduate U.S. nonresident enrollment increased by 31,592 while graduate enrollment declined by 2,053; undergraduate enrollment increased in 45 of 51 states/DC.
 - **Current IPEDS fit:** High
-- **Additional data needed:** Next NCES/IPEDS Fall Enrollment release
-- **Proposed method:** Repeat the national and state student-level decomposition; compare direction and contribution to change with 2024.
-- **Proposed output:** Annual update brief
-- **Decision rule:** Elevate to a multi-year finding only if the next release confirms that undergraduate growth remains a material contributor rather than a one-year reversal.
-- **Status:** Monitor next release
+- **Additional data needed:** Current IPEDS files establish a fixed 2023-2024 baseline; the next NCES/IPEDS Fall Enrollment release is required to test persistence.
+- **Proposed method:** Preserve the 2023-2024 national/state/control/institution-continuity baseline; on the next complete release, repeat the student-level decomposition and compare national direction plus state breadth with the fixed baseline.
+- **Proposed output:** Undergraduate shift baseline and next-release update
+- **Decision rule:** Classify the shift as broadly persistent only if the next complete release shows positive national undergraduate change and undergraduate growth in at least 26 of 51 states/DC; otherwise do not elevate it to a broad multi-year finding. Report magnitude and concentration separately and do not infer cause.
+- **Status:** Baseline implemented; monitor next release
 
 #### R02 · Why have some states recovered above 2019 while others remain below?
 

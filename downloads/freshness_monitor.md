@@ -2,7 +2,7 @@
 
 This is a **dated portfolio monitoring snapshot**, not a continuously live dashboard. The NCES availability observation is captured by the separate online release checker; the offline build preserves and validates that observation without making network access a reproducibility dependency.
 
-- **Captured check:** 2026-10-14T15:06:36+00:00
+- **Captured check:** 2026-10-14T15:33:16+00:00
 - **Current analysis end year:** 2024
 - **Candidate next year:** 2025
 - **Candidate package:** 2/4 required files available

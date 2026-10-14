@@ -2,9 +2,9 @@
 
 This is a portfolio demonstration of the final QA/QC handoff between validated analysis and a public data-page refresh. It does **not** represent the Presidents' Alliance's internal publication workflow or approval chain.
 
-**Current release:** Fall 2024 (provisional)  
-**Claim/register rows:** 14  
-**State/DC profiles:** 51  
+**Current release:** Fall 2024 (provisional)
+**Claim/register rows:** 15
+**State/DC profiles:** 51
 **External benchmark checks:** 24/24 PASS
 
 ## Publication claims
@@ -16,6 +16,7 @@ This is a portfolio demonstration of the final QA/QC handoff between validated a
 | N03 | Longitudinal finding | U.S. nonresident enrollment is +63,400 (+6.5%) from 2015 to 2024. | Endpoint difference reconciles to student-level and institutional-control decompositions. | The endpoint includes 2024 provisional data. | READY |
 | N04 | Student-level finding | Across 2015-2024, graduate U.S. nonresident enrollment changed +138,765 while undergraduate enrollment changed -75,365. | Undergraduate plus graduate counts reconcile exactly to total U.S. nonresident enrollment for every year. | Student-level categories follow IPEDS aggregation codes documented in the methodology. | READY |
 | N05 | Latest release update | From 2023 to 2024, enrollment changed +29,539: undergraduate +31,592, graduate -2,053. | Student-level changes reconcile exactly to the national annual change and the institution-accounting bridge. | One annual movement is not treated as evidence of a durable trend change. | READY WITH CONTEXT |
+| N06 | R01 current-data baseline | The 2023-2024 undergraduate increase was +31,592 and was positive in 45 of 51 states/DC; public institutions contributed +28,580. | State, institutional-control, and institution-continuity undergraduate decompositions reconcile to the national latest-year change; annual history fixes the pre-next-release baseline. | This establishes the 2024 comparison baseline but does not answer persistence; the next complete Fall Enrollment release must pass schema review before R01 is classified. | READY WITH CONTEXT |
 | S01 | State data package | 33 states/DC are at or above 2019 U.S. nonresident enrollment; 18 remain below. | All 51 state/DC profiles are present and their latest counts sum exactly to 1,044,137. | State is institution location, not student residence, nationality, or immigration status. | READY WITH CONTEXT |
 | C01 | Institutional-control finding | Private nonprofit institutions changed +82,825 U.S. nonresident students from 2015 to 2024. | Public, private nonprofit, and private for-profit totals reconcile exactly to the national series in every year. | Institutional control comes from each year's IPEDS directory file. | READY |
 | I01 | Institution-universe finding | Continuing institutions contributed +66,981 to the 2015-2024 change; universe entry/exit netted -3,581. | All endpoint institution contributions sum exactly to the national change. | Universe entry/exit can reflect mergers, eligibility, or identifier restructuring, not only openings/closures. | READY WITH CONTEXT |

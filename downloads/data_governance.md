@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 58
-**Expanded public download files:** 108
+**Registered artifact families:** 60
+**Expanded public download files:** 110
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -77,6 +77,8 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR56 | `site/downloads/undocumented_pipeline_context.md` | Publication | Undocumented pipeline context note | Generated from the validated 2023 ecological state comparison |
 | PR57 | `site/downloads/release_readiness.csv` | Research governance | Release-control gate | Generated from validated analytical QA benchmark institution-review handoff governance artifact-freshness source-routing and release-monitor authorities |
 | PR58 | `site/downloads/release_readiness.md` | Publication | Release-readiness control note | Generated from the consolidated release-readiness matrix |
+| PR59 | `site/downloads/undergraduate_shift_baseline.csv` | Analysis output | R01 undergraduate-shift state baseline | Generated from validated public national state control and institution-level IPEDS outputs |
+| PR60 | `site/downloads/undergraduate_shift_baseline.md` | Publication | R01 undergraduate-shift baseline note | Generated from the validated fixed 2023-2024 undergraduate-shift baseline |
 
 ## Handling boundary
 
