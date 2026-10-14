@@ -24,6 +24,8 @@ To preserve the observation used by the public freshness monitor, run:
 
 ```bash
 python scripts/check_for_new_release.py --write-snapshot data/release_monitor_snapshot.json
+python scripts/check_candidate_directory.py --write-snapshot data/candidate_directory_preflight.json
+python scripts/build_candidate_directory_preflight.py
 python scripts/build_freshness_monitor.py
 ```
 
@@ -34,7 +36,9 @@ The script checks the NCES Complete Data Files endpoint for the next year's:
 - institutional directory data; and
 - institutional directory dictionary.
 
-**Last checked October 13, 2026 local time:** the 2025 institutional directory and dictionary are available, while `EF2025A.zip` and `EF2025A_Dict.zip` are not yet available at the Complete Data Files endpoint. `data/release_monitor_snapshot.json` preserves that four-file observation with its UTC capture timestamp, and `data/freshness_monitor.csv` records the resulting `HOLD YEAR ADVANCE` decision. The project therefore remains correctly pinned to Fall 2024.
+**Last checked October 14, 2026:** the 2025 institutional directory and dictionary are available, while `EF2025A.zip` and `EF2025A_Dict.zip` are not yet available at the Complete Data Files endpoint. `data/release_monitor_snapshot.json` preserves that four-file observation at `2026-10-14T16:19:56+00:00`, and `data/freshness_monitor.csv` records the resulting `HOLD YEAR ADVANCE` decision. The project therefore remains correctly pinned to Fall 2024.
+
+Because the directory pair is already available, `scripts/check_candidate_directory.py` performs a bounded preflight without collecting it into the canonical 2015-2024 source manifest. The captured `data/candidate_directory_preflight.json` shows all six required directory fields in both the data and dictionary, 5,985 directory rows, all 51 states/DC, zero duplicate UNITIDs, and 3,864 directory-eligible institutions under the current geography/degree-granting/Title-IV filters. Relative to the current 2024 directory-side frame, 3,812 UNITIDs are shared, 52 enter, 56 leave, and the net eligible-frame change is -4. The candidate schema has 70 fields versus 72 in 2024; `DFRCGID` and `DFRCUSCG` are absent, but neither is required by the current analysis. These checks reduce directory-side uncertainty only. They do not establish the final 2025 analytic universe or answer R01 because Fall Enrollment is still unavailable.
 
 The live check is deliberately **not** part of `scripts/validate_project.py` because reproducibility of the current release should not depend on network availability or the state of a future NCES release. The offline validation lane consumes the last explicitly captured snapshot and verifies that the derived monitoring register/page agree with it.
 

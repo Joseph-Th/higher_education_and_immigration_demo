@@ -542,7 +542,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 60)
+        self.assertEqual(len(release_rows), 62)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -551,15 +551,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 110)
-        self.assertEqual(validate_public_tree(release_rows), 110)
+        self.assertEqual(len(pairs), 112)
+        self.assertEqual(validate_public_tree(release_rows), 112)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 110", rendered)
+        self.assertIn("Expanded public download files:** 112", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("110</strong><span>expanded public download files", html)
+        self.assertIn("112</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -577,7 +577,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 110)
+        self.assertEqual(validate_public_tree(release_rows), 112)
 
     def test_release_readiness_separates_current_publication_from_year_advance(self) -> None:
         readiness = rows(ROOT / "data" / "release_readiness.csv")
@@ -593,8 +593,10 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_id["Y01"]["blocks_current_release"], "No")
         self.assertEqual(by_id["Y01"]["blocks_year_advance"], "Yes")
         self.assertIn("27/27", by_id["A03"]["evidence"])
-        self.assertIn("60 artifact families", by_id["A05"]["evidence"])
+        self.assertIn("62 artifact families", by_id["A05"]["evidence"])
         self.assertIn("2/4", by_id["Y01"]["evidence"])
+        self.assertIn("candidate directory preflight=PASS", by_id["Y01"]["evidence"])
+        self.assertIn("3,864 directory-eligible rows", by_id["Y01"]["evidence"])
         self.assertTrue(
             all(
                 row["status"] != "HOLD"
@@ -629,11 +631,17 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(availability["HD2025_Dict.zip"])
 
         monitor = rows(ROOT / "data" / "freshness_monitor.csv")
-        self.assertEqual(len(monitor), 10)
+        self.assertEqual(len(monitor), 11)
         self.assertEqual(
-            [row["monitor_id"] for row in monitor[:5]],
-            ["R01", "R02", "R03", "R04", "G01"],
+            [row["monitor_id"] for row in monitor[:6]],
+            ["R01", "R02", "R03", "R04", "D01", "G01"],
         )
+        directory = next(row for row in monitor if row["monitor_id"] == "D01")
+        self.assertEqual(directory["status"], "PASS")
+        self.assertIn("6/6 required directory fields preserved", directory["evidence"])
+        self.assertIn("3,864 directory-eligible rows", directory["evidence"])
+        self.assertIn("3,812 shared UNITIDs", directory["evidence"])
+        self.assertIn("net eligible change -4", directory["evidence"])
         gate = next(row for row in monitor if row["monitor_id"] == "G01")
         self.assertEqual(gate["status"], "HOLD YEAR ADVANCE")
         self.assertIn("2/4 required candidate-year files available", gate["evidence"])
@@ -646,8 +654,68 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("dates are not inferred", rendered)
         self.assertIn("not continuously live", html)
         self.assertIn("HOLD YEAR ADVANCE", html)
+        self.assertIn("Candidate directory preflight", html)
+        self.assertIn("3,864", html)
+        self.assertIn("3,812", html)
         self.assertEqual(html.count('data-monitor-id="'), 4)
         self.assertEqual(html.count('data-product-monitor="'), 3)
+
+    def test_candidate_directory_preflight_is_structural_and_non_authorizing(self) -> None:
+        payload = json.loads(
+            (ROOT / "data" / "candidate_directory_preflight.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(payload["current_analysis_end_year"], 2024)
+        self.assertEqual(payload["candidate_next_year"], 2025)
+        self.assertEqual(payload["status"], "PASS")
+        self.assertFalse(payload["year_advance_authorized"])
+        self.assertEqual(payload["release_monitor_decision"], "HOLD_YEAR_ADVANCE")
+        self.assertEqual(payload["candidate_directory_rows"], 5_985)
+        self.assertEqual(payload["candidate_field_count"], 70)
+        self.assertEqual(payload["candidate_core_states_dc_count"], 51)
+        self.assertEqual(payload["candidate_duplicate_unitid_count"], 0)
+        self.assertEqual(payload["candidate_directory_eligible_rows"], 3_864)
+        self.assertEqual(
+            payload["candidate_control_counts"],
+            {"Public": 1_644, "Private nonprofit": 1_577, "Private for-profit": 643},
+        )
+        current = payload["current_reference"]
+        self.assertEqual(current["directory_rows"], 6_072)
+        self.assertEqual(current["field_count"], 72)
+        self.assertEqual(current["directory_eligible_rows"], 3_868)
+        self.assertEqual(
+            current["control_counts"],
+            {"Public": 1_642, "Private nonprofit": 1_578, "Private for-profit": 648},
+        )
+        continuity = payload["eligible_universe_continuity"]
+        self.assertEqual(continuity["shared_unitids"], 3_812)
+        self.assertEqual(continuity["entering_unitids"], 52)
+        self.assertEqual(continuity["leaving_unitids"], 56)
+        self.assertEqual(continuity["net_change"], -4)
+        self.assertEqual(continuity["shared_control_changes"], 6)
+        self.assertEqual(continuity["shared_state_changes"], 3)
+        self.assertEqual(continuity["shared_name_changes"], 41)
+        schema = payload["schema_delta"]
+        self.assertEqual(schema["field_count_change"], -2)
+        self.assertEqual(schema["removed_fields"], ["DFRCGID", "DFRCUSCG"])
+        self.assertEqual(schema["added_fields"], [])
+        self.assertTrue(schema["required_fields_preserved"])
+        source = payload["candidate_source"]
+        self.assertEqual(
+            source["data_sha256"],
+            "aadad9277a2255c85813b6d206475ddbf8a7330d79cc0236c2ecae685b00f1bf",
+        )
+        self.assertEqual(
+            source["dictionary_sha256"],
+            "dc454aa6fbc246f3d47d773cd02ebe3b5efcedacbd2f71c54ff39f5844215343",
+        )
+        rendered = (ROOT / "docs" / "CANDIDATE_DIRECTORY_PREFLIGHT.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "candidate-directory-preflight.html").read_text(encoding="utf-8")
+        for expected in ("6/6", "3,864", "3,812", "52", "56", "-4", "DFRCGID", "DFRCUSCG"):
+            self.assertIn(expected, rendered)
+            self.assertIn(expected, html)
+        self.assertIn("not the final analytic universe", rendered)
+        self.assertIn("No 2025 enrollment claims yet", html)
+        self.assertIn("HOLD_YEAR_ADVANCE", html)
 
     def test_planning_scenarios_reconcile_and_remain_non_predictive(self) -> None:
         scenario_rows = rows(ROOT / "data" / "planning_scenarios.csv")
@@ -1340,10 +1408,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 110)
+        self.assertEqual(len(pairs), 112)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 110)
+        self.assertEqual(validate_public_tree(release_rows), 112)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -1357,6 +1425,7 @@ class ResearchProductTests(unittest.TestCase):
             "ad-hoc-analysis.html",
             "state-recovery.html",
             "undergraduate-shift.html",
+            "candidate-directory-preflight.html",
             "private-nonprofit-growth.html",
             "qa-review.html",
             "population-trends.html",

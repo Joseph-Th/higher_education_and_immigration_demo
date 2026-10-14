@@ -18,6 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 SNAPSHOT_PATH = DATA / "release_monitor_snapshot.json"
+DIRECTORY_PREFLIGHT_PATH = DATA / "candidate_directory_preflight.json"
 CSV_OUTPUT = DATA / "freshness_monitor.csv"
 DOC_OUTPUT = ROOT / "docs" / "FRESHNESS_MONITOR.md"
 HTML_OUTPUT = ROOT / "site" / "freshness-monitor.html"
@@ -98,8 +99,30 @@ def load_snapshot() -> dict[str, object]:
     return snapshot
 
 
+def load_directory_preflight(snapshot: dict[str, object]) -> dict[str, object]:
+    preflight = json.loads(DIRECTORY_PREFLIGHT_PATH.read_text(encoding="utf-8"))
+    if int(preflight.get("current_analysis_end_year", -1)) != int(snapshot["current_analysis_end_year"]):
+        raise RuntimeError("Directory preflight current year does not match release snapshot")
+    if int(preflight.get("candidate_next_year", -1)) != int(snapshot["candidate_next_year"]):
+        raise RuntimeError("Directory preflight candidate year does not match release snapshot")
+    if str(preflight.get("release_monitor_checked_at_utc")) != str(snapshot["checked_at_utc"]):
+        raise RuntimeError("Directory preflight was not captured against the current release snapshot")
+    if preflight.get("release_monitor_decision") != snapshot["release_decision"]:
+        raise RuntimeError("Directory preflight release decision is stale")
+    if preflight.get("status") != "PASS" or preflight.get("year_advance_authorized") is not False:
+        raise RuntimeError("Directory preflight must be PASS and must not authorize year advancement")
+    if preflight.get("missing_required_data_fields") != [] or preflight.get("missing_required_dictionary_fields") != []:
+        raise RuntimeError("Directory preflight required-field checks are not clean")
+    if int(preflight.get("candidate_core_states_dc_count", 0)) != 51:
+        raise RuntimeError("Directory preflight must cover all 50 states plus DC")
+    if int(preflight.get("candidate_duplicate_unitid_count", -1)) != 0:
+        raise RuntimeError("Directory preflight contains duplicate UNITIDs")
+    return preflight
+
+
 def build_rows() -> tuple[list[MonitorRow], dict[str, object]]:
     snapshot = load_snapshot()
+    preflight = load_directory_preflight(snapshot)
     checked_date = str(snapshot["checked_at_utc"])[:10]
     candidate = int(snapshot["candidate_next_year"])
     current = int(snapshot["current_analysis_end_year"])
@@ -137,13 +160,36 @@ def build_rows() -> tuple[list[MonitorRow], dict[str, object]]:
 
     available_count = sum(row.status == "AVAILABLE" for row in file_rows)
     package_ready = bool(snapshot["package_ready"])
+    continuity = preflight["eligible_universe_continuity"]
+    directory_preflight = MonitorRow(
+        monitor_id="D01",
+        monitor_area="Candidate directory preflight",
+        subject=f"{candidate} directory structural compatibility",
+        observed_date=str(preflight["checked_at_utc"])[:10],
+        status="PASS",
+        evidence=(
+            "6/6 required directory fields preserved in data and dictionary; "
+            f"{int(preflight['candidate_directory_eligible_rows']):,} directory-eligible rows; "
+            f"{int(continuity['shared_unitids']):,} shared UNITIDs; net eligible change "
+            f"{int(continuity['net_change']):+d}."
+        ),
+        trigger="Both candidate-year directory assets are available before the complete annual package.",
+        next_action=(
+            "Retain this as directory-side readiness evidence; do not calculate candidate-year enrollment "
+            "or advance END_YEAR until Fall Enrollment data/dictionary arrive and full schema review passes."
+        ),
+        authority="data/candidate_directory_preflight.json",
+    )
     gate = MonitorRow(
         monitor_id="G01",
         monitor_area="Annual release gate",
         subject=f"Advance analysis from {current} to {candidate}",
         observed_date=checked_date,
         status="READY FOR SCHEMA REVIEW" if package_ready else "HOLD YEAR ADVANCE",
-        evidence=f"{available_count}/4 required candidate-year files available in the captured NCES check.",
+        evidence=(
+            f"{available_count}/4 required candidate-year files available in the captured NCES check; "
+            f"candidate directory structural preflight {directory_preflight.status}."
+        ),
         trigger="Fall Enrollment data/dictionary and directory data/dictionary are all available.",
         next_action=(
             "Follow the annual update playbook: collect sources, preserve hashes, and run the schema audit before analysis."
@@ -202,7 +248,7 @@ def build_rows() -> tuple[list[MonitorRow], dict[str, object]]:
                 authority=f"data/recurring_report_register.csv#{report['report_id']}",
             )
         )
-    return [*file_rows, gate, *review_rows, *report_rows], snapshot
+    return [*file_rows, directory_preflight, gate, *review_rows, *report_rows], snapshot
 
 
 def write_csv(rows: list[MonitorRow]) -> None:
@@ -217,6 +263,7 @@ def write_markdown(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
     current = int(snapshot["current_analysis_end_year"])
     available = sum(row.status == "AVAILABLE" for row in rows if row.monitor_area == "NCES release package")
     gate = next(row for row in rows if row.monitor_id == "G01")
+    directory_preflight = next(row for row in rows if row.monitor_id == "D01")
     lines = [
         "# Release and Freshness Monitor",
         "",
@@ -239,6 +286,10 @@ def write_markdown(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
         )
     lines.extend([
         "",
+        "## Candidate directory preflight",
+        "",
+        f"The available candidate-year directory has already passed a bounded structural preflight: {directory_preflight.evidence} This reduces directory-side uncertainty but does not convert a partial package into an enrollment release. See `docs/CANDIDATE_DIRECTORY_PREFLIGHT.md` for the field, continuity, archive-hash, and schema-delta detail.",
+        "",
         "## Operational rule",
         "",
         f"The current snapshot does not authorize advancing beyond Fall {current} unless the complete {candidate} package is available. A newly posted file is a review trigger, not automatic permission to publish. Recurring-product dates are not inferred from prior public release dates; kickoff and partner milestones remain confirmation-dependent.",
@@ -247,6 +298,8 @@ def write_markdown(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
         "",
         "```bash",
         "python scripts/check_for_new_release.py --write-snapshot data/release_monitor_snapshot.json",
+        "python scripts/check_candidate_directory.py --write-snapshot data/candidate_directory_preflight.json",
+        "python scripts/build_candidate_directory_preflight.py",
         "python scripts/build_freshness_monitor.py",
         "```",
         "",
@@ -257,6 +310,9 @@ def write_markdown(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
 def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
     candidate = int(snapshot["candidate_next_year"])
     current = int(snapshot["current_analysis_end_year"])
+    preflight = load_directory_preflight(snapshot)
+    continuity = preflight["eligible_universe_continuity"]
+    schema_delta = preflight["schema_delta"]
     release_rows = [row for row in rows if row.monitor_area == "NCES release package"]
     gate = next(row for row in rows if row.monitor_id == "G01")
     available = sum(row.status == "AVAILABLE" for row in release_rows)
@@ -329,7 +385,7 @@ def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
         <div class="handoff-summary">
           <article><strong>{available}/4</strong><span>{candidate} package assets available</span></article>
           <article><strong>{html.escape(gate.status)}</strong><span>analysis-year decision</span></article>
-          <article><strong>{len(read_csv(DATA / 'research_library.csv'))}</strong><span>Research Library resources reviewed</span></article>
+          <article><strong>{html.escape(str(preflight['status']))}</strong><span>candidate directory preflight</span></article>
           <article><strong>{len(report_rows)}</strong><span>recurring products with explicit triggers</span></article>
         </div>
       </div>
@@ -338,6 +394,18 @@ def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
       <div class="section-heading"><p class="eyebrow">Candidate {candidate} package</p><h2>{html.escape(release_heading)}</h2><p>{html.escape(release_copy)}</p></div>
       <div class="handoff-grid">{''.join(release_cards)}</div>
       <div class="methods-crosswalk-callout"><div><p class="eyebrow">Decision gate</p><h3>{html.escape(gate.status)}</h3><p>{html.escape(gate.evidence)} {html.escape(gate.next_action)}</p></div><a class="button button-secondary" href="downloads/release_monitor_snapshot.json">Download captured NCES check</a></div>
+    </section>
+    <section class="section section-tinted" id="directory-preflight">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">Candidate directory preflight</p><h2>The available directory side has already cleared a bounded structural check.</h2><p>All six fields required by the current directory join/filter are present in both the candidate CSV and dictionary. That reduces one update risk while preserving the full-package gate.</p></div>
+        <div class="handoff-summary">
+          <article><strong>6/6</strong><span>required directory fields preserved</span></article>
+          <article><strong>{int(preflight['candidate_directory_eligible_rows']):,}</strong><span>candidate directory-eligible rows</span></article>
+          <article><strong>{int(continuity['shared_unitids']):,}</strong><span>shared eligible UNITIDs</span></article>
+          <article><strong>{int(continuity['net_change']):+d}</strong><span>net eligible-row change vs {current}</span></article>
+        </div>
+        <div class="methods-crosswalk-callout"><div><p class="eyebrow">Schema delta</p><h3>{int(preflight['current_reference']['field_count'])} → {int(preflight['candidate_field_count'])} fields</h3><p>Removed nonrequired fields: {html.escape(', '.join(schema_delta['removed_fields']) or 'None')}. Required fields are preserved, but the full annual schema audit still runs when Fall Enrollment arrives.</p></div><a class="button button-secondary" href="candidate-directory-preflight.html">Open full preflight</a></div>
+      </div>
     </section>
     <section class="section section-tinted">
       <div class="shell">
@@ -360,7 +428,7 @@ def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
           <article><h3>3. Review</h3><p>When the package is complete, preserve hashes and run schema/methodology checks before interpreting values.</p></article>
           <article><h3>4. Advance</h3><p>Change the project year only after required files and review gates support the update.</p></article>
         </div>
-        <div class="memo-actions"><a class="button button-primary" href="downloads/freshness_monitor.csv">Download monitor CSV</a><a class="button button-secondary" href="downloads/freshness_monitor.md">Download monitor notes</a></div>
+        <div class="memo-actions"><a class="button button-primary" href="downloads/freshness_monitor.csv">Download monitor CSV</a><a class="button button-secondary" href="downloads/freshness_monitor.md">Download monitor notes</a><a class="button button-secondary" href="candidate-directory-preflight.html">Candidate directory preflight</a></div>
       </div>
     </section>
   </main>

@@ -63,6 +63,17 @@ Review the new row in `data/schema_audit.csv`. Specifically verify:
 
 If a variable or label changes, stop. Do not make the new year fit the old schema by assumption.
 
+If the candidate institutional directory and dictionary arrive before Fall Enrollment, run a bounded directory-side preflight rather than either ignoring the files or prematurely advancing the project year:
+
+```bash
+python scripts/check_for_new_release.py --write-snapshot data/release_monitor_snapshot.json
+python scripts/check_candidate_directory.py --write-snapshot data/candidate_directory_preflight.json
+python scripts/build_candidate_directory_preflight.py
+python scripts/build_freshness_monitor.py
+```
+
+The preflight may validate required directory fields, dictionary titles, 50-states-plus-DC coverage, UNITID uniqueness, current directory-side eligibility, control/state/name continuity, archive hashes, and schema additions/removals. It must not add candidate archives to `data/source_manifest.csv`, call the directory-side frame the final analytic universe, calculate candidate-year enrollment, resolve R01, or change `END_YEAR`. Those actions remain blocked until the Fall Enrollment data and dictionary are available and the complete annual package enters the normal collection/schema/QA workflow.
+
 ## 5. Rebuild and inspect changes
 
 Run the complete offline validation:

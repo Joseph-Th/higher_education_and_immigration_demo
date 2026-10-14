@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Structural preflight of the available candidate-year IPEDS institutional directory before Fall Enrollment is released.">
+  <meta name="theme-color" content="#10263c">
+  <title>Candidate Directory Preflight | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to candidate directory preflight</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Candidate directory navigation"><a href="index.html">Brief</a><a href="freshness-monitor.html">Freshness</a><a href="release-readiness.html">Release readiness</a><a href="undergraduate-shift.html">R01 baseline</a></nav></div></header>
+  <main id="main">
+    <section class="handoff-hero">
+      <div class="shell">
+        <p class="eyebrow">Candidate 2025 partial-package preflight</p>
+        <h1>The directory side passes its structural checks. The analysis year still does not advance.</h1>
+        <p class="lede">The available candidate-year institutional directory and dictionary preserve every field required by the current join/filter logic and show only a four-institution net change in the directory-side eligible set. Fall Enrollment is still missing, so this is readiness evidence, not a 2025 enrollment result.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#continuity">Review continuity</a><a class="button button-secondary" href="downloads/candidate_directory_preflight.json">Download preflight JSON</a></div>
+        <p class="release-note"><strong>Decision boundary:</strong> captured 2026-10-14T16:24:27+00:00. This preflight never substitutes for the missing Fall Enrollment data/dictionary or the full annual schema review. Year advance remains <code>HOLD_YEAR_ADVANCE</code>.</p>
+        <div class="handoff-summary">
+          <article><strong>PASS</strong><span>directory structural preflight</span></article>
+          <article><strong>6/6</strong><span>required directory fields preserved</span></article>
+          <article><strong>3,864</strong><span>candidate directory-eligible rows</span></article>
+          <article><strong>-4</strong><span>net eligible-row change vs 2024</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell">
+      <div class="section-heading"><p class="eyebrow">Required variables</p><h2>The current directory join/filter fields survive the candidate schema.</h2><p>Each variable is present in both the candidate CSV and its NCES dictionary. This check is deliberately narrower than full annual schema review.</p></div>
+      <div class="method-grid"><article><h3><code>UNITID</code></h3><p>Unique identification number of the institution</p></article><article><h3><code>INSTNM</code></h3><p>Institution (entity) name</p></article><article><h3><code>STABBR</code></h3><p>State abbreviation</p></article><article><h3><code>CONTROL</code></h3><p>Control of institution</p></article><article><h3><code>DEGGRANT</code></h3><p>Degree-granting status</p></article><article><h3><code>PSET4FLG</code></h3><p>Postsecondary and Title IV institution indicator</p></article></div>
+    </section>
+
+    <section class="section section-tinted" id="continuity">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">Directory-side continuity</p><h2>The eligible institution frame is nearly unchanged in net size.</h2><p>Directory eligibility applies only the current geography and institutional-status filters. Final analytical inclusion still requires the candidate Fall Enrollment match.</p></div>
+        <div class="handoff-summary">
+          <article><strong>3,812</strong><span>shared eligible UNITIDs</span></article>
+          <article><strong>52</strong><span>entering eligible UNITIDs</span></article>
+          <article><strong>56</strong><span>leaving eligible UNITIDs</span></article>
+          <article><strong>6</strong><span>shared UNITIDs changing control</span></article>
+        </div>
+        <div class="method-grid">
+          <article><h3>Current 2024</h3><p><strong>6,072</strong> directory rows<br><strong>3,868</strong> directory-eligible<br><strong>72</strong> fields</p></article>
+          <article><h3>Candidate 2025</h3><p><strong>5,985</strong> directory rows<br><strong>3,864</strong> directory-eligible<br><strong>70</strong> fields</p></article>
+          <article><h3>Shared-record changes</h3><p><strong>3</strong> state changes<br><strong>6</strong> control changes<br><strong>41</strong> name-string changes</p></article>
+          <article><h3>Core geography</h3><p><strong>51/51</strong> states/DC represented<br><strong>0</strong> duplicate UNITIDs</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell">
+      <div class="section-heading compact"><p class="eyebrow">Institutional control</p><h2>Directory-eligible control composition changes only modestly.</h2></div>
+      <div class="table-wrap"><table><thead><tr><th>Control</th><th>2024</th><th>2025</th><th>Change</th></tr></thead><tbody><tr><td>Public</td><td>1,642</td><td>1,644</td><td>+2</td></tr><tr><td>Private nonprofit</td><td>1,578</td><td>1,577</td><td>-1</td></tr><tr><td>Private for-profit</td><td>648</td><td>643</td><td>-5</td></tr></tbody></table></div>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="shell">
+        <div class="section-heading compact"><p class="eyebrow">Schema delta</p><h2>Required fields are preserved even though the full directory schema changed.</h2></div>
+        <div class="method-grid">
+          <article><h3>Field count</h3><p>72 → 70 (-2)</p></article>
+          <article><h3>Removed fields</h3><p>DFRCGID, DFRCUSCG</p></article>
+          <article><h3>Added fields</h3><p>None</p></article>
+          <article><h3>Annual-review rule</h3><p>Nonrequired changes are still reviewed when the complete package arrives; this partial check does not waive the full schema gate.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell">
+      <div class="section-heading compact"><p class="eyebrow">Source integrity</p><h2>The candidate archives are hashed without entering the canonical source manifest.</h2></div>
+      <div class="method-grid">
+        <article><h3>hd2025.csv</h3><p>1,009,677 archive bytes<br><code class="hash-code">aadad9277a2255c85813b6d206475ddbf8a7330d79cc0236c2ecae685b00f1bf</code></p></article>
+        <article><h3>hd2025.xlsx</h3><p>139,157 archive bytes<br><code class="hash-code">dc454aa6fbc246f3d47d773cd02ebe3b5efcedacbd2f71c54ff39f5844215343</code></p></article>
+      </div>
+      <div class="methods-crosswalk-callout"><div><p class="eyebrow">What remains blocked</p><h3>No 2025 enrollment claims yet</h3><p><code>EF2025A.zip</code> and its dictionary are still required. Once the full package is available, preserve all source hashes, run the cross-year schema audit, rebuild the analysis, and only then apply the pre-specified R01 persistence rule.</p></div><a class="button button-secondary" href="freshness-monitor.html">Review release monitor</a></div>
+      <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_directory_preflight.json">Download JSON</a><a class="button button-secondary" href="downloads/candidate_directory_preflight.md">Download notes</a></div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Candidate Directory Preflight · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>

@@ -121,6 +121,9 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
     library = read_csv(DATA / "research_library.csv")
     triage = read_csv(DATA / "source_update_triage.csv")
     snapshot = json.loads((DATA / "release_monitor_snapshot.json").read_text(encoding="utf-8"))
+    directory_preflight = json.loads(
+        (DATA / "candidate_directory_preflight.json").read_text(encoding="utf-8")
+    )
 
     if not qa.get("checks") or any(value != "PASS" for value in qa["checks"].values()):
         raise RuntimeError("Release readiness requires all analytical QA checks to pass")
@@ -170,6 +173,20 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
     derived_year_decision = "READY_FOR_SCHEMA_REVIEW" if package_ready else "HOLD_YEAR_ADVANCE"
     if snapshot["package_ready"] != package_ready or snapshot["release_decision"] != derived_year_decision:
         raise RuntimeError("Release snapshot decision does not reconcile to candidate-file availability")
+    if directory_preflight.get("status") != "PASS":
+        raise RuntimeError("Candidate directory preflight must pass before release readiness is built")
+    if directory_preflight.get("year_advance_authorized") is not False:
+        raise RuntimeError("Candidate directory preflight must not authorize year advancement")
+    if directory_preflight.get("release_monitor_checked_at_utc") != snapshot["checked_at_utc"]:
+        raise RuntimeError("Candidate directory preflight is stale relative to release snapshot")
+    if directory_preflight.get("release_monitor_decision") != snapshot["release_decision"]:
+        raise RuntimeError("Candidate directory preflight release decision is stale")
+    if directory_preflight.get("missing_required_data_fields") != [] or directory_preflight.get("missing_required_dictionary_fields") != []:
+        raise RuntimeError("Candidate directory preflight required-field checks are not clean")
+    if int(directory_preflight.get("candidate_core_states_dc_count", 0)) != 51:
+        raise RuntimeError("Candidate directory preflight must cover all 50 states plus DC")
+    if int(directory_preflight.get("candidate_duplicate_unitid_count", -1)) != 0:
+        raise RuntimeError("Candidate directory preflight contains duplicate UNITIDs")
 
     rows = [
         {
@@ -262,9 +279,11 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
             "blocks_year_advance": "Yes",
             "evidence": (
                 f"{available_count}/{len(file_rows)} required candidate-year assets available at "
-                f"{snapshot['checked_at_utc']}; snapshot decision={snapshot['release_decision']}."
+                f"{snapshot['checked_at_utc']}; candidate directory preflight={directory_preflight['status']} "
+                f"with {int(directory_preflight['candidate_directory_eligible_rows']):,} directory-eligible rows; "
+                f"snapshot decision={snapshot['release_decision']}."
             ),
-            "authority": "data/release_monitor_snapshot.json",
+            "authority": "data/release_monitor_snapshot.json; data/candidate_directory_preflight.json",
             "next_action": (
                 "Begin schema review before changing END_YEAR."
                 if package_ready
@@ -308,6 +327,7 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
         "claim_holds": resolution["hold_for_confirmation"],
         "candidate_assets_available": available_count,
         "candidate_assets_required": len(file_rows),
+        "candidate_directory_preflight": directory_preflight["status"],
     }
     return rows, summary
 
@@ -328,6 +348,7 @@ def write_markdown(rows: list[dict[str, str]], summary: dict[str, object]) -> No
         f"- **Current {summary['current_year']} publication decision:** `{summary['current_release_decision']}`",
         f"- **Candidate {summary['candidate_year']} year-advance decision:** `{summary['year_advance_decision']}`",
         f"- **Candidate package observation:** {summary['candidate_assets_available']}/{summary['candidate_assets_required']} required assets available at `{summary['snapshot_checked_at_utc']}`",
+        f"- **Candidate directory preflight:** `{summary['candidate_directory_preflight']}` (directory-side only; does not authorize year advancement)",
         f"- **Institution-specific claims still held:** {summary['claim_holds']}",
         "",
         "The current aggregate publication can remain release-ready while named institution explanations are held. Separately, a partial candidate-year package blocks changing `END_YEAR`; it does not invalidate the already-validated current-year publication.",
@@ -392,9 +413,9 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, object]) -> None:
   <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Release readiness navigation"><a href="index.html">Brief</a><a href="freshness-monitor.html">Freshness</a><a href="publication-handoff.html">Handoff</a><a href="data-governance.html">Governance</a></nav></div></header>
   <main id="main">
     <section class="handoff-hero" data-current-decision="{html.escape(str(summary['current_release_decision']))}" data-year-decision="{html.escape(str(summary['year_advance_decision']))}"><div class="shell"><p class="eyebrow">Release control</p><h1>Current publication readiness and next-year readiness are different decisions.</h1><p class="lede">This control matrix consolidates analytical QA, benchmarks, institution review, publication handoff, public-release governance, artifact freshness, source routing, and the candidate-year package gate without allowing one decision to stand in for the other.</p><div class="hero-actions"><a class="button button-primary" href="#readiness-gates">Review gates</a><a class="button button-secondary" href="downloads/release_readiness.csv">Download control matrix</a></div><p class="release-note"><strong>Portfolio boundary:</strong> this is a reproducible project control, not the Presidents' Alliance's internal approval process or organizational sign-off.</p><div class="handoff-summary"><article><strong>{html.escape(current_label)}</strong><span>current {summary['current_year']} publication</span></article><article><strong>{html.escape(year_label)}</strong><span>candidate {summary['candidate_year']} year advance</span></article><article><strong>{summary['claim_holds']}</strong><span>institution-specific claims still held</span></article><article><strong>{summary['candidate_assets_available']}/{summary['candidate_assets_required']}</strong><span>candidate-year package assets available</span></article></div></div></section>
-    <section class="section shell"><div class="section-heading"><p class="eyebrow">Decision separation</p><h2>A hold can be narrow without becoming a blanket publication failure.</h2><p>The current aggregate release is ready because its analytical, benchmark, handoff, governance, artifact, and routing controls pass. Institution-specific explanations remain held where evidence is insufficient. Separately, the candidate-year package is incomplete, so the project must not change the analysis year.</p></div><div class="method-grid"><article><h3>Current release</h3><p><strong>{html.escape(current_label)}</strong><br>Aggregate publication can proceed with the existing institution-level claim holds intact.</p></article><article><h3>Year advance</h3><p><strong>{html.escape(year_label)}</strong><br>Only {summary['candidate_assets_available']} of {summary['candidate_assets_required']} required candidate-year assets are available.</p></article><article><h3>Claim holds</h3><p><strong>{summary['claim_holds']}</strong><br>Held institution-specific explanations do not rewrite or remove the official aggregate IPEDS values.</p></article><article><h3>Snapshot time</h3><p><strong>{html.escape(str(summary['snapshot_checked_at_utc']))}</strong><br>The next-year package result is a dated observation, not a continuously live status.</p></article></div></section>
+    <section class="section shell"><div class="section-heading"><p class="eyebrow">Decision separation</p><h2>A hold can be narrow without becoming a blanket publication failure.</h2><p>The current aggregate release is ready because its analytical, benchmark, handoff, governance, artifact, and routing controls pass. Institution-specific explanations remain held where evidence is insufficient. Separately, the candidate-year package is incomplete, so the project must not change the analysis year.</p></div><div class="method-grid"><article><h3>Current release</h3><p><strong>{html.escape(current_label)}</strong><br>Aggregate publication can proceed with the existing institution-level claim holds intact.</p></article><article><h3>Year advance</h3><p><strong>{html.escape(year_label)}</strong><br>Only {summary['candidate_assets_available']} of {summary['candidate_assets_required']} required candidate-year assets are available.</p></article><article><h3>Directory preflight</h3><p><strong>{html.escape(str(summary['candidate_directory_preflight']))}</strong><br>The available directory passes bounded structural checks, but Fall Enrollment remains required.</p></article><article><h3>Snapshot time</h3><p><strong>{html.escape(str(summary['snapshot_checked_at_utc']))}</strong><br>The next-year package result is a dated observation, not a continuously live status.</p></article></div></section>
     <section class="section section-tinted" id="readiness-gates"><div class="shell"><div class="section-heading"><p class="eyebrow">Control matrix</p><h2>Eight gates with explicit blocking scope.</h2><p>Seven controls govern the current release. The candidate-package gate governs whether the project may begin a year advance. A future failure stops only the decision whose blocker column applies.</p></div><div class="handoff-grid">{''.join(cards)}</div></div></section>
-    <section class="section shell"><div class="section-heading compact"><p class="eyebrow">Operating rule</p><h2>Ready now does not mean advance the year.</h2></div><div class="method-grid"><article><h3>Publish current data</h3><p>Keep the current aggregate publication available while its seven current-release gates remain satisfied.</p></article><article><h3>Respect claim-level holds</h3><p>Do not promote a held institution movement into explanatory narrative merely because aggregate publication is ready.</p></article><article><h3>Wait for the complete package</h3><p>Keep <code>END_YEAR={END_YEAR}</code> until all four candidate assets are available; availability then starts schema review rather than automatic publication.</p></article><article><h3>Exact public tree</h3><p>The downstream data-governance build and repository/browser checks enforce the allowlisted public copies byte-for-byte.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/release_readiness.csv">Download readiness CSV</a><a class="button button-secondary" href="downloads/release_readiness.md">Download readiness note</a><a class="button button-secondary" href="freshness-monitor.html">Next-year freshness</a><a class="button button-secondary" href="publication-handoff.html">Publication handoff</a></div></section>
+    <section class="section shell"><div class="section-heading compact"><p class="eyebrow">Operating rule</p><h2>Ready now does not mean advance the year.</h2></div><div class="method-grid"><article><h3>Publish current data</h3><p>Keep the current aggregate publication available while its seven current-release gates remain satisfied.</p></article><article><h3>Respect claim-level holds</h3><p>Do not promote a held institution movement into explanatory narrative merely because aggregate publication is ready.</p></article><article><h3>Wait for the complete package</h3><p>Keep <code>END_YEAR={END_YEAR}</code> until all four candidate assets are available; availability then starts schema review rather than automatic publication.</p></article><article><h3>Exact public tree</h3><p>The downstream data-governance build and repository/browser checks enforce the allowlisted public copies byte-for-byte.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/release_readiness.csv">Download readiness CSV</a><a class="button button-secondary" href="downloads/release_readiness.md">Download readiness note</a><a class="button button-secondary" href="freshness-monitor.html">Next-year freshness</a><a class="button button-secondary" href="candidate-directory-preflight.html">Directory preflight</a><a class="button button-secondary" href="publication-handoff.html">Publication handoff</a></div></section>
   </main>
   <footer><div class="shell footer-inner"><span>Release Readiness · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
 </body>

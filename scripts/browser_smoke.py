@@ -85,6 +85,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/planning_scenarios.csv",
         "downloads/planning_scenarios.md",
         "downloads/release_monitor_snapshot.json",
+        "downloads/candidate_directory_preflight.json",
+        "downloads/candidate_directory_preflight.md",
         "downloads/freshness_monitor.csv",
         "downloads/freshness_monitor.md",
         "downloads/release_readiness.csv",
@@ -370,7 +372,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "60" not in summary or "110" not in summary:
+    if "62" not in summary or "112" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -409,7 +411,7 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
         if expected not in summary:
             raise AssertionError(f"Release readiness summary is missing {expected}")
     gate_text = page.locator("#readiness-gates").inner_text()
-    for expected in ("A01", "A07", "Y01", "27/27", "60 artifact families", "17/17"):
+    for expected in ("A01", "A07", "Y01", "27/27", "62 artifact families", "17/17", "preflight=PASS", "3,864"):
         if expected not in gate_text:
             raise AssertionError(f"Release readiness gate matrix is missing {expected}")
     if page.locator('a[href="downloads/release_readiness.csv"]').count() != 2:
@@ -472,8 +474,8 @@ def inspect_freshness_monitor(browser, base_url: str, *, width: int, height: int
         raise AssertionError("Freshness monitor does not render all four candidate-year assets")
     if page.locator('[data-product-monitor]').count() != 3:
         raise AssertionError("Freshness monitor does not render all three recurring-product triggers")
-    summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("2/4", "HOLD YEAR ADVANCE", "17", "3"):
+    summary = page.locator(".handoff-hero .handoff-summary").inner_text()
+    for expected in ("2/4", "HOLD YEAR ADVANCE", "PASS", "3"):
         if expected not in summary:
             raise AssertionError(f"Freshness monitor summary is missing {expected}")
     boundary = page.locator(".handoff-hero .release-note").inner_text()
@@ -482,6 +484,12 @@ def inspect_freshness_monitor(browser, base_url: str, *, width: int, height: int
     release_text = page.locator("#release-readiness").inner_text()
     if "does not advance the project year" not in release_text or "Fall 2024" not in release_text:
         raise AssertionError("Freshness monitor is missing the current incomplete-package gate")
+    preflight_text = page.locator("#directory-preflight").inner_text()
+    for expected in ("6/6", "3,864", "3,812", "-4", "72 → 70", "DFRCGID", "DFRCUSCG"):
+        if expected not in preflight_text:
+            raise AssertionError(f"Freshness monitor directory preflight is missing {expected}")
+    if page.locator('a[href="candidate-directory-preflight.html"]').count() < 1:
+        raise AssertionError("Freshness monitor candidate directory preflight link is missing")
     if page.locator('a[href="downloads/release_monitor_snapshot.json"]').count() != 1:
         raise AssertionError("Release-monitor snapshot download link is missing")
     if page.locator('a[href="downloads/freshness_monitor.csv"]').count() != 2:
@@ -493,6 +501,42 @@ def inspect_freshness_monitor(browser, base_url: str, *, width: int, height: int
         raise AssertionError(f"Freshness monitor horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Freshness monitor browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_candidate_directory_preflight(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/candidate-directory-preflight.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Candidate directory preflight page failed at {width}px")
+    summary = page.locator(".handoff-hero .handoff-summary").inner_text()
+    for expected in ("PASS", "6/6", "3,864", "-4"):
+        if expected not in summary:
+            raise AssertionError(f"Candidate directory preflight summary is missing {expected}")
+    continuity = page.locator("#continuity").inner_text()
+    for expected in ("3,812", "52", "56", "6"):
+        if expected not in continuity:
+            raise AssertionError(f"Candidate directory continuity is missing {expected}")
+    body = page.locator("main").inner_text()
+    for expected in ("72 → 70", "DFRCGID", "DFRCUSCG", "EF2025A.zip", "No 2025 enrollment claims yet"):
+        if expected not in body:
+            raise AssertionError(f"Candidate directory preflight body is missing {expected}")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "HOLD_YEAR_ADVANCE" not in boundary or "never substitutes" not in boundary:
+        raise AssertionError("Candidate directory preflight is missing its year-advance boundary")
+    if page.locator('a[href="downloads/candidate_directory_preflight.json"]').count() != 2:
+        raise AssertionError("Candidate directory preflight JSON links are missing")
+    if page.locator('a[href="downloads/candidate_directory_preflight.md"]').count() != 1:
+        raise AssertionError("Candidate directory preflight Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Candidate directory preflight horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Candidate directory preflight browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -949,6 +993,8 @@ def main() -> int:
                 inspect_planning_scenarios(browser, base_url, width=390, height=844)
                 inspect_freshness_monitor(browser, base_url, width=1280, height=900)
                 inspect_freshness_monitor(browser, base_url, width=390, height=844)
+                inspect_candidate_directory_preflight(browser, base_url, width=1280, height=900)
+                inspect_candidate_directory_preflight(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:
