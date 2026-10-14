@@ -1,0 +1,23 @@
+{
+  "builder": "scripts/build_management_deck.py",
+  "builder_sha256": "75fae64b9135219deb8c0514e7191a639ba07438146148f55d30986c428bda59",
+  "source_sha256": {
+    "data/processed/national_year.csv": "800c805dc4241c70070ff7962fb1abc7faa602735af6796adaca9de8bcc7f892",
+    "data/processed/state_change_summary.csv": "943d1102a624dbcace52a371ba5c41d4ecbadf9e79e6475f140b28cd0a5f4edf",
+    "data/processed/control_year.csv": "5df7c936e4e649f8250bde0b7557a9a17b4ba8f20262299a8b8b15b3f8f066c5",
+    "data/processed/institution_change_summary.csv": "28e029794f53bf1076c1f623108a8a376656aafc2fa8694b79335decc609b932",
+    "data/findings.json": "c9c4f4948113353576e4be8b82ef3596b153059a77b600305f9ec569957544d7",
+    "data/latest_update_review.json": "7a1d00482ff0fa998561b57dea3c45de495406e0e2a78e22ddb73c4b835ab69e"
+  },
+  "pptx_sha256": "bec19d197df6ba70746e019bbac3713bfa35a2dbcdbc7a59c0546f7999e0c48f",
+  "pptx_bytes": 43859,
+  "slide_count": 6,
+  "metrics": {
+    "latest_nonresident": 1044137,
+    "latest_year": 2024,
+    "latest_yoy_change": 29539,
+    "states_recovered": 33,
+    "decade_change": 63400,
+    "slide_count": 6
+  }
+}

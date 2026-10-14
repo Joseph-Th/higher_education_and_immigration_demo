@@ -76,6 +76,7 @@ A concise PDF version should also be available for reviewers who expect a conven
 - generated latest-release review memo and reason-coded institution queue.
 - generated stakeholder briefing note built from validated findings rather than separately maintained figures.
 - reviewer-ready Excel workbook demonstrating formula-based analysis, lookup, QA/QC, presentation, and source organization.
+- reviewer-ready six-slide PowerPoint management briefing generated from validated KPI, trend, geography, driver, and QA outputs with a source/builder freshness manifest.
 - public six-query SQL analysis pack demonstrating joins, CTEs, grouping, conditional aggregation, ranking, and window functions against an ephemeral SQLite database rebuilt from validated CSV outputs.
 - generated 50-state-plus-DC profile set and machine-readable profile index.
 - structured research-needs register connecting findings and source limitations to proposed methods, outputs, and decision rules.

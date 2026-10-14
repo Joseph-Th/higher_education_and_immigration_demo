@@ -127,6 +127,8 @@ The public page contains intentionally editorial year labels and latest-year dow
 
 Refresh `deliverables/ipeds_portfolio_analysis.xlsx` from the validated current outputs after the analytical narrative is settled. The workbook is a downstream presentation artifact, not an input to the analysis. Recheck its formulas, state lookup, reconciliation columns, benchmark sheet, source metadata, and chart before publication.
 
+Regenerate `deliverables/management_briefing_deck.pptx` with `python scripts/build_management_deck.py` after the validated outputs and management narrative are current. Review all six slides for clipping, readability, chart/bar scaling, current KPI values, and population/vintage guardrails. Confirm `deliverables/management_briefing_manifest.json` hashes the current deck builder and every analytical source used by the deck. The PPTX is a downstream presentation artifact and must not become a second analytical authority.
+
 Rebuild the SQL analysis with `python scripts/build_sql_analysis.py` after the processed CSV outputs are current. Review `sql/portfolio_queries.sql` if a source schema, year coverage, or analytical question changed; all six queries must still execute as read-only SELECT/WITH statements and every row in `data/sql_analysis_audit.csv` must remain `PASS`. The SQLite database is transient and should not be promoted into a separate source-of-truth file.
 
 Regenerate all state profiles with `python scripts/build_state_profiles.py`. Review the profile index for outliers, then spot-check at least one growing state, one declining state, and one small-count state. Confirm the state explorer links to the matching generated profile after browser QA.
@@ -170,6 +172,7 @@ An annual update is complete only when:
 - external benchmark differences are understood and recorded;
 - public findings are re-reviewed rather than carried forward automatically;
 - the SQL query pack executes against the refreshed processed outputs and every independent reconciliation check is `PASS`;
+- the PowerPoint deck has been regenerated from the refreshed validated outputs, its source/builder/PPTX hashes are current, and all six slides have been visually inspected;
 - the population/source crosswalk has been re-reviewed when companion-source definitions or vintages changed;
 - the public-release register has been re-reviewed and the exact allowlisted public tree passes with no unregistered files;
 - the PDF source hash matches the current generated research memo and every PDF page has been visually inspected;

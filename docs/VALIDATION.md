@@ -91,6 +91,7 @@ This design is deliberate: the external publication is a validation source, not 
 - `site/data/` containing exactly the two approved machine-readable site payloads and no unregistered extras;
 - stakeholder briefing note reproducing validated headline/latest-release values and interpretation boundaries;
 - Excel workbook ZIP integrity, required six-sheet structure, formula presence, and current headline value;
+- PowerPoint management deck ZIP integrity, exact six-slide count, expected management-briefing figures/text, exact public-copy equality, and source/builder/PPTX SHA-256 freshness;
 - PDF research brief structure, exact three-page count, exact public-copy equality, and SHA-256 freshness against the current generated research memo;
 - 51 state/DC profiles covering exactly the analytic geographies, reconciling their latest counts to the national total, publishing byte-identical Markdown copies, and matching the machine-readable state-profile dataset;
 - structured research agenda with unique IDs, valid priorities, both current-data and external-data questions, and matching generated documentation;
@@ -98,7 +99,7 @@ This design is deliberate: the external publication is a validation source, not 
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **31 tests**.
+The current suite contains **32 tests**.
 
 ## One-command validation
 
@@ -124,11 +125,11 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - rendered SVG charts, including the institution-dynamics and latest-release review charts;
 - the latest-release high-priority review count matching `site_data.json`;
 - working public CSV downloads;
-- working public Research Library and Research Agenda CSV/Markdown, QA resolution CSV/Markdown, research memo, stakeholder briefing-note, Excel-workbook, state-profile index, and state-profile downloads;
+- working public Research Library and Research Agenda CSV/Markdown, QA resolution CSV/Markdown, research memo, stakeholder briefing-note, Excel-workbook, PowerPoint management-deck, state-profile index, and state-profile downloads;
 - working public population-crosswalk CSV/Markdown, recurring-report register CSV/Markdown, production-cycle CSV/Markdown, blank production-cycle log template, SQL query/audit/Markdown downloads, and PDF research-brief downloads;
 - searchable Research Library behavior, including text, resource-type, and population/topic filtering;
 - publication-handoff rendering with 11 claim/control cards, five release gates, current headline value, download, portfolio boundary, and responsive layout;
-- data-governance rendering with 38 registered artifact families, 88 expanded public files, five release controls, restricted-data boundary, governed downloads, and responsive layout;
+- data-governance rendering with 39 registered artifact families, 89 expanded public files, five release controls, restricted-data boundary, governed downloads, and responsive layout;
 - production-cycle rendering with seven ordered stage controls, three recurring-product packets, zero inferred internal deadlines, the blank live-cycle log download, governed downloads, and responsive layout;
 - SQL-analysis rendering with six query cards, six passing reconciliation rows, public query/audit downloads, the ephemeral-database authority boundary, and responsive layout;
 - anchored sections clearing the sticky header; and
@@ -150,6 +151,12 @@ Run it after `python scripts/validate_project.py` and before deployment.
 
 The repository tests recalculate both hashes. This prevents a data or memo update from leaving an older PDF beside newer web content. PDF generation requires Playwright/Chromium, but freshness verification is offline once the PDF has been built.
 
+## PowerPoint publication freshness
+
+`scripts/build_management_deck.py` generates the canonical six-slide `deliverables/management_briefing_deck.pptx` directly from validated CSV/JSON outputs and publishes an exact copy under `site/downloads/`. The builder writes `deliverables/management_briefing_manifest.json` with SHA-256 hashes for the deck builder, every analytical source used by the deck, and the generated PPTX plus its byte size and slide count.
+
+The repository tests recalculate those hashes and inspect the PPTX package for six slide XML files plus the expected management figures and interpretation text. This prevents an older deck from remaining beside refreshed data or a changed deck builder. The deck remains a downstream presentation artifact; the validated CSV/JSON outputs remain authoritative.
+
 ## Publication checks
 
 The static brief exposes:
@@ -159,4 +166,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable PDF research brief, Excel analysis workbook, SQL query pack/audit/notes, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, population/source crosswalk, recurring-report operations register, stage-gated production-cycle register/notes, blank validated production-cycle log template, publication handoff, data-governance note and public-release register, stakeholder briefing note, structured/searchable Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable PDF research brief, Excel analysis workbook, PowerPoint management briefing, SQL query pack/audit/notes, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, population/source crosswalk, recurring-report operations register, stage-gated production-cycle register/notes, blank validated production-cycle log template, publication handoff, data-governance note and public-release register, stakeholder briefing note, structured/searchable Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.

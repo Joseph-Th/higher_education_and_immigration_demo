@@ -16,7 +16,7 @@ git subtree split --prefix site -b gh-pages
 git push --force-with-lease origin gh-pages
 ```
 
-GitHub Pages should then be configured to serve branch `gh-pages` from `/`. After deployment, verify the public HTTPS home page, a state profile, the research memo, the methodology crosswalk, the recurring-research operations page, the stage-gated production-cycle page and downloads including the blank live-cycle log template, the SQL analysis page plus query/audit downloads, the searchable Research Library, the publication-handoff page, the data-governance page, the public-release register, representative CSV downloads, and the PDF brief. The deployed site must never be read back as an input to the analysis.
+GitHub Pages should then be configured to serve branch `gh-pages` from `/`. After deployment, verify the public HTTPS home page, a state profile, the research memo, the methodology crosswalk, the recurring-research operations page, the stage-gated production-cycle page and downloads including the blank live-cycle log template, the PowerPoint management briefing, the SQL analysis page plus query/audit downloads, the searchable Research Library, the publication-handoff page, the data-governance page, the public-release register, representative CSV downloads, and the PDF brief. The deployed site must never be read back as an input to the analysis.
 
 **Verified October 13, 2026:** the public home page, SQL analysis page, SQL query/audit/Markdown downloads, data-governance page, public-release register, current site-data payload, and PDF brief all returned HTTP 200 after publication. The deployed SQL page rendered six read-only query cards with six of six independent checks passing, five source tables loaded, and zero stored database artifacts; the query pack contained exactly six named queries and no mutation/DDL statements; the audit contained six `PASS` rows including the `+66,981 / -3,581 / +63,400` institution-universe reconciliation; the deployed governance page reported 38 registered artifact families / 88 expanded downloads; the public-release register included PR36-PR38 for the SQL query pack, audit, and notes; and the deployed site payload reported the expected 1,044,137 Fall 2024 headline value.
 
@@ -35,6 +35,7 @@ Repository: `https://github.com/Joseph-Th/higher_education_and_immigration_demo`
 Before each deployment, run:
 
 ```bash
+python scripts/build_management_deck.py
 python scripts/build_pdf_brief.py
 python scripts/validate_project.py
 python scripts/browser_smoke.py
@@ -44,7 +45,7 @@ python scripts/check_population_crosswalk.py
 python scripts/check_qa_evidence.py
 ```
 
-The PDF build and browser smoke test require the optional Playwright development dependency and a local Chromium runtime. The live-link checks are deliberately outside the offline reproducibility lane, but they should be clean or explicitly manually resolved before publication. `deliverables/research_brief_manifest.json` binds the committed PDF to the exact generated memo source; validation fails when that publication artifact is stale. `data/public_release_register.csv` separately governs the public data/download surface and validation fails on an unregistered public file. Only deploy the generated `site/` directory after the required validation lanes pass and the site has been inspected locally.
+The PowerPoint builder requires `python-pptx`; the PDF build and browser smoke test require Playwright plus a local Chromium runtime. All are included by `requirements-dev.txt`. The live-link checks are deliberately outside the offline reproducibility lane, but they should be clean or explicitly manually resolved before publication. `deliverables/management_briefing_manifest.json` binds the committed PPTX to its current builder and validated analytical sources; `deliverables/research_brief_manifest.json` binds the committed PDF to the exact generated memo source. Validation fails when either publication artifact is stale. `data/public_release_register.csv` separately governs the public data/download surface and validation fails on an unregistered public file. Only deploy the generated `site/` directory after the required validation lanes pass and the presentation/PDF/site outputs have been inspected.
 
 ## Direct upload
 

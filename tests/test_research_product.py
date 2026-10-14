@@ -318,7 +318,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 38)
+        self.assertEqual(len(release_rows), 39)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -327,15 +327,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 88)
-        self.assertEqual(validate_public_tree(release_rows), 88)
+        self.assertEqual(len(pairs), 89)
+        self.assertEqual(validate_public_tree(release_rows), 89)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 88", rendered)
+        self.assertIn("Expanded public download files:** 89", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("88</strong><span>expanded public download files", html)
+        self.assertIn("89</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -353,7 +353,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 88)
+        self.assertEqual(validate_public_tree(release_rows), 89)
 
     def test_sql_analysis_executes_and_reconciles(self) -> None:
         specs = read_sql_queries()
@@ -679,6 +679,63 @@ class ResearchProductTests(unittest.TestCase):
             self.assertGreater(formula_count, 0)
             self.assertIn("1044137", values)
 
+    def test_powerpoint_management_deck_is_valid_and_fresh(self) -> None:
+        deck = ROOT / "deliverables" / "management_briefing_deck.pptx"
+        public = ROOT / "site" / "downloads" / "management_briefing_deck.pptx"
+        manifest = json.loads(
+            (ROOT / "deliverables" / "management_briefing_manifest.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertTrue(deck.exists())
+        payload = deck.read_bytes()
+        self.assertGreater(len(payload), 40_000)
+        self.assertTrue(payload.startswith(b"PK"))
+        self.assertEqual(payload, public.read_bytes())
+        self.assertEqual(manifest["slide_count"], 6)
+        self.assertEqual(manifest["pptx_bytes"], len(payload))
+        self.assertEqual(manifest["pptx_sha256"], hashlib.sha256(payload).hexdigest())
+        builder = ROOT / manifest["builder"]
+        self.assertEqual(
+            manifest["builder_sha256"], hashlib.sha256(builder.read_bytes()).hexdigest()
+        )
+        for source_path, expected_hash in manifest["source_sha256"].items():
+            self.assertEqual(
+                expected_hash,
+                hashlib.sha256((ROOT / source_path).read_bytes()).hexdigest(),
+                source_path,
+            )
+
+        drawing_ns = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main"}
+        with zipfile.ZipFile(deck) as archive:
+            self.assertIsNone(archive.testzip())
+            slide_names = sorted(
+                name
+                for name in archive.namelist()
+                if re.fullmatch(r"ppt/slides/slide\d+\.xml", name)
+            )
+            self.assertEqual(len(slide_names), 6)
+            text = "\n".join(
+                node.text or ""
+                for slide_name in slide_names
+                for node in ET.fromstring(archive.read(slide_name)).findall(
+                    ".//a:t", drawing_ns
+                )
+            )
+        for expected in (
+            "1,044,137",
+            "+29,539",
+            "33 of 51",
+            "+82,825",
+            "+66,981",
+            "-3,581",
+            "+63,400",
+            "Guardrails before reuse",
+        ):
+            self.assertIn(expected, text)
+        self.assertEqual(manifest["metrics"]["latest_nonresident"], 1_044_137)
+        self.assertEqual(manifest["metrics"]["states_recovered"], 33)
+
     def test_pdf_research_brief_is_valid_and_published(self) -> None:
         pdf = ROOT / "deliverables" / "research_brief.pdf"
         public = ROOT / "site" / "downloads" / "research_brief.pdf"
@@ -746,10 +803,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 88)
+        self.assertEqual(len(pairs), 89)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 88)
+        self.assertEqual(validate_public_tree(release_rows), 89)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (

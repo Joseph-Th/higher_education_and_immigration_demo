@@ -70,6 +70,7 @@ def check_downloads(base_url: str) -> None:
         "downloads/sql_analysis.md",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
+        "downloads/management_briefing_deck.pptx",
         "downloads/state_profile_index.csv",
         "downloads/state_profiles/AZ.md",
         "downloads/benchmark_audit.csv",
@@ -187,7 +188,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "38" not in summary or "88" not in summary:
+    if "39" not in summary or "89" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
