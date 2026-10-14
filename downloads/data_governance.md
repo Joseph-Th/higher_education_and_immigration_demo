@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 39
-**Expanded public download files:** 89
+**Registered artifact families:** 41
+**Expanded public download files:** 91
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -58,6 +58,8 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR37 | `site/downloads/sql_analysis_audit.csv` | QA / audit | SQL query | Generated reconciliation metadata comparing SQL results with canonical CSV outputs |
 | PR38 | `site/downloads/sql_analysis.md` | Publication | SQL analysis note | Generated from the public read-only query pack and validated SQL audit |
 | PR39 | `site/downloads/management_briefing_deck.pptx` | Publication | Management briefing deck | PowerPoint generated from validated aggregate findings and QA outputs |
+| PR40 | `site/downloads/ad_hoc_analysis_results.csv` | Analysis output | Ad hoc analysis case results | Generated aggregate answers for three explicitly simulated management questions |
+| PR41 | `site/downloads/ad_hoc_analysis.md` | Publication | Ad hoc analysis casebook | Generated from validated aggregate outputs with no real requester or SLA metadata |
 
 ## Handling boundary
 

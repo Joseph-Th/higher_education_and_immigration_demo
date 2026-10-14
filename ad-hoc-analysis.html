@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Three simulated ad hoc analyst requests answered and reconciled from validated IPEDS outputs.">
+  <meta name="theme-color" content="#10263c">
+  <title>Ad Hoc Analysis | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to ad hoc cases</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a>
+      <nav aria-label="Ad hoc analysis navigation"><a href="index.html">Brief</a><a href="sql-analysis.html">SQL</a><a href="research-memo.html">Memo</a><a href="data-governance.html">Governance</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="handoff-hero">
+      <div class="shell">
+        <p class="eyebrow">Ad hoc analyst cases</p>
+        <h1>Answer the small management question, then show the check.</h1>
+        <p class="lede">Three bounded request scenarios demonstrate a practical analyst workflow: clarify the question, choose the authority, calculate the minimum useful answer, reconcile it, and deliver a concise response.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#casebook">Review cases</a><a class="button button-secondary" href="downloads/ad_hoc_analysis_results.csv">Download case results</a></div>
+        <p class="release-note"><strong>Portfolio boundary:</strong> these are constructed request scenarios, not real client requests, organizational SLAs, or employment-history claims.</p>
+        <div class="handoff-summary">
+          <article><strong>3</strong><span>simulated requests</span></article>
+          <article><strong>3/3</strong><span>QA checks passed</span></article>
+          <article><strong>0</strong><span>invented requesters</span></article>
+          <article><strong>0</strong><span>invented deadlines</span></article>
+        </div>
+      </div>
+    </section>
+    <section class="section section-tinted" id="casebook">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">Casebook</p><h2>Request → calculation → QA → response</h2><p>Each answer stays small enough to review quickly while retaining a visible source and reconciliation trail.</p></div>
+        <div class="handoff-grid">
+          <article class="handoff-card" data-case-id="A01">
+            <div class="handoff-card-head"><span>A01</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+            <p class="case-kicker">Simulated ad hoc request</p>
+            <h2>Which states/DC are still below their 2019 U.S. nonresident enrollment, and how concentrated is the remaining shortfall?</h2>
+            <dl class="handoff-meta">
+              <div><dt>Decision use</dt><dd>Prioritize where a follow-up geography review would start.</dd></div>
+              <div><dt>Answer</dt><dd><strong>18 states/DC remain below 2019.</strong> Combined shortfall is -56,517 students. The five largest shortfalls (CA -33,282, OR -4,265, KS -3,842, WA -3,834, ID -3,648) account for 86.5% of it.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/processed/state_change_summary.csv</code></dd></div>
+              <div><dt>QA</dt><dd>Below-baseline rows=18; shortfall sum=-56,517; top-five share=86.5%</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-case-id="A02">
+            <div class="handoff-card-head"><span>A02</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+            <p class="case-kicker">Simulated ad hoc request</p>
+            <h2>Which states contributed most to the 2023-2024 national increase?</h2>
+            <dl class="handoff-meta">
+              <div><dt>Decision use</dt><dd>Identify the geographies driving the newest annual movement.</dd></div>
+              <div><dt>Answer</dt><dd><strong>The five largest state gains contributed +17,753 students, or 60.1% of the +29,539 national gain.</strong> Largest gains: FL +6,207, KY +4,615, IN +2,422, TX +2,363, IL +2,146.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/processed/state_year.csv; data/processed/national_year.csv</code></dd></div>
+              <div><dt>QA</dt><dd>All 51 state/DC changes sum to the national change: +29,539 = +29,539</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-case-id="A03">
+            <div class="handoff-card-head"><span>A03</span><span class="handoff-status handoff-status-ready">PASS</span></div>
+            <p class="case-kicker">Simulated ad hoc request</p>
+            <h2>Which institutional-control sector explains the 2015-2024 net increase?</h2>
+            <dl class="handoff-meta">
+              <div><dt>Decision use</dt><dd>Give management a concise structural explanation for the decade result.</dd></div>
+              <div><dt>Answer</dt><dd><strong>Private nonprofit institutions increased by 82,825 students.</strong> That gain was partly offset by Private for-profit -3,338 and Public -16,087, reconciling to the national +63,400 change.</dd></div>
+              <div><dt>Authority</dt><dd><code>data/processed/control_year.csv; data/processed/national_year.csv</code></dd></div>
+              <div><dt>QA</dt><dd>Control-sector changes sum to national decade change: +63,400 = +63,400</dd></div>
+            </dl>
+          </article></div>
+      </div>
+    </section>
+    <section class="section shell">
+      <div class="section-heading compact"><p class="eyebrow">Working pattern</p><h2>A repeatable path for one-off analysis</h2></div>
+      <div class="method-grid">
+        <article><h3>1. Clarify</h3><p>Confirm the population, geography, comparison period, and decision question before calculating.</p></article>
+        <article><h3>2. Select authority</h3><p>Use the smallest validated table that directly answers the request instead of rebuilding the entire project.</p></article>
+        <article><h3>3. Reconcile</h3><p>Check state sums, control-sector sums, or concentration arithmetic against an independent total.</p></article>
+        <article><h3>4. Deliver</h3><p>Return the answer first, then the small amount of evidence needed for the reader to trust and reuse it correctly.</p></article>
+      </div>
+      <div class="memo-actions"><a class="button button-primary" href="downloads/ad_hoc_analysis_results.csv">Download result CSV</a><a class="button button-secondary" href="downloads/ad_hoc_analysis.md">Download casebook notes</a></div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Ad Hoc Analysis · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>
