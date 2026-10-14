@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Transparent planning scenarios and a forecast-vs-actual backtest built from validated IPEDS national enrollment data.">
+  <meta name="theme-color" content="#10263c">
+  <title>Planning Scenarios | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to planning scenarios</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a>
+      <nav aria-label="Planning scenario navigation"><a href="index.html">Brief</a><a href="ad-hoc-analysis.html">Ad hoc</a><a href="sql-analysis.html">SQL</a><a href="data-governance.html">Governance</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="handoff-hero">
+      <div class="shell">
+        <p class="eyebrow">Planning and variance support</p>
+        <h1>Use historical growth as a planning assumption, not a promise.</h1>
+        <p class="lede">A backtest shows how a simple historical-growth baseline can miss the realized result. Three forward cases then give management a transparent range for planning discussion.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#backtest">Review variance</a><a class="button button-secondary" href="downloads/planning_scenarios.csv">Download scenario table</a></div>
+        <p class="release-note"><strong>Boundary:</strong> this is a portfolio planning exercise, not a predictive model or a claim about the unavailable 2025 IPEDS actual.</p>
+        <div class="handoff-summary">
+          <article><strong>-4.0%</strong><span>2024 variance vs. backtest baseline</span></article>
+          <article><strong>1,058,964</strong><span>2025 lower planning case</span></article>
+          <article><strong>1,074,536</strong><span>2025 middle planning case</span></article>
+          <article><strong>1,086,816</strong><span>2025 upper planning case</span></article>
+        </div>
+      </div>
+    </section>
+    <section class="section shell" id="backtest">
+      <div class="section-heading"><p class="eyebrow">Backtest</p><h2>Forecast vs. actual makes the assumption error visible.</h2><p>A 2021-2023 CAGR baseline would have overshot the observed 2024 total.</p></div>
+      <div class="method-grid">
+        <article><h3>Planning baseline</h3><p><strong>1,088,197</strong><br>7.25% 2021-2023 CAGR applied to the 2023 actual.</p></article>
+        <article><h3>2024 actual</h3><p><strong>1,044,137</strong><br>Validated national authority.</p></article>
+        <article><h3>Variance</h3><p><strong>-44,060</strong><br>-4.05% versus the planning baseline.</p></article>
+        <article><h3>Management use</h3><p>Show the assumption beside the realized result and investigate why actual growth differed before carrying a baseline forward.</p></article>
+      </div>
+    </section>
+    <section class="section section-tinted" id="scenarios">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">2025 planning cases</p><h2>Three transparent historical anchors, one bounded range.</h2><p>The range is 1,058,964 to 1,086,816, a spread of 27,852 students. These cases are inputs to planning discussion, not predictions.</p></div>
+        <div class="handoff-grid">
+          <article class="handoff-card" data-scenario-id="PS01">
+            <div class="handoff-card-head"><span>PS01</span><span class="handoff-status handoff-status-ready">SCENARIO</span></div>
+            <p class="case-kicker">2019-2024 basis</p>
+            <h2>Long-run recovery pace</h2>
+            <div class="scenario-value">1,058,964</div>
+            <dl class="handoff-meta">
+              <div><dt>Annual rate</dt><dd>1.42%</dd></div>
+              <div><dt>Method</dt><dd>Apply the 2019-2024 CAGR to the 2024 actual</dd></div>
+              <div><dt>Decision use</dt><dd>Lower planning case anchored to the full post-2019 recovery period.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-scenario-id="PS02">
+            <div class="handoff-card-head"><span>PS02</span><span class="handoff-status handoff-status-ready">SCENARIO</span></div>
+            <p class="case-kicker">2023-2024 basis</p>
+            <h2>Latest-year pace</h2>
+            <div class="scenario-value">1,074,536</div>
+            <dl class="handoff-meta">
+              <div><dt>Annual rate</dt><dd>2.91%</dd></div>
+              <div><dt>Method</dt><dd>Apply the latest observed year-over-year growth rate to the 2024 actual</dd></div>
+              <div><dt>Decision use</dt><dd>Middle planning case anchored to the newest annual movement.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-scenario-id="PS03">
+            <div class="handoff-card-head"><span>PS03</span><span class="handoff-status handoff-status-ready">SCENARIO</span></div>
+            <p class="case-kicker">2022-2024 basis</p>
+            <h2>Recent two-year recovery pace</h2>
+            <div class="scenario-value">1,086,816</div>
+            <dl class="handoff-meta">
+              <div><dt>Annual rate</dt><dd>4.09%</dd></div>
+              <div><dt>Method</dt><dd>Apply the 2022-2024 CAGR to the 2024 actual</dd></div>
+              <div><dt>Decision use</dt><dd>Upper planning case anchored to the recent recovery window.</dd></div>
+            </dl>
+          </article></div>
+      </div>
+    </section>
+    <section class="section shell">
+      <div class="section-heading compact"><p class="eyebrow">Use correctly</p><h2>What this does and does not establish</h2></div>
+      <div class="method-grid">
+        <article><h3>Does</h3><p>Demonstrates baseline construction, forecast-vs-actual variance, sensitivity ranges, and concise management framing.</p></article>
+        <article><h3>Does not</h3><p>Estimate causal effects or incorporate policy, visa, economic, institution-specific, or macroeconomic drivers.</p></article>
+        <article><h3>Authority</h3><p><code>data/processed/national_year.csv</code> remains the historical analytical authority.</p></article>
+        <article><h3>Next actual</h3><p>When a future release arrives, replace scenario-only discussion with an actual-versus-plan variance review.</p></article>
+      </div>
+      <div class="memo-actions"><a class="button button-primary" href="downloads/planning_scenarios.csv">Download scenario CSV</a><a class="button button-secondary" href="downloads/planning_scenarios.md">Download scenario notes</a></div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Planning Scenarios · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>
