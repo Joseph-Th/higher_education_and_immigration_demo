@@ -133,6 +133,8 @@ Rebuild the SQL analysis with `python scripts/build_sql_analysis.py` after the p
 
 Regenerate the ad hoc casebook with `python scripts/build_ad_hoc_analysis.py`. Confirm that the three simulated questions still represent useful bounded management requests, every case-level QA check is `PASS`, and the page/notes continue to state that the scenarios are not real client requests, SLAs, or employment-history claims. Update a scenario only when it can still be answered directly from a validated authority and reconciled transparently.
 
+Regenerate the planning/variance artifact with `python scripts/build_planning_scenarios.py`. Confirm the 2024 backtest still reconciles exactly to the current national authority, the three forward planning cases remain ordered from lower to upper, and no future scenario is presented as an observed or statistically predicted IPEDS value. When a new actual year becomes available, convert the prior forward case into an actual-versus-plan variance review before rolling the scenarios forward.
+
 Regenerate all state profiles with `python scripts/build_state_profiles.py`. Review the profile index for outliers, then spot-check at least one growing state, one declining state, and one small-count state. Confirm the state explorer links to the matching generated profile after browser QA.
 
 Review `data/research_agenda.csv` after the new release. Close, reframe, or reprioritize questions whose evidence trigger has changed; add new questions only when the population, decision need, required data, proposed method, and interpretation boundary can be stated explicitly. Regenerate `docs/RESEARCH_AGENDA.md` through the normal validation lane.
@@ -175,6 +177,7 @@ An annual update is complete only when:
 - public findings are re-reviewed rather than carried forward automatically;
 - the SQL query pack executes against the refreshed processed outputs and every independent reconciliation check is `PASS`;
 - the three ad hoc portfolio scenarios have been regenerated from the refreshed outputs, all case-level checks pass, and the simulation boundary remains explicit;
+- the planning/variance artifact has been regenerated from the refreshed national series, the backtest reconciles, and forward scenarios remain explicitly non-predictive;
 - the PowerPoint deck has been regenerated from the refreshed validated outputs, its source/builder/PPTX hashes are current, and all six slides have been visually inspected;
 - the population/source crosswalk has been re-reviewed when companion-source definitions or vintages changed;
 - the public-release register has been re-reviewed and the exact allowlisted public tree passes with no unregistered files;

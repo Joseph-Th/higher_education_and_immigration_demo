@@ -318,7 +318,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 41)
+        self.assertEqual(len(release_rows), 43)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -327,15 +327,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 91)
-        self.assertEqual(validate_public_tree(release_rows), 91)
+        self.assertEqual(len(pairs), 93)
+        self.assertEqual(validate_public_tree(release_rows), 93)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 91", rendered)
+        self.assertIn("Expanded public download files:** 93", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("91</strong><span>expanded public download files", html)
+        self.assertIn("93</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -353,7 +353,37 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 91)
+        self.assertEqual(validate_public_tree(release_rows), 93)
+
+    def test_planning_scenarios_reconcile_and_remain_non_predictive(self) -> None:
+        scenario_rows = rows(ROOT / "data" / "planning_scenarios.csv")
+        self.assertEqual(
+            [row["case_id"] for row in scenario_rows],
+            ["BT01", "PS01", "PS02", "PS03"],
+        )
+        self.assertTrue(all(row["status"] == "PASS" for row in scenario_rows))
+
+        backtest = scenario_rows[0]
+        self.assertEqual(backtest["planned_value"], "1088197")
+        self.assertEqual(backtest["actual_value"], "1044137")
+        self.assertEqual(backtest["variance"], "-44060")
+        self.assertEqual(backtest["variance_pct"], "-4.05")
+
+        forward = scenario_rows[1:]
+        self.assertEqual(
+            [row["planned_value"] for row in forward],
+            ["1058964", "1074536", "1086816"],
+        )
+        self.assertTrue(all(row["actual_value"] == "" for row in forward))
+        self.assertTrue(all(row["variance"] == "" for row in forward))
+
+        rendered = (ROOT / "docs" / "PLANNING_SCENARIOS.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "planning-scenarios.html").read_text(encoding="utf-8")
+        self.assertIn("not a predictive forecast", rendered.lower())
+        self.assertIn("not a predictive model", html)
+        self.assertIn("-44,060", rendered)
+        self.assertIn("1,058,964 to 1,086,816", rendered)
+        self.assertEqual(html.count('data-scenario-id="'), 3)
 
     def test_ad_hoc_analysis_casebook_is_reproducible_and_explicitly_simulated(self) -> None:
         case_rows = rows(ROOT / "data" / "ad_hoc_analysis_results.csv")
@@ -834,10 +864,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 91)
+        self.assertEqual(len(pairs), 93)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 91)
+        self.assertEqual(validate_public_tree(release_rows), 93)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -849,6 +879,7 @@ class ResearchProductTests(unittest.TestCase):
             "production-cycle.html",
             "sql-analysis.html",
             "ad-hoc-analysis.html",
+            "planning-scenarios.html",
             "research-library.html",
             "publication-handoff.html",
             "data-governance.html",

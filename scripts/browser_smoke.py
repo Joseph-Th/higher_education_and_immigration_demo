@@ -70,6 +70,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/sql_analysis.md",
         "downloads/ad_hoc_analysis_results.csv",
         "downloads/ad_hoc_analysis.md",
+        "downloads/planning_scenarios.csv",
+        "downloads/planning_scenarios.md",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
         "downloads/management_briefing_deck.pptx",
@@ -190,7 +192,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "41" not in summary or "91" not in summary:
+    if "43" not in summary or "93" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -205,6 +207,38 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
         raise AssertionError(f"Data governance horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Data governance browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_planning_scenarios(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/planning-scenarios.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Planning scenarios page failed at {width}px")
+    if page.locator('[data-scenario-id]').count() != 3:
+        raise AssertionError("Planning scenarios page does not render all three forward cases")
+    summary = page.locator(".handoff-summary").inner_text()
+    for expected in ("-4.0%", "1,058,964", "1,074,536", "1,086,816"):
+        if expected not in summary:
+            raise AssertionError(f"Planning scenario summary is missing {expected}")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "not a predictive model" not in boundary or "unavailable 2025 IPEDS actual" not in boundary:
+        raise AssertionError("Planning scenarios page is missing its non-predictive boundary")
+    if page.locator('a[href="downloads/planning_scenarios.csv"]').count() != 2:
+        raise AssertionError("Planning scenario CSV links are missing")
+    if page.locator('a[href="downloads/planning_scenarios.md"]').count() != 1:
+        raise AssertionError("Planning scenario Markdown link is missing")
+    if "-44,060" not in page.locator("#backtest").inner_text():
+        raise AssertionError("Planning scenario backtest variance is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Planning scenarios horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Planning scenarios browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -533,6 +567,8 @@ def main() -> int:
                 inspect_sql_analysis(browser, base_url, width=390, height=844)
                 inspect_ad_hoc_analysis(browser, base_url, width=1280, height=900)
                 inspect_ad_hoc_analysis(browser, base_url, width=390, height=844)
+                inspect_planning_scenarios(browser, base_url, width=1280, height=900)
+                inspect_planning_scenarios(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

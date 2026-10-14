@@ -1,0 +1,5 @@
+case_id,case_type,case_label,basis_period,method,annual_rate_pct,base_year,base_value,target_year,planned_value,actual_value,variance,variance_pct,decision_use,status
+BT01,BACKTEST,2024 planning-baseline backtest,2021-2023,Apply the 2021-2023 CAGR to the 2023 actual,7.25,2023,1014598,2024,1088197,1044137,-44060,-4.05,Show how a simple historical-growth baseline can miss the realized result and why variance review matters.,PASS
+PS01,PLANNING_SCENARIO,Long-run recovery pace,2019-2024,Apply the 2019-2024 CAGR to the 2024 actual,1.42,2024,1044137,2025,1058964,,,,Lower planning case anchored to the full post-2019 recovery period.,PASS
+PS02,PLANNING_SCENARIO,Latest-year pace,2023-2024,Apply the latest observed year-over-year growth rate to the 2024 actual,2.91,2024,1044137,2025,1074536,,,,Middle planning case anchored to the newest annual movement.,PASS
+PS03,PLANNING_SCENARIO,Recent two-year recovery pace,2022-2024,Apply the 2022-2024 CAGR to the 2024 actual,4.09,2024,1044137,2025,1086816,,,,Upper planning case anchored to the recent recovery window.,PASS

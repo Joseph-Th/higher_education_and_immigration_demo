@@ -331,6 +331,7 @@ code { background: rgba(11,119,110,.09); color: var(--accent-dark); padding: .12
 .handoff-status-ready { background: #e8f3f1; color: var(--accent-dark); }
 .handoff-status-hold { background: #fff2e9; color: #8d4826; }
 .handoff-card h2 { margin: 5px 0 0; font-size: 21px; line-height: 1.22; letter-spacing: -.025em; }
+.scenario-value { margin-top: 16px; font-size: 36px; line-height: 1; letter-spacing: -.045em; font-weight: 800; color: var(--navy); }
 .handoff-meta { margin: 20px 0 0; }
 .handoff-meta > div { padding: 12px 0; border-top: 1px solid var(--line); }
 .handoff-meta dt { color: var(--ink-soft); font-size: 10px; font-weight: 850; text-transform: uppercase; letter-spacing: .05em; }

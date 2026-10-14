@@ -403,6 +403,28 @@ One row per explicitly simulated ad hoc management question.
 
 `scripts/build_ad_hoc_analysis.py` regenerates all three cases from the validated state, control, and national outputs and writes the CSV, `docs/AD_HOC_ANALYSIS.md`, and `site/ad-hoc-analysis.html`. The generated products must retain the explicit portfolio-simulation boundary and must not introduce real or invented requester identities, deadlines, SLAs, or employment-history claims.
 
+## `data/planning_scenarios.csv`
+
+One backtest row plus three forward planning-scenario rows generated from the validated national series.
+
+| Field | Definition |
+| --- | --- |
+| `case_id` | Stable identifier (`BT01`, `PS01`-`PS03`) |
+| `case_type` | `BACKTEST` or `PLANNING_SCENARIO` |
+| `case_label` | Reviewer-facing scenario name |
+| `basis_period` | Historical years used to derive the annual rate |
+| `method` | Plain-language description of the growth-rate calculation |
+| `annual_rate_pct` | Annualized historical rate used by the case |
+| `base_year` / `base_value` | Historical actual from which the planned value is calculated |
+| `target_year` | Year represented by the planned value |
+| `planned_value` | Baseline/scenario value calculated from the stated assumption |
+| `actual_value` | Known actual for the backtest; blank for future planning scenarios |
+| `variance` / `variance_pct` | Actual minus planned value for the backtest; blank for future scenarios |
+| `decision_use` | Generic management-planning purpose, not a claim about a real stakeholder |
+| `status` | `PASS` when ordering and reconciliation checks succeed |
+
+`scripts/build_planning_scenarios.py` writes the CSV, `docs/PLANNING_SCENARIOS.md`, and `site/planning-scenarios.html`. The national historical CSV remains authoritative. Forward scenario rows must not be described as observed values or as a predictive model.
+
 ## JSON products
 
 `data/qa_report.json` contains structural checks, yearly source/flag distributions, row counts, and explicit exclusions.

@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 41
-**Expanded public download files:** 91
+**Registered artifact families:** 43
+**Expanded public download files:** 93
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -60,6 +60,8 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR39 | `site/downloads/management_briefing_deck.pptx` | Publication | Management briefing deck | PowerPoint generated from validated aggregate findings and QA outputs |
 | PR40 | `site/downloads/ad_hoc_analysis_results.csv` | Analysis output | Ad hoc analysis case results | Generated aggregate answers for three explicitly simulated management questions |
 | PR41 | `site/downloads/ad_hoc_analysis.md` | Publication | Ad hoc analysis casebook | Generated from validated aggregate outputs with no real requester or SLA metadata |
+| PR42 | `site/downloads/planning_scenarios.csv` | Analysis output | Planning scenario and variance table | Generated national-level backtest and forward planning scenarios from validated historical aggregates |
+| PR43 | `site/downloads/planning_scenarios.md` | Publication | Planning scenarios note | Generated from the validated national series with transparent historical growth assumptions |
 
 ## Handling boundary
 
