@@ -12,7 +12,7 @@ This register turns findings, QA observations, source limitations, and recurring
 | R05 | High | Which large institution-level annual changes reflect substantive movement versus reporting or classification discontinuity? | High | Implemented in complete high-priority QA review |
 | R03 | Medium | Is private nonprofit growth broad-based or concentrated among a small set of institutions? | High | Implemented in private nonprofit growth analysis |
 | R06 | Medium | What does the undocumented high-school graduate pipeline imply for higher-education access questions? | None | Requires partner/population data |
-| R07 | Medium | Which external source updates should trigger Portal refreshes or new research products? | Support | Ongoing monitoring |
+| R07 | Medium | Which external source updates should trigger Portal refreshes or new research products? | Support | Implemented as source-update triage register |
 
 ## Detailed research cards
 
@@ -84,11 +84,11 @@ This register turns findings, QA observations, source limitations, and recurring
 
 - **Evidence trigger:** The maintained Research Library spans primary data, release schedules, methodology, benchmarks, and recurring Portal research products.
 - **Current IPEDS fit:** Support
-- **Additional data needed:** Current source release dates, revised-file notices, and partner delivery schedules
-- **Proposed method:** Use the data calendar and Research Library to classify changes as routine refresh, methodology review, or potential new research question.
-- **Proposed output:** Quarterly source/data-needs review
-- **Decision rule:** Escalate a source change when it changes definitions, population coverage, release vintage, or a published conclusion rather than only the file date.
-- **Status:** Ongoing monitoring
+- **Additional data needed:** Current Research Library metadata and source-vintage signals; actual partner delivery schedules remain confirmation-dependent
+- **Proposed method:** Classify every maintained source with a baseline route and explicit methodology/new-research escalation triggers; apply the change-type decision ladder before narrative changes.
+- **Proposed output:** Source-update triage register and routing note
+- **Decision rule:** Treat metadata/date-only change as non-analytical; route same-method new values to routine refresh; escalate definition, denominator, model, schema, geography, privacy, or material conclusion changes before publication.
+- **Status:** Implemented as source-update triage register
 
 ## Governance principles
 

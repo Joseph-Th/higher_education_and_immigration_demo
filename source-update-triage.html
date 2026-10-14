@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="R07 source-update triage for routine refresh, methodology review, governance review, and new research-question routing.">
+  <meta name="theme-color" content="#10263c">
+  <title>Source Update Triage | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to source update triage</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Source update triage navigation"><a href="index.html">Brief</a><a href="research-library.html">Library</a><a href="freshness-monitor.html">Freshness</a><a href="research-operations.html">Operations</a></nav></div></header>
+  <main id="main">
+    <section class="handoff-hero"><div class="shell"><p class="eyebrow">R07 · source-change routing</p><h1>A new file is a review trigger, not automatically a new finding.</h1><p class="lede">Every maintained source has a default route and explicit escalation conditions. Same-method updates can follow routine refresh controls; changes to definitions, denominators, models, geography, privacy rules, or material conclusions move into a higher review path before public interpretation changes.</p><div class="hero-actions"><a class="button button-primary" href="#routing-rules">Review decision ladder</a><a class="button button-secondary" href="downloads/source_update_triage.csv">Download routing register</a></div><p class="release-note"><strong>Portfolio boundary:</strong> this is a public-source routing model, not the Presidents' Alliance's internal refresh schedule, approval workflow, partner delivery calendar, or prioritization process.</p><div class="handoff-summary"><article><strong>15</strong><span>Research Library sources covered</span></article><article><strong>8</strong><span>routine-refresh baselines</span></article><article><strong>3</strong><span>methodology-review baselines</span></article><article><strong>4</strong><span>special routes; 0 inferred deadlines</span></article></div></div></section>
+    <section class="section shell" id="routing-rules"><div class="section-heading"><p class="eyebrow">Decision ladder</p><h2>Route the kind of change, not merely the publication date.</h2><p>The first applicable material-change gate controls the review. A routine refresh is available only after higher-order definition and governance questions are cleared.</p></div><ol class="handoff-gates"><li><strong>Metadata only</strong><span>URL, title, or date changes update the catalog without manufacturing a research finding.</span></li><li><strong>Same method, new values</strong><span>Run the normal refresh, reconciliation, QA, and publication gates.</span></li><li><strong>Method changed</strong><span>Definition, denominator, model, schema, geography, or reference-period changes stop routine trend use until reviewed.</span></li><li><strong>Question changed</strong><span>New coverage or a material same-method conclusion shift can open or reprioritize a research question with an explicit decision rule.</span></li><li><strong>Governance changed</strong><span>Privacy, handling, or release-rule changes are reviewed before collection or publication practice changes.</span></li></ol></section>
+    <section class="section section-tinted" id="source-map"><div class="shell"><div class="section-heading"><p class="eyebrow">Complete source map</p><h2>All 15 maintained sources have an explicit route.</h2><p>The register covers the Research Library one-for-one. A source cannot disappear from this routing layer without failing validation.</p></div><div class="handoff-grid">
+          <article class="handoff-card" data-source-route="ROUTINE_REFRESH">
+            <div class="handoff-card-head"><span>ipeds_complete_data</span><span class="library-type">Routine refresh</span></div>
+            <p class="case-kicker">NCES · Source collection</p>
+            <h2>IPEDS Complete Data Files</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>A complete new Fall Enrollment and directory package is available under the documented collection structure.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>A revised file hash, variable/code change, release-status change, dictionary change, or universe-definition change affects comparability.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A same-method release confirms or reverses a material finding such as the undergraduate-led latest-year shift or state recovery pattern.</dd></div>
+              <div><dt>Affected surface</dt><dd>Annual IPEDS analysis; QA queue; state profiles; research memo</dd></div>
+              <div><dt>Boundary</dt><dd>Package availability starts schema review; it does not authorize publication.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/help/complete-data-files" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="MONITOR_ONLY">
+            <div class="handoff-card-head"><span>ipeds_release_schedule</span><span class="library-type">Monitor only</span></div>
+            <p class="case-kicker">NCES · Release monitoring</p>
+            <h2>IPEDS Data Release Schedule</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>NCES changes the public release sequence or timing information.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>A timing change alters the meaning of the data year, provisional/final status, or when a component can be compared across vintages.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A newly available component or earlier indicator creates a defensible monitoring question not covered by the current annual product.</dd></div>
+              <div><dt>Affected surface</dt><dd>Freshness monitor; data calendar; update playbook</dd></div>
+              <div><dt>Boundary</dt><dd>A schedule change is an operational signal, not an analytical result.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/survey-components/data-release-schedule" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="METHODOLOGY_REVIEW">
+            <div class="handoff-card-head"><span>ipeds_collection_timing</span><span class="library-type">Methodology review</span></div>
+            <p class="case-kicker">NCES · Methodology</p>
+            <h2>Timing of IPEDS Data Collection</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>NCES changes the documented collection cycle, reference period, or reporting-period timing.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>Any timing change affects the interpretation of a year, reference date, or cross-year comparability.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A changed collection/reference period creates a new comparability question that cannot be resolved by a routine rebuild.</dd></div>
+              <div><dt>Affected surface</dt><dd>Methodology; variable mapping; annual update interpretation</dd></div>
+              <div><dt>Boundary</dt><dd>Interpretation must be resolved before new values enter narrative use.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/use-the-data/timing-of-ipeds-data-collection" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="METHODOLOGY_REVIEW">
+            <div class="handoff-card-head"><span>ipeds_race_ethnicity_definitions</span><span class="library-type">Methodology review</span></div>
+            <p class="case-kicker">NCES · Methodology</p>
+            <h2>IPEDS Race/Ethnicity and U.S. Nonresident Definitions</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>NCES changes the federal reporting definition or terminology used for U.S. nonresident or related categories.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>Any change to inclusion/exclusion rules, citizenship/status terminology, or reporting categories affects the population boundary.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A revised federal category creates or closes a research question about comparability with immigrant-origin, undocumented, or international populations.</dd></div>
+              <div><dt>Affected surface</dt><dd>Population crosswalk; methodology; public interpretation</dd></div>
+              <div><dt>Boundary</dt><dd>Definition changes require a crosswalk review before trend arithmetic continues.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/report-your-data/race-ethnicity-definitions/" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="ROUTINE_REFRESH">
+            <div class="handoff-card-head"><span>digest_306_10</span><span class="library-type">Routine refresh</span></div>
+            <p class="case-kicker">NCES · Validation</p>
+            <h2>Digest of Education Statistics 2025 Table 306.10</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>A newer Digest Table 306.10 is published with the same benchmark universe and comparable rows.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>The benchmark universe, table definition, release status, or subgroup treatment changes.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A same-universe benchmark discrepancy becomes large enough to alter confidence in a published conclusion or expose a source-vintage issue.</dd></div>
+              <div><dt>Affected surface</dt><dd>Benchmark audit; research memo; validation documentation</dd></div>
+              <div><dt>Boundary</dt><dd>The Digest is an external check and never overwrites current IPEDS source values.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://nces.ed.gov/programs/digest/d25/tables/dt25_306.10.asp" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="ROUTINE_REFRESH">
+            <div class="handoff-card-head"><span>ef2024a</span><span class="library-type">Routine refresh</span></div>
+            <p class="case-kicker">NCES · Source collection</p>
+            <h2>IPEDS Fall Enrollment 2024 Complete Data File</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>A new or revised Fall Enrollment archive is released with the expected variables and aggregation structure.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>Dictionary labels, EFALEVEL codes, imputation/status treatment, file revision, or source schema changes.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A same-method annual release materially changes the national/student-level story or creates a new high-priority anomaly pattern.</dd></div>
+              <div><dt>Affected surface</dt><dd>National/state/control analysis; latest-release QA; findings</dd></div>
+              <div><dt>Boundary</dt><dd>Source changes enter the schema and QA gates before narrative use.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/complete-data-files/EF2024A.zip" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="ROUTINE_REFRESH">
+            <div class="handoff-card-head"><span>hd2024</span><span class="library-type">Routine refresh</span></div>
+            <p class="case-kicker">NCES · Source collection</p>
+            <h2>IPEDS Institutional Directory 2024 Complete Data File</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>A new or revised institutional directory archive is released with the expected join and universe fields.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>DEGGRANT, PSET4FLG, CONTROL, geography, UNITID structure, or directory semantics change.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A same-method directory update materially changes universe-entry/exit accounting or the distribution of state/control findings.</dd></div>
+              <div><dt>Affected surface</dt><dd>Analytic universe; state/control joins; institution accounting</dd></div>
+              <div><dt>Boundary</dt><dd>Directory availability alone never advances the analysis year.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/complete-data-files/HD2024.zip" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="RESEARCH_QUESTION_REVIEW">
+            <div class="handoff-card-head"><span>portal_national_data</span><span class="library-type">Research-question review</span></div>
+            <p class="case-kicker">Presidents&#x27; Alliance / Higher Ed Immigration Portal · Publication context</p>
+            <h2>Higher Ed Immigration Portal National Data</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>The living national-data surface adds, removes, or materially revises a population, geography, headline estimate, or linked product.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>The underlying source, denominator, population definition, geography, or methodology changes.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>New population or state coverage makes a currently held question feasible, or a material same-method conclusion shift warrants a new agenda item.</dd></div>
+              <div><dt>Affected surface</dt><dd>Research agenda; population crosswalk; companion comparisons</dd></div>
+              <div><dt>Boundary</dt><dd>The public Portal surface is contextual evidence, not an input to the IPEDS series.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/national/national-data/" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="METHODOLOGY_REVIEW">
+            <div class="handoff-card-head"><span>portal_methodology</span><span class="library-type">Methodology review</span></div>
+            <p class="case-kicker">Presidents&#x27; Alliance / Higher Ed Immigration Portal · Methodology</p>
+            <h2>Higher Ed Immigration Portal Methodology</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>The Portal methodology page changes source definitions, modeling approach, geography, or population coverage.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>Any methodological change affects a maintained crosswalk row or the comparability of a recurring product.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A new method, population, or geography creates a defensible question that existing products do not answer.</dd></div>
+              <div><dt>Affected surface</dt><dd>Population crosswalk; recurring-product methods; comparison notes</dd></div>
+              <div><dt>Boundary</dt><dd>Method changes are reviewed before any recurring-product trend is spliced across vintages.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/methodology/" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="ROUTINE_REFRESH">
+            <div class="handoff-card-head"><span>undocumented_higher_ed_2026</span><span class="library-type">Routine refresh</span></div>
+            <p class="case-kicker">Presidents&#x27; Alliance / Higher Ed Immigration Portal · Recurring research</p>
+            <h2>Undocumented Students in U.S. Higher Education 2026</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>A new recurring report is published using a method-equivalent undocumented higher-education estimate framework.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>ACS vintage construction, legal-status model, enrollment denominator, geography, or inclusion rules change.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A same-method headline shift, new state coverage, or new subgroup output materially changes the access/research questions supported by the product.</dd></div>
+              <div><dt>Affected surface</dt><dd>Recurring-product register; population trend comparison; research agenda</dd></div>
+              <div><dt>Boundary</dt><dd>Same title or publication cadence does not prove method continuity.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/research/undocumented-students-in-u-s-higher-education-2/" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="ROUTINE_REFRESH">
+            <div class="handoff-card-head"><span>immigrant_origin_2026</span><span class="library-type">Routine refresh</span></div>
+            <p class="case-kicker">Presidents&#x27; Alliance / Higher Ed Immigration Portal · Recurring research</p>
+            <h2>Securing America&#x27;s Talent Pipeline: How Immigrant-Origin Students Power Higher Education</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>A new recurring report is published using a method-equivalent CPS immigrant-origin framework.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>Age range, generation definition, nonimmigrant treatment, CPS construction, geography, or denominator changes.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A material same-method shift in enrollment share, growth, or state distribution supports a new or reprioritized research question.</dd></div>
+              <div><dt>Affected surface</dt><dd>Recurring-product register; population trend comparison; research agenda</dd></div>
+              <div><dt>Boundary</dt><dd>A new report is compared only after population and denominator continuity are confirmed.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://www.presidentsalliance.org/wp-content/uploads/2026/05/Securing-Americas-Talent-Pipeline-May-2026.pdf" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="ARCHIVAL_REFERENCE">
+            <div class="handoff-card-head"><span>undocumented_higher_ed_2023_aic</span><span class="library-type">Archival reference</span></div>
+            <p class="case-kicker">American Immigration Council · Comparison research</p>
+            <h2>Undocumented College Students: 2021 ACS Estimate</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>The historical 2019/2021 reference remains unchanged unless the publisher issues a correction or replacement source.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>A correction, revised methodology note, or changed historical estimate alters the bounded 2019-2021 segment.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A corrected historical value materially changes the R04 segmented comparison or interpretation of the historical decline.</dd></div>
+              <div><dt>Affected surface</dt><dd>Population trend comparison; Research Library provenance</dd></div>
+              <div><dt>Boundary</dt><dd>Historical evidence is preserved as a fixed vintage and is not silently replaced by a newer model.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://www.americanimmigrationcouncil.org/wp-content/uploads/2025/01/undocumented_students_in_higher_education_2023.pdf" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="ROUTINE_REFRESH">
+            <div class="handoff-card-head"><span>undocumented_higher_ed_2026_aic</span><span class="library-type">Routine refresh</span></div>
+            <p class="case-kicker">American Immigration Council · Comparison research</p>
+            <h2>Undocumented College Students: 2024 ACS Estimate</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>A new fact sheet publishes a method-equivalent national undocumented higher-education estimate.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>ACS/model construction, denominator, geography, or population definition changes.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A material same-method change in national scale or newly available geography opens a defensible follow-up question.</dd></div>
+              <div><dt>Affected surface</dt><dd>Population trend comparison; population crosswalk; research agenda</dd></div>
+              <div><dt>Boundary</dt><dd>Current modeled estimates remain separate from IPEDS U.S. nonresident counts.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://www.americanimmigrationcouncil.org/fact-sheet/undocumented-college-students/" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="ROUTINE_REFRESH">
+            <div class="handoff-card-head"><span>undocumented_hs_graduates_2026</span><span class="library-type">Routine refresh</span></div>
+            <p class="case-kicker">Presidents&#x27; Alliance / Higher Ed Immigration Portal · Recurring research</p>
+            <h2>A Generation Threatened: Undocumented High School Students Graduate Amidst Uncertain National Climate</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>A new recurring high-school-graduate estimate is published under the same pooled-ACS/graduation-rate framework.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>Pooled ACS period, NCES graduation-rate assumptions, status model, geography, or denominator changes.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>State/year coverage becomes compatible with undocumented higher-education estimates or a material pipeline shift makes R06 feasible or higher priority.</dd></div>
+              <div><dt>Affected surface</dt><dd>Recurring-product register; R06 pipeline research; population crosswalk</dd></div>
+              <div><dt>Boundary</dt><dd>Do not infer individual transitions from ecological pipeline/enrollment comparisons.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://www.higheredimmigrationportal.org/research/a-generation-threatened-undocumented-high-school-students-graduate-amidst-uncertain-national-climate/" target="_blank" rel="noopener">Open maintained source</a>
+          </article>
+          <article class="handoff-card" data-source-route="GOVERNANCE_REVIEW">
+            <div class="handoff-card-head"><span>tuition_equity_privacy_2026</span><span class="library-type">Governance review</span></div>
+            <p class="case-kicker">Presidents&#x27; Alliance · Privacy / data governance</p>
+            <h2>Protecting Tuition Equity: A Playbook for State Coalitions and Higher Education Institutions</h2>
+            <dl class="handoff-meta">
+              <div><dt>Expected trigger</dt><dd>New privacy, tuition-equity, or data-minimization guidance changes recommended collection, handling, disclosure, or retention practice.</dd></div>
+              <div><dt>Escalate to methodology review when</dt><dd>A guidance change also changes population/source definitions or the interpretation of an analytical field.</dd></div>
+              <div><dt>Review a new research question when</dt><dd>A governance change materially expands or constrains what data can be used for a research question, requiring the question or method to be reframed.</dd></div>
+              <div><dt>Affected surface</dt><dd>Data governance; public release register; partner-data handling boundary</dd></div>
+              <div><dt>Boundary</dt><dd>Do not collect person-level immigration-status data merely because a research question concerns immigrant or undocumented students.</dd></div>
+            </dl>
+            <a class="crosswalk-source" href="https://www.presidentsalliance.org/wp-content/uploads/2026/01/Protecting-Tuition-Equity-A-Playbook-for-State-Coalitions-and-Higher-Education-Institutions-FINAL.pdf" target="_blank" rel="noopener">Open maintained source</a>
+          </article></div></div></section>
+    <section class="section shell"><div class="section-heading compact"><p class="eyebrow">R07 outcome</p><h2>Refresh, review methodology, or open a question for a stated reason.</h2></div><div class="method-grid"><article><h3>Routine refresh</h3><p>Use for method-equivalent new IPEDS, benchmark, and recurring-report vintages. Reconciliation and publication QA still apply.</p></article><article><h3>Methodology review</h3><p>Use when definitions, models, denominators, geography, schema, or timing change. Preserve a vintage break rather than splicing incompatible segments.</p></article><article><h3>Research-question review</h3><p>Use when new population/geography coverage makes a held question feasible or a material same-method conclusion shift changes the decision need.</p></article><article><h3>Governance review</h3><p>Use when privacy, handling, or release guidance changes. Do not expand sensitive-data collection by default.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/source_update_triage.csv">Download triage CSV</a><a class="button button-secondary" href="downloads/source_update_triage.md">Download routing note</a></div></section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Source Update Triage · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>
