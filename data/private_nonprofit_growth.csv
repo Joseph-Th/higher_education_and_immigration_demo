@@ -898,7 +898,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 195128,Russell Sage College,NY,NY,Private nonprofit in both endpoints,19,14,-5,2,-7,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 195155,St Bernard's School of Theology and Ministry,NY,NY,Private nonprofit in both endpoints,0,4,4,0,4,none,,not high-priority in latest release queue,618,0.0,99.85,Other positive contributors
 195164,St Bonaventure University,NY,NY,Private nonprofit in both endpoints,42,118,76,67,9,none,,not high-priority in latest release queue,198,0.06,91.93,Other positive contributors
-195173,St. Francis College,NY,NY,Private nonprofit in both endpoints,125,3011,2886,99,2787,high,hold_for_confirmation,hold_for_confirmation,10,2.1,34.53,Top 10 positive contributors
+195173,St. Francis College,NY,NY,Private nonprofit in both endpoints,125,3011,2886,99,2787,high,safe_with_context,safe_with_context,10,2.1,34.53,Top 10 positive contributors
 195191,St. Joseph's College of Nursing,NY,NY,Private nonprofit in both endpoints,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 195216,St Lawrence University,NY,NY,Private nonprofit in both endpoints,205,215,10,10,0,none,,not high-priority in latest release queue,512,0.01,99.36,Other positive contributors
 195234,The College of Saint Rose,NY,,Left private-nonprofit endpoint universe,231,0,-231,-73,-158,high,safe_with_context,safe_with_context,,,,Nonpositive contribution

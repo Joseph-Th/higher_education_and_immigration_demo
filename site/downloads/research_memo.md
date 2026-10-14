@@ -2,7 +2,7 @@
 
 **Latest data:** Fall 2024 (provisional)  
 **Universe:** degree-granting institutions in the IPEDS First Look/Digest Title IV universe, 50 states + DC  
-**QA review date:** 2026-10-13
+**QA review date:** 2026-10-14
 
 ## Bottom line
 
@@ -18,7 +18,7 @@ From 2023 to 2024, U.S. nonresident enrollment increased **+29,539 (+2.9%)**. Un
 
 ## Analyst judgment changes what gets published
 
-The automated queue identified **27 high-priority** latest-release records. The manual review layer now covers **27/27** of them: **6** are safe to discuss with explicit context and **21** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.
+The automated queue identified **27 high-priority** latest-release records. The manual review layer now covers **27/27** of them: **9** are safe to discuss with explicit context and **18** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.
 
 ### Hold the anomaly: University of the Cumberlands
 

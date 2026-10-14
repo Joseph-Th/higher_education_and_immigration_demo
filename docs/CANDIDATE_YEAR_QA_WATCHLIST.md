@@ -11,7 +11,7 @@ This pre-release watchlist combines the current 2023-2024 high/medium institutio
 - **Current medium + candidate directory overlaps:** 5
 - **Unique union:** 27 + 50 + 154 - 5 = **226**
 
-The existing high-priority evidence review remains **6 safe with context / 21 held for confirmation**, and the medium-priority evidence review remains **5 safe with context / 45 held**, for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
+The existing high-priority evidence review remains **9 safe with context / 18 held for confirmation**, and the medium-priority evidence review remains **5 safe with context / 45 held**, for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
 
 ## Medium-priority rows that also changed in the candidate directory
 
@@ -38,9 +38,9 @@ The first ten rows below are ordered by absolute current latest-release change. 
 | Trine University-Regional/Non-Traditional Campuses | IN | +1,441 | Safe with context |
 | Campbellsville University | KY | -1,358 | Hold for confirmation |
 | The University of Texas at Dallas | TX | -1,225 | Hold for confirmation |
-| St. Francis College | NY | +1,220 | Hold for confirmation |
+| St. Francis College | NY | +1,220 | Safe with context |
 | Community College of Rhode Island | RI | +1,176 | Hold for confirmation |
-| University of North Texas | TX | -1,052 | Hold for confirmation |
+| University of North Texas | TX | -1,052 | Safe with context |
 
 ## Candidate-directory-only rows with the largest current exposure
 

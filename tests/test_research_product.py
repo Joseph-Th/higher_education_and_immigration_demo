@@ -388,7 +388,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_unitid["414878"]["narrative_gate"], "safe_with_context")
         self.assertEqual(by_unitid["156541"]["narrative_gate"], "hold_for_confirmation")
         self.assertEqual(by_unitid["179894"]["narrative_gate"], "safe_with_context")
-        self.assertEqual(by_unitid["195173"]["narrative_gate"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["195173"]["narrative_gate"], "safe_with_context")
         self.assertEqual(
             by_unitid["488679"]["endpoint_status"],
             "Entered private-nonprofit endpoint universe",
@@ -524,6 +524,8 @@ class ResearchProductTests(unittest.TestCase):
         q01 = next(row for row in handoff if row["claim_id"] == "Q01")
         resolution = json.loads((ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8"))
         self.assertIn(str(resolution["reviewed_count"]), q01["public_copy"])
+        self.assertIn("9 safe with context", q01["public_copy"])
+        self.assertIn("18 held for confirmation", q01["public_copy"])
         self.assertEqual(q01["publication_status"], "READY WITH CLAIM-LEVEL HOLDS")
         q02 = next(row for row in handoff if row["claim_id"] == "Q02")
         self.assertIn("226 unique UNITIDs", q02["public_copy"])
@@ -635,7 +637,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(html.count('data-readiness-gate="'), 8)
         self.assertIn("READY_WITH_CLAIM_LEVEL_HOLDS", html)
         self.assertIn("HOLD_YEAR_ADVANCE", html)
-        self.assertIn("66</strong><span>institution-specific claims still held", html)
+        self.assertIn("63</strong><span>institution-specific claims still held", html)
 
     def test_freshness_monitor_preserves_release_gate_and_trigger_boundaries(self) -> None:
         snapshot = json.loads(
@@ -916,7 +918,7 @@ class ResearchProductTests(unittest.TestCase):
         high = [row for row in watchlist if row["current_review_priority"] == "high"]
         self.assertEqual(
             Counter(row["high_priority_publication_class"] for row in high),
-            Counter({"hold_for_confirmation": 21, "safe_with_context": 6}),
+            Counter({"hold_for_confirmation": 18, "safe_with_context": 9}),
         )
         medium = [row for row in watchlist if row["current_review_priority"] == "medium"]
         self.assertTrue(all(not row["high_priority_publication_class"] for row in medium))
@@ -1591,8 +1593,8 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(summary["coverage_pct"], 100.0)
         self.assertTrue(summary["required_high_priority_covered"])
         self.assertEqual(set(summary["required_high_priority_unitids"]), {row["unitid"] for row in high_priority})
-        self.assertEqual(summary["safe_with_context"], 6)
-        self.assertEqual(summary["hold_for_confirmation"], 21)
+        self.assertEqual(summary["safe_with_context"], 9)
+        self.assertEqual(summary["hold_for_confirmation"], 18)
         self.assertTrue(summary["required_top_10_covered"])
         expected_top_10 = [
             row["unitid"]
@@ -1621,6 +1623,23 @@ class ResearchProductTests(unittest.TestCase):
             self.assertEqual(queue[row["unitid"]]["institution"], row["institution"])
             self.assertIn(row["publication_class"], {"safe_with_context", "hold_for_confirmation"})
             self.assertTrue(row["evidence_url"].startswith("https://"))
+        by_unitid = {row["unitid"]: row for row in log}
+        self.assertEqual(by_unitid["227216"]["publication_class"], "safe_with_context")
+        self.assertEqual(by_unitid["227216"]["disposition"], "corroborated_external_count")
+        self.assertIn("institutionalresearch.unt.edu/fact-book", by_unitid["227216"]["evidence_url"])
+        self.assertEqual(by_unitid["137564"]["disposition"], "external_scope_mismatch")
+        self.assertIn("fact-book/2024-25", by_unitid["137564"]["evidence_url"])
+        self.assertIn("Fall-Semester-2024-Enrollment-Statistics.pdf", by_unitid["101912"]["evidence_url"])
+        self.assertIn("historic-enrollment", by_unitid["217633"]["evidence_url"])
+        self.assertEqual(by_unitid["159647"]["publication_class"], "safe_with_context")
+        self.assertEqual(by_unitid["159647"]["disposition"], "corroborated_direction")
+        self.assertIn("six-year-enrollment-milestone", by_unitid["159647"]["evidence_url"])
+        self.assertEqual(by_unitid["228787"]["disposition"], "partial_component_corroboration")
+        self.assertIn("report44675", by_unitid["228787"]["evidence_url"])
+        self.assertIn("cds-2023-2024-collin-college.pdf", by_unitid["247834"]["evidence_url"])
+        self.assertEqual(by_unitid["195173"]["publication_class"], "safe_with_context")
+        self.assertEqual(by_unitid["195173"]["disposition"], "corroborated_external_count")
+        self.assertIn("office-of-institutional-effectiveness-accreditation", by_unitid["195173"]["evidence_url"])
         rendered = (ROOT / "docs" / "QA_RESOLUTION_LOG.md").read_text(encoding="utf-8")
         qa_html = (ROOT / "site" / "qa-review.html").read_text(encoding="utf-8")
         for row in log:

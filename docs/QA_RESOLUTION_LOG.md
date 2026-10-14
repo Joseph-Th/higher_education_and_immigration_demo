@@ -7,40 +7,40 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **6** are safe to discuss with explicit context.
-- **21** remain held for institution-specific interpretation.
+- **9** are safe to discuss with explicit context.
+- **18** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
-- Latest review date: **2026-10-13**.
+- Latest review date: **2026-10-14**.
 
 ## Dispositions
 
 | Institution | State | Change | Disposition | Publication decision | Evidence |
 | --- | --- | ---: | --- | --- | --- |
 | University of the Cumberlands | KY | +4,616 | unresolved_discontinuity | hold_for_confirmation | [University of the Cumberlands international-student information](https://www.ucumberlands.edu/admissions/international-students) |
-| Collin County Community College District | TX | +2,256 | unresolved_large_change | hold_for_confirmation | [Collin College International Student Office](https://www.collin.edu/international-student/) |
+| Collin County Community College District | TX | +2,256 | unresolved_large_change | hold_for_confirmation | [Collin College Common Data Set 2023-2024](https://www.collin.edu/about/statistics/pdf_common_data_set/cds-2023-2024-collin-college.pdf) |
 | Broward College | FL | +2,005 | context_support_only | hold_for_confirmation | [Broward College international-student services](https://www.broward.edu/international/students/) |
 | Miami Dade College | FL | +1,458 | context_support_only | hold_for_confirmation | [Miami Dade College International Students](https://www.mdc.edu/internationalstudents/) |
 | Trine University-Regional/Non-Traditional Campuses | IN | +1,441 | corroborated_direction | safe_with_context | [Trine University fall 2024 record-enrollment announcement](https://www.trine.edu/news/2024/record-enrollment.aspx) |
 | Campbellsville University | KY | -1,358 | corroborated_baseline | hold_for_confirmation | [Campbellsville University President's Report 2024](https://www.campbellsville.edu/alumni/alumni-media/CU%20Presidents%20Report%202024_webfile.pdf) |
-| The University of Texas at Dallas | TX | -1,225 | external_scope_mismatch | hold_for_confirmation | [UT Dallas international recruitment report](https://news.utdallas.edu/campus-community/new-office-in-india-2023/) |
-| St. Francis College | NY | +1,220 | context_support_only | hold_for_confirmation | [St. Francis College history and mission](https://www.sfc.edu/why-sfc/history-and-mission) |
+| The University of Texas at Dallas | TX | -1,225 | partial_component_corroboration | hold_for_confirmation | [UT Dallas Common Data Set 2024-2025](https://dox.utdallas.edu/report44675) |
+| St. Francis College | NY | +1,220 | corroborated_external_count | safe_with_context | [St. Francis College institutional census archive](https://www.sfc.edu/why-sfc/office-of-institutional-effectiveness-accreditation/) |
 | Community College of Rhode Island | RI | +1,176 | unresolved_discontinuity | hold_for_confirmation | [Community College of Rhode Island 2024 international-student information](https://www.ccri.edu/onestop/admissions/international/inappak.pdf) |
-| University of North Texas | TX | -1,052 | external_scope_mismatch | hold_for_confirmation | [University of North Texas International Student Services](https://international.unt.edu/international-students/) |
+| University of North Texas | TX | -1,052 | corroborated_external_count | safe_with_context | [University of North Texas Fall fact-sheet archive](https://institutionalresearch.unt.edu/fact-book/index.html) |
 | Webster University | MO | +1,020 | corroborated_external_count | safe_with_context | [Webster University November 2024 international-enrollment report](https://news.webster.edu/2024/webster_ranked_for_international_students_2024.php) |
 | Sofia University | CA | +930 | unresolved_discontinuity | hold_for_confirmation | [Sofia University F-1 International Students](https://www.sofia.edu/admissions/international-students-2/) |
 | Avila University | MO | +850 | corroborated_direction | safe_with_context | [Avila University reflection on Fall 2024 international recruitment](https://www.avila.edu/2025/07/29/three-years-at-avila-reflections-on-leadership-and-transformation-3/) |
-| Southeastern University | FL | +706 | context_support_only | hold_for_confirmation | [Southeastern University Fall 2024 record-enrollment announcement](https://seu.edu/news/admission/a-record-breaking-year-in-university-enrollment/) |
+| Southeastern University | FL | +706 | external_scope_mismatch | hold_for_confirmation | [Southeastern University 2024-25 Fact Book](https://seu.edu/about/fact-book/2024-25/) |
 | Belhaven University | MS | +470 | context_support_only | hold_for_confirmation | [Belhaven University international programs](https://www.belhaven.edu/international/) |
-| Louisiana Tech University | LA | +342 | context_support_only | hold_for_confirmation | [Louisiana Tech international undergraduate admissions](https://www.latech.edu/student-life/international-affairs/undergaduate-admissions.php) |
+| Louisiana Tech University | LA | +342 | corroborated_direction | safe_with_context | [Louisiana Tech Fall 2024 enrollment announcement](https://www.latech.edu/news/louisiana-tech-celebrates-six-year-enrollment-milestone-and-record-setting-freshman-class.php) |
 | Cumberland University | TN | +306 | context_support_only | hold_for_confirmation | [Cumberland University International Student Services](https://admissions.cumberland.edu/portal/international-student) |
 | Oakton College | IL | +299 | unresolved_discontinuity | hold_for_confirmation | [Oakton College international student admissions](https://www.oakton.edu/admissions/apply-to-oakton/international-student/) |
 | Polk State College | FL | +288 | context_support_only | hold_for_confirmation | [Polk State College international and visa students](https://www.polk.edu/admission-aid/international-students/) |
 | Norfolk State University | VA | +278 | context_support_only | hold_for_confirmation | [Norfolk State University international student services](https://www.nsu.edu/international) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
-| Oakwood University | AL | -192 | unresolved_status_change | hold_for_confirmation | [Oakwood University international applicant policy](https://catalog.oakwood.edu/admission-of-international-applicants) |
+| Oakwood University | AL | -192 | unresolved_status_change | hold_for_confirmation | [Oakwood University Fall 2024 Enrollment Statistics](https://oakwood.edu/wp-content/uploads/Fall-Semester-2024-Enrollment-Statistics.pdf) |
 | Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global international admissions definition](https://csuglobal.edu/admissions/international-students) |
 | California Institute of Advanced Management | CA | +179 | context_support_only | hold_for_confirmation | [California Institute of Advanced Management international students](https://ciam.edu/international-students/) |
-| Anderson University | SC | -176 | unresolved_discontinuity | hold_for_confirmation | [Anderson University South Carolina international student services](https://andersonuniversity.edu/academics/center-for-global-engagement/international-students/) |
+| Anderson University | SC | -176 | unresolved_discontinuity | hold_for_confirmation | [Anderson University Fall 2024 enrollment and International Graduate School announcement](https://andersonuniversity.edu/news/historic-enrollment-major-transformation-underway-at-anderson-university/) |
 | Reformed University | GA | -130 | confirmed_classification_change | safe_with_context | [Reformed University accreditation and authorization](https://www.runiv.edu/aboutru/main/accreditation) |
 | The College of Saint Rose | NY | -115 | expected_structural_change | safe_with_context | [New York State Education Department closure record](https://www.nysed.gov/college-university-evaluation/closures-degree-granting-institutions) |
 
@@ -58,9 +58,9 @@ IPEDS reports 4,226 U.S. nonresident students in 2022, zero in 2023, and 4,616 i
 
 **Automated trigger:** absolute change is at least 1,000 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 433 to 2,689 U.S. nonresident students in one year. Collin College clearly operates an F-1/international-student program, but the reviewed public page does not provide a directly comparable annual headcount. Preserve the source value and hold institution-specific interpretation pending confirmation from a fact book, institutional research office, or revised IPEDS release.
+IPEDS rises from 433 to 2,689 U.S. nonresident students in one year. Collin's official 2023-24 Common Data Set uses the standard nonresident reporting category and reports 604 total undergraduate nonresidents for Fall 2023, already above the project's 433 all-student IPEDS baseline. Because the directly comparable institutional baseline does not reconcile to the project series and no reviewed 2024 like-for-like institutional count resolves the jump, preserve the IPEDS source value in aggregates and keep institution-specific interpretation held.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_large_change` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_large_change` · **Reviewed:** 2026-10-14.
 
 ### Broward College (UNITID 132709)
 
@@ -98,17 +98,17 @@ IPEDS reports 4,408 U.S. nonresident students in fall 2023 and 3,050 in fall 202
 
 **Automated trigger:** absolute change is at least 1,000 students.
 
-IPEDS falls from 6,828 to 5,603 U.S. nonresident students. UT Dallas has published larger 'international student' counts that use different timing and/or scope, including students in other statuses and programs. Those figures are useful context but are not a valid numerical benchmark for EFNRALT. Retain the IPEDS series and avoid treating broader institutional international counts as an exact validation source.
+IPEDS falls from 6,828 to 5,603 U.S. nonresident students. UT Dallas's official 2024-25 Common Data Set uses an IPEDS-aligned nonresident definition and reports 1,205 undergraduate nonresidents, exactly matching the project's 2024 IPEDS undergraduate component. The same source does not provide the corresponding graduate race/ethnicity count needed to reconcile the full 5,603 all-student total or the decline from 2023, so the component is corroborated while the institution-level movement remains held.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
 
 ### St. Francis College (UNITID 195173)
 
 **Automated trigger:** absolute change is at least 1,000 students; percentage change is at least 50% from a baseline of 100+.
 
-IPEDS rises from 1,791 to 3,011 U.S. nonresident students, almost entirely at the graduate level. St. Francis documents its 2022 campus relocation as part of a repositioning for future success and growth and describes a current student body representing more than 70 countries. That supports a broader growth/international context but does not provide a directly comparable annual IPEDS count, so the exact increase remains an analyst-review item.
+IPEDS rises from 1,791 to 3,011 U.S. nonresident students, almost entirely at the graduate level. St. Francis College's official Fall 2023 census reports 242 undergraduate and 1,549 graduate international students, summing exactly to 1,791; its Fall 2024 census reports 221 undergraduate and 2,768 graduate international students, summing to 2,989, within 22 students of the IPEDS total and matching the sharp graduate-driven increase. The institutional label is not assumed definition-identical to IPEDS, so this independently corroborates level and direction for bounded discussion while IPEDS remains the numerical authority.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_external_count` · **Reviewed:** 2026-10-14.
 
 ### Community College of Rhode Island (UNITID 217475)
 
@@ -122,9 +122,9 @@ IPEDS jumps from 12 to 1,188 U.S. nonresident students after years of values bet
 
 **Automated trigger:** absolute change is at least 1,000 students.
 
-IPEDS declines from 8,827 to 7,775 U.S. nonresident students. UNT public pages cite international-student and scholar populations using broader operational definitions, and current pages report figures that are not directly comparable to the IPEDS fall EFNRALT universe. The decline is retained as reported, but outside headcounts should not be used to reconcile it without a definitions crosswalk.
+IPEDS declines from 8,827 to 7,775 U.S. nonresident students. UNT's official Fall 2023 and Fall 2024 fact sheets report Non-Resident Alien ethnicity counts of 8,727 and 7,664, closely matching the IPEDS levels and direction of change; the fact sheets also publish nearby N/R Alien residence totals. The institutional categories are not assumed to be definition-identical to IPEDS, so the evidence clears only bounded discussion of the decline and does not replace the IPEDS series.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-13.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_external_count` · **Reviewed:** 2026-10-14.
 
 ### Webster University (UNITID 179894)
 
@@ -154,9 +154,9 @@ IPEDS rises from 202 to 1,052 U.S. nonresident students from 2023 to 2024, almos
 
 **Automated trigger:** absolute change is at least 500 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 204 to 910 U.S. nonresident students while total fall enrollment increases from 10,400 to 11,510. Southeastern independently reported record Fall 2024 enrollment and an 11.7% overall increase, which supports a broad growth context, but the announcement does not provide a directly comparable U.S. nonresident count. Retain the IPEDS value in aggregates and avoid attributing the increase specifically to international recruitment without a matching institutional series.
+IPEDS rises from 204 to 910 U.S. nonresident students. Southeastern's Office of Data & Analytics 2024-25 Fact Book publishes an institution-defined International Enrollment view whose country-level population is materially smaller than the 910 IPEDS value. That direct institutional evidence indicates a population or scope mismatch rather than numerical corroboration. Retain the IPEDS value in aggregates and keep the institution-specific increase held until a like-for-like reporting definition is reconciled.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-14.
 
 ### Belhaven University (UNITID 175421)
 
@@ -170,9 +170,9 @@ IPEDS rises from 258 to 728 U.S. nonresident students, with graduate enrollment 
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 209 to 551 U.S. nonresident students, with undergraduate enrollment increasing from 124 to 351. Louisiana Tech maintains a dedicated Office of International Affairs and international admissions pathway, but the reviewed institutional material does not provide a Fall 2024 population matching the IPEDS definition. The direction is plausible context only; the exact change remains held for institution-specific publication.
+IPEDS rises from 209 to 551 U.S. nonresident students, with undergraduate enrollment increasing from 124 to 351. Louisiana Tech's September 2024 Fall enrollment announcement reports 12,039 total students and explicitly states that international-student enrollment grew alongside transfer, master's, and doctoral populations. The announcement does not publish a like-for-like U.S. nonresident count, so it corroborates direction only; the IPEDS series remains the numerical authority for bounded discussion.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_direction` · **Reviewed:** 2026-10-14.
 
 ### Cumberland University (UNITID 219949)
 
@@ -218,9 +218,9 @@ IPEDS rises from 105 to 369 U.S. nonresident students in 2024, primarily among u
 
 **Automated trigger:** percentage change is at least 100% from a baseline of 100+.
 
-IPEDS falls from 192 U.S. nonresident students in 2023 to zero in 2024 while the source-status flag changes from reported (`R`) to zero (`Z`). Oakwood's current catalog continues to document authorization and procedures for nonimmigrant students. Because the external evidence does not support interpreting the 2024 zero as a verified disappearance of the international population, retain the aggregate source value but hold institution-specific narrative pending confirmation.
+IPEDS falls from 192 U.S. nonresident students in 2023 to zero in 2024 while the source-status flag changes from reported (R) to zero (Z). Oakwood's Office of Institutional Effectiveness Fall 2024 Enrollment Statistics reports 181 Nonresident Alien students out of 1,226 total enrollment. That direct institutional count conflicts with reading the IPEDS zero as a substantive disappearance, so retain the official IPEDS value in aggregates but keep institution-specific narrative held until the reporting or status difference is reconciled.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_status_change` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_status_change` · **Reviewed:** 2026-10-14.
 
 ### Colorado State University Global (UNITID 476975)
 
@@ -242,9 +242,9 @@ IPEDS rises from 159 to 338 U.S. nonresident graduate students while total enrol
 
 **Automated trigger:** percentage change is at least 100% from a baseline of 100+.
 
-IPEDS reports zero U.S. nonresident students in 2022, 176 in 2023, and zero again in 2024, with the 2023 and 2024 values both marked reported. Anderson University maintains active international undergraduate and graduate support, so the alternating zero/nonzero pattern cannot be treated as a straightforward disappearance of international students. Preserve the official series in aggregates and hold institution-specific interpretation pending a directly comparable source.
+IPEDS reports zero U.S. nonresident students in 2022, 176 in 2023, and zero again in 2024, with the 2023 and 2024 values both marked reported. Anderson University's August 2024 enrollment announcement reports 4,519 total students and the Fall 2024 launch of an International Graduate School offering three master's programs to international students. That contemporaneous institutional evidence does not provide a comparable headcount but makes a literal disappearance interpretation untenable; preserve the IPEDS series in aggregates and keep the institution-specific movement held pending reconciliation.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_discontinuity` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_discontinuity` · **Reviewed:** 2026-10-14.
 
 ### Reformed University (UNITID 490230)
 
