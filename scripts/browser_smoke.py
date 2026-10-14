@@ -262,7 +262,7 @@ def inspect_qa_review(browser, base_url: str, *, width: int, height: int) -> Non
     if response is None or not response.ok:
         raise AssertionError(f"QA review page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("27/27", "9", "18", "100%"):
+    for expected in ("27/27", "10", "17", "100%"):
         if expected not in summary:
             raise AssertionError(f"QA review summary is missing {expected}")
     table = page.locator(".section-tinted tbody")
@@ -415,7 +415,7 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
     if hero.get_attribute("data-year-decision") != "HOLD_YEAR_ADVANCE":
         raise AssertionError("Release readiness year-advance machine decision is incorrect")
     summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("READY WITH CLAIM-LEVEL HOLDS", "HOLD YEAR ADVANCE", "63", "2/4"):
+    for expected in ("READY WITH CLAIM-LEVEL HOLDS", "HOLD YEAR ADVANCE", "62", "2/4"):
         if expected not in summary:
             raise AssertionError(f"Release readiness summary is missing {expected}")
     gate_text = page.locator("#readiness-gates").inner_text()

@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **9** are safe to discuss with explicit context.
-- **18** remain held for institution-specific interpretation.
+- **10** are safe to discuss with explicit context.
+- **17** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-14**.
 
@@ -30,10 +30,10 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Sofia University | CA | +930 | unresolved_discontinuity | hold_for_confirmation | [Sofia University F-1 International Students](https://www.sofia.edu/admissions/international-students-2/) |
 | Avila University | MO | +850 | corroborated_direction | safe_with_context | [Avila University reflection on Fall 2024 international recruitment](https://www.avila.edu/2025/07/29/three-years-at-avila-reflections-on-leadership-and-transformation-3/) |
 | Southeastern University | FL | +706 | external_scope_mismatch | hold_for_confirmation | [Southeastern University 2024-25 Fact Book](https://seu.edu/about/fact-book/2024-25/) |
-| Belhaven University | MS | +470 | context_support_only | hold_for_confirmation | [Belhaven University international programs](https://www.belhaven.edu/international/) |
+| Belhaven University | MS | +470 | corroborated_external_count | safe_with_context | [Belhaven University Fall 2024 Tartan enrollment summary](https://www.belhaven.edu/pdfs/archived/tartan-2024.pdf) |
 | Louisiana Tech University | LA | +342 | corroborated_direction | safe_with_context | [Louisiana Tech Fall 2024 enrollment announcement](https://www.latech.edu/news/louisiana-tech-celebrates-six-year-enrollment-milestone-and-record-setting-freshman-class.php) |
 | Cumberland University | TN | +306 | context_support_only | hold_for_confirmation | [Cumberland University International Student Services](https://admissions.cumberland.edu/portal/international-student) |
-| Oakton College | IL | +299 | unresolved_discontinuity | hold_for_confirmation | [Oakton College international student admissions](https://www.oakton.edu/admissions/apply-to-oakton/international-student/) |
+| Oakton College | IL | +299 | confirmed_reporting_discontinuity | hold_for_confirmation | [Oakton College Fall 2022-2026 Enrollment Comparison Report](https://www.oakton.edu/_pdfs/research-and-planning/fall_2022-fall_2026_enrollment_comparison_report.pdf) |
 | Polk State College | FL | +288 | context_support_only | hold_for_confirmation | [Polk State College international and visa students](https://www.polk.edu/admission-aid/international-students/) |
 | Norfolk State University | VA | +278 | context_support_only | hold_for_confirmation | [Norfolk State University international student services](https://www.nsu.edu/international) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
@@ -162,9 +162,9 @@ IPEDS rises from 204 to 910 U.S. nonresident students. Southeastern's Office of 
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 258 to 728 U.S. nonresident students, with graduate enrollment accounting for nearly all of the increase. Belhaven publicly describes international on-campus, hybrid graduate, and online programs and dedicated international support, making a growing international presence plausible, but the reviewed page does not provide a comparable Fall 2024 headcount. Keep the source value in aggregates and hold the exact institution-level movement for confirmation.
+IPEDS rises from 258 to 728 U.S. nonresident students, with graduate enrollment accounting for nearly all of the increase and 705 graduate U.S. nonresidents in 2024. Belhaven's official Fall 2024 Tartan reports about 4,100 students overall and 600 international students studying at the graduate level in the U.S.; it separately reports 100 doctoral students in China. The 600 U.S.-based international graduate students closely corroborate the scale and graduate concentration of the IPEDS movement, while the separate China cohort shows why the institutional categories are not assumed definition-identical. Clear only bounded discussion of the increase and retain IPEDS as the numerical authority.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_external_count` · **Reviewed:** 2026-10-14.
 
 ### Louisiana Tech University (UNITID 159647)
 
@@ -186,9 +186,9 @@ IPEDS rises from 285 to 591 U.S. nonresident students, driven primarily by gradu
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS reports zero U.S. nonresident students in 2020-2022, then 167 in 2023 and 466 in 2024. Oakton's official materials document an established F-1 international-admissions process, but they do not explain the earlier zeros or quantify the reported increase. The pattern is consistent with a possible reporting or classification discontinuity, so the official values remain in aggregates while institution-specific interpretation is held.
+IPEDS reports zero U.S. nonresident students in 2020-2022, then 167 in 2023 and 466 in 2024. Oakton's current official Fall 2022-2026 enrollment report instead shows an International/Non-Resident population of 303 in 2022, 311 in 2023, and 352 in 2024. That direct institutional series confirms that the IPEDS zero/nonzero history and one-year magnitude cannot be read as a literal emergence of the underlying population. Because the institutional category and counts do not reconcile numerically to IPEDS, preserve the IPEDS series in aggregates and keep the institution-specific movement held as a reporting/scope discontinuity.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_discontinuity` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `confirmed_reporting_discontinuity` · **Reviewed:** 2026-10-14.
 
 ### Polk State College (UNITID 136516)
 
