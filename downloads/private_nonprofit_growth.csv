@@ -461,7 +461,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 156286,Bellarmine University,KY,KY,Private nonprofit in both endpoints,37,73,36,25,11,none,,not high-priority in latest release queue,317,0.03,96.57,Other positive contributors
 156295,Berea College,KY,KY,Private nonprofit in both endpoints,127,141,14,14,0,none,,not high-priority in latest release queue,452,0.01,98.85,Other positive contributors
 156356,Brescia University,KY,KY,Private nonprofit in both endpoints,9,43,34,34,0,none,,not high-priority in latest release queue,324,0.02,96.75,Other positive contributors
-156365,Campbellsville University,KY,KY,Private nonprofit in both endpoints,239,3050,2811,87,2724,high,hold_for_confirmation,hold_for_confirmation,11,2.04,36.57,Positive contributors 11-25
+156365,Campbellsville University,KY,KY,Private nonprofit in both endpoints,239,3050,2811,87,2724,high,safe_with_context,safe_with_context,11,2.04,36.57,Positive contributors 11-25
 156408,Centre College,KY,KY,Private nonprofit in both endpoints,102,57,-45,-45,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 156417,Clear Creek Baptist Bible College,KY,KY,Private nonprofit in both endpoints,2,0,-2,-2,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 156541,University of the Cumberlands,KY,KY,Private nonprofit in both endpoints,226,4616,4390,42,4348,high,hold_for_confirmation,hold_for_confirmation,5,3.19,22.39,Top 10 positive contributors
