@@ -447,7 +447,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 52)
+        self.assertEqual(len(release_rows), 54)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -456,15 +456,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 102)
-        self.assertEqual(validate_public_tree(release_rows), 102)
+        self.assertEqual(len(pairs), 104)
+        self.assertEqual(validate_public_tree(release_rows), 104)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 102", rendered)
+        self.assertIn("Expanded public download files:** 104", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("102</strong><span>expanded public download files", html)
+        self.assertIn("104</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -482,7 +482,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 102)
+        self.assertEqual(validate_public_tree(release_rows), 104)
 
     def test_freshness_monitor_preserves_release_gate_and_trigger_boundaries(self) -> None:
         snapshot = json.loads(
@@ -643,10 +643,55 @@ class ResearchProductTests(unittest.TestCase):
         r02 = next(row for row in agenda if row["research_id"] == "R02")
         self.assertEqual(r02["status"], "Implemented in state recovery analysis")
         self.assertEqual(r02["proposed_output"], "State recovery decomposition brief")
+        r07 = next(row for row in agenda if row["research_id"] == "R07")
+        self.assertEqual(r07["status"], "Implemented as source-update triage register")
+        self.assertEqual(r07["proposed_output"], "Source-update triage register and routing note")
         rendered = (ROOT / "docs" / "RESEARCH_AGENDA.md").read_text(encoding="utf-8")
         for row in agenda:
             self.assertIn(row["research_id"], rendered)
             self.assertIn(row["question"], rendered)
+
+    def test_source_update_triage_covers_library_and_routes_material_changes(self) -> None:
+        library = rows(ROOT / "data" / "research_library.csv")
+        triage = rows(ROOT / "data" / "source_update_triage.csv")
+        self.assertEqual(len(library), 15)
+        self.assertEqual(len(triage), 15)
+        self.assertEqual(
+            {row["resource_id"] for row in triage},
+            {row["resource_id"] for row in library},
+        )
+        counts = Counter(row["baseline_route"] for row in triage)
+        self.assertEqual(counts["ROUTINE_REFRESH"], 8)
+        self.assertEqual(counts["METHODOLOGY_REVIEW"], 3)
+        self.assertEqual(counts["RESEARCH_QUESTION_REVIEW"], 1)
+        self.assertEqual(counts["GOVERNANCE_REVIEW"], 1)
+        self.assertEqual(counts["MONITOR_ONLY"], 1)
+        self.assertEqual(counts["ARCHIVAL_REFERENCE"], 1)
+
+        by_id = {row["resource_id"]: row for row in triage}
+        self.assertEqual(
+            by_id["portal_methodology"]["baseline_route"],
+            "METHODOLOGY_REVIEW",
+        )
+        self.assertEqual(
+            by_id["portal_national_data"]["baseline_route"],
+            "RESEARCH_QUESTION_REVIEW",
+        )
+        self.assertEqual(
+            by_id["tuition_equity_privacy_2026"]["baseline_route"],
+            "GOVERNANCE_REVIEW",
+        )
+        self.assertTrue(all(row["methodology_escalation"].strip() for row in triage))
+        self.assertTrue(all(row["research_question_escalation"].strip() for row in triage))
+
+        rendered = (ROOT / "docs" / "SOURCE_UPDATE_TRIAGE.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "source-update-triage.html").read_text(encoding="utf-8")
+        self.assertIn("15/15 resources", rendered)
+        self.assertIn("Inferred deadlines:** 0", rendered)
+        self.assertIn("newer file or publication date alone", rendered)
+        self.assertEqual(html.count('data-source-route="'), 15)
+        self.assertIn("0 inferred deadlines", html)
+        self.assertIn("not the Presidents' Alliance's internal refresh schedule", html)
 
     def test_population_crosswalk_is_structured_and_rendered(self) -> None:
         crosswalk = rows(ROOT / "data" / "population_crosswalk.csv")
@@ -1105,10 +1150,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 102)
+        self.assertEqual(len(pairs), 104)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 102)
+        self.assertEqual(validate_public_tree(release_rows), 104)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -1124,6 +1169,7 @@ class ResearchProductTests(unittest.TestCase):
             "private-nonprofit-growth.html",
             "qa-review.html",
             "population-trends.html",
+            "source-update-triage.html",
             "planning-scenarios.html",
             "freshness-monitor.html",
             "research-library.html",

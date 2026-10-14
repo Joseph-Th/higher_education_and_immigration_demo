@@ -50,6 +50,12 @@ This separate online lane checks every URL in `data/research_library.csv`, follo
 
 The Research Library also records population/topic tags and research workflow stage. Those fields are publication metadata, not inferred population equivalences: when a methodology changes, review the tag and workflow role deliberately rather than allowing the public filter taxonomy to imply comparability.
 
+## Source-change triage
+
+`data/source_update_triage.csv` is the R07 routing layer for the maintained Research Library. Run `python scripts/build_source_update_triage.py` after changing the library or when a source update is being assessed. The build requires every maintained `resource_id` to appear exactly once and separates the expected next action from escalation conditions.
+
+The decision order is deliberate: metadata-only changes update the catalog; same-method new values can enter routine refresh controls; definition/model/denominator/schema/geography/timing changes require methodology review; new coverage or material same-method conclusion shifts can trigger a research-question review; privacy/handling/release-rule changes go to governance review. A public publication date is a signal to review, not evidence of an internal deadline or permission to change a public conclusion.
+
 Do not advance `END_YEAR` merely because a directory file exists. The recurring analysis is ready to advance only when the Fall Enrollment data and its dictionary are available and pass the schema review.
 
 ## Recurring research-product operations

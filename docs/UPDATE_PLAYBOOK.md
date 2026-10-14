@@ -44,6 +44,8 @@ Do not overwrite an unexplained source change. If NCES replaces a file at the sa
 
 If the new release changes a source URL, resource title, update pattern, or status note, update `data/research_library.csv` and its `last_checked` date. The normal validation lane regenerates `docs/RESEARCH_LIBRARY.md` and checks the structured metadata.
 
+Then review the matching row in `data/source_update_triage.csv`. A URL/date-only change normally updates metadata without changing analysis; a method-equivalent new vintage can follow the routine refresh path; a definition, denominator, model, schema, geography, timing, privacy, or material-conclusion change must follow the applicable escalation route. Run `python scripts/build_source_update_triage.py` after library or routing changes. The triage register is a portfolio control and must not be used to infer partner deadlines from public release dates.
+
 ## 4. Run the schema audit before analysis
 
 Run:
@@ -141,6 +143,8 @@ Regenerate all state profiles with `python scripts/build_state_profiles.py`. Rev
 
 Review `data/research_agenda.csv` after the new release. Close, reframe, or reprioritize questions whose evidence trigger has changed; add new questions only when the population, decision need, required data, proposed method, and interpretation boundary can be stated explicitly. Regenerate `docs/RESEARCH_AGENDA.md` through the normal validation lane.
 
+Use `data/source_update_triage.csv` before opening a new agenda item from an external publication. New population/geography coverage or a material conclusion shift under stable methods can justify a research-question review; publication date, filename, or title changes alone do not.
+
 Review `data/population_crosswalk.csv` before any companion population comparison. If a Portal/MPI/AIC/SEVIS methodology, vintage, inclusion rule, or geography changed, update the structured row and its `last_checked` date, regenerate the crosswalk, and run `python scripts/check_population_crosswalk.py`. A changed label is not enough to assume the underlying population changed; inspect the source methodology.
 
 For the three recurring partner products, review `data/recurring_report_register.csv` at actual production kickoff. Confirm current partner roles, milestones, delivery format, source vintage, review windows, and sign-off ownership before replacing the guarded schedule language with any operational dates. Use `data/production_cycle_register.csv` as the shared stage gate: do not advance from kickoff, intake, method review, QA, discrepancy resolution, publication, or archive until that stage's required record exists and its exit condition is documented. Copy `data/production_cycle_log_template.csv` into the approved working location for the live cycle and validate populated records with `python scripts/validate_production_cycle_log.py <path> --require-records`; do not place a completed partner log in the public repository merely because the blank template is public. Compare the delivered methodology package with the linked population-crosswalk and Research Library records before treating the cycle as a routine update. Preserve the source package and discrepancy log so the next cycle inherits documented institutional knowledge rather than oral memory.
@@ -183,6 +187,7 @@ An annual update is complete only when:
 - the planning/variance artifact has been regenerated from the refreshed national series, the backtest reconciles, and forward scenarios remain explicitly non-predictive;
 - the PowerPoint deck has been regenerated from the refreshed validated outputs, its source/builder/PPTX hashes are current, and all six slides have been visually inspected;
 - the population/source crosswalk has been re-reviewed when companion-source definitions or vintages changed;
+- the source-update triage register still covers every maintained Research Library resource and the applied route matches the kind of source change observed;
 - the public-release register has been re-reviewed and the exact allowlisted public tree passes with no unregistered files;
 - the PDF source hash matches the current generated research memo and every PDF page has been visually inspected;
 - the rendered site is inspected; and

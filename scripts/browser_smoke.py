@@ -58,6 +58,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/data_governance.md",
         "downloads/research_agenda.md",
         "downloads/research_agenda.csv",
+        "downloads/source_update_triage.csv",
+        "downloads/source_update_triage.md",
         "downloads/population_crosswalk.csv",
         "downloads/population_crosswalk.md",
         "downloads/recurring_report_register.csv",
@@ -319,7 +321,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "52" not in summary or "102" not in summary:
+    if "54" not in summary or "104" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -598,6 +600,42 @@ def inspect_population_trends(browser, base_url: str, *, width: int, height: int
     context.close()
 
 
+def inspect_source_update_triage(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/source-update-triage.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Source update triage failed at {width}px")
+    summary = page.locator(".handoff-hero .handoff-summary").inner_text()
+    for expected in ("15", "8", "3", "4", "0 inferred deadlines"):
+        if expected not in summary:
+            raise AssertionError(f"Source update triage summary is missing {expected}")
+    if page.locator('[data-source-route]').count() != 15:
+        raise AssertionError("Source update triage does not cover all 15 Research Library sources")
+    if page.locator("#routing-rules .handoff-gates li").count() != 5:
+        raise AssertionError("Source update triage does not show the five decision gates")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "not the Presidents' Alliance's internal refresh schedule" not in boundary:
+        raise AssertionError("Source update triage is missing its portfolio/non-affiliation boundary")
+    if page.locator('a[href="downloads/source_update_triage.csv"]').count() != 2:
+        raise AssertionError("Source update triage CSV links are missing")
+    if page.locator('a[href="downloads/source_update_triage.md"]').count() != 1:
+        raise AssertionError("Source update triage Markdown link is missing")
+    if "Routine refresh" not in page.locator("main").inner_text():
+        raise AssertionError("Source update triage is missing the routine-refresh route")
+    if "Methodology review" not in page.locator("main").inner_text():
+        raise AssertionError("Source update triage is missing the methodology-review route")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Source update triage horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Source update triage browser errors: " + " | ".join(errors))
+    context.close()
+
+
 def inspect_research_operations(browser, base_url: str, *, width: int, height: int) -> None:
     context = browser.new_context(viewport={"width": width, "height": height})
     page = context.new_page()
@@ -752,6 +790,8 @@ def main() -> int:
                 inspect_population_crosswalk(browser, base_url, width=390, height=844)
                 inspect_population_trends(browser, base_url, width=1280, height=900)
                 inspect_population_trends(browser, base_url, width=390, height=844)
+                inspect_source_update_triage(browser, base_url, width=1280, height=900)
+                inspect_source_update_triage(browser, base_url, width=390, height=844)
                 inspect_research_operations(browser, base_url, width=1280, height=900)
                 inspect_research_operations(browser, base_url, width=390, height=844)
                 inspect_research_library(browser, base_url, width=1280, height=900)

@@ -477,6 +477,22 @@ Twelve generated population-year rows combining the six canonical IPEDS national
 
 `scripts/build_population_trends.py` validates all external observations and Research Library foreign keys, derives IPEDS rows directly from `national_year.csv`, requires separate undocumented 2019-2021 and 2023-2024 segments, and generates `docs/POPULATION_TREND_COMPARISON.md` plus `site/population-trends.html`. Cross-population counts are contextual only and must not be added, subtracted, or treated as mutually exclusive components.
 
+## `data/source_update_triage.csv`
+
+One row per maintained Research Library resource. The register implements R07 by classifying the expected next source change while preserving explicit escalation conditions.
+
+| Field | Definition |
+| --- | --- |
+| `resource_id` | Foreign key to the complete maintained `data/research_library.csv` source set |
+| `baseline_route` | Expected first route for the source as currently used: `ROUTINE_REFRESH`, `METHODOLOGY_REVIEW`, `RESEARCH_QUESTION_REVIEW`, `GOVERNANCE_REVIEW`, `MONITOR_ONLY`, or `ARCHIVAL_REFERENCE` |
+| `baseline_trigger` | Expected event that starts the baseline route |
+| `methodology_escalation` | Definition, denominator, model, schema, geography, timing, or related condition that stops routine use pending methodology review |
+| `research_question_escalation` | Coverage or same-method conclusion change that justifies opening or reprioritizing an explicit research question |
+| `affected_surface` | Portfolio products or controls that must be reviewed when the source changes |
+| `review_boundary` | Source-specific limit that prevents a new date/file from becoming an automatic analytical conclusion |
+
+`scripts/build_source_update_triage.py` requires exact one-for-one coverage of the Research Library, validates the controlled routes, requires R07 to remain linked to the implemented product, and generates `docs/SOURCE_UPDATE_TRIAGE.md` plus `site/source-update-triage.html`. The routing model does not infer internal partner schedules or approval processes.
+
 ## `data/planning_scenarios.csv`
 
 One backtest row plus three forward planning-scenario rows generated from the validated national series.

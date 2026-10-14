@@ -32,6 +32,7 @@ def main() -> int:
         ("Build QA resolution log", [PYTHON, "scripts/build_qa_resolution_log.py"]),
         ("Build private nonprofit growth analysis", [PYTHON, "scripts/build_private_nonprofit_analysis.py"]),
         ("Build research library", [PYTHON, "scripts/build_research_library.py"]),
+        ("Build source update triage", [PYTHON, "scripts/build_source_update_triage.py"]),
         ("Build population crosswalk", [PYTHON, "scripts/build_population_crosswalk.py"]),
         ("Build population trend comparison", [PYTHON, "scripts/build_population_trends.py"]),
         ("Build recurring report register", [PYTHON, "scripts/build_recurring_report_register.py"]),
