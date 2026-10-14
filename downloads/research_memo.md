@@ -8,7 +8,7 @@
 
 U.S. nonresident enrollment reached **1,044,137** in Fall 2024, **5.31%** of enrollment in the analytic universe. The national count is **+63,400 (+6.5%)** above 2015, but the composition of that growth changed: the decade-level increase was entirely graduate-driven, while the newest annual increase was undergraduate-led.
 
-From 2023 to 2024, U.S. nonresident enrollment increased **+29,539 (+2.9%)**. Undergraduate enrollment increased **+31,592**, while graduate enrollment declined **-2,053**. That one-year reversal is worth monitoring, but it is not yet evidence of a durable trend change.
+From 2023 to 2024, U.S. nonresident enrollment increased **+29,539 (+2.9%)**. Undergraduate enrollment increased **+31,592**, with growth in **45 of 51 states/DC** and **+28,580** contributed by public institutions, while graduate enrollment declined **-2,053**. R01 remains a fixed baseline, not a persistence finding: the next complete release must remain positive nationally and in at least **26 of 51 states/DC** before the project calls the shift broadly persistent.
 
 ## Three findings that matter
 
