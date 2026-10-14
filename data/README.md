@@ -47,6 +47,14 @@ Structured metadata for the external resources used to collect, interpret, valid
 
 R07 source-change routing register covering every `resource_id` in `research_library.csv` exactly once. Each row records the source's expected baseline route, the event that normally starts that route, conditions that escalate to methodology review, conditions that justify reviewing a new research question, the affected portfolio surface, and an interpretation boundary. `scripts/build_source_update_triage.py` fails when library coverage is incomplete or duplicated and generates `docs/SOURCE_UPDATE_TRIAGE.md` plus `site/source-update-triage.html`. Publication dates and URL changes are review signals, not inferred partner deadlines or automatic evidence of a changed conclusion.
 
+## `undocumented_pipeline_reference.csv`
+
+Fixed-vintage R06 public aggregate reference containing one 2023 national row plus ten states with explicit values in both source surfaces. It preserves annual undocumented high-school graduate estimates, undocumented higher-education enrollment estimates, separate Research Library authorities/URLs, and source notes. The file contains no individual records and deliberately distinguishes annual flow from enrollment stock.
+
+## `undocumented_pipeline_comparison.csv`
+
+Generated 10-state ecological comparison built by `scripts/build_undocumented_pipeline.py`. It calculates separate national shares, within-overlap ranks, and a descriptive stock/annual-flow scale multiple, then generates `docs/UNDOCUMENTED_PIPELINE_CONTEXT.md` and `site/undocumented-pipeline.html`. The scale multiple is explicitly not a college-going, transition, persistence, or causal rate.
+
 ## `publication_handoff.csv`
 
 Generated pre-publication claim register. Each row maps reviewer-facing copy to its canonical project authority, field/row locator, maintained Research Library source, QA gate, required disclosure, and publication status. It is not an input to the analysis and does not claim to represent the Presidents' Alliance's internal approval workflow. `scripts/build_publication_handoff.py` regenerates the CSV, `docs/PUBLICATION_HANDOFF.md`, and `site/publication-handoff.html` from validated current outputs.

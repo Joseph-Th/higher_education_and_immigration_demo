@@ -1,0 +1,11 @@
+state,state_name,high_school_graduates_annual_2023,higher_ed_enrollment_2023,hs_national_share_pct,higher_ed_national_share_pct,share_gap_pp,stock_flow_scale_multiple,hs_rank,higher_ed_rank_within_overlap,rank_gap,hs_research_library_id,he_research_library_id,interpretation_gate
+TX,Texas,12000,73379,16.0,14.39,-1.61,6.11,1,2,1,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.
+CA,California,11000,102938,14.67,20.18,5.52,9.36,2,1,-1,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.
+FL,Florida,8000,49356,10.67,9.68,-0.99,6.17,3,3,0,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.
+NY,New York,4000,31452,5.33,6.17,0.83,7.86,4,4,0,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.
+GA,Georgia,3000,17303,4.0,3.39,-0.61,5.77,5,7,2,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.
+IL,Illinois,3000,27672,4.0,5.43,1.43,9.22,5,5,0,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.
+MA,Massachusetts,3000,12519,4.0,2.45,-1.55,4.17,5,9,4,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.
+MD,Maryland,3000,11675,4.0,2.29,-1.71,3.89,5,10,5,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.
+NJ,New Jersey,3000,19420,4.0,3.81,-0.19,6.47,5,6,1,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.
+VA,Virginia,3000,13122,4.0,2.57,-1.43,4.37,5,8,3,undocumented_hs_graduates_2026,portal_top_states_2023,Ecological scale context only; stock/flow multiple is NOT a transition rate.

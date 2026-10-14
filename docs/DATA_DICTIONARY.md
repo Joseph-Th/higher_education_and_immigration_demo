@@ -477,6 +477,32 @@ Twelve generated population-year rows combining the six canonical IPEDS national
 
 `scripts/build_population_trends.py` validates all external observations and Research Library foreign keys, derives IPEDS rows directly from `national_year.csv`, requires separate undocumented 2019-2021 and 2023-2024 segments, and generates `docs/POPULATION_TREND_COMPARISON.md` plus `site/population-trends.html`. Cross-population counts are contextual only and must not be added, subtracted, or treated as mutually exclusive components.
 
+## `data/undocumented_pipeline_reference.csv`
+
+Eleven curated public 2023 aggregate observations used by R06: one national denominator row and ten states with explicit values in both the undocumented high-school-graduate and undocumented higher-education source surfaces. The reference is fixed-vintage provenance, not person-level data. High-school values are annual graduate flows; higher-education values are enrollment stocks.
+
+Key fields include `geography_id`, `coverage_class`, both 2023 estimates, Research Library foreign keys for each measure, exact reviewed source URLs, and a source note. The build requires the two URLs to match their current Research Library authorities and preserves the living Portal state table as captured 2023 evidence rather than allowing a later page update to silently rewrite the comparison.
+
+## `data/undocumented_pipeline_comparison.csv`
+
+Ten generated state rows derived from the fixed R06 reference.
+
+| Field | Definition |
+| --- | --- |
+| `state` / `state_name` | State code and display name for the overlapping 2023 comparison set |
+| `high_school_graduates_annual_2023` | Published rounded annual undocumented high-school graduate flow |
+| `higher_ed_enrollment_2023` | Published undocumented higher-education enrollment stock |
+| `hs_national_share_pct` / `higher_ed_national_share_pct` | Each state value divided by its separate national denominator: 75,000 annual graduates or 510,000 enrolled students |
+| `share_gap_pp` | Higher-education national share minus high-school national share; a geography comparison, not a transition measure |
+| `stock_flow_scale_multiple` | Enrollment stock divided by annual graduate flow, retained only as a descriptive scale ratio and explicitly not a rate |
+| `hs_rank` | Rank among the ten states by annual high-school graduate estimate, using minimum rank for rounded ties |
+| `higher_ed_rank_within_overlap` | Rank among the same ten states by higher-education enrollment |
+| `rank_gap` | Higher-education rank minus high-school rank within the bounded comparison set |
+| `hs_research_library_id` / `he_research_library_id` | Source authorities for each measure |
+| `interpretation_gate` | Row-level reminder that the ecological stock/flow multiple is not a transition rate |
+
+`scripts/build_undocumented_pipeline.py` requires exact 2023 national and state reference values, reconciles the ten-state totals to 53,000 annual graduates and 358,836 higher-education students, validates the 70.7% / 70.4% concentration result, and generates `docs/UNDOCUMENTED_PIPELINE_CONTEXT.md` plus `site/undocumented-pipeline.html`. It does not calculate individual college-going, persistence, completion, or causal policy effects.
+
 ## `data/source_update_triage.csv`
 
 One row per maintained Research Library resource. The register implements R07 by classifying the expected next source change while preserving explicit escalation conditions.

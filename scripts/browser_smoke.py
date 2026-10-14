@@ -60,6 +60,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/research_agenda.csv",
         "downloads/source_update_triage.csv",
         "downloads/source_update_triage.md",
+        "downloads/undocumented_pipeline_comparison.csv",
+        "downloads/undocumented_pipeline_context.md",
         "downloads/population_crosswalk.csv",
         "downloads/population_crosswalk.md",
         "downloads/recurring_report_register.csv",
@@ -321,7 +323,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "54" not in summary or "104" not in summary:
+    if "56" not in summary or "106" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -385,7 +387,7 @@ def inspect_freshness_monitor(browser, base_url: str, *, width: int, height: int
     if page.locator('[data-product-monitor]').count() != 3:
         raise AssertionError("Freshness monitor does not render all three recurring-product triggers")
     summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("2/4", "HOLD YEAR ADVANCE", "15", "3"):
+    for expected in ("2/4", "HOLD YEAR ADVANCE", "17", "3"):
         if expected not in summary:
             raise AssertionError(f"Freshness monitor summary is missing {expected}")
     boundary = page.locator(".handoff-hero .release-note").inner_text()
@@ -610,11 +612,11 @@ def inspect_source_update_triage(browser, base_url: str, *, width: int, height: 
     if response is None or not response.ok:
         raise AssertionError(f"Source update triage failed at {width}px")
     summary = page.locator(".handoff-hero .handoff-summary").inner_text()
-    for expected in ("15", "8", "3", "4", "0 inferred deadlines"):
+    for expected in ("17", "8", "3", "6", "0 inferred deadlines"):
         if expected not in summary:
             raise AssertionError(f"Source update triage summary is missing {expected}")
-    if page.locator('[data-source-route]').count() != 15:
-        raise AssertionError("Source update triage does not cover all 15 Research Library sources")
+    if page.locator('[data-source-route]').count() != 17:
+        raise AssertionError("Source update triage does not cover all 17 Research Library sources")
     if page.locator("#routing-rules .handoff-gates li").count() != 5:
         raise AssertionError("Source update triage does not show the five decision gates")
     boundary = page.locator(".handoff-hero .release-note").inner_text()
@@ -633,6 +635,41 @@ def inspect_source_update_triage(browser, base_url: str, *, width: int, height: 
         raise AssertionError(f"Source update triage horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Source update triage browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_undocumented_pipeline(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/undocumented-pipeline.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Undocumented pipeline context failed at {width}px")
+    summary = page.locator(".handoff-hero .handoff-summary").inner_text()
+    for expected in ("70.7%", "70.4%", "10", "NOT A RATE"):
+        if expected not in summary:
+            raise AssertionError(f"Undocumented pipeline summary is missing {expected}")
+    if page.locator("#state-comparison tbody tr").count() != 10:
+        raise AssertionError("Undocumented pipeline table does not contain ten state rows")
+    if page.locator(".handoff-gates li").count() != 5:
+        raise AssertionError("Undocumented pipeline page does not show all five interpretation gates")
+    main_text = page.locator("main").inner_text()
+    for expected in ("53,000", "358,836", "35,000", "257,125", "11,675", "27,672"):
+        if expected not in main_text:
+            raise AssertionError(f"Undocumented pipeline page is missing {expected}")
+    if "college-going" not in main_text or "transition" not in main_text or "No causal policy test" not in main_text:
+        raise AssertionError("Undocumented pipeline page is missing its non-rate/non-causal boundary")
+    if page.locator('a[href="downloads/undocumented_pipeline_comparison.csv"]').count() != 2:
+        raise AssertionError("Undocumented pipeline CSV links are missing")
+    if page.locator('a[href="downloads/undocumented_pipeline_context.md"]').count() != 1:
+        raise AssertionError("Undocumented pipeline Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Undocumented pipeline horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Undocumented pipeline browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -790,6 +827,8 @@ def main() -> int:
                 inspect_population_crosswalk(browser, base_url, width=390, height=844)
                 inspect_population_trends(browser, base_url, width=1280, height=900)
                 inspect_population_trends(browser, base_url, width=390, height=844)
+                inspect_undocumented_pipeline(browser, base_url, width=1280, height=900)
+                inspect_undocumented_pipeline(browser, base_url, width=390, height=844)
                 inspect_source_update_triage(browser, base_url, width=1280, height=900)
                 inspect_source_update_triage(browser, base_url, width=390, height=844)
                 inspect_research_operations(browser, base_url, width=1280, height=900)

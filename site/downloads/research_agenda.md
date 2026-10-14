@@ -11,7 +11,7 @@ This register turns findings, QA observations, source limitations, and recurring
 | R04 | High | How do IPEDS U.S. nonresident trends compare with undocumented and immigrant-origin student estimates? | None | Implemented as bounded national population trend comparison |
 | R05 | High | Which large institution-level annual changes reflect substantive movement versus reporting or classification discontinuity? | High | Implemented in complete high-priority QA review |
 | R03 | Medium | Is private nonprofit growth broad-based or concentrated among a small set of institutions? | High | Implemented in private nonprofit growth analysis |
-| R06 | Medium | What does the undocumented high-school graduate pipeline imply for higher-education access questions? | None | Requires partner/population data |
+| R06 | Medium | What does the undocumented high-school graduate pipeline imply for higher-education access questions? | None | Implemented as bounded 2023 state pipeline context |
 | R07 | Medium | Which external source updates should trigger Portal refreshes or new research products? | Support | Implemented as source-update triage register |
 
 ## Detailed research cards
@@ -72,13 +72,13 @@ This register turns findings, QA observations, source limitations, and recurring
 
 #### R06 · What does the undocumented high-school graduate pipeline imply for higher-education access questions?
 
-- **Evidence trigger:** The target organization's recurring research includes undocumented high-school graduate estimates alongside higher-education enrollment estimates.
+- **Evidence trigger:** The public 2026 high-school report labels state estimates as 2023 data, and the Portal exposes a same-year 2023 undocumented higher-education state ranking.
 - **Current IPEDS fit:** None
-- **Additional data needed:** Population-specific high-school graduate estimates and undocumented higher-education estimates with state coverage and methods
-- **Proposed method:** Compare geographic patterns and scale using an ecological state-level design; document that the datasets do not track the same individuals.
-- **Proposed output:** Pipeline research brief
-- **Decision rule:** Proceed only for geographies and years with compatible estimates, and avoid causal or individual-transition claims.
-- **Status:** Requires partner/population data
+- **Additional data needed:** Current public 2023 state aggregates are sufficient for a bounded ecological comparison; time-aligned policy data or linked/microdata would be required for transition or causal analysis.
+- **Proposed method:** Compare the ten states with explicit 2023 high-school graduate estimates against same-year 2023 undocumented higher-education enrollment; treat graduates as an annual flow and enrollment as a stock; compare geographic concentration without individual linkage.
+- **Proposed output:** 2023 undocumented pipeline context note
+- **Decision rule:** Use only same-year aggregate geography; do not interpret stock-to-flow multiples as college-going, transition, persistence, or causal rates, and do not infer policy effects from the ecological comparison.
+- **Status:** Implemented as bounded 2023 state pipeline context
 
 #### R07 · Which external source updates should trigger Portal refreshes or new research products?
 

@@ -31,6 +31,7 @@ How did fall enrollment of U.S. nonresident students change nationally and acros
 6. How did trends differ across public, private nonprofit, and private for-profit institutions?
 7. Is the national change driven by enrollment changes at continuing institutions, or by changes in which institutions are in the analytic universe?
 8. What changed in the newest annual release, and which institution-level changes warrant analyst review before publication?
+9. Where do public 2023 undocumented high-school graduate and undocumented higher-education estimates overlap geographically, and what can that same-year ecological context support without being misread as an individual transition rate?
 
 ## Evidence standard
 
@@ -88,6 +89,7 @@ A concise PDF version should also be available for reviewers who expect a conven
 - structured Research Library with machine-readable source metadata and generated documentation.
 - structured population/source crosswalk that prevents IPEDS, SEVIS, immigrant-origin, undocumented, pipeline, and refugee/asylee concepts from being treated as interchangeable.
 - bounded national population-trend comparison that uses the crosswalk as a hard gate, retains separate method-compatible trend segments, and prevents unlike immigration-related populations from being combined into a single enrollment series.
+- bounded 2023 undocumented pipeline context that compares same-year state aggregate annual high-school graduate flow with higher-education enrollment stock, preserves fixed source vintages, and explicitly blocks individual-transition and causal-policy interpretations.
 - structured recurring-report operations register for the three research products named in the target role, with explicit partner-confirmed scheduling, versioned intake, methodology-change review, QA gates, publication outputs, and archival handoff.
 - structured seven-stage production-cycle register that separates shared coordination gates from product-specific methodology and requires evidence at each handoff rather than inferred calendar progress.
 - blank production-cycle log template plus validator for a real kickoff record, with controlled report/stage IDs, record types, materiality, statuses, dates, and nonpublic-by-default handling for completed partner logs.
