@@ -192,6 +192,78 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(statuses[f"At or above 2019"], 33)
         self.assertEqual(statuses[f"Below 2019"], 18)
 
+    def test_state_recovery_analysis_reconciles_three_independent_decompositions(self) -> None:
+        analysis = rows(ROOT / "data" / "state_recovery_analysis.csv")
+        self.assertEqual(len(analysis), 51)
+        self.assertEqual({row["state"] for row in analysis}, CORE_STATES)
+        statuses = Counter(row["recovery_status"] for row in analysis)
+        self.assertEqual(statuses["At or above 2019"], 33)
+        self.assertEqual(statuses["Below 2019"], 18)
+
+        for row in analysis:
+            net = int(row["change_2019_2024"])
+            self.assertEqual(
+                int(row["undergraduate_change"]) + int(row["graduate_change"]),
+                net,
+                row["state"],
+            )
+            self.assertEqual(
+                int(row["public_change"])
+                + int(row["private_nonprofit_change"])
+                + int(row["private_forprofit_change"]),
+                net,
+                row["state"],
+            )
+            self.assertIn(
+                row["control_driver"],
+                {"Public-led", "Private nonprofit-led", "Private for-profit-led", "Balanced / offsetting"},
+            )
+            institution_net = (
+                int(row["continuing_change"])
+                + int(row["entered_enrollment"])
+                - int(row["exited_enrollment"])
+            )
+            self.assertEqual(institution_net, net, row["state"])
+            self.assertEqual(int(row["institution_accounting_net"]), net, row["state"])
+            if net:
+                self.assertEqual(
+                    int(row["directional_movement"]) - int(row["offsetting_movement"]),
+                    abs(net),
+                    row["state"],
+                )
+            self.assertLessEqual(
+                int(row["top3_directional_contribution"]),
+                int(row["directional_movement"]),
+                row["state"],
+            )
+            self.assertGreaterEqual(float(row["top3_directional_share_pct"]), 0.0)
+            self.assertLessEqual(float(row["top3_directional_share_pct"]), 100.0)
+
+        national = {int(row["year"]): row for row in self.national}
+        national_change = (
+            int(national[END_YEAR]["nonresident_enrollment"])
+            - int(national[2019]["nonresident_enrollment"])
+        )
+        self.assertEqual(sum(int(row["change_2019_2024"]) for row in analysis), national_change)
+        self.assertEqual(national_change, 71079)
+
+        california = next(row for row in analysis if row["state"] == "CA")
+        illinois = next(row for row in analysis if row["state"] == "IL")
+        self.assertEqual(california["change_2019_2024"], "-33282")
+        self.assertEqual(california["level_driver"], "Undergraduate-led")
+        self.assertEqual(california["top3_directional_share_pct"], "13.8")
+        self.assertEqual(illinois["change_2019_2024"], "14464")
+        self.assertEqual(illinois["level_driver"], "Graduate-led")
+
+        rendered = (ROOT / "docs" / "STATE_RECOVERY_ANALYSIS.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "state-recovery.html").read_text(encoding="utf-8")
+        self.assertIn("**33 states/DC**", rendered)
+        self.assertIn("**27** were graduate-led", rendered)
+        self.assertIn("By institutional control", rendered)
+        self.assertIn("+71,079", rendered)
+        self.assertIn("accounting, not causal attribution", html)
+        self.assertIn("not automatically a campus opening or closure", html)
+
     def test_institution_change_summary_reconciles(self) -> None:
         summary = rows(ROOT / "data" / "processed" / "institution_change_summary.csv")
         dynamics = self.findings["institution_dynamics"]["decade"]
@@ -318,7 +390,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 46)
+        self.assertEqual(len(release_rows), 48)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -327,15 +399,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 96)
-        self.assertEqual(validate_public_tree(release_rows), 96)
+        self.assertEqual(len(pairs), 98)
+        self.assertEqual(validate_public_tree(release_rows), 98)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 96", rendered)
+        self.assertIn("Expanded public download files:** 98", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("96</strong><span>expanded public download files", html)
+        self.assertIn("98</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -353,7 +425,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 96)
+        self.assertEqual(validate_public_tree(release_rows), 98)
 
     def test_freshness_monitor_preserves_release_gate_and_trigger_boundaries(self) -> None:
         snapshot = json.loads(
@@ -507,6 +579,9 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(any(row["current_ipeds_fit"] == "High" for row in agenda))
         r04 = next(row for row in agenda if row["research_id"] == "R04")
         self.assertIn("crosswalk complete", r04["status"].lower())
+        r02 = next(row for row in agenda if row["research_id"] == "R02")
+        self.assertEqual(r02["status"], "Implemented in state recovery analysis")
+        self.assertEqual(r02["proposed_output"], "State recovery decomposition brief")
         rendered = (ROOT / "docs" / "RESEARCH_AGENDA.md").read_text(encoding="utf-8")
         for row in agenda:
             self.assertIn(row["research_id"], rendered)
@@ -902,10 +977,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 96)
+        self.assertEqual(len(pairs), 98)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 96)
+        self.assertEqual(validate_public_tree(release_rows), 98)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -917,6 +992,7 @@ class ResearchProductTests(unittest.TestCase):
             "production-cycle.html",
             "sql-analysis.html",
             "ad-hoc-analysis.html",
+            "state-recovery.html",
             "planning-scenarios.html",
             "freshness-monitor.html",
             "research-library.html",

@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 46
-**Expanded public download files:** 96
+**Registered artifact families:** 48
+**Expanded public download files:** 98
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -65,6 +65,8 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR44 | `site/downloads/release_monitor_snapshot.json` | Monitoring evidence | NCES release-availability snapshot | Dated public HTTP availability observations for the four next-year IPEDS package assets |
 | PR45 | `site/downloads/freshness_monitor.csv` | Monitoring / operations | Release and source monitoring register | Generated from the captured NCES release snapshot plus maintained public source-review and recurring-product metadata |
 | PR46 | `site/downloads/freshness_monitor.md` | Publication | Release and freshness monitoring note | Generated from the validated monitoring register and dated NCES release snapshot |
+| PR47 | `site/downloads/state_recovery_analysis.csv` | Analysis output | State recovery decomposition | Generated from validated public state and institution-level IPEDS outputs |
+| PR48 | `site/downloads/state_recovery_analysis.md` | Publication | State recovery analysis note | Generated from the validated state recovery decomposition |
 
 ## Handling boundary
 

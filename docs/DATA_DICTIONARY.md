@@ -403,6 +403,32 @@ One row per explicitly simulated ad hoc management question.
 
 `scripts/build_ad_hoc_analysis.py` regenerates all three cases from the validated state, control, and national outputs and writes the CSV, `docs/AD_HOC_ANALYSIS.md`, and `site/ad-hoc-analysis.html`. The generated products must retain the explicit portfolio-simulation boundary and must not introduce real or invented requester identities, deadlines, SLAs, or employment-history claims.
 
+## `data/state_recovery_analysis.csv`
+
+One row per state/DC explaining the 2019-2024 recovery result with three exact decompositions plus an institution-concentration measure.
+
+| Field | Definition |
+| --- | --- |
+| `state` / `state_name` | State/DC code and display name |
+| `recovery_status` | Existing state-summary classification: `At or above 2019` or `Below 2019` |
+| `nonresident_2019` / `nonresident_2024` | Baseline and endpoint U.S. nonresident enrollment |
+| `change_2019_2024` | 2024 minus 2019 U.S. nonresident enrollment |
+| `undergraduate_change` / `graduate_change` | Student-level components that must sum exactly to the state net change |
+| `level_driver` | Undergraduate- or graduate-led label for the component aligned most strongly with the state's net direction |
+| `public_change` / `private_nonprofit_change` / `private_forprofit_change` | Endpoint change by institutional control; the three components must sum exactly to the state net change |
+| `control_driver` | Institutional-control component aligned most strongly with the state's net direction |
+| `continuing_change` | Net change among UNITIDs present in the state's analytic universe in both endpoint years |
+| `entered_enrollment` | 2024 enrollment at UNITIDs not present in that state's 2019 analytic universe |
+| `exited_enrollment` | 2019 enrollment at UNITIDs not present in that state's 2024 analytic universe |
+| `institution_accounting_net` | `continuing_change + entered_enrollment - exited_enrollment`; must equal the state net change |
+| `directional_movement` | Gross absolute institution movement aligned with the state's net direction |
+| `offsetting_movement` | Gross absolute institution movement opposite the state's net direction |
+| `top3_directional_contribution` / `top3_directional_share_pct` | Contribution and share of aligned gross movement from the three largest institution contributors |
+| `top1_institution` / `top1_contribution` | Largest institution contributor in the state's net direction |
+| `top3_institutions` | Reviewer-readable names and changes for the three largest directional contributors |
+
+`scripts/build_state_recovery_analysis.py` derives the table from `state_year.csv`, `state_change_summary.csv`, and `institution_year.csv`, rejects any student-level, institutional-control, or institution-continuity decomposition that does not reconcile, and generates `docs/STATE_RECOVERY_ANALYSIS.md` plus `site/state-recovery.html`. The decomposition is accounting rather than causal analysis; institution entry/exit must not be interpreted automatically as campus opening/closure, and endpoint control changes can include institutions changing control category.
+
 ## `data/planning_scenarios.csv`
 
 One backtest row plus three forward planning-scenario rows generated from the validated national series.

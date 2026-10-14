@@ -70,6 +70,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/sql_analysis.md",
         "downloads/ad_hoc_analysis_results.csv",
         "downloads/ad_hoc_analysis.md",
+        "downloads/state_recovery_analysis.csv",
+        "downloads/state_recovery_analysis.md",
         "downloads/planning_scenarios.csv",
         "downloads/planning_scenarios.md",
         "downloads/release_monitor_snapshot.json",
@@ -185,6 +187,44 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
     context.close()
 
 
+def inspect_state_recovery(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/state-recovery.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"State recovery page failed at {width}px")
+    summary = page.locator(".handoff-summary").inner_text()
+    for expected in ("33", "18", "27", "+71,079"):
+        if expected not in summary:
+            raise AssertionError(f"State recovery summary is missing {expected}")
+    tables = page.locator("#largest-movements tbody")
+    if tables.count() != 2 or tables.nth(0).locator("tr").count() != 8 or tables.nth(1).locator("tr").count() != 8:
+        raise AssertionError("State recovery page does not render both eight-state comparison tables")
+    if "+14,464" not in tables.nth(0).locator("tr").first.inner_text() or "Illinois" not in tables.nth(0).locator("tr").first.inner_text():
+        raise AssertionError("State recovery gain table does not begin with the validated Illinois result")
+    if "-33,282" not in tables.nth(1).locator("tr").first.inner_text() or "California" not in tables.nth(1).locator("tr").first.inner_text():
+        raise AssertionError("State recovery shortfall table does not begin with the validated California result")
+    headers = [text.strip().lower() for text in page.locator("#largest-movements th").all_inner_texts()]
+    if "control driver" not in headers:
+        raise AssertionError("State recovery tables do not expose the institutional-control decomposition")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "accounting, not causal attribution" not in boundary or "not automatically a campus opening or closure" not in boundary:
+        raise AssertionError("State recovery page is missing its interpretation boundary")
+    if page.locator('a[href="downloads/state_recovery_analysis.csv"]').count() != 2:
+        raise AssertionError("State recovery CSV links are missing")
+    if page.locator('a[href="downloads/state_recovery_analysis.md"]').count() != 1:
+        raise AssertionError("State recovery Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"State recovery horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("State recovery browser errors: " + " | ".join(errors))
+    context.close()
+
+
 def inspect_data_governance(browser, base_url: str, *, width: int, height: int) -> None:
     context = browser.new_context(viewport={"width": width, "height": height})
     page = context.new_page()
@@ -195,7 +235,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "46" not in summary or "96" not in summary:
+    if "48" not in summary or "98" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -607,6 +647,8 @@ def main() -> int:
                 inspect_sql_analysis(browser, base_url, width=390, height=844)
                 inspect_ad_hoc_analysis(browser, base_url, width=1280, height=900)
                 inspect_ad_hoc_analysis(browser, base_url, width=390, height=844)
+                inspect_state_recovery(browser, base_url, width=1280, height=900)
+                inspect_state_recovery(browser, base_url, width=390, height=844)
                 inspect_planning_scenarios(browser, base_url, width=1280, height=900)
                 inspect_planning_scenarios(browser, base_url, width=390, height=844)
                 inspect_freshness_monitor(browser, base_url, width=1280, height=900)

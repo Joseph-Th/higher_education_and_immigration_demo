@@ -25,6 +25,7 @@ def main() -> int:
         ("Build normalized analysis", [PYTHON, "scripts/build_analysis.py"]),
         ("Build SQL analysis", [PYTHON, "scripts/build_sql_analysis.py"]),
         ("Build ad hoc analysis casebook", [PYTHON, "scripts/build_ad_hoc_analysis.py"]),
+        ("Build state recovery analysis", [PYTHON, "scripts/build_state_recovery_analysis.py"]),
         ("Build planning scenarios", [PYTHON, "scripts/build_planning_scenarios.py"]),
         ("Build freshness monitor", [PYTHON, "scripts/build_freshness_monitor.py"]),
         ("Build latest-release review", [PYTHON, "scripts/build_update_review.py"]),

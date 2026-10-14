@@ -79,6 +79,7 @@ A concise PDF version should also be available for reviewers who expect a conven
 - reviewer-ready six-slide PowerPoint management briefing generated from validated KPI, trend, geography, driver, and QA outputs with a source/builder freshness manifest.
 - public six-query SQL analysis pack demonstrating joins, CTEs, grouping, conditional aggregation, ranking, and window functions against an ephemeral SQLite database rebuilt from validated CSV outputs.
 - explicit three-case ad hoc analysis casebook demonstrating how bounded management questions are clarified, answered from validated authorities, reconciled, and returned concisely without fabricating requesters, deadlines, or client history.
+- state recovery decomposition that explains the 2019-2024 state outcomes with exact undergraduate/graduate, institutional-control, and institution-continuity accounting plus a concentration measure for leading institution contributors.
 - planning-scenario and variance artifact that backtests a transparent historical-growth baseline against the known 2024 actual and presents three 2025 planning anchors without claiming a predictive model or observed future value.
 - dated release/freshness monitoring artifact that preserves the current next-year NCES availability observation, applies a complete-package year-advance gate, retains source-review dates, and exposes recurring-product triggers without inventing future deadlines.
 - generated 50-state-plus-DC profile set and machine-readable profile index.
