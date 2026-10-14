@@ -3,7 +3,7 @@
 This is a portfolio demonstration of the final QA/QC handoff between validated analysis and a public data-page refresh. It does **not** represent the Presidents' Alliance's internal publication workflow or approval chain.
 
 **Current release:** Fall 2024 (provisional)  
-**Claim/register rows:** 11  
+**Claim/register rows:** 14  
 **State/DC profiles:** 51  
 **External benchmark checks:** 24/24 PASS
 
@@ -21,6 +21,9 @@ This is a portfolio demonstration of the final QA/QC handoff between validated a
 | I01 | Institution-universe finding | Continuing institutions contributed +66,981 to the 2015-2024 change; universe entry/exit netted -3,581. | All endpoint institution contributions sum exactly to the national change. | Universe entry/exit can reflect mergers, eligibility, or identifier restructuring, not only openings/closures. | READY WITH CONTEXT |
 | Q01 | Institution-level QA | 27 high-priority records have manual dispositions: 6 safe with context and 21 held for confirmation. | All 27 current high-priority rows have explicit publication dispositions; evidence links are separately health-checked. | Automated flags are triage, not corrections; held records remain in official aggregate calculations. | READY WITH CLAIM-LEVEL HOLDS |
 | M01 | Definition / methodology | IPEDS U.S. nonresident is not a measure of undocumented, DACA, immigrant-origin, refugee/asylee, or all foreign-born students. | Population crosswalk explicitly records inclusion, exclusion, source vintage, unit, geography, and comparison warning. | Other Portal populations require their own source systems and methods. | READY |
+| M02 | Population trend comparison | Companion IPEDS, immigrant-origin, and undocumented-student values remain separate and are not addable; no 2021-2023 undocumented trend is calculated. | The comparison contains 12 validated rows and preserves separate undocumented 2019-2021 and 2023-2024 source segments. | Population definitions, denominators, source vintages, and geography differ; cross-population arithmetic is contextual only. | READY WITH CONTEXT |
+| P01 | Undocumented pipeline context | Across the ten overlapping 2023 states, 53,000 annual undocumented high-school graduates represent 70.7% of the national estimate and 358,836 undocumented higher-education students represent 70.4%. | All ten state rows reconcile to the fixed R06 source values and every row retains the stock/flow NOT-a-transition-rate interpretation gate. | High-school graduates are an annual flow and higher-education enrollment is a stock; the comparison is ecological, non-causal, and not a college-going rate. | READY WITH CONTEXT |
+| G01 | Source update governance | All 17 maintained Research Library sources have an explicit update route: 8 routine-refresh baselines and 3 methodology-review baselines, with zero inferred internal deadlines. | The routing register covers the Research Library one-for-one with controlled routes and explicit methodology/new-research escalation conditions. | This is a portfolio routing model, not the Presidents' Alliance's internal refresh schedule, approval workflow, or partner delivery calendar. | READY WITH CONTEXT |
 | B01 | External validation | 24/24 NCES Digest consistency checks pass for 2019-2024. | Current IPEDS values stay within documented thresholds without being overwritten to match an older publication vintage. | Digest values are rounded and come from a different release vintage. | READY WITH CONTEXT |
 
 ## Handoff rule
