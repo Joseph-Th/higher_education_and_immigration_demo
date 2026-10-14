@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 43
-**Expanded public download files:** 93
+**Registered artifact families:** 46
+**Expanded public download files:** 96
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -62,6 +62,9 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR41 | `site/downloads/ad_hoc_analysis.md` | Publication | Ad hoc analysis casebook | Generated from validated aggregate outputs with no real requester or SLA metadata |
 | PR42 | `site/downloads/planning_scenarios.csv` | Analysis output | Planning scenario and variance table | Generated national-level backtest and forward planning scenarios from validated historical aggregates |
 | PR43 | `site/downloads/planning_scenarios.md` | Publication | Planning scenarios note | Generated from the validated national series with transparent historical growth assumptions |
+| PR44 | `site/downloads/release_monitor_snapshot.json` | Monitoring evidence | NCES release-availability snapshot | Dated public HTTP availability observations for the four next-year IPEDS package assets |
+| PR45 | `site/downloads/freshness_monitor.csv` | Monitoring / operations | Release and source monitoring register | Generated from the captured NCES release snapshot plus maintained public source-review and recurring-product metadata |
+| PR46 | `site/downloads/freshness_monitor.md` | Publication | Release and freshness monitoring note | Generated from the validated monitoring register and dated NCES release snapshot |
 
 ## Handling boundary
 

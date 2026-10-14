@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dated release-readiness and source-freshness monitoring for the higher-education research portfolio.">
+  <meta name="theme-color" content="#10263c">
+  <title>Freshness Monitor | Higher Education Data Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to freshness monitor</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Freshness monitor navigation"><a href="index.html">Brief</a><a href="research-library.html">Library</a><a href="research-operations.html">Operations</a><a href="data-governance.html">Governance</a></nav></div></header>
+  <main id="main">
+    <section class="handoff-hero">
+      <div class="shell">
+        <p class="eyebrow">Release and source freshness</p>
+        <h1>Know what changed before advancing the analysis year.</h1>
+        <p class="lede">A dated monitoring snapshot separates source availability from publication permission: detect a release, preserve the observation, then run schema and methodology review before using it.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#release-readiness">Review release gate</a><a class="button button-secondary" href="downloads/freshness_monitor.csv">Download monitoring register</a></div>
+        <p class="release-note"><strong>Snapshot boundary:</strong> checked 2026-10-14T02:41:42+00:00. This page is not continuously live, and recurring-product deadlines are not inferred from prior publication dates.</p>
+        <div class="handoff-summary">
+          <article><strong>2/4</strong><span>2025 package assets available</span></article>
+          <article><strong>HOLD YEAR ADVANCE</strong><span>analysis-year decision</span></article>
+          <article><strong>13</strong><span>Research Library resources reviewed</span></article>
+          <article><strong>3</strong><span>recurring products with explicit triggers</span></article>
+        </div>
+      </div>
+    </section>
+    <section class="section shell" id="release-readiness">
+      <div class="section-heading"><p class="eyebrow">Candidate 2025 package</p><h2>Incomplete availability does not advance the project year.</h2><p>2/4 required 2025 assets are available. The analysis therefore remains pinned to Fall 2024; continue monitoring until the complete package is available for schema review.</p></div>
+      <div class="handoff-grid">
+          <article class="handoff-card" data-monitor-id="R01">
+            <div class="handoff-card-head"><span>R01</span><span class="handoff-status handoff-status-hold">NOT AVAILABLE</span></div>
+            <p class="case-kicker">NCES candidate-year asset</p>
+            <h2>2025 Fall Enrollment data</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>HTTP 404 at the NCES Complete Data Files endpoint</dd></div>
+              <div><dt>Next action</dt><dd>Continue monitoring; do not substitute a partial next-year package into the analysis.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-monitor-id="R02">
+            <div class="handoff-card-head"><span>R02</span><span class="handoff-status handoff-status-hold">NOT AVAILABLE</span></div>
+            <p class="case-kicker">NCES candidate-year asset</p>
+            <h2>2025 Fall Enrollment dictionary</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>HTTP 404 at the NCES Complete Data Files endpoint</dd></div>
+              <div><dt>Next action</dt><dd>Continue monitoring; do not substitute a partial next-year package into the analysis.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-monitor-id="R03">
+            <div class="handoff-card-head"><span>R03</span><span class="handoff-status handoff-status-ready">AVAILABLE</span></div>
+            <p class="case-kicker">NCES candidate-year asset</p>
+            <h2>2025 Institutional directory data</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>HTTP 200 at the NCES Complete Data Files endpoint; Content-Length 1009677 bytes</dd></div>
+              <div><dt>Next action</dt><dd>Preserve the observation and include the file in schema review after the full package is ready.</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-monitor-id="R04">
+            <div class="handoff-card-head"><span>R04</span><span class="handoff-status handoff-status-ready">AVAILABLE</span></div>
+            <p class="case-kicker">NCES candidate-year asset</p>
+            <h2>2025 Institutional directory dictionary</h2>
+            <dl class="handoff-meta">
+              <div><dt>Evidence</dt><dd>HTTP 200 at the NCES Complete Data Files endpoint; Content-Length 139157 bytes</dd></div>
+              <div><dt>Next action</dt><dd>Preserve the observation and include the file in schema review after the full package is ready.</dd></div>
+            </dl>
+          </article></div>
+      <div class="methods-crosswalk-callout"><div><p class="eyebrow">Decision gate</p><h3>HOLD YEAR ADVANCE</h3><p>2/4 required candidate-year files available in the captured NCES check. Keep END_YEAR=2024; rerun the live release check later and advance only after the complete package is available.</p></div><a class="button button-secondary" href="downloads/release_monitor_snapshot.json">Download captured NCES check</a></div>
+    </section>
+    <section class="section section-tinted">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">Source review</p><h2>Availability is only one kind of freshness.</h2><p>The Research Library and population crosswalk retain human review dates because a working URL does not prove that definitions, vintages, or comparison rules are still appropriate.</p></div>
+        <div class="method-grid">
+          <article><h3>Research Library</h3><p><strong>2026-10-13</strong><br>13 resources; recorded review dates span 2026-10-13 to 2026-10-13.</p></article>
+          <article><h3>Population crosswalk</h3><p><strong>2026-10-13</strong><br>6 population/source definitions; recorded review dates span 2026-10-13 to 2026-10-13.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section shell">
+      <div class="section-heading"><p class="eyebrow">Recurring products</p><h2>Monitor triggers, not guessed deadlines.</h2><p>Each product carries an explicit event that begins the next review cycle. Internal milestones remain confirmation-dependent.</p></div>
+      <div class="handoff-grid">
+          <article class="handoff-card" data-product-monitor="P01">
+            <div class="handoff-card-head"><span>P01</span><span class="handoff-status handoff-status-ready">MONITOR</span></div>
+            <p class="case-kicker">Recurring product trigger</p>
+            <h2>Undocumented Students in U.S. Higher Education</h2>
+            <dl class="handoff-meta">
+              <div><dt>Current evidence</dt><dd>Latest public product 2026-05-28; current portfolio stage: Current public product and methodology reference reviewed.</dd></div>
+              <div><dt>Trigger</dt><dd>Production kickoff or delivery of a refreshed ACS-based estimate package</dd></div>
+              <div><dt>Next action</dt><dd>At kickoff, confirm partner timeline, exact ACS vintage, method changes, delivery format, review milestones, and final sign-off owner</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-product-monitor="P02">
+            <div class="handoff-card-head"><span>P02</span><span class="handoff-status handoff-status-ready">MONITOR</span></div>
+            <p class="case-kicker">Recurring product trigger</p>
+            <h2>Immigrant-Origin Students in Higher Education</h2>
+            <dl class="handoff-meta">
+              <div><dt>Current evidence</dt><dd>Latest public product 2026-05-05; current portfolio stage: Current public product and methodology reference reviewed.</dd></div>
+              <div><dt>Trigger</dt><dd>Production kickoff or delivery of a refreshed CPS immigrant-origin analysis package</dd></div>
+              <div><dt>Next action</dt><dd>At kickoff, confirm partner timeline, CPS vintage, population-definition changes, state outputs, review milestones, and final sign-off owner</dd></div>
+            </dl>
+          </article>
+          <article class="handoff-card" data-product-monitor="P03">
+            <div class="handoff-card-head"><span>P03</span><span class="handoff-status handoff-status-ready">MONITOR</span></div>
+            <p class="case-kicker">Recurring product trigger</p>
+            <h2>Undocumented Students Graduating High School</h2>
+            <dl class="handoff-meta">
+              <div><dt>Current evidence</dt><dd>Latest public product 2026-02-03; current portfolio stage: Current public product and methodology reference reviewed.</dd></div>
+              <div><dt>Trigger</dt><dd>Production kickoff or delivery of refreshed ACS/graduation-rate inputs</dd></div>
+              <div><dt>Next action</dt><dd>At kickoff, confirm partner timeline, pooled ACS period, NCES rate vintage, model changes, review milestones, and final sign-off owner</dd></div>
+            </dl>
+          </article></div>
+    </section>
+    <section class="section section-tinted">
+      <div class="shell"><div class="section-heading compact"><p class="eyebrow">Working pattern</p><h2>Detect → preserve → review → advance</h2></div>
+        <div class="method-grid">
+          <article><h3>1. Detect</h3><p>Run the online release checker separately from the reproducible research build.</p></article>
+          <article><h3>2. Preserve</h3><p>Write the dated availability snapshot instead of relying on an ephemeral console message.</p></article>
+          <article><h3>3. Review</h3><p>When the package is complete, preserve hashes and run schema/methodology checks before interpreting values.</p></article>
+          <article><h3>4. Advance</h3><p>Change the project year only after required files and review gates support the update.</p></article>
+        </div>
+        <div class="memo-actions"><a class="button button-primary" href="downloads/freshness_monitor.csv">Download monitor CSV</a><a class="button button-secondary" href="downloads/freshness_monitor.md">Download monitor notes</a></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Freshness Monitor · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
+</body>
+</html>
