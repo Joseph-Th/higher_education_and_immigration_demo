@@ -93,6 +93,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/candidate_year_qa_watchlist.md",
         "downloads/medium_priority_review.csv",
         "downloads/medium_priority_review.md",
+        "downloads/medium_qa_resolution_log.csv",
+        "downloads/medium_qa_resolution_log.md",
         "downloads/freshness_monitor.csv",
         "downloads/freshness_monitor.md",
         "downloads/release_readiness.csv",
@@ -378,7 +380,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "68" not in summary or "118" not in summary:
+    if "70" not in summary or "120" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -413,11 +415,11 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
     if hero.get_attribute("data-year-decision") != "HOLD_YEAR_ADVANCE":
         raise AssertionError("Release readiness year-advance machine decision is incorrect")
     summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("READY WITH CLAIM-LEVEL HOLDS", "HOLD YEAR ADVANCE", "21", "2/4"):
+    for expected in ("READY WITH CLAIM-LEVEL HOLDS", "HOLD YEAR ADVANCE", "66", "2/4"):
         if expected not in summary:
             raise AssertionError(f"Release readiness summary is missing {expected}")
     gate_text = page.locator("#readiness-gates").inner_text()
-    for expected in ("A01", "A07", "Y01", "27/27", "68 artifact families", "17/17", "preflight=PASS", "3,864", "154 institution change-review rows", "226 carry-forward QA rows", "5 medium-priority/directory overlaps"):
+    for expected in ("A01", "A07", "Y01", "27/27", "50/50", "70 artifact families", "17/17", "preflight=PASS", "3,864", "154 institution change-review rows", "226 carry-forward QA rows", "5 medium-priority/directory overlaps"):
         if expected not in gate_text:
             raise AssertionError(f"Release readiness gate matrix is missing {expected}")
     if page.locator('a[href="downloads/release_readiness.csv"]').count() != 2:
@@ -628,7 +630,7 @@ def inspect_candidate_year_watchlist(browser, base_url: str, *, width: int, heig
             raise AssertionError(f"Candidate-year QA watchlist boundary is missing {expected}")
 
     main_text = page.locator("main").inner_text()
-    for expected in ("27 current high-priority rows + 50 current medium-priority rows + 154 candidate directory changes - 5 overlaps = 226", "No current high-priority record overlaps"):
+    for expected in ("27 current high-priority rows + 50 current medium-priority rows + 154 candidate directory changes - 5 overlaps = 226", "No current high-priority record overlaps", "5 safe with context / 45 held"):
         if expected not in main_text:
             raise AssertionError(f"Candidate-year QA watchlist union is missing {expected}")
 
@@ -730,10 +732,12 @@ def inspect_medium_priority_review(browser, base_url: str, *, width: int, height
         if expected not in overlap_text:
             raise AssertionError(f"Medium-priority QA candidate-overlap section is missing {expected}")
 
-    if page.locator('a[href="downloads/medium_priority_review.csv"]').count() != 2:
+    if page.locator('a[href="downloads/medium_priority_review.csv"]').count() != 1:
         raise AssertionError("Medium-priority QA CSV links are missing")
     if page.locator('a[href="downloads/medium_priority_review.md"]').count() != 1:
         raise AssertionError("Medium-priority QA Markdown link is missing")
+    if page.locator('a[href="medium-qa-review.html"]').count() < 1:
+        raise AssertionError("Medium-priority QA routing page does not link to the evidence review")
     if "No automatic clearance" not in body or "No new risk score" not in body:
         raise AssertionError("Medium-priority QA operating rules are missing")
     overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
@@ -741,6 +745,54 @@ def inspect_medium_priority_review(browser, base_url: str, *, width: int, height
         raise AssertionError(f"Medium-priority QA horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Medium-priority QA browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_medium_qa_review(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/medium-qa-review.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Medium-priority evidence review page failed at {width}px")
+
+    summary = page.locator(".handoff-hero .handoff-summary").inner_text()
+    for expected in ("50/50", "5", "45", "100%"):
+        if expected not in summary:
+            raise AssertionError(f"Medium-priority evidence summary is missing {expected}")
+    table = page.locator("#complete-queue tbody")
+    if table.locator("tr").count() != 50:
+        raise AssertionError("Medium-priority evidence page does not render all 50 reviewed records")
+    table_text = table.inner_text()
+    for expected in (
+        "Texas State University",
+        "Georgia Institute of Technology-Main Campus",
+        "University of California-Berkeley",
+        "Indiana University-Indianapolis",
+        "Weber State University",
+        "Safe with context",
+        "Hold for confirmation",
+    ):
+        if expected not in table_text:
+            raise AssertionError(f"Medium-priority evidence table is missing {expected}")
+    if table.locator('a[target="_blank"]').count() != 50:
+        raise AssertionError("Medium-priority evidence table does not expose one source per reviewed record")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "without rewriting IPEDS" not in boundary or "revalidated" not in boundary:
+        raise AssertionError("Medium-priority evidence page is missing its publication/revalidation boundary")
+    if page.locator('a[href="downloads/medium_qa_resolution_log.csv"]').count() != 2:
+        raise AssertionError("Medium-priority evidence CSV links are missing")
+    if page.locator('a[href="downloads/medium_qa_resolution_log.md"]').count() != 1:
+        raise AssertionError("Medium-priority evidence Markdown link is missing")
+    if "not standing approval for a future release" not in page.locator("main").inner_text():
+        raise AssertionError("Medium-priority evidence page is missing its no-standing-approval rule")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Medium-priority evidence horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Medium-priority evidence browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -1098,7 +1150,7 @@ def inspect_publication_handoff(browser, base_url: str, *, width: int, height: i
     if "1,044,137" not in page.locator(".handoff-card").first.inner_text():
         raise AssertionError("Publication handoff headline card does not contain the validated national total")
     handoff_text = page.locator("#handoff-register").inner_text()
-    for expected in ("N06", "Q02", "Q03", "M02", "P01", "G01", "+31,592", "45 of 51 states/DC", "226 unique UNITIDs", "five medium/directory overlaps", "no high/directory overlap", "All 50 current medium-priority institution flags", "28 percentage-movement", "publication clearance", "70.7%", "70.4%", "not addable", "zero inferred internal deadlines"):
+    for expected in ("N06", "Q02", "Q03", "M02", "P01", "G01", "+31,592", "45 of 51 states/DC", "226 unique UNITIDs", "five medium/directory overlaps", "no high/directory overlap", "All 50 current medium-priority institution flags", "28 percentage-movement", "5 are safe with context", "45 remain held for confirmation", "standing approval", "70.7%", "70.4%", "not addable", "zero inferred internal deadlines"):
         if expected not in handoff_text:
             raise AssertionError(f"Publication handoff is missing expanded control {expected}")
     overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
@@ -1205,6 +1257,8 @@ def main() -> int:
                 inspect_candidate_year_watchlist(browser, base_url, width=390, height=844)
                 inspect_medium_priority_review(browser, base_url, width=1280, height=900)
                 inspect_medium_priority_review(browser, base_url, width=390, height=844)
+                inspect_medium_qa_review(browser, base_url, width=1280, height=900)
+                inspect_medium_qa_review(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

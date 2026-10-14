@@ -117,7 +117,7 @@ Eleven generated monitoring rows combining the captured NCES release observation
 
 ## `release_readiness.csv`
 
-Eight generated release controls built by `scripts/build_release_readiness.py`. Seven gates govern whether the current validated publication may remain public; one gate governs whether the configured analysis year may advance. The matrix combines analytical QA, NCES benchmark status, complete high-priority institution review, publication handoff, public-release registration, PDF/PowerPoint freshness, Research Library routing coverage, and the dated candidate-year package observation. A current decision of `READY_WITH_CLAIM_LEVEL_HOLDS` preserves institution-specific narrative holds without invalidating aggregate publication, while `HOLD_YEAR_ADVANCE` keeps `END_YEAR` unchanged until the complete candidate package can enter schema review. The builder also writes `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
+Eight generated release controls built by `scripts/build_release_readiness.py`. Seven gates govern whether the current validated publication may remain public; one gate governs whether the configured analysis year may advance. The matrix combines analytical QA, NCES benchmark status, complete high- and medium-priority institution evidence review, publication handoff, public-release registration, PDF/PowerPoint freshness, Research Library routing coverage, and the dated candidate-year package observation. A current decision of `READY_WITH_CLAIM_LEVEL_HOLDS` preserves institution-specific narrative holds without invalidating aggregate publication, while `HOLD_YEAR_ADVANCE` keeps `END_YEAR` unchanged until the complete candidate package can enter schema review. The builder also writes `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
 
 ## `qa_resolution_log.csv`
 
@@ -127,9 +127,13 @@ Manually curated analyst dispositions for every high-priority row in `processed/
 
 Generated routing table for all 50 current medium-priority rows in `processed/latest_release_institution_review.csv`. Each row preserves the original annual-review reasons and assigns exactly one non-severity review route: percentage movement, absolute movement, combined absolute/percentage movement, or structural/reporting context. Candidate-directory overlap is attached as context when present, but the file does not create a new risk score, source correction, or publication disposition. `scripts/build_medium_priority_review.py` generates the CSV plus `docs/MEDIUM_PRIORITY_REVIEW.md` and `site/medium-priority-review.html`.
 
+## `medium_qa_resolution_log.csv`
+
+Analyst-reviewed evidence decisions for every row in `medium_priority_review.csv`. The log records one public source, review date, disposition, publication class, and bounded note per medium-priority UNITID. Five current records are `safe_with_context` and 45 remain `hold_for_confirmation`; neither class rewrites IPEDS or carries forward automatically. `scripts/build_medium_qa_resolution_log.py` validates exact 50-row coverage and generates `medium_qa_resolution_summary.json`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`.
+
 ## `candidate_year_qa_watchlist.csv`
 
-Generated 226-UNITID carry-forward queue for the next complete Fall Enrollment institution QA pass. It unions the 27 current high-priority and 50 medium-priority latest-release review rows with all 154 candidate-directory structural changes, deduplicates by UNITID, and records the five current medium-priority/directory overlaps. Current high-priority publication dispositions are retained only as current-release context and must be revalidated after the next complete build. The watchlist contains no candidate-year enrollment values and does not infer institutional opening/closure or future publication eligibility. `scripts/build_candidate_year_qa_watchlist.py` generates the CSV plus `docs/CANDIDATE_YEAR_QA_WATCHLIST.md` and `site/candidate-year-watchlist.html`.
+Generated 226-UNITID carry-forward queue for the next complete Fall Enrollment institution QA pass. It unions the 27 current high-priority and 50 medium-priority latest-release review rows with all 154 candidate-directory structural changes, deduplicates by UNITID, and records the five current medium-priority/directory overlaps. Current high- and medium-priority publication dispositions are retained only as current-release context and must be revalidated after the next complete build. The watchlist contains no candidate-year enrollment values and does not infer institutional opening/closure or future publication eligibility. `scripts/build_candidate_year_qa_watchlist.py` generates the CSV plus `docs/CANDIDATE_YEAR_QA_WATCHLIST.md` and `site/candidate-year-watchlist.html`.
 
 ## `processed/`
 
@@ -154,6 +158,8 @@ It includes national headline metrics, level-change decomposition, state recover
 `latest_update_review.json` is the newest-release review summary used by the public brief and generated review memo. It contains the newest national change, undergraduate/graduate decomposition, institution-universe accounting, state movers, review-priority counts, top review items, and imputation/status transitions.
 
 `qa_resolution_summary.json` is the compact publication summary of the manual QA disposition layer. It records the full high-priority queue size and coverage percentage, counts classified as `safe_with_context` versus `hold_for_confirmation`, disposition counts, and three deterministic featured case studies used by the public brief and research memo. It is generated from `qa_resolution_log.csv` only after the log has been reconciled to every current high-priority queue record.
+
+`medium_qa_resolution_summary.json` is the compact summary of the medium-priority evidence-review layer. It records 50/50 coverage, the 5 safe / 45 held publication split, disposition counts, candidate-directory overlap coverage, and the exact safe UNITID set.
 
 `state_profiles.json` is the machine-readable state-publication product generated from validated state and institution outputs. It contains one profile for each of the 50 states plus DC with current metrics, change windows, top institutions, and the 2015-2024 annual series. `site/state.html` reads this file to provide shareable state views; generated Markdown counterparts live in `docs/state_profiles/`.
 

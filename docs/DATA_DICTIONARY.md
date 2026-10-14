@@ -193,6 +193,25 @@ One row per institution in the current high-priority annual QA queue. This is an
 
 The build script requires the log to cover every current high-priority UNITID in the same deterministic queue order and rejects extra or missing records. A new annual release therefore forces stale dispositions to be revisited rather than silently carrying them forward.
 
+## `data/medium_qa_resolution_log.csv`
+
+One row per institution in the current medium-priority annual QA queue. This is a separate analyst-decision layer over `data/medium_priority_review.csv`; it does not change the reason-derived route, priority, or any IPEDS source value.
+
+| Field | Definition |
+| --- | --- |
+| `unitid` | IPEDS institution identifier; must remain present in the current medium-priority routing queue |
+| `institution` | Institution name reconciled one-for-one to the medium-priority routing table |
+| `reviewed_on` | ISO date of the analyst evidence review |
+| `disposition` | Evidence conclusion such as `corroborated_external_count`, `external_scope_mismatch`, `context_only`, `expected_structural_change`, or `structural_followup_required` |
+| `publication_class` | `safe_with_context` or `hold_for_confirmation` |
+| `evidence_label` | Human-readable description of the reviewed public institution/source evidence |
+| `evidence_url` | HTTPS source used during manual review |
+| `analyst_note` | Bounded explanation of what the outside evidence supports and where population, timing, or structural comparability remains insufficient |
+
+`safe_with_context` is intentionally narrow: it permits only the bounded current-release interpretation recorded in the analyst note. Institution-defined international, visa, OPT, online-global, or other public populations are not assumed to equal IPEDS U.S. nonresident enrollment. Every disposition must be revalidated after the next complete Fall Enrollment release.
+
+`scripts/build_medium_qa_resolution_log.py` requires exact 50-row coverage in the routing-table order, validates evidence URLs and review dates, enforces the current five `safe_with_context` and 45 `hold_for_confirmation` decisions, and generates `data/medium_qa_resolution_summary.json`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`.
+
 ## `data/schema_audit.csv`
 
 One row per source year recording whether required variables and aggregation labels pass cross-year schema review, plus the selected raw filenames and historical terminology used for `EFNRALT`.
@@ -662,10 +681,11 @@ One row per unique UNITID carried into the next complete Fall Enrollment institu
 | `current_2024_nonresident` | Current canonical 2024 U.S. nonresident enrollment used only as review context/prioritization, never a 2025 estimate |
 | `current_2024_total_enrollment` | Current canonical 2024 total enrollment when available from the candidate directory change review |
 | `high_priority_publication_class` / `high_priority_disposition` | Evidence-backed current-release high-priority publication fields; blank for medium and candidate-only rows and never inherited as future approval |
+| `medium_priority_publication_class` / `medium_priority_disposition` | Evidence-backed current-release medium-priority publication fields; blank for high and candidate-only rows and never inherited as future approval |
 | `next_release_action` | Explicit reconciliation/revalidation action to apply when the complete candidate-year Fall Enrollment package is built |
 | `interpretation_boundary` | Fixed rule blocking candidate-year enrollment, opening/closure, and continued-publication-eligibility inference from watchlist membership |
 
-`scripts/build_candidate_year_qa_watchlist.py` validates 27 current high-priority rows, 50 medium-priority rows, 154 candidate-directory structural changes, five medium/directory overlaps, zero high/directory overlaps, 226 unique UNITIDs, exact current high-priority publication-class coverage, current-value reconciliation for overlap rows, and the fixed no-future-inference boundary before generating the CSV, `docs/CANDIDATE_YEAR_QA_WATCHLIST.md`, and `site/candidate-year-watchlist.html`.
+`scripts/build_candidate_year_qa_watchlist.py` validates 27 current high-priority rows, 50 medium-priority rows, 154 candidate-directory structural changes, five medium/directory overlaps, zero high/directory overlaps, 226 unique UNITIDs, exact current high- and medium-priority publication-class coverage, current-value reconciliation for overlap rows, and the fixed no-future-inference boundary before generating the CSV, `docs/CANDIDATE_YEAR_QA_WATCHLIST.md`, and `site/candidate-year-watchlist.html`.
 
 ## `data/release_readiness.csv`
 
@@ -683,7 +703,7 @@ Eight generated release-control rows that consolidate the project's independent 
 | `authority` | Canonical project file or manifest used by the control |
 | `next_action` | Bounded action required if the evidence changes or the gate remains held |
 
-`scripts/build_release_readiness.py` requires all core analytical and benchmark checks to pass, complete current high-priority institution-review coverage, the full 17-row publication handoff, one-for-one Research Library routing, valid public-release registration, current PDF/PowerPoint freshness manifests, and a release snapshot that reconciles to the four candidate-year file observations. The current-release summary may be `READY_WITH_CLAIM_LEVEL_HOLDS` while institution-specific explanations remain gated; the independent year-advance summary remains `HOLD_YEAR_ADVANCE` until the complete candidate package is available and schema review can begin. The builder generates `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
+`scripts/build_release_readiness.py` requires all core analytical and benchmark checks to pass, complete current high- and medium-priority institution-review coverage, the full 17-row publication handoff, one-for-one Research Library routing, valid public-release registration, current PDF/PowerPoint freshness manifests, and a release snapshot that reconciles to the four candidate-year file observations. The current-release summary may be `READY_WITH_CLAIM_LEVEL_HOLDS` while institution-specific explanations remain gated; the independent year-advance summary remains `HOLD_YEAR_ADVANCE` until the complete candidate package is available and schema review can begin. The builder generates `docs/RELEASE_READINESS.md` and `site/release-readiness.html`.
 
 ## JSON products
 
@@ -696,6 +716,8 @@ Eight generated release-control rows that consolidate the project's independent 
 `data/latest_update_review.json` contains the latest annual national change, student-level decomposition, institution-universe accounting, largest state changes, priority counts, top review items, and imputation/status transitions used by the public release-review section.
 
 `data/qa_resolution_summary.json` contains the full high-priority queue size, review coverage percentage, counts by publication class and disposition, reviewed UNITIDs, latest manual review date, and three deterministic featured case studies. The featured cases represent an unresolved anomaly, a corroborated movement, and a documented structural change; each carries the current queue change, evidence URL, analyst note, and publication class used by the public brief and research memo. The summary is generated from `qa_resolution_log.csv` only after every current high-priority queue record has a reconciled disposition.
+
+`data/medium_qa_resolution_summary.json` records complete medium-priority review coverage, the five safe-with-context and 45 held decisions, disposition counts, candidate-directory overlap coverage, and the exact safe UNITID set. It is generated from `medium_qa_resolution_log.csv` only after the source register reconciles one-for-one to all 50 current medium-priority routing rows.
 
 `data/state_profiles.json` contains the shareable state-profile payload used by `site/state.html`: coverage metadata plus 51 keyed profiles with latest metrics, change windows, top institutions, annual series, and corresponding Markdown filename. It is generated from `state_year.csv`, `state_change_summary.csv`, and the latest institution table rather than maintained independently.
 

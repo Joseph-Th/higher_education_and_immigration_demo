@@ -118,6 +118,7 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
     qa = json.loads((DATA / "qa_report.json").read_text(encoding="utf-8"))
     benchmark = read_csv(DATA / "benchmark_audit.csv")
     resolution = json.loads((DATA / "qa_resolution_summary.json").read_text(encoding="utf-8"))
+    medium_resolution = json.loads((DATA / "medium_qa_resolution_summary.json").read_text(encoding="utf-8"))
     handoff = read_csv(DATA / "publication_handoff.csv")
     release_register = read_public_release_register()
     library = read_csv(DATA / "research_library.csv")
@@ -137,6 +138,13 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
         raise RuntimeError("Release readiness requires complete high-priority QA review coverage")
     if resolution["reviewed_count"] != resolution["high_priority_total"]:
         raise RuntimeError("Release readiness high-priority review counts do not reconcile")
+    if not medium_resolution.get("required_medium_priority_covered"):
+        raise RuntimeError("Release readiness requires complete medium-priority QA review coverage")
+    if (
+        medium_resolution.get("reviewed_count") != medium_resolution.get("medium_priority_total")
+        or medium_resolution.get("reviewed_count") != 50
+    ):
+        raise RuntimeError("Release readiness medium-priority review counts do not reconcile")
 
     handoff_ids = {row["claim_id"] for row in handoff}
     if handoff_ids != EXPECTED_HANDOFF_IDS or len(handoff) != len(EXPECTED_HANDOFF_IDS):
@@ -145,8 +153,8 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
     if any(row["publication_status"] not in allowed_handoff_statuses for row in handoff):
         raise RuntimeError("Publication handoff contains a non-releaseable status")
     claim_hold_rows = [row for row in handoff if row["publication_status"] == "READY WITH CLAIM-LEVEL HOLDS"]
-    if {row["claim_id"] for row in claim_hold_rows} != {"Q01"}:
-        raise RuntimeError("Claim-level publication holds must remain isolated to the institution QA control")
+    if {row["claim_id"] for row in claim_hold_rows} != {"Q01", "Q03"}:
+        raise RuntimeError("Claim-level publication holds must remain isolated to the institution QA controls")
 
     release_ids = {row["artifact_id"] for row in release_register}
     if not {"PR57", "PR58"}.issubset(release_ids):
@@ -241,16 +249,19 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
         {
             "gate_id": "A03",
             "gate_scope": "Current release",
-            "gate_name": "High-priority institution review",
-            "status": "PASS_WITH_CLAIM_HOLDS" if resolution["hold_for_confirmation"] else "PASS",
+            "gate_name": "Institution evidence review",
+            "status": "PASS_WITH_CLAIM_HOLDS" if resolution["hold_for_confirmation"] or medium_resolution["hold_for_confirmation"] else "PASS",
             "blocks_current_release": "Yes",
             "blocks_year_advance": "No",
             "evidence": (
                 f"{resolution['reviewed_count']}/{resolution['high_priority_total']} high-priority records reviewed; "
                 f"{resolution['safe_with_context']} safe with context and "
-                f"{resolution['hold_for_confirmation']} institution-specific claims held."
+                f"{resolution['hold_for_confirmation']} held. "
+                f"{medium_resolution['reviewed_count']}/{medium_resolution['medium_priority_total']} medium-priority records reviewed; "
+                f"{medium_resolution['safe_with_context']} safe with context and "
+                f"{medium_resolution['hold_for_confirmation']} held."
             ),
-            "authority": "data/qa_resolution_summary.json",
+            "authority": "data/qa_resolution_summary.json; data/medium_qa_resolution_summary.json",
             "next_action": "Keep held institution movements out of institution-specific explanatory narrative until directly confirmed.",
         },
         {
@@ -260,7 +271,7 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
             "status": "PASS_WITH_CLAIM_HOLDS" if claim_hold_rows else "PASS",
             "blocks_current_release": "Yes",
             "blocks_year_advance": "No",
-            "evidence": f"{len(handoff)} publication claims/controls have valid authorities, QA gates, disclosures, and release statuses; Q01 preserves claim-level holds.",
+            "evidence": f"{len(handoff)} publication claims/controls have valid authorities, QA gates, disclosures, and release statuses; Q01 and Q03 preserve institution-level claim holds.",
             "authority": "data/publication_handoff.csv",
             "next_action": "Rebuild and re-read the handoff whenever data, definitions, sources, or public copy change.",
         },
@@ -353,7 +364,9 @@ def build_rows() -> tuple[list[dict[str, str]], dict[str, object]]:
         "gate_count": len(rows),
         "current_release_gate_count": sum(row["blocks_current_release"] == "Yes" for row in rows),
         "year_advance_gate_count": sum(row["blocks_year_advance"] == "Yes" for row in rows),
-        "claim_holds": resolution["hold_for_confirmation"],
+        "claim_holds": resolution["hold_for_confirmation"] + medium_resolution["hold_for_confirmation"],
+        "high_priority_claim_holds": resolution["hold_for_confirmation"],
+        "medium_priority_claim_holds": medium_resolution["hold_for_confirmation"],
         "candidate_assets_available": available_count,
         "candidate_assets_required": len(file_rows),
         "candidate_directory_preflight": directory_preflight["status"],

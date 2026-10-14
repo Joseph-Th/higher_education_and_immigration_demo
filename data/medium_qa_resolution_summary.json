@@ -1,0 +1,24 @@
+{
+  "medium_priority_total": 50,
+  "reviewed_count": 50,
+  "coverage_pct": 100.0,
+  "required_medium_priority_covered": true,
+  "safe_with_context": 5,
+  "hold_for_confirmation": 45,
+  "dispositions": {
+    "structural_followup_required": 5,
+    "context_only": 26,
+    "external_scope_mismatch": 13,
+    "corroborated_external_count": 4,
+    "expected_structural_change": 1,
+    "baseline_corroborated_move_unresolved": 1
+  },
+  "candidate_overlap_reviewed": 5,
+  "safe_unitids": [
+    "110635",
+    "139755",
+    "151111",
+    "228459",
+    "230782"
+  ]
+}

@@ -56,6 +56,7 @@ def main() -> int:
     findings = json.loads((DATA / "findings.json").read_text(encoding="utf-8"))
     review = json.loads((DATA / "latest_update_review.json").read_text(encoding="utf-8"))
     resolution = json.loads((DATA / "qa_resolution_summary.json").read_text(encoding="utf-8"))
+    medium_resolution = json.loads((DATA / "medium_qa_resolution_summary.json").read_text(encoding="utf-8"))
     benchmark = read_csv(DATA / "benchmark_audit.csv")
     states = read_csv(PROCESSED / "state_profile_index.csv")
     population_trends = read_csv(DATA / "population_trend_comparison.csv")
@@ -148,6 +149,14 @@ def main() -> int:
         raise RuntimeError("Publication handoff candidate-year QA watchlist counts do not reconcile")
     if len(medium_review) != 50 or len({row["unitid"] for row in medium_review}) != 50:
         raise RuntimeError("Publication handoff requires the complete 50-row medium-priority QA routing table")
+    if (
+        medium_resolution.get("reviewed_count") != 50
+        or medium_resolution.get("medium_priority_total") != 50
+        or medium_resolution.get("safe_with_context") != 5
+        or medium_resolution.get("hold_for_confirmation") != 45
+        or not medium_resolution.get("required_medium_priority_covered")
+    ):
+        raise RuntimeError("Publication handoff requires complete medium-priority evidence-backed dispositions")
     medium_routes = Counter(row["review_route"] for row in medium_review)
     if medium_routes != Counter(
         {
@@ -291,21 +300,21 @@ def main() -> int:
             "authority": "data/candidate_year_qa_watchlist.csv",
             "source_locator": "226 unique UNITIDs; carry_forward_group; current_review_priority; candidate_change_class; next_release_action",
             "research_library_id": "ipeds_complete_data",
-            "qa_gate": "The watchlist reconciles 27 + 50 + 154 - 5 to 226 unique UNITIDs, preserves all current high-priority dispositions only as context, and contains no candidate-year enrollment values.",
+            "qa_gate": "The watchlist reconciles 27 + 50 + 154 - 5 to 226 unique UNITIDs, preserves all current high- and medium-priority dispositions only as context, and contains no candidate-year enrollment values.",
             "release_disclosure": "This is pre-release triage, not a 2025 enrollment finding or standing institution-publication approval; every row must be revalidated after the complete Fall Enrollment build.",
             "publication_status": "READY WITH CONTEXT",
         },
         {
             "claim_id": "Q03",
             "surface": "Medium-priority institution QA",
-            "claim_type": "Evidence-routing control",
-            "public_copy": "All 50 current medium-priority institution flags are routed from their existing trigger reasons: 28 percentage-movement, 11 absolute-movement, 8 combined absolute/percentage, and 3 structural/reporting-context cases; five also have candidate-directory structural changes.",
-            "authority": "data/medium_priority_review.csv",
-            "source_locator": "50 current medium rows; review_route; candidate_directory_overlap; next_review_step",
+            "claim_type": "Evidence review and publication gate",
+            "public_copy": f"All 50 current medium-priority institution flags are routed and evidence-reviewed: 28 percentage-movement, 11 absolute-movement, 8 combined absolute/percentage, and 3 structural/reporting-context cases; {medium_resolution['safe_with_context']} are safe with context and {medium_resolution['hold_for_confirmation']} remain held for confirmation.",
+            "authority": "data/medium_priority_review.csv; data/medium_qa_resolution_log.csv",
+            "source_locator": "50 current medium rows; review_route; publication_class; disposition; evidence_url",
             "research_library_id": "ipeds_complete_data",
-            "qa_gate": "Every medium-priority row maps to exactly one non-severity route derived from its existing annual-review reasons; five candidate-directory overlaps are retained as evidence context without changing priority.",
-            "release_disclosure": "This routing layer does not correct IPEDS values, add a new risk score, or grant institution-specific publication clearance; evidence review is still required before narrative use.",
-            "publication_status": "READY WITH CONTEXT",
+            "qa_gate": "Every medium-priority row maps to exactly one non-severity route and has an evidence-backed publication disposition; five candidate-directory overlaps are retained as context without changing priority.",
+            "release_disclosure": "Medium-priority evidence can clear only a bounded current-release narrative claim; it does not correct IPEDS values, add a new risk score, or create standing approval for the next release.",
+            "publication_status": "READY WITH CLAIM-LEVEL HOLDS",
         },
         {
             "claim_id": "M01",

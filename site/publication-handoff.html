@@ -131,19 +131,19 @@
               <h2>The next full-package institution QA watchlist contains 226 unique UNITIDs: 27 current high-priority rows, 50 medium-priority rows, and 154 candidate-directory structural changes with five medium/directory overlaps and no high/directory overlap.</h2>
               <dl class="handoff-meta">
                 <div><dt>Authority</dt><dd><code>data/candidate_year_qa_watchlist.csv</code><br><small>226 unique UNITIDs; carry_forward_group; current_review_priority; candidate_change_class; next_release_action</small></dd></div>
-                <div><dt>QA gate</dt><dd>The watchlist reconciles 27 + 50 + 154 - 5 to 226 unique UNITIDs, preserves all current high-priority dispositions only as context, and contains no candidate-year enrollment values.</dd></div>
+                <div><dt>QA gate</dt><dd>The watchlist reconciles 27 + 50 + 154 - 5 to 226 unique UNITIDs, preserves all current high- and medium-priority dispositions only as context, and contains no candidate-year enrollment values.</dd></div>
                 <div><dt>Required disclosure</dt><dd>This is pre-release triage, not a 2025 enrollment finding or standing institution-publication approval; every row must be revalidated after the complete Fall Enrollment build.</dd></div>
               </dl>
               <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/help/complete-data-files" target="_blank" rel="noopener">Source: IPEDS Complete Data Files</a>
             </article>
             <article class="handoff-card">
-              <div class="handoff-card-head"><span>Q03</span><span class="handoff-status handoff-status-ready">READY WITH CONTEXT</span></div>
-              <p class="case-kicker">Medium-priority institution QA · Evidence-routing control</p>
-              <h2>All 50 current medium-priority institution flags are routed from their existing trigger reasons: 28 percentage-movement, 11 absolute-movement, 8 combined absolute/percentage, and 3 structural/reporting-context cases; five also have candidate-directory structural changes.</h2>
+              <div class="handoff-card-head"><span>Q03</span><span class="handoff-status handoff-status-hold">READY WITH CLAIM-LEVEL HOLDS</span></div>
+              <p class="case-kicker">Medium-priority institution QA · Evidence review and publication gate</p>
+              <h2>All 50 current medium-priority institution flags are routed and evidence-reviewed: 28 percentage-movement, 11 absolute-movement, 8 combined absolute/percentage, and 3 structural/reporting-context cases; 5 are safe with context and 45 remain held for confirmation.</h2>
               <dl class="handoff-meta">
-                <div><dt>Authority</dt><dd><code>data/medium_priority_review.csv</code><br><small>50 current medium rows; review_route; candidate_directory_overlap; next_review_step</small></dd></div>
-                <div><dt>QA gate</dt><dd>Every medium-priority row maps to exactly one non-severity route derived from its existing annual-review reasons; five candidate-directory overlaps are retained as evidence context without changing priority.</dd></div>
-                <div><dt>Required disclosure</dt><dd>This routing layer does not correct IPEDS values, add a new risk score, or grant institution-specific publication clearance; evidence review is still required before narrative use.</dd></div>
+                <div><dt>Authority</dt><dd><code>data/medium_priority_review.csv; data/medium_qa_resolution_log.csv</code><br><small>50 current medium rows; review_route; publication_class; disposition; evidence_url</small></dd></div>
+                <div><dt>QA gate</dt><dd>Every medium-priority row maps to exactly one non-severity route and has an evidence-backed publication disposition; five candidate-directory overlaps are retained as context without changing priority.</dd></div>
+                <div><dt>Required disclosure</dt><dd>Medium-priority evidence can clear only a bounded current-release narrative claim; it does not correct IPEDS values, add a new risk score, or create standing approval for the next release.</dd></div>
               </dl>
               <a class="crosswalk-source" href="https://nces.ed.gov/ipeds/help/complete-data-files" target="_blank" rel="noopener">Source: IPEDS Complete Data Files</a>
             </article>

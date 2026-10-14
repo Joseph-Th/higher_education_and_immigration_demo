@@ -15,6 +15,7 @@ PROCESSED = DATA / "processed"
 LATEST_REVIEW = PROCESSED / "latest_release_institution_review.csv"
 CANDIDATE_CHANGES = DATA / "candidate_directory_change_review.csv"
 QA_RESOLUTIONS = DATA / "qa_resolution_log.csv"
+MEDIUM_QA_RESOLUTIONS = DATA / "medium_qa_resolution_log.csv"
 
 CSV_OUTPUT = DATA / "candidate_year_qa_watchlist.csv"
 DOC_OUTPUT = ROOT / "docs" / "CANDIDATE_YEAR_QA_WATCHLIST.md"
@@ -62,6 +63,8 @@ FIELDS = (
     f"current_{END_YEAR}_total_enrollment",
     "high_priority_publication_class",
     "high_priority_disposition",
+    "medium_priority_publication_class",
+    "medium_priority_disposition",
     "next_release_action",
     "interpretation_boundary",
 )
@@ -96,6 +99,7 @@ def build_rows() -> list[dict[str, str]]:
     latest_rows = read_csv(LATEST_REVIEW)
     candidate_rows = read_csv(CANDIDATE_CHANGES)
     qa_rows = read_csv(QA_RESOLUTIONS)
+    medium_qa_rows = read_csv(MEDIUM_QA_RESOLUTIONS)
 
     latest_selected = {
         row["unitid"]: row
@@ -104,6 +108,7 @@ def build_rows() -> list[dict[str, str]]:
     }
     candidate_by_unitid = {row["unitid"]: row for row in candidate_rows}
     qa_by_unitid = {row["unitid"]: row for row in qa_rows}
+    medium_qa_by_unitid = {row["unitid"]: row for row in medium_qa_rows}
 
     if len(latest_selected) != 77:
         raise RuntimeError(f"Expected 77 current high/medium review rows, found {len(latest_selected)}")
@@ -111,6 +116,8 @@ def build_rows() -> list[dict[str, str]]:
         raise RuntimeError(f"Expected 154 candidate directory change rows, found {len(candidate_by_unitid)}")
     if len(qa_by_unitid) != 27:
         raise RuntimeError(f"Expected 27 high-priority QA resolutions, found {len(qa_by_unitid)}")
+    if len(medium_qa_by_unitid) != 50:
+        raise RuntimeError(f"Expected 50 medium-priority QA resolutions, found {len(medium_qa_by_unitid)}")
 
     high_unitids = {
         unitid for unitid, row in latest_selected.items() if row["review_priority"] == "high"
@@ -119,6 +126,13 @@ def build_rows() -> list[dict[str, str]]:
         missing = sorted(high_unitids - set(qa_by_unitid))
         extra = sorted(set(qa_by_unitid) - high_unitids)
         raise RuntimeError(f"High-priority QA resolution coverage mismatch; missing={missing}, extra={extra}")
+    medium_unitids = {
+        unitid for unitid, row in latest_selected.items() if row["review_priority"] == "medium"
+    }
+    if medium_unitids != set(medium_qa_by_unitid):
+        missing = sorted(medium_unitids - set(medium_qa_by_unitid))
+        extra = sorted(set(medium_qa_by_unitid) - medium_unitids)
+        raise RuntimeError(f"Medium-priority QA resolution coverage mismatch; missing={missing}, extra={extra}")
 
     union_unitids = set(latest_selected) | set(candidate_by_unitid)
     rows: list[dict[str, str]] = []
@@ -126,6 +140,7 @@ def build_rows() -> list[dict[str, str]]:
         latest = latest_selected.get(unitid)
         candidate = candidate_by_unitid.get(unitid)
         resolution = qa_by_unitid.get(unitid)
+        medium_resolution = medium_qa_by_unitid.get(unitid)
 
         priority = latest["review_priority"] if latest else ""
         if priority == "high" and candidate:
@@ -172,12 +187,13 @@ def build_rows() -> list[dict[str, str]]:
             )
         elif group == "CURRENT_MEDIUM_PLUS_DIRECTORY_CHANGE":
             next_action = (
-                "Review the latest-release enrollment movement and candidate directory change together before any "
-                "institution-specific next-release narrative."
+                f"Reapply the medium-priority rules to the {END_YEAR + 1} Fall Enrollment result, review the enrollment "
+                "movement and candidate directory change together, and revalidate the current publication disposition."
             )
         elif group == "CURRENT_MEDIUM_PRIORITY":
             next_action = (
-                f"Reapply the review thresholds after the {END_YEAR + 1} build and inspect recent history if the movement remains material."
+                f"Reapply the review thresholds after the {END_YEAR + 1} build and revalidate the current publication "
+                "disposition if the movement remains material; do not inherit the prior decision automatically."
             )
         else:
             next_action = (
@@ -207,6 +223,8 @@ def build_rows() -> list[dict[str, str]]:
                 f"current_{END_YEAR}_total_enrollment": current_total,
                 "high_priority_publication_class": resolution["publication_class"] if resolution else "",
                 "high_priority_disposition": resolution["disposition"] if resolution else "",
+                "medium_priority_publication_class": medium_resolution["publication_class"] if medium_resolution else "",
+                "medium_priority_disposition": medium_resolution["disposition"] if medium_resolution else "",
                 "next_release_action": next_action,
                 "interpretation_boundary": BOUNDARY,
             }
@@ -256,6 +274,18 @@ def validate_rows(rows: list[dict[str, str]]) -> dict[str, int]:
         raise RuntimeError("High-priority publication classes do not reconcile to the QA resolution log")
     if any(row["high_priority_publication_class"] for row in medium):
         raise RuntimeError("Medium-priority rows must not inherit high-priority publication dispositions")
+    if Counter(row["medium_priority_publication_class"] for row in medium) != Counter(
+        {"hold_for_confirmation": 45, "safe_with_context": 5}
+    ):
+        raise RuntimeError("Medium-priority publication classes do not reconcile to the medium QA resolution log")
+    if any(row["medium_priority_publication_class"] for row in high):
+        raise RuntimeError("High-priority rows must not inherit medium-priority publication dispositions")
+    if any(
+        row["medium_priority_publication_class"] or row["high_priority_publication_class"]
+        for row in rows
+        if not row["current_review_priority"]
+    ):
+        raise RuntimeError("Candidate-directory-only rows must not inherit current publication dispositions")
     if any(row["interpretation_boundary"] != BOUNDARY for row in rows):
         raise RuntimeError("Watchlist interpretation boundary is inconsistent")
 
@@ -276,6 +306,8 @@ def validate_rows(rows: list[dict[str, str]]) -> dict[str, int]:
         "candidate_only_count": counts["CANDIDATE_DIRECTORY_CHANGE_ONLY"],
         "high_safe": sum(row["high_priority_publication_class"] == "safe_with_context" for row in high),
         "high_held": sum(row["high_priority_publication_class"] == "hold_for_confirmation" for row in high),
+        "medium_safe": sum(row["medium_priority_publication_class"] == "safe_with_context" for row in medium),
+        "medium_held": sum(row["medium_priority_publication_class"] == "hold_for_confirmation" for row in medium),
         "medium_overlap_exposure": sum(integer(row[f"current_{END_YEAR}_nonresident"]) for row in medium_overlap),
         "candidate_only_exposure": sum(integer(row[f"current_{END_YEAR}_nonresident"]) for row in candidate_only),
     }
@@ -315,19 +347,19 @@ def write_markdown(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
         f"- **Current medium + candidate directory overlaps:** {summary['medium_candidate_overlap']:,}",
         f"- **Unique union:** {summary['high_count']} + {summary['medium_count']} + {summary['candidate_count']} - {summary['medium_candidate_overlap']} = **{summary['row_count']:,}**",
         "",
-        f"The existing high-priority evidence review remains **{summary['high_safe']} safe with context / {summary['high_held']} held for confirmation** for the current {END_YEAR} publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by {END_YEAR + 1}.",
+        f"The existing high-priority evidence review remains **{summary['high_safe']} safe with context / {summary['high_held']} held for confirmation**, and the medium-priority evidence review remains **{summary['medium_safe']} safe with context / {summary['medium_held']} held**, for the current {END_YEAR} publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by {END_YEAR + 1}.",
         "",
         "## Medium-priority rows that also changed in the candidate directory",
         "",
         f"Five current medium-priority rows also have a candidate directory structural signal. Together they represent **{summary['medium_overlap_exposure']:,} current-year U.S. nonresident students**. This overlap changes review order, not publication status.",
         "",
-        "| Institution | State | 2023-2024 change | Candidate directory signal | 2024 nonresident |",
-        "| --- | --- | ---: | --- | ---: |",
+        "| Institution | State | 2023-2024 change | Current publication class | Candidate directory signal | 2024 nonresident |",
+        "| --- | --- | ---: | --- | --- | ---: |",
     ]
     for row in overlap_rows(rows):
         reasons = row["candidate_change_reasons"].replace(";", "; ")
         lines.append(
-            f"| {row['current_institution']} | {row['current_state']} | {signed(row['latest_release_change'])} | {label(row['candidate_change_class'])}: {reasons} | {integer(row[f'current_{END_YEAR}_nonresident']):,} |"
+            f"| {row['current_institution']} | {row['current_state']} | {signed(row['latest_release_change'])} | {publication_label(row['medium_priority_publication_class'])} | {label(row['candidate_change_class'])}: {reasons} | {integer(row[f'current_{END_YEAR}_nonresident']):,} |"
         )
 
     lines.extend(
@@ -389,6 +421,7 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
             f"<td>{html.escape(row['current_institution'])}</td>"
             f"<td>{html.escape(row['current_state'])}</td>"
             f"<td>{signed(row['latest_release_change'])}</td>"
+            f"<td>{html.escape(publication_label(row['medium_priority_publication_class']))}</td>"
             f"<td>{html.escape(label(row['candidate_change_class']))}<br><small>{html.escape(row['candidate_change_reasons'].replace(';', '; '))}</small></td>"
             f"<td>{integer(row[f'current_{END_YEAR}_nonresident']):,}</td>"
             "</tr>"
@@ -436,7 +469,7 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
     <section class="handoff-hero"><div class="shell">
       <p class="eyebrow">Candidate-year QA carry-forward</p>
       <h1>The next full-package QA pass already has a {summary['row_count']:,}-institution watchlist.</h1>
-      <p class="lede">The list unions the current high/medium institution review queue with every candidate-directory structural change. Existing priorities and publication dispositions are preserved; no candidate-year enrollment values are invented.</p>
+      <p class="lede">The list unions the current high/medium institution review queue with every candidate-directory structural change. Existing priorities and evidence-backed publication dispositions are preserved as current-release context; no candidate-year enrollment values are invented.</p>
       <div class="hero-actions"><a class="button button-primary" href="#overlap">Review cross-signal overlaps</a><a class="button button-secondary" href="downloads/candidate_year_qa_watchlist.csv">Download full watchlist</a></div>
       <p class="release-note"><strong>Boundary:</strong> {html.escape(BOUNDARY)}</p>
       <div class="handoff-summary">
@@ -451,7 +484,7 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
       <div class="section-heading"><p class="eyebrow">Exact union</p><h2>226 is a reconciled union, not a second independent flagging system.</h2><p>{summary['high_count']} current high-priority rows + {summary['medium_count']} current medium-priority rows + {summary['candidate_count']} candidate directory changes - {summary['medium_candidate_overlap']} overlaps = {summary['row_count']} unique UNITIDs. No current high-priority record overlaps the captured candidate directory changes.</p></div>
       <div class="method-grid">
         <article><h3>Current high-priority layer</h3><p><strong>{summary['high_safe']} safe with context / {summary['high_held']} held</strong><br>The current evidence-backed disposition is retained only as context for the next review.</p></article>
-        <article><h3>Current medium-priority layer</h3><p><strong>{summary['medium_count']} rows</strong><br>Medium rows remain triage signals. They do not receive a publication class merely by entering this watchlist.</p></article>
+        <article><h3>Current medium-priority layer</h3><p><strong>{summary['medium_safe']} safe with context / {summary['medium_held']} held</strong><br>The current evidence-backed disposition is retained only as context for the next review.</p></article>
         <article><h3>Candidate directory layer</h3><p><strong>{summary['candidate_count']} rows</strong><br>Structural entry, exit, name, state, and control changes are carried forward before Fall Enrollment arrives.</p></article>
         <article><h3>No new risk score</h3><p>The watchlist preserves existing high/medium priority, surfaces cross-signal overlap, then orders candidate-only rows by current-year exposure.</p></article>
       </div>
@@ -459,7 +492,7 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
 
     <section class="section section-tinted" id="overlap"><div class="shell">
       <div class="section-heading"><p class="eyebrow">Cross-signal overlap</p><h2>Five current medium-priority rows also changed in the candidate directory.</h2><p>These five rows represent {summary['medium_overlap_exposure']:,} current-year U.S. nonresident students. The overlap means the enrollment movement and directory continuity should be reviewed together when the full package arrives; it does not upgrade the row to a high-priority finding.</p></div>
-      <div class="table-wrap"><table><thead><tr><th>Institution</th><th>State</th><th>2023-2024 change</th><th>Candidate directory signal</th><th>2024 nonresident</th></tr></thead><tbody>{''.join(overlap_html)}</tbody></table></div>
+      <div class="table-wrap"><table><thead><tr><th>Institution</th><th>State</th><th>2023-2024 change</th><th>Current publication class</th><th>Candidate directory signal</th><th>2024 nonresident</th></tr></thead><tbody>{''.join(overlap_html)}</tbody></table></div>
     </div></section>
 
     <section class="section shell" id="current-high">
@@ -476,11 +509,11 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
       <div class="section-heading compact"><p class="eyebrow">Next-release operating rule</p><h2>Carry forward the question, not the answer.</h2></div>
       <div class="method-grid">
         <article><h3>High priority</h3><p>Reapply the thresholds and revalidate the evidence-backed publication disposition against the new release.</p></article>
-        <article><h3>Medium + directory change</h3><p>Review the enrollment movement and structural directory change together before institution-specific narrative.</p></article>
-        <article><h3>Remaining medium</h3><p>Reapply the latest-release rules and inspect recent history if the next change remains material.</p></article>
+        <article><h3>Medium + directory change</h3><p>Review the enrollment movement and structural directory change together, then revalidate the current evidence-backed disposition.</p></article>
+        <article><h3>Remaining medium</h3><p>Reapply the latest-release rules and revalidate the current evidence-backed disposition if the next change remains material.</p></article>
         <article><h3>Directory only</h3><p>Reconcile the candidate directory record to the full Fall Enrollment join before interpreting enrollment movement.</p></article>
       </div>
-      <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_year_qa_watchlist.csv">Download watchlist CSV</a><a class="button button-secondary" href="downloads/candidate_year_qa_watchlist.md">Download watchlist note</a><a class="button button-secondary" href="candidate-directory-changes.html">Directory change review</a><a class="button button-secondary" href="qa-review.html">Current high-priority review</a><a class="button button-secondary" href="medium-priority-review.html">Medium QA routing</a></div>
+      <div class="memo-actions"><a class="button button-primary" href="downloads/candidate_year_qa_watchlist.csv">Download watchlist CSV</a><a class="button button-secondary" href="downloads/candidate_year_qa_watchlist.md">Download watchlist note</a><a class="button button-secondary" href="candidate-directory-changes.html">Directory change review</a><a class="button button-secondary" href="qa-review.html">Current high-priority review</a><a class="button button-secondary" href="medium-qa-review.html">Medium QA evidence review</a></div>
     </section>
   </main>
   <footer><div class="shell footer-inner"><span>Candidate-Year QA Watchlist · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>

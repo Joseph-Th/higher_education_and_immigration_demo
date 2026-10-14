@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 68
-**Expanded public download files:** 118
+**Registered artifact families:** 70
+**Expanded public download files:** 120
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -83,10 +83,12 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR62 | `site/downloads/candidate_directory_preflight.md` | Publication | Candidate directory preflight note | Generated from the validated candidate directory structural snapshot |
 | PR63 | `site/downloads/candidate_directory_change_review.csv` | Monitoring evidence | Candidate directory institution-change review row | Generated from the public candidate-year directory compared with the current public directory and canonical current-year institution analysis |
 | PR64 | `site/downloads/candidate_directory_change_review.md` | Publication | Candidate directory institution-change review note | Generated from the hashed candidate directory change-review CSV and validated preflight snapshot |
-| PR65 | `site/downloads/candidate_year_qa_watchlist.csv` | QA / audit | Candidate-year institution carry-forward row | Generated from the current latest-release high/medium QA queue the evidence-backed high-priority disposition layer and the candidate directory structural-change review |
+| PR65 | `site/downloads/candidate_year_qa_watchlist.csv` | QA / audit | Candidate-year institution carry-forward row | Generated from the current latest-release high/medium QA queue the evidence-backed high- and medium-priority disposition layers and the candidate directory structural-change review |
 | PR66 | `site/downloads/candidate_year_qa_watchlist.md` | Publication | Candidate-year QA carry-forward note | Generated from the validated candidate-year QA watchlist |
 | PR67 | `site/downloads/medium_priority_review.csv` | QA / audit | Medium-priority institution QA routing row | Generated from the current latest-release medium-priority queue plus candidate-directory overlap context |
 | PR68 | `site/downloads/medium_priority_review.md` | Publication | Medium-priority institution QA triage note | Generated from the validated medium-priority QA routing table |
+| PR69 | `site/downloads/medium_qa_resolution_log.csv` | QA / audit | Medium-priority institution evidence review | Analyst review of public medium-priority institution records and public evidence links |
+| PR70 | `site/downloads/medium_qa_resolution_log.md` | Publication | Medium-priority institution evidence review memo | Generated from the medium-priority QA resolution register |
 
 ## Handling boundary
 

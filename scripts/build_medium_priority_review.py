@@ -409,9 +409,9 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
   <main id="main">
     <section class="handoff-hero"><div class="shell">
       <p class="eyebrow">Medium-priority institution QA</p>
-      <h1>The 50-row medium queue is now routed without pretending it is resolved.</h1>
-      <p class="lede">The review uses the annual QA reason codes already in the project to separate magnitude, percentage, and structural/reporting signals. It adds review actions and candidate-directory overlap without changing source values or creating a second risk score.</p>
-      <div class="hero-actions"><a class="button button-primary" href="#routes">Review the four routes</a><a class="button button-secondary" href="downloads/medium_priority_review.csv">Download full review</a></div>
+      <h1>The 50-row medium queue is routed before the evidence decision layer.</h1>
+      <p class="lede">This routing artifact uses the annual QA reason codes already in the project to separate magnitude, percentage, and structural/reporting signals. A separate evidence-review layer now records publication decisions without changing source values or creating a second risk score.</p>
+      <div class="hero-actions"><a class="button button-primary" href="#routes">Review the four routes</a><a class="button button-secondary" href="medium-qa-review.html">Open evidence review</a></div>
       <p class="release-note"><strong>Boundary:</strong> {html.escape(BOUNDARY)}</p>
       <div class="handoff-summary">
         <article><strong>{summary['row_count']}</strong><span>current medium-priority rows</span></article>
@@ -460,11 +460,11 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
       <div class="section-heading compact"><p class="eyebrow">Operating rule</p><h2>Route the evidence need, not the conclusion.</h2></div>
       <div class="method-grid">
         <article><h3>No automatic correction</h3><p>The IPEDS values remain authoritative unless the source pipeline itself is shown to be wrong.</p></article>
-        <article><h3>No automatic clearance</h3><p>Medium-priority rows receive no publication class from this routing layer.</p></article>
+        <article><h3>No automatic clearance</h3><p>This routing layer assigns no publication class. The separate evidence review records the current bounded decision.</p></article>
         <article><h3>No new risk score</h3><p>The route comes directly from the reasons that already triggered the medium threshold.</p></article>
         <article><h3>Next release</h3><p>Reapply the annual rules after the complete {END_YEAR + 1} build and reconcile any candidate-directory signal at the same time.</p></article>
       </div>
-      <div class="memo-actions"><a class="button button-primary" href="downloads/medium_priority_review.csv">Download review CSV</a><a class="button button-secondary" href="downloads/medium_priority_review.md">Download review note</a><a class="button button-secondary" href="qa-review.html">High-priority review</a><a class="button button-secondary" href="candidate-year-watchlist.html">Candidate-year watchlist</a></div>
+      <div class="memo-actions"><a class="button button-primary" href="downloads/medium_priority_review.csv">Download review CSV</a><a class="button button-secondary" href="downloads/medium_priority_review.md">Download review note</a><a class="button button-secondary" href="medium-qa-review.html">Medium evidence review</a><a class="button button-secondary" href="qa-review.html">High-priority review</a><a class="button button-secondary" href="candidate-year-watchlist.html">Candidate-year watchlist</a></div>
     </div></section>
   </main>
   <footer><div class="shell footer-inner"><span>Medium-Priority QA Triage · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>

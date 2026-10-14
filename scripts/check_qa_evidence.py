@@ -13,7 +13,10 @@ from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
-LOG = ROOT / "data" / "qa_resolution_log.csv"
+LOGS = (
+    ("high", ROOT / "data" / "qa_resolution_log.csv"),
+    ("medium", ROOT / "data" / "medium_qa_resolution_log.csv"),
+)
 USER_AGENT = "Mozilla/5.0 (compatible; qa-evidence-health-check/1.0)"
 
 
@@ -82,34 +85,38 @@ def check(url: str) -> dict[str, object]:
             "final_url": url,
             "error": str(exc.reason),
         }
-    except URLError as exc:
+    except (URLError, OSError) as exc:
         fallback = curl_fallback(url)
         if fallback is not None:
             return fallback
+        reason = getattr(exc, "reason", exc)
         return {
             "ok": False,
             "access_restricted": False,
             "status": "network_error",
             "final_url": url,
-            "error": str(exc.reason),
+            "error": str(reason),
         }
 
 
 def main() -> int:
-    with LOG.open("r", encoding="utf-8", newline="") as handle:
-        rows = list(csv.DictReader(handle))
-
     results: list[dict[str, object]] = []
-    for row in rows:
-        results.append(
-            {
-                "unitid": row["unitid"],
-                "institution": row["institution"],
-                "evidence_label": row["evidence_label"],
-                "url": row["evidence_url"],
-                **check(row["evidence_url"]),
-            }
-        )
+    queue_counts: dict[str, int] = {}
+    for priority, log_path in LOGS:
+        with log_path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        queue_counts[priority] = len(rows)
+        for row in rows:
+            results.append(
+                {
+                    "priority": priority,
+                    "unitid": row["unitid"],
+                    "institution": row["institution"],
+                    "evidence_label": row["evidence_label"],
+                    "url": row["evidence_url"],
+                    **check(row["evidence_url"]),
+                }
+            )
 
     broken = [
         row
@@ -120,6 +127,7 @@ def main() -> int:
     restricted = [row for row in results if row["access_restricted"]]
     payload = {
         "evidence_count": len(results),
+        "queue_counts": queue_counts,
         "available_count": sum(bool(row["ok"]) for row in results),
         "access_restricted_count": len(restricted),
         "broken_count": len(broken),

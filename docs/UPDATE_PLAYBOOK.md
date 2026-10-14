@@ -98,6 +98,7 @@ Then review the newly generated:
 - `docs/LATEST_UPDATE_REVIEW.md`.
 - `data/qa_resolution_log.csv` and `docs/QA_RESOLUTION_LOG.md`;
 - `data/medium_priority_review.csv`, `docs/MEDIUM_PRIORITY_REVIEW.md`, and `site/medium-priority-review.html`;
+- `data/medium_qa_resolution_log.csv`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`;
 - `data/candidate_year_qa_watchlist.csv`, `docs/CANDIDATE_YEAR_QA_WATCHLIST.md`, and `site/candidate-year-watchlist.html`;
 - `docs/BRIEFING_NOTE.md`.
 - `docs/RESEARCH_MEMO.md` and `site/research-memo.html`.
@@ -111,7 +112,7 @@ Investigate the reason-coded high- and medium-priority review queue before updat
 
 Run `python scripts/build_medium_priority_review.py` after the annual review build. Its four routes come directly from the reasons that already produced the medium priority: structural/reporting context, absolute plus percentage movement, absolute movement, or percentage movement. Treat the route as an evidence task, not a new severity score. A candidate-directory overlap means the structural and enrollment signals should be reviewed together; it does not upgrade the row, correct the source, or grant publication clearance.
 
-For institution-level claims, update `data/qa_resolution_log.csv` with the evidence review. Use official institutional, system, regulator, or primary-source documentation when possible. Outside counts must not be treated as exact IPEDS benchmarks unless their population, reference date, geography, and inclusion rules are demonstrably comparable. Classify reviewed records as `safe_with_context` only when the evidence supports the direction or structural interpretation; otherwise use `hold_for_confirmation`. Never edit the IPEDS value merely to make it agree with an outside source.
+For institution-level claims, update both `data/qa_resolution_log.csv` and `data/medium_qa_resolution_log.csv` for the current high- and medium-priority queues. Use official institutional, system, regulator, or primary-source documentation when possible. Outside counts must not be treated as exact IPEDS benchmarks unless their population, reference date, geography, and inclusion rules are demonstrably comparable. Classify reviewed records as `safe_with_context` only when the evidence supports the direction, count scale, or structural interpretation with explicit limitations; otherwise use `hold_for_confirmation`. Never edit the IPEDS value merely to make it agree with an outside source, and never carry a current disposition into the next release without revalidation.
 
 Run `python scripts/build_qa_resolution_log.py` after editing the log. The build will fail if a reviewed UNITID is no longer in the current high-priority queue, which is intentional: manual dispositions belong to a specific release and must be reconsidered when the queue changes.
 

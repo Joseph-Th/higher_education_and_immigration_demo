@@ -33,6 +33,7 @@ def main() -> int:
         ("Build latest-release review", [PYTHON, "scripts/build_update_review.py"]),
         ("Build medium-priority QA triage", [PYTHON, "scripts/build_medium_priority_review.py"]),
         ("Build QA resolution log", [PYTHON, "scripts/build_qa_resolution_log.py"]),
+        ("Build medium-priority QA resolution log", [PYTHON, "scripts/build_medium_qa_resolution_log.py"]),
         ("Build candidate-year QA watchlist", [PYTHON, "scripts/build_candidate_year_qa_watchlist.py"]),
         ("Build freshness monitor", [PYTHON, "scripts/build_freshness_monitor.py"]),
         ("Build private nonprofit growth analysis", [PYTHON, "scripts/build_private_nonprofit_analysis.py"]),
