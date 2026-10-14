@@ -11,19 +11,19 @@ This pre-release watchlist combines the current 2023-2024 high/medium institutio
 - **Current medium + candidate directory overlaps:** 5
 - **Unique union:** 27 + 50 + 154 - 5 = **226**
 
-The existing high-priority evidence review remains **6 safe with context / 21 held for confirmation** for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
+The existing high-priority evidence review remains **6 safe with context / 21 held for confirmation**, and the medium-priority evidence review remains **5 safe with context / 45 held**, for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
 
 ## Medium-priority rows that also changed in the candidate directory
 
 Five current medium-priority rows also have a candidate directory structural signal. Together they represent **2,443 current-year U.S. nonresident students**. This overlap changes review order, not publication status.
 
-| Institution | State | 2023-2024 change | Candidate directory signal | 2024 nonresident |
-| --- | --- | ---: | --- | ---: |
-| Lindsey Wilson College | KY | +590 | Shared attribute change: institution_name_changed | 2,027 |
-| FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Left directory eligible: title_iv_first_look_status_lost | 128 |
-| Humphreys University-Stockton and Modesto Campuses | CA | +116 | Shared attribute change: institution_name_changed | 288 |
-| City College-Hollywood | FL | 0 | Left directory eligible: title_iv_first_look_status_lost | 0 |
-| City College-Altamonte Springs | FL | 0 | Left directory eligible: title_iv_first_look_status_lost | 0 |
+| Institution | State | 2023-2024 change | Current publication class | Candidate directory signal | 2024 nonresident |
+| --- | --- | ---: | --- | --- | ---: |
+| Lindsey Wilson College | KY | +590 | Hold for confirmation | Shared attribute change: institution_name_changed | 2,027 |
+| FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Hold for confirmation | Left directory eligible: title_iv_first_look_status_lost | 128 |
+| Humphreys University-Stockton and Modesto Campuses | CA | +116 | Hold for confirmation | Shared attribute change: institution_name_changed | 288 |
+| City College-Hollywood | FL | 0 | Hold for confirmation | Left directory eligible: title_iv_first_look_status_lost | 0 |
+| City College-Altamonte Springs | FL | 0 | Hold for confirmation | Left directory eligible: title_iv_first_look_status_lost | 0 |
 
 ## Current high-priority carry-forwards
 
