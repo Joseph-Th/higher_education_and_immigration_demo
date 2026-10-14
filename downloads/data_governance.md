@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 60
-**Expanded public download files:** 110
+**Registered artifact families:** 62
+**Expanded public download files:** 112
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -79,6 +79,8 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR58 | `site/downloads/release_readiness.md` | Publication | Release-readiness control note | Generated from the consolidated release-readiness matrix |
 | PR59 | `site/downloads/undergraduate_shift_baseline.csv` | Analysis output | R01 undergraduate-shift state baseline | Generated from validated public national state control and institution-level IPEDS outputs |
 | PR60 | `site/downloads/undergraduate_shift_baseline.md` | Publication | R01 undergraduate-shift baseline note | Generated from the validated fixed 2023-2024 undergraduate-shift baseline |
+| PR61 | `site/downloads/candidate_directory_preflight.json` | Monitoring evidence | Candidate directory structural snapshot | Dated structural review of the available public candidate-year IPEDS directory and dictionary |
+| PR62 | `site/downloads/candidate_directory_preflight.md` | Publication | Candidate directory preflight note | Generated from the validated candidate directory structural snapshot |
 
 ## Handling boundary
 

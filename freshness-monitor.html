@@ -18,11 +18,11 @@
         <h1>Know what changed before advancing the analysis year.</h1>
         <p class="lede">A dated monitoring snapshot separates source availability from publication permission: detect a release, preserve the observation, then run schema and methodology review before using it.</p>
         <div class="hero-actions"><a class="button button-primary" href="#release-readiness">Review release gate</a><a class="button button-secondary" href="downloads/freshness_monitor.csv">Download monitoring register</a></div>
-        <p class="release-note"><strong>Snapshot boundary:</strong> checked 2026-10-14T15:33:16+00:00. This page is not continuously live, and recurring-product deadlines are not inferred from prior publication dates.</p>
+        <p class="release-note"><strong>Snapshot boundary:</strong> checked 2026-10-14T16:19:56+00:00. This page is not continuously live, and recurring-product deadlines are not inferred from prior publication dates.</p>
         <div class="handoff-summary">
           <article><strong>2/4</strong><span>2025 package assets available</span></article>
           <article><strong>HOLD YEAR ADVANCE</strong><span>analysis-year decision</span></article>
-          <article><strong>17</strong><span>Research Library resources reviewed</span></article>
+          <article><strong>PASS</strong><span>candidate directory preflight</span></article>
           <article><strong>3</strong><span>recurring products with explicit triggers</span></article>
         </div>
       </div>
@@ -66,7 +66,19 @@
               <div><dt>Next action</dt><dd>Preserve the observation and include the file in schema review after the full package is ready.</dd></div>
             </dl>
           </article></div>
-      <div class="methods-crosswalk-callout"><div><p class="eyebrow">Decision gate</p><h3>HOLD YEAR ADVANCE</h3><p>2/4 required candidate-year files available in the captured NCES check. Keep END_YEAR=2024; rerun the live release check later and advance only after the complete package is available.</p></div><a class="button button-secondary" href="downloads/release_monitor_snapshot.json">Download captured NCES check</a></div>
+      <div class="methods-crosswalk-callout"><div><p class="eyebrow">Decision gate</p><h3>HOLD YEAR ADVANCE</h3><p>2/4 required candidate-year files available in the captured NCES check; candidate directory structural preflight PASS. Keep END_YEAR=2024; rerun the live release check later and advance only after the complete package is available.</p></div><a class="button button-secondary" href="downloads/release_monitor_snapshot.json">Download captured NCES check</a></div>
+    </section>
+    <section class="section section-tinted" id="directory-preflight">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">Candidate directory preflight</p><h2>The available directory side has already cleared a bounded structural check.</h2><p>All six fields required by the current directory join/filter are present in both the candidate CSV and dictionary. That reduces one update risk while preserving the full-package gate.</p></div>
+        <div class="handoff-summary">
+          <article><strong>6/6</strong><span>required directory fields preserved</span></article>
+          <article><strong>3,864</strong><span>candidate directory-eligible rows</span></article>
+          <article><strong>3,812</strong><span>shared eligible UNITIDs</span></article>
+          <article><strong>-4</strong><span>net eligible-row change vs 2024</span></article>
+        </div>
+        <div class="methods-crosswalk-callout"><div><p class="eyebrow">Schema delta</p><h3>72 → 70 fields</h3><p>Removed nonrequired fields: DFRCGID, DFRCUSCG. Required fields are preserved, but the full annual schema audit still runs when Fall Enrollment arrives.</p></div><a class="button button-secondary" href="candidate-directory-preflight.html">Open full preflight</a></div>
+      </div>
     </section>
     <section class="section section-tinted">
       <div class="shell">
@@ -119,7 +131,7 @@
           <article><h3>3. Review</h3><p>When the package is complete, preserve hashes and run schema/methodology checks before interpreting values.</p></article>
           <article><h3>4. Advance</h3><p>Change the project year only after required files and review gates support the update.</p></article>
         </div>
-        <div class="memo-actions"><a class="button button-primary" href="downloads/freshness_monitor.csv">Download monitor CSV</a><a class="button button-secondary" href="downloads/freshness_monitor.md">Download monitor notes</a></div>
+        <div class="memo-actions"><a class="button button-primary" href="downloads/freshness_monitor.csv">Download monitor CSV</a><a class="button button-secondary" href="downloads/freshness_monitor.md">Download monitor notes</a><a class="button button-secondary" href="candidate-directory-preflight.html">Candidate directory preflight</a></div>
       </div>
     </section>
   </main>

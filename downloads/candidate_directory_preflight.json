@@ -1,0 +1,82 @@
+{
+  "checked_at_utc": "2026-10-14T16:24:27+00:00",
+  "current_analysis_end_year": 2024,
+  "candidate_next_year": 2025,
+  "preflight_scope": "candidate institutional directory only; not Fall Enrollment",
+  "status": "PASS",
+  "year_advance_authorized": false,
+  "authorization_boundary": "Directory-side structural checks pass, but year advancement remains governed by the complete Fall Enrollment plus directory package and full schema review.",
+  "candidate_source": {
+    "data_url": "https://nces.ed.gov/ipeds/complete-data-files/HD2025.zip",
+    "data_archive_bytes": 1009677,
+    "data_sha256": "aadad9277a2255c85813b6d206475ddbf8a7330d79cc0236c2ecae685b00f1bf",
+    "data_member": "hd2025.csv",
+    "data_encoding": "utf-8-sig",
+    "dictionary_url": "https://nces.ed.gov/ipeds/complete-data-files/HD2025_Dict.zip",
+    "dictionary_archive_bytes": 139157,
+    "dictionary_sha256": "dc454aa6fbc246f3d47d773cd02ebe3b5efcedacbd2f71c54ff39f5844215343",
+    "dictionary_member": "hd2025.xlsx"
+  },
+  "required_directory_fields": [
+    "UNITID",
+    "INSTNM",
+    "STABBR",
+    "CONTROL",
+    "DEGGRANT",
+    "PSET4FLG"
+  ],
+  "required_field_titles": {
+    "UNITID": "Unique identification number of the institution",
+    "INSTNM": "Institution (entity) name",
+    "STABBR": "State abbreviation",
+    "CONTROL": "Control of institution",
+    "DEGGRANT": "Degree-granting status",
+    "PSET4FLG": "Postsecondary and Title IV institution indicator"
+  },
+  "missing_required_data_fields": [],
+  "missing_required_dictionary_fields": [],
+  "candidate_directory_rows": 5985,
+  "candidate_field_count": 70,
+  "candidate_core_states_dc_count": 51,
+  "candidate_duplicate_unitid_count": 0,
+  "candidate_directory_eligible_rows": 3864,
+  "candidate_control_counts": {
+    "Public": 1644,
+    "Private nonprofit": 1577,
+    "Private for-profit": 643
+  },
+  "current_reference": {
+    "year": 2024,
+    "directory_csv": "hd2024.csv",
+    "encoding": "utf-8-sig",
+    "directory_rows": 6072,
+    "field_count": 72,
+    "core_states_dc_count": 51,
+    "directory_eligible_rows": 3868,
+    "control_counts": {
+      "Public": 1642,
+      "Private nonprofit": 1578,
+      "Private for-profit": 648
+    }
+  },
+  "schema_delta": {
+    "field_count_change": -2,
+    "removed_fields": [
+      "DFRCGID",
+      "DFRCUSCG"
+    ],
+    "added_fields": [],
+    "required_fields_preserved": true
+  },
+  "eligible_universe_continuity": {
+    "shared_unitids": 3812,
+    "entering_unitids": 52,
+    "leaving_unitids": 56,
+    "net_change": -4,
+    "shared_control_changes": 6,
+    "shared_state_changes": 3,
+    "shared_name_changes": 41
+  },
+  "release_monitor_checked_at_utc": "2026-10-14T16:19:56+00:00",
+  "release_monitor_decision": "HOLD_YEAR_ADVANCE"
+}
