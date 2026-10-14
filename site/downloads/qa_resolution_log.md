@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **10** are safe to discuss with explicit context.
-- **17** remain held for institution-specific interpretation.
+- **11** are safe to discuss with explicit context.
+- **16** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-14**.
 
@@ -19,9 +19,9 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | University of the Cumberlands | KY | +4,616 | unresolved_discontinuity | hold_for_confirmation | [University of the Cumberlands international-student information](https://www.ucumberlands.edu/admissions/international-students) |
 | Collin County Community College District | TX | +2,256 | unresolved_large_change | hold_for_confirmation | [Collin College Common Data Set 2023-2024](https://www.collin.edu/about/statistics/pdf_common_data_set/cds-2023-2024-collin-college.pdf) |
 | Broward College | FL | +2,005 | context_support_only | hold_for_confirmation | [Broward College international-student services](https://www.broward.edu/international/students/) |
-| Miami Dade College | FL | +1,458 | context_support_only | hold_for_confirmation | [Miami Dade College International Students](https://www.mdc.edu/internationalstudents/) |
+| Miami Dade College | FL | +1,458 | external_scope_mismatch | hold_for_confirmation | [Miami Dade College 2024-25 Fact Book Credit Student Enrollment Profile](https://www.mdc.edu/media/miami-dade-college/institutional-research/documents/fb_credit_student_enrollment_profile.pdf) |
 | Trine University-Regional/Non-Traditional Campuses | IN | +1,441 | corroborated_direction | safe_with_context | [Trine University fall 2024 record-enrollment announcement](https://www.trine.edu/news/2024/record-enrollment.aspx) |
-| Campbellsville University | KY | -1,358 | corroborated_baseline | hold_for_confirmation | [Campbellsville University President's Report 2024](https://www.campbellsville.edu/alumni/alumni-media/CU%20Presidents%20Report%202024_webfile.pdf) |
+| Campbellsville University | KY | -1,358 | corroborated_direction | safe_with_context | [Campbellsville University institutional enrollment reports](https://www.campbellsville.edu/academics/academic-affairs/officeofinstitutionalresearch-institutionalreviewboard.html) |
 | The University of Texas at Dallas | TX | -1,225 | partial_component_corroboration | hold_for_confirmation | [UT Dallas Common Data Set 2024-2025](https://dox.utdallas.edu/report44675) |
 | St. Francis College | NY | +1,220 | corroborated_external_count | safe_with_context | [St. Francis College institutional census archive](https://www.sfc.edu/why-sfc/office-of-institutional-effectiveness-accreditation/) |
 | Community College of Rhode Island | RI | +1,176 | unresolved_discontinuity | hold_for_confirmation | [Community College of Rhode Island 2024 international-student information](https://www.ccri.edu/onestop/admissions/international/inappak.pdf) |
@@ -35,7 +35,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Cumberland University | TN | +306 | context_support_only | hold_for_confirmation | [Cumberland University International Student Services](https://admissions.cumberland.edu/portal/international-student) |
 | Oakton College | IL | +299 | confirmed_reporting_discontinuity | hold_for_confirmation | [Oakton College Fall 2022-2026 Enrollment Comparison Report](https://www.oakton.edu/_pdfs/research-and-planning/fall_2022-fall_2026_enrollment_comparison_report.pdf) |
 | Polk State College | FL | +288 | context_support_only | hold_for_confirmation | [Polk State College international and visa students](https://www.polk.edu/admission-aid/international-students/) |
-| Norfolk State University | VA | +278 | context_support_only | hold_for_confirmation | [Norfolk State University international student services](https://www.nsu.edu/international) |
+| Norfolk State University | VA | +278 | context_support_only | hold_for_confirmation | [Norfolk State University Supporting the Success of Global Scholars](https://www.nsu.edu/News/Behold/Featured-Articles/2025/Supporting-The-Success-Of-Global-Scholars) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
 | Oakwood University | AL | -192 | unresolved_status_change | hold_for_confirmation | [Oakwood University Fall 2024 Enrollment Statistics](https://oakwood.edu/wp-content/uploads/Fall-Semester-2024-Enrollment-Statistics.pdf) |
 | Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global international admissions definition](https://csuglobal.edu/admissions/international-students) |
@@ -74,9 +74,9 @@ IPEDS rises from 3,369 to 5,374 U.S. nonresident students. Broward reports servi
 
 **Automated trigger:** absolute change is at least 1,000 students; percentage change is at least 25% from a baseline of 100+.
 
-IPEDS rises from 2,947 to 4,405 U.S. nonresident students while total fall enrollment also changes sharply. MDC maintains college-wide international admissions and advising, but the reviewed public materials do not provide an annual population matching the IPEDS definition. Keep the source value in aggregates and treat the institution-level movement as unresolved for narrative purposes.
+IPEDS rises from 2,947 to 4,405 U.S. nonresident students. Miami Dade College's official 2024-25 Fact Book instead reports 1,051 students in its Out of State - International residency category among 94,297 academic-year credit students. The institutional measure uses an academic-year credit population and a residency classification rather than the IPEDS fall U.S. nonresident definition, and its level is materially smaller than the IPEDS count. That direct institutional evidence confirms a scope mismatch rather than numerically corroborating the jump, so retain IPEDS in aggregates and keep institution-specific interpretation held.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-14.
 
 ### Trine University-Regional/Non-Traditional Campuses (UNITID 414878)
 
@@ -90,9 +90,9 @@ IPEDS reports 7,772 to 9,213 U.S. nonresident students and 8,230 to 9,868 total 
 
 **Automated trigger:** absolute change is at least 1,000 students; percentage change is at least 25% from a baseline of 100+.
 
-IPEDS reports 4,408 U.S. nonresident students in fall 2023 and 3,050 in fall 2024. Campbellsville's 2023 institutional materials report 13,049 total students and 34.5% international, broadly consistent with a large international population near the IPEDS baseline. No reviewed institutional source directly reconciles the 2024 decline, so retain the source data but do not infer a cause.
+IPEDS declines from 4,408 U.S. nonresident students in fall 2023 to 3,050 in fall 2024. Campbellsville's Office of Institutional Effectiveness links a final Fall 2023 enrollment report that lists 4,502 International Students, close to the IPEDS baseline, and a final Spring 2024 report that lists 4,071, already 431 lower before the fall 2024 endpoint. Those official institution-defined counts independently support the direction of decline but do not reconcile the full fall 2024 magnitude or use an IPEDS-identical population. Clear only bounded direction-level discussion and retain IPEDS as the numerical authority.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `corroborated_baseline` · **Reviewed:** 2026-10-13.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_direction` · **Reviewed:** 2026-10-14.
 
 ### The University of Texas at Dallas (UNITID 228787)
 
@@ -202,9 +202,9 @@ IPEDS rises from 110 to 398 U.S. nonresident students in one year. Polk State do
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 127 to 405 U.S. nonresident students, almost entirely at the undergraduate level. Norfolk State documents dedicated international-student services and university-wide international initiatives, but the reviewed page provides no comparable annual headcount. The source value remains valid for aggregate accounting while the institution-specific increase stays held for confirmation.
+IPEDS rises from 127 to 405 U.S. nonresident students, almost entirely at the undergraduate level. Norfolk State's official 2025 feature reports more than 100 international students representing 21 countries and describes a mix of undergraduate and graduate students supported by International Student Services. The later institutional count confirms a substantive international-student population but is materially narrower than the 2024 IPEDS level and uses a different year and undefined institutional category, so it cannot reconcile the reported increase. Preserve IPEDS in aggregates and keep the institution-specific movement held.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-14.
 
 ### Grambling State University (UNITID 159009)
 
