@@ -7,8 +7,11 @@ dependency for reproducing the currently published analysis.
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
+from datetime import datetime, timezone
+from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -39,7 +42,7 @@ def check(url: str) -> dict[str, object]:
         }
 
 
-def main() -> int:
+def build_payload() -> dict[str, object]:
     year = END_YEAR + 1
     names = [
         f"EF{year}A.zip",
@@ -53,17 +56,43 @@ def main() -> int:
         result = {"file": name, "url": url, **check(url)}
         results.append(result)
 
-    payload = {
+    fall_enrollment_ready = all(
+        bool(row["available"]) for row in results if row["file"].startswith(f"EF{year}A")
+    )
+    directory_ready = all(
+        bool(row["available"]) for row in results if row["file"].startswith(f"HD{year}")
+    )
+    package_ready = fall_enrollment_ready and directory_ready
+    return {
+        "checked_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "current_analysis_end_year": END_YEAR,
         "candidate_next_year": year,
-        "fall_enrollment_ready": all(
-            bool(row["available"]) for row in results if row["file"].startswith(f"EF{year}A")
-        ),
+        "fall_enrollment_ready": fall_enrollment_ready,
+        "directory_ready": directory_ready,
+        "package_ready": package_ready,
+        "release_decision": "READY_FOR_SCHEMA_REVIEW" if package_ready else "HOLD_YEAR_ADVANCE",
         "files": results,
     }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--write-snapshot",
+        type=Path,
+        help="Optional path for a dated JSON monitoring snapshot.",
+    )
+    args = parser.parse_args()
+
+    payload = build_payload()
     print(json.dumps(payload, indent=2))
 
-    if any(row["status"] == "network_error" for row in results):
+    if args.write_snapshot:
+        args.write_snapshot.parent.mkdir(parents=True, exist_ok=True)
+        args.write_snapshot.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+        print(f"Wrote monitoring snapshot to {args.write_snapshot}", file=sys.stderr)
+
+    if any(row["status"] == "network_error" for row in payload["files"]):
         print("Release check incomplete because at least one request failed at the network layer.", file=sys.stderr)
         return 2
     return 0

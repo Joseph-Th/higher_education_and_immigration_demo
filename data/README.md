@@ -83,6 +83,14 @@ Three generated rows representing explicitly simulated one-off management questi
 
 Four generated rows for planning support: one 2024 backtest and three 2025 planning cases. The backtest applies the 2021-2023 CAGR to the 2023 actual, records the resulting 2024 baseline, and compares it with the known 2024 actual. The forward cases apply three transparent historical growth windows to the 2024 actual and deliberately leave future actual/variance fields blank. `scripts/build_planning_scenarios.py` generates the CSV, `docs/PLANNING_SCENARIOS.md`, and `site/planning-scenarios.html`; the artifact is a planning exercise rather than a predictive model.
 
+## `release_monitor_snapshot.json`
+
+Dated output from `scripts/check_for_new_release.py --write-snapshot ...`. It records the current analysis end year, candidate next year, UTC check timestamp, HTTP availability/status for the four required candidate-year IPEDS package assets, component readiness, complete-package readiness, and the resulting year-advance decision. It is updated only by an explicit online check; the offline validation lane never performs the network request itself.
+
+## `freshness_monitor.csv`
+
+Ten generated monitoring rows combining the captured NCES release observation with maintained Research Library, population-crosswalk, and recurring-report review metadata. The register contains four candidate-file observations, one annual year-advance gate, two source-review controls, and three recurring-product monitoring triggers. `scripts/build_freshness_monitor.py` writes the CSV, `docs/FRESHNESS_MONITOR.md`, and `site/freshness-monitor.html` without inventing deadlines or treating a working URL as a completed methodology review.
+
 ## `qa_resolution_log.csv`
 
 Manually curated analyst dispositions for a selected sample of high-priority rows from `processed/latest_release_institution_review.csv`. The log records the institution, review date, disposition, publication class, outside evidence URL, and an analyst note. It never changes an IPEDS source value. `scripts/build_qa_resolution_log.py` verifies that each reviewed UNITID still exists in the current high-priority queue and generates `docs/QA_RESOLUTION_LOG.md` plus `qa_resolution_summary.json`.

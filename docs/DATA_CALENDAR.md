@@ -20,6 +20,13 @@ Run:
 python scripts/check_for_new_release.py
 ```
 
+To preserve the observation used by the public freshness monitor, run:
+
+```bash
+python scripts/check_for_new_release.py --write-snapshot data/release_monitor_snapshot.json
+python scripts/build_freshness_monitor.py
+```
+
 The script checks the NCES Complete Data Files endpoint for the next year's:
 
 - Fall Enrollment data;
@@ -27,9 +34,9 @@ The script checks the NCES Complete Data Files endpoint for the next year's:
 - institutional directory data; and
 - institutional directory dictionary.
 
-**Last checked October 13, 2026:** the 2025 institutional directory and dictionary are available, while `EF2025A.zip` and `EF2025A_Dict.zip` are not yet available at the Complete Data Files endpoint. The project therefore remains correctly pinned to Fall 2024.
+**Last checked October 13, 2026 local time:** the 2025 institutional directory and dictionary are available, while `EF2025A.zip` and `EF2025A_Dict.zip` are not yet available at the Complete Data Files endpoint. `data/release_monitor_snapshot.json` preserves that four-file observation with its UTC capture timestamp, and `data/freshness_monitor.csv` records the resulting `HOLD YEAR ADVANCE` decision. The project therefore remains correctly pinned to Fall 2024.
 
-The check is deliberately **not** part of `scripts/validate_project.py` because reproducibility of the current release should not depend on network availability or the state of a future NCES release.
+The live check is deliberately **not** part of `scripts/validate_project.py` because reproducibility of the current release should not depend on network availability or the state of a future NCES release. The offline validation lane consumes the last explicitly captured snapshot and verifies that the derived monitoring register/page agree with it.
 
 ## Research Library health check
 

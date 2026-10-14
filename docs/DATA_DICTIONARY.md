@@ -425,7 +425,27 @@ One backtest row plus three forward planning-scenario rows generated from the va
 
 `scripts/build_planning_scenarios.py` writes the CSV, `docs/PLANNING_SCENARIOS.md`, and `site/planning-scenarios.html`. The national historical CSV remains authoritative. Forward scenario rows must not be described as observed values or as a predictive model.
 
+## `data/freshness_monitor.csv`
+
+One row per release/freshness monitoring control generated from the captured release snapshot and maintained source-review/recurring-product metadata.
+
+| Field | Definition |
+| --- | --- |
+| `monitor_id` | Stable ordered monitoring identifier (`R01`-`R04`, `G01`, `S01`-`S02`, `P01`-`P03`) |
+| `monitor_area` | NCES release package, annual release gate, source review, or recurring product |
+| `subject` | File, source-control surface, or recurring product being monitored |
+| `observed_date` | Date of the captured availability check or maintained human review |
+| `status` | Availability, gate, review-recorded, or monitor-trigger state |
+| `evidence` | Current observation retained for the monitoring decision |
+| `trigger` | Condition that requires the next review/action |
+| `next_action` | Bounded action to take when interpreting the current state |
+| `authority` | Source URL or project authority supporting the row |
+
+`scripts/build_freshness_monitor.py` validates `data/release_monitor_snapshot.json`, requires exactly four candidate-year files, derives package readiness from those observations, rejects a mismatched release decision, and generates the CSV plus `docs/FRESHNESS_MONITOR.md` and `site/freshness-monitor.html`. Recurring-product rows preserve event triggers rather than inferring internal deadlines.
+
 ## JSON products
+
+`data/release_monitor_snapshot.json` is a dated online observation rather than an offline analytical input. It records the current/candidate years, UTC check time, Fall Enrollment and directory readiness, complete-package readiness, release decision, and the four candidate-file HTTP observations. It is written only when `scripts/check_for_new_release.py --write-snapshot ...` is run explicitly; normal offline validation consumes but does not refresh it.
 
 `data/qa_report.json` contains structural checks, yearly source/flag distributions, row counts, and explicit exclusions.
 

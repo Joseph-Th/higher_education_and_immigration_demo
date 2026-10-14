@@ -9,7 +9,9 @@ Before changing code, verify on the NCES/IPEDS Complete Data Files page that bot
 - `EFyyyyA`: Fall Enrollment by race/ethnicity, gender, attendance status, and level of student.
 - `HDyyyy`: institutional directory information.
 
-For a quick endpoint check, run `python scripts/check_for_new_release.py`. Treat its result as a release-detection aid, then confirm status and documentation on NCES before updating the analysis.
+For a quick endpoint check, run `python scripts/check_for_new_release.py`. When refreshing the reviewer-visible monitoring record, run `python scripts/check_for_new_release.py --write-snapshot data/release_monitor_snapshot.json`, then `python scripts/build_freshness_monitor.py`. Treat the captured result as a release-detection aid, then confirm status and documentation on NCES before updating the analysis.
+
+Do not advance the year when only part of the candidate-year package is present. The freshness monitor must remain `HOLD YEAR ADVANCE` until Fall Enrollment data/dictionary and directory data/dictionary are all available; package availability then triggers schema review rather than automatic publication.
 
 Record whether NCES identifies the release as provisional or final/revised.
 
@@ -169,6 +171,7 @@ The current public deployment uses GitHub Pages from the validated `site/` tree 
 
 An annual update is complete only when:
 
+- the release/freshness snapshot reflects the source observation used to begin the update and the year-advance gate agrees with the captured package state;
 - provenance is current;
 - schema checks pass or documented changes are resolved;
 - all automated QA checks pass;

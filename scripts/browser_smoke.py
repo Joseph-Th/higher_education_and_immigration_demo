@@ -72,6 +72,9 @@ def check_downloads(base_url: str) -> None:
         "downloads/ad_hoc_analysis.md",
         "downloads/planning_scenarios.csv",
         "downloads/planning_scenarios.md",
+        "downloads/release_monitor_snapshot.json",
+        "downloads/freshness_monitor.csv",
+        "downloads/freshness_monitor.md",
         "downloads/briefing_note.md",
         "downloads/ipeds_portfolio_analysis.xlsx",
         "downloads/management_briefing_deck.pptx",
@@ -192,7 +195,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "43" not in summary or "93" not in summary:
+    if "46" not in summary or "96" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -239,6 +242,43 @@ def inspect_planning_scenarios(browser, base_url: str, *, width: int, height: in
         raise AssertionError(f"Planning scenarios horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Planning scenarios browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_freshness_monitor(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/freshness-monitor.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Freshness monitor page failed at {width}px")
+    if page.locator('[data-monitor-id]').count() != 4:
+        raise AssertionError("Freshness monitor does not render all four candidate-year assets")
+    if page.locator('[data-product-monitor]').count() != 3:
+        raise AssertionError("Freshness monitor does not render all three recurring-product triggers")
+    summary = page.locator(".handoff-summary").inner_text()
+    for expected in ("2/4", "HOLD YEAR ADVANCE", "13", "3"):
+        if expected not in summary:
+            raise AssertionError(f"Freshness monitor summary is missing {expected}")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "not continuously live" not in boundary or "deadlines are not inferred" not in boundary:
+        raise AssertionError("Freshness monitor is missing its dated/non-inferred boundary")
+    release_text = page.locator("#release-readiness").inner_text()
+    if "does not advance the project year" not in release_text or "Fall 2024" not in release_text:
+        raise AssertionError("Freshness monitor is missing the current incomplete-package gate")
+    if page.locator('a[href="downloads/release_monitor_snapshot.json"]').count() != 1:
+        raise AssertionError("Release-monitor snapshot download link is missing")
+    if page.locator('a[href="downloads/freshness_monitor.csv"]').count() != 2:
+        raise AssertionError("Freshness monitor CSV links are missing")
+    if page.locator('a[href="downloads/freshness_monitor.md"]').count() != 1:
+        raise AssertionError("Freshness monitor Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Freshness monitor horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Freshness monitor browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -569,6 +609,8 @@ def main() -> int:
                 inspect_ad_hoc_analysis(browser, base_url, width=390, height=844)
                 inspect_planning_scenarios(browser, base_url, width=1280, height=900)
                 inspect_planning_scenarios(browser, base_url, width=390, height=844)
+                inspect_freshness_monitor(browser, base_url, width=1280, height=900)
+                inspect_freshness_monitor(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

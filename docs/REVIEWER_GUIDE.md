@@ -19,11 +19,12 @@ Live publication: `https://joseph-th.github.io/higher_education_and_immigration_
 11. Open `site/sql-analysis.html`. Inspect the six read-only queries and their independent checks, then open `sql/portfolio_queries.sql` to see CTEs, joins, conditional aggregation, ranking, and window functions in executable form.
 12. Open `site/ad-hoc-analysis.html`. Review the three constructed management questions and how each one is narrowed to the minimum useful calculation, tied to a source authority, reconciled, and returned as a short response without inventing a requester or deadline.
 13. Open `site/planning-scenarios.html`. Review the 2024 forecast-vs-actual backtest and the three 2025 planning cases; note that the assumptions are visible and the page explicitly treats them as planning anchors rather than predictions.
-14. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
-15. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
-16. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, `data/sql_analysis_audit.csv`, `data/ad_hoc_analysis_results.csv`, `data/planning_scenarios.csv`, `data/research_library.csv`, `data/production_cycle_register.csv`, `data/production_cycle_log_template.csv`, and `data/public_release_register.csv` to see how automated flags become analyst publication decisions and how coordination/provenance/release authority are retained.
-17. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
-18. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
+14. Open `site/freshness-monitor.html`. Review the captured four-file 2025 NCES availability check, the HOLD year-advance decision, the source-review dates, and the three recurring-product triggers; note that it is a dated snapshot rather than a continuously live dashboard.
+15. Open `site/research-memo.html` or `docs/RESEARCH_MEMO.md` for the full writing sample, then `docs/FINDINGS.md` for the exact numerical basis behind it.
+16. Read `docs/METHODOLOGY.md` and `docs/POPULATION_CROSSWALK.md` for universe rules, source-selection decisions, definitions, endpoint matching, and limitations.
+17. Inspect `docs/QA_RESOLUTION_LOG.md`, then `data/source_manifest.csv`, `data/schema_audit.csv`, `data/benchmark_audit.csv`, `data/sql_analysis_audit.csv`, `data/ad_hoc_analysis_results.csv`, `data/planning_scenarios.csv`, `data/release_monitor_snapshot.json`, `data/freshness_monitor.csv`, `data/research_library.csv`, `data/production_cycle_register.csv`, `data/production_cycle_log_template.csv`, and `data/public_release_register.csv` to see how automated flags become analyst publication decisions and how coordination/provenance/release authority are retained.
+18. Run `python scripts/validate_project.py`. If browser tooling is available, also run `python scripts/browser_smoke.py`.
+19. Read `docs/UPDATE_PLAYBOOK.md` and `docs/DATA_CALENDAR.md` to see how the next NCES release would be detected, reviewed, and published.
 
 ## What the project demonstrates
 
@@ -40,6 +41,7 @@ Live publication: `https://joseph-th.github.io/higher_education_and_immigration_
 | Build reproducible transformations | `scripts/build_analysis.py` creates institution-, state-, control-, and national-level outputs from the same normalized records |
 | Perform substantive analysis | `scripts/summarize_findings.py` produces level, geography, control, concentration, recovery, and institution-dynamics findings |
 | Investigate apparent discrepancies | `scripts/validate_benchmarks.py` quantifies release-vintage differences instead of forcing current data to match an older Digest publication |
+| Monitor source freshness and release readiness | `scripts/check_for_new_release.py`, `data/release_monitor_snapshot.json`, `scripts/build_freshness_monitor.py`, `data/freshness_monitor.csv`, and `site/freshness-monitor.html` preserve a dated next-year availability check, enforce a complete-package year-advance gate, retain source-review dates, and expose recurring-product triggers without inferring deadlines |
 | Review a new annual release | `scripts/build_update_review.py`, `docs/LATEST_UPDATE_REVIEW.md`, and `data/processed/latest_release_institution_review.csv` reconcile the new year and produce a reason-coded QA queue |
 | Resolve flagged records with analyst judgment | `data/qa_resolution_log.csv`, `scripts/build_qa_resolution_log.py`, and `docs/QA_RESOLUTION_LOG.md` tie selected high-priority flags to external evidence, scope checks, and explicit publication decisions |
 | Write a publication-ready research product | `scripts/build_research_memo.py`, `docs/RESEARCH_MEMO.md`, `site/research-memo.html`, and `deliverables/research_brief.pdf` turn validated findings and QA decisions into web, Markdown, and reviewer-ready PDF products |

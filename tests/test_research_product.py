@@ -318,7 +318,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 43)
+        self.assertEqual(len(release_rows), 46)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -327,15 +327,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 93)
-        self.assertEqual(validate_public_tree(release_rows), 93)
+        self.assertEqual(len(pairs), 96)
+        self.assertEqual(validate_public_tree(release_rows), 96)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 93", rendered)
+        self.assertIn("Expanded public download files:** 96", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("93</strong><span>expanded public download files", html)
+        self.assertIn("96</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -353,7 +353,45 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 93)
+        self.assertEqual(validate_public_tree(release_rows), 96)
+
+    def test_freshness_monitor_preserves_release_gate_and_trigger_boundaries(self) -> None:
+        snapshot = json.loads(
+            (ROOT / "data" / "release_monitor_snapshot.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(snapshot["current_analysis_end_year"], 2024)
+        self.assertEqual(snapshot["candidate_next_year"], 2025)
+        self.assertFalse(snapshot["fall_enrollment_ready"])
+        self.assertTrue(snapshot["directory_ready"])
+        self.assertFalse(snapshot["package_ready"])
+        self.assertEqual(snapshot["release_decision"], "HOLD_YEAR_ADVANCE")
+        self.assertEqual(len(snapshot["files"]), 4)
+        availability = {row["file"]: row["available"] for row in snapshot["files"]}
+        self.assertFalse(availability["EF2025A.zip"])
+        self.assertFalse(availability["EF2025A_Dict.zip"])
+        self.assertTrue(availability["HD2025.zip"])
+        self.assertTrue(availability["HD2025_Dict.zip"])
+
+        monitor = rows(ROOT / "data" / "freshness_monitor.csv")
+        self.assertEqual(len(monitor), 10)
+        self.assertEqual(
+            [row["monitor_id"] for row in monitor[:5]],
+            ["R01", "R02", "R03", "R04", "G01"],
+        )
+        gate = next(row for row in monitor if row["monitor_id"] == "G01")
+        self.assertEqual(gate["status"], "HOLD YEAR ADVANCE")
+        self.assertIn("2/4 required candidate-year files available", gate["evidence"])
+        self.assertIn("Keep END_YEAR=2024", gate["next_action"])
+        self.assertEqual(sum(row["monitor_area"] == "Recurring product" for row in monitor), 3)
+
+        rendered = (ROOT / "docs" / "FRESHNESS_MONITOR.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "freshness-monitor.html").read_text(encoding="utf-8")
+        self.assertIn("dated portfolio monitoring snapshot", rendered.lower())
+        self.assertIn("dates are not inferred", rendered)
+        self.assertIn("not continuously live", html)
+        self.assertIn("HOLD YEAR ADVANCE", html)
+        self.assertEqual(html.count('data-monitor-id="'), 4)
+        self.assertEqual(html.count('data-product-monitor="'), 3)
 
     def test_planning_scenarios_reconcile_and_remain_non_predictive(self) -> None:
         scenario_rows = rows(ROOT / "data" / "planning_scenarios.csv")
@@ -864,10 +902,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 93)
+        self.assertEqual(len(pairs), 96)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 93)
+        self.assertEqual(validate_public_tree(release_rows), 96)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -880,6 +918,7 @@ class ResearchProductTests(unittest.TestCase):
             "sql-analysis.html",
             "ad-hoc-analysis.html",
             "planning-scenarios.html",
+            "freshness-monitor.html",
             "research-library.html",
             "publication-handoff.html",
             "data-governance.html",

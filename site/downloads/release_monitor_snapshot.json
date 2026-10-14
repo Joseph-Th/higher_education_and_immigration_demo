@@ -1,0 +1,39 @@
+{
+  "checked_at_utc": "2026-10-14T02:41:42+00:00",
+  "current_analysis_end_year": 2024,
+  "candidate_next_year": 2025,
+  "fall_enrollment_ready": false,
+  "directory_ready": true,
+  "package_ready": false,
+  "release_decision": "HOLD_YEAR_ADVANCE",
+  "files": [
+    {
+      "file": "EF2025A.zip",
+      "url": "https://nces.ed.gov/ipeds/complete-data-files/EF2025A.zip",
+      "available": false,
+      "status": 404,
+      "content_length": null
+    },
+    {
+      "file": "EF2025A_Dict.zip",
+      "url": "https://nces.ed.gov/ipeds/complete-data-files/EF2025A_Dict.zip",
+      "available": false,
+      "status": 404,
+      "content_length": null
+    },
+    {
+      "file": "HD2025.zip",
+      "url": "https://nces.ed.gov/ipeds/complete-data-files/HD2025.zip",
+      "available": true,
+      "status": 200,
+      "content_length": "1009677"
+    },
+    {
+      "file": "HD2025_Dict.zip",
+      "url": "https://nces.ed.gov/ipeds/complete-data-files/HD2025_Dict.zip",
+      "available": true,
+      "status": 200,
+      "content_length": "139157"
+    }
+  ]
+}
