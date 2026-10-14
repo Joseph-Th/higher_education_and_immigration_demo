@@ -16,10 +16,12 @@ This compact library records the external sources used to collect, interpret, va
 | [Higher Ed Immigration Portal National Data](https://www.higheredimmigrationportal.org/national/national-data/) | Immigrant-origin, International, Undocumented | Publication context | Portal data | Living resource | Contextual comparison and model for public data presentation; not an input to the IPEDS series | 2026-10-13 |
 | [Higher Ed Immigration Portal Methodology](https://www.higheredimmigrationportal.org/methodology/) | Immigrant-origin, International, Undocumented, Refugee/asylee | Methodology | Portal methodology | Living resource | Methodology reference and model for documenting source limitations; not an input to the IPEDS series | 2026-10-13 |
 | [Undocumented Students in U.S. Higher Education 2026](https://www.higheredimmigrationportal.org/research/undocumented-students-in-u-s-higher-education-2/) | Undocumented | Recurring research | Recurring report | Recurring | Related recurring research product named in the target role; not an input to the IPEDS series | 2026-10-13 |
+| [Undocumented Students in U.S. Higher Education: 2023 ACS Estimate](https://www.higheredimmigrationportal.org/wp-content/uploads/2025/06/Undocumented-Students-in-Higher-Education-June-2025.pdf) | Undocumented | Comparison research | Historical report | Historical | R06 same-year 2023 national denominator and top-state validation source; fixed publication vintage | 2026-10-13 |
 | [Securing America's Talent Pipeline: How Immigrant-Origin Students Power Higher Education](https://www.presidentsalliance.org/wp-content/uploads/2026/05/Securing-Americas-Talent-Pipeline-May-2026.pdf) | Immigrant-origin | Recurring research | Recurring report | Recurring | Latest immigrant-origin research product relevant to the target role; not an input to the IPEDS series | 2026-10-13 |
 | [Undocumented College Students: 2021 ACS Estimate](https://www.americanimmigrationcouncil.org/wp-content/uploads/2025/01/undocumented_students_in_higher_education_2023.pdf) | Undocumented | Comparison research | Historical fact sheet | Historical | R04 same-method historical segment; used only for the 2019-2021 comparison and not bridged to later model vintages | 2026-10-13 |
 | [Undocumented College Students: 2024 ACS Estimate](https://www.americanimmigrationcouncil.org/fact-sheet/undocumented-college-students/) | Undocumented | Comparison research | Fact sheet | Current | R04 current same-method segment and national scale context; not treated as an observed IPEDS category | 2026-10-13 |
-| [A Generation Threatened: Undocumented High School Students Graduate Amidst Uncertain National Climate](https://www.higheredimmigrationportal.org/research/a-generation-threatened-undocumented-high-school-students-graduate-amidst-uncertain-national-climate/) | Undocumented, K-12 pipeline | Recurring research | Recurring report | Recurring | Latest high-school-graduate research product named in the target role; not an input to the IPEDS series | 2026-10-13 |
+| [A Generation Threatened: Undocumented High School Students Graduate Amidst Uncertain National Climate](https://www.higheredimmigrationportal.org/wp-content/uploads/2026/02/A-Geneation-Threatened-Undocumented-High-School-Students-Graduate-Feb-2026-final.pdf) | Undocumented, K-12 pipeline | Recurring research | Recurring report | Recurring | Latest high-school-graduate research product named in the target role and R06 pipeline-flow authority; not an input to the IPEDS series | 2026-10-13 |
+| [Top States by Immigrant & International Students](https://www.higheredimmigrationportal.org/states/top-states-by-immigrant-international-students/) | Undocumented, Immigrant-origin, International | Comparison research | Portal data | Living resource | R06 2023 state higher-education comparison authority; captured values are preserved in the fixed reference CSV | 2026-10-13 |
 | [Protecting Tuition Equity: A Playbook for State Coalitions and Higher Education Institutions](https://www.presidentsalliance.org/wp-content/uploads/2026/01/Protecting-Tuition-Equity-A-Playbook-for-State-Coalitions-and-Higher-Education-Institutions-FINAL.pdf) | Undocumented, Data governance | Privacy / data governance | Practice guidance | As needed | Context for the portfolio's data-minimization and restricted-by-default handling boundary; not an analytical input | 2026-10-13 |
 
 ## Resource notes
@@ -114,6 +116,15 @@ This compact library records the external sources used to collect, interpret, va
 - **Project use:** Related recurring research product named in the target role; not an input to the IPEDS series
 - **Status note:** Posted May 28 2026 with updated national estimates
 
+### Undocumented Students in U.S. Higher Education: 2023 ACS Estimate
+
+- **Publisher:** Presidents' Alliance / Higher Ed Immigration Portal
+- **Population / topic:** Undocumented
+- **Workflow stage:** Comparison research
+- **Scope:** National and state 2023 ACS-based estimates of undocumented students enrolled in U.S. higher education
+- **Project use:** R06 same-year 2023 national denominator and top-state validation source; fixed publication vintage
+- **Status note:** Direct first-party June 2025 report PDF; uses the 1-year 2023 ACS, reports approximately 510000 students nationally, and documents a methodology adjustment from the prior report vintage
+
 ### Securing America's Talent Pipeline: How Immigrant-Origin Students Power Higher Education
 
 - **Publisher:** Presidents' Alliance / Higher Ed Immigration Portal
@@ -146,9 +157,18 @@ This compact library records the external sources used to collect, interpret, va
 - **Publisher:** Presidents' Alliance / Higher Ed Immigration Portal
 - **Population / topic:** Undocumented, K-12 pipeline
 - **Workflow stage:** Recurring research
-- **Scope:** Estimates of undocumented students reaching and graduating from U.S. high schools each year
-- **Project use:** Latest high-school-graduate research product named in the target role; not an input to the IPEDS series
-- **Status note:** Posted February 3 2026; estimates approximately 75000 undocumented graduates annually
+- **Scope:** 2023 national and state estimates of undocumented students graduating from U.S. high schools each year
+- **Project use:** Latest high-school-graduate research product named in the target role and R06 pipeline-flow authority; not an input to the IPEDS series
+- **Status note:** Direct first-party February 2026 report PDF; labels the estimates as 2023 data, reports approximately 75000 undocumented graduates annually, and publishes the leading state estimates used by R06
+
+### Top States by Immigrant & International Students
+
+- **Publisher:** Presidents' Alliance / Higher Ed Immigration Portal
+- **Population / topic:** Undocumented, Immigrant-origin, International
+- **Workflow stage:** Comparison research
+- **Scope:** State rankings and counts including the 2023 undocumented higher-education top-state table
+- **Project use:** R06 2023 state higher-education comparison authority; captured values are preserved in the fixed reference CSV
+- **Status note:** Living Portal page; undocumented higher-education table is labeled 2023, so R06 preserves the reviewed values rather than treating future page updates as revisions to the fixed comparison
 
 ### Protecting Tuition Equity: A Playbook for State Coalitions and Higher Education Institutions
 

@@ -34,7 +34,7 @@ This analysis supports enrollment monitoring, not causal claims about immigratio
 
 - **24/24** NCES Digest consistency checks pass.
 - The latest release review contains **290** reason-coded institution records for triage.
-- The Research Library contains **15** maintained external resources spanning primary data, methodology, release monitoring, benchmarks, and related Higher Ed Immigration Portal research.
+- The Research Library contains **17** maintained external resources spanning primary data, methodology, release monitoring, benchmarks, and related Higher Ed Immigration Portal research.
 - A structured population/source crosswalk governs whether IPEDS, SEVIS, CPS immigrant-origin, and ACS-derived undocumented-student measures are directly comparable, contextual only, or a separate data need.
 - Exact source archives, hashes, schema checks, QA outputs, and downloadable analysis tables are retained in the repository.
 
