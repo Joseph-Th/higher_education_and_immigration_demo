@@ -10,7 +10,7 @@ This register turns findings, QA observations, source limitations, and recurring
 | R02 | High | Why have some states recovered above 2019 while others remain below? | High | Implemented in state recovery analysis |
 | R04 | High | How do IPEDS U.S. nonresident trends compare with undocumented and immigrant-origin student estimates? | None | Methods crosswalk complete; compatible trend data still needed |
 | R05 | High | Which large institution-level annual changes reflect substantive movement versus reporting or classification discontinuity? | High | Ready for analyst review |
-| R03 | Medium | Is private nonprofit growth broad-based or concentrated among a small set of institutions? | High | Ready with current data |
+| R03 | Medium | Is private nonprofit growth broad-based or concentrated among a small set of institutions? | High | Implemented in private nonprofit growth analysis |
 | R06 | Medium | What does the undocumented high-school graduate pipeline imply for higher-education access questions? | None | Requires partner/population data |
 | R07 | Medium | Which external source updates should trigger Portal refreshes or new research products? | Support | Ongoing monitoring |
 
@@ -65,10 +65,10 @@ This register turns findings, QA observations, source limitations, and recurring
 - **Evidence trigger:** Private nonprofit institutions added 82,825 U.S. nonresident students from 2015 to 2024, driven primarily by graduate enrollment.
 - **Current IPEDS fit:** High
 - **Additional data needed:** Current institution-level IPEDS files
-- **Proposed method:** Rank institution contributions within private nonprofits; calculate concentration and separate undergraduate/graduate change.
-- **Proposed output:** Institutional-control research note
-- **Decision rule:** Treat the sector shift as broad-based only if growth is not dominated by a small number of institutions.
-- **Status:** Ready with current data
+- **Proposed method:** Rank institution contributions within private nonprofits; calculate concentration against gross positive movement; separate undergraduate/graduate change and retain current institution QA gates.
+- **Proposed output:** Private nonprofit growth concentration note
+- **Decision rule:** Classify the shift as concentrated if the top 10 institutions account for at least 50% of gross positive movement; otherwise classify it as broadly distributed beyond the top 10.
+- **Status:** Implemented in private nonprofit growth analysis
 
 #### R06 · What does the undocumented high-school graduate pipeline imply for higher-education access questions?
 

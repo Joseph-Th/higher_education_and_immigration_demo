@@ -429,6 +429,28 @@ One row per state/DC explaining the 2019-2024 recovery result with three exact d
 
 `scripts/build_state_recovery_analysis.py` derives the table from `state_year.csv`, `state_change_summary.csv`, and `institution_year.csv`, rejects any student-level, institutional-control, or institution-continuity decomposition that does not reconcile, and generates `docs/STATE_RECOVERY_ANALYSIS.md` plus `site/state-recovery.html`. The decomposition is accounting rather than causal analysis; institution entry/exit must not be interpreted automatically as campus opening/closure, and endpoint control changes can include institutions changing control category.
 
+## `data/private_nonprofit_growth.csv`
+
+One row per UNITID present in the private-nonprofit analytic universe in 2015 or 2024. The table attributes the sector endpoint change to institutions, separates undergraduate and graduate contributions, measures positive-contribution concentration, and carries the current latest-release QA gate for institution-specific interpretation.
+
+| Field | Definition |
+| --- | --- |
+| `unitid` / `institution` | Public IPEDS institution identifier and display name |
+| `state_2015` / `state_2024` | Endpoint institution location; blank when the UNITID is absent from that endpoint private-nonprofit universe |
+| `endpoint_status` | Present as private nonprofit in both endpoints, entered the endpoint universe, or left it |
+| `nonresident_2015` / `nonresident_2024` | Endpoint U.S. nonresident enrollment, using zero when the UNITID is absent from that private-nonprofit endpoint |
+| `change_2015_2024` | 2024 minus 2015 endpoint contribution |
+| `undergraduate_change` / `graduate_change` | Student-level contribution components that must sum to the institution endpoint change |
+| `latest_release_review_priority` | Current 2023-2024 automated review priority for the UNITID, or `not_in_latest_endpoint` when no current row exists |
+| `latest_release_publication_class` | Analyst publication class from the current QA resolution log when reviewed |
+| `narrative_gate` | Institution-specific publication gate inherited from the latest-release QA layer; aggregate inclusion does not clear a held institution-specific claim |
+| `positive_rank` | Rank among institutions with positive endpoint contributions; blank for zero/negative contributions |
+| `share_of_gross_positive_pct` | Institution positive contribution divided by all positive private-nonprofit endpoint movement |
+| `cumulative_positive_share_pct` | Cumulative share of gross positive movement in positive-rank order |
+| `concentration_group` | Top 10, positive ranks 11-25, other positive contributors, or nonpositive contribution |
+
+`scripts/build_private_nonprofit_analysis.py` reconciles the 2015 and 2024 institution totals to `control_year.csv`, requires undergraduate plus graduate contributions to match every institution endpoint change, requires gross positive movement minus gross negative movement to match the +82,825 sector net change, and generates `docs/PRIVATE_NONPROFIT_GROWTH.md` plus `site/private-nonprofit-growth.html`. The public decision rule labels the shift concentrated only when the top 10 institutions account for at least 50% of gross positive movement; that threshold is an explicit project rule rather than a universal statistical standard. Endpoint entry/exit can reflect control-category or analytic-universe changes and must not be interpreted automatically as campus opening/closure.
+
 ## `data/planning_scenarios.csv`
 
 One backtest row plus three forward planning-scenario rows generated from the validated national series.

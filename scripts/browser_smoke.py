@@ -72,6 +72,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/ad_hoc_analysis.md",
         "downloads/state_recovery_analysis.csv",
         "downloads/state_recovery_analysis.md",
+        "downloads/private_nonprofit_growth.csv",
+        "downloads/private_nonprofit_growth.md",
         "downloads/planning_scenarios.csv",
         "downloads/planning_scenarios.md",
         "downloads/release_monitor_snapshot.json",
@@ -187,6 +189,49 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
     context.close()
 
 
+def inspect_private_nonprofit_growth(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/private-nonprofit-growth.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Private nonprofit growth page failed at {width}px")
+    summary = page.locator(".handoff-summary").inner_text()
+    for expected in ("+82,825", "+83,792", "729", "34.5%"):
+        if expected not in summary:
+            raise AssertionError(f"Private nonprofit growth summary is missing {expected}")
+    concentration = page.locator("#concentration").inner_text()
+    for expected in ("65.5%", "137,578", "54,753", "Broadly distributed beyond the top 10"):
+        if expected not in concentration:
+            raise AssertionError(f"Private nonprofit concentration section is missing {expected}")
+    table = page.locator(".section-tinted tbody")
+    if table.locator("tr").count() != 10:
+        raise AssertionError("Private nonprofit page does not render the ten leading contributors")
+    first = table.locator("tr").first.inner_text()
+    if "Trine University-Regional/Non-Traditional Campuses" not in first or "+9,167" not in first or "Safe with context" not in first:
+        raise AssertionError("Private nonprofit leading-contributor row does not match validated output")
+    table_text = table.inner_text()
+    if "Hold for confirmation" not in table_text or "High-priority review unresolved" not in table_text:
+        raise AssertionError("Private nonprofit ranking does not preserve latest-release QA holds")
+    if "Entered endpoint sector universe" not in table_text:
+        raise AssertionError("Private nonprofit ranking does not disclose endpoint-sector entry")
+    boundary = page.locator(".handoff-hero .release-note").inner_text()
+    if "at least 50% of gross positive movement" not in boundary:
+        raise AssertionError("Private nonprofit page is missing its concentration decision rule")
+    if page.locator('a[href="downloads/private_nonprofit_growth.csv"]').count() != 2:
+        raise AssertionError("Private nonprofit CSV links are missing")
+    if page.locator('a[href="downloads/private_nonprofit_growth.md"]').count() != 1:
+        raise AssertionError("Private nonprofit Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Private nonprofit horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Private nonprofit browser errors: " + " | ".join(errors))
+    context.close()
+
+
 def inspect_state_recovery(browser, base_url: str, *, width: int, height: int) -> None:
     context = browser.new_context(viewport={"width": width, "height": height})
     page = context.new_page()
@@ -235,7 +280,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "48" not in summary or "98" not in summary:
+    if "50" not in summary or "100" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -649,6 +694,8 @@ def main() -> int:
                 inspect_ad_hoc_analysis(browser, base_url, width=390, height=844)
                 inspect_state_recovery(browser, base_url, width=1280, height=900)
                 inspect_state_recovery(browser, base_url, width=390, height=844)
+                inspect_private_nonprofit_growth(browser, base_url, width=1280, height=900)
+                inspect_private_nonprofit_growth(browser, base_url, width=390, height=844)
                 inspect_planning_scenarios(browser, base_url, width=1280, height=900)
                 inspect_planning_scenarios(browser, base_url, width=390, height=844)
                 inspect_freshness_monitor(browser, base_url, width=1280, height=900)

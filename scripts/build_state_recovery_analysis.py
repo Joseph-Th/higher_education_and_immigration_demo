@@ -1,9 +1,9 @@
 """Build a state recovery decomposition for the 2019-2024 period.
 
 The existing state summary identifies which states are above or below their 2019
-U.S. nonresident enrollment. This layer explains those outcomes with two exact
-accounting views: undergraduate versus graduate change, and institution-level
-continuity versus entries/exits from the analytic universe.
+U.S. nonresident enrollment. This layer explains those outcomes with three exact
+accounting views: undergraduate versus graduate change, institutional control,
+and institution-level continuity versus entries/exits from the analytic universe.
 """
 
 from __future__ import annotations

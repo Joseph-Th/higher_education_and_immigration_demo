@@ -85,6 +85,7 @@ This design is deliberate: the external publication is a validation source, not 
 - the SQL query pack containing exactly six ordered read-only queries, using joins/CTEs/window functions, rejecting mutation/DDL statements, and passing six independent reconciliation checks against canonical CSV outputs;
 - the ad hoc casebook containing exactly three ordered simulated management questions, all case-level checks passing, expected recovery/latest-mover/control-driver figures, and an explicit no-client/no-SLA/no-employment-history boundary in generated Markdown/HTML;
 - the state-recovery analysis containing all 50 states plus DC, preserving the 33/18 recovery split, reconciling undergraduate-plus-graduate, public-plus-private-control, and continuing-plus-entry-minus-exit accounting independently for every state, bounding concentration shares, and matching generated Markdown/HTML;
+- the private-nonprofit growth analysis containing the 1,831 UNITIDs present at either endpoint sector universe, reconciling 2015/2024 totals and undergraduate/graduate components to the private-nonprofit control series, reconciling gross positive minus gross negative movement to +82,825, enforcing deterministic positive ranks and the 34.53% top-10 share, and preserving current latest-release institution QA publication gates in the generated CSV/Markdown/HTML;
 - the planning-scenario table containing one reconciled 2024 backtest and three ordered 2025 planning cases, expected baseline/actual/variance values, an ascending scenario range, blank future actual/variance fields, and explicit non-predictive boundaries in Markdown/HTML;
 - the captured release-monitor snapshot containing exactly four candidate-2025 NCES assets, preserving the observed 404/404/200/200 state, and deriving `HOLD_YEAR_ADVANCE` until the complete package is available;
 - the generated freshness monitor containing exactly ten ordered monitoring rows covering the four NCES assets, one year-advance gate, two source-review controls, and three recurring-product triggers without inferred deadlines;
@@ -104,7 +105,7 @@ This design is deliberate: the external publication is a validation source, not 
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **36 tests**.
+The current suite contains **37 tests**.
 
 ## One-command validation
 
@@ -131,14 +132,15 @@ The browser test starts a local server on an ephemeral port and checks both desk
 - the latest-release high-priority review count matching `site_data.json`;
 - working public CSV downloads;
 - working public Research Library and Research Agenda CSV/Markdown, QA resolution CSV/Markdown, research memo, stakeholder briefing-note, Excel-workbook, PowerPoint management-deck, state-profile index, and state-profile downloads;
-- working public population-crosswalk CSV/Markdown, recurring-report register CSV/Markdown, production-cycle CSV/Markdown, blank production-cycle log template, SQL query/audit/Markdown downloads, ad hoc case CSV/Markdown downloads, state-recovery CSV/Markdown downloads, planning-scenario CSV/Markdown downloads, release-monitor snapshot, freshness-monitor CSV/Markdown downloads, and PDF research-brief downloads;
+- working public population-crosswalk CSV/Markdown, recurring-report register CSV/Markdown, production-cycle CSV/Markdown, blank production-cycle log template, SQL query/audit/Markdown downloads, ad hoc case CSV/Markdown downloads, state-recovery CSV/Markdown downloads, private-nonprofit growth CSV/Markdown downloads, planning-scenario CSV/Markdown downloads, release-monitor snapshot, freshness-monitor CSV/Markdown downloads, and PDF research-brief downloads;
 - searchable Research Library behavior, including text, resource-type, and population/topic filtering;
 - publication-handoff rendering with 11 claim/control cards, five release gates, current headline value, download, portfolio boundary, and responsive layout;
-- data-governance rendering with 48 registered artifact families, 98 expanded public files, five release controls, restricted-data boundary, governed downloads, and responsive layout;
+- data-governance rendering with 50 registered artifact families, 100 expanded public files, five release controls, restricted-data boundary, governed downloads, and responsive layout;
 - production-cycle rendering with seven ordered stage controls, three recurring-product packets, zero inferred internal deadlines, the blank live-cycle log download, governed downloads, and responsive layout;
 - SQL-analysis rendering with six query cards, six passing reconciliation rows, public query/audit downloads, the ephemeral-database authority boundary, and responsive layout;
 - ad-hoc-analysis rendering with three simulated request cards, three passing checks, explicit no-real-requester/no-deadline boundary, governed downloads, and responsive layout;
 - state-recovery rendering with the 33/18 recovery split, 2019-2024 national reconciliation, student-level and institutional-control drivers, largest-gain/shortfall tables, explicit accounting-not-causality boundary, governed downloads, and responsive layout;
+- private-nonprofit growth rendering with the +82,825 sector change, +83,792 graduate contribution, 729 positive contributors, 34.5% top-10 gross-positive share, current institution QA holds, governed downloads, and responsive layout;
 - planning-scenarios rendering with the -4.0% backtest variance, all three forward planning values, explicit non-predictive boundary, governed downloads, and responsive layout;
 - freshness-monitor rendering with the 2/4 candidate-file state, HOLD year-advance gate, four release cards, three recurring-product trigger cards, dated/not-continuously-live boundary, governed downloads, and responsive layout;
 - anchored sections clearing the sticky header; and
@@ -175,4 +177,4 @@ The static brief exposes:
 - provisional status for 2024;
 - chart-level source notes;
 - methodology and limitations;
-- downloadable PDF research brief, Excel analysis workbook, PowerPoint management briefing, SQL query pack/audit/notes, ad hoc analysis results/casebook, planning-scenario table/notes, release-monitor snapshot and freshness-monitor register/notes, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, population/source crosswalk, recurring-report operations register, stage-gated production-cycle register/notes, blank validated production-cycle log template, publication handoff, data-governance note and public-release register, stakeholder briefing note, structured/searchable Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.
+- downloadable PDF research brief, Excel analysis workbook, PowerPoint management briefing, SQL query pack/audit/notes, ad hoc analysis results/casebook, state-recovery analysis/notes, private-nonprofit growth analysis/notes, planning-scenario table/notes, release-monitor snapshot and freshness-monitor register/notes, national, state, institution, institution-change, latest-release QA queue/memo, analyst QA resolution log, research memo, population/source crosswalk, recurring-report operations register, stage-gated production-cycle register/notes, blank validated production-cycle log template, publication handoff, data-governance note and public-release register, stakeholder briefing note, structured/searchable Research Library, source-manifest, schema-audit, benchmark-audit, and external-reference files.

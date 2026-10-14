@@ -264,6 +264,63 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("accounting, not causal attribution", html)
         self.assertIn("not automatically a campus opening or closure", html)
 
+    def test_private_nonprofit_growth_is_broadly_distributed_and_qa_gated(self) -> None:
+        analysis = rows(ROOT / "data" / "private_nonprofit_growth.csv")
+        self.assertEqual(len(analysis), 1831)
+        controls = {
+            int(row["year"]): row
+            for row in self.controls
+            if row["control"] == "Private nonprofit"
+        }
+        expected_2015 = int(controls[START_YEAR]["nonresident_enrollment"])
+        expected_2024 = int(controls[END_YEAR]["nonresident_enrollment"])
+        expected_net = expected_2024 - expected_2015
+        self.assertEqual(expected_net, 82825)
+        self.assertEqual(sum(int(row["nonresident_2015"]) for row in analysis), expected_2015)
+        self.assertEqual(sum(int(row["nonresident_2024"]) for row in analysis), expected_2024)
+        self.assertEqual(sum(int(row["change_2015_2024"]) for row in analysis), expected_net)
+        self.assertEqual(sum(int(row["undergraduate_change"]) for row in analysis), -967)
+        self.assertEqual(sum(int(row["graduate_change"]) for row in analysis), 83792)
+
+        positive = [row for row in analysis if int(row["change_2015_2024"]) > 0]
+        negative = [row for row in analysis if int(row["change_2015_2024"]) < 0]
+        self.assertEqual(len(positive), 729)
+        self.assertEqual(len(negative), 718)
+        gross_positive = sum(int(row["change_2015_2024"]) for row in positive)
+        gross_negative = -sum(int(row["change_2015_2024"]) for row in negative)
+        self.assertEqual(gross_positive, 137578)
+        self.assertEqual(gross_negative, 54753)
+        self.assertEqual(gross_positive - gross_negative, expected_net)
+
+        ranked = sorted(positive, key=lambda row: int(row["positive_rank"]))
+        self.assertEqual([int(row["positive_rank"]) for row in ranked], list(range(1, 730)))
+        top10 = ranked[:10]
+        self.assertEqual(sum(int(row["change_2015_2024"]) for row in top10), 47503)
+        self.assertEqual(top10[-1]["cumulative_positive_share_pct"], "34.53")
+        self.assertLess(float(top10[-1]["cumulative_positive_share_pct"]), 50.0)
+        self.assertEqual(top10[0]["institution"], "Trine University-Regional/Non-Traditional Campuses")
+
+        by_unitid = {row["unitid"]: row for row in analysis}
+        self.assertEqual(by_unitid["414878"]["narrative_gate"], "safe_with_context")
+        self.assertEqual(by_unitid["156541"]["narrative_gate"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["179894"]["narrative_gate"], "high-priority review unresolved")
+        self.assertEqual(by_unitid["195173"]["narrative_gate"], "hold_for_confirmation")
+        self.assertEqual(
+            by_unitid["488679"]["endpoint_status"],
+            "Entered private-nonprofit endpoint universe",
+        )
+
+        agenda = {row["research_id"]: row for row in rows(ROOT / "data" / "research_agenda.csv")}
+        self.assertEqual(agenda["R03"]["status"], "Implemented in private nonprofit growth analysis")
+        self.assertIn("at least 50% of gross positive movement", agenda["R03"]["decision_rule"])
+        rendered = (ROOT / "docs" / "PRIVATE_NONPROFIT_GROWTH.md").read_text(encoding="utf-8")
+        html = (ROOT / "site" / "private-nonprofit-growth.html").read_text(encoding="utf-8")
+        self.assertIn("**34.5%**", rendered)
+        self.assertIn("**729** positive contributors", rendered)
+        self.assertIn("Broadly distributed beyond the top 10", html)
+        self.assertIn("Hold for confirmation", html)
+        self.assertIn("High-priority review unresolved", html)
+
     def test_institution_change_summary_reconciles(self) -> None:
         summary = rows(ROOT / "data" / "processed" / "institution_change_summary.csv")
         dynamics = self.findings["institution_dynamics"]["decade"]
@@ -390,7 +447,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 48)
+        self.assertEqual(len(release_rows), 50)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -399,15 +456,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 98)
-        self.assertEqual(validate_public_tree(release_rows), 98)
+        self.assertEqual(len(pairs), 100)
+        self.assertEqual(validate_public_tree(release_rows), 100)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 98", rendered)
+        self.assertIn("Expanded public download files:** 100", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("98</strong><span>expanded public download files", html)
+        self.assertIn("100</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -425,7 +482,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 98)
+        self.assertEqual(validate_public_tree(release_rows), 100)
 
     def test_freshness_monitor_preserves_release_gate_and_trigger_boundaries(self) -> None:
         snapshot = json.loads(
@@ -977,10 +1034,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 98)
+        self.assertEqual(len(pairs), 100)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 98)
+        self.assertEqual(validate_public_tree(release_rows), 100)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -993,6 +1050,7 @@ class ResearchProductTests(unittest.TestCase):
             "sql-analysis.html",
             "ad-hoc-analysis.html",
             "state-recovery.html",
+            "private-nonprofit-growth.html",
             "planning-scenarios.html",
             "freshness-monitor.html",
             "research-library.html",
