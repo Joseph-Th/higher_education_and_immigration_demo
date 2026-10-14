@@ -1,6 +1,6 @@
 {
   "builder": "scripts/build_management_deck.py",
-  "builder_sha256": "75fae64b9135219deb8c0514e7191a639ba07438146148f55d30986c428bda59",
+  "builder_sha256": "db24342a82ed858fb8da8a6628cbf44a902fe72e001513aeb20b0cc6142b07b2",
   "source_sha256": {
     "data/processed/national_year.csv": "800c805dc4241c70070ff7962fb1abc7faa602735af6796adaca9de8bcc7f892",
     "data/processed/state_change_summary.csv": "943d1102a624dbcace52a371ba5c41d4ecbadf9e79e6475f140b28cd0a5f4edf",
@@ -9,8 +9,8 @@
     "data/findings.json": "c9c4f4948113353576e4be8b82ef3596b153059a77b600305f9ec569957544d7",
     "data/latest_update_review.json": "7a1d00482ff0fa998561b57dea3c45de495406e0e2a78e22ddb73c4b835ab69e"
   },
-  "pptx_sha256": "bec19d197df6ba70746e019bbac3713bfa35a2dbcdbc7a59c0546f7999e0c48f",
-  "pptx_bytes": 43859,
+  "pptx_sha256": "4f7bad8c18f79db3f2950cf17b0a4eee34aa6e7b53c830c34cefe883414c6217",
+  "pptx_bytes": 43841,
   "slide_count": 6,
   "metrics": {
     "latest_nonresident": 1044137,

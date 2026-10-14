@@ -159,9 +159,23 @@ def add_footer(slide, number: int, source: str = "IPEDS Fall Enrollment · portf
 
 def add_heading(slide, kicker: str, title: str, subtitle: str | None = None) -> None:
     add_text(slide, kicker.upper(), 0.68, 0.46, 4.0, 0.24, size=9, color=ACCENT_DARK, bold=True)
-    add_text(slide, title, 0.68, 0.82, 11.75, 0.62, size=28, color=NAVY, bold=True)
+    if len(title) > 62:
+        title_y, title_h, title_size, subtitle_y = 0.78, 0.82, 24, 1.62
+    else:
+        title_y, title_h, title_size, subtitle_y = 0.82, 0.62, 28, 1.42
+    add_text(
+        slide,
+        title,
+        0.68,
+        title_y,
+        11.75,
+        title_h,
+        size=title_size,
+        color=NAVY,
+        bold=True,
+    )
     if subtitle:
-        add_text(slide, subtitle, 0.68, 1.42, 11.65, 0.44, size=12.5, color=INK_SOFT)
+        add_text(slide, subtitle, 0.68, subtitle_y, 11.65, 0.3, size=12.5, color=INK_SOFT)
 
 
 def add_kpi_card(slide, x: float, y: float, w: float, label: str, value: str, detail: str, *, dark: bool = False) -> None:
