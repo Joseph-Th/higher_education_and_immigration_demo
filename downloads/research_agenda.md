@@ -14,6 +14,7 @@ This register turns findings, QA observations, source limitations, and recurring
 | R06 | Medium | What does the undocumented high-school graduate pipeline imply for higher-education access questions? | None | Implemented as bounded 2023 state pipeline context |
 | R07 | Medium | Which external source updates should trigger Portal refreshes or new research products? | Support | Implemented as source-update triage register |
 | R08 | Medium | Which institution-level QA signals should carry forward into the next complete Fall Enrollment release? | Support | Implemented as candidate-year QA carry-forward watchlist |
+| R09 | Medium | How should the current medium-priority institution QA queue be routed before the next release? | High | Implemented as medium-priority QA triage |
 
 ## Detailed research cards
 
@@ -100,6 +101,16 @@ This register turns findings, QA observations, source limitations, and recurring
 - **Proposed output:** Candidate-year QA carry-forward watchlist
 - **Decision rule:** Every current high/medium QA row or candidate directory structural change enters the next full-package reconciliation. Existing publication dispositions are revalidated rather than inherited, and directory structure alone never establishes candidate-year enrollment movement or opening/closure.
 - **Status:** Implemented as candidate-year QA carry-forward watchlist
+
+#### R09 · How should the current medium-priority institution QA queue be routed before the next release?
+
+- **Evidence trigger:** The 2023-2024 review queue contains 50 medium-priority records: 28 are percentage-movement cases, 11 are absolute-movement cases, 8 trigger both absolute and percentage thresholds, and 3 require structural/reporting context; five overlap candidate-directory structural changes.
+- **Current IPEDS fit:** High
+- **Additional data needed:** Current latest-release reason codes and candidate-directory continuity are sufficient for reproducible routing; institution/source evidence is still required before any medium-priority row is promoted into institution-specific narrative.
+- **Proposed method:** Classify each medium-priority row from the existing reason codes into structural/reporting, absolute-plus-percentage, absolute-only, or percentage-only review routes; quantify mixed-direction movement and candidate-directory overlap without adding a new risk score or publication disposition.
+- **Proposed output:** Medium-priority institution QA triage note
+- **Decision rule:** Every medium-priority row must map to exactly one non-severity review route derived from its existing trigger reasons. Candidate-directory overlap changes the evidence to inspect, not the current priority, and no row becomes publication-cleared without evidence review.
+- **Status:** Implemented as medium-priority QA triage
 
 ## Governance principles
 
