@@ -39,7 +39,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Walden University | MN | -396 | Percentage Movement | External scope mismatch | Hold for confirmation | [Walden international students](https://www.waldenu.edu/international-students) |
 | Weber State University | UT | +373 | Percentage Movement | Corroborated external count | Safe with context | [Weber State Fall 2024 international enrollment](https://www.weber.edu/wsutoday/090524-international-enrollment.html) |
 | Fort Hays State University | KS | -266 | Percentage Movement | External scope mismatch | Hold for confirmation | [Fort Hays International Education Week](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week) |
-| Marywood University | PA | -260 | Percentage Movement | Context only | Hold for confirmation | [Marywood international admissions](https://www.marywood.edu/admissions/international/) |
+| Marywood University | PA | -260 | Percentage Movement | External scope mismatch | Hold for confirmation | [Marywood University 2024-25 Fact Book](https://www.marywood.edu/about/consumer-information/factbooks/Fall-2024-Factbook.pdf?language_id=1) |
 | Dominican University of California | CA | -249 | Percentage Movement | Context only | Hold for confirmation | [Dominican international admissions](https://www.dominican.edu/admissions/international-admissions) |
 | National Louis University | IL | +218 | Percentage Movement | Context only | Hold for confirmation | [National Louis international students](https://nl.edu/admissions/international-students/) |
 | University of Rio Grande | OH | +181 | Percentage Movement | Context only | Hold for confirmation | [University of Rio Grande international admissions](https://www.rio.edu/admissions/apply-rio/international-admissions) |
@@ -277,10 +277,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Marywood University · UNITID 213826
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Marywood international admissions](https://www.marywood.edu/admissions/international/)
-- **Analyst note:** Marywood documents international admissions but does not publish a directly comparable Fall 2023/Fall 2024 U.S. nonresident series on the reviewed page. The -260 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Marywood University 2024-25 Fact Book](https://www.marywood.edu/about/consumer-information/factbooks/Fall-2024-Factbook.pdf?language_id=1)
+- **Analyst note:** The project IPEDS series reports 315 U.S. nonresident students in Fall 2023 and 55 in Fall 2024, a decline of 260, with undergraduate/graduate components of 14/301 and 8/47 and all-student totals of 2,850 and 2,530. Marywood University's official 2024-25 Fact Book applies an IPEDS headcount definition to its Fall 2023 and Fall 2024 headcount tables and exactly reproduces the project Fall 2023 level totals of 1,874 undergraduates and 976 graduate students. For Fall 2024, however, the Fact Book reports 1,834 undergraduates and 1,060 graduate students, compared with project IPEDS totals of 1,833 and 697. Its Fall 2024 ethnicity/race table reports 8 undergraduate Non-resident Aliens, exactly matching the project undergraduate component, but 399 graduate Non-resident Aliens (188 full-time and 211 part-time), versus 47 in project IPEDS. A separately sourced International Student Enrollment table reports 95 international students in Fall 2023 (39 undergraduate, 56 graduate) and 131 in Fall 2024 (88 undergraduate, 43 graduate), with 80 of the 2024 undergraduate international students identified as IEP students. The exact 2023 total structure and 2024 undergraduate nonresident component show that the institutional material is relevant, but the much larger graduate headcount/nonresident population and the separately defined international series establish a material reporting-scope mismatch. Preserve IPEDS as the analytical authority and keep the -260 institution-specific movement held; do not substitute either Marywood institutional series for IPEDS.
 
 ### Dominican University of California · UNITID 113698
 
