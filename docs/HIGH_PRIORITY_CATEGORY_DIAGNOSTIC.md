@@ -20,7 +20,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Polk State College | +288 | R→R | +2,355 | 1,950 | 677.1% | White (-1,192) | R→R | hold_for_confirmation |
 | Anderson University | -176 | R→R | +385 | 588 | 334.1% | Race / ethnicity unknown (+365) | R→R | hold_for_confirmation |
 | Colorado State University Global | +183 | R→R | +750 | 377 | 206.0% | Race / ethnicity unknown (-279) | R→R | hold_for_confirmation |
-| University of the Cumberlands | +4,616 | R→R | +1,793 | 7,086 | 153.5% | Asian (-3,593) | R→R | hold_for_confirmation |
+| University of the Cumberlands | +4,616 | R→R | +1,793 | 7,086 | 153.5% | Asian (-3,593) | R→R | safe_with_context |
 | Louisiana Tech University | +342 | R→R | +446 | 441 | 128.9% | Race / ethnicity unknown (-329) | R→R | safe_with_context |
 | Oakwood University | -192 | R→Z | -93 | 245 | 127.6% | Race / ethnicity unknown (+227) | R→R | safe_with_context |
 | Community College of Rhode Island | +1,176 | R→R | -243 | 1,428 | 121.4% | Hispanic / Latino (-733) | R→R | hold_for_confirmation |
@@ -32,7 +32,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 
 | Institution | Status | NR change | NR status | Other-category net change | Countermovement ratio | Signal | Publication gate |
 | --- | --- | ---: | --- | ---: | ---: | --- | --- |
-| University of the Cumberlands | Continuing | +4,616 | R→R | -2,823 | 153.5% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| University of the Cumberlands | Continuing | +4,616 | R→R | -2,823 | 153.5% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Collin County Community College District | Continuing | +2,256 | R→R | -480 | 46.0% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | Broward College | Continuing | +2,005 | R→R | -417 | 45.6% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | Miami Dade College | Continuing | +1,458 | R→R | +18,344 | 0.1% | Countermovement below half of the nonresident change | hold_for_confirmation |

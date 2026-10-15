@@ -291,8 +291,10 @@ def inspect_private_nonprofit_growth(browser, base_url: str, *, width: int, heig
     if "Trine University-Regional/Non-Traditional Campuses" not in first or "+9,167" not in first or "Safe with context" not in first:
         raise AssertionError("Private nonprofit leading-contributor row does not match validated output")
     table_text = table.inner_text()
-    if "Hold for confirmation" not in table_text or "Safe with context" not in table_text:
-        raise AssertionError("Private nonprofit ranking does not preserve latest-release QA gates")
+    if "University of the Cumberlands" not in table_text or "Safe with context" not in table_text:
+        raise AssertionError("Private nonprofit ranking does not preserve the Cumberlands QA clearance")
+    if "Not high-priority in latest release queue" not in table_text:
+        raise AssertionError("Private nonprofit ranking does not preserve non-high-priority QA context")
     if "Entered endpoint sector universe" not in table_text:
         raise AssertionError("Private nonprofit ranking does not disclose endpoint-sector entry")
     boundary = page.locator(".handoff-hero .release-note").inner_text()
@@ -517,7 +519,7 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
     if hero.get_attribute("data-year-decision") != "HOLD_YEAR_ADVANCE":
         raise AssertionError("Release readiness year-advance machine decision is incorrect")
     summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("READY WITH CLAIM-LEVEL HOLDS", "HOLD YEAR ADVANCE", "59", "2/4"):
+    for expected in ("READY WITH CLAIM-LEVEL HOLDS", "HOLD YEAR ADVANCE", "58", "2/4"):
         if expected not in summary:
             raise AssertionError(f"Release readiness summary is missing {expected}")
     gate_text = page.locator("#readiness-gates").inner_text()

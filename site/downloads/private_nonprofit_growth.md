@@ -28,7 +28,7 @@ Gross positive movement is the denominator for concentration. Using the net sect
 | 2 | New York University | NY | +6,748 | +3,329 | +3,419 | 4.90% | 11.57% | Private nonprofit in both endpoints | Not high-priority in latest release queue |
 | 3 | Northeastern University | MA | +5,580 | -334 | +5,914 | 4.06% | 15.62% | Private nonprofit in both endpoints | Not high-priority in latest release queue |
 | 4 | Columbia University in the City of New York | NY | +4,925 | +663 | +4,262 | 3.58% | 19.20% | Private nonprofit in both endpoints | Not high-priority in latest release queue |
-| 5 | University of the Cumberlands | KY | +4,390 | +42 | +4,348 | 3.19% | 22.39% | Private nonprofit in both endpoints | Hold for confirmation |
+| 5 | University of the Cumberlands | KY | +4,390 | +42 | +4,348 | 3.19% | 22.39% | Private nonprofit in both endpoints | Safe with context |
 | 6 | Johns Hopkins University | MD | +3,987 | +282 | +3,705 | 2.90% | 25.29% | Private nonprofit in both endpoints | Not high-priority in latest release queue |
 | 7 | Indiana Wesleyan University-National & Global | IN | +3,721 | +287 | +3,434 | 2.70% | 28.00% | Entered endpoint sector universe | Not high-priority in latest release queue |
 | 8 | Webster University | MO | +3,111 | +262 | +2,849 | 2.26% | 30.26% | Private nonprofit in both endpoints | Safe with context |

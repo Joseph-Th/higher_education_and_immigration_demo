@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **13** are safe to discuss with explicit context.
-- **14** remain held for institution-specific interpretation.
+- **14** are safe to discuss with explicit context.
+- **13** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-14**.
 
@@ -16,7 +16,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 
 | Institution | State | Change | Disposition | Publication decision | Evidence |
 | --- | --- | ---: | --- | --- | --- |
-| University of the Cumberlands | KY | +4,616 | partial_component_corroboration | hold_for_confirmation | [University of the Cumberlands 2024-2025 enrollment total](https://www.ucumberlands.edu/news/cumberlands-students-saved-63m-through-free-textbook-program) |
+| University of the Cumberlands | KY | +4,616 | confirmed_reporting_discontinuity | safe_with_context | [ICE SEVP 2023 Top 500 F-1 Schools active-record table](https://www.ice.gov/doclib/sevis/btn/24_0510_hsi_sevp-sevis-btn-2023-top500-f1-schools.pdf) |
 | Collin County Community College District | TX | +2,256 | unresolved_large_change | hold_for_confirmation | [Collin College Common Data Set 2023-2024](https://www.collin.edu/about/statistics/pdf_common_data_set/cds-2023-2024-collin-college.pdf) |
 | Broward College | FL | +2,005 | external_scope_mismatch | hold_for_confirmation | [Broward College Consumer Information Disclosures](https://www.broward.edu/admissions/financial-aid/_docs/consumer-information-disclosures.pdf) |
 | Miami Dade College | FL | +1,458 | external_scope_mismatch | hold_for_confirmation | [Miami Dade College 2024-25 Fact Book Credit Student Enrollment Profile](https://www.mdc.edu/media/miami-dade-college/institutional-research/documents/fb_credit_student_enrollment_profile.pdf) |
@@ -50,9 +50,9 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 
 **Automated trigger:** absolute change is at least 1,000 students; zero/nonzero discontinuity conflicts with recent history.
 
-IPEDS reports 4,226 U.S. nonresident students in 2022, zero in 2023, and 4,616 in 2024, while total 2024 enrollment is 22,120. University of the Cumberlands independently reports total student enrollment of 22,120 for the 2024-2025 academic year, exactly matching the project's 2024 IPEDS total. The university also publicly documents an active international-student program, but the reviewed institutional sources do not provide a like-for-like U.S. nonresident count or explain the reported 2023 zero. Treat the 2024 total as a corroborated component while retaining the institution-specific nonresident discontinuity on hold.
+IPEDS reports 4,226 U.S. nonresident students in 2022, zero in 2023, and 4,616 in 2024; the 2023 and 2024 endpoint values are both marked reported. ICE SEVP's official 2023 Top 500 F-1 Schools table separately lists University of the Cumberlands with 8,551 active F-1 SEVIS records. SEVIS active records use a different calendar-year timing and population frame from the IPEDS fall-census U.S. nonresident measure, so the figures are not count-reconcilable and the SEVIS value is not substituted into the project series. But thousands of federally recorded active F-1 student records in 2023 make a literal zero-population interpretation of the IPEDS 2023 value untenable. Treat the 0-to-4,616 IPEDS movement as a confirmed reporting/scope discontinuity for bounded discussion while retaining the official IPEDS series in aggregate calculations.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `confirmed_reporting_discontinuity` · **Reviewed:** 2026-10-14.
 
 ### Collin County Community College District (UNITID 247834)
 
