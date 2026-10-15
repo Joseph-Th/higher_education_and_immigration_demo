@@ -183,7 +183,7 @@ One row per institution in the current high-priority annual QA queue. This is an
 | `unitid` | IPEDS institution identifier; must remain present in the current high-priority review queue |
 | `institution` | Institution name, checked against the current queue to catch identity/name drift |
 | `reviewed_on` | ISO date of the analyst evidence review |
-| `disposition` | Short analytical conclusion such as `corroborated_direction`, `expected_structural_change`, `external_scope_mismatch`, or `unresolved_discontinuity` |
+| `disposition` | Short analytical conclusion such as `corroborated_direction`, `expected_structural_change`, `external_scope_mismatch`, `confirmed_baseline_mismatch`, or `unresolved_discontinuity` |
 | `publication_class` | `safe_with_context` or `hold_for_confirmation` |
 | `evidence_label` | Human-readable description of the outside evidence source |
 | `evidence_url` | HTTPS source used during manual review |
