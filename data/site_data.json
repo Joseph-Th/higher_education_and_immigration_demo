@@ -1233,6 +1233,7 @@
     "safe_with_context": 15,
     "hold_for_confirmation": 12,
     "dispositions": {
+      "confirmed_baseline_mismatch": 1,
       "confirmed_classification_change": 1,
       "confirmed_reporting_discontinuity": 4,
       "context_support_only": 2,
@@ -1241,8 +1242,7 @@
       "expected_structural_change": 1,
       "external_scope_mismatch": 3,
       "partial_component_corroboration": 4,
-      "unresolved_discontinuity": 1,
-      "unresolved_large_change": 1
+      "unresolved_discontinuity": 1
     },
     "reviewed_unitids": [
       "156541",
