@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 11
-- **Held for confirmation:** 39
+- **Safe with context:** 12
+- **Held for confirmation:** 38
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -57,7 +57,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | University of Lynchburg | VA | +91 | Percentage Movement | Context only | Hold for confirmation | [University of Lynchburg international admissions](https://www.lynchburg.edu/admissions/apply/apply-as-an-international-student/) |
 | Monroe Community College | NY | +83 | Percentage Movement | Context only | Hold for confirmation | [Monroe Community College international admissions](https://www.monroecc.edu/admissions/i-am/international-student/) |
 | University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [UMPI international admissions](https://www.umpi.edu/admissions/international-students/) |
-| New Mexico Highlands University | NM | -81 | Percentage Movement | Context only | Hold for confirmation | [New Mexico Highlands international students](https://www.nmhu.edu/international-students/) |
+| New Mexico Highlands University | NM | -81 | Percentage Movement | Corroborated external count | Safe with context | [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/) |
 | Northeastern University Oakland | CA | +80 | Percentage Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2024 enrollment context](https://news.northeastern.edu/2024/09/12/enrollment-statistics-2024/) |
 | Vincennes University | IN | +78 | Percentage Movement | Context only | Hold for confirmation | [Vincennes international students](https://www.vinu.edu/international-students/index.html) |
 | Ana G. Mendez University | FL | -76 | Percentage Movement | Context only | Hold for confirmation | [Ana G. Mendez University international admissions](https://agmu.edu/en/international-students) |
@@ -420,11 +420,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### New Mexico Highlands University · UNITID 187897
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [New Mexico Highlands international students](https://www.nmhu.edu/international-students/)
-- **Analyst note:** NMHU documents F-1 international-student services but does not publish a directly comparable Fall 2023/Fall 2024 U.S. nonresident series on the reviewed page. The -81 movement remains held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated external count
+- **Reviewed:** 2026-10-15
+- **Evidence:** [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/)
+- **Analyst note:** The project IPEDS series reports 162 U.S. nonresident students in Fall 2023 and 81 in Fall 2024, a decline of 81, with undergraduate/graduate components of 76/86 and 43/38. New Mexico Highlands University's official end-of-term Student Enrollment by Ethnicity & Gender reports use the same Non Resident Alien label and imply 157 students in Fall 2023 (60 male and 97 female) and 86 in Fall 2024 (26 male and 60 female), a decline of 71. The institutional undergraduate/graduate components are 76/81 in 2023 and 44/42 in 2024, including an exact match to the 2023 IPEDS undergraduate component and endpoint all-student differences of only five students in each year. The institutional all-student totals are 2,842 and 2,743 versus IPEDS 2,814 and 2,704, consistent with the reports' end-of-term timing rather than an assumed fall-census identity. Do not substitute the institutional counts for IPEDS. The close same-label two-year series independently corroborates the scale and direction of the decline, supporting bounded discussion while IPEDS remains the numerical authority.
 
 ### Northeastern University Oakland · UNITID 118888
 
