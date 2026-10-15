@@ -16,7 +16,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 
 | Institution | State | Change | Disposition | Publication decision | Evidence |
 | --- | --- | ---: | --- | --- | --- |
-| University of the Cumberlands | KY | +4,616 | unresolved_discontinuity | hold_for_confirmation | [University of the Cumberlands international-student information](https://www.ucumberlands.edu/admissions/international-students) |
+| University of the Cumberlands | KY | +4,616 | partial_component_corroboration | hold_for_confirmation | [University of the Cumberlands 2024-2025 enrollment total](https://www.ucumberlands.edu/news/cumberlands-students-saved-63m-through-free-textbook-program) |
 | Collin County Community College District | TX | +2,256 | unresolved_large_change | hold_for_confirmation | [Collin College Common Data Set 2023-2024](https://www.collin.edu/about/statistics/pdf_common_data_set/cds-2023-2024-collin-college.pdf) |
 | Broward College | FL | +2,005 | context_support_only | hold_for_confirmation | [Broward College international-student services](https://www.broward.edu/international/students/) |
 | Miami Dade College | FL | +1,458 | external_scope_mismatch | hold_for_confirmation | [Miami Dade College 2024-25 Fact Book Credit Student Enrollment Profile](https://www.mdc.edu/media/miami-dade-college/institutional-research/documents/fb_credit_student_enrollment_profile.pdf) |
@@ -50,9 +50,9 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 
 **Automated trigger:** absolute change is at least 1,000 students; zero/nonzero discontinuity conflicts with recent history.
 
-IPEDS reports 4,226 U.S. nonresident students in 2022, zero in 2023, and 4,616 in 2024, with all three values marked reported. The institution's own materials show an active international-student program, but they do not provide a directly comparable 2023 count. Retain the official IPEDS value in aggregates, flag the discontinuity, and do not use the 2023 zero in institution-specific narrative without direct source confirmation.
+IPEDS reports 4,226 U.S. nonresident students in 2022, zero in 2023, and 4,616 in 2024, while total 2024 enrollment is 22,120. University of the Cumberlands independently reports total student enrollment of 22,120 for the 2024-2025 academic year, exactly matching the project's 2024 IPEDS total. The university also publicly documents an active international-student program, but the reviewed institutional sources do not provide a like-for-like U.S. nonresident count or explain the reported 2023 zero. Treat the 2024 total as a corroborated component while retaining the institution-specific nonresident discontinuity on hold.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_discontinuity` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
 
 ### Collin County Community College District (UNITID 247834)
 

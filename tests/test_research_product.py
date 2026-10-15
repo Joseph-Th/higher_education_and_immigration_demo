@@ -1668,6 +1668,9 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_unitid["487649"]["publication_class"], "hold_for_confirmation")
         self.assertEqual(by_unitid["487649"]["disposition"], "partial_component_corroboration")
         self.assertIn("bppe.ca.gov/webapplications/annualReports/2023", by_unitid["487649"]["evidence_url"])
+        self.assertEqual(by_unitid["156541"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["156541"]["disposition"], "partial_component_corroboration")
+        self.assertIn("cumberlands-students-saved-63m", by_unitid["156541"]["evidence_url"])
         rendered = (ROOT / "docs" / "QA_RESOLUTION_LOG.md").read_text(encoding="utf-8")
         qa_html = (ROOT / "site" / "qa-review.html").read_text(encoding="utf-8")
         for row in log:

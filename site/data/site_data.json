@@ -1240,8 +1240,8 @@
       "corroborated_external_count": 5,
       "expected_structural_change": 1,
       "external_scope_mismatch": 3,
-      "partial_component_corroboration": 4,
-      "unresolved_discontinuity": 2,
+      "partial_component_corroboration": 5,
+      "unresolved_discontinuity": 1,
       "unresolved_large_change": 1,
       "unresolved_status_change": 1
     },
@@ -1320,15 +1320,15 @@
     "case_studies": [
       {
         "case_type": "unresolved_anomaly",
-        "unitid": "156541",
-        "institution": "University of the Cumberlands",
-        "state": "KY",
-        "absolute_change": 4616,
+        "unitid": "217633",
+        "institution": "Anderson University",
+        "state": "SC",
+        "absolute_change": -176,
         "disposition": "unresolved_discontinuity",
         "publication_class": "hold_for_confirmation",
-        "evidence_label": "University of the Cumberlands international-student information",
-        "evidence_url": "https://www.ucumberlands.edu/admissions/international-students",
-        "analyst_note": "IPEDS reports 4,226 U.S. nonresident students in 2022, zero in 2023, and 4,616 in 2024, with all three values marked reported. The institution's own materials show an active international-student program, but they do not provide a directly comparable 2023 count. Retain the official IPEDS value in aggregates, flag the discontinuity, and do not use the 2023 zero in institution-specific narrative without direct source confirmation."
+        "evidence_label": "Anderson University first International Graduate School graduates",
+        "evidence_url": "https://andersonuniversity.edu/news/anderson-university-celebrates-first-international-graduate-school-graduates/",
+        "analyst_note": "IPEDS reports zero U.S. nonresident students in 2022, 176 in 2023, and zero again in 2024, with the 2023 and 2024 values both marked reported. Anderson University's December 2024 announcement documents 27 initial International Graduate School graduates across the Summer and Fall terms, including 20 Fall graduates, primarily from India with students from Spain and France, and states that the school had offered classes since January 2023. That contemporaneous evidence confirms international graduate activity during 2024 but does not provide a fall-census U.S. nonresident headcount or resolve the IPEDS zero. Preserve the IPEDS series in aggregates and keep institution-specific interpretation held pending reconciliation."
       },
       {
         "case_type": "corroborated_movement",
