@@ -1709,6 +1709,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(signal_counts["countermovement_at_least_nr_change"], 8)
         self.assertEqual(signal_counts["countermovement_at_least_half_nr_change"], 3)
         self.assertEqual(signal_counts["countermovement_below_half_nr_change"], 14)
+        self.assertEqual(signal_counts["endpoint_status_not_comparable"], 0)
         self.assertEqual(signal_counts["universe_change_not_comparable"], 2)
 
         for row in diagnostic:
@@ -1717,6 +1718,7 @@ class ResearchProductTests(unittest.TestCase):
             self.assertEqual(row["disposition"], resolution["disposition"])
             self.assertIn("not proof of reporting error", row["interpretation_boundary"])
             if row["status"] == "Continuing":
+                self.assertEqual(row["source_status_class"], "comparable_r_or_z")
                 self.assertEqual(
                     int(row["total_change"]),
                     int(row["nonresident_change"]) + int(row["other_categories_net_change"]),
@@ -1743,6 +1745,9 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(
             float(by_unitid["487649"]["countermovement_pct_of_nonresident_change"]), 0.0
         )
+        self.assertEqual(by_unitid["101912"]["nonresident_status_2023"], "R")
+        self.assertEqual(by_unitid["101912"]["nonresident_status_2024"], "Z")
+        self.assertEqual(by_unitid["101912"]["source_status_class"], "comparable_r_or_z")
 
         rendered = (ROOT / "docs" / "HIGH_PRIORITY_CATEGORY_DIAGNOSTIC.md").read_text(
             encoding="utf-8"
@@ -1767,14 +1772,21 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual([int(row["review_order"]) for row in diagnostic], list(range(1, 51)))
         self.assertEqual(len({row["unitid"] for row in diagnostic}), 50)
 
-        comparable = [row for row in diagnostic if row["status"] == "Continuing"]
+        continuing = [row for row in diagnostic if row["status"] == "Continuing"]
+        comparable = [row for row in diagnostic if row["source_status_class"] == "comparable_r_or_z"]
+        status_withheld = [
+            row for row in diagnostic if row["source_status_class"] == "endpoint_status_not_comparable"
+        ]
         structural = [row for row in diagnostic if row["status"] != "Continuing"]
-        self.assertEqual(len(comparable), 49)
+        self.assertEqual(len(continuing), 49)
+        self.assertEqual(len(comparable), 47)
+        self.assertEqual(len(status_withheld), 2)
         self.assertEqual(len(structural), 1)
         signal_counts = Counter(row["signal_class"] for row in diagnostic)
         self.assertEqual(signal_counts["countermovement_at_least_nr_change"], 18)
         self.assertEqual(signal_counts["countermovement_at_least_half_nr_change"], 9)
-        self.assertEqual(signal_counts["countermovement_below_half_nr_change"], 22)
+        self.assertEqual(signal_counts["countermovement_below_half_nr_change"], 20)
+        self.assertEqual(signal_counts["endpoint_status_not_comparable"], 2)
         self.assertEqual(signal_counts["universe_change_not_comparable"], 1)
 
         review_by_unitid = {row["unitid"]: row for row in review}
@@ -1789,7 +1801,14 @@ class ResearchProductTests(unittest.TestCase):
                     int(row["total_change"]),
                     int(row["nonresident_change"]) + int(row["other_categories_net_change"]),
                 )
-                self.assertGreaterEqual(float(row["countermovement_pct_of_nonresident_change"]), 0.0)
+                if row["source_status_class"] == "comparable_r_or_z":
+                    self.assertGreaterEqual(
+                        float(row["countermovement_pct_of_nonresident_change"]), 0.0
+                    )
+                else:
+                    self.assertEqual(row["signal_class"], "endpoint_status_not_comparable")
+                    self.assertEqual(row["countermovement_abs"], "")
+                    self.assertEqual(row["countermovement_pct_of_nonresident_change"], "")
             else:
                 self.assertEqual(row["unitid"], "159948")
                 self.assertEqual(row["signal_class"], "universe_change_not_comparable")
@@ -1801,6 +1820,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_unitid["228459"]["publication_class"], "safe_with_context")
         self.assertEqual(by_unitid["228459"]["signal_class"], "countermovement_at_least_half_nr_change")
         self.assertEqual(by_unitid["151111"]["signal_class"], "countermovement_below_half_nr_change")
+        for unitid in ("244233", "417327"):
+            self.assertEqual(by_unitid[unitid]["source_status_class"], "endpoint_status_not_comparable")
+            self.assertEqual(by_unitid[unitid]["signal_class"], "endpoint_status_not_comparable")
+            self.assertEqual(by_unitid[unitid]["nonresident_status_2023"], "R")
+            self.assertEqual(by_unitid[unitid]["nonresident_status_2024"], "P")
+            self.assertEqual(by_unitid[unitid]["total_status_2024"], "P")
+            self.assertIn("Imputed using Carry Forward", by_unitid[unitid]["source_status_note"])
+        self.assertEqual(by_unitid["490081"]["largest_counter_category_status_2023"], "Z")
+        self.assertEqual(by_unitid["490081"]["largest_counter_category_status_2024"], "R")
 
         rendered = (ROOT / "docs" / "MEDIUM_PRIORITY_CATEGORY_DIAGNOSTIC.md").read_text(
             encoding="utf-8"
@@ -1810,7 +1838,9 @@ class ResearchProductTests(unittest.TestCase):
         )
         self.assertIn("not a second risk score", rendered)
         self.assertIn("Complete medium-priority diagnostic", rendered)
+        self.assertIn("endpoint-status", rendered.lower())
         self.assertIn("not another risk score or a diagnosis", html)
+        self.assertIn("carry-forward-imputed", html)
         self.assertIn('href="downloads/medium_priority_category_diagnostic.csv"', html)
         self.assertIn('href="downloads/medium_priority_category_diagnostic.md"', html)
 

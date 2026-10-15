@@ -202,17 +202,21 @@ One row per institution in the current high-priority queue. This is an internal 
 | `unitid` / `institution` / `state` | High-priority institution identity retained in deterministic queue order |
 | `status` | `Continuing` or the current analytic-universe transition state; non-continuing rows are retained but not forced into a two-year category comparison |
 | `publication_class` / `disposition` | Current values copied from `qa_resolution_log.csv`; the diagnostic cannot alter them |
+| `source_status_class` / `source_status_note` | Diagnostic comparability of the endpoint IPEDS `X...` status fields plus a human-readable explanation; only all-R/Z endpoints receive a countermovement ratio |
 | `total_2023` / `total_2024` / `total_change` | All-student `EFTOTLT` source values and endpoint change for comparable continuing institutions |
+| `total_status_2023` / `total_status_2024` | Endpoint `XEFTOTLT` status codes |
 | `nonresident_2023` / `nonresident_2024` / `nonresident_change` | All-student `EFNRALT` values and endpoint change |
+| `nonresident_status_2023` / `nonresident_status_2024` | Endpoint `XEFNRALT` status codes; `R` means Reported and `Z` means Implied zero |
 | `other_categories_net_change` | Net change across American Indian/Alaska Native, Asian, Black/African American, Hispanic/Latino, Native Hawaiian/Pacific Islander, White, Two or more races, and Race/ethnicity unknown; must reconcile with total and nonresident change |
 | `countermovement_abs` | Gross absolute movement among other categories whose change runs opposite the sign of the U.S. nonresident change |
 | `countermovement_pct_of_nonresident_change` | `countermovement_abs / abs(nonresident_change) * 100`; a review-prioritization ratio, not an error probability |
 | `largest_counter_category` / `largest_counter_category_change` | Largest single other-category movement in the opposite direction, when one exists |
-| `signal_class` | `countermovement_at_least_nr_change`, `countermovement_at_least_half_nr_change`, `countermovement_below_half_nr_change`, or `universe_change_not_comparable` |
+| `largest_counter_category_status_2023` / `largest_counter_category_status_2024` | Endpoint status pair for the largest opposite category, when one exists |
+| `signal_class` | `countermovement_at_least_nr_change`, `countermovement_at_least_half_nr_change`, `countermovement_below_half_nr_change`, `endpoint_status_not_comparable`, or `universe_change_not_comparable` |
 | `prior_source_enrollment_csv` / `current_source_enrollment_csv` | Exact IPEDS enrollment CSVs selected by the cross-year schema audit |
 | `interpretation_boundary` | Row-level reminder that countermovement does not prove reporting error, miscoding, or reclassification and cannot itself change a publication decision |
 
-For every continuing row, `scripts/build_high_priority_category_diagnostic.py` independently requires both endpoint all-student source rows to reconcile `EFTOTLT` to the nine mutually exclusive race/ethnicity categories including `EFNRALT`, then requires `total_change = nonresident_change + other_categories_net_change`. The current signal distribution is fixed at 8 / 3 / 14 across the three comparable classes plus 2 universe-change rows. The builder generates `docs/HIGH_PRIORITY_CATEGORY_DIAGNOSTIC.md` and `site/high-priority-category-diagnostic.html` after the evidence-review layer so the arithmetic remains explicitly subordinate to the publication gate.
+For every continuing row, `scripts/build_high_priority_category_diagnostic.py` independently requires both endpoint all-student source rows to reconcile `EFTOTLT` to the nine mutually exclusive race/ethnicity categories including `EFNRALT`, then requires `total_change = nonresident_change + other_categories_net_change`. `scripts/ipeds_status.py` limits ratio calculation to endpoint total/category statuses `R` (Reported) and `Z` (Implied zero). All 25 current continuing high-priority rows satisfy that diagnostic status rule; the current signal distribution remains 8 / 3 / 14 plus 2 universe-change rows. The builder generates `docs/HIGH_PRIORITY_CATEGORY_DIAGNOSTIC.md` and `site/high-priority-category-diagnostic.html` after the evidence-review layer so the arithmetic remains explicitly subordinate to the publication gate.
 
 ## `data/medium_qa_resolution_log.csv`
 
@@ -243,17 +247,21 @@ One row per institution in `data/medium_priority_review.csv`, retained in `revie
 | `status` | `Continuing` or the current analytic-universe transition state; non-continuing rows are retained but not forced into a two-year category comparison |
 | `review_route` | Existing reason-derived evidence route copied from `medium_priority_review.csv`; the diagnostic cannot upgrade or replace it |
 | `publication_class` / `disposition` | Current values copied from `medium_qa_resolution_log.csv`; the diagnostic cannot alter them |
+| `source_status_class` / `source_status_note` | Diagnostic comparability of all endpoint total/category status fields plus a readable explanation; non-R/Z endpoint rows remain in the file but receive no ratio |
 | `total_2023` / `total_2024` / `total_change` | All-student `EFTOTLT` source values and endpoint change for comparable continuing institutions |
+| `total_status_2023` / `total_status_2024` | Endpoint `XEFTOTLT` status codes |
 | `nonresident_2023` / `nonresident_2024` / `nonresident_change` | All-student `EFNRALT` values and endpoint change |
+| `nonresident_status_2023` / `nonresident_status_2024` | Endpoint `XEFNRALT` status codes |
 | `other_categories_net_change` | Net change across the eight other mutually exclusive race/ethnicity categories; must reconcile with total and nonresident change |
 | `countermovement_abs` | Gross absolute movement among other categories whose change runs opposite the sign of the U.S. nonresident change |
 | `countermovement_pct_of_nonresident_change` | `countermovement_abs / abs(nonresident_change) * 100`; an investigation-prioritization ratio rather than a risk score or error probability |
 | `largest_counter_category` / `largest_counter_category_change` | Largest single other-category movement in the opposite direction, when one exists |
-| `signal_class` | `countermovement_at_least_nr_change`, `countermovement_at_least_half_nr_change`, `countermovement_below_half_nr_change`, or `universe_change_not_comparable` |
+| `largest_counter_category_status_2023` / `largest_counter_category_status_2024` | Endpoint status pair for the largest opposite category, when one exists |
+| `signal_class` | `countermovement_at_least_nr_change`, `countermovement_at_least_half_nr_change`, `countermovement_below_half_nr_change`, `endpoint_status_not_comparable`, or `universe_change_not_comparable` |
 | `prior_source_enrollment_csv` / `current_source_enrollment_csv` | Exact IPEDS enrollment CSVs selected by the cross-year schema audit |
 | `interpretation_boundary` | Row-level reminder that the arithmetic is not a second risk score, source correction, diagnosis, or publication decision |
 
-For every continuing row, `scripts/build_medium_priority_category_diagnostic.py` independently reconciles both endpoint category identities and the total-change identity. The current signal distribution is fixed at 18 / 9 / 22 across the three comparable classes plus one universe-entry row. The builder generates `docs/MEDIUM_PRIORITY_CATEGORY_DIAGNOSTIC.md` and `site/medium-priority-category-diagnostic.html` only after the medium evidence-review layer so the arithmetic stays subordinate to the analyst gate.
+For every continuing row, `scripts/build_medium_priority_category_diagnostic.py` independently reconciles both endpoint category identities and the total-change identity. Forty-seven rows satisfy the R/Z endpoint-status rule and currently distribute 18 / 9 / 20 across the three ratio classes. Two additional continuing records are `endpoint_status_not_comparable` because their 2024 endpoint fields are `P` carry-forward imputations, and one universe-entry row remains structurally non-comparable. The builder generates `docs/MEDIUM_PRIORITY_CATEGORY_DIAGNOSTIC.md` and `site/medium-priority-category-diagnostic.html` only after the medium evidence-review layer so the arithmetic stays subordinate to the analyst gate.
 
 ## `data/schema_audit.csv`
 

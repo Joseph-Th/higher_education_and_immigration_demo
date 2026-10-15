@@ -223,12 +223,12 @@ def inspect_medium_priority_category_diagnostic(browser, base_url: str, *, width
     if response is None or not response.ok:
         raise AssertionError(f"Medium-priority category diagnostic failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("49", "18", "9", "1"):
+    for expected in ("47", "18", "2", "1"):
         if expected not in summary:
             raise AssertionError(f"Medium category diagnostic summary is missing {expected}")
     table = page.locator("#diagnostic-table tbody")
-    if table.locator("tr").count() != 49:
-        raise AssertionError("Medium category diagnostic does not render all 49 comparable rows")
+    if table.locator("tr").count() != 47:
+        raise AssertionError("Medium category diagnostic does not render all 47 source-status-comparable rows")
     table_text = table.inner_text()
     for expected in (
         "Ana G. Mendez University",
@@ -238,6 +238,20 @@ def inspect_medium_priority_category_diagnostic(browser, base_url: str, *, width
     ):
         if expected not in table_text:
             raise AssertionError(f"Medium category diagnostic table is missing {expected}")
+    if "America Evangelical University" not in table_text or "Z→R" not in table_text:
+        raise AssertionError("Medium category diagnostic does not expose category status transitions")
+    withheld = page.locator("#status-withheld tbody")
+    if withheld.locator("tr").count() != 2:
+        raise AssertionError("Medium category diagnostic does not render both source-status-withheld rows")
+    withheld_text = withheld.inner_text()
+    for expected in (
+        "City College-Hollywood",
+        "City College-Altamonte Springs",
+        "R→P",
+        "Imputed using Carry Forward",
+    ):
+        if expected not in withheld_text:
+            raise AssertionError(f"Medium category status-withheld table is missing {expected}")
     boundary = page.locator(".handoff-hero .release-note").inner_text().lower()
     if "not another risk score or a diagnosis" not in boundary:
         raise AssertionError("Medium category diagnostic is missing its non-diagnostic boundary")
@@ -360,6 +374,8 @@ def inspect_high_priority_category_diagnostic(browser, base_url: str, *, width: 
     ):
         if expected not in table_text:
             raise AssertionError(f"Category diagnostic table is missing {expected}")
+    if "Oakwood University" not in table_text or "R→Z" not in table_text:
+        raise AssertionError("Category diagnostic does not expose Oakwood's R→Z source-status transition")
     boundary = page.locator(".handoff-hero .release-note").inner_text().lower()
     if "not proof of miscoding or reclassification" not in boundary:
         raise AssertionError("Category diagnostic is missing its non-diagnostic interpretation boundary")
