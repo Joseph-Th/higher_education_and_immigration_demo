@@ -1216,6 +1216,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("more than 100 newly arrived international students", by_unitid["232609"]["analyst_note"])
         self.assertIn("new-student figure cannot be treated as an all-student endpoint", by_unitid["232609"]["analyst_note"])
         self.assertIn("+91 movement to 209 remains held", by_unitid["232609"]["analyst_note"])
+        self.assertEqual(by_unitid["488679"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["488679"]["disposition"], "external_scope_mismatch")
+        self.assertIn("ADMIN_10067_Presidents-Annual-Report-2024.pdf", by_unitid["488679"]["evidence_url"])
+        self.assertIn("2,866 U.S. nonresident students in Fall 2023", by_unitid["488679"]["analyst_note"])
+        self.assertIn("3,721 in Fall 2024", by_unitid["488679"]["analyst_note"])
+        self.assertIn("12,526 as of August 2024", by_unitid["488679"]["analyst_note"])
+        self.assertIn("236% year-over-year increase in international students", by_unitid["488679"]["analyst_note"])
+        self.assertIn("different timing and/or institutional international population", by_unitid["488679"]["analyst_note"])
+        self.assertIn("keep the +855 institution-specific movement held", by_unitid["488679"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")

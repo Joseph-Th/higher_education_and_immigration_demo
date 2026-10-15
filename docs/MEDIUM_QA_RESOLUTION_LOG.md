@@ -16,7 +16,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | New Orleans Baptist Theological Seminary | LA | +129 | Structural Or Reporting | Structural followup required | Hold for confirmation | [NOBTS institutional effectiveness](https://www.nobts.edu/about/institutional-effectiveness.html) |
 | City College-Hollywood | FL | +0 | Structural Or Reporting | Structural followup required | Hold for confirmation | [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf) |
 | City College-Altamonte Springs | FL | +0 | Structural Or Reporting | Structural followup required | Hold for confirmation | [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf) |
-| Indiana Wesleyan University-National & Global | IN | +855 | Absolute And Percentage | Context only | Hold for confirmation | [Indiana Wesleyan international pathways](https://www.indwes.edu/pathways/international/) |
+| Indiana Wesleyan University-National & Global | IN | +855 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Indiana Wesleyan University President's Report 2024](https://www.indwes.edu/about/offices/administration/ADMIN_10067_Presidents-Annual-Report-2024.pdf) |
 | Valencia College | FL | +692 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Valencia Institutional Research international-student archive](https://valenciacollege.edu/academics/analytics-and-planning/analytics-and-reporting/reporting/internal/enrollment.php) |
 | Dallas College | TX | +628 | Absolute And Percentage | Context only | Hold for confirmation | [Dallas College international admissions](https://www.dallascollege.edu/admissions/international/) |
 | Chaffey College | CA | -611 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Chaffey institutional research reports](https://www.chaffey.edu/ir/reports-publications.php) |
@@ -93,10 +93,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Indiana Wesleyan University-National & Global · UNITID 488679
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Indiana Wesleyan international pathways](https://www.indwes.edu/pathways/international/)
-- **Analyst note:** IWU documents international-student pathways, but the public page does not provide a directly comparable National & Global Fall 2023/Fall 2024 count under the IPEDS U.S. nonresident definition. The +855 movement remains held for institution-specific interpretation.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Indiana Wesleyan University President's Report 2024](https://www.indwes.edu/about/offices/administration/ADMIN_10067_Presidents-Annual-Report-2024.pdf)
+- **Analyst note:** The project IPEDS series reports 2,866 U.S. nonresident students in Fall 2023 and 3,721 in Fall 2024, an increase of 855 (+29.8%), with Fall 2024 total enrollment of 14,331. Indiana Wesleyan University's official President's Report 2024 states that National & Global enrollment reached 12,526 as of August 2024 and separately reports a 236% year-over-year increase in international students. The institutional total is 1,805 below the project IPEDS Fall 2024 total, and the published international growth rate is far larger than the IPEDS U.S. nonresident increase. Those differences establish that the President's Report measures a different timing and/or institutional international population rather than a like-for-like IPEDS series. Preserve IPEDS as the analytical authority, keep the +855 institution-specific movement held, and do not use the 236% institutional growth figure to describe IPEDS U.S. nonresident enrollment.
 
 ### Valencia College · UNITID 138187
 
