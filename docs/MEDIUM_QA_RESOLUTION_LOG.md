@@ -48,7 +48,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Barton County Community College | KS | -155 | Percentage Movement | External scope mismatch | Hold for confirmation | [Barton international admissions](https://www.bartonccc.edu/admission/international) |
 | Saddleback College | CA | +152 | Percentage Movement | Context only | Hold for confirmation | [Saddleback international student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student) |
 | Durham Technical Community College | NC | +129 | Percentage Movement | Context only | Hold for confirmation | [Durham Tech non-U.S. student admissions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student) |
-| Prairie View A & M University | TX | +125 | Percentage Movement | Context only | Hold for confirmation | [Prairie View international student services](https://www.pvamu.edu/globalengagement/isss/) |
+| Prairie View A & M University | TX | +125 | Percentage Movement | External scope mismatch | Hold for confirmation | [Prairie View A&M University 2024-25 Fact Book](https://www.pvamu.edu/marcomm/wp-content/uploads/sites/114/PVAMU-Fact-Book-2024-DRAFT_v10_SPREAD.pdf) |
 | Humphreys University-Stockton and Modesto Campuses | CA | +116 | Percentage Movement | Structural followup required | Hold for confirmation | [Humphreys international admissions](https://www.humphreys.edu/apply-international/) |
 | Austin Peay State University | TN | +111 | Percentage Movement | External scope mismatch | Hold for confirmation | [Austin Peay 2023-24 and 2024-25 Fact Books](https://www.apsu.edu/institutional-research/data/archived-2024-25-factbook.pdf) |
 | Knox College | IL | +107 | Percentage Movement | Corroborated external count | Safe with context | [Knox College 2023-24 and 2024-25 Common Data Sets](https://www.knox.edu/academics/academic-resources-and-support/institutional-research/data-resources) |
@@ -349,10 +349,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Prairie View A & M University · UNITID 227526
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Prairie View international student services](https://www.pvamu.edu/globalengagement/isss/)
-- **Analyst note:** Prairie View documents F-1/J-1 international-student services, but the reviewed page does not publish comparable endpoint counts under the IPEDS definition. The +125 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Prairie View A&M University 2024-25 Fact Book](https://www.pvamu.edu/marcomm/wp-content/uploads/sites/114/PVAMU-Fact-Book-2024-DRAFT_v10_SPREAD.pdf)
+- **Analyst note:** The project IPEDS series reports 165 U.S. nonresident students in Fall 2023 and 290 in Fall 2024, an increase of 125, with all-student totals of 9,517 and 9,922. Prairie View A&M University's official 2024-25 Fact Book reports a Fall 2024 student headcount of 9,821 and lists 200 International students, while an official September 2025 university enrollment release likewise describes Fall 2024 enrollment as 9,821. The institutional total is 101 below the project IPEDS Fall 2024 total and the institutional International count is 90 below the project U.S. nonresident endpoint. The university's undergraduate admissions definition describes an international student as a student enrolled on a temporary visa and excludes permanent residents, undocumented immigrants, and refugees, so the institutional international construct is not assumed interchangeable with the IPEDS U.S. nonresident category. The differing total headcount and international endpoint establish a material timing and/or population-scope mismatch rather than corroboration of the +125 IPEDS movement. Preserve IPEDS as the numerical authority and keep the institution-specific movement held; do not substitute the Fact Book count or infer that the IPEDS increase is independently confirmed.
 
 ### Humphreys University-Stockton and Modesto Campuses · UNITID 115773
 
