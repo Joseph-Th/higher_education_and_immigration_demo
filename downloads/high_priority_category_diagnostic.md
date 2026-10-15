@@ -45,7 +45,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Webster University | Continuing | +1,020 | R→R | -366 | 40.8% | Countermovement below half of the nonresident change | safe_with_context |
 | Sofia University | Continuing | +930 | R→R | -822 | 91.1% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
 | Avila University | Continuing | +850 | R→R | +185 | 1.3% | Countermovement below half of the nonresident change | safe_with_context |
-| Southeastern University | Continuing | +706 | R→R | +404 | 0.0% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| Southeastern University | Continuing | +706 | R→R | +404 | 0.0% | Countermovement below half of the nonresident change | safe_with_context |
 | Belhaven University | Continuing | +470 | R→R | +127 | 1.1% | Countermovement below half of the nonresident change | safe_with_context |
 | Louisiana Tech University | Continuing | +342 | R→R | +104 | 128.9% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Cumberland University | Continuing | +306 | R→R | +79 | 44.1% | Countermovement below half of the nonresident change | hold_for_confirmation |
