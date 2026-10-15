@@ -1253,6 +1253,16 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("131 in Fall 2024", by_unitid["213826"]["analyst_note"])
         self.assertIn("80 of the 2024 undergraduate international students identified as IEP students", by_unitid["213826"]["analyst_note"])
         self.assertIn("keep the -260 institution-specific movement held", by_unitid["213826"]["analyst_note"])
+        self.assertEqual(by_unitid["113698"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["113698"]["disposition"], "partial_component_corroboration")
+        self.assertIn("university-facts", by_unitid["113698"]["evidence_url"])
+        self.assertIn("299 U.S. nonresident students in Fall 2023", by_unitid["113698"]["analyst_note"])
+        self.assertIn("50 in Fall 2024", by_unitid["113698"]["analyst_note"])
+        self.assertIn("30 total undergraduate Nonresidents for Fall 2024", by_unitid["113698"]["analyst_note"])
+        self.assertIn("report as the institution reports to IPEDS", by_unitid["113698"]["analyst_note"])
+        self.assertIn("1,829 total", by_unitid["113698"]["analyst_note"])
+        self.assertIn("missing graduate nonresident endpoint", by_unitid["113698"]["analyst_note"])
+        self.assertIn("keep the -249 institution-specific movement held", by_unitid["113698"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")

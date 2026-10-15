@@ -8,11 +8,11 @@
   "dispositions": {
     "structural_followup_required": 5,
     "external_scope_mismatch": 14,
-    "context_only": 13,
+    "context_only": 12,
     "corroborated_external_count": 10,
     "expected_structural_change": 1,
     "corroborated_direction": 3,
-    "partial_component_corroboration": 3,
+    "partial_component_corroboration": 4,
     "baseline_corroborated_move_unresolved": 1
   },
   "candidate_overlap_reviewed": 5,

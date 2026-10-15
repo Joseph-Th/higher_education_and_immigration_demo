@@ -40,7 +40,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Weber State University | UT | +373 | Percentage Movement | Corroborated external count | Safe with context | [Weber State Fall 2024 international enrollment](https://www.weber.edu/wsutoday/090524-international-enrollment.html) |
 | Fort Hays State University | KS | -266 | Percentage Movement | External scope mismatch | Hold for confirmation | [Fort Hays International Education Week](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week) |
 | Marywood University | PA | -260 | Percentage Movement | External scope mismatch | Hold for confirmation | [Marywood University 2024-25 Fact Book](https://www.marywood.edu/about/consumer-information/factbooks/Fall-2024-Factbook.pdf?language_id=1) |
-| Dominican University of California | CA | -249 | Percentage Movement | Context only | Hold for confirmation | [Dominican international admissions](https://www.dominican.edu/admissions/international-admissions) |
+| Dominican University of California | CA | -249 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Dominican University of California 2024-25 Common Data Set and University Facts](https://www.dominican.edu/about/student-success/university-facts) |
 | National Louis University | IL | +218 | Percentage Movement | Context only | Hold for confirmation | [National Louis international students](https://nl.edu/admissions/international-students/) |
 | University of Rio Grande | OH | +181 | Percentage Movement | Context only | Hold for confirmation | [University of Rio Grande international admissions](https://www.rio.edu/admissions/apply-rio/international-admissions) |
 | Union Commonwealth University | KY | +179 | Percentage Movement | Context only | Hold for confirmation | [Union Commonwealth admissions](https://www.unionky.edu/admissions-aid) |
@@ -285,10 +285,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Dominican University of California · UNITID 113698
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Dominican international admissions](https://www.dominican.edu/admissions/international-admissions)
-- **Analyst note:** Dominican documents international admissions and visa requirements, but the reviewed page does not publish like-for-like endpoint counts. The -249 movement remains held.
+- **Disposition:** Partial component corroboration
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Dominican University of California 2024-25 Common Data Set and University Facts](https://www.dominican.edu/about/student-success/university-facts)
+- **Analyst note:** The project IPEDS series reports 299 U.S. nonresident students in Fall 2023 and 50 in Fall 2024, a decline of 249, with undergraduate/graduate nonresident components of 32/267 and 30/20 and all-student totals of 2,026 and 1,900. Dominican University's official 2024-25 Common Data Set B2 section instructs institutions to include international students only in Nonresidents and to report as the institution reports to IPEDS; it reports 30 total undergraduate Nonresidents for Fall 2024, exactly matching the project undergraduate nonresident component. The university's public University Facts page states that its student data are Fall-census snapshots and that racial/ethnic categories use IPEDS definitions. However, the same Common Data Set B1 section reports 1,127 undergraduates and 702 graduate students, 1,829 total, versus project IPEDS totals of 1,114 undergraduates, 786 graduate students, and 1,900 overall, and the public CDS does not provide a directly comparable graduate Nonresident count. The exact undergraduate nonresident component and explicit IPEDS reporting instructions independently corroborate one major component, but the differing total population and missing graduate nonresident endpoint do not resolve the all-student decline from 299 to 50. Preserve IPEDS as the numerical authority and keep the -249 institution-specific movement held.
 
 ### National Louis University · UNITID 147536
 
