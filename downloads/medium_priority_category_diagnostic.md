@@ -86,7 +86,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 47 | Vincennes University | IN | Percentage Movement | +78 | R→R | 170 | 217.9% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 48 | Ana G. Mendez University | FL | Percentage Movement | -76 | R→R | 1,290 | 1697.4% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 49 | Anna Maria College | MA | Percentage Movement | -68 | R→R | 40 | 58.8% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
-| 50 | Normandale Community College | MN | Percentage Movement | +60 | R→R | 31 | 51.7% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
+| 50 | Normandale Community College | MN | Percentage Movement | +60 | R→R | 31 | 51.7% | Countermovement at least half as large as the nonresident change | safe_with_context |
 
 ## Accounting and decision rule
 

@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 10
-- **Held for confirmation:** 40
+- **Safe with context:** 11
+- **Held for confirmation:** 39
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -62,7 +62,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Vincennes University | IN | +78 | Percentage Movement | Context only | Hold for confirmation | [Vincennes international students](https://www.vinu.edu/international-students/index.html) |
 | Ana G. Mendez University | FL | -76 | Percentage Movement | Context only | Hold for confirmation | [Ana G. Mendez University international admissions](https://agmu.edu/en/international-students) |
 | Anna Maria College | MA | -68 | Percentage Movement | Context only | Hold for confirmation | [NECHE joint statement on Anna Maria College](https://www.neche.org/wp-content/uploads/2026/04/Joint-Statement-Anna-Maria-April-2026.pdf) |
-| Normandale Community College | MN | +60 | Percentage Movement | External scope mismatch | Hold for confirmation | [Normandale international student admissions](https://www.normandale.edu/admissions/apply/international-students.html) |
+| Normandale Community College | MN | +60 | Percentage Movement | Corroborated external count | Safe with context | [Normandale Community College 2024-2025 Fact Book](https://www.normandale.edu/_files/documents/about/FACTBOOK-2024-25.pdf) |
 
 ## Analyst notes
 
@@ -460,11 +460,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Normandale Community College · UNITID 174428
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Normandale international student admissions](https://www.normandale.edu/admissions/apply/international-students.html)
-- **Analyst note:** Normandale describes its current F-1 population as over 100 students, which is useful scale context but not a historical IPEDS-equivalent series. The +60 movement remains held rather than treating the different definition and timing as corroboration.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated external count
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Normandale Community College 2024-2025 Fact Book](https://www.normandale.edu/_files/documents/about/FACTBOOK-2024-25.pdf)
+- **Analyst note:** The project IPEDS series reports 104 U.S. nonresident students in Fall 2023 and 164 in Fall 2024, an increase of 60. Normandale's official 2024-2025 Fact Book uses the same U.S. Nonresident label in its fall race/ethnicity table and reports 102 in 2023 and 168 in 2024, an increase of 66. The institutional endpoints differ from IPEDS by only 2 and 4 students while independently reproducing the direction and approximate magnitude. The Fact Book's all-student totals are 9,720 and 11,169 versus IPEDS totals of 9,620 and 11,026, so the institutional table is not treated as definition-identical or as a replacement series. A later 2025-2026 Fact Book revises the same U.S. Nonresident endpoints to 97 and 165, still preserving the increase and latest-year scale; this small institutional vintage revision is retained as a caveat. Keep IPEDS as the numerical authority and clear only bounded discussion that Normandale's U.S. nonresident enrollment increased materially from 2023 to 2024.
 
 ## Publication and next-release boundary
 
