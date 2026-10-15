@@ -1122,6 +1122,13 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("4,057 Non-resident aliens", by_unitid["164988"]["analyst_note"])
         self.assertIn("3,931 Non-resident aliens", by_unitid["164988"]["analyst_note"])
         self.assertIn("do not supply a directly comparable graduate/professional nonresident count", by_unitid["164988"]["analyst_note"])
+        self.assertEqual(by_unitid["178208"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["178208"]["disposition"], "partial_component_corroboration")
+        self.assertIn("ats.edu/Annual-Data-Tables", by_unitid["178208"]["evidence_url"])
+        self.assertIn("2,792 in 2023-24", by_unitid["178208"]["analyst_note"])
+        self.assertIn("2,909 in 2024-25", by_unitid["178208"]["analyst_note"])
+        self.assertIn("only 19 and 90 above the project IPEDS graduate totals", by_unitid["178208"]["analyst_note"])
+        self.assertIn("does not establish that the -458 nonresident movement", by_unitid["178208"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")

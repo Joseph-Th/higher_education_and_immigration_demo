@@ -35,7 +35,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | University of New Haven | CT | -574 | Absolute Movement | Corroborated direction | Safe with context | [University of New Haven Summer 2025 internationalization report](https://www.newhaven.edu/news/blog/2025/global-campus.php) |
 | Boston University | MA | -558 | Absolute Movement | Partial component corroboration | Hold for confirmation | [Boston University Common Data Set archive](https://www.bu.edu/asir/bu-facts/common-data-set/cds-archive/) |
 | University of California-Berkeley | CA | -546 | Absolute Movement | Corroborated external count | Safe with context | [UC Berkeley Fall 2024 international enrollment report](https://internationaloffice.berkeley.edu/sites/default/files/student-stats2024.pdf) |
-| Midwestern Baptist Theological Seminary | MO | -458 | Percentage Movement | Context only | Hold for confirmation | [Midwestern Seminary admissions and tuition](https://www.mbts.edu/admissions-tuition/) |
+| Midwestern Baptist Theological Seminary | MO | -458 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Association of Theological Schools annual data tables](https://www.ats.edu/Annual-Data-Tables) |
 | Walden University | MN | -396 | Percentage Movement | External scope mismatch | Hold for confirmation | [Walden international students](https://www.waldenu.edu/international-students) |
 | Weber State University | UT | +373 | Percentage Movement | Corroborated external count | Safe with context | [Weber State Fall 2024 international enrollment](https://www.weber.edu/wsutoday/090524-international-enrollment.html) |
 | Fort Hays State University | KS | -266 | Percentage Movement | External scope mismatch | Hold for confirmation | [Fort Hays International Education Week](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week) |
@@ -245,10 +245,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Midwestern Baptist Theological Seminary · UNITID 178208
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Midwestern Seminary admissions and tuition](https://www.mbts.edu/admissions-tuition/)
-- **Analyst note:** The seminary documents international admissions requirements, but the reviewed page does not provide comparable Fall 2023/Fall 2024 enrollment counts. The -458 movement remains held.
+- **Disposition:** Partial component corroboration
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Association of Theological Schools annual data tables](https://www.ats.edu/Annual-Data-Tables)
+- **Analyst note:** IPEDS reports 3,840 total students in Fall 2023 and 3,945 in Fall 2024, including 2,773 and 2,819 graduate students; U.S. nonresident enrollment falls from 541 to 83, with the graduate nonresident component moving from 524 to 83. The Association of Theological Schools annual data tables report Midwestern Baptist Theological Seminary headcount of 2,792 in 2023-24 and 2,909 in 2024-25, only 19 and 90 above the project IPEDS graduate totals and independently confirming the graduate enrollment scale and continuity. ATS covers accredited theological programs and the reviewed tables do not provide a directly comparable IPEDS U.S. nonresident count, so this corroborates only a major enrollment component and does not establish that the -458 nonresident movement reflects a like-for-like substantive decline. Preserve IPEDS as the numerical authority and keep the institution-specific movement held.
 
 ### Walden University · UNITID 125231
 
