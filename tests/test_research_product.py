@@ -565,7 +565,7 @@ class ResearchProductTests(unittest.TestCase):
 
     def test_public_release_register_enforces_allowlisted_publication(self) -> None:
         release_rows = read_public_release_register()
-        self.assertEqual(len(release_rows), 70)
+        self.assertEqual(len(release_rows), 72)
         ids = [row["artifact_id"] for row in release_rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(row["release_decision"] == "PUBLIC" for row in release_rows))
@@ -574,15 +574,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertTrue(all(not row["source_path"].startswith("data/raw/") for row in release_rows))
         self.assertTrue(all(row["public_path"].startswith("site/downloads/") for row in release_rows))
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 120)
-        self.assertEqual(validate_public_tree(release_rows), 120)
+        self.assertEqual(len(pairs), 122)
+        self.assertEqual(validate_public_tree(release_rows), 122)
 
         rendered = (ROOT / "docs" / "DATA_GOVERNANCE.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "data-governance.html").read_text(encoding="utf-8")
-        self.assertIn("Expanded public download files:** 120", rendered)
+        self.assertIn("Expanded public download files:** 122", rendered)
         self.assertIn("restricted by default", rendered)
         self.assertIn("Public by design does not mean publish everything.", html)
-        self.assertIn("120</strong><span>expanded public download files", html)
+        self.assertIn("122</strong><span>expanded public download files", html)
 
         unsafe = [dict(row) for row in release_rows]
         unsafe[0]["person_level_data"] = "Yes"
@@ -600,7 +600,7 @@ class ResearchProductTests(unittest.TestCase):
                 validate_public_tree(release_rows)
         finally:
             injected.unlink(missing_ok=True)
-        self.assertEqual(validate_public_tree(release_rows), 120)
+        self.assertEqual(validate_public_tree(release_rows), 122)
 
     def test_release_readiness_separates_current_publication_from_year_advance(self) -> None:
         readiness = rows(ROOT / "data" / "release_readiness.csv")
@@ -617,7 +617,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_id["Y01"]["blocks_year_advance"], "Yes")
         self.assertIn("27/27", by_id["A03"]["evidence"])
         self.assertIn("50/50", by_id["A03"]["evidence"])
-        self.assertIn("70 artifact families", by_id["A05"]["evidence"])
+        self.assertIn("72 artifact families", by_id["A05"]["evidence"])
         self.assertIn("2/4", by_id["Y01"]["evidence"])
         self.assertIn("candidate directory preflight=PASS", by_id["Y01"]["evidence"])
         self.assertIn("3,864 directory-eligible rows", by_id["Y01"]["evidence"])
@@ -1687,6 +1687,75 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("100%", qa_html)
         self.assertEqual(self.site_data["qa_resolution_summary"], summary)
 
+    def test_high_priority_category_diagnostic_reconciles_internal_composition(self) -> None:
+        diagnostic = rows(ROOT / "data" / "high_priority_category_diagnostic.csv")
+        queue = [
+            row
+            for row in rows(ROOT / "data" / "processed" / "latest_release_institution_review.csv")
+            if row["review_priority"] == "high"
+        ]
+        resolutions = {
+            row["unitid"]: row for row in rows(ROOT / "data" / "qa_resolution_log.csv")
+        }
+        self.assertEqual(len(diagnostic), 27)
+        self.assertEqual([row["unitid"] for row in diagnostic], [row["unitid"] for row in queue])
+        self.assertEqual(len({row["unitid"] for row in diagnostic}), 27)
+
+        comparable = [row for row in diagnostic if row["status"] == "Continuing"]
+        structural = [row for row in diagnostic if row["status"] != "Continuing"]
+        self.assertEqual(len(comparable), 25)
+        self.assertEqual(len(structural), 2)
+        signal_counts = Counter(row["signal_class"] for row in diagnostic)
+        self.assertEqual(signal_counts["countermovement_at_least_nr_change"], 8)
+        self.assertEqual(signal_counts["countermovement_at_least_half_nr_change"], 3)
+        self.assertEqual(signal_counts["countermovement_below_half_nr_change"], 14)
+        self.assertEqual(signal_counts["universe_change_not_comparable"], 2)
+
+        for row in diagnostic:
+            resolution = resolutions[row["unitid"]]
+            self.assertEqual(row["publication_class"], resolution["publication_class"])
+            self.assertEqual(row["disposition"], resolution["disposition"])
+            self.assertIn("not proof of reporting error", row["interpretation_boundary"])
+            if row["status"] == "Continuing":
+                self.assertEqual(
+                    int(row["total_change"]),
+                    int(row["nonresident_change"]) + int(row["other_categories_net_change"]),
+                )
+                self.assertGreaterEqual(
+                    float(row["countermovement_pct_of_nonresident_change"]), 0.0
+                )
+            else:
+                self.assertEqual(row["signal_class"], "universe_change_not_comparable")
+                self.assertEqual(row["countermovement_abs"], "")
+
+        by_unitid = {row["unitid"]: row for row in diagnostic}
+        for unitid in ("156541", "217475", "217633"):
+            self.assertEqual(
+                by_unitid[unitid]["signal_class"], "countermovement_at_least_nr_change"
+            )
+            self.assertGreaterEqual(
+                float(by_unitid[unitid]["countermovement_pct_of_nonresident_change"]),
+                100.0,
+            )
+        self.assertEqual(
+            by_unitid["487649"]["signal_class"], "countermovement_below_half_nr_change"
+        )
+        self.assertEqual(
+            float(by_unitid["487649"]["countermovement_pct_of_nonresident_change"]), 0.0
+        )
+
+        rendered = (ROOT / "docs" / "HIGH_PRIORITY_CATEGORY_DIAGNOSTIC.md").read_text(
+            encoding="utf-8"
+        )
+        html = (ROOT / "site" / "high-priority-category-diagnostic.html").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("does not prove miscoding", rendered)
+        self.assertIn("Countermovement", rendered)
+        self.assertIn("not proof of miscoding or reclassification", html)
+        self.assertIn('href="downloads/high_priority_category_diagnostic.csv"', html)
+        self.assertIn('href="downloads/high_priority_category_diagnostic.md"', html)
+
     def test_research_memo_tracks_validated_outputs(self) -> None:
         memo = (ROOT / "docs" / "RESEARCH_MEMO.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "research-memo.html").read_text(encoding="utf-8")
@@ -1888,10 +1957,10 @@ class ResearchProductTests(unittest.TestCase):
     def test_site_downloads_are_exact_copies(self) -> None:
         release_rows = read_public_release_register()
         pairs = expand_public_release_pairs(release_rows)
-        self.assertEqual(len(pairs), 120)
+        self.assertEqual(len(pairs), 122)
         for source, public, row in pairs:
             self.assertEqual(source.read_bytes(), public.read_bytes(), row["artifact_id"])
-        self.assertEqual(validate_public_tree(release_rows), 120)
+        self.assertEqual(validate_public_tree(release_rows), 122)
 
     def test_static_page_local_assets_and_ids(self) -> None:
         for page_name in (
@@ -1912,6 +1981,7 @@ class ResearchProductTests(unittest.TestCase):
             "medium-qa-review.html",
             "private-nonprofit-growth.html",
             "qa-review.html",
+            "high-priority-category-diagnostic.html",
             "population-trends.html",
             "undocumented-pipeline.html",
             "source-update-triage.html",

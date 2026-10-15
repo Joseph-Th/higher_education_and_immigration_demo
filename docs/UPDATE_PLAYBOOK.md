@@ -97,6 +97,7 @@ Then review the newly generated:
 - `data/processed/latest_release_institution_review.csv`;
 - `docs/LATEST_UPDATE_REVIEW.md`.
 - `data/qa_resolution_log.csv` and `docs/QA_RESOLUTION_LOG.md`;
+- `data/high_priority_category_diagnostic.csv`, `docs/HIGH_PRIORITY_CATEGORY_DIAGNOSTIC.md`, and `site/high-priority-category-diagnostic.html`;
 - `data/medium_priority_review.csv`, `docs/MEDIUM_PRIORITY_REVIEW.md`, and `site/medium-priority-review.html`;
 - `data/medium_qa_resolution_log.csv`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`;
 - `data/candidate_year_qa_watchlist.csv`, `docs/CANDIDATE_YEAR_QA_WATCHLIST.md`, and `site/candidate-year-watchlist.html`;
@@ -115,6 +116,8 @@ Run `python scripts/build_medium_priority_review.py` after the annual review bui
 For institution-level claims, update both `data/qa_resolution_log.csv` and `data/medium_qa_resolution_log.csv` for the current high- and medium-priority queues. Use official institutional, system, regulator, or primary-source documentation when possible. Outside counts must not be treated as exact IPEDS benchmarks unless their population, reference date, geography, and inclusion rules are demonstrably comparable. Classify reviewed records as `safe_with_context` only when the evidence supports the direction, count scale, or structural interpretation with explicit limitations; otherwise use `hold_for_confirmation`. Never edit the IPEDS value merely to make it agree with an outside source, and never carry a current disposition into the next release without revalidation.
 
 Run `python scripts/build_qa_resolution_log.py` after editing the log. The build will fail if a reviewed UNITID is no longer in the current high-priority queue, which is intentional: manual dispositions belong to a specific release and must be reconsidered when the queue changes.
+
+Then run `python scripts/build_high_priority_category_diagnostic.py`. The diagnostic must rebuild from the new release rather than carrying prior ratios forward. For each continuing high-priority institution it reconciles the all-student race/ethnicity categories to total enrollment in both years, verifies the total-change identity, and measures opposite-category countermovement. Use the ratio to prioritize source review only. A large ratio is not proof of miscoding, reclassification, or source error and must never override the evidence-backed `safe_with_context` / `hold_for_confirmation` decision.
 
 The QA resolution log must cover every current high-priority row in queue order. The build fails when a high-priority record lacks a disposition, when a reviewed record is no longer high priority, or when the evidence record is structurally invalid. Run `python scripts/check_qa_evidence.py` before publication to catch broken evidence links. HTTP 401/403 results require manual browser verification rather than automatic removal of the evidence record.
 

@@ -4,7 +4,7 @@ This portfolio control consolidates the project gates required to distinguish a 
 
 - **Current 2024 publication decision:** `READY_WITH_CLAIM_LEVEL_HOLDS`
 - **Candidate 2025 year-advance decision:** `HOLD_YEAR_ADVANCE`
-- **Candidate package observation:** 2/4 required assets available at `2026-10-14T23:57:43+00:00`
+- **Candidate package observation:** 2/4 required assets available at `2026-10-15T02:55:02+00:00`
 - **Candidate directory preflight:** `PASS` (directory-side only; does not authorize year advancement)
 - **Institution-specific claims still held:** 59
 
@@ -18,10 +18,10 @@ The current aggregate publication can remain release-ready while named instituti
 | A02 | Current release | External benchmark | PASS | Yes | No | 24/24 NCES Digest consistency checks PASS. |
 | A03 | Current release | Institution evidence review | PASS_WITH_CLAIM_HOLDS | Yes | No | 27/27 high-priority records reviewed; 13 safe with context and 14 held. 50/50 medium-priority records reviewed; 5 safe with context and 45 held. |
 | A04 | Current release | Publication handoff | PASS_WITH_CLAIM_HOLDS | Yes | No | 17 publication claims/controls have valid authorities, QA gates, disclosures, and release statuses; Q01 and Q03 preserve institution-level claim holds. |
-| A05 | Current release | Public release register | PASS | Yes | No | 70 artifact families are explicitly PUBLIC; none contain person-level or observed immigration-status data. |
+| A05 | Current release | Public release register | PASS | Yes | No | 72 artifact families are explicitly PUBLIC; none contain person-level or observed immigration-status data. |
 | A06 | Current release | Presentation artifact freshness | PASS | Yes | No | PDF manifest matches its source and 3-page file; PowerPoint manifest matches its builder, 7 sources, and 6-slide file. |
 | A07 | Current release | Maintained-source routing coverage | PASS | Yes | No | 17/17 Research Library sources have an explicit refresh/escalation route. |
-| Y01 | Year advance | Candidate 2025 IPEDS package | HOLD | No | Yes | 2/4 required candidate-year assets available at 2026-10-14T23:57:43+00:00; candidate directory preflight=PASS with 3,864 directory-eligible rows; 154 institution change-review rows; 226 carry-forward QA rows including 5 medium-priority/directory overlaps; snapshot decision=HOLD_YEAR_ADVANCE. |
+| Y01 | Year advance | Candidate 2025 IPEDS package | HOLD | No | Yes | 2/4 required candidate-year assets available at 2026-10-15T02:55:02+00:00; candidate directory preflight=PASS with 3,864 directory-eligible rows; 154 institution change-review rows; 226 carry-forward QA rows including 5 medium-priority/directory overlaps; snapshot decision=HOLD_YEAR_ADVANCE. |
 
 ## Decision boundary
 

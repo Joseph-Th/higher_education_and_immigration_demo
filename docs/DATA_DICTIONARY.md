@@ -193,6 +193,27 @@ One row per institution in the current high-priority annual QA queue. This is an
 
 The build script requires the log to cover every current high-priority UNITID in the same deterministic queue order and rejects extra or missing records. A new annual release therefore forces stale dispositions to be revisited rather than silently carrying them forward.
 
+## `data/high_priority_category_diagnostic.csv`
+
+One row per institution in the current high-priority queue. This is an internal IPEDS arithmetic diagnostic, not a corrected-data table and not a publication-decision table. It copies the current evidence-backed `publication_class` and `disposition` only so reviewers can compare source-data composition signals with the separate analyst gate.
+
+| Field | Definition |
+| --- | --- |
+| `unitid` / `institution` / `state` | High-priority institution identity retained in deterministic queue order |
+| `status` | `Continuing` or the current analytic-universe transition state; non-continuing rows are retained but not forced into a two-year category comparison |
+| `publication_class` / `disposition` | Current values copied from `qa_resolution_log.csv`; the diagnostic cannot alter them |
+| `total_2023` / `total_2024` / `total_change` | All-student `EFTOTLT` source values and endpoint change for comparable continuing institutions |
+| `nonresident_2023` / `nonresident_2024` / `nonresident_change` | All-student `EFNRALT` values and endpoint change |
+| `other_categories_net_change` | Net change across American Indian/Alaska Native, Asian, Black/African American, Hispanic/Latino, Native Hawaiian/Pacific Islander, White, Two or more races, and Race/ethnicity unknown; must reconcile with total and nonresident change |
+| `countermovement_abs` | Gross absolute movement among other categories whose change runs opposite the sign of the U.S. nonresident change |
+| `countermovement_pct_of_nonresident_change` | `countermovement_abs / abs(nonresident_change) * 100`; a review-prioritization ratio, not an error probability |
+| `largest_counter_category` / `largest_counter_category_change` | Largest single other-category movement in the opposite direction, when one exists |
+| `signal_class` | `countermovement_at_least_nr_change`, `countermovement_at_least_half_nr_change`, `countermovement_below_half_nr_change`, or `universe_change_not_comparable` |
+| `prior_source_enrollment_csv` / `current_source_enrollment_csv` | Exact IPEDS enrollment CSVs selected by the cross-year schema audit |
+| `interpretation_boundary` | Row-level reminder that countermovement does not prove reporting error, miscoding, or reclassification and cannot itself change a publication decision |
+
+For every continuing row, `scripts/build_high_priority_category_diagnostic.py` independently requires both endpoint all-student source rows to reconcile `EFTOTLT` to the nine mutually exclusive race/ethnicity categories including `EFNRALT`, then requires `total_change = nonresident_change + other_categories_net_change`. The current signal distribution is fixed at 8 / 3 / 14 across the three comparable classes plus 2 universe-change rows. The builder generates `docs/HIGH_PRIORITY_CATEGORY_DIAGNOSTIC.md` and `site/high-priority-category-diagnostic.html` after the evidence-review layer so the arithmetic remains explicitly subordinate to the publication gate.
+
 ## `data/medium_qa_resolution_log.csv`
 
 One row per institution in the current medium-priority annual QA queue. This is a separate analyst-decision layer over `data/medium_priority_review.csv`; it does not change the reason-derived route, priority, or any IPEDS source value.
