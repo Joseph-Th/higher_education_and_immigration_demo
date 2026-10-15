@@ -2,7 +2,7 @@
 
 **Latest data:** Fall 2024 (provisional)  
 **Universe:** degree-granting institutions in the IPEDS First Look/Digest Title IV universe, 50 states + DC  
-**QA review date:** 2026-10-14
+**QA review date:** 2026-10-15
 
 ## Bottom line
 
