@@ -33,7 +33,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
 | Purdue University-Main Campus | IN | +580 | Absolute Movement | External scope mismatch | Hold for confirmation | [Purdue Fall 2024 enrollment](https://www.admissions.purdue.edu/academics/enrollment.php) |
 | University of New Haven | CT | -574 | Absolute Movement | Corroborated direction | Safe with context | [University of New Haven Summer 2025 internationalization report](https://www.newhaven.edu/news/blog/2025/global-campus.php) |
-| Boston University | MA | -558 | Absolute Movement | External scope mismatch | Hold for confirmation | [Boston University Global Programs](https://www.bu.edu/globalprograms/) |
+| Boston University | MA | -558 | Absolute Movement | Partial component corroboration | Hold for confirmation | [Boston University Common Data Set archive](https://www.bu.edu/asir/bu-facts/common-data-set/cds-archive/) |
 | University of California-Berkeley | CA | -546 | Absolute Movement | Corroborated external count | Safe with context | [UC Berkeley Fall 2024 international enrollment report](https://internationaloffice.berkeley.edu/sites/default/files/student-stats2024.pdf) |
 | Midwestern Baptist Theological Seminary | MO | -458 | Percentage Movement | Context only | Hold for confirmation | [Midwestern Seminary admissions and tuition](https://www.mbts.edu/admissions-tuition/) |
 | Walden University | MN | -396 | Percentage Movement | External scope mismatch | Hold for confirmation | [Walden international students](https://www.waldenu.edu/international-students) |
@@ -229,10 +229,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Boston University · UNITID 164988
 
 - **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
+- **Disposition:** Partial component corroboration
 - **Reviewed:** 2026-10-14
-- **Evidence:** [Boston University Global Programs](https://www.bu.edu/globalprograms/)
-- **Analyst note:** BU's public global-programs materials use broader international-student concepts and do not reproduce the IPEDS U.S. nonresident definition. The -558 movement remains held rather than being inferred from a non-equivalent population.
+- **Evidence:** [Boston University Common Data Set archive](https://www.bu.edu/asir/bu-facts/common-data-set/cds-archive/)
+- **Analyst note:** IPEDS reports 10,468 U.S. nonresident students in Fall 2023 and 9,910 in Fall 2024. BU's official 2023-24 Common Data Set reports 18,656 total undergraduates and 4,057 Non-resident aliens, exactly matching the project's Fall 2023 undergraduate total and nonresident component. Its 2024-25 Common Data Set reports 18,805 total undergraduates and 3,931 Non-resident aliens, again exactly matching the project Fall 2024 undergraduate component. BU's Fact Book glossary states that its Domestic/International category is defined in conformity with IPEDS and that fall enrollment is reported on the official mid-October date in compliance with IPEDS Fall Enrollment. These sources independently corroborate the undergraduate component and reporting basis, but the Common Data Sets do not supply a directly comparable graduate/professional nonresident count that resolves the full all-student decline from 10,468 to 9,910. Preserve IPEDS as the numerical authority and keep the institution-specific all-student movement held.
 
 ### University of California-Berkeley · UNITID 110635
 

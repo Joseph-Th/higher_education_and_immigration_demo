@@ -1116,6 +1116,12 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_unitid["129941"]["disposition"], "corroborated_direction")
         self.assertIn("news/blog/2025/global-campus.php", by_unitid["129941"]["evidence_url"])
         self.assertIn("independently confirms the Fall 2024 decline", by_unitid["129941"]["analyst_note"])
+        self.assertEqual(by_unitid["164988"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["164988"]["disposition"], "partial_component_corroboration")
+        self.assertIn("common-data-set/cds-archive", by_unitid["164988"]["evidence_url"])
+        self.assertIn("4,057 Non-resident aliens", by_unitid["164988"]["analyst_note"])
+        self.assertIn("3,931 Non-resident aliens", by_unitid["164988"]["analyst_note"])
+        self.assertIn("do not supply a directly comparable graduate/professional nonresident count", by_unitid["164988"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")
