@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 15
-- **Held for confirmation:** 35
+- **Safe with context:** 16
+- **Held for confirmation:** 34
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -59,7 +59,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [UMPI international admissions](https://www.umpi.edu/admissions/international-students/) |
 | New Mexico Highlands University | NM | -81 | Percentage Movement | Corroborated external count | Safe with context | [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/) |
 | Northeastern University Oakland | CA | +80 | Percentage Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2024 enrollment context](https://news.northeastern.edu/2024/09/12/enrollment-statistics-2024/) |
-| Vincennes University | IN | +78 | Percentage Movement | Context only | Hold for confirmation | [Vincennes international students](https://www.vinu.edu/international-students/index.html) |
+| Vincennes University | IN | +78 | Percentage Movement | Corroborated direction | Safe with context | [Vincennes University Fall 2024 enrollment announcement](https://www.vinu.edu/news/vu-welcomes-largest-incoming-class-since-2021.html) |
 | Ana G. Mendez University | FL | -76 | Percentage Movement | Context only | Hold for confirmation | [Ana G. Mendez University international admissions](https://agmu.edu/en/international-students) |
 | Anna Maria College | MA | -68 | Percentage Movement | Context only | Hold for confirmation | [NECHE joint statement on Anna Maria College](https://www.neche.org/wp-content/uploads/2026/04/Joint-Statement-Anna-Maria-April-2026.pdf) |
 | Normandale Community College | MN | +60 | Percentage Movement | Corroborated external count | Safe with context | [Normandale Community College 2024-2025 Fact Book](https://www.normandale.edu/_files/documents/about/FACTBOOK-2024-25.pdf) |
@@ -436,11 +436,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Vincennes University · UNITID 152637
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Vincennes international students](https://www.vinu.edu/international-students/index.html)
-- **Analyst note:** Vincennes documents its F-1 international-student program but does not publish a comparable Fall 2023/Fall 2024 U.S. nonresident series on the reviewed page. The +78 movement remains held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Vincennes University Fall 2024 enrollment announcement](https://www.vinu.edu/news/vu-welcomes-largest-incoming-class-since-2021.html)
+- **Analyst note:** The project IPEDS series reports 124 U.S. nonresident students in Fall 2023 and 202 in Fall 2024, an increase of 78 (+62.9%), with all 202 students reported at the undergraduate level. Vincennes University's official August 23, 2024 enrollment announcement, issued during the first week of the 2024-25 academic year, states that preliminary first-day figures showed a rise in international students on the Vincennes Campus and through online programs. Approved August 21, 2024 Board of Trustees minutes likewise state that international student numbers on the Vincennes Campus and online were growing while discussing Fall 2024 enrollment. Those contemporaneous institutional statements independently corroborate the direction of the Fall 2023-to-Fall 2024 increase. They do not provide comparable endpoint counts, a final census-date population, or evidence that the university-defined international population is definition-identical to IPEDS U.S. nonresident status. Preserve IPEDS as the numerical authority and clear only bounded direction-level discussion of the +78 movement; do not infer an institutional headcount from the qualitative growth statement.
 
 ### Ana G. Mendez University · UNITID 483595
 

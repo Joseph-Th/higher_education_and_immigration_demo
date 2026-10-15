@@ -27,7 +27,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | Pikes Peak State College | Percentage Movement | -104 | R→R | +168 | 298 | 286.5% | Hispanic / Latino (+179) | R→R | safe_with_context |
 | The University of Texas at Arlington | Absolute Movement | -846 | R→R | +964 | 1,959 | 231.6% | Hispanic / Latino (+823) | R→R | safe_with_context |
 | America Evangelical University | Percentage Movement | -92 | R→R | +100 | 210 | 228.3% | Race / ethnicity unknown (+147) | Z→R | hold_for_confirmation |
-| Vincennes University | Percentage Movement | +78 | R→R | +1,357 | 170 | 217.9% | Race / ethnicity unknown (-166) | R→R | hold_for_confirmation |
+| Vincennes University | Percentage Movement | +78 | R→R | +1,357 | 170 | 217.9% | Race / ethnicity unknown (-166) | R→R | safe_with_context |
 | Fort Hays State University | Percentage Movement | -266 | R→R | +35 | 547 | 205.6% | Hispanic / Latino (+202) | R→R | hold_for_confirmation |
 | University of California-Berkeley | Absolute Movement | -546 | R→R | +183 | 733 | 134.2% | Asian (+251) | R→R | safe_with_context |
 | New Mexico Highlands University | Percentage Movement | -81 | R→R | -110 | 104 | 128.4% | Race / ethnicity unknown (+92) | R→R | safe_with_context |
@@ -83,7 +83,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 44 | University of Maine at Presque Isle | ME | Percentage Movement | +81 | R→R | 1 | 1.2% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 45 | New Mexico Highlands University | NM | Percentage Movement | -81 | R→R | 104 | 128.4% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 46 | Northeastern University Oakland | CA | Percentage Movement | +80 | R→R | 100 | 125.0% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
-| 47 | Vincennes University | IN | Percentage Movement | +78 | R→R | 170 | 217.9% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| 47 | Vincennes University | IN | Percentage Movement | +78 | R→R | 170 | 217.9% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 48 | Ana G. Mendez University | FL | Percentage Movement | -76 | R→R | 1,290 | 1697.4% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 49 | Anna Maria College | MA | Percentage Movement | -68 | R→R | 40 | 58.8% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
 | 50 | Normandale Community College | MN | Percentage Movement | +60 | R→R | 31 | 51.7% | Countermovement at least half as large as the nonresident change | safe_with_context |
