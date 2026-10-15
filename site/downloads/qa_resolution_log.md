@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **12** are safe to discuss with explicit context.
-- **15** remain held for institution-specific interpretation.
+- **13** are safe to discuss with explicit context.
+- **14** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-14**.
 
@@ -35,7 +35,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Cumberland University | TN | +306 | context_support_only | hold_for_confirmation | [Cumberland University International Student Services](https://admissions.cumberland.edu/portal/international-student) |
 | Oakton College | IL | +299 | confirmed_reporting_discontinuity | hold_for_confirmation | [Oakton College Fall 2022-2026 Enrollment Comparison Report](https://www.oakton.edu/_pdfs/research-and-planning/fall_2022-fall_2026_enrollment_comparison_report.pdf) |
 | Polk State College | FL | +288 | context_support_only | hold_for_confirmation | [Polk State College international and visa students](https://www.polk.edu/admission-aid/international-students/) |
-| Norfolk State University | VA | +278 | context_support_only | hold_for_confirmation | [Norfolk State University Supporting the Success of Global Scholars](https://www.nsu.edu/News/Behold/Featured-Articles/2025/Supporting-The-Success-Of-Global-Scholars) |
+| Norfolk State University | VA | +278 | corroborated_external_count | safe_with_context | [Norfolk State University Fact Book 2020-2024](https://www.nsu.edu/Academics/Research/Institutional-Research/Documents-and-Forms/FactBook_2020-2024.aspx) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
 | Oakwood University | AL | -192 | confirmed_reporting_discontinuity | safe_with_context | [Oakwood University Institutional Effectiveness enrollment statistics archive](https://oakwood.edu/our-story/institutional-effectiveness/) |
 | Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global international admissions definition](https://csuglobal.edu/admissions/international-students) |
@@ -202,9 +202,9 @@ IPEDS rises from 110 to 398 U.S. nonresident students in one year. Polk State do
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 127 to 405 U.S. nonresident students, almost entirely at the undergraduate level. Norfolk State's official 2025 feature reports more than 100 international students representing 21 countries and describes a mix of undergraduate and graduate students supported by International Student Services. The later institutional count confirms a substantive international-student population but is materially narrower than the 2024 IPEDS level and uses a different year and undefined institutional category, so it cannot reconcile the reported increase. Preserve IPEDS in aggregates and keep the institution-specific movement held.
+IPEDS rises from 127 to 405 U.S. nonresident students, almost entirely at the undergraduate level. Norfolk State's official 2020-2024 Fact Book reports 127 International students in Fall 2023, exactly matching the project IPEDS baseline, and 409 International students in Fall 2024, within four students of the IPEDS 405. The Fact Book notes that its 2024 data are preliminary, and the institution-defined International label is not assumed definition-identical to IPEDS. The near-exact two-year agreement nevertheless independently corroborates the level and direction strongly enough for bounded discussion while IPEDS remains the numerical authority.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_external_count` · **Reviewed:** 2026-10-14.
 
 ### Grambling State University (UNITID 159009)
 
