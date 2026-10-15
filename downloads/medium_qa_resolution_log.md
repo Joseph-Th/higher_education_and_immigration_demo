@@ -54,7 +54,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Knox College | IL | +107 | Percentage Movement | External scope mismatch | Hold for confirmation | [Knox international applicants](https://www.knox.edu/admission/apply-to-knox/international-applicants) |
 | Pikes Peak State College | CO | -104 | Percentage Movement | Corroborated external count | Safe with context | [Pikes Peak State College 2025 Data Book](https://www.pikespeak.edu/about/institutional-effectiveness/_IE-uploads/Databook/PPSC-2025-Databook.pdf) |
 | America Evangelical University | CA | -92 | Percentage Movement | Context only | Hold for confirmation | [America Evangelical University international admissions](https://aeu.edu/admissions/international/) |
-| University of Lynchburg | VA | +91 | Percentage Movement | Context only | Hold for confirmation | [University of Lynchburg international admissions](https://www.lynchburg.edu/admissions/apply/apply-as-an-international-student/) |
+| University of Lynchburg | VA | +91 | Percentage Movement | Baseline corroborated move unresolved | Hold for confirmation | [University of Lynchburg Fall 2023 and Fall 2024 international enrollment announcements](https://www.lynchburg.edu/record-number-of-international-students-arrive-at-lynchburg/) |
 | Monroe Community College | NY | +83 | Percentage Movement | External scope mismatch | Hold for confirmation | [Monroe Community College 2024-25 Facts Book and 2024 Self-Study Design](https://www.monroecc.edu/fileadmin/SiteFiles/GeneralContent/depts/admissions/documents/MCC-Facts-Book.pdf) |
 | University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [UMPI international admissions](https://www.umpi.edu/admissions/international-students/) |
 | New Mexico Highlands University | NM | -81 | Percentage Movement | Corroborated external count | Safe with context | [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/) |
@@ -397,10 +397,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### University of Lynchburg · UNITID 232609
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [University of Lynchburg international admissions](https://www.lynchburg.edu/admissions/apply/apply-as-an-international-student/)
-- **Analyst note:** Lynchburg documents international admissions but does not publish a directly comparable Fall 2023/Fall 2024 U.S. nonresident series on the reviewed page. The +91 movement remains held.
+- **Disposition:** Baseline corroborated move unresolved
+- **Reviewed:** 2026-10-15
+- **Evidence:** [University of Lynchburg Fall 2023 and Fall 2024 international enrollment announcements](https://www.lynchburg.edu/record-number-of-international-students-arrive-at-lynchburg/)
+- **Analyst note:** The project IPEDS series reports 118 U.S. nonresident students in Fall 2023 and 209 in Fall 2024, an increase of 91. In its August 18, 2023 enrollment announcement, the University of Lynchburg reported that more than 80 new international students would bring the total international student population to about 120, closely matching the IPEDS Fall 2023 baseline. Its August 23, 2024 Convocation announcement reported more than 100 newly arrived international students from about 20 countries, confirming another large international incoming cohort but not publishing a comparable total Fall 2024 international headcount. The institutional international population is not assumed definition-identical to IPEDS U.S. nonresident status, and the new-student figure cannot be treated as an all-student endpoint. Preserve IPEDS as the numerical authority: the 2023 baseline is independently corroborated at close scale, but the +91 movement to 209 remains held because no like-for-like Fall 2024 institutional total resolves it.
 
 ### Monroe Community College · UNITID 193326
 
