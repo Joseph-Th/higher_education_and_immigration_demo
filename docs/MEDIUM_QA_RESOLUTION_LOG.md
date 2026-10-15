@@ -18,7 +18,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | City College-Altamonte Springs | FL | +0 | Structural Or Reporting | Structural followup required | Hold for confirmation | [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf) |
 | Indiana Wesleyan University-National & Global | IN | +855 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Indiana Wesleyan University President's Report 2024](https://www.indwes.edu/about/offices/administration/ADMIN_10067_Presidents-Annual-Report-2024.pdf) |
 | Valencia College | FL | +692 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Valencia Institutional Research international-student archive](https://valenciacollege.edu/academics/analytics-and-planning/analytics-and-reporting/reporting/internal/enrollment.php) |
-| Dallas College | TX | +628 | Absolute And Percentage | Context only | Hold for confirmation | [Dallas College international admissions](https://www.dallascollege.edu/admissions/international/) |
+| Dallas College | TX | +628 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Dallas College 2023-24 Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/dallas-college-profile.pdf) |
 | Chaffey College | CA | -611 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Chaffey institutional research reports](https://www.chaffey.edu/ir/reports-publications.php) |
 | Lindsey Wilson College | KY | +590 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf) |
 | Texas State University | TX | +558 | Absolute And Percentage | Corroborated external count | Safe with context | [Texas State strategic progress dashboard](https://www.president.txst.edu/strategic-vision/academic-progress.html) |
@@ -109,10 +109,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Dallas College · UNITID 224615
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Dallas College international admissions](https://www.dallascollege.edu/admissions/international/)
-- **Analyst note:** Dallas College documents international admissions and F-1 processes, but the reviewed public page does not provide a directly comparable annual U.S. nonresident count. The +628 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Dallas College 2023-24 Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/dallas-college-profile.pdf)
+- **Analyst note:** The project IPEDS series reports 2,127 U.S. nonresident students in Fall 2023 and 2,755 in Fall 2024, an increase of 628, with Fall-census all-student totals of 66,592 and 69,749. Dallas College's official profile explicitly spans Fall 2023, Spring 2024, and Summer 2024 and reports 127,854 total unduplicated students, including 103,241 credit students, with International students shown as 2% of the profile population. That academic-year unduplicated population is nearly twice the project Fall 2023 IPEDS headcount, so the profile's international percentage cannot be treated as a like-for-like Fall-census nonresident measure or converted into an IPEDS endpoint. Dallas College's 2024-25 annual financial report later states that international enrollment grew 25% to approximately 3,000 students over Fall 2024, confirming that the institution maintains an international-enrollment series but without publishing the comparable Fall 2024 base count or establishing definition identity with IPEDS U.S. nonresident status. Treat the institutional materials as a documented timing/population-scope mismatch, preserve IPEDS as the numerical authority, and keep the +628 institution-specific movement held.
 
 ### Chaffey College · UNITID 111939
 
