@@ -11,7 +11,7 @@ This pre-release watchlist combines the current 2023-2024 high/medium institutio
 - **Current medium + candidate directory overlaps:** 5
 - **Unique union:** 27 + 50 + 154 - 5 = **226**
 
-The existing high-priority evidence review remains **13 safe with context / 14 held for confirmation**, and the medium-priority evidence review remains **5 safe with context / 45 held**, for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
+The existing high-priority evidence review remains **14 safe with context / 13 held for confirmation**, and the medium-priority evidence review remains **5 safe with context / 45 held**, for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
 
 ## Medium-priority rows that also changed in the candidate directory
 
@@ -31,7 +31,7 @@ The first ten rows below are ordered by absolute current latest-release change. 
 
 | Institution | State | 2023-2024 change | Current publication class |
 | --- | --- | ---: | --- |
-| University of the Cumberlands | KY | +4,616 | Hold for confirmation |
+| University of the Cumberlands | KY | +4,616 | Safe with context |
 | Collin County Community College District | TX | +2,256 | Hold for confirmation |
 | Broward College | FL | +2,005 | Hold for confirmation |
 | Miami Dade College | FL | +1,458 | Hold for confirmation |

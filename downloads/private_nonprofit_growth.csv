@@ -464,7 +464,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 156365,Campbellsville University,KY,KY,Private nonprofit in both endpoints,239,3050,2811,87,2724,high,safe_with_context,safe_with_context,11,2.04,36.57,Positive contributors 11-25
 156408,Centre College,KY,KY,Private nonprofit in both endpoints,102,57,-45,-45,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 156417,Clear Creek Baptist Bible College,KY,KY,Private nonprofit in both endpoints,2,0,-2,-2,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
-156541,University of the Cumberlands,KY,KY,Private nonprofit in both endpoints,226,4616,4390,42,4348,high,hold_for_confirmation,hold_for_confirmation,5,3.19,22.39,Top 10 positive contributors
+156541,University of the Cumberlands,KY,KY,Private nonprofit in both endpoints,226,4616,4390,42,4348,high,safe_with_context,safe_with_context,5,3.19,22.39,Top 10 positive contributors
 156727,Frontier Nursing University,KY,KY,Private nonprofit in both endpoints,1,0,-1,0,-1,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 156745,Georgetown College,KY,KY,Private nonprofit in both endpoints,14,57,43,42,1,none,,not high-priority in latest release queue,288,0.03,95.74,Other positive contributors
 157030,Kentucky Mountain Bible College,KY,KY,Private nonprofit in both endpoints,5,5,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
