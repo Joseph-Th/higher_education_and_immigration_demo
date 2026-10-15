@@ -11,9 +11,8 @@
     "corroborated_external_count": 10,
     "expected_structural_change": 1,
     "corroborated_direction": 5,
-    "partial_component_corroboration": 5,
-    "baseline_corroborated_move_unresolved": 1,
-    "context_only": 1
+    "partial_component_corroboration": 6,
+    "baseline_corroborated_move_unresolved": 1
   },
   "candidate_overlap_reviewed": 5,
   "safe_unitids": [

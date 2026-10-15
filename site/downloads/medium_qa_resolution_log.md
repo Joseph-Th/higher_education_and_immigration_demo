@@ -61,7 +61,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Northeastern University Oakland | CA | +80 | Percentage Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2024 enrollment context](https://news.northeastern.edu/2024/09/12/enrollment-statistics-2024/) |
 | Vincennes University | IN | +78 | Percentage Movement | Corroborated direction | Safe with context | [Vincennes University Fall 2024 enrollment announcement](https://www.vinu.edu/news/vu-welcomes-largest-incoming-class-since-2021.html) |
 | Ana G. Mendez University | FL | -76 | Percentage Movement | External scope mismatch | Hold for confirmation | [Ana G. Mendez University F-1 visa and transfer process](https://agmu.edu/en/visa) |
-| Anna Maria College | MA | -68 | Percentage Movement | Context only | Hold for confirmation | [NECHE joint statement on Anna Maria College](https://www.neche.org/wp-content/uploads/2026/04/Joint-Statement-Anna-Maria-April-2026.pdf) |
+| Anna Maria College | MA | -68 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Anna Maria College 2024 presidential search profile](https://annamaria.edu/wp-content/uploads/2024/10/ASI-Anna-Maria-College-President-Profile.pdf) |
 | Normandale Community College | MN | +60 | Percentage Movement | Corroborated external count | Safe with context | [Normandale Community College 2024-2025 Fact Book](https://www.normandale.edu/_files/documents/about/FACTBOOK-2024-25.pdf) |
 
 ## Analyst notes
@@ -453,10 +453,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Anna Maria College · UNITID 164492
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [NECHE joint statement on Anna Maria College](https://www.neche.org/wp-content/uploads/2026/04/Joint-Statement-Anna-Maria-April-2026.pdf)
-- **Analyst note:** NECHE documents Anna Maria College's decision to cease academic operations after Spring 2026. That later structural event is useful institutional context but does not establish a directly comparable Fall 2023/Fall 2024 U.S. nonresident series or explain the -68 movement, which remains held.
+- **Disposition:** Partial component corroboration
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Anna Maria College 2024 presidential search profile](https://annamaria.edu/wp-content/uploads/2024/10/ASI-Anna-Maria-College-President-Profile.pdf)
+- **Analyst note:** The project IPEDS series reports 114 U.S. nonresident students in Fall 2023 and 46 in Fall 2024, a decline of 68, with all-student enrollment falling from 1,332 to 1,202 and Fall 2024 undergraduate/graduate totals of 916 and 286. Anna Maria College's official 2024 presidential search profile describes total enrollment of approximately 1,200, just over 900 traditional undergraduates, and a remaining population of part-time undergraduates and graduate students, closely corroborating the scale and undergraduate-heavy structure of the project Fall 2024 enrollment footprint. The same profile says approximately 34% of students identify as members of a racial/ethnic minority population or as international students, a combined category that cannot isolate an international or U.S. nonresident count and must not be applied to the IPEDS endpoint. The institutional profile therefore corroborates major total-enrollment components but does not supply a comparable Fall 2023/Fall 2024 international/nonresident series. Preserve IPEDS as the numerical authority and keep the -68 institution-specific movement held.
 
 ### Normandale Community College · UNITID 174428
 
