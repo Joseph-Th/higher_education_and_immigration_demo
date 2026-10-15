@@ -269,7 +269,7 @@ def validate_rows(rows: list[dict[str, str]]) -> dict[str, int]:
     if len(high) != 27 or len(medium) != 50 or len(candidate) != 154:
         raise RuntimeError("Watchlist source counts do not reconcile to 27 high / 50 medium / 154 candidate changes")
     if Counter(row["high_priority_publication_class"] for row in high) != Counter(
-        {"hold_for_confirmation": 12, "safe_with_context": 15}
+        {"hold_for_confirmation": 11, "safe_with_context": 16}
     ):
         raise RuntimeError("High-priority publication classes do not reconcile to the QA resolution log")
     if any(row["high_priority_publication_class"] for row in medium):

@@ -1230,8 +1230,8 @@
     "reviewed_count": 27,
     "high_priority_total": 27,
     "coverage_pct": 100.0,
-    "safe_with_context": 15,
-    "hold_for_confirmation": 12,
+    "safe_with_context": 16,
+    "hold_for_confirmation": 11,
     "dispositions": {
       "confirmed_baseline_mismatch": 1,
       "confirmed_classification_change": 1,
