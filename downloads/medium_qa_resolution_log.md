@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 8
-- **Held for confirmation:** 42
+- **Safe with context:** 9
+- **Held for confirmation:** 41
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -26,7 +26,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Indiana University-Indianapolis | IN | -504 | Absolute And Percentage | Expected structural change | Safe with context | [IU Indianapolis IUPUI transition overview](https://indianapolis.iu.edu/about/iupui-transition/) |
 | The University of Texas at Arlington | TX | -846 | Absolute Movement | Corroborated direction | Safe with context | [UTA Faculty Senate approved September 4, 2024 minutes](https://cdn.web.uta.edu/-/media/project/website/administration/faculty-senate/documents/meeting_minutes/2025/facsen-minutes-9-4-24_approved.ashx) |
 | Georgia Institute of Technology-Main Campus | GA | +835 | Absolute Movement | Corroborated external count | Safe with context | [Georgia Tech Fact Book archive](https://irp.gatech.edu/fact-book) |
-| University of Illinois Urbana-Champaign | IL | +775 | Absolute Movement | External scope mismatch | Hold for confirmation | [Illinois international student statistics archive](https://isss.illinois.edu/about/statistics/) |
+| University of Illinois Urbana-Champaign | IL | +775 | Absolute Movement | Corroborated external count | Safe with context | [University of Illinois System Fall 2024 Data Book](https://www.pb.uillinois.edu/documents/databook/PB_Databook_Fall24.pdf) |
 | Syracuse University | NY | -760 | Absolute Movement | Baseline corroborated move unresolved | Hold for confirmation | [Syracuse Fall 2024 Immigration Essentials](https://experience.syracuse.edu/wp-content/uploads/sites/29/2024/10/Fall-2024-Grad-Immigration-Essentials-Part-1.pdf) |
 | University of Colorado Boulder | CO | -755 | Absolute Movement | External scope mismatch | Hold for confirmation | [CU Boulder international student statistics](https://www.colorado.edu/isss/about-us/student-statistics) |
 | Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
@@ -172,11 +172,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### University of Illinois Urbana-Champaign · UNITID 145637
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Illinois international student statistics archive](https://isss.illinois.edu/about/statistics/)
-- **Analyst note:** Illinois publishes international-student statistical reports, but the institutional definition is visa/service oriented and is not assumed to equal IPEDS U.S. nonresident enrollment. Without a reconciled like-for-like series, the +775 movement remains held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated external count
+- **Reviewed:** 2026-10-15
+- **Evidence:** [University of Illinois System Fall 2024 Data Book](https://www.pb.uillinois.edu/documents/databook/PB_Databook_Fall24.pdf)
+- **Analyst note:** The project IPEDS series reports 12,575 U.S. nonresident students in Fall 2023 and 13,350 in Fall 2024, an increase of 775. The University of Illinois System Fall 2024 Data Book independently reports the same Urbana-Champaign values twice: its residency table lists International enrollment of 12,575 and 13,350, and its federal race/ethnicity table lists U.S. Nonresident (Nonresident alien) at 12,575 and 13,350 for the same two fall endpoints. The Data Book states that the race/ethnicity categories are U.S. Department of Education reporting categories and that the term Nonresident alien changed to U.S. Nonresident in 2022; a separate residency note defines International students by citizenship/visa. The exact U.S. Nonresident endpoint match independently corroborates both source values and the +775 direction while preserving the institutional documentation's own scope notes. Keep IPEDS as the analytical authority and clear bounded discussion of the increase; do not generalize this matched institutional series to other institutions or reporting years.
 
 ### Syracuse University · UNITID 196413
 
