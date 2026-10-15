@@ -1,0 +1,7 @@
+# This CSV is SHA-256-bound by the candidate-directory preflight snapshot.
+# Force LF checkouts so Windows autocrlf cannot change the verified bytes.
+data/candidate_directory_change_review.csv text eol=lf
+site/downloads/candidate_directory_change_review.csv text eol=lf
+
+# The PowerPoint freshness manifest hashes the builder itself byte-for-byte.
+scripts/build_management_deck.py text eol=lf
