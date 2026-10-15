@@ -27,7 +27,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | The University of Texas at Arlington | TX | -846 | Absolute Movement | Corroborated direction | Safe with context | [UTA Faculty Senate approved September 4, 2024 minutes](https://cdn.web.uta.edu/-/media/project/website/administration/faculty-senate/documents/meeting_minutes/2025/facsen-minutes-9-4-24_approved.ashx) |
 | Georgia Institute of Technology-Main Campus | GA | +835 | Absolute Movement | Corroborated external count | Safe with context | [Georgia Tech Fact Book archive](https://irp.gatech.edu/fact-book) |
 | University of Illinois Urbana-Champaign | IL | +775 | Absolute Movement | Corroborated external count | Safe with context | [University of Illinois System Fall 2024 Data Book](https://www.pb.uillinois.edu/documents/databook/PB_Databook_Fall24.pdf) |
-| Syracuse University | NY | -760 | Absolute Movement | Baseline corroborated move unresolved | Hold for confirmation | [Syracuse Fall 2024 Immigration Essentials](https://experience.syracuse.edu/wp-content/uploads/sites/29/2024/10/Fall-2024-Grad-Immigration-Essentials-Part-1.pdf) |
+| Syracuse University | NY | -760 | Absolute Movement | Partial component corroboration | Hold for confirmation | [Syracuse annual financial reports and Fall 2024 Immigration Essentials](https://finance.syr.edu/comptroller/annual-financial-reports/) |
 | University of Colorado Boulder | CO | -755 | Absolute Movement | External scope mismatch | Hold for confirmation | [CU Boulder international student statistics](https://www.colorado.edu/isss/about-us/student-statistics) |
 | Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
 | Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
@@ -181,10 +181,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Syracuse University · UNITID 196413
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Baseline corroborated move unresolved
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Syracuse Fall 2024 Immigration Essentials](https://experience.syracuse.edu/wp-content/uploads/sites/29/2024/10/Fall-2024-Grad-Immigration-Essentials-Part-1.pdf)
-- **Analyst note:** Syracuse's public international-student material corroborates the prior-year scale around 4,163, but it does not provide a directly comparable Fall 2024 value that resolves the IPEDS decline to 3,403. Keep the -760 movement held.
+- **Disposition:** Partial component corroboration
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Syracuse annual financial reports and Fall 2024 Immigration Essentials](https://finance.syr.edu/comptroller/annual-financial-reports/)
+- **Analyst note:** The project IPEDS series reports 4,163 U.S. nonresident students in Fall 2023 and 3,403 in Fall 2024, a decline of 760, with all-student totals of 22,948 and 22,589. Syracuse University's official Fall 2024 Immigration Essentials reports the 2023-24 enrollment structure at 22,948 total students, including 4,163 international students, 15,739 undergraduates including 1,784 international undergraduates, and 7,209 graduate/law students including 2,379 international graduate/law students. Those values exactly match the project Fall 2023 total, nonresident, undergraduate, graduate/law, and level-specific nonresident components. Syracuse's official Fiscal 2025 Financial Report then reports 15,957 undergraduates, 5,881 graduate students, and 751 law students, yielding 22,589 total students and 6,632 graduate/law students, exactly matching the project Fall 2024 all-student and level totals. The financial report does not publish a comparable 2024 international/nonresident count, so the exact total-enrollment continuity does not resolve the nonresident decline from 4,163 to 3,403. Preserve IPEDS as the numerical authority: the baseline and both years' enrollment structure are independently corroborated, but the -760 institution-specific nonresident movement remains held until a like-for-like Fall 2024 nonresident endpoint is available.
 
 ### University of Colorado Boulder · UNITID 126614
 

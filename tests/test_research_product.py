@@ -1234,6 +1234,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("report as the institution reports to IPEDS", by_unitid["146427"]["analyst_note"])
         self.assertIn("zero graduate enrollment in both years", by_unitid["146427"]["analyst_note"])
         self.assertIn("exact endpoint and total-enrollment matches", by_unitid["146427"]["analyst_note"])
+        self.assertEqual(by_unitid["196413"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["196413"]["disposition"], "partial_component_corroboration")
+        self.assertIn("annual-financial-reports", by_unitid["196413"]["evidence_url"])
+        self.assertIn("4,163 U.S. nonresident students in Fall 2023", by_unitid["196413"]["analyst_note"])
+        self.assertIn("3,403 in Fall 2024", by_unitid["196413"]["analyst_note"])
+        self.assertIn("22,948 total students, including 4,163 international students", by_unitid["196413"]["analyst_note"])
+        self.assertIn("15,957 undergraduates, 5,881 graduate students, and 751 law students", by_unitid["196413"]["analyst_note"])
+        self.assertIn("exactly matching the project Fall 2024 all-student and level totals", by_unitid["196413"]["analyst_note"])
+        self.assertIn("-760 institution-specific nonresident movement remains held", by_unitid["196413"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")
