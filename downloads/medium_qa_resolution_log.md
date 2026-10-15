@@ -50,7 +50,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Durham Technical Community College | NC | +129 | Percentage Movement | Context only | Hold for confirmation | [Durham Tech non-U.S. student admissions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student) |
 | Prairie View A & M University | TX | +125 | Percentage Movement | Context only | Hold for confirmation | [Prairie View international student services](https://www.pvamu.edu/globalengagement/isss/) |
 | Humphreys University-Stockton and Modesto Campuses | CA | +116 | Percentage Movement | Structural followup required | Hold for confirmation | [Humphreys international admissions](https://www.humphreys.edu/apply-international/) |
-| Austin Peay State University | TN | +111 | Percentage Movement | Context only | Hold for confirmation | [Austin Peay international student services](https://www.apsu.edu/international/) |
+| Austin Peay State University | TN | +111 | Percentage Movement | External scope mismatch | Hold for confirmation | [Austin Peay 2023-24 and 2024-25 Fact Books](https://www.apsu.edu/institutional-research/data/archived-2024-25-factbook.pdf) |
 | Knox College | IL | +107 | Percentage Movement | External scope mismatch | Hold for confirmation | [Knox international applicants](https://www.knox.edu/admission/apply-to-knox/international-applicants) |
 | Pikes Peak State College | CO | -104 | Percentage Movement | Corroborated external count | Safe with context | [Pikes Peak State College 2025 Data Book](https://www.pikespeak.edu/about/institutional-effectiveness/_IE-uploads/Databook/PPSC-2025-Databook.pdf) |
 | America Evangelical University | CA | -92 | Percentage Movement | Context only | Hold for confirmation | [America Evangelical University international admissions](https://aeu.edu/admissions/international/) |
@@ -365,10 +365,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Austin Peay State University · UNITID 219602
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Austin Peay international student services](https://www.apsu.edu/international/)
-- **Analyst note:** Austin Peay documents international-student services but does not publish a directly comparable Fall 2023/Fall 2024 U.S. nonresident series on the reviewed page. The +111 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Austin Peay 2023-24 and 2024-25 Fact Books](https://www.apsu.edu/institutional-research/data/archived-2024-25-factbook.pdf)
+- **Analyst note:** The project IPEDS series reports 173 U.S. nonresident students in Fall 2023 and 284 in Fall 2024, an increase of 111, with total enrollment of 9,945 and 10,439. Austin Peay's official 2023-24 Fact Book reports 173 international students in Fall 2023, exactly matching the IPEDS nonresident baseline, while its 2024-25 Fact Book reports only 181 international students in Fall 2024, an increase of 8 rather than 111. The same Fact Books report 9,764 U.S. students plus 173 international students in 2023 and 10,254 U.S. students plus 181 international students in 2024, yielding combined institutional totals of 9,937 and 10,435, only 8 and 4 students below the corresponding IPEDS totals. A later 2025-26 Fact Book explicitly notes that Austin Peay's international count can include U.S. citizens whose permanent address is outside the United States and nonresident-alien students without an address outside the United States, confirming that the institutional location/citizenship construct is not definition-identical to IPEDS U.S. nonresident status. The close total-enrollment reconciliation and exact 2023 baseline make the 2024 divergence material rather than a generic lack of evidence, but they do not establish which source construct should explain the +111 IPEDS movement. Preserve IPEDS as the analytical authority and keep the institution-specific increase held as a documented scope/reporting mismatch; do not substitute the 181 count or describe the +111 as independently corroborated growth.
 
 ### Knox College · UNITID 146427
 
