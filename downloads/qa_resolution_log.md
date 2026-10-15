@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **15** are safe to discuss with explicit context.
-- **12** remain held for institution-specific interpretation.
+- **16** are safe to discuss with explicit context.
+- **11** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-14**.
 
@@ -33,7 +33,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Belhaven University | MS | +470 | corroborated_external_count | safe_with_context | [Belhaven University Fall 2024 Tartan enrollment summary](https://www.belhaven.edu/pdfs/archived/tartan-2024.pdf) |
 | Louisiana Tech University | LA | +342 | corroborated_direction | safe_with_context | [Louisiana Tech Fall 2024 enrollment announcement](https://www.latech.edu/news/louisiana-tech-celebrates-six-year-enrollment-milestone-and-record-setting-freshman-class.php) |
 | Cumberland University | TN | +306 | context_support_only | hold_for_confirmation | [Cumberland University International Student Services](https://admissions.cumberland.edu/portal/international-student) |
-| Oakton College | IL | +299 | confirmed_reporting_discontinuity | hold_for_confirmation | [Oakton College Fall 2022-2026 Enrollment Comparison Report](https://www.oakton.edu/_pdfs/research-and-planning/fall_2022-fall_2026_enrollment_comparison_report.pdf) |
+| Oakton College | IL | +299 | confirmed_reporting_discontinuity | safe_with_context | [Oakton College Fall 2022-2026 Enrollment Comparison Report](https://www.oakton.edu/_pdfs/research-and-planning/fall_2022-fall_2026_enrollment_comparison_report.pdf) |
 | Polk State College | FL | +288 | context_support_only | hold_for_confirmation | [Polk State College international and visa students](https://www.polk.edu/admission-aid/international-students/) |
 | Norfolk State University | VA | +278 | corroborated_external_count | safe_with_context | [Norfolk State University Fact Book 2020-2024](https://www.nsu.edu/Academics/Research/Institutional-Research/Documents-and-Forms/FactBook_2020-2024.aspx) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
@@ -186,9 +186,9 @@ IPEDS rises from 285 to 591 U.S. nonresident students, driven primarily by gradu
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS reports zero U.S. nonresident students in 2020-2022, then 167 in 2023 and 466 in 2024. Oakton's current official Fall 2022-2026 enrollment report instead shows an International/Non-Resident population of 303 in 2022, 311 in 2023, and 352 in 2024. That direct institutional series confirms that the IPEDS zero/nonzero history and one-year magnitude cannot be read as a literal emergence of the underlying population. Because the institutional category and counts do not reconcile numerically to IPEDS, preserve the IPEDS series in aggregates and keep the institution-specific movement held as a reporting/scope discontinuity.
+IPEDS reports zero U.S. nonresident students in 2020-2022, then 167 in 2023 and 466 in 2024. Oakton's current official Fall 2022-2026 enrollment report instead shows an International/Non-Resident population of 303 in 2022, 311 in 2023, and 352 in 2024. The report states that its race/ethnicity categories were updated to align with state and federal reporting and that the figures are semester-census snapshots, while also noting that the report excludes dual-credit students. The nonzero 2022 institutional count directly contradicts a literal reading of the IPEDS implied zero and confirms a reporting/scope discontinuity. Because the institutional universe and counts do not numerically reconcile to IPEDS, do not substitute the Oakton values; the IPEDS +299 movement is not independently confirmed institutional growth. Clear only bounded discussion of the discontinuity while retaining IPEDS as the aggregate numerical authority.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `confirmed_reporting_discontinuity` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `confirmed_reporting_discontinuity` · **Reviewed:** 2026-10-14.
 
 ### Polk State College (UNITID 136516)
 
