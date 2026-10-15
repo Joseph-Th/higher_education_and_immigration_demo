@@ -1208,6 +1208,14 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("116 international students", by_unitid["193326"]["analyst_note"])
         self.assertIn("non-U.S. citizens with nonimmigrant visas", by_unitid["193326"]["analyst_note"])
         self.assertIn("keep the institution-specific +83 movement held", by_unitid["193326"]["analyst_note"])
+        self.assertEqual(by_unitid["232609"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["232609"]["disposition"], "baseline_corroborated_move_unresolved")
+        self.assertIn("record-number-of-international-students-arrive-at-lynchburg", by_unitid["232609"]["evidence_url"])
+        self.assertIn("118 U.S. nonresident students in Fall 2023", by_unitid["232609"]["analyst_note"])
+        self.assertIn("total international student population to about 120", by_unitid["232609"]["analyst_note"])
+        self.assertIn("more than 100 newly arrived international students", by_unitid["232609"]["analyst_note"])
+        self.assertIn("new-student figure cannot be treated as an all-student endpoint", by_unitid["232609"]["analyst_note"])
+        self.assertIn("+91 movement to 209 remains held", by_unitid["232609"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")
