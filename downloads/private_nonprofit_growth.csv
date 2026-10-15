@@ -9,7 +9,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 101541,Judson College,AL,,Left private-nonprofit endpoint universe,7,0,-7,-7,0,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
 101675,Miles College,AL,AL,Private nonprofit in both endpoints,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 101693,University of Mobile,AL,AL,Private nonprofit in both endpoints,70,32,-38,-41,3,none,,not high-priority in latest release queue,,,,Nonpositive contribution
-101912,Oakwood University,AL,AL,Private nonprofit in both endpoints,119,0,-119,-118,-1,high,hold_for_confirmation,hold_for_confirmation,,,,Nonpositive contribution
+101912,Oakwood University,AL,AL,Private nonprofit in both endpoints,119,0,-119,-118,-1,high,safe_with_context,safe_with_context,,,,Nonpositive contribution
 102049,Samford University,AL,AL,Private nonprofit in both endpoints,144,72,-72,-56,-16,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 102058,Selma University,AL,,Left private-nonprofit endpoint universe,0,0,0,0,0,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
 102234,Spring Hill College,AL,AL,Private nonprofit in both endpoints,41,93,52,49,3,none,,not high-priority in latest release queue,261,0.04,94.82,Other positive contributors
