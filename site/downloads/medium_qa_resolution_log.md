@@ -41,7 +41,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Fort Hays State University | KS | -266 | Percentage Movement | External scope mismatch | Hold for confirmation | [Fort Hays International Education Week](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week) |
 | Marywood University | PA | -260 | Percentage Movement | External scope mismatch | Hold for confirmation | [Marywood University 2024-25 Fact Book](https://www.marywood.edu/about/consumer-information/factbooks/Fall-2024-Factbook.pdf?language_id=1) |
 | Dominican University of California | CA | -249 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Dominican University of California 2024-25 Common Data Set and University Facts](https://www.dominican.edu/about/student-success/university-facts) |
-| National Louis University | IL | +218 | Percentage Movement | Context only | Hold for confirmation | [National Louis international students](https://nl.edu/admissions/international-students/) |
+| National Louis University | IL | +218 | Percentage Movement | Partial component corroboration | Hold for confirmation | [National Louis University Undergraduate College Fast Facts](https://nl.edu/undergraduate-college/fast-facts/) |
 | University of Rio Grande | OH | +181 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth) |
 | Union Commonwealth University | KY | +179 | Percentage Movement | Corroborated direction | Safe with context | [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help) |
 | FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Structural followup required | Hold for confirmation | [FIDM 2024-2025 catalog](https://fidm.edu/data/catalog/06-2024-2025%2BFIDM%2BCatalog-Policies-Final.pdf) |
@@ -293,10 +293,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### National Louis University · UNITID 147536
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [National Louis international students](https://nl.edu/admissions/international-students/)
-- **Analyst note:** National Louis documents its international-student admissions population but does not publish a comparable Fall 2023/Fall 2024 U.S. nonresident series on the reviewed page. The +218 movement remains held.
+- **Disposition:** Partial component corroboration
+- **Reviewed:** 2026-10-15
+- **Evidence:** [National Louis University Undergraduate College Fast Facts](https://nl.edu/undergraduate-college/fast-facts/)
+- **Analyst note:** The project IPEDS series reports 318 U.S. nonresident students in Fall 2023 and 536 in Fall 2024, an increase of 218, with undergraduate totals of 4,239 and 4,471 and all-student totals of 8,270 and 8,915. National Louis University's official Undergraduate College Fast Facts, updated October 17, 2024, reports that the Undergraduate College served 4,425 undergraduate students in 2023-24, only 46 below the project Fall 2024 undergraduate total of 4,471, and identifies 2,493 fully online adult and transfer students within that population. The university's Student Achievement Data separately confirms that NLU serves undergraduate, graduate, and doctoral populations, while its international-student page says students from more than 50 countries are part of the university community but publishes no comparable annual headcount. The close undergraduate enrollment scale corroborates a major component of the institutional footprint, but the academic-year timing, Undergraduate College scope, and absence of a comparable international/nonresident count prevent the source from validating the project IPEDS increase from 318 to 536. Preserve IPEDS as the numerical authority and keep the +218 institution-specific movement held.
 
 ### University of Rio Grande · UNITID 205203
 
