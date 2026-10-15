@@ -1198,6 +1198,16 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("combined institutional totals of 9,937 and 10,435", by_unitid["219602"]["analyst_note"])
         self.assertIn("not definition-identical to IPEDS U.S. nonresident status", by_unitid["219602"]["analyst_note"])
         self.assertIn("keep the institution-specific increase held", by_unitid["219602"]["analyst_note"])
+        self.assertEqual(by_unitid["193326"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["193326"]["disposition"], "external_scope_mismatch")
+        self.assertIn("MCC-Facts-Book.pdf", by_unitid["193326"]["evidence_url"])
+        self.assertIn("122 U.S. nonresident students", by_unitid["193326"]["analyst_note"])
+        self.assertIn("205 in Fall 2024", by_unitid["193326"]["analyst_note"])
+        self.assertIn("same Fall 2023 credit enrollment total of 8,530", by_unitid["193326"]["analyst_note"])
+        self.assertIn("same Fall 2024 credit enrollment total of 8,641", by_unitid["193326"]["analyst_note"])
+        self.assertIn("116 international students", by_unitid["193326"]["analyst_note"])
+        self.assertIn("non-U.S. citizens with nonimmigrant visas", by_unitid["193326"]["analyst_note"])
+        self.assertIn("keep the institution-specific +83 movement held", by_unitid["193326"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")

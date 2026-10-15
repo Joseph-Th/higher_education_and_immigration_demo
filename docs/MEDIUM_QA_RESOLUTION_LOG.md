@@ -55,7 +55,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Pikes Peak State College | CO | -104 | Percentage Movement | Corroborated external count | Safe with context | [Pikes Peak State College 2025 Data Book](https://www.pikespeak.edu/about/institutional-effectiveness/_IE-uploads/Databook/PPSC-2025-Databook.pdf) |
 | America Evangelical University | CA | -92 | Percentage Movement | Context only | Hold for confirmation | [America Evangelical University international admissions](https://aeu.edu/admissions/international/) |
 | University of Lynchburg | VA | +91 | Percentage Movement | Context only | Hold for confirmation | [University of Lynchburg international admissions](https://www.lynchburg.edu/admissions/apply/apply-as-an-international-student/) |
-| Monroe Community College | NY | +83 | Percentage Movement | Context only | Hold for confirmation | [Monroe Community College international admissions](https://www.monroecc.edu/admissions/i-am/international-student/) |
+| Monroe Community College | NY | +83 | Percentage Movement | External scope mismatch | Hold for confirmation | [Monroe Community College 2024-25 Facts Book and 2024 Self-Study Design](https://www.monroecc.edu/fileadmin/SiteFiles/GeneralContent/depts/admissions/documents/MCC-Facts-Book.pdf) |
 | University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [UMPI international admissions](https://www.umpi.edu/admissions/international-students/) |
 | New Mexico Highlands University | NM | -81 | Percentage Movement | Corroborated external count | Safe with context | [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/) |
 | Northeastern University Oakland | CA | +80 | Percentage Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2024 enrollment context](https://news.northeastern.edu/2024/09/12/enrollment-statistics-2024/) |
@@ -405,10 +405,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Monroe Community College · UNITID 193326
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Monroe Community College international admissions](https://www.monroecc.edu/admissions/i-am/international-student/)
-- **Analyst note:** MCC documents an F-1-focused international admissions population but does not publish comparable endpoint counts on the reviewed page. The +83 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Monroe Community College 2024-25 Facts Book and 2024 Self-Study Design](https://www.monroecc.edu/fileadmin/SiteFiles/GeneralContent/depts/admissions/documents/MCC-Facts-Book.pdf)
+- **Analyst note:** The project IPEDS series reports 122 U.S. nonresident students in Fall 2023 and 205 in Fall 2024, an increase of 83, with total enrollment of 8,530 and 8,641. Monroe Community College's official 2024 Self-Study Design reports the same Fall 2023 credit enrollment total of 8,530 and says the college welcomes approximately 100 international students from more than 36 countries. Its official 2024-25 Facts Book reports the same Fall 2024 credit enrollment total of 8,641 and 116 international students, explicitly defining that population as non-U.S. citizens with nonimmigrant visas. Thus the institutional total-enrollment endpoints match IPEDS exactly while the narrower institutional international count is about 22 below IPEDS in 2023 and 89 below in 2024; the institutional series rises by roughly 16 rather than the +83 IPEDS U.S. nonresident movement. The exact total-enrollment reconciliation makes this a documented population-definition mismatch rather than a generic lack of institutional evidence. Preserve IPEDS as the analytical authority, keep the institution-specific +83 movement held, and do not substitute the visa-defined 116 count or describe the IPEDS increase as independently corroborated international growth.
 
 ### University of Maine at Presque Isle · UNITID 161341
 
