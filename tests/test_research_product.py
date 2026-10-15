@@ -1129,6 +1129,14 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("2,909 in 2024-25", by_unitid["178208"]["analyst_note"])
         self.assertIn("only 19 and 90 above the project IPEDS graduate totals", by_unitid["178208"]["analyst_note"])
         self.assertIn("does not establish that the -458 nonresident movement", by_unitid["178208"]["analyst_note"])
+        self.assertEqual(by_unitid["157216"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["157216"]["disposition"], "external_scope_mismatch")
+        self.assertIn("lwcfactbook.pdf", by_unitid["157216"]["evidence_url"])
+        self.assertIn("1,437 U.S. nonresident students", by_unitid["157216"]["analyst_note"])
+        self.assertIn("978 international students", by_unitid["157216"]["analyst_note"])
+        self.assertIn("45 undergraduates and 1,392 graduate students", by_unitid["157216"]["analyst_note"])
+        self.assertIn("156 undergraduates and 822 graduate students", by_unitid["157216"]["analyst_note"])
+        self.assertIn("baseline population/reporting-scope mismatch", by_unitid["157216"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")

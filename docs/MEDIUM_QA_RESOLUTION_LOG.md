@@ -20,7 +20,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Valencia College | FL | +692 | Absolute And Percentage | Context only | Hold for confirmation | [Valencia international student services](https://valenciacollege.edu/students/international-students/) |
 | Dallas College | TX | +628 | Absolute And Percentage | Context only | Hold for confirmation | [Dallas College international admissions](https://www.dallascollege.edu/admissions/international/) |
 | Chaffey College | CA | -611 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Chaffey institutional research reports](https://www.chaffey.edu/ir/reports-publications.php) |
-| Lindsey Wilson College | KY | +590 | Absolute And Percentage | Context only | Hold for confirmation | [Lindsey Wilson enrollment and university-name announcement](https://www.lindsey.edu/news/story.cfm?id=1370) |
+| Lindsey Wilson College | KY | +590 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf) |
 | Texas State University | TX | +558 | Absolute And Percentage | Corroborated external count | Safe with context | [Texas State strategic progress dashboard](https://www.president.txst.edu/strategic-vision/academic-progress.html) |
 | Sacred Heart University | CT | -508 | Absolute And Percentage | Context only | Hold for confirmation | [Sacred Heart international students](https://www.sacredheart.edu/international-students/) |
 | Indiana University-Indianapolis | IN | -504 | Absolute And Percentage | Expected structural change | Safe with context | [IU Indianapolis IUPUI transition overview](https://indianapolis.iu.edu/about/iupui-transition/) |
@@ -125,10 +125,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Lindsey Wilson College · UNITID 157216
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Lindsey Wilson enrollment and university-name announcement](https://www.lindsey.edu/news/story.cfm?id=1370)
-- **Analyst note:** Lindsey Wilson reports record Fall 2024 total enrollment and students from 49 countries, and separately documents its later university-name change. The source does not publish a directly comparable U.S. nonresident count, so the +590 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf)
+- **Analyst note:** The project IPEDS Fall 2023 row reports 1,437 U.S. nonresident students, split between 45 undergraduates and 1,392 graduate students. Lindsey Wilson's official Fall 2023 institutional fact book instead reports 978 international students from 50 foreign countries, including 156 undergraduates and 822 graduate students. The institutional count is 459 below the IPEDS all-student nonresident baseline, and the level distribution differs materially in both directions. Because the fact-book international population is not definition-identical to IPEDS U.S. nonresident status, this establishes a baseline population/reporting-scope mismatch rather than a source correction. The reviewed Fall 2024 enrollment announcement establishes continued record enrollment and international geographic breadth but does not provide a like-for-like international count to resolve the IPEDS increase from 1,437 to 2,027. Preserve IPEDS as the numerical authority and keep the +590 institution-specific movement held.
 
 ### Texas State University · UNITID 228459
 
