@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 5
-- **Held for confirmation:** 45
+- **Safe with context:** 6
+- **Held for confirmation:** 44
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -30,7 +30,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Syracuse University | NY | -760 | Absolute Movement | Baseline corroborated move unresolved | Hold for confirmation | [Syracuse Fall 2024 Immigration Essentials](https://experience.syracuse.edu/wp-content/uploads/sites/29/2024/10/Fall-2024-Grad-Immigration-Essentials-Part-1.pdf) |
 | University of Colorado Boulder | CO | -755 | Absolute Movement | External scope mismatch | Hold for confirmation | [CU Boulder international student statistics](https://www.colorado.edu/isss/about-us/student-statistics) |
 | Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
-| Stevens Institute of Technology | NJ | -592 | Absolute Movement | Context only | Hold for confirmation | [Stevens facts and figures](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
+| Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
 | Purdue University-Main Campus | IN | +580 | Absolute Movement | External scope mismatch | Hold for confirmation | [Purdue Fall 2024 enrollment](https://www.admissions.purdue.edu/academics/enrollment.php) |
 | University of New Haven | CT | -574 | Absolute Movement | Context only | Hold for confirmation | [University of New Haven international admissions](https://www.newhaven.edu/admissions/international/index.php) |
 | Boston University | MA | -558 | Absolute Movement | External scope mismatch | Hold for confirmation | [Boston University Global Programs](https://www.bu.edu/globalprograms/) |
@@ -204,11 +204,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Stevens Institute of Technology · UNITID 186867
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Context only
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
 - **Reviewed:** 2026-10-14
-- **Evidence:** [Stevens facts and figures](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures)
-- **Analyst note:** Stevens publishes annual fact sheets and Common Data Sets, but the reviewed public index does not by itself establish a directly comparable U.S. nonresident series for both endpoints. The -592 movement remains held.
+- **Evidence:** [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures)
+- **Analyst note:** Stevens' official Fall 2023 fact sheet reports 4,092 undergraduates with 3% international and 4,750 graduate students with 65% international, implying roughly 3,210 international students. Its Fall 2024 fact sheet reports 4,236 undergraduates with 4% international and 4,233 graduate students with 58% international, implying roughly 2,625. The project IPEDS series moves from 3,225 U.S. nonresidents in 2023 to 2,633 in 2024, a decline of 592, while the rounded institutional percentages imply a decline of about 585. Because the institutional percentages are rounded and 'international' is not assumed definition-identical to IPEDS U.S. nonresident status, do not substitute the implied counts; the close endpoint scale and direction support only bounded discussion of the decline.
 
 ### Purdue University-Main Campus · UNITID 243780
 
