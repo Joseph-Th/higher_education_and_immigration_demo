@@ -46,21 +46,21 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Union Commonwealth University | KY | +179 | Percentage Movement | Corroborated direction | Safe with context | [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help) |
 | FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Structural followup required | Hold for confirmation | [FIDM 2024-2025 catalog](https://fidm.edu/data/catalog/06-2024-2025%2BFIDM%2BCatalog-Policies-Final.pdf) |
 | Barton County Community College | KS | -155 | Percentage Movement | External scope mismatch | Hold for confirmation | [Barton international admissions](https://www.bartonccc.edu/admission/international) |
-| Saddleback College | CA | +152 | Percentage Movement | Context only | Hold for confirmation | [Saddleback international student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student) |
-| Durham Technical Community College | NC | +129 | Percentage Movement | Context only | Hold for confirmation | [Durham Tech non-U.S. student admissions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student) |
+| Saddleback College | CA | +152 | Percentage Movement | External scope mismatch | Hold for confirmation | [Saddleback College F-1 international-student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student) |
+| Durham Technical Community College | NC | +129 | Percentage Movement | External scope mismatch | Hold for confirmation | [Durham Tech non-U.S. student enrollment definitions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student) |
 | Prairie View A & M University | TX | +125 | Percentage Movement | External scope mismatch | Hold for confirmation | [Prairie View A&M University 2024-25 Fact Book](https://www.pvamu.edu/marcomm/wp-content/uploads/sites/114/PVAMU-Fact-Book-2024-DRAFT_v10_SPREAD.pdf) |
 | Humphreys University-Stockton and Modesto Campuses | CA | +116 | Percentage Movement | Structural followup required | Hold for confirmation | [Humphreys international admissions](https://www.humphreys.edu/apply-international/) |
 | Austin Peay State University | TN | +111 | Percentage Movement | External scope mismatch | Hold for confirmation | [Austin Peay 2023-24 and 2024-25 Fact Books](https://www.apsu.edu/institutional-research/data/archived-2024-25-factbook.pdf) |
 | Knox College | IL | +107 | Percentage Movement | Corroborated external count | Safe with context | [Knox College 2023-24 and 2024-25 Common Data Sets](https://www.knox.edu/academics/academic-resources-and-support/institutional-research/data-resources) |
 | Pikes Peak State College | CO | -104 | Percentage Movement | Corroborated external count | Safe with context | [Pikes Peak State College 2025 Data Book](https://www.pikespeak.edu/about/institutional-effectiveness/_IE-uploads/Databook/PPSC-2025-Databook.pdf) |
-| America Evangelical University | CA | -92 | Percentage Movement | Context only | Hold for confirmation | [America Evangelical University international admissions](https://aeu.edu/admissions/international/) |
+| America Evangelical University | CA | -92 | Percentage Movement | External scope mismatch | Hold for confirmation | [America Evangelical University F-1 international admissions](https://aeu.edu/admissions/international/) |
 | University of Lynchburg | VA | +91 | Percentage Movement | Baseline corroborated move unresolved | Hold for confirmation | [University of Lynchburg Fall 2023 and Fall 2024 international enrollment announcements](https://www.lynchburg.edu/record-number-of-international-students-arrive-at-lynchburg/) |
 | Monroe Community College | NY | +83 | Percentage Movement | External scope mismatch | Hold for confirmation | [Monroe Community College 2024-25 Facts Book and 2024 Self-Study Design](https://www.monroecc.edu/fileadmin/SiteFiles/GeneralContent/depts/admissions/documents/MCC-Facts-Book.pdf) |
 | University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [UMPI international admissions](https://www.umpi.edu/admissions/international-students/) |
 | New Mexico Highlands University | NM | -81 | Percentage Movement | Corroborated external count | Safe with context | [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/) |
 | Northeastern University Oakland | CA | +80 | Percentage Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2024 enrollment context](https://news.northeastern.edu/2024/09/12/enrollment-statistics-2024/) |
 | Vincennes University | IN | +78 | Percentage Movement | Corroborated direction | Safe with context | [Vincennes University Fall 2024 enrollment announcement](https://www.vinu.edu/news/vu-welcomes-largest-incoming-class-since-2021.html) |
-| Ana G. Mendez University | FL | -76 | Percentage Movement | Context only | Hold for confirmation | [Ana G. Mendez University international admissions](https://agmu.edu/en/international-students) |
+| Ana G. Mendez University | FL | -76 | Percentage Movement | External scope mismatch | Hold for confirmation | [Ana G. Mendez University F-1 visa and transfer process](https://agmu.edu/en/visa) |
 | Anna Maria College | MA | -68 | Percentage Movement | Context only | Hold for confirmation | [NECHE joint statement on Anna Maria College](https://www.neche.org/wp-content/uploads/2026/04/Joint-Statement-Anna-Maria-April-2026.pdf) |
 | Normandale Community College | MN | +60 | Percentage Movement | Corroborated external count | Safe with context | [Normandale Community College 2024-2025 Fact Book](https://www.normandale.edu/_files/documents/about/FACTBOOK-2024-25.pdf) |
 
@@ -333,18 +333,18 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Saddleback College · UNITID 122205
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Saddleback international student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student)
-- **Analyst note:** Saddleback defines its F-1 international admissions population and requirements but does not publish a directly comparable two-year U.S. nonresident series on the reviewed page. The +152 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Saddleback College F-1 international-student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student)
+- **Analyst note:** The project IPEDS series reports 248 U.S. nonresident students in Fall 2023 and 400 in Fall 2024, an increase of 152, with all-student enrollment rising from 18,370 to 20,764. Saddleback College's official international-student admissions page is operationally tied to F-1/M-1 student-visa selection, I-20 issuance, financial-support requirements, and F-1 status, while its 2024-25 catalog states that applicants with visa types other than F-1 apply through the general Admissions and Records process. The college's public international-student construct therefore does not represent a complete like-for-like public endpoint for the IPEDS U.S. nonresident category. Because the reviewed materials provide no comparable Fall 2023/Fall 2024 count under an aligned definition, preserve IPEDS as the numerical authority and keep the +152 institution-specific movement held as an explicit population-scope mismatch; do not infer an IPEDS nonresident count from the F-1 international program.
 
 ### Durham Technical Community College · UNITID 198455
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Durham Tech non-U.S. student admissions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student)
-- **Analyst note:** Durham Tech documents admission routes for non-U.S. students, but the reviewed page does not provide a like-for-like Fall 2023/Fall 2024 U.S. nonresident series. The +129 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Durham Tech non-U.S. student enrollment definitions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student)
+- **Analyst note:** The project IPEDS series reports 226 U.S. nonresident students in Fall 2023 and 355 in Fall 2024, an increase of 129, with all-student totals of 4,354 and 5,157. Durham Technical Community College's official non-U.S. student enrollment page explicitly separates a broad non-U.S. citizen population—including asylees, DACA recipients, permanent residents/green card holders, refugees, undocumented students, and students in visa statuses other than F-1—from students who require F-1 status. The college's enrollment steps further list multiple immigration categories, including J, H, TPS, asylee, refugee, permanent-resident, and DACA statuses, under its non-U.S. student advising process. That institutional umbrella is materially broader than a visa-only international population and is not a like-for-like public series for the IPEDS U.S. nonresident category. Because the reviewed institutional sources publish no comparable Fall 2023/Fall 2024 count under a definition aligned to IPEDS, preserve IPEDS as the numerical authority and keep the +129 institution-specific movement held as an explicit population-scope mismatch; do not infer a nonresident count from the college's non-U.S. admissions categories.
 
 ### Prairie View A & M University · UNITID 227526
 
@@ -389,10 +389,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### America Evangelical University · UNITID 490081
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [America Evangelical University international admissions](https://aeu.edu/admissions/international/)
-- **Analyst note:** AEU documents I-20 and F-1 international admissions requirements, but the reviewed page does not provide comparable endpoint enrollment counts. The -92 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [America Evangelical University F-1 international admissions](https://aeu.edu/admissions/international/)
+- **Analyst note:** The project IPEDS series reports 116 U.S. nonresident students in Fall 2023 and 24 in Fall 2024, a decline of 92, while total enrollment rises from 207 to 307 and the graduate nonresident component falls from 101 to 22. America Evangelical University's official international-admissions page defines the operational population through Form I-20 issuance, SEVIS, and the F-1 student-visa process, including F-2 dependent documentation. That visa-program surface is not presented as an IPEDS-equivalent all-status U.S. nonresident census series and publishes no comparable Fall 2023/Fall 2024 endpoint counts. Preserve IPEDS as the numerical authority and keep the -92 institution-specific movement held as a documented population-scope mismatch; do not use the F-1 admissions process as evidence that the IPEDS decline is independently confirmed.
 
 ### University of Lynchburg · UNITID 232609
 
@@ -445,10 +445,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Ana G. Mendez University · UNITID 483595
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Ana G. Mendez University international admissions](https://agmu.edu/en/international-students)
-- **Analyst note:** AGMU documents international-student admissions and services, but the reviewed page does not provide a like-for-like Fall 2023/Fall 2024 U.S. nonresident series. The -76 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Ana G. Mendez University F-1 visa and transfer process](https://agmu.edu/en/visa)
+- **Analyst note:** The project IPEDS series reports 144 U.S. nonresident students in Fall 2023 and 68 in Fall 2024, a decline of 76, with undergraduate/graduate nonresident components moving from 91/53 to 34/34 while total enrollment remains nearly flat at 8,382 and 8,378. Ana G. Mendez University's official visa and transfer page defines its international visa process through Form I-20, the I-901 SEVIS fee, F-1 student-visa documentation, and DSO contacts for its Florida campuses. That operational F-1 visa population is not presented as a complete IPEDS-equivalent U.S. nonresident census series and the reviewed international-student materials publish no comparable Fall 2023/Fall 2024 endpoint counts. Preserve IPEDS as the numerical authority and keep the -76 institution-specific movement held as a documented population-scope mismatch; do not infer a nonresident count or decline from the F-1 visa workflow.
 
 ### Anna Maria College · UNITID 164492
 

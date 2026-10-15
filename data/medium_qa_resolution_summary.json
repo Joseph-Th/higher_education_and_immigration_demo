@@ -7,13 +7,13 @@
   "hold_for_confirmation": 34,
   "dispositions": {
     "structural_followup_required": 5,
-    "external_scope_mismatch": 18,
+    "external_scope_mismatch": 22,
     "corroborated_external_count": 10,
     "expected_structural_change": 1,
     "corroborated_direction": 5,
     "partial_component_corroboration": 5,
-    "context_only": 5,
-    "baseline_corroborated_move_unresolved": 1
+    "baseline_corroborated_move_unresolved": 1,
+    "context_only": 1
   },
   "candidate_overlap_reviewed": 5,
   "safe_unitids": [
