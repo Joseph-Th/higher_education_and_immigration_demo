@@ -1190,6 +1190,14 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("2023 nonresident baseline exactly matches IPEDS", by_unitid["127820"]["analyst_note"])
         self.assertIn("exact latest-year total match", by_unitid["127820"]["analyst_note"])
         self.assertIn("do not substitute the Data Book counts for IPEDS", by_unitid["127820"]["analyst_note"])
+        self.assertEqual(by_unitid["219602"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["219602"]["disposition"], "external_scope_mismatch")
+        self.assertIn("archived-2024-25-factbook.pdf", by_unitid["219602"]["evidence_url"])
+        self.assertIn("reports 173 international students in Fall 2023", by_unitid["219602"]["analyst_note"])
+        self.assertIn("only 181 international students in Fall 2024", by_unitid["219602"]["analyst_note"])
+        self.assertIn("combined institutional totals of 9,937 and 10,435", by_unitid["219602"]["analyst_note"])
+        self.assertIn("not definition-identical to IPEDS U.S. nonresident status", by_unitid["219602"]["analyst_note"])
+        self.assertIn("keep the institution-specific increase held", by_unitid["219602"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")

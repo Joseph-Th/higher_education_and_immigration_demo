@@ -7,8 +7,8 @@
   "hold_for_confirmation": 37,
   "dispositions": {
     "structural_followup_required": 5,
-    "context_only": 18,
-    "external_scope_mismatch": 11,
+    "context_only": 17,
+    "external_scope_mismatch": 12,
     "corroborated_external_count": 9,
     "expected_structural_change": 1,
     "corroborated_direction": 3,
