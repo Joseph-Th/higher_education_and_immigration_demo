@@ -152,8 +152,8 @@ def main() -> int:
     if (
         medium_resolution.get("reviewed_count") != 50
         or medium_resolution.get("medium_priority_total") != 50
-        or medium_resolution.get("safe_with_context") != 9
-        or medium_resolution.get("hold_for_confirmation") != 41
+        or medium_resolution.get("safe_with_context") != 10
+        or medium_resolution.get("hold_for_confirmation") != 40
         or not medium_resolution.get("required_medium_priority_covered")
     ):
         raise RuntimeError("Publication handoff requires complete medium-priority evidence-backed dispositions")

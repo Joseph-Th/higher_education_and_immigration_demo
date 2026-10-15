@@ -275,7 +275,7 @@ def validate_rows(rows: list[dict[str, str]]) -> dict[str, int]:
     if any(row["high_priority_publication_class"] for row in medium):
         raise RuntimeError("Medium-priority rows must not inherit high-priority publication dispositions")
     if Counter(row["medium_priority_publication_class"] for row in medium) != Counter(
-        {"hold_for_confirmation": 41, "safe_with_context": 9}
+        {"hold_for_confirmation": 40, "safe_with_context": 10}
     ):
         raise RuntimeError("Medium-priority publication classes do not reconcile to the medium QA resolution log")
     if any(row["medium_priority_publication_class"] for row in high):
