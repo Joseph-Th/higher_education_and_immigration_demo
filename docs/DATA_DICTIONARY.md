@@ -233,6 +233,28 @@ One row per institution in the current medium-priority annual QA queue. This is 
 
 `scripts/build_medium_qa_resolution_log.py` requires exact 50-row coverage in the routing-table order, validates evidence URLs and review dates, enforces the current five `safe_with_context` and 45 `hold_for_confirmation` decisions, and generates `data/medium_qa_resolution_summary.json`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`.
 
+## `data/medium_priority_category_diagnostic.csv`
+
+One row per institution in `data/medium_priority_review.csv`, retained in `review_order`. This is an internal IPEDS arithmetic diagnostic layered after medium routing and evidence review. It cannot modify the reason-derived route, source value, or evidence-backed publication class.
+
+| Field | Definition |
+| --- | --- |
+| `review_order` / `unitid` / `institution` / `state` | Medium-priority routing identity retained one-for-one in deterministic review order |
+| `status` | `Continuing` or the current analytic-universe transition state; non-continuing rows are retained but not forced into a two-year category comparison |
+| `review_route` | Existing reason-derived evidence route copied from `medium_priority_review.csv`; the diagnostic cannot upgrade or replace it |
+| `publication_class` / `disposition` | Current values copied from `medium_qa_resolution_log.csv`; the diagnostic cannot alter them |
+| `total_2023` / `total_2024` / `total_change` | All-student `EFTOTLT` source values and endpoint change for comparable continuing institutions |
+| `nonresident_2023` / `nonresident_2024` / `nonresident_change` | All-student `EFNRALT` values and endpoint change |
+| `other_categories_net_change` | Net change across the eight other mutually exclusive race/ethnicity categories; must reconcile with total and nonresident change |
+| `countermovement_abs` | Gross absolute movement among other categories whose change runs opposite the sign of the U.S. nonresident change |
+| `countermovement_pct_of_nonresident_change` | `countermovement_abs / abs(nonresident_change) * 100`; an investigation-prioritization ratio rather than a risk score or error probability |
+| `largest_counter_category` / `largest_counter_category_change` | Largest single other-category movement in the opposite direction, when one exists |
+| `signal_class` | `countermovement_at_least_nr_change`, `countermovement_at_least_half_nr_change`, `countermovement_below_half_nr_change`, or `universe_change_not_comparable` |
+| `prior_source_enrollment_csv` / `current_source_enrollment_csv` | Exact IPEDS enrollment CSVs selected by the cross-year schema audit |
+| `interpretation_boundary` | Row-level reminder that the arithmetic is not a second risk score, source correction, diagnosis, or publication decision |
+
+For every continuing row, `scripts/build_medium_priority_category_diagnostic.py` independently reconciles both endpoint category identities and the total-change identity. The current signal distribution is fixed at 18 / 9 / 22 across the three comparable classes plus one universe-entry row. The builder generates `docs/MEDIUM_PRIORITY_CATEGORY_DIAGNOSTIC.md` and `site/medium-priority-category-diagnostic.html` only after the medium evidence-review layer so the arithmetic stays subordinate to the analyst gate.
+
 ## `data/schema_audit.csv`
 
 One row per source year recording whether required variables and aggregation labels pass cross-year schema review, plus the selected raw filenames and historical terminology used for `EFNRALT`.

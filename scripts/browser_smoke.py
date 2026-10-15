@@ -97,6 +97,8 @@ def check_downloads(base_url: str) -> None:
         "downloads/medium_priority_review.md",
         "downloads/medium_qa_resolution_log.csv",
         "downloads/medium_qa_resolution_log.md",
+        "downloads/medium_priority_category_diagnostic.csv",
+        "downloads/medium_priority_category_diagnostic.md",
         "downloads/freshness_monitor.csv",
         "downloads/freshness_monitor.md",
         "downloads/release_readiness.csv",
@@ -208,6 +210,46 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
         raise AssertionError(f"Page-level horizontal overflow at {width}px: {overflow}px")
     if errors:
         raise AssertionError("Browser errors: " + " | ".join(errors))
+    context.close()
+
+
+def inspect_medium_priority_category_diagnostic(browser, base_url: str, *, width: int, height: int) -> None:
+    context = browser.new_context(viewport={"width": width, "height": height})
+    page = context.new_page()
+    errors: list[str] = []
+    page.on("pageerror", lambda error: errors.append(f"pageerror: {error}"))
+    page.on("console", lambda message: errors.append(f"console: {message.text}") if message.type == "error" else None)
+    response = page.goto(f"{base_url}/medium-priority-category-diagnostic.html", wait_until="networkidle")
+    if response is None or not response.ok:
+        raise AssertionError(f"Medium-priority category diagnostic failed at {width}px")
+    summary = page.locator(".handoff-summary").inner_text()
+    for expected in ("49", "18", "9", "1"):
+        if expected not in summary:
+            raise AssertionError(f"Medium category diagnostic summary is missing {expected}")
+    table = page.locator("#diagnostic-table tbody")
+    if table.locator("tr").count() != 49:
+        raise AssertionError("Medium category diagnostic does not render all 49 comparable rows")
+    table_text = table.inner_text()
+    for expected in (
+        "Ana G. Mendez University",
+        "Walden University",
+        "Chaffey College",
+        "University of California-Berkeley",
+    ):
+        if expected not in table_text:
+            raise AssertionError(f"Medium category diagnostic table is missing {expected}")
+    boundary = page.locator(".handoff-hero .release-note").inner_text().lower()
+    if "not another risk score or a diagnosis" not in boundary:
+        raise AssertionError("Medium category diagnostic is missing its non-diagnostic boundary")
+    if page.locator('a[href="downloads/medium_priority_category_diagnostic.csv"]').count() != 2:
+        raise AssertionError("Medium category diagnostic CSV links are missing")
+    if page.locator('a[href="downloads/medium_priority_category_diagnostic.md"]').count() != 1:
+        raise AssertionError("Medium category diagnostic Markdown link is missing")
+    overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")
+    if overflow > 1:
+        raise AssertionError(f"Medium category diagnostic horizontal overflow at {width}px: {overflow}px")
+    if errors:
+        raise AssertionError("Medium category diagnostic browser errors: " + " | ".join(errors))
     context.close()
 
 
@@ -424,7 +466,7 @@ def inspect_data_governance(browser, base_url: str, *, width: int, height: int) 
     if response is None or not response.ok:
         raise AssertionError(f"Data governance page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    if "72" not in summary or "122" not in summary:
+    if "74" not in summary or "124" not in summary:
         raise AssertionError("Data governance summary does not show the registered/expanded release counts")
     if page.locator(".handoff-gates li").count() != 5:
         raise AssertionError("Data governance page does not show all five release controls")
@@ -463,7 +505,7 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
         if expected not in summary:
             raise AssertionError(f"Release readiness summary is missing {expected}")
     gate_text = page.locator("#readiness-gates").inner_text()
-    for expected in ("A01", "A07", "Y01", "27/27", "50/50", "72 artifact families", "17/17", "preflight=PASS", "3,864", "154 institution change-review rows", "226 carry-forward QA rows", "5 medium-priority/directory overlaps"):
+    for expected in ("A01", "A07", "Y01", "27/27", "50/50", "74 artifact families", "17/17", "preflight=PASS", "3,864", "154 institution change-review rows", "226 carry-forward QA rows", "5 medium-priority/directory overlaps"):
         if expected not in gate_text:
             raise AssertionError(f"Release readiness gate matrix is missing {expected}")
     if page.locator('a[href="downloads/release_readiness.csv"]').count() != 2:
@@ -1305,6 +1347,8 @@ def main() -> int:
                 inspect_medium_priority_review(browser, base_url, width=390, height=844)
                 inspect_medium_qa_review(browser, base_url, width=1280, height=900)
                 inspect_medium_qa_review(browser, base_url, width=390, height=844)
+                inspect_medium_priority_category_diagnostic(browser, base_url, width=1280, height=900)
+                inspect_medium_priority_category_diagnostic(browser, base_url, width=390, height=844)
             finally:
                 browser.close()
     finally:

@@ -100,6 +100,7 @@ Then review the newly generated:
 - `data/high_priority_category_diagnostic.csv`, `docs/HIGH_PRIORITY_CATEGORY_DIAGNOSTIC.md`, and `site/high-priority-category-diagnostic.html`;
 - `data/medium_priority_review.csv`, `docs/MEDIUM_PRIORITY_REVIEW.md`, and `site/medium-priority-review.html`;
 - `data/medium_qa_resolution_log.csv`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`;
+- `data/medium_priority_category_diagnostic.csv`, `docs/MEDIUM_PRIORITY_CATEGORY_DIAGNOSTIC.md`, and `site/medium-priority-category-diagnostic.html`;
 - `data/candidate_year_qa_watchlist.csv`, `docs/CANDIDATE_YEAR_QA_WATCHLIST.md`, and `site/candidate-year-watchlist.html`;
 - `docs/BRIEFING_NOTE.md`.
 - `docs/RESEARCH_MEMO.md` and `site/research-memo.html`.
@@ -118,6 +119,8 @@ For institution-level claims, update both `data/qa_resolution_log.csv` and `data
 Run `python scripts/build_qa_resolution_log.py` after editing the log. The build will fail if a reviewed UNITID is no longer in the current high-priority queue, which is intentional: manual dispositions belong to a specific release and must be reconsidered when the queue changes.
 
 Then run `python scripts/build_high_priority_category_diagnostic.py`. The diagnostic must rebuild from the new release rather than carrying prior ratios forward. For each continuing high-priority institution it reconciles the all-student race/ethnicity categories to total enrollment in both years, verifies the total-change identity, and measures opposite-category countermovement. Use the ratio to prioritize source review only. A large ratio is not proof of miscoding, reclassification, or source error and must never override the evidence-backed `safe_with_context` / `hold_for_confirmation` decision.
+
+After `python scripts/build_medium_qa_resolution_log.py`, run `python scripts/build_medium_priority_category_diagnostic.py`. It applies the same category identity to the medium queue while retaining `review_route` and the evidence-backed publication class as separate fields. Rebuild the ratio from the new source rows on every release. Do not use a large medium-priority countermovement ratio to upgrade severity, rewrite the source, or bypass the evidence decision; the single current universe-entry row stays structurally non-comparable.
 
 The QA resolution log must cover every current high-priority row in queue order. The build fails when a high-priority record lacks a disposition, when a reviewed record is no longer high priority, or when the evidence record is structurally invalid. Run `python scripts/check_qa_evidence.py` before publication to catch broken evidence links. HTTP 401/403 results require manual browser verification rather than automatic removal of the evidence record.
 

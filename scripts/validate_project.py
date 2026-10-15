@@ -38,6 +38,10 @@ def main() -> int:
             [PYTHON, "scripts/build_high_priority_category_diagnostic.py"],
         ),
         ("Build medium-priority QA resolution log", [PYTHON, "scripts/build_medium_qa_resolution_log.py"]),
+        (
+            "Build medium-priority category diagnostic",
+            [PYTHON, "scripts/build_medium_priority_category_diagnostic.py"],
+        ),
         ("Build candidate-year QA watchlist", [PYTHON, "scripts/build_candidate_year_qa_watchlist.py"]),
         ("Build freshness monitor", [PYTHON, "scripts/build_freshness_monitor.py"]),
         ("Build private nonprofit growth analysis", [PYTHON, "scripts/build_private_nonprofit_analysis.py"]),
