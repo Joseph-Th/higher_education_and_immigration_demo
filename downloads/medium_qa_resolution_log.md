@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 6
-- **Held for confirmation:** 44
+- **Safe with context:** 7
+- **Held for confirmation:** 43
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -32,7 +32,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
 | Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
 | Purdue University-Main Campus | IN | +580 | Absolute Movement | External scope mismatch | Hold for confirmation | [Purdue Fall 2024 enrollment](https://www.admissions.purdue.edu/academics/enrollment.php) |
-| University of New Haven | CT | -574 | Absolute Movement | Context only | Hold for confirmation | [University of New Haven international admissions](https://www.newhaven.edu/admissions/international/index.php) |
+| University of New Haven | CT | -574 | Absolute Movement | Corroborated direction | Safe with context | [University of New Haven Summer 2025 internationalization report](https://www.newhaven.edu/news/blog/2025/global-campus.php) |
 | Boston University | MA | -558 | Absolute Movement | External scope mismatch | Hold for confirmation | [Boston University Global Programs](https://www.bu.edu/globalprograms/) |
 | University of California-Berkeley | CA | -546 | Absolute Movement | Corroborated external count | Safe with context | [UC Berkeley Fall 2024 international enrollment report](https://internationaloffice.berkeley.edu/sites/default/files/student-stats2024.pdf) |
 | Midwestern Baptist Theological Seminary | MO | -458 | Percentage Movement | Context only | Hold for confirmation | [Midwestern Seminary admissions and tuition](https://www.mbts.edu/admissions-tuition/) |
@@ -220,11 +220,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### University of New Haven · UNITID 129941
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Context only
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
 - **Reviewed:** 2026-10-14
-- **Evidence:** [University of New Haven international admissions](https://www.newhaven.edu/admissions/international/index.php)
-- **Analyst note:** The university documents international admissions and services, but the reviewed page does not publish a directly comparable Fall 2023/Fall 2024 U.S. nonresident series. The -574 movement remains held.
+- **Evidence:** [University of New Haven Summer 2025 internationalization report](https://www.newhaven.edu/news/blog/2025/global-campus.php)
+- **Analyst note:** IPEDS reports 3,682 U.S. nonresident students in Fall 2023 and 3,108 in Fall 2024, a decline of 574. In the University's August 2025 internationalization report, President Jens Frederiksen describes the international population as traditionally and disproportionately reliant on graduate students from India and identifies a substantial drop in the prior fall's numbers. That contemporaneous institutional account independently confirms the Fall 2024 decline and its graduate-heavy international context, but it does not supply a fall-census count or establish that the university-defined international population is identical to IPEDS U.S. nonresident enrollment. Preserve IPEDS as the numerical authority and clear only bounded direction-level discussion of the decline.
 
 ### Boston University · UNITID 164988
 
