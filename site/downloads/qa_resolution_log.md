@@ -32,7 +32,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Southeastern University | FL | +706 | confirmed_reporting_discontinuity | safe_with_context | [Southeastern University 2024-25 Fact Book Enrollment by Ethnicity](https://seu.edu/about/fact-book/2024-25/) |
 | Belhaven University | MS | +470 | corroborated_external_count | safe_with_context | [Belhaven University Fall 2024 Tartan enrollment summary](https://www.belhaven.edu/pdfs/archived/tartan-2024.pdf) |
 | Louisiana Tech University | LA | +342 | corroborated_direction | safe_with_context | [Louisiana Tech Fall 2024 enrollment announcement](https://www.latech.edu/news/louisiana-tech-celebrates-six-year-enrollment-milestone-and-record-setting-freshman-class.php) |
-| Cumberland University | TN | +306 | context_support_only | hold_for_confirmation | [Cumberland University International Student Services](https://admissions.cumberland.edu/portal/international-student) |
+| Cumberland University | TN | +306 | partial_component_corroboration | hold_for_confirmation | [TICUA Fall 2025 Characteristics enrollment trend](https://embed-rech-01.dialog.cm/readticua/docs/2026ticua_characteristicsreport_final_web) |
 | Oakton College | IL | +299 | confirmed_reporting_discontinuity | safe_with_context | [Oakton College Fall 2022-2026 Enrollment Comparison Report](https://www.oakton.edu/_pdfs/research-and-planning/fall_2022-fall_2026_enrollment_comparison_report.pdf) |
 | Polk State College | FL | +288 | context_support_only | hold_for_confirmation | [Polk State College international and visa students](https://www.polk.edu/admission-aid/international-students/) |
 | Norfolk State University | VA | +278 | corroborated_external_count | safe_with_context | [Norfolk State University Fact Book 2020-2024](https://www.nsu.edu/Academics/Research/Institutional-Research/Documents-and-Forms/FactBook_2020-2024.aspx) |
@@ -178,9 +178,9 @@ IPEDS rises from 209 to 551 U.S. nonresident students, with undergraduate enroll
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 285 to 591 U.S. nonresident students, driven primarily by graduate enrollment increasing from 169 to 447. Cumberland operates dedicated F-1 international-student services, but the public service page does not report a directly comparable annual headcount. Preserve the official value and withhold an institution-specific growth claim pending a matching source.
+IPEDS rises from 285 to 591 U.S. nonresident students from Fall 2023 to Fall 2024, driven primarily by graduate enrollment increasing from 169 to 447. The Tennessee Independent Colleges and Universities Association's Fall 2025 Characteristics report independently lists Cumberland University at 3,072 total students in 2023 and 3,457 in 2024, exactly matching the project IPEDS total-enrollment endpoints. That independently corroborates the institution-level enrollment frame and overall growth, but the report does not provide a directly comparable 2024 U.S. nonresident count that resolves the 285-to-591 movement. Treat total enrollment as a corroborated component, preserve IPEDS in aggregates, and keep the institution-specific nonresident growth interpretation held pending a matching source.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
 
 ### Oakton College (UNITID 147800)
 
