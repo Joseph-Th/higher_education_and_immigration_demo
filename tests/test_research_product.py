@@ -1662,6 +1662,12 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_unitid["217633"]["publication_class"], "hold_for_confirmation")
         self.assertEqual(by_unitid["217633"]["disposition"], "unresolved_discontinuity")
         self.assertIn("first-international-graduate-school-graduates", by_unitid["217633"]["evidence_url"])
+        self.assertEqual(by_unitid["217475"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["217475"]["disposition"], "partial_component_corroboration")
+        self.assertEqual(by_unitid["217475"]["evidence_url"], "https://www.ccri.edu/ie/")
+        self.assertEqual(by_unitid["487649"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["487649"]["disposition"], "partial_component_corroboration")
+        self.assertIn("bppe.ca.gov/webapplications/annualReports/2023", by_unitid["487649"]["evidence_url"])
         rendered = (ROOT / "docs" / "QA_RESOLUTION_LOG.md").read_text(encoding="utf-8")
         qa_html = (ROOT / "site" / "qa-review.html").read_text(encoding="utf-8")
         for row in log:

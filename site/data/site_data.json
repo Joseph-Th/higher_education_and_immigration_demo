@@ -1235,13 +1235,13 @@
     "dispositions": {
       "confirmed_classification_change": 1,
       "confirmed_reporting_discontinuity": 1,
-      "context_support_only": 5,
+      "context_support_only": 4,
       "corroborated_direction": 4,
       "corroborated_external_count": 5,
       "expected_structural_change": 1,
       "external_scope_mismatch": 3,
-      "partial_component_corroboration": 2,
-      "unresolved_discontinuity": 3,
+      "partial_component_corroboration": 4,
+      "unresolved_discontinuity": 2,
       "unresolved_large_change": 1,
       "unresolved_status_change": 1
     },

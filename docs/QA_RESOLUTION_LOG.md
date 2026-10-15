@@ -24,7 +24,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Campbellsville University | KY | -1,358 | corroborated_direction | safe_with_context | [Campbellsville University institutional enrollment reports](https://www.campbellsville.edu/academics/academic-affairs/officeofinstitutionalresearch-institutionalreviewboard.html) |
 | The University of Texas at Dallas | TX | -1,225 | partial_component_corroboration | hold_for_confirmation | [UT Dallas Common Data Set 2024-2025](https://dox.utdallas.edu/report44675) |
 | St. Francis College | NY | +1,220 | corroborated_external_count | safe_with_context | [St. Francis College institutional census archive](https://www.sfc.edu/why-sfc/office-of-institutional-effectiveness-accreditation/) |
-| Community College of Rhode Island | RI | +1,176 | unresolved_discontinuity | hold_for_confirmation | [Community College of Rhode Island 2024 international-student information](https://www.ccri.edu/onestop/admissions/international/inappak.pdf) |
+| Community College of Rhode Island | RI | +1,176 | partial_component_corroboration | hold_for_confirmation | [CCRI Institutional Effectiveness Enrollment Dashboard](https://www.ccri.edu/ie/) |
 | University of North Texas | TX | -1,052 | corroborated_external_count | safe_with_context | [University of North Texas Fall fact-sheet archive](https://institutionalresearch.unt.edu/fact-book/index.html) |
 | Webster University | MO | +1,020 | corroborated_external_count | safe_with_context | [Webster University November 2024 international-enrollment report](https://news.webster.edu/2024/webster_ranked_for_international_students_2024.php) |
 | Sofia University | CA | +930 | partial_component_corroboration | hold_for_confirmation | [Sofia University Fall 2024 Quick Facts](https://www.sofia.edu/wp-content/uploads/2024/12/Official_Fall-Quick-Facts-2024.pdf) |
@@ -39,7 +39,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
 | Oakwood University | AL | -192 | unresolved_status_change | hold_for_confirmation | [Oakwood University Fall 2024 Enrollment Statistics](https://oakwood.edu/wp-content/uploads/Fall-Semester-2024-Enrollment-Statistics.pdf) |
 | Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global international admissions definition](https://csuglobal.edu/admissions/international-students) |
-| California Institute of Advanced Management | CA | +179 | context_support_only | hold_for_confirmation | [California Institute of Advanced Management international students](https://ciam.edu/international-students/) |
+| California Institute of Advanced Management | CA | +179 | partial_component_corroboration | hold_for_confirmation | [California BPPE CIAM 2023 Annual Report](https://www.bppe.ca.gov/webapplications/annualReports/2023/details/93197858) |
 | Anderson University | SC | -176 | unresolved_discontinuity | hold_for_confirmation | [Anderson University first International Graduate School graduates](https://andersonuniversity.edu/news/anderson-university-celebrates-first-international-graduate-school-graduates/) |
 | Reformed University | GA | -130 | confirmed_classification_change | safe_with_context | [Reformed University accreditation and authorization](https://www.runiv.edu/aboutru/main/accreditation) |
 | The College of Saint Rose | NY | -115 | expected_structural_change | safe_with_context | [New York State Education Department closure record](https://www.nysed.gov/college-university-evaluation/closures-degree-granting-institutions) |
@@ -114,9 +114,9 @@ IPEDS rises from 1,791 to 3,011 U.S. nonresident students, almost entirely at th
 
 **Automated trigger:** absolute change is at least 1,000 students.
 
-IPEDS jumps from 12 to 1,188 U.S. nonresident students after years of values between 12 and 18. CCRI's 2024 international-student materials confirm an active F-1 admissions pathway but do not support an increase of this magnitude. Because the 2024 source value is marked reported rather than imputed, preserve it in the official series while withholding institution-specific interpretation pending direct confirmation.
+IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. The dashboard's demographic view does not expose a comparable U.S. nonresident or international-status category, so the institutional totals are corroborated while the 12-to-1,188 nonresident jump remains unresolved. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_discontinuity` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
 
 ### University of North Texas (UNITID 227216)
 
@@ -234,9 +234,9 @@ IPEDS rises from 130 to 313 U.S. nonresident students. CSU Global defines intern
 
 **Automated trigger:** percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 159 to 338 U.S. nonresident graduate students while total enrollment rises from 163 to 344. CIAM states that it is approved by SEVP to enroll nonimmigrant students in its MBA program, making a very high international share plausible, but the public page does not provide a comparable Fall 2024 count. Retain the source values and hold the exact annual increase for confirmation.
+IPEDS reports 163 total students in Fall 2023, all at the graduate level, with 159 U.S. nonresidents, then rises to 344 total and 338 nonresidents in Fall 2024. CIAM's official California BPPE 2023 Annual Report records 211 students enrolled or active during January-December 2023 and reports all 211 in its single master's program. That state-regulatory filing independently corroborates the institution's small, exclusively graduate scale but uses an annual active-enrollment window, provides no international-status count, and does not cover the 2024 increase. Treat the graduate structure as corroborated while retaining the institution-specific movement on hold.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
 
 ### Anderson University (UNITID 217633)
 
