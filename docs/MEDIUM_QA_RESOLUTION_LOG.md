@@ -22,7 +22,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Chaffey College | CA | -611 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Chaffey institutional research reports](https://www.chaffey.edu/ir/reports-publications.php) |
 | Lindsey Wilson College | KY | +590 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf) |
 | Texas State University | TX | +558 | Absolute And Percentage | Corroborated external count | Safe with context | [Texas State strategic progress dashboard](https://www.president.txst.edu/strategic-vision/academic-progress.html) |
-| Sacred Heart University | CT | -508 | Absolute And Percentage | Context only | Hold for confirmation | [Sacred Heart international students](https://www.sacredheart.edu/international-students/) |
+| Sacred Heart University | CT | -508 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Sacred Heart University November 2024 graduate and international enrollment context](https://www.sacredheart.edu/news-room/news-listing/kristof-zaba-helps-shus-international-and-grad-students-succeed/) |
 | Indiana University-Indianapolis | IN | -504 | Absolute And Percentage | Expected structural change | Safe with context | [IU Indianapolis IUPUI transition overview](https://indianapolis.iu.edu/about/iupui-transition/) |
 | The University of Texas at Arlington | TX | -846 | Absolute Movement | Corroborated direction | Safe with context | [UTA Faculty Senate approved September 4, 2024 minutes](https://cdn.web.uta.edu/-/media/project/website/administration/faculty-senate/documents/meeting_minutes/2025/facsen-minutes-9-4-24_approved.ashx) |
 | Georgia Institute of Technology-Main Campus | GA | +835 | Absolute Movement | Corroborated external count | Safe with context | [Georgia Tech Fact Book archive](https://irp.gatech.edu/fact-book) |
@@ -141,10 +141,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Sacred Heart University · UNITID 130253
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Sacred Heart international students](https://www.sacredheart.edu/international-students/)
-- **Analyst note:** Sacred Heart documents international admissions and immigration services, but the reviewed page does not provide a directly comparable Fall 2023/Fall 2024 count. The -508 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Sacred Heart University November 2024 graduate and international enrollment context](https://www.sacredheart.edu/news-room/news-listing/kristof-zaba-helps-shus-international-and-grad-students-succeed/)
+- **Analyst note:** The project IPEDS series reports 1,971 U.S. nonresident students in Fall 2023 and 1,463 in Fall 2024, a decline of 508, with graduate nonresidents falling from 1,896 to 1,375 while undergraduate nonresidents rise modestly from 75 to 88; graduate enrollment overall also falls from 4,219 to 3,818. In Sacred Heart University's official November 18, 2024 profile of its executive director of international and graduate student life, the university states that it has experienced recent growth in graduate and international student enrollments and describes the resulting need for expanded support services. A July 1, 2025 university report further describes a graduate population of more than 3,000 students and says the graduate and international student-life office expanded its resources over the prior year, but it does not publish a comparable Fall 2024 international headcount. The contemporaneous institutional growth description moves in the opposite direction from the project Fall 2023-to-Fall 2024 graduate and U.S. nonresident series and does not specify a census date, comparison window, or population definition. Treat that difference as evidence of a timing and/or population-scope mismatch rather than as a correction to IPEDS: preserve IPEDS as the numerical authority and keep the -508 institution-specific movement held.
 
 ### Indiana University-Indianapolis · UNITID 151111
 
