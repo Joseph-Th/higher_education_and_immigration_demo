@@ -10,7 +10,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 - **16** are safe to discuss with explicit context.
 - **11** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
-- Latest review date: **2026-10-14**.
+- Latest review date: **2026-10-15**.
 
 ## Dispositions
 
@@ -34,7 +34,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Louisiana Tech University | LA | +342 | corroborated_direction | safe_with_context | [Louisiana Tech Fall 2024 enrollment announcement](https://www.latech.edu/news/louisiana-tech-celebrates-six-year-enrollment-milestone-and-record-setting-freshman-class.php) |
 | Cumberland University | TN | +306 | partial_component_corroboration | hold_for_confirmation | [TICUA Fall 2025 Characteristics enrollment trend](https://embed-rech-01.dialog.cm/readticua/docs/2026ticua_characteristicsreport_final_web) |
 | Oakton College | IL | +299 | confirmed_reporting_discontinuity | safe_with_context | [Oakton College Fall 2022-2026 Enrollment Comparison Report](https://www.oakton.edu/_pdfs/research-and-planning/fall_2022-fall_2026_enrollment_comparison_report.pdf) |
-| Polk State College | FL | +288 | context_support_only | hold_for_confirmation | [Polk State College international and visa students](https://www.polk.edu/admission-aid/international-students/) |
+| Polk State College | FL | +288 | external_scope_mismatch | hold_for_confirmation | [Polk State College Fall 2024 enrollment announcement](https://www.polk.edu/news/polk-state-celebrates-growing-enrollment-as-registration-continues-for-fall-2024-semester/) |
 | Norfolk State University | VA | +278 | corroborated_external_count | safe_with_context | [Norfolk State University Fact Book 2020-2024](https://www.nsu.edu/Academics/Research/Institutional-Research/Documents-and-Forms/FactBook_2020-2024.aspx) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
 | Oakwood University | AL | -192 | confirmed_reporting_discontinuity | safe_with_context | [Oakwood University Institutional Effectiveness enrollment statistics archive](https://oakwood.edu/our-story/institutional-effectiveness/) |
@@ -194,9 +194,9 @@ IPEDS reports zero U.S. nonresident students in 2020-2022, then 167 in 2023 and 
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 110 to 398 U.S. nonresident students in one year. Polk State documents authorization to enroll F-1, M-1, and other nonimmigrant students, confirming a relevant international-student population, but the page does not provide an annual count that reconciles the 2024 movement. Keep the source data in aggregates and hold the institution-level interpretation for direct confirmation.
+The project IPEDS series reports 110 U.S. nonresident students in Fall 2023 and 398 in Fall 2024, an increase of 288, while total fall enrollment rises from 7,963 to 10,318. Polk State College's official September 16, 2024 enrollment announcement instead reports a 3.7% increase compared with the same point a year earlier and says Fall 2024 headcount had already exceeded 11,000 while registration was still open for eight-week classes beginning October 9. The college's official 2024 Facts & Figures separately reports an annual unduplicated headcount of 14,515 covering Summer 2023, Fall 2023, and Spring 2024, rather than a single fall-census population. Those institution-defined totals use different timing and population windows from the project IPEDS Fall Enrollment endpoints and neither source publishes a comparable Fall 2023/Fall 2024 U.S. nonresident count. Preserve IPEDS as the numerical authority and keep the +288 institution-specific movement held as a documented timing/population-scope mismatch; do not infer a nonresident count from the broader or still-open institutional enrollment figures.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-15.
 
 ### Norfolk State University (UNITID 232937)
 

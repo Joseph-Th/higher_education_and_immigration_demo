@@ -104,7 +104,7 @@ This register turns findings, QA observations, source limitations, and recurring
 
 #### R09 · How should the current medium-priority institution QA queue be routed and evidence-reviewed before the next release?
 
-- **Evidence trigger:** The 2023-2024 review queue contains 50 medium-priority records: 28 are percentage-movement cases, 11 are absolute-movement cases, 8 trigger both absolute and percentage thresholds, and 3 require structural/reporting context; evidence review clears 5 only for bounded contextual discussion and holds 45 for confirmation.
+- **Evidence trigger:** The 2023-2024 review queue contains 50 medium-priority records: 28 are percentage-movement cases, 11 are absolute-movement cases, 8 trigger both absolute and percentage thresholds, and 3 require structural/reporting context; every row now has an evidence-backed publication class, while current safe/held counts are owned by the medium-priority QA resolution layer rather than duplicated in this agenda.
 - **Current IPEDS fit:** High
 - **Additional data needed:** Current latest-release reason codes, candidate-directory continuity, and institution/source evidence are sufficient for a current-release disposition; the next complete Fall Enrollment release is required before any disposition can be inherited forward.
 - **Proposed method:** Classify each medium-priority row from existing reason codes into one non-severity review route, then record an evidence-backed publication disposition that preserves population/scope caveats and never rewrites IPEDS source values.
