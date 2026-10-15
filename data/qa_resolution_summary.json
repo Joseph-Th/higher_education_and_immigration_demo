@@ -12,8 +12,8 @@
     "corroborated_external_count": 5,
     "expected_structural_change": 1,
     "external_scope_mismatch": 3,
-    "partial_component_corroboration": 1,
-    "unresolved_discontinuity": 4,
+    "partial_component_corroboration": 2,
+    "unresolved_discontinuity": 3,
     "unresolved_large_change": 1,
     "unresolved_status_change": 1
   },

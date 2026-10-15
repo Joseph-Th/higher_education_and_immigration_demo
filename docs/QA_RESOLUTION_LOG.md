@@ -27,7 +27,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Community College of Rhode Island | RI | +1,176 | unresolved_discontinuity | hold_for_confirmation | [Community College of Rhode Island 2024 international-student information](https://www.ccri.edu/onestop/admissions/international/inappak.pdf) |
 | University of North Texas | TX | -1,052 | corroborated_external_count | safe_with_context | [University of North Texas Fall fact-sheet archive](https://institutionalresearch.unt.edu/fact-book/index.html) |
 | Webster University | MO | +1,020 | corroborated_external_count | safe_with_context | [Webster University November 2024 international-enrollment report](https://news.webster.edu/2024/webster_ranked_for_international_students_2024.php) |
-| Sofia University | CA | +930 | unresolved_discontinuity | hold_for_confirmation | [Sofia University F-1 International Students](https://www.sofia.edu/admissions/international-students-2/) |
+| Sofia University | CA | +930 | partial_component_corroboration | hold_for_confirmation | [Sofia University Fall 2024 Quick Facts](https://www.sofia.edu/wp-content/uploads/2024/12/Official_Fall-Quick-Facts-2024.pdf) |
 | Avila University | MO | +850 | corroborated_direction | safe_with_context | [Avila University reflection on Fall 2024 international recruitment](https://www.avila.edu/2025/07/29/three-years-at-avila-reflections-on-leadership-and-transformation-3/) |
 | Southeastern University | FL | +706 | external_scope_mismatch | hold_for_confirmation | [Southeastern University 2024-25 Fact Book](https://seu.edu/about/fact-book/2024-25/) |
 | Belhaven University | MS | +470 | corroborated_external_count | safe_with_context | [Belhaven University Fall 2024 Tartan enrollment summary](https://www.belhaven.edu/pdfs/archived/tartan-2024.pdf) |
@@ -40,7 +40,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Oakwood University | AL | -192 | unresolved_status_change | hold_for_confirmation | [Oakwood University Fall 2024 Enrollment Statistics](https://oakwood.edu/wp-content/uploads/Fall-Semester-2024-Enrollment-Statistics.pdf) |
 | Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global international admissions definition](https://csuglobal.edu/admissions/international-students) |
 | California Institute of Advanced Management | CA | +179 | context_support_only | hold_for_confirmation | [California Institute of Advanced Management international students](https://ciam.edu/international-students/) |
-| Anderson University | SC | -176 | unresolved_discontinuity | hold_for_confirmation | [Anderson University Fall 2024 enrollment and International Graduate School announcement](https://andersonuniversity.edu/news/historic-enrollment-major-transformation-underway-at-anderson-university/) |
+| Anderson University | SC | -176 | unresolved_discontinuity | hold_for_confirmation | [Anderson University first International Graduate School graduates](https://andersonuniversity.edu/news/anderson-university-celebrates-first-international-graduate-school-graduates/) |
 | Reformed University | GA | -130 | confirmed_classification_change | safe_with_context | [Reformed University accreditation and authorization](https://www.runiv.edu/aboutru/main/accreditation) |
 | The College of Saint Rose | NY | -115 | expected_structural_change | safe_with_context | [New York State Education Department closure record](https://www.nysed.gov/college-university-evaluation/closures-degree-granting-institutions) |
 
@@ -138,9 +138,9 @@ IPEDS rises from 2,611 to 3,631 U.S. nonresident students, with most of the incr
 
 **Automated trigger:** absolute change is at least 500 students; zero/nonzero discontinuity conflicts with recent history.
 
-IPEDS reports 1,330 U.S. nonresident students in 2020, zero in 2021-2023, and 930 in 2024, while total enrollment remains above 900 throughout. Sofia's official international-student page confirms authorization to enroll F-1 students, but it does not provide annual counts that explain the reported zeros or the 2024 return. Preserve the source series in aggregates and hold institution-specific interpretation pending a directly comparable institutional or revised IPEDS source.
+IPEDS reports 1,330 U.S. nonresident students in 2020, zero in 2021-2023, and 930 in 2024. Sofia's official Fall 2024 Quick Facts independently reports total enrollment of 1,145, exactly matching the IPEDS total, and separates 862 domestic-campus from 283 global-campus students; it also reports 953 graduate and 186 doctorate students, closely reproducing the overwhelmingly graduate-level institutional structure. Those institutional categories are not equivalent to IPEDS U.S. nonresident status and do not reconcile the 930 count or the prior zeros. Treat the 2024 total and level structure as corroborated components while keeping the institution-specific nonresident movement held.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_discontinuity` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
 
 ### Avila University (UNITID 176628)
 
@@ -242,7 +242,7 @@ IPEDS rises from 159 to 338 U.S. nonresident graduate students while total enrol
 
 **Automated trigger:** percentage change is at least 100% from a baseline of 100+.
 
-IPEDS reports zero U.S. nonresident students in 2022, 176 in 2023, and zero again in 2024, with the 2023 and 2024 values both marked reported. Anderson University's August 2024 enrollment announcement reports 4,519 total students and the Fall 2024 launch of an International Graduate School offering three master's programs to international students. That contemporaneous institutional evidence does not provide a comparable headcount but makes a literal disappearance interpretation untenable; preserve the IPEDS series in aggregates and keep the institution-specific movement held pending reconciliation.
+IPEDS reports zero U.S. nonresident students in 2022, 176 in 2023, and zero again in 2024, with the 2023 and 2024 values both marked reported. Anderson University's December 2024 announcement documents 27 initial International Graduate School graduates across the Summer and Fall terms, including 20 Fall graduates, primarily from India with students from Spain and France, and states that the school had offered classes since January 2023. That contemporaneous evidence confirms international graduate activity during 2024 but does not provide a fall-census U.S. nonresident headcount or resolve the IPEDS zero. Preserve the IPEDS series in aggregates and keep institution-specific interpretation held pending reconciliation.
 
 **Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_discontinuity` · **Reviewed:** 2026-10-14.
 
