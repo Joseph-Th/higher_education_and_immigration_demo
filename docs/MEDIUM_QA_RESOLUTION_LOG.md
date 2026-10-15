@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 7
-- **Held for confirmation:** 43
+- **Safe with context:** 8
+- **Held for confirmation:** 42
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -24,7 +24,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Texas State University | TX | +558 | Absolute And Percentage | Corroborated external count | Safe with context | [Texas State strategic progress dashboard](https://www.president.txst.edu/strategic-vision/academic-progress.html) |
 | Sacred Heart University | CT | -508 | Absolute And Percentage | Context only | Hold for confirmation | [Sacred Heart international students](https://www.sacredheart.edu/international-students/) |
 | Indiana University-Indianapolis | IN | -504 | Absolute And Percentage | Expected structural change | Safe with context | [IU Indianapolis IUPUI transition overview](https://indianapolis.iu.edu/about/iupui-transition/) |
-| The University of Texas at Arlington | TX | -846 | Absolute Movement | Context only | Hold for confirmation | [UTA Fall 2024 enrollment release](https://www.uta.edu/news/news-releases/2024/09/23/uta-sees-enrollment-growth-for-fall-2024) |
+| The University of Texas at Arlington | TX | -846 | Absolute Movement | Corroborated direction | Safe with context | [UTA Faculty Senate approved September 4, 2024 minutes](https://cdn.web.uta.edu/-/media/project/website/administration/faculty-senate/documents/meeting_minutes/2025/facsen-minutes-9-4-24_approved.ashx) |
 | Georgia Institute of Technology-Main Campus | GA | +835 | Absolute Movement | Corroborated external count | Safe with context | [Georgia Tech Fact Book archive](https://irp.gatech.edu/fact-book) |
 | University of Illinois Urbana-Champaign | IL | +775 | Absolute Movement | External scope mismatch | Hold for confirmation | [Illinois international student statistics archive](https://isss.illinois.edu/about/statistics/) |
 | Syracuse University | NY | -760 | Absolute Movement | Baseline corroborated move unresolved | Hold for confirmation | [Syracuse Fall 2024 Immigration Essentials](https://experience.syracuse.edu/wp-content/uploads/sites/29/2024/10/Fall-2024-Grad-Immigration-Essentials-Part-1.pdf) |
@@ -156,11 +156,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### The University of Texas at Arlington · UNITID 228769
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [UTA Fall 2024 enrollment release](https://www.uta.edu/news/news-releases/2024/09/23/uta-sees-enrollment-growth-for-fall-2024)
-- **Analyst note:** UTA reports Fall 2024 total enrollment and global country representation, but not a directly comparable U.S. nonresident count for both endpoints. The -846 institution-level movement remains held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
+- **Reviewed:** 2026-10-15
+- **Evidence:** [UTA Faculty Senate approved September 4, 2024 minutes](https://cdn.web.uta.edu/-/media/project/website/administration/faculty-senate/documents/meeting_minutes/2025/facsen-minutes-9-4-24_approved.ashx)
+- **Analyst note:** The project IPEDS series reports 5,751 U.S. nonresident students in Fall 2023 and 4,905 in Fall 2024, a decline of 846 (-14.7%). In approved September 4, 2024 Faculty Senate minutes, President Jennifer Cowley reported that international students were net down 11%, about 695 students from the prior year, and that the decline was concentrated in new graduate enrollment. This contemporaneous institutional account independently confirms a material Fall 2024 international-enrollment decline and places its magnitude in the same general range as IPEDS. The minutes do not provide exact endpoint counts, a census-date reconciliation, or evidence that UTA's international-student definition is identical to IPEDS U.S. nonresident status. Preserve IPEDS as the numerical authority and clear only bounded direction-level discussion of the decline; do not substitute the 695 figure or use the minutes as proof of a specific causal explanation.
 
 ### Georgia Institute of Technology-Main Campus · UNITID 139755
 

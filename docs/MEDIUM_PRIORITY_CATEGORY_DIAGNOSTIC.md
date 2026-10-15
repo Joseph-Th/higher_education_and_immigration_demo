@@ -25,7 +25,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | Northeastern University | Absolute Movement | -616 | R→R | +1,394 | 2,019 | 327.8% | Asian (+667) | R→R | hold_for_confirmation |
 | Boston University | Absolute Movement | -558 | R→R | +1,113 | 1,672 | 299.6% | Race / ethnicity unknown (+551) | R→R | hold_for_confirmation |
 | Pikes Peak State College | Percentage Movement | -104 | R→R | +168 | 298 | 286.5% | Hispanic / Latino (+179) | R→R | hold_for_confirmation |
-| The University of Texas at Arlington | Absolute Movement | -846 | R→R | +964 | 1,959 | 231.6% | Hispanic / Latino (+823) | R→R | hold_for_confirmation |
+| The University of Texas at Arlington | Absolute Movement | -846 | R→R | +964 | 1,959 | 231.6% | Hispanic / Latino (+823) | R→R | safe_with_context |
 | America Evangelical University | Percentage Movement | -92 | R→R | +100 | 210 | 228.3% | Race / ethnicity unknown (+147) | Z→R | hold_for_confirmation |
 | Vincennes University | Percentage Movement | +78 | R→R | +1,357 | 170 | 217.9% | Race / ethnicity unknown (-166) | R→R | hold_for_confirmation |
 | Fort Hays State University | Percentage Movement | -266 | R→R | +35 | 547 | 205.6% | Hispanic / Latino (+202) | R→R | hold_for_confirmation |
@@ -48,7 +48,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 9 | Texas State University | TX | Absolute And Percentage | +558 | R→R | 358 | 64.2% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | 10 | Sacred Heart University | CT | Absolute And Percentage | -508 | R→R | 360 | 70.9% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
 | 11 | Indiana University-Indianapolis | IN | Absolute And Percentage | -504 | R→R | 4 | 0.8% | Countermovement below half of the nonresident change | safe_with_context |
-| 12 | The University of Texas at Arlington | TX | Absolute Movement | -846 | R→R | 1,959 | 231.6% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| 12 | The University of Texas at Arlington | TX | Absolute Movement | -846 | R→R | 1,959 | 231.6% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 13 | Georgia Institute of Technology-Main Campus | GA | Absolute Movement | +835 | R→R | 1 | 0.1% | Countermovement below half of the nonresident change | safe_with_context |
 | 14 | University of Illinois Urbana-Champaign | IL | Absolute Movement | +775 | R→R | 4 | 0.5% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 15 | Syracuse University | NY | Absolute Movement | -760 | R→R | 405 | 53.3% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
