@@ -232,7 +232,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 137272,St. John Vianney College Seminary,FL,FL,Private nonprofit in both endpoints,14,6,-8,-6,-2,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 137476,St. Thomas University,FL,FL,Private nonprofit in both endpoints,326,456,130,154,-24,none,,not high-priority in latest release queue,134,0.09,87.45,Other positive contributors
 137546,Stetson University,FL,FL,Private nonprofit in both endpoints,223,249,26,26,0,none,,not high-priority in latest release queue,365,0.02,97.64,Other positive contributors
-137564,Southeastern University,FL,FL,Private nonprofit in both endpoints,72,910,838,705,133,high,hold_for_confirmation,hold_for_confirmation,37,0.61,64.38,Other positive contributors
+137564,Southeastern University,FL,FL,Private nonprofit in both endpoints,72,910,838,705,133,high,safe_with_context,safe_with_context,37,0.61,64.38,Other positive contributors
 137777,Talmudic College of Florida,FL,FL,Private nonprofit in both endpoints,9,1,-8,-7,-1,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 137801,Everest University-Tampa,FL,,Left private-nonprofit endpoint universe,0,0,0,0,0,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
 137810,Everest University-Largo,FL,,Left private-nonprofit endpoint universe,0,0,0,0,0,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution

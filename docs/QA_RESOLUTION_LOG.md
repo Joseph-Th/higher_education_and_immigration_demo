@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **14** are safe to discuss with explicit context.
-- **13** remain held for institution-specific interpretation.
+- **15** are safe to discuss with explicit context.
+- **12** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-14**.
 
@@ -29,7 +29,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Webster University | MO | +1,020 | corroborated_external_count | safe_with_context | [Webster University November 2024 international-enrollment report](https://news.webster.edu/2024/webster_ranked_for_international_students_2024.php) |
 | Sofia University | CA | +930 | partial_component_corroboration | hold_for_confirmation | [Sofia University Fall 2024 Quick Facts](https://www.sofia.edu/wp-content/uploads/2024/12/Official_Fall-Quick-Facts-2024.pdf) |
 | Avila University | MO | +850 | corroborated_direction | safe_with_context | [Avila University reflection on Fall 2024 international recruitment](https://www.avila.edu/2025/07/29/three-years-at-avila-reflections-on-leadership-and-transformation-3/) |
-| Southeastern University | FL | +706 | external_scope_mismatch | hold_for_confirmation | [Southeastern University 2024-25 Fact Book](https://seu.edu/about/fact-book/2024-25/) |
+| Southeastern University | FL | +706 | confirmed_reporting_discontinuity | safe_with_context | [Southeastern University 2024-25 Fact Book Enrollment by Ethnicity](https://seu.edu/about/fact-book/2024-25/) |
 | Belhaven University | MS | +470 | corroborated_external_count | safe_with_context | [Belhaven University Fall 2024 Tartan enrollment summary](https://www.belhaven.edu/pdfs/archived/tartan-2024.pdf) |
 | Louisiana Tech University | LA | +342 | corroborated_direction | safe_with_context | [Louisiana Tech Fall 2024 enrollment announcement](https://www.latech.edu/news/louisiana-tech-celebrates-six-year-enrollment-milestone-and-record-setting-freshman-class.php) |
 | Cumberland University | TN | +306 | context_support_only | hold_for_confirmation | [Cumberland University International Student Services](https://admissions.cumberland.edu/portal/international-student) |
@@ -154,9 +154,9 @@ IPEDS rises from 202 to 1,052 U.S. nonresident students from 2023 to 2024, almos
 
 **Automated trigger:** absolute change is at least 500 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 204 to 910 U.S. nonresident students. Southeastern's Office of Data & Analytics 2024-25 Fact Book publishes an institution-defined International Enrollment view whose country-level population is materially smaller than the 910 IPEDS value. That direct institutional evidence indicates a population or scope mismatch rather than numerical corroboration. Retain the IPEDS value in aggregates and keep the institution-specific increase held until a like-for-like reporting definition is reconciled.
+IPEDS rises from 204 U.S. nonresident students in Fall 2023 to 910 in Fall 2024. Southeastern University's 2024-25 Fact Book links an Enrollment by Ethnicity series sourced to SEU Census that instead reports 273 U.S. Nonresident students in 2023 and 148 in 2024, a decline of 125. The institutional series uses the same U.S. Nonresident label but does not numerically reconcile to IPEDS in either year, so its counts are not substituted into the project series. The opposite-direction two-year census series confirms a reporting/scope discontinuity: bounded discussion of the discrepancy is safe with explicit context, but the IPEDS +706 movement must not be described as independently confirmed institutional growth.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `confirmed_reporting_discontinuity` · **Reviewed:** 2026-10-14.
 
 ### Belhaven University (UNITID 175421)
 
