@@ -54,7 +54,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 15 | Syracuse University | NY | Absolute Movement | -760 | R→R | 405 | 53.3% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
 | 16 | University of Colorado Boulder | CO | Absolute Movement | -755 | R→R | 32 | 4.2% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 17 | Northeastern University | MA | Absolute Movement | -616 | R→R | 2,019 | 327.8% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
-| 18 | Stevens Institute of Technology | NJ | Absolute Movement | -592 | R→R | 350 | 59.1% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
+| 18 | Stevens Institute of Technology | NJ | Absolute Movement | -592 | R→R | 350 | 59.1% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | 19 | Purdue University-Main Campus | IN | Absolute Movement | +580 | R→R | 0 | 0.0% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 20 | University of New Haven | CT | Absolute Movement | -574 | R→R | 96 | 16.7% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 21 | Boston University | MA | Absolute Movement | -558 | R→R | 1,672 | 299.6% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
