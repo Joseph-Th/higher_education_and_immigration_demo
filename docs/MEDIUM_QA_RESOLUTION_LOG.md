@@ -42,7 +42,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Marywood University | PA | -260 | Percentage Movement | External scope mismatch | Hold for confirmation | [Marywood University 2024-25 Fact Book](https://www.marywood.edu/about/consumer-information/factbooks/Fall-2024-Factbook.pdf?language_id=1) |
 | Dominican University of California | CA | -249 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Dominican University of California 2024-25 Common Data Set and University Facts](https://www.dominican.edu/about/student-success/university-facts) |
 | National Louis University | IL | +218 | Percentage Movement | Context only | Hold for confirmation | [National Louis international students](https://nl.edu/admissions/international-students/) |
-| University of Rio Grande | OH | +181 | Percentage Movement | Context only | Hold for confirmation | [University of Rio Grande international admissions](https://www.rio.edu/admissions/apply-rio/international-admissions) |
+| University of Rio Grande | OH | +181 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth) |
 | Union Commonwealth University | KY | +179 | Percentage Movement | Corroborated direction | Safe with context | [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help) |
 | FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Structural followup required | Hold for confirmation | [FIDM 2024-2025 catalog](https://fidm.edu/data/catalog/06-2024-2025%2BFIDM%2BCatalog-Policies-Final.pdf) |
 | Barton County Community College | KS | -155 | Percentage Movement | External scope mismatch | Hold for confirmation | [Barton international admissions](https://www.bartonccc.edu/admission/international) |
@@ -301,10 +301,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### University of Rio Grande · UNITID 205203
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [University of Rio Grande international admissions](https://www.rio.edu/admissions/apply-rio/international-admissions)
-- **Analyst note:** Rio Grande documents international admissions requirements but does not provide a like-for-like annual U.S. nonresident count for the two endpoints. The +181 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth)
+- **Analyst note:** The project IPEDS series reports 231 U.S. nonresident students in Fall 2023 and 412 in Fall 2024, an increase of 181, with all-student totals of 2,168 and 2,258. Rio's official October 2, 2024 enrollment announcement explicitly reports a combined University of Rio Grande and Rio Grande Community College population, stating that enrollment increased 10% and the total student body reached 2,381. That published total is 123 above the project IPEDS Fall 2024 University of Rio Grande total, and the release provides no international or nonresident count. The university's September 2025 enrollment announcement continues the same combined University-plus-Community-College reporting frame, confirming that the public enrollment series is broader than the project UNITID-specific IPEDS row rather than a directly comparable institutional endpoint. Preserve IPEDS as the numerical authority, do not infer a nonresident count from the broader institutional total, and keep the +181 institution-specific movement held.
 
 ### Union Commonwealth University · UNITID 157863
 
