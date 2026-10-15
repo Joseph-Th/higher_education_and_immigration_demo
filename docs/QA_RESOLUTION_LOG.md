@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **11** are safe to discuss with explicit context.
-- **16** remain held for institution-specific interpretation.
+- **12** are safe to discuss with explicit context.
+- **15** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-14**.
 
@@ -37,7 +37,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Polk State College | FL | +288 | context_support_only | hold_for_confirmation | [Polk State College international and visa students](https://www.polk.edu/admission-aid/international-students/) |
 | Norfolk State University | VA | +278 | context_support_only | hold_for_confirmation | [Norfolk State University Supporting the Success of Global Scholars](https://www.nsu.edu/News/Behold/Featured-Articles/2025/Supporting-The-Success-Of-Global-Scholars) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
-| Oakwood University | AL | -192 | unresolved_status_change | hold_for_confirmation | [Oakwood University Fall 2024 Enrollment Statistics](https://oakwood.edu/wp-content/uploads/Fall-Semester-2024-Enrollment-Statistics.pdf) |
+| Oakwood University | AL | -192 | confirmed_reporting_discontinuity | safe_with_context | [Oakwood University Institutional Effectiveness enrollment statistics archive](https://oakwood.edu/our-story/institutional-effectiveness/) |
 | Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global international admissions definition](https://csuglobal.edu/admissions/international-students) |
 | California Institute of Advanced Management | CA | +179 | partial_component_corroboration | hold_for_confirmation | [California BPPE CIAM 2023 Annual Report](https://www.bppe.ca.gov/webapplications/annualReports/2023/details/93197858) |
 | Anderson University | SC | -176 | unresolved_discontinuity | hold_for_confirmation | [Anderson University first International Graduate School graduates](https://andersonuniversity.edu/news/anderson-university-celebrates-first-international-graduate-school-graduates/) |
@@ -218,9 +218,9 @@ IPEDS rises from 105 to 369 U.S. nonresident students in 2024, primarily among u
 
 **Automated trigger:** percentage change is at least 100% from a baseline of 100+.
 
-IPEDS falls from 192 U.S. nonresident students in 2023 to zero in 2024 while the source-status flag changes from reported (R) to zero (Z). Oakwood's Office of Institutional Effectiveness Fall 2024 Enrollment Statistics reports 181 Nonresident Alien students out of 1,226 total enrollment. That direct institutional count conflicts with reading the IPEDS zero as a substantive disappearance, so retain the official IPEDS value in aggregates but keep institution-specific narrative held until the reporting or status difference is reconciled.
+IPEDS falls from 192 U.S. nonresident students in 2023 to zero in 2024 while the source-status flag changes from reported (R) to zero (Z). Oakwood's Office of Institutional Effectiveness reports total enrollment of 1,319 in Fall 2023 and 1,226 in Fall 2024, exactly matching the project IPEDS totals, and reports 198 and 181 Nonresident Alien students in those same terms. The 2023 institutional count is within six students of the project IPEDS baseline, while the 2024 institutional count directly conflicts with interpreting the IPEDS zero as a substantive disappearance. Treat this as a confirmed reporting/status discontinuity: bounded discussion of the discrepancy is safe with explicit context, but IPEDS remains the numerical authority for aggregate calculations and the institutional count is not substituted into the project series.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_status_change` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `confirmed_reporting_discontinuity` · **Reviewed:** 2026-10-14.
 
 ### Colorado State University Global (UNITID 476975)
 

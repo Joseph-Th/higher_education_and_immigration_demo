@@ -1230,11 +1230,11 @@
     "reviewed_count": 27,
     "high_priority_total": 27,
     "coverage_pct": 100.0,
-    "safe_with_context": 11,
-    "hold_for_confirmation": 16,
+    "safe_with_context": 12,
+    "hold_for_confirmation": 15,
     "dispositions": {
       "confirmed_classification_change": 1,
-      "confirmed_reporting_discontinuity": 1,
+      "confirmed_reporting_discontinuity": 2,
       "context_support_only": 3,
       "corroborated_direction": 4,
       "corroborated_external_count": 5,
@@ -1242,8 +1242,7 @@
       "external_scope_mismatch": 4,
       "partial_component_corroboration": 5,
       "unresolved_discontinuity": 1,
-      "unresolved_large_change": 1,
-      "unresolved_status_change": 1
+      "unresolved_large_change": 1
     },
     "reviewed_unitids": [
       "156541",
