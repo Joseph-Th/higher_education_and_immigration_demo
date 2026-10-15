@@ -75,7 +75,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 36 | Prairie View A & M University | TX | Percentage Movement | +125 | R→R | 17 | 13.6% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 37 | Humphreys University-Stockton and Modesto Campuses | CA | Percentage Movement | +116 | R→R | 23 | 19.8% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 38 | Austin Peay State University | TN | Percentage Movement | +111 | R→R | 27 | 24.3% | Countermovement below half of the nonresident change | hold_for_confirmation |
-| 39 | Knox College | IL | Percentage Movement | +107 | R→R | 6 | 5.6% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| 39 | Knox College | IL | Percentage Movement | +107 | R→R | 6 | 5.6% | Countermovement below half of the nonresident change | safe_with_context |
 | 40 | Pikes Peak State College | CO | Percentage Movement | -104 | R→R | 298 | 286.5% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 41 | America Evangelical University | CA | Percentage Movement | -92 | R→R | 210 | 228.3% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 42 | University of Lynchburg | VA | Percentage Movement | +91 | R→R | 367 | 403.3% | Countermovement at least as large as the nonresident change | hold_for_confirmation |

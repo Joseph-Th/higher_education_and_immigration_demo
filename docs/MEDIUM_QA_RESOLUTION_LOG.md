@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 13
-- **Held for confirmation:** 37
+- **Safe with context:** 14
+- **Held for confirmation:** 36
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -51,7 +51,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Prairie View A & M University | TX | +125 | Percentage Movement | Context only | Hold for confirmation | [Prairie View international student services](https://www.pvamu.edu/globalengagement/isss/) |
 | Humphreys University-Stockton and Modesto Campuses | CA | +116 | Percentage Movement | Structural followup required | Hold for confirmation | [Humphreys international admissions](https://www.humphreys.edu/apply-international/) |
 | Austin Peay State University | TN | +111 | Percentage Movement | External scope mismatch | Hold for confirmation | [Austin Peay 2023-24 and 2024-25 Fact Books](https://www.apsu.edu/institutional-research/data/archived-2024-25-factbook.pdf) |
-| Knox College | IL | +107 | Percentage Movement | External scope mismatch | Hold for confirmation | [Knox international applicants](https://www.knox.edu/admission/apply-to-knox/international-applicants) |
+| Knox College | IL | +107 | Percentage Movement | Corroborated external count | Safe with context | [Knox College 2023-24 and 2024-25 Common Data Sets](https://www.knox.edu/academics/academic-resources-and-support/institutional-research/data-resources) |
 | Pikes Peak State College | CO | -104 | Percentage Movement | Corroborated external count | Safe with context | [Pikes Peak State College 2025 Data Book](https://www.pikespeak.edu/about/institutional-effectiveness/_IE-uploads/Databook/PPSC-2025-Databook.pdf) |
 | America Evangelical University | CA | -92 | Percentage Movement | Context only | Hold for confirmation | [America Evangelical University international admissions](https://aeu.edu/admissions/international/) |
 | University of Lynchburg | VA | +91 | Percentage Movement | Baseline corroborated move unresolved | Hold for confirmation | [University of Lynchburg Fall 2023 and Fall 2024 international enrollment announcements](https://www.lynchburg.edu/record-number-of-international-students-arrive-at-lynchburg/) |
@@ -372,11 +372,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Knox College · UNITID 146427
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Knox international applicants](https://www.knox.edu/admission/apply-to-knox/international-applicants)
-- **Analyst note:** Knox describes a broad international student body using its own admissions definition, not a directly comparable IPEDS U.S. nonresident series. The +107 movement remains held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated external count
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Knox College 2023-24 and 2024-25 Common Data Sets](https://www.knox.edu/academics/academic-resources-and-support/institutional-research/data-resources)
+- **Analyst note:** The project IPEDS series reports 197 U.S. nonresident students in Fall 2023 and 304 in Fall 2024, an increase of 107, with all-student totals of 1,001 and 1,136. Knox College's official 2023-24 and 2024-25 Common Data Sets report exactly the same all-student totals and zero graduate enrollment in both years. Their B2 race/ethnicity sections instruct respondents to include international students only in Nonresidents and to report as the institution reports to IPEDS; they list 197 total undergraduate Nonresidents for Fall 2023 and 304 for Fall 2024. Because Knox reports no graduate students, those undergraduate Nonresident counts are also the all-student counts. The exact endpoint and total-enrollment matches independently corroborate both IPEDS values and the +107 movement. Keep IPEDS as the analytical authority and clear bounded discussion of the increase; do not generalize this matched Common Data Set series beyond Knox or these reporting years.
 
 ### Pikes Peak State College · UNITID 127820
 
