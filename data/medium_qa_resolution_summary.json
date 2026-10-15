@@ -3,20 +3,21 @@
   "reviewed_count": 50,
   "coverage_pct": 100.0,
   "required_medium_priority_covered": true,
-  "safe_with_context": 6,
-  "hold_for_confirmation": 44,
+  "safe_with_context": 7,
+  "hold_for_confirmation": 43,
   "dispositions": {
     "structural_followup_required": 5,
-    "context_only": 25,
+    "context_only": 24,
     "external_scope_mismatch": 13,
     "corroborated_external_count": 4,
     "expected_structural_change": 1,
     "baseline_corroborated_move_unresolved": 1,
-    "corroborated_direction": 1
+    "corroborated_direction": 2
   },
   "candidate_overlap_reviewed": 5,
   "safe_unitids": [
     "110635",
+    "129941",
     "139755",
     "151111",
     "186867",
