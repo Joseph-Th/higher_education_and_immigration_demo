@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 14
-- **Held for confirmation:** 36
+- **Safe with context:** 15
+- **Held for confirmation:** 35
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -43,7 +43,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Dominican University of California | CA | -249 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Dominican University of California 2024-25 Common Data Set and University Facts](https://www.dominican.edu/about/student-success/university-facts) |
 | National Louis University | IL | +218 | Percentage Movement | Context only | Hold for confirmation | [National Louis international students](https://nl.edu/admissions/international-students/) |
 | University of Rio Grande | OH | +181 | Percentage Movement | Context only | Hold for confirmation | [University of Rio Grande international admissions](https://www.rio.edu/admissions/apply-rio/international-admissions) |
-| Union Commonwealth University | KY | +179 | Percentage Movement | Context only | Hold for confirmation | [Union Commonwealth admissions](https://www.unionky.edu/admissions-aid) |
+| Union Commonwealth University | KY | +179 | Percentage Movement | Corroborated direction | Safe with context | [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help) |
 | FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Structural followup required | Hold for confirmation | [FIDM 2024-2025 catalog](https://fidm.edu/data/catalog/06-2024-2025%2BFIDM%2BCatalog-Policies-Final.pdf) |
 | Barton County Community College | KS | -155 | Percentage Movement | External scope mismatch | Hold for confirmation | [Barton international admissions](https://www.bartonccc.edu/admission/international) |
 | Saddleback College | CA | +152 | Percentage Movement | Context only | Hold for confirmation | [Saddleback international student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student) |
@@ -308,11 +308,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Union Commonwealth University · UNITID 157863
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Union Commonwealth admissions](https://www.unionky.edu/admissions-aid)
-- **Analyst note:** The institution's admissions materials establish current operating context but do not publish a directly comparable Fall 2023/Fall 2024 U.S. nonresident series. The +179 movement remains held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help)
+- **Analyst note:** The project IPEDS series reports 318 U.S. nonresident students in Fall 2023 and 497 in Fall 2024, an increase of 179, with the nonresident share rising from 28.2% to 37.5%; graduate nonresidents account for 149 of the increase, moving from 211 to 360. Union College's official October 4, 2023 enrollment announcement reports 1,120 students, only nine below the project IPEDS Fall 2023 total of 1,129, and says graduate enrollment rose 57% with growth in both international and domestic graduate students. On May 17, 2024, the university reported that international students from 35 countries made up almost 40% of the entire student body, close in scale to the project Fall 2024 U.S. nonresident share of 37.5%. A March 2024 university-status announcement also says the graduate international program launched in 2021 had seen remarkable growth. These contemporaneous institutional statements independently corroborate the direction and approximate latest share scale of the IPEDS increase, especially its graduate concentration. Because the institution-defined international population, reference dates, and Fall-census scope are not established as definition-identical to IPEDS, preserve IPEDS as the numerical authority, do not infer or substitute an institutional headcount from the percentage statement, and clear only bounded direction-level discussion of the +179 movement.
 
 ### FIDM-Fashion Institute of Design & Merchandising · UNITID 114354
 
