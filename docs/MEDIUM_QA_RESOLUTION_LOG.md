@@ -17,7 +17,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | City College-Hollywood | FL | +0 | Structural Or Reporting | Structural followup required | Hold for confirmation | [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf) |
 | City College-Altamonte Springs | FL | +0 | Structural Or Reporting | Structural followup required | Hold for confirmation | [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf) |
 | Indiana Wesleyan University-National & Global | IN | +855 | Absolute And Percentage | Context only | Hold for confirmation | [Indiana Wesleyan international pathways](https://www.indwes.edu/pathways/international/) |
-| Valencia College | FL | +692 | Absolute And Percentage | Context only | Hold for confirmation | [Valencia international student services](https://valenciacollege.edu/students/international-students/) |
+| Valencia College | FL | +692 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Valencia Institutional Research international-student archive](https://valenciacollege.edu/academics/analytics-and-planning/analytics-and-reporting/reporting/internal/enrollment.php) |
 | Dallas College | TX | +628 | Absolute And Percentage | Context only | Hold for confirmation | [Dallas College international admissions](https://www.dallascollege.edu/admissions/international/) |
 | Chaffey College | CA | -611 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Chaffey institutional research reports](https://www.chaffey.edu/ir/reports-publications.php) |
 | Lindsey Wilson College | KY | +590 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf) |
@@ -101,10 +101,10 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 ### Valencia College · UNITID 138187
 
 - **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Valencia international student services](https://valenciacollege.edu/students/international-students/)
-- **Analyst note:** Valencia documents services for international students, but the reviewed page does not publish a directly comparable Fall 2023/Fall 2024 U.S. nonresident series. The +692 movement remains held.
+- **Disposition:** External scope mismatch
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Valencia Institutional Research international-student archive](https://valenciacollege.edu/academics/analytics-and-planning/analytics-and-reporting/reporting/internal/enrollment.php)
+- **Analyst note:** The project IPEDS series reports 2,671 U.S. nonresident students in Fall 2023 and 3,363 in Fall 2024, an increase of 692. Valencia College Institutional Research publishes term-specific Summary Report of Students with Non-Immigrant Visas files for both endpoints. The Fall 2023 report lists 1,288 students in its combined SEVIS and NON-SEVIS population, including 1,173 SEVIS students and 115 NON-SEVIS students; the Fall 2024 report lists 1,433 total, including 1,257 SEVIS and 176 NON-SEVIS students. The reports define SEVIS as F- and J-visa students and NON-SEVIS as other visa types / students who are not U.S. citizens or permanent residents, making the institutional series explicitly visa-oriented. It increases by 145 in the same direction as IPEDS, but its endpoint levels are 1,383 and 1,930 below the IPEDS counts, and its growth is far smaller than the +692 IPEDS movement. Treat this as a documented population/reporting-scope mismatch rather than count corroboration; preserve IPEDS as the numerical authority and keep the institution-specific movement held.
 
 ### Dallas College · UNITID 224615
 

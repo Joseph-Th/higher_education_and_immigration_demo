@@ -1137,6 +1137,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("45 undergraduates and 1,392 graduate students", by_unitid["157216"]["analyst_note"])
         self.assertIn("156 undergraduates and 822 graduate students", by_unitid["157216"]["analyst_note"])
         self.assertIn("baseline population/reporting-scope mismatch", by_unitid["157216"]["analyst_note"])
+        self.assertEqual(by_unitid["138187"]["publication_class"], "hold_for_confirmation")
+        self.assertEqual(by_unitid["138187"]["disposition"], "external_scope_mismatch")
+        self.assertIn("analytics-and-reporting/reporting/internal/enrollment.php", by_unitid["138187"]["evidence_url"])
+        self.assertIn("1,288 students", by_unitid["138187"]["analyst_note"])
+        self.assertIn("1,433 total", by_unitid["138187"]["analyst_note"])
+        self.assertIn("1,173 SEVIS students and 115 NON-SEVIS students", by_unitid["138187"]["analyst_note"])
+        self.assertIn("1,257 SEVIS and 176 NON-SEVIS students", by_unitid["138187"]["analyst_note"])
+        self.assertIn("1,383 and 1,930 below the IPEDS counts", by_unitid["138187"]["analyst_note"])
+        self.assertIn("population/reporting-scope mismatch rather than count corroboration", by_unitid["138187"]["analyst_note"])
 
         summary = json.loads(
             (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")
