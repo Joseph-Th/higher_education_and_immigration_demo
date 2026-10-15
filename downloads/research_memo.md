@@ -20,13 +20,13 @@ From 2023 to 2024, U.S. nonresident enrollment increased **+29,539 (+2.9%)**. Un
 
 The automated queue identified **27 high-priority** latest-release records. The manual review layer now covers **27/27** of them: **11** are safe to discuss with explicit context and **16** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.
 
-### Hold the anomaly: University of the Cumberlands
+### Hold the anomaly: Anderson University
 
-**Observed change:** +4,616  
+**Observed change:** -176  
 **Publication decision:** Hold institution-specific claim  
-**Evidence:** [University of the Cumberlands international-student information](https://www.ucumberlands.edu/admissions/international-students)
+**Evidence:** [Anderson University first International Graduate School graduates](https://andersonuniversity.edu/news/anderson-university-celebrates-first-international-graduate-school-graduates/)
 
-IPEDS reports 4,226 U.S. nonresident students in 2022, zero in 2023, and 4,616 in 2024, with all three values marked reported. The institution's own materials show an active international-student program, but they do not provide a directly comparable 2023 count. Retain the official IPEDS value in aggregates, flag the discontinuity, and do not use the 2023 zero in institution-specific narrative without direct source confirmation.
+IPEDS reports zero U.S. nonresident students in 2022, 176 in 2023, and zero again in 2024, with the 2023 and 2024 values both marked reported. Anderson University's December 2024 announcement documents 27 initial International Graduate School graduates across the Summer and Fall terms, including 20 Fall graduates, primarily from India with students from Spain and France, and states that the school had offered classes since January 2023. That contemporaneous evidence confirms international graduate activity during 2024 but does not provide a fall-census U.S. nonresident headcount or resolve the IPEDS zero. Preserve the IPEDS series in aggregates and keep institution-specific interpretation held pending reconciliation.
 
 ### Corroborate the direction: Trine University-Regional/Non-Traditional Campuses
 
