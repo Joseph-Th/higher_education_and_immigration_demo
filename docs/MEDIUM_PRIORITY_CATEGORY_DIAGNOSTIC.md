@@ -68,7 +68,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 29 | National Louis University | IL | Percentage Movement | +218 | R→R | 18 | 8.3% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 30 | University of Rio Grande | OH | Percentage Movement | +181 | R→R | 154 | 85.1% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
 | 31 | Union Commonwealth University | KY | Percentage Movement | +179 | R→R | 76 | 42.5% | Countermovement below half of the nonresident change | safe_with_context |
-| 32 | FIDM-Fashion Institute of Design & Merchandising | CA | Percentage Movement | -166 | R→R | 2 | 1.2% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| 32 | FIDM-Fashion Institute of Design & Merchandising | CA | Percentage Movement | -166 | R→R | 2 | 1.2% | Countermovement below half of the nonresident change | safe_with_context |
 | 33 | Barton County Community College | KS | Percentage Movement | -155 | R→R | 862 | 556.1% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 34 | Saddleback College | CA | Percentage Movement | +152 | R→R | 0 | 0.0% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 35 | Durham Technical Community College | NC | Percentage Movement | +129 | R→R | 5 | 3.9% | Countermovement below half of the nonresident change | hold_for_confirmation |

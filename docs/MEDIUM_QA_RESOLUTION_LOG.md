@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 16
-- **Held for confirmation:** 34
+- **Safe with context:** 17
+- **Held for confirmation:** 33
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -44,7 +44,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | National Louis University | IL | +218 | Percentage Movement | Partial component corroboration | Hold for confirmation | [National Louis University Undergraduate College Fast Facts](https://nl.edu/undergraduate-college/fast-facts/) |
 | University of Rio Grande | OH | +181 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth) |
 | Union Commonwealth University | KY | +179 | Percentage Movement | Corroborated direction | Safe with context | [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help) |
-| FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Structural followup required | Hold for confirmation | [FIDM 2024-2025 catalog](https://fidm.edu/data/catalog/06-2024-2025%2BFIDM%2BCatalog-Policies-Final.pdf) |
+| FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Expected structural change | Safe with context | [Arizona State University April 2023 FIDM transition announcement](https://newsroom.asu.edu/press-releases/asu-expands-fashion-program-through-asu-fidm) |
 | Barton County Community College | KS | -155 | Percentage Movement | External scope mismatch | Hold for confirmation | [Barton international admissions](https://www.bartonccc.edu/admission/international) |
 | Saddleback College | CA | +152 | Percentage Movement | External scope mismatch | Hold for confirmation | [Saddleback College F-1 international-student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student) |
 | Durham Technical Community College | NC | +129 | Percentage Movement | External scope mismatch | Hold for confirmation | [Durham Tech non-U.S. student enrollment definitions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student) |
@@ -316,11 +316,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### FIDM-Fashion Institute of Design & Merchandising · UNITID 114354
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Structural followup required
-- **Reviewed:** 2026-10-14
-- **Evidence:** [FIDM 2024-2025 catalog](https://fidm.edu/data/catalog/06-2024-2025%2BFIDM%2BCatalog-Policies-Final.pdf)
-- **Analyst note:** The catalog provides institutional context, while the candidate directory separately shows loss of Title IV First Look eligibility. Neither establishes that the -166 IPEDS movement is a clean substantive enrollment change, so the claim remains held.
+- **Decision:** Safe with context
+- **Disposition:** Expected structural change
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Arizona State University April 2023 FIDM transition announcement](https://newsroom.asu.edu/press-releases/asu-expands-fashion-program-through-asu-fidm)
+- **Analyst note:** The project IPEDS series reports 294 U.S. nonresident students in Fall 2023 and 128 in Fall 2024, a decline of 166, while all-student enrollment falls from 1,366 to 564. Arizona State University's official April 10, 2023 transition announcement states that FIDM would continue as a separate educational institution with a more focused academic portfolio while ASU incorporated the FIDM community and campus into ASU FIDM; it also states that existing FIDM fashion and design students would be advised on opportunities either to complete their programs at FIDM or continue at ASU. ASU University Senate documentation approved in February 2024 separately describes the Spring 2023 integration and merger of FIDM's fashion school with ASU's existing fashion program. Those official records establish a major institutional/program transition directly spanning the 2023-2024 comparison window. They do not quantify how many U.S. nonresident students transferred or otherwise account for the -166 movement, so preserve IPEDS as the numerical authority and do not describe the decline as a measured transfer effect or ordinary same-footprint demand loss. Clear only bounded structural-discontinuity discussion of the movement. The candidate directory's later Title IV / First Look eligibility loss remains a separate next-release review signal and is not used to infer 2025 enrollment.
 
 ### Barton County Community College · UNITID 154697
 
