@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 9
-- **Held for confirmation:** 41
+- **Safe with context:** 10
+- **Held for confirmation:** 40
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -31,7 +31,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | University of Colorado Boulder | CO | -755 | Absolute Movement | External scope mismatch | Hold for confirmation | [CU Boulder international student statistics](https://www.colorado.edu/isss/about-us/student-statistics) |
 | Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
 | Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
-| Purdue University-Main Campus | IN | +580 | Absolute Movement | External scope mismatch | Hold for confirmation | [Purdue Fall 2024 enrollment](https://www.admissions.purdue.edu/academics/enrollment.php) |
+| Purdue University-Main Campus | IN | +580 | Absolute Movement | Corroborated external count | Safe with context | [Purdue ISS Fall 2024 international enrollment statistical report](https://purdue.edu/gpp/iss/_documents/EnrollmentReport/iss_statisticalreportfall24.pdf) |
 | University of New Haven | CT | -574 | Absolute Movement | Corroborated direction | Safe with context | [University of New Haven Summer 2025 internationalization report](https://www.newhaven.edu/news/blog/2025/global-campus.php) |
 | Boston University | MA | -558 | Absolute Movement | Partial component corroboration | Hold for confirmation | [Boston University Common Data Set archive](https://www.bu.edu/asir/bu-facts/common-data-set/cds-archive/) |
 | University of California-Berkeley | CA | -546 | Absolute Movement | Corroborated external count | Safe with context | [UC Berkeley Fall 2024 international enrollment report](https://internationaloffice.berkeley.edu/sites/default/files/student-stats2024.pdf) |
@@ -212,11 +212,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Purdue University-Main Campus · UNITID 243780
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Purdue Fall 2024 enrollment](https://www.admissions.purdue.edu/academics/enrollment.php)
-- **Analyst note:** Purdue publishes Fall 2024 enrollment and an undergraduate international share, but that scope excludes the full graduate/professional population represented in the IPEDS all-student count. The +580 movement remains held pending like-for-like evidence.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated external count
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Purdue ISS Fall 2024 international enrollment statistical report](https://purdue.edu/gpp/iss/_documents/EnrollmentReport/iss_statisticalreportfall24.pdf)
+- **Analyst note:** The project IPEDS series reports 9,387 U.S. nonresident students in Fall 2023 and 9,967 in Fall 2024, an increase of 580, with undergraduate/graduate components of 4,024/5,363 and 4,429/5,538. Purdue International Students and Scholars reports 9,407 students from abroad in Fall 2023 and 9,961 in Fall 2024, an increase of 554; the corresponding undergraduate and graduate/professional counts are 4,023/5,384 and 4,423/5,538. The institutional endpoints differ from IPEDS by only 20 and 6 students, and the graduate/professional 2024 count matches exactly. Purdue's Fall 2024 report explicitly covers the West Lafayette and Indianapolis campuses, consistent with the university's separate notice that Purdue Indianapolis became an extension of West Lafayette and that reporting would represent both locations moving forward. Because campus reporting changed in 2024 and the institutional 'students from abroad' population is not assumed definition-identical to IPEDS U.S. nonresident status, do not substitute the institutional counts or interpret the +580 as a clean same-footprint organic increase. The close two-year counts independently corroborate the scale and direction, supporting bounded discussion with explicit structural context while IPEDS remains the numerical authority.
 
 ### University of New Haven · UNITID 129941
 
