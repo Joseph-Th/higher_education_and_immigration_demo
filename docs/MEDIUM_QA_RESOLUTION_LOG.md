@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 17
-- **Held for confirmation:** 33
+- **Safe with context:** 18
+- **Held for confirmation:** 32
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -13,7 +13,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 | Institution | State | 2023-2024 change | Route | Disposition | Publication class | Evidence |
 | --- | --- | ---: | --- | --- | --- | --- |
-| New Orleans Baptist Theological Seminary | LA | +129 | Structural Or Reporting | Structural followup required | Hold for confirmation | [NOBTS institutional effectiveness](https://www.nobts.edu/about/institutional-effectiveness.html) |
+| New Orleans Baptist Theological Seminary | LA | +129 | Structural Or Reporting | Expected structural change | Safe with context | [NCES IPEDS Title IV indicator definition and 2023/2024 source files](https://nces.ed.gov/pubs2011/2011252.pdf) |
 | City College-Hollywood | FL | +0 | Structural Or Reporting | Structural followup required | Hold for confirmation | [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf) |
 | City College-Altamonte Springs | FL | +0 | Structural Or Reporting | Structural followup required | Hold for confirmation | [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf) |
 | Indiana Wesleyan University-National & Global | IN | +855 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Indiana Wesleyan University President's Report 2024](https://www.indwes.edu/about/offices/administration/ADMIN_10067_Presidents-Annual-Report-2024.pdf) |
@@ -68,11 +68,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### New Orleans Baptist Theological Seminary · UNITID 159948
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Structural followup required
-- **Reviewed:** 2026-10-14
-- **Evidence:** [NOBTS institutional effectiveness](https://www.nobts.edu/about/institutional-effectiveness.html)
-- **Analyst note:** NOBTS publishes institutional-effectiveness resources, but the reviewed public page does not establish a directly comparable 2023-2024 U.S. nonresident series or explain the 2024 analytic-universe entry. Keep the institution-level movement held.
+- **Decision:** Safe with context
+- **Disposition:** Expected structural change
+- **Reviewed:** 2026-10-15
+- **Evidence:** [NCES IPEDS Title IV indicator definition and 2023/2024 source files](https://nces.ed.gov/pubs2011/2011252.pdf)
+- **Analyst note:** The project's displayed medium-priority movement is +129 because New Orleans Baptist Theological Seminary enters the project's degree-granting First Look/Digest Title IV analytic universe in 2024, not because the source first reports the institution in 2024. The official 2023 IPEDS directory row reports DEGGRANT=1 but PSET4FLG=2, which the IPEDS data dictionary defines as a Non-Title IV postsecondary institution; the same year's Fall Enrollment source reports 2,266 total students and 148 U.S. nonresidents. In 2024 the directory changes to PSET4FLG=1, defined as a Title IV postsecondary institution, and the Fall Enrollment source reports 2,349 total students and 129 U.S. nonresidents. Because this project's documented universe includes PSET4FLG values 1 or 3, the source-level indicator change exactly explains why the institution is excluded from the 2023 analytic endpoint and included in 2024. The underlying reported nonresident count actually declines by 19 across the two raw Fall Enrollment files, so the project +129 must not be described as student growth. Preserve the source values and clear only bounded structural-universe-entry discussion; do not infer why the institution's Title IV indicator changed or treat the +129 analytic contribution as a like-for-like enrollment change.
 
 ### City College-Hollywood · UNITID 244233
 

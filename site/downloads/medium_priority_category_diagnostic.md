@@ -37,7 +37,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 
 | Order | Institution | State | Route | NR change | NR status | Countermovement | Ratio | Signal | Publication gate |
 | ---: | --- | --- | --- | ---: | --- | ---: | ---: | --- | --- |
-| 1 | New Orleans Baptist Theological Seminary | LA | Structural Or Reporting | +129 | — | — | — | Analytic-universe change; category comparison not used | hold_for_confirmation |
+| 1 | New Orleans Baptist Theological Seminary | LA | Structural Or Reporting | +129 | — | — | — | Analytic-universe change; category comparison not used | safe_with_context |
 | 2 | City College-Hollywood | FL | Structural Or Reporting | +0 | R→P | — | — | Endpoint source status is not comparable for countermovement | hold_for_confirmation |
 | 3 | City College-Altamonte Springs | FL | Structural Or Reporting | +0 | R→P | — | — | Endpoint source status is not comparable for countermovement | hold_for_confirmation |
 | 4 | Indiana Wesleyan University-National & Global | IN | Absolute And Percentage | +855 | R→R | 48 | 5.6% | Countermovement below half of the nonresident change | hold_for_confirmation |
