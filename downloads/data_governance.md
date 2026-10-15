@@ -2,8 +2,8 @@
 
 This portfolio project uses public administrative data and publishes only artifacts explicitly listed in `data/public_release_register.csv`. The current release contains no person-level records and no observed student immigration-status field.
 
-**Registered artifact families:** 72
-**Expanded public download files:** 122
+**Registered artifact families:** 74
+**Expanded public download files:** 124
 **Current person-level public artifacts:** 0
 **Current person-level immigration-status artifacts:** 0
 
@@ -91,6 +91,8 @@ This portfolio project uses public administrative data and publishes only artifa
 | PR70 | `site/downloads/medium_qa_resolution_log.md` | Publication | Medium-priority institution evidence review memo | Generated from the medium-priority QA resolution register |
 | PR71 | `site/downloads/high_priority_category_diagnostic.csv` | QA / audit | High-priority IPEDS category-countermovement diagnostic | Generated from public IPEDS all-student race ethnicity categories joined to the current high-priority QA queue and publication dispositions |
 | PR72 | `site/downloads/high_priority_category_diagnostic.md` | Publication | High-priority IPEDS category-countermovement diagnostic note | Generated from the validated high-priority category diagnostic |
+| PR73 | `site/downloads/medium_priority_category_diagnostic.csv` | QA / audit | Medium-priority IPEDS category-countermovement diagnostic | Generated from public IPEDS all-student race ethnicity categories joined to the current medium-priority routing queue and evidence-backed publication dispositions |
+| PR74 | `site/downloads/medium_priority_category_diagnostic.md` | Publication | Medium-priority IPEDS category-countermovement diagnostic note | Generated from the validated medium-priority category diagnostic |
 
 ## Handling boundary
 
