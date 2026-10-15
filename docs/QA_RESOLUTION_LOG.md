@@ -18,7 +18,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | --- | --- | ---: | --- | --- | --- |
 | University of the Cumberlands | KY | +4,616 | partial_component_corroboration | hold_for_confirmation | [University of the Cumberlands 2024-2025 enrollment total](https://www.ucumberlands.edu/news/cumberlands-students-saved-63m-through-free-textbook-program) |
 | Collin County Community College District | TX | +2,256 | unresolved_large_change | hold_for_confirmation | [Collin College Common Data Set 2023-2024](https://www.collin.edu/about/statistics/pdf_common_data_set/cds-2023-2024-collin-college.pdf) |
-| Broward College | FL | +2,005 | context_support_only | hold_for_confirmation | [Broward College international-student services](https://www.broward.edu/international/students/) |
+| Broward College | FL | +2,005 | external_scope_mismatch | hold_for_confirmation | [Broward College Consumer Information Disclosures](https://www.broward.edu/admissions/financial-aid/_docs/consumer-information-disclosures.pdf) |
 | Miami Dade College | FL | +1,458 | external_scope_mismatch | hold_for_confirmation | [Miami Dade College 2024-25 Fact Book Credit Student Enrollment Profile](https://www.mdc.edu/media/miami-dade-college/institutional-research/documents/fb_credit_student_enrollment_profile.pdf) |
 | Trine University-Regional/Non-Traditional Campuses | IN | +1,441 | corroborated_direction | safe_with_context | [Trine University fall 2024 record-enrollment announcement](https://www.trine.edu/news/2024/record-enrollment.aspx) |
 | Campbellsville University | KY | -1,358 | corroborated_direction | safe_with_context | [Campbellsville University institutional enrollment reports](https://www.campbellsville.edu/academics/academic-affairs/officeofinstitutionalresearch-institutionalreviewboard.html) |
@@ -66,9 +66,9 @@ IPEDS rises from 433 to 2,689 U.S. nonresident students in one year. Collin's of
 
 **Automated trigger:** absolute change is at least 1,000 students; percentage change is at least 50% from a baseline of 100+.
 
-IPEDS rises from 3,369 to 5,374 U.S. nonresident students. Broward reports serving students from more than 150 countries and maintains a substantial F-1 program, which makes a large international population plausible, but the reviewed page does not independently reconcile the 2024 count. Retain the value in aggregates and avoid attributing the Florida increase to Broward specifically without a comparable annual source.
+IPEDS rises from 3,369 to 5,374 U.S. nonresident students from Fall 2023 to Fall 2024. Broward College's official consumer-information disclosure reports Nonresident Alien as 2% of full-time certificate/degree-seeking students in Fall 2023, while the project IPEDS measure covers all fall-enrolled students and reports 3,369 of 29,140 students (11.6%) as U.S. nonresidents. The institutional disclosure explicitly uses a narrower student population, so it establishes a population-scope mismatch rather than corroborating or refuting the IPEDS count. Retain IPEDS in aggregates and keep the institution-specific 2024 increase held pending a comparable all-student source.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `context_support_only` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-14.
 
 ### Miami Dade College (UNITID 135717)
 
