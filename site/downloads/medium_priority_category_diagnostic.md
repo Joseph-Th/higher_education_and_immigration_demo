@@ -24,7 +24,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | University of Lynchburg | Percentage Movement | +91 | R→R | -276 | 367 | 403.3% | White (-215) | R→R | hold_for_confirmation |
 | Northeastern University | Absolute Movement | -616 | R→R | +1,394 | 2,019 | 327.8% | Asian (+667) | R→R | hold_for_confirmation |
 | Boston University | Absolute Movement | -558 | R→R | +1,113 | 1,672 | 299.6% | Race / ethnicity unknown (+551) | R→R | hold_for_confirmation |
-| Pikes Peak State College | Percentage Movement | -104 | R→R | +168 | 298 | 286.5% | Hispanic / Latino (+179) | R→R | hold_for_confirmation |
+| Pikes Peak State College | Percentage Movement | -104 | R→R | +168 | 298 | 286.5% | Hispanic / Latino (+179) | R→R | safe_with_context |
 | The University of Texas at Arlington | Absolute Movement | -846 | R→R | +964 | 1,959 | 231.6% | Hispanic / Latino (+823) | R→R | safe_with_context |
 | America Evangelical University | Percentage Movement | -92 | R→R | +100 | 210 | 228.3% | Race / ethnicity unknown (+147) | Z→R | hold_for_confirmation |
 | Vincennes University | Percentage Movement | +78 | R→R | +1,357 | 170 | 217.9% | Race / ethnicity unknown (-166) | R→R | hold_for_confirmation |
@@ -76,7 +76,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 37 | Humphreys University-Stockton and Modesto Campuses | CA | Percentage Movement | +116 | R→R | 23 | 19.8% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 38 | Austin Peay State University | TN | Percentage Movement | +111 | R→R | 27 | 24.3% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 39 | Knox College | IL | Percentage Movement | +107 | R→R | 6 | 5.6% | Countermovement below half of the nonresident change | hold_for_confirmation |
-| 40 | Pikes Peak State College | CO | Percentage Movement | -104 | R→R | 298 | 286.5% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| 40 | Pikes Peak State College | CO | Percentage Movement | -104 | R→R | 298 | 286.5% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 41 | America Evangelical University | CA | Percentage Movement | -92 | R→R | 210 | 228.3% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 42 | University of Lynchburg | VA | Percentage Movement | +91 | R→R | 367 | 403.3% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 43 | Monroe Community College | NY | Percentage Movement | +83 | R→R | 99 | 119.3% | Countermovement at least as large as the nonresident change | hold_for_confirmation |

@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 12
-- **Held for confirmation:** 38
+- **Safe with context:** 13
+- **Held for confirmation:** 37
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -52,7 +52,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Humphreys University-Stockton and Modesto Campuses | CA | +116 | Percentage Movement | Structural followup required | Hold for confirmation | [Humphreys international admissions](https://www.humphreys.edu/apply-international/) |
 | Austin Peay State University | TN | +111 | Percentage Movement | Context only | Hold for confirmation | [Austin Peay international student services](https://www.apsu.edu/international/) |
 | Knox College | IL | +107 | Percentage Movement | External scope mismatch | Hold for confirmation | [Knox international applicants](https://www.knox.edu/admission/apply-to-knox/international-applicants) |
-| Pikes Peak State College | CO | -104 | Percentage Movement | Context only | Hold for confirmation | [Pikes Peak international students](https://www.pikespeak.edu/admissions/enroll/prospective-students/international-students/) |
+| Pikes Peak State College | CO | -104 | Percentage Movement | Corroborated external count | Safe with context | [Pikes Peak State College 2025 Data Book](https://www.pikespeak.edu/about/institutional-effectiveness/_IE-uploads/Databook/PPSC-2025-Databook.pdf) |
 | America Evangelical University | CA | -92 | Percentage Movement | Context only | Hold for confirmation | [America Evangelical University international admissions](https://aeu.edu/admissions/international/) |
 | University of Lynchburg | VA | +91 | Percentage Movement | Context only | Hold for confirmation | [University of Lynchburg international admissions](https://www.lynchburg.edu/admissions/apply/apply-as-an-international-student/) |
 | Monroe Community College | NY | +83 | Percentage Movement | Context only | Hold for confirmation | [Monroe Community College international admissions](https://www.monroecc.edu/admissions/i-am/international-student/) |
@@ -380,11 +380,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Pikes Peak State College · UNITID 127820
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Context only
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Pikes Peak international students](https://www.pikespeak.edu/admissions/enroll/prospective-students/international-students/)
-- **Analyst note:** Pikes Peak documents F-1 international admissions but does not publish comparable Fall 2023/Fall 2024 U.S. nonresident counts on the reviewed page. The -104 movement remains held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated external count
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Pikes Peak State College 2025 Data Book](https://www.pikespeak.edu/about/institutional-effectiveness/_IE-uploads/Databook/PPSC-2025-Databook.pdf)
+- **Analyst note:** The project IPEDS series reports 158 U.S. nonresident students in Fall 2023 and 54 in Fall 2024, a decline of 104. Pikes Peak State College's official 2025 Data Book reports Non-US Resident headcounts of 158 in Fall 2023 and 59 in Fall 2024, a decline of 99. The institutional 2023 nonresident baseline exactly matches IPEDS and the Fall 2024 endpoint is only five students higher. The Data Book reports all-student headcounts of 12,390 in Fall 2023 and 12,556 in Fall 2024, compared with IPEDS totals of 12,388 and 12,556, including an exact latest-year total match. Because the institutional and IPEDS populations are not assumed definition-identical solely from the shared race/ethnicity framing, do not substitute the Data Book counts for IPEDS. The near-exact two-year institutional series independently corroborates the scale and direction of the decline, supporting bounded discussion while IPEDS remains the numerical authority.
 
 ### America Evangelical University · UNITID 490081
 
