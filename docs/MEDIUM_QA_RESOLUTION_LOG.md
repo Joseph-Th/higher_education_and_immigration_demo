@@ -56,7 +56,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | America Evangelical University | CA | -92 | Percentage Movement | External scope mismatch | Hold for confirmation | [America Evangelical University F-1 international admissions](https://aeu.edu/admissions/international/) |
 | University of Lynchburg | VA | +91 | Percentage Movement | Baseline corroborated move unresolved | Hold for confirmation | [University of Lynchburg Fall 2023 and Fall 2024 international enrollment announcements](https://www.lynchburg.edu/record-number-of-international-students-arrive-at-lynchburg/) |
 | Monroe Community College | NY | +83 | Percentage Movement | External scope mismatch | Hold for confirmation | [Monroe Community College 2024-25 Facts Book and 2024 Self-Study Design](https://www.monroecc.edu/fileadmin/SiteFiles/GeneralContent/depts/admissions/documents/MCC-Facts-Book.pdf) |
-| University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [UMPI international admissions](https://www.umpi.edu/admissions/international-students/) |
+| University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Maine System Fall 2024 census enrollment report](https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2024/11/November-2024-BOT-Meeting-Book-Revised-11.8.24.pdf) |
 | New Mexico Highlands University | NM | -81 | Percentage Movement | Corroborated external count | Safe with context | [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/) |
 | Northeastern University Oakland | CA | +80 | Percentage Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2024 enrollment context](https://news.northeastern.edu/2024/09/12/enrollment-statistics-2024/) |
 | Vincennes University | IN | +78 | Percentage Movement | Corroborated direction | Safe with context | [Vincennes University Fall 2024 enrollment announcement](https://www.vinu.edu/news/vu-welcomes-largest-incoming-class-since-2021.html) |
@@ -414,9 +414,9 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 - **Decision:** Hold for confirmation
 - **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [UMPI international admissions](https://www.umpi.edu/admissions/international-students/)
-- **Analyst note:** UMPI serves both on-campus F-1 students and international online students, a scope broader than a single visa-based population. The reviewed page does not provide like-for-like annual counts, so the +81 movement remains held.
+- **Reviewed:** 2026-10-15
+- **Evidence:** [University of Maine System Fall 2024 census enrollment report](https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2024/11/November-2024-BOT-Meeting-Book-Revised-11.8.24.pdf)
+- **Analyst note:** The project IPEDS series reports 137 U.S. nonresident students in Fall 2023 and 218 in Fall 2024, an increase of 81, with all-student enrollment rising from 2,187 to 2,873. The University of Maine System's official Fall 2024 Census Enrollment Update reports University of Maine at Presque Isle enrollment rising from 1,509 in Fall 2023 to 2,171 in Fall 2024, an increase of 662 (43.9%), and states that YourPace students make up 62.3% of UMPI enrollment. The institutional-system totals are 678 and 702 below the corresponding project IPEDS totals even though both series show strong overall enrollment growth. The same system report publishes only system-wide Canadian and non-Canadian international counts, not a UMPI-specific international/nonresident endpoint, so those values cannot be allocated to the campus or used to validate the project +81 movement. The materially different total-enrollment frame establishes a reporting-scope mismatch rather than count corroboration. Preserve IPEDS as the numerical authority and keep the +81 institution-specific movement held; do not infer a campus nonresident count from system-wide international totals.
 
 ### New Mexico Highlands University · UNITID 187897
 
