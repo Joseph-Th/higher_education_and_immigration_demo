@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 27
-- **Held for confirmation:** 23
+- **Safe with context:** 28
+- **Held for confirmation:** 22
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -27,7 +27,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | The University of Texas at Arlington | TX | -846 | Absolute Movement | Corroborated direction | Safe with context | [UTA Faculty Senate approved September 4, 2024 minutes](https://cdn.web.uta.edu/-/media/project/website/administration/faculty-senate/documents/meeting_minutes/2025/facsen-minutes-9-4-24_approved.ashx) |
 | Georgia Institute of Technology-Main Campus | GA | +835 | Absolute Movement | Corroborated external count | Safe with context | [Georgia Tech Fact Book archive](https://irp.gatech.edu/fact-book) |
 | University of Illinois Urbana-Champaign | IL | +775 | Absolute Movement | Corroborated external count | Safe with context | [University of Illinois System Fall 2024 Data Book](https://www.pb.uillinois.edu/documents/databook/PB_Databook_Fall24.pdf) |
-| Syracuse University | NY | -760 | Absolute Movement | Partial component corroboration | Hold for confirmation | [Syracuse annual financial reports and Fall 2024 Immigration Essentials](https://finance.syr.edu/comptroller/annual-financial-reports/) |
+| Syracuse University | NY | -760 | Absolute Movement | Corroborated direction | Safe with context | [Syracuse University-hosted S&P Global April 2025 credit report](https://ir.syr.edu/wp-content/uploads/2025/04/SP-Global-Detailed-Report-2025-04-08.pdf) |
 | University of Colorado Boulder | CO | -755 | Absolute Movement | External scope mismatch | Hold for confirmation | [CU Boulder international student statistics and enrollment definition](https://www.colorado.edu/isss/about-us/student-statistics) |
 | Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
 | Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
@@ -180,11 +180,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Syracuse University · UNITID 196413
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Partial component corroboration
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
 - **Reviewed:** 2026-10-15
-- **Evidence:** [Syracuse annual financial reports and Fall 2024 Immigration Essentials](https://finance.syr.edu/comptroller/annual-financial-reports/)
-- **Analyst note:** The project IPEDS series reports 4,163 U.S. nonresident students in Fall 2023 and 3,403 in Fall 2024, a decline of 760, with all-student totals of 22,948 and 22,589. Syracuse University's official Fall 2024 Immigration Essentials reports the 2023-24 enrollment structure at 22,948 total students, including 4,163 international students, 15,739 undergraduates including 1,784 international undergraduates, and 7,209 graduate/law students including 2,379 international graduate/law students. Those values exactly match the project Fall 2023 total, nonresident, undergraduate, graduate/law, and level-specific nonresident components. Syracuse's official Fiscal 2025 Financial Report then reports 15,957 undergraduates, 5,881 graduate students, and 751 law students, yielding 22,589 total students and 6,632 graduate/law students, exactly matching the project Fall 2024 all-student and level totals. The financial report does not publish a comparable 2024 international/nonresident count, so the exact total-enrollment continuity does not resolve the nonresident decline from 4,163 to 3,403. Preserve IPEDS as the numerical authority: the baseline and both years' enrollment structure are independently corroborated, but the -760 institution-specific nonresident movement remains held until a like-for-like Fall 2024 nonresident endpoint is available.
+- **Evidence:** [Syracuse University-hosted S&P Global April 2025 credit report](https://ir.syr.edu/wp-content/uploads/2025/04/SP-Global-Detailed-Report-2025-04-08.pdf)
+- **Analyst note:** The project IPEDS series reports 4,163 U.S. nonresident students in Fall 2023 and 3,403 in Fall 2024, a decline of 760 (-18.3%), with the nonresident share moving from 18.14% to 15.06% and graduate nonresidents falling from 2,379 to 1,965. Syracuse University's official Fall 2024 Immigration Essentials exactly reproduces the project Fall 2023 enrollment structure, including 22,948 total students, 4,163 international students, 15,739 undergraduates with 1,784 international undergraduates, and 7,209 graduate/law students with 2,379 international graduate/law students. Its Fiscal 2025 Financial Report exactly reproduces the project Fall 2024 all-student and level totals of 22,589 overall, 15,957 undergraduate, and 6,632 graduate/law. A separate April 8, 2025 S&P Global credit report hosted by Syracuse Institutional Research states that Fall 2024 graduate FTE enrollment declined 9.6% to 4,803 largely because of a decline in international students and that international student enrollment had declined to 15.4% of total FTE enrollment. That 15.4% FTE share is close in scale to the project 15.06% Fall 2024 headcount share and, together with the explicit international-driven graduate decline, independently corroborates the direction and graduate concentration of the project movement. The S&P measure uses FTE rather than Fall headcount and does not establish definition identity with IPEDS U.S. nonresident status, so do not infer or substitute an institutional headcount or treat the -760 magnitude as independently reconciled. Preserve IPEDS as the numerical authority and clear only bounded direction- and graduate-concentration discussion of the decline.
 
 ### University of Colorado Boulder · UNITID 126614
 

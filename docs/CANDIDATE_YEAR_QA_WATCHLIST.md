@@ -11,7 +11,7 @@ This pre-release watchlist combines the current 2023-2024 high/medium institutio
 - **Current medium + candidate directory overlaps:** 5
 - **Unique union:** 27 + 50 + 154 - 5 = **226**
 
-The existing high-priority evidence review remains **18 safe with context / 9 held for confirmation**, and the medium-priority evidence review remains **27 safe with context / 23 held**, for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
+The existing high-priority evidence review remains **18 safe with context / 9 held for confirmation**, and the medium-priority evidence review remains **28 safe with context / 22 held**, for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
 
 ## Medium-priority rows that also changed in the candidate directory
 
