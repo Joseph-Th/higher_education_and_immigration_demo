@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 25
-- **Held for confirmation:** 25
+- **Safe with context:** 26
+- **Held for confirmation:** 24
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -33,7 +33,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
 | Purdue University-Main Campus | IN | +580 | Absolute Movement | Corroborated external count | Safe with context | [Purdue ISS Fall 2024 international enrollment statistical report](https://purdue.edu/gpp/iss/_documents/EnrollmentReport/iss_statisticalreportfall24.pdf) |
 | University of New Haven | CT | -574 | Absolute Movement | Corroborated direction | Safe with context | [University of New Haven Summer 2025 internationalization report](https://www.newhaven.edu/news/blog/2025/global-campus.php) |
-| Boston University | MA | -558 | Absolute Movement | Partial component corroboration | Hold for confirmation | [Boston University Common Data Set archive](https://www.bu.edu/asir/bu-facts/common-data-set/cds-archive/) |
+| Boston University | MA | -558 | Absolute Movement | Corroborated direction | Safe with context | [Boston University Fact Book Student Enrollment dashboard and glossary](https://www.bu.edu/asir/bu-facts/fact-book/student-enrollment/) |
 | University of California-Berkeley | CA | -546 | Absolute Movement | Corroborated external count | Safe with context | [UC Berkeley Fall 2024 international enrollment report](https://internationaloffice.berkeley.edu/sites/default/files/student-stats2024.pdf) |
 | Midwestern Baptist Theological Seminary | MO | -458 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Association of Theological Schools annual data tables](https://www.ats.edu/Annual-Data-Tables) |
 | Walden University | MN | -396 | Percentage Movement | External scope mismatch | Hold for confirmation | [Walden international students](https://www.waldenu.edu/international-students) |
@@ -228,11 +228,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Boston University · UNITID 164988
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Partial component corroboration
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Boston University Common Data Set archive](https://www.bu.edu/asir/bu-facts/common-data-set/cds-archive/)
-- **Analyst note:** IPEDS reports 10,468 U.S. nonresident students in Fall 2023 and 9,910 in Fall 2024. BU's official 2023-24 Common Data Set reports 18,656 total undergraduates and 4,057 Non-resident aliens, exactly matching the project's Fall 2023 undergraduate total and nonresident component. Its 2024-25 Common Data Set reports 18,805 total undergraduates and 3,931 Non-resident aliens, again exactly matching the project Fall 2024 undergraduate component. BU's Fact Book glossary states that its Domestic/International category is defined in conformity with IPEDS and that fall enrollment is reported on the official mid-October date in compliance with IPEDS Fall Enrollment. These sources independently corroborate the undergraduate component and reporting basis, but the Common Data Sets do not supply a directly comparable graduate/professional nonresident count that resolves the full all-student decline from 10,468 to 9,910. Preserve IPEDS as the numerical authority and keep the institution-specific all-student movement held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Boston University Fact Book Student Enrollment dashboard and glossary](https://www.bu.edu/asir/bu-facts/fact-book/student-enrollment/)
+- **Analyst note:** The project IPEDS series reports 10,468 U.S. nonresident students in Fall 2023 and 9,910 in Fall 2024, a decline of 558. Boston University's public Fact Book Student Enrollment dashboard, filtered to the IPEDS Race/Ethnicity value U.S. Nonresident, reports 10,747 students in Fall 2023 and 9,958 in Fall 2024, a decline of 789. The institutional Fall 2024 endpoint is only 48 students (0.5%) above the project endpoint, while the Fall 2023 endpoint is 279 (2.7%) above; both independently show a material year-over-year decline. BU states that the dashboard uses the Registrar's Official Final Fall semester census, and its Fact Book glossary says the official Fall reporting date occurs in mid-October in compliance with the IPEDS Fall Enrollment Survey and defines its international population in conformity with IPEDS. The dashboard values are not identical to the project extract, and BU's Common Data Sets separately reproduce the project undergraduate nonresident components at 4,057 and 3,931, showing that public institutional reporting surfaces can differ in included class populations. Preserve IPEDS as the numerical authority and do not substitute the dashboard counts. The same-direction, close-scale two-year official Fall series is sufficient only for bounded direction-level discussion of the -558 movement.
 
 ### University of California-Berkeley · UNITID 110635
 

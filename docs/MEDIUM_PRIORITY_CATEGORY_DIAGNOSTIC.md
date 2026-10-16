@@ -23,7 +23,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | Chaffey College | Absolute And Percentage | -611 | R→R | +1,828 | 2,494 | 408.2% | Hispanic / Latino (+1,745) | R→R | safe_with_context |
 | University of Lynchburg | Percentage Movement | +91 | R→R | -276 | 367 | 403.3% | White (-215) | R→R | hold_for_confirmation |
 | Northeastern University | Absolute Movement | -616 | R→R | +1,394 | 2,019 | 327.8% | Asian (+667) | R→R | hold_for_confirmation |
-| Boston University | Absolute Movement | -558 | R→R | +1,113 | 1,672 | 299.6% | Race / ethnicity unknown (+551) | R→R | hold_for_confirmation |
+| Boston University | Absolute Movement | -558 | R→R | +1,113 | 1,672 | 299.6% | Race / ethnicity unknown (+551) | R→R | safe_with_context |
 | Pikes Peak State College | Percentage Movement | -104 | R→R | +168 | 298 | 286.5% | Hispanic / Latino (+179) | R→R | safe_with_context |
 | The University of Texas at Arlington | Absolute Movement | -846 | R→R | +964 | 1,959 | 231.6% | Hispanic / Latino (+823) | R→R | safe_with_context |
 | America Evangelical University | Percentage Movement | -92 | R→R | +100 | 210 | 228.3% | Race / ethnicity unknown (+147) | Z→R | hold_for_confirmation |
@@ -57,7 +57,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 18 | Stevens Institute of Technology | NJ | Absolute Movement | -592 | R→R | 350 | 59.1% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | 19 | Purdue University-Main Campus | IN | Absolute Movement | +580 | R→R | 0 | 0.0% | Countermovement below half of the nonresident change | safe_with_context |
 | 20 | University of New Haven | CT | Absolute Movement | -574 | R→R | 96 | 16.7% | Countermovement below half of the nonresident change | safe_with_context |
-| 21 | Boston University | MA | Absolute Movement | -558 | R→R | 1,672 | 299.6% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| 21 | Boston University | MA | Absolute Movement | -558 | R→R | 1,672 | 299.6% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 22 | University of California-Berkeley | CA | Absolute Movement | -546 | R→R | 733 | 134.2% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 23 | Midwestern Baptist Theological Seminary | MO | Percentage Movement | -458 | R→R | 564 | 123.1% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 24 | Walden University | MN | Percentage Movement | -396 | R→R | 5,630 | 1421.7% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
