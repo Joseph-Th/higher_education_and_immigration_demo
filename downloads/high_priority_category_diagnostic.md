@@ -33,7 +33,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Institution | Status | NR change | NR status | Other-category net change | Countermovement ratio | Signal | Publication gate |
 | --- | --- | ---: | --- | ---: | ---: | --- | --- |
 | University of the Cumberlands | Continuing | +4,616 | R→R | -2,823 | 153.5% | Countermovement at least as large as the nonresident change | safe_with_context |
-| Collin County Community College District | Continuing | +2,256 | R→R | -480 | 46.0% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| Collin County Community College District | Continuing | +2,256 | R→R | -480 | 46.0% | Countermovement below half of the nonresident change | safe_with_context |
 | Broward College | Continuing | +2,005 | R→R | -417 | 45.6% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | Miami Dade College | Continuing | +1,458 | R→R | +18,344 | 0.1% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | Trine University-Regional/Non-Traditional Campuses | Continuing | +1,441 | R→R | +197 | 0.8% | Countermovement below half of the nonresident change | safe_with_context |
