@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 18
-- **Held for confirmation:** 32
+- **Safe with context:** 20
+- **Held for confirmation:** 30
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -14,8 +14,8 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Institution | State | 2023-2024 change | Route | Disposition | Publication class | Evidence |
 | --- | --- | ---: | --- | --- | --- | --- |
 | New Orleans Baptist Theological Seminary | LA | +129 | Structural Or Reporting | Expected structural change | Safe with context | [NCES IPEDS Title IV indicator definition and 2023/2024 source files](https://nces.ed.gov/pubs2011/2011252.pdf) |
-| City College-Hollywood | FL | +0 | Structural Or Reporting | Structural followup required | Hold for confirmation | [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf) |
-| City College-Altamonte Springs | FL | +0 | Structural Or Reporting | Structural followup required | Hold for confirmation | [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf) |
+| City College-Hollywood | FL | +0 | Structural Or Reporting | Expected structural change | Safe with context | [City College July 2024 teach-out announcement reported by Higher Ed Dive](https://www.highereddive.com/news/florida-for-profit-city-college-to-close/721917/) |
+| City College-Altamonte Springs | FL | +0 | Structural Or Reporting | Expected structural change | Safe with context | [City College July 2024 teach-out announcement reported by Higher Ed Dive](https://www.highereddive.com/news/florida-for-profit-city-college-to-close/721917/) |
 | Indiana Wesleyan University-National & Global | IN | +855 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Indiana Wesleyan University President's Report 2024](https://www.indwes.edu/about/offices/administration/ADMIN_10067_Presidents-Annual-Report-2024.pdf) |
 | Valencia College | FL | +692 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Valencia Institutional Research international-student archive](https://valenciacollege.edu/academics/analytics-and-planning/analytics-and-reporting/reporting/internal/enrollment.php) |
 | Dallas College | TX | +628 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Dallas College 2023-24 Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/dallas-college-profile.pdf) |
@@ -76,19 +76,19 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### City College-Hollywood · UNITID 244233
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Structural followup required
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf)
-- **Analyst note:** Florida's official SARA report lists City College-Hollywood among institutions approved as of January 1, 2024, establishing recent operating context. It does not reconcile the R-to-P reporting-status transition or the later candidate-directory Title IV First Look eligibility loss. Keep the zero-count record held for structural confirmation.
+- **Decision:** Safe with context
+- **Disposition:** Expected structural change
+- **Reviewed:** 2026-10-15
+- **Evidence:** [City College July 2024 teach-out announcement reported by Higher Ed Dive](https://www.highereddive.com/news/florida-for-profit-city-college-to-close/721917/)
+- **Analyst note:** The project medium-priority row shows 0 U.S. nonresident students in both Fall 2023 and Fall 2024, but the 2024 source values are not fresh reported endpoints: the U.S. nonresident field and all ten all-student total/category fields carry IPEDS status P, Imputed using Carry Forward, and the project Fall 2024 total is 305. Higher Ed Dive reported on July 19, 2024 that City College had announced it would stop enrolling new students beginning with the fall term and teach out current students as it moved to close permanently; contemporaneous local reporting describes the same notice for the Hollywood and Altamonte Springs campuses. The candidate 2025 IPEDS directory then retains the Hollywood record but changes PSET4FLG from 1 to 2, removing it from this project's degree-granting First Look/Digest Title IV analytic universe while DEGGRANT remains 1. Taken together, the contemporaneous teach-out announcement, carry-forward 2024 endpoint, and subsequent directory eligibility change establish a structural transition strong enough for bounded discussion. Preserve the 0-to-0 values as official source values, but do not interpret them as evidence of stable underlying nonresident enrollment, infer an actual Fall 2024 nonresident count, or infer why the Title IV indicator later changed.
 
 ### City College-Altamonte Springs · UNITID 417327
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Structural followup required
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Florida SARA 2023-2024 annual report](https://www.fldoe.org/core/fileparse.php/18537/urlt/FL-SARAAnnualReport.pdf)
-- **Analyst note:** Florida's official SARA report lists City College-Altamonte among institutions approved as of January 1, 2024, establishing recent operating context. It does not reconcile the R-to-P reporting-status transition or the later candidate-directory Title IV First Look eligibility loss. Keep the zero-count record held for structural confirmation.
+- **Decision:** Safe with context
+- **Disposition:** Expected structural change
+- **Reviewed:** 2026-10-15
+- **Evidence:** [City College July 2024 teach-out announcement reported by Higher Ed Dive](https://www.highereddive.com/news/florida-for-profit-city-college-to-close/721917/)
+- **Analyst note:** The project medium-priority row shows 0 U.S. nonresident students in both Fall 2023 and Fall 2024, but the 2024 source values are not fresh reported endpoints: the U.S. nonresident field and all ten all-student total/category fields carry IPEDS status P, Imputed using Carry Forward, and the project Fall 2024 total is 362. Higher Ed Dive reported on July 19, 2024 that City College had announced it would stop enrolling new students beginning with the fall term and teach out current students as it moved to close permanently; contemporaneous local reporting describes the same notice for the Hollywood and Altamonte Springs campuses. The candidate 2025 IPEDS directory then retains the Altamonte Springs record but changes PSET4FLG from 1 to 2, removing it from this project's degree-granting First Look/Digest Title IV analytic universe while DEGGRANT remains 1. Taken together, the contemporaneous teach-out announcement, carry-forward 2024 endpoint, and subsequent directory eligibility change establish a structural transition strong enough for bounded discussion. Preserve the 0-to-0 values as official source values, but do not interpret them as evidence of stable underlying nonresident enrollment, infer an actual Fall 2024 nonresident count, or infer why the Title IV indicator later changed.
 
 ### Indiana Wesleyan University-National & Global · UNITID 488679
 
