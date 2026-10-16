@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 22
-- **Held for confirmation:** 28
+- **Safe with context:** 23
+- **Held for confirmation:** 27
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -45,7 +45,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | University of Rio Grande | OH | +181 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth) |
 | Union Commonwealth University | KY | +179 | Percentage Movement | Corroborated direction | Safe with context | [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help) |
 | FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Expected structural change | Safe with context | [Arizona State University April 2023 FIDM transition announcement](https://newsroom.asu.edu/press-releases/asu-expands-fashion-program-through-asu-fidm) |
-| Barton County Community College | KS | -155 | Percentage Movement | External scope mismatch | Hold for confirmation | [Barton international admissions](https://www.bartonccc.edu/admission/international) |
+| Barton County Community College | KS | -155 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Barton Community College 2024 and 2025 Community Reports](https://www.bartonccc.edu/community/boardoftrustees/report) |
 | Saddleback College | CA | +152 | Percentage Movement | External scope mismatch | Hold for confirmation | [Saddleback College F-1 international-student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student) |
 | Durham Technical Community College | NC | +129 | Percentage Movement | External scope mismatch | Hold for confirmation | [Durham Tech non-U.S. student enrollment definitions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student) |
 | Prairie View A & M University | TX | +125 | Percentage Movement | External scope mismatch | Hold for confirmation | [Prairie View A&M University 2024-25 Fact Book](https://www.pvamu.edu/marcomm/wp-content/uploads/sites/114/PVAMU-Fact-Book-2024-DRAFT_v10_SPREAD.pdf) |
@@ -324,11 +324,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Barton County Community College · UNITID 154697
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Barton international admissions](https://www.bartonccc.edu/admission/international)
-- **Analyst note:** Barton describes an international-student population that is materially larger than the IPEDS 2024 U.S. nonresident count, indicating a definition or reporting-scope mismatch. The -155 movement remains held.
+- **Decision:** Safe with context
+- **Disposition:** Confirmed reporting discontinuity
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Barton Community College 2024 and 2025 Community Reports](https://www.bartonccc.edu/community/boardoftrustees/report)
+- **Analyst note:** The project IPEDS series reports 161 U.S. nonresident students in Fall 2023 and 6 in Fall 2024, a decline of 155, while total Fall enrollment rises from 4,393 to 5,092. Barton Community College's official Community Report archive links the 2024 and 2025 reports. The 2024 report, covering academic year 2023-24, reports 10,942 unduplicated students and a residence composition of 1% International; the 2025 report, covering academic year 2024-25, reports 12,325 students and 5% International. Those academic-year headcounts are broader than the IPEDS Fall census and the residence percentages are rounded, so no institutional international headcount is inferred or substituted. However, the maintained institutional series shows a nonzero international-residence population whose share increases across the two overlapping academic years rather than disappearing. That evidence blocks treating the IPEDS fall from 161 to 6 as independently confirmed substantive institutional contraction. Treat the -155 movement as a confirmed reporting/scope discontinuity for bounded discussion, preserve IPEDS as the numerical authority for aggregate calculations, and do not describe the decline as independently corroborated international-enrollment loss.
 
 ### Saddleback College · UNITID 122205
 
