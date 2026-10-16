@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 20
-- **Held for confirmation:** 30
+- **Safe with context:** 21
+- **Held for confirmation:** 29
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -49,7 +49,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Saddleback College | CA | +152 | Percentage Movement | External scope mismatch | Hold for confirmation | [Saddleback College F-1 international-student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student) |
 | Durham Technical Community College | NC | +129 | Percentage Movement | External scope mismatch | Hold for confirmation | [Durham Tech non-U.S. student enrollment definitions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student) |
 | Prairie View A & M University | TX | +125 | Percentage Movement | External scope mismatch | Hold for confirmation | [Prairie View A&M University 2024-25 Fact Book](https://www.pvamu.edu/marcomm/wp-content/uploads/sites/114/PVAMU-Fact-Book-2024-DRAFT_v10_SPREAD.pdf) |
-| Humphreys University-Stockton and Modesto Campuses | CA | +116 | Percentage Movement | Structural followup required | Hold for confirmation | [Humphreys international admissions](https://www.humphreys.edu/apply-international/) |
+| Humphreys University-Stockton and Modesto Campuses | CA | +116 | Percentage Movement | Corroborated direction | Safe with context | [Humphreys University 2024 WSCUC Special Visit team report](https://www.humphreys.edu/wp-content/uploads/2026/04/WSCUC_Team_Report_SV_SP24.pdf) |
 | Austin Peay State University | TN | +111 | Percentage Movement | External scope mismatch | Hold for confirmation | [Austin Peay 2023-24 and 2024-25 Fact Books](https://www.apsu.edu/institutional-research/data/archived-2024-25-factbook.pdf) |
 | Knox College | IL | +107 | Percentage Movement | Corroborated external count | Safe with context | [Knox College 2023-24 and 2024-25 Common Data Sets](https://www.knox.edu/academics/academic-resources-and-support/institutional-research/data-resources) |
 | Pikes Peak State College | CO | -104 | Percentage Movement | Corroborated external count | Safe with context | [Pikes Peak State College 2025 Data Book](https://www.pikespeak.edu/about/institutional-effectiveness/_IE-uploads/Databook/PPSC-2025-Databook.pdf) |
@@ -356,11 +356,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Humphreys University-Stockton and Modesto Campuses · UNITID 115773
 
-- **Decision:** Hold for confirmation
-- **Disposition:** Structural followup required
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Humphreys international admissions](https://www.humphreys.edu/apply-international/)
-- **Analyst note:** Humphreys documents international admissions, while the candidate directory separately shows an institution-name change. The public page does not provide a comparable annual count that resolves the +116 movement, so the claim remains held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Humphreys University 2024 WSCUC Special Visit team report](https://www.humphreys.edu/wp-content/uploads/2026/04/WSCUC_Team_Report_SV_SP24.pdf)
+- **Analyst note:** The project IPEDS series reports 172 U.S. nonresident students in Fall 2023 and 288 in Fall 2024, an increase of 116, with graduate nonresidents rising from 158 to 288 while the undergraduate component moves from 14 to 0; total enrollment rises from 575 to 699. Humphreys University's official WSCUC Special Visit team report, based on an April 2024 visit, says academic-year unduplicated enrollment had risen 39.8% from 660 in 2022-23 to 923 in 2023-24, with 690 graduate students, and separately reports the university's most recent 12-month IPEDS headcount as 923 students, including 339 international students. The WSCUC team attributes the institution's recent enrollment growth largely to international students in the MBA-IT program and says the international-recruitment partnership had increased graduate MBA enrollment. Those contemporaneous findings independently support the direction and graduate concentration of the project Fall 2023-to-Fall 2024 increase. They do not supply like-for-like Fall-census endpoints: the WSCUC report uses academic-year/12-month headcounts, its international population is not assumed definition-identical to IPEDS U.S. nonresident status, and the team itself notes that some submitted enrollment reports used duplicated headcounts or differed for the same period. Preserve IPEDS as the numerical authority, do not substitute the 339 international or 923 annual headcounts, and clear only bounded direction-level discussion of the +116 movement. The candidate 2025 directory name change to Humphreys University retains the same UNITID, state, control, degree-granting status, and Title IV First Look status, so it is treated as label continuity rather than evidence of a structural break.
 
 ### Austin Peay State University · UNITID 219602
 
