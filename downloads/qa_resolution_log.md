@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **16** are safe to discuss with explicit context.
-- **11** remain held for institution-specific interpretation.
+- **17** are safe to discuss with explicit context.
+- **10** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-15**.
 
@@ -40,7 +40,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Oakwood University | AL | -192 | confirmed_reporting_discontinuity | safe_with_context | [Oakwood University Institutional Effectiveness enrollment statistics archive](https://oakwood.edu/our-story/institutional-effectiveness/) |
 | Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global international admissions definition](https://csuglobal.edu/admissions/international-students) |
 | California Institute of Advanced Management | CA | +179 | partial_component_corroboration | hold_for_confirmation | [California BPPE CIAM 2023 Annual Report](https://www.bppe.ca.gov/webapplications/annualReports/2023/details/93197858) |
-| Anderson University | SC | -176 | unresolved_discontinuity | hold_for_confirmation | [Anderson University first International Graduate School graduates](https://andersonuniversity.edu/news/anderson-university-celebrates-first-international-graduate-school-graduates/) |
+| Anderson University | SC | -176 | confirmed_reporting_discontinuity | safe_with_context | [Anderson University Center for Global Engagement and 2024 International Graduate School evidence](https://andersonuniversity.edu/academics/center-for-global-engagement/) |
 | Reformed University | GA | -130 | confirmed_classification_change | safe_with_context | [Reformed University accreditation and authorization](https://www.runiv.edu/aboutru/main/accreditation) |
 | The College of Saint Rose | NY | -115 | expected_structural_change | safe_with_context | [New York State Education Department closure record](https://www.nysed.gov/college-university-evaluation/closures-degree-granting-institutions) |
 
@@ -242,9 +242,9 @@ IPEDS reports 163 total students in Fall 2023, all at the graduate level, with 1
 
 **Automated trigger:** percentage change is at least 100% from a baseline of 100+.
 
-IPEDS reports zero U.S. nonresident students in 2022, 176 in 2023, and zero again in 2024, with the 2023 and 2024 values both marked reported. Anderson University's December 2024 announcement documents 27 initial International Graduate School graduates across the Summer and Fall terms, including 20 Fall graduates, primarily from India with students from Spain and France, and states that the school had offered classes since January 2023. That contemporaneous evidence confirms international graduate activity during 2024 but does not provide a fall-census U.S. nonresident headcount or resolve the IPEDS zero. Preserve the IPEDS series in aggregates and keep institution-specific interpretation held pending reconciliation.
+The project IPEDS series reports zero U.S. nonresident students in 2022, 176 in Fall 2023, and zero again in Fall 2024, with all three values marked reported; total enrollment rises from 4,325 to 4,710 between the two latest fall endpoints. Anderson University's December 11, 2024 announcement documents 27 initial International Graduate School graduates across the Summer and Fall terms, including 20 Fall graduates, primarily from India with students from Spain and France, and states that the school had offered classes since January 2023. Its August 21, 2024 enrollment announcement says the International Graduate School was being launched for the 2024-25 year with master's programs offered to international students, and the current Center for Global Engagement reports more than 400 international students enrolled from more than 38 countries. The later 400-plus figure is not used as a Fall 2024 replacement count, and the institution-defined international population is not assumed definition-identical to IPEDS U.S. nonresident status. Taken together, the same-year program and graduate evidence plus later continuity make a literal disappearance interpretation of the reported 2024 zero untenable, but they do not establish a like-for-like 2024 EFNRALT endpoint or corroborate the -176 movement as a substantive enrollment decline. Preserve IPEDS as the numerical authority, do not substitute any institutional count, and clear only bounded reporting-discontinuity discussion.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `unresolved_discontinuity` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `confirmed_reporting_discontinuity` · **Reviewed:** 2026-10-15.
 
 ### Reformed University (UNITID 490230)
 
