@@ -29,7 +29,7 @@ FIELDS = (
     "analyst_note",
 )
 PUBLICATION_CLASSES = {"safe_with_context", "hold_for_confirmation"}
-SAFE_UNITIDS = {"110635", "114354", "115773", "127820", "129941", "139755", "145637", "146427", "151111", "152637", "157863", "159948", "174428", "186867", "187897", "228459", "228769", "230782", "243780", "244233", "417327"}
+SAFE_UNITIDS = {"110635", "114354", "115773", "127820", "129941", "139755", "145637", "146427", "151111", "152637", "155061", "157863", "159948", "174428", "186867", "187897", "228459", "228769", "230782", "243780", "244233", "417327"}
 
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -114,14 +114,14 @@ def build_rows() -> tuple[list[dict[str, object]], dict[str, object]]:
             f"Medium QA safe-with-context set changed: {sorted(safe_unitids)} != {sorted(SAFE_UNITIDS)}"
         )
     class_counts = Counter(str(row["publication_class"]) for row in joined)
-    if class_counts != Counter({"safe_with_context": 21, "hold_for_confirmation": 29}):
+    if class_counts != Counter({"safe_with_context": 22, "hold_for_confirmation": 28}):
         raise RuntimeError(f"Unexpected medium QA publication classes: {class_counts}")
     if any(
         row["publication_class"] == "safe_with_context"
-        and row["disposition"] not in {"corroborated_external_count", "corroborated_direction", "expected_structural_change"}
+        and row["disposition"] not in {"corroborated_external_count", "corroborated_direction", "expected_structural_change", "confirmed_reporting_discontinuity"}
         for row in joined
     ):
-        raise RuntimeError("Safe medium QA rows must be corroborated counts/directions or documented structural changes")
+        raise RuntimeError("Safe medium QA rows must be corroborated counts/directions or documented structural/reporting changes")
 
     summary: dict[str, object] = {
         "medium_priority_total": len(review_rows),

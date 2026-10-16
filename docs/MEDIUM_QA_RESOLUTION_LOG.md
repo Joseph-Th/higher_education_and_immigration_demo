@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 21
-- **Held for confirmation:** 29
+- **Safe with context:** 22
+- **Held for confirmation:** 28
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -38,7 +38,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Midwestern Baptist Theological Seminary | MO | -458 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Association of Theological Schools annual data tables](https://www.ats.edu/Annual-Data-Tables) |
 | Walden University | MN | -396 | Percentage Movement | External scope mismatch | Hold for confirmation | [Walden international students](https://www.waldenu.edu/international-students) |
 | Weber State University | UT | +373 | Percentage Movement | Corroborated external count | Safe with context | [Weber State Fall 2024 international enrollment](https://www.weber.edu/wsutoday/090524-international-enrollment.html) |
-| Fort Hays State University | KS | -266 | Percentage Movement | External scope mismatch | Hold for confirmation | [Fort Hays International Education Week](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week) |
+| Fort Hays State University | KS | -266 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Fort Hays State University 2023 assurance argument and Fall 2024 international enrollment](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week) |
 | Marywood University | PA | -260 | Percentage Movement | External scope mismatch | Hold for confirmation | [Marywood University 2024-25 Fact Book](https://www.marywood.edu/about/consumer-information/factbooks/Fall-2024-Factbook.pdf?language_id=1) |
 | Dominican University of California | CA | -249 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Dominican University of California 2024-25 Common Data Set and University Facts](https://www.dominican.edu/about/student-success/university-facts) |
 | National Louis University | IL | +218 | Percentage Movement | Partial component corroboration | Hold for confirmation | [National Louis University Undergraduate College Fast Facts](https://nl.edu/undergraduate-college/fast-facts/) |
@@ -268,11 +268,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Fort Hays State University · UNITID 155061
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Fort Hays International Education Week](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week)
-- **Analyst note:** Fort Hays reports an on-campus international population materially larger than the IPEDS U.S. nonresident value, indicating a population or reporting-scope difference. The -266 IPEDS movement remains held.
+- **Decision:** Safe with context
+- **Disposition:** Confirmed reporting discontinuity
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Fort Hays State University 2023 assurance argument and Fall 2024 international enrollment](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week)
+- **Analyst note:** The project IPEDS series reports 282 U.S. nonresident students in Fall 2023 and 16 in Fall 2024, a decline of 266, while total enrollment rises slightly from 12,843 to 12,878. Fort Hays State University's official 2023 HLC Assurance Argument reports the same Fall 2023 total headcount of 12,843 and states that 160 international students were enrolled in Hays as part of on-campus degree programs; a September 2023 university bulletin separately reports 165 international students from 40 countries welcomed for Fall 2023. FHSU's official Fall 2024 enrollment announcement reports total enrollment of 12,878, exactly matching the project IPEDS endpoint, and its November 2024 International Education Week report states that on-campus international enrollment includes 200 students from 45 countries. The institution-defined international population is not assumed definition-identical to IPEDS U.S. nonresident status and is not substituted into the project series. However, exact total-enrollment agreement in both years alongside a nonzero, increasing on-campus international population directly conflicts with interpreting the project IPEDS fall from 282 to 16 as a literal substantive disappearance. Treat the -266 movement as a confirmed reporting/scope discontinuity for bounded discussion, preserve IPEDS as the numerical authority for aggregate calculations, and do not describe the decline as independently confirmed institutional contraction.
 
 ### Marywood University · UNITID 213826
 

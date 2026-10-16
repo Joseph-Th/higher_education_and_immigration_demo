@@ -28,7 +28,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | The University of Texas at Arlington | Absolute Movement | -846 | R→R | +964 | 1,959 | 231.6% | Hispanic / Latino (+823) | R→R | safe_with_context |
 | America Evangelical University | Percentage Movement | -92 | R→R | +100 | 210 | 228.3% | Race / ethnicity unknown (+147) | Z→R | hold_for_confirmation |
 | Vincennes University | Percentage Movement | +78 | R→R | +1,357 | 170 | 217.9% | Race / ethnicity unknown (-166) | R→R | safe_with_context |
-| Fort Hays State University | Percentage Movement | -266 | R→R | +35 | 547 | 205.6% | Hispanic / Latino (+202) | R→R | hold_for_confirmation |
+| Fort Hays State University | Percentage Movement | -266 | R→R | +35 | 547 | 205.6% | Hispanic / Latino (+202) | R→R | safe_with_context |
 | University of California-Berkeley | Absolute Movement | -546 | R→R | +183 | 733 | 134.2% | Asian (+251) | R→R | safe_with_context |
 | New Mexico Highlands University | Percentage Movement | -81 | R→R | -110 | 104 | 128.4% | Race / ethnicity unknown (+92) | R→R | safe_with_context |
 | Northeastern University Oakland | Percentage Movement | +80 | R→R | -18 | 100 | 125.0% | Hispanic / Latino (-40) | R→R | hold_for_confirmation |
@@ -62,7 +62,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 23 | Midwestern Baptist Theological Seminary | MO | Percentage Movement | -458 | R→R | 564 | 123.1% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 24 | Walden University | MN | Percentage Movement | -396 | R→R | 5,630 | 1421.7% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 25 | Weber State University | UT | Percentage Movement | +373 | R→R | 327 | 87.7% | Countermovement at least half as large as the nonresident change | safe_with_context |
-| 26 | Fort Hays State University | KS | Percentage Movement | -266 | R→R | 547 | 205.6% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| 26 | Fort Hays State University | KS | Percentage Movement | -266 | R→R | 547 | 205.6% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 27 | Marywood University | PA | Percentage Movement | -260 | R→R | 66 | 25.4% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 28 | Dominican University of California | CA | Percentage Movement | -249 | R→R | 263 | 105.6% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 29 | National Louis University | IL | Percentage Movement | +218 | R→R | 18 | 8.3% | Countermovement below half of the nonresident change | hold_for_confirmation |

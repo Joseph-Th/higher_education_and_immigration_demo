@@ -167,7 +167,7 @@ It includes national headline metrics, level-change decomposition, state recover
 
 `qa_resolution_summary.json` is the compact publication summary of the manual QA disposition layer. It records the full high-priority queue size and coverage percentage, counts classified as `safe_with_context` versus `hold_for_confirmation`, disposition counts, and three deterministic featured case studies used by the public brief and research memo. It is generated from `qa_resolution_log.csv` only after the log has been reconciled to every current high-priority queue record.
 
-`medium_qa_resolution_summary.json` is the compact summary of the medium-priority evidence-review layer. It records 50/50 coverage, the 21 safe / 29 held publication split, disposition counts, candidate-directory overlap coverage, and the exact safe UNITID set.
+`medium_qa_resolution_summary.json` is the compact summary of the medium-priority evidence-review layer. It records 50/50 coverage, the 22 safe / 28 held publication split, disposition counts, candidate-directory overlap coverage, and the exact safe UNITID set.
 
 `state_profiles.json` is the machine-readable state-publication product generated from validated state and institution outputs. It contains one profile for each of the 50 states plus DC with current metrics, change windows, top institutions, and the 2015-2024 annual series. `site/state.html` reads this file to provide shareable state views; generated Markdown counterparts live in `docs/state_profiles/`.
 
