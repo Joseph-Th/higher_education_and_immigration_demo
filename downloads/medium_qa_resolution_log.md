@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 24
-- **Held for confirmation:** 26
+- **Safe with context:** 25
+- **Held for confirmation:** 25
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -19,7 +19,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Indiana Wesleyan University-National & Global | IN | +855 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Indiana Wesleyan University President's Report 2024](https://www.indwes.edu/about/offices/administration/ADMIN_10067_Presidents-Annual-Report-2024.pdf) |
 | Valencia College | FL | +692 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Valencia Institutional Research international-student archive](https://valenciacollege.edu/academics/analytics-and-planning/analytics-and-reporting/reporting/internal/enrollment.php) |
 | Dallas College | TX | +628 | Absolute And Percentage | Corroborated direction | Safe with context | [Dallas College 2024-25 ACFR Fall Student Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/about-dallas-college/financial/reports/audited-financial-statements/2024-2025-ACFR.pdf) |
-| Chaffey College | CA | -611 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Chaffey institutional research reports](https://www.chaffey.edu/ir/reports-publications.php) |
+| Chaffey College | CA | -611 | Absolute And Percentage | Corroborated direction | Safe with context | [Chaffey College Fall 2023 and Fall 2024 First Census Fast Facts](https://www.chaffey.edu/ir/reports-publications.php) |
 | Lindsey Wilson College | KY | +590 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf) |
 | Texas State University | TX | +558 | Absolute And Percentage | Corroborated external count | Safe with context | [Texas State strategic progress dashboard](https://www.president.txst.edu/strategic-vision/academic-progress.html) |
 | Sacred Heart University | CT | -508 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Sacred Heart University November 2024 graduate and international enrollment context](https://www.sacredheart.edu/news-room/news-listing/kristof-zaba-helps-shus-international-and-grad-students-succeed/) |
@@ -116,11 +116,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Chaffey College · UNITID 111939
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Chaffey institutional research reports](https://www.chaffey.edu/ir/reports-publications.php)
-- **Analyst note:** Chaffey publishes Fall 2023 and Fall 2024 Fast Facts, but its public residency reporting combines out-of-state and international categories rather than reproducing the IPEDS U.S. nonresident measure. The -611 movement therefore remains held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Chaffey College Fall 2023 and Fall 2024 First Census Fast Facts](https://www.chaffey.edu/ir/reports-publications.php)
+- **Analyst note:** The project IPEDS series reports 698 U.S. nonresident students in Fall 2023 and 87 in Fall 2024, a decline of 611 (-87.5%), while all-student enrollment rises from 20,632 to 22,460. Chaffey College Institutional Research publishes district-wide Fast Facts for the same two Fall first-census terms. The Fall 2023 report shows 20,996 credit students and reports 4.1% in the combined Out-of-State/International residency category; the Fall 2024 report shows 22,137 credit students and 2.0% in that same combined category. The institutional category is broader than IPEDS U.S. nonresident status and its percentages are rounded, so its values are not substituted or converted into exact headcounts. Even with those scope limits, the same-label first-census share falls by more than half while total credit headcount increases, independently corroborating a material downward direction across the same Fall endpoints. Preserve IPEDS as the numerical authority and clear only bounded direction-level discussion of the -611 movement; do not describe the institutional residency category as definition-identical to IPEDS or use it to validate the exact endpoint counts.
 
 ### Lindsey Wilson College · UNITID 157216
 
