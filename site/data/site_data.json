@@ -1230,17 +1230,17 @@
     "reviewed_count": 27,
     "high_priority_total": 27,
     "coverage_pct": 100.0,
-    "safe_with_context": 17,
-    "hold_for_confirmation": 10,
+    "safe_with_context": 18,
+    "hold_for_confirmation": 9,
     "dispositions": {
       "confirmed_baseline_mismatch": 1,
       "confirmed_classification_change": 1,
       "confirmed_reporting_discontinuity": 5,
-      "corroborated_direction": 4,
+      "corroborated_direction": 5,
       "corroborated_external_count": 6,
       "expected_structural_change": 1,
       "external_scope_mismatch": 4,
-      "partial_component_corroboration": 5
+      "partial_component_corroboration": 4
     },
     "reviewed_unitids": [
       "156541",
@@ -1317,15 +1317,15 @@
     "case_studies": [
       {
         "case_type": "unresolved_anomaly",
-        "unitid": "228787",
-        "institution": "The University of Texas at Dallas",
-        "state": "TX",
-        "absolute_change": -1225,
+        "unitid": "217475",
+        "institution": "Community College of Rhode Island",
+        "state": "RI",
+        "absolute_change": 1176,
         "disposition": "partial_component_corroboration",
         "publication_class": "hold_for_confirmation",
-        "evidence_label": "UT Dallas Common Data Set 2024-2025",
-        "evidence_url": "https://dox.utdallas.edu/report44675",
-        "analyst_note": "IPEDS falls from 6,828 to 5,603 U.S. nonresident students. UT Dallas's official 2024-25 Common Data Set uses an IPEDS-aligned nonresident definition and reports 1,205 undergraduate nonresidents, exactly matching the project's 2024 IPEDS undergraduate component. The same source does not provide the corresponding graduate race/ethnicity count needed to reconcile the full 5,603 all-student total or the decline from 2023, so the component is corroborated while the institution-level movement remains held."
+        "evidence_label": "CCRI Institutional Effectiveness Enrollment Dashboard",
+        "evidence_url": "https://www.ccri.edu/ie/",
+        "analyst_note": "IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. The dashboard's demographic view does not expose a comparable U.S. nonresident or international-status category, so the institutional totals are corroborated while the 12-to-1,188 nonresident jump remains unresolved. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure."
       },
       {
         "case_type": "corroborated_movement",

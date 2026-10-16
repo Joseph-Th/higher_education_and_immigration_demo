@@ -27,6 +27,9 @@ except ImportError as exc:  # pragma: no cover - explicit environment failure pa
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
 SITE_DATA = json.loads((SITE / "data" / "site_data.json").read_text(encoding="utf-8"))
+MEDIUM_QA_SUMMARY = json.loads(
+    (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")
+)
 
 
 class QuietHandler(SimpleHTTPRequestHandler):
@@ -322,7 +325,13 @@ def inspect_qa_review(browser, base_url: str, *, width: int, height: int) -> Non
     if response is None or not response.ok:
         raise AssertionError(f"QA review page failed at {width}px")
     summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("27/27", "17", "10", "100%"):
+    resolution = SITE_DATA["qa_resolution_summary"]
+    for expected in (
+        "27/27",
+        str(resolution["safe_with_context"]),
+        str(resolution["hold_for_confirmation"]),
+        "100%",
+    ):
         if expected not in summary:
             raise AssertionError(f"QA review summary is missing {expected}")
     table = page.locator(".section-tinted tbody")
@@ -519,7 +528,16 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
     if hero.get_attribute("data-year-decision") != "HOLD_YEAR_ADVANCE":
         raise AssertionError("Release readiness year-advance machine decision is incorrect")
     summary = page.locator(".handoff-summary").inner_text()
-    for expected in ("READY WITH CLAIM-LEVEL HOLDS", "HOLD YEAR ADVANCE", "34", "2/4"):
+    held_claims = (
+        SITE_DATA["qa_resolution_summary"]["hold_for_confirmation"]
+        + MEDIUM_QA_SUMMARY["hold_for_confirmation"]
+    )
+    for expected in (
+        "READY WITH CLAIM-LEVEL HOLDS",
+        "HOLD YEAR ADVANCE",
+        str(held_claims),
+        "2/4",
+    ):
         if expected not in summary:
             raise AssertionError(f"Release readiness summary is missing {expected}")
     gate_text = page.locator("#readiness-gates").inner_text()

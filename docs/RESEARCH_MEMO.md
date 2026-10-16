@@ -18,15 +18,15 @@ From 2023 to 2024, U.S. nonresident enrollment increased **+29,539 (+2.9%)**. Un
 
 ## Analyst judgment changes what gets published
 
-The automated queue identified **27 high-priority** latest-release records. The manual review layer now covers **27/27** of them: **17** are safe to discuss with explicit context and **10** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.
+The automated queue identified **27 high-priority** latest-release records. The manual review layer now covers **27/27** of them: **18** are safe to discuss with explicit context and **9** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.
 
-### Hold the anomaly: The University of Texas at Dallas
+### Hold the anomaly: Community College of Rhode Island
 
-**Observed change:** -1,225  
+**Observed change:** +1,176  
 **Publication decision:** Hold institution-specific claim  
-**Evidence:** [UT Dallas Common Data Set 2024-2025](https://dox.utdallas.edu/report44675)
+**Evidence:** [CCRI Institutional Effectiveness Enrollment Dashboard](https://www.ccri.edu/ie/)
 
-IPEDS falls from 6,828 to 5,603 U.S. nonresident students. UT Dallas's official 2024-25 Common Data Set uses an IPEDS-aligned nonresident definition and reports 1,205 undergraduate nonresidents, exactly matching the project's 2024 IPEDS undergraduate component. The same source does not provide the corresponding graduate race/ethnicity count needed to reconcile the full 5,603 all-student total or the decline from 2023, so the component is corroborated while the institution-level movement remains held.
+IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. The dashboard's demographic view does not expose a comparable U.S. nonresident or international-status category, so the institutional totals are corroborated while the 12-to-1,188 nonresident jump remains unresolved. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure.
 
 ### Corroborate the direction: Trine University-Regional/Non-Traditional Campuses
 

@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **17** are safe to discuss with explicit context.
-- **10** remain held for institution-specific interpretation.
+- **18** are safe to discuss with explicit context.
+- **9** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-15**.
 
@@ -22,7 +22,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Miami Dade College | FL | +1,458 | external_scope_mismatch | hold_for_confirmation | [Miami Dade College 2024-25 Fact Book Credit Student Enrollment Profile](https://www.mdc.edu/media/miami-dade-college/institutional-research/documents/fb_credit_student_enrollment_profile.pdf) |
 | Trine University-Regional/Non-Traditional Campuses | IN | +1,441 | corroborated_direction | safe_with_context | [Trine University fall 2024 record-enrollment announcement](https://www.trine.edu/news/2024/record-enrollment.aspx) |
 | Campbellsville University | KY | -1,358 | corroborated_direction | safe_with_context | [Campbellsville University institutional enrollment reports](https://www.campbellsville.edu/academics/academic-affairs/officeofinstitutionalresearch-institutionalreviewboard.html) |
-| The University of Texas at Dallas | TX | -1,225 | partial_component_corroboration | hold_for_confirmation | [UT Dallas Common Data Set 2024-2025](https://dox.utdallas.edu/report44675) |
+| The University of Texas at Dallas | TX | -1,225 | corroborated_direction | safe_with_context | [University of Texas System FY 2026 Operating Budget Summary](https://www.utsystem.edu/sites/default/files/documents/report-state/2025/operating-budget-summary-system-fy-2026/fy-2026-operating-budget-summaries-of-8-22-2025-final.pdf) |
 | St. Francis College | NY | +1,220 | corroborated_external_count | safe_with_context | [St. Francis College institutional census archive](https://www.sfc.edu/why-sfc/office-of-institutional-effectiveness-accreditation/) |
 | Community College of Rhode Island | RI | +1,176 | partial_component_corroboration | hold_for_confirmation | [CCRI Institutional Effectiveness Enrollment Dashboard](https://www.ccri.edu/ie/) |
 | University of North Texas | TX | -1,052 | corroborated_external_count | safe_with_context | [University of North Texas Fall fact-sheet archive](https://institutionalresearch.unt.edu/fact-book/index.html) |
@@ -98,9 +98,9 @@ IPEDS declines from 4,408 U.S. nonresident students in fall 2023 to 3,050 in fal
 
 **Automated trigger:** absolute change is at least 1,000 students.
 
-IPEDS falls from 6,828 to 5,603 U.S. nonresident students. UT Dallas's official 2024-25 Common Data Set uses an IPEDS-aligned nonresident definition and reports 1,205 undergraduate nonresidents, exactly matching the project's 2024 IPEDS undergraduate component. The same source does not provide the corresponding graduate race/ethnicity count needed to reconcile the full 5,603 all-student total or the decline from 2023, so the component is corroborated while the institution-level movement remains held.
+The project IPEDS series reports 6,828 U.S. nonresident students in Fall 2023 and 5,603 in Fall 2024, a decline of 1,225. That decline is concentrated at the graduate level: graduate nonresidents fall from 5,883 to 4,398 (-1,485), while undergraduate nonresidents rise from 945 to 1,205 (+260). The University of Texas System's official FY 2026 Operating Budget Summary independently reports that UT Dallas Fall 2024 enrollment declined 3.3%, from 30,885 to 29,886 students, exactly matching the project IPEDS all-student endpoints, and states that the decline was largely attributed to normalization of international master's enrollment after a post-pandemic surge, together with graduation of unusually large delayed cohorts. UT Dallas's 2024-25 Common Data Set also reports 1,205 undergraduate nonresidents, exactly matching the project Fall 2024 undergraduate component. These official sources independently support the direction and graduate/international concentration of the decline, but they do not publish a like-for-like all-student Fall 2024 international/nonresident headcount or establish definition identity with IPEDS. Preserve IPEDS as the numerical authority and clear only bounded direction- and graduate-concentration discussion; do not substitute an institutional count or quantify causation beyond the institution's own statement.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_direction` · **Reviewed:** 2026-10-15.
 
 ### St. Francis College (UNITID 195173)
 

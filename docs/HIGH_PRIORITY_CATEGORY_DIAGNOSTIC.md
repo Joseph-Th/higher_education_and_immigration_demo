@@ -38,7 +38,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Miami Dade College | Continuing | +1,458 | R→R | +18,344 | 0.1% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | Trine University-Regional/Non-Traditional Campuses | Continuing | +1,441 | R→R | +197 | 0.8% | Countermovement below half of the nonresident change | safe_with_context |
 | Campbellsville University | Continuing | -1,358 | R→R | -257 | 41.4% | Countermovement below half of the nonresident change | safe_with_context |
-| The University of Texas at Dallas | Continuing | -1,225 | R→R | +226 | 48.8% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| The University of Texas at Dallas | Continuing | -1,225 | R→R | +226 | 48.8% | Countermovement below half of the nonresident change | safe_with_context |
 | St. Francis College | Continuing | +1,220 | R→R | -205 | 17.9% | Countermovement below half of the nonresident change | safe_with_context |
 | Community College of Rhode Island | Continuing | +1,176 | R→R | -1,419 | 121.4% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | University of North Texas | Continuing | -1,052 | R→R | +409 | 86.0% | Countermovement at least half as large as the nonresident change | safe_with_context |

@@ -526,8 +526,8 @@ class ResearchProductTests(unittest.TestCase):
         q01 = next(row for row in handoff if row["claim_id"] == "Q01")
         resolution = json.loads((ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8"))
         self.assertIn(str(resolution["reviewed_count"]), q01["public_copy"])
-        self.assertIn("17 safe with context", q01["public_copy"])
-        self.assertIn("10 held for confirmation", q01["public_copy"])
+        self.assertIn(f"{resolution['safe_with_context']} safe with context", q01["public_copy"])
+        self.assertIn(f"{resolution['hold_for_confirmation']} held for confirmation", q01["public_copy"])
         self.assertEqual(q01["publication_status"], "READY WITH CLAIM-LEVEL HOLDS")
         q02 = next(row for row in handoff if row["claim_id"] == "Q02")
         self.assertIn("226 unique UNITIDs", q02["public_copy"])
@@ -639,7 +639,19 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(html.count('data-readiness-gate="'), 8)
         self.assertIn("READY_WITH_CLAIM_LEVEL_HOLDS", html)
         self.assertIn("HOLD_YEAR_ADVANCE", html)
-        self.assertIn("34</strong><span>institution-specific claims still held", html)
+        high_resolution = json.loads(
+            (ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8")
+        )
+        medium_resolution = json.loads(
+            (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")
+        )
+        held_claims = (
+            high_resolution["hold_for_confirmation"]
+            + medium_resolution["hold_for_confirmation"]
+        )
+        self.assertIn(
+            f"{held_claims}</strong><span>institution-specific claims still held", html
+        )
 
     def test_freshness_monitor_preserves_release_gate_and_trigger_boundaries(self) -> None:
         snapshot = json.loads(
@@ -918,15 +930,31 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(sum(bool(row["candidate_change_class"]) for row in watchlist), 154)
 
         high = [row for row in watchlist if row["current_review_priority"] == "high"]
+        high_summary = json.loads(
+            (ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8")
+        )
         self.assertEqual(
             Counter(row["high_priority_publication_class"] for row in high),
-            Counter({"hold_for_confirmation": 10, "safe_with_context": 17}),
+            Counter(
+                {
+                    "hold_for_confirmation": high_summary["hold_for_confirmation"],
+                    "safe_with_context": high_summary["safe_with_context"],
+                }
+            ),
         )
         medium = [row for row in watchlist if row["current_review_priority"] == "medium"]
         self.assertTrue(all(not row["high_priority_publication_class"] for row in medium))
+        medium_summary = json.loads(
+            (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")
+        )
         self.assertEqual(
             Counter(row["medium_priority_publication_class"] for row in medium),
-            Counter({"hold_for_confirmation": 24, "safe_with_context": 26}),
+            Counter(
+                {
+                    "hold_for_confirmation": medium_summary["hold_for_confirmation"],
+                    "safe_with_context": medium_summary["safe_with_context"],
+                }
+            ),
         )
         self.assertTrue(all(not row["medium_priority_publication_class"] for row in high))
 
@@ -2010,8 +2038,8 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(summary["coverage_pct"], 100.0)
         self.assertTrue(summary["required_high_priority_covered"])
         self.assertEqual(set(summary["required_high_priority_unitids"]), {row["unitid"] for row in high_priority})
-        self.assertEqual(summary["safe_with_context"], 17)
-        self.assertEqual(summary["hold_for_confirmation"], 10)
+        self.assertEqual(summary["safe_with_context"], 18)
+        self.assertEqual(summary["hold_for_confirmation"], 9)
         self.assertTrue(summary["required_top_10_covered"])
         expected_top_10 = [
             row["unitid"]
@@ -2032,7 +2060,7 @@ class ResearchProductTests(unittest.TestCase):
         unresolved_case = next(
             case for case in summary["case_studies"] if case["case_type"] == "unresolved_anomaly"
         )
-        self.assertEqual(unresolved_case["unitid"], "228787")
+        self.assertEqual(unresolved_case["unitid"], "217475")
         self.assertEqual(unresolved_case["disposition"], "partial_component_corroboration")
         self.assertTrue(
             {case["unitid"] for case in summary["case_studies"]}.issubset(
@@ -2060,8 +2088,16 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_unitid["159647"]["publication_class"], "safe_with_context")
         self.assertEqual(by_unitid["159647"]["disposition"], "corroborated_direction")
         self.assertIn("six-year-enrollment-milestone", by_unitid["159647"]["evidence_url"])
-        self.assertEqual(by_unitid["228787"]["disposition"], "partial_component_corroboration")
-        self.assertIn("report44675", by_unitid["228787"]["evidence_url"])
+        self.assertEqual(by_unitid["228787"]["publication_class"], "safe_with_context")
+        self.assertEqual(by_unitid["228787"]["disposition"], "corroborated_direction")
+        self.assertIn("operating-budget-summary-system-fy-2026", by_unitid["228787"]["evidence_url"])
+        self.assertIn("6,828 U.S. nonresident students in Fall 2023", by_unitid["228787"]["analyst_note"])
+        self.assertIn("5,603 in Fall 2024", by_unitid["228787"]["analyst_note"])
+        self.assertIn("graduate nonresidents fall from 5,883 to 4,398", by_unitid["228787"]["analyst_note"])
+        self.assertIn("from 30,885 to 29,886 students", by_unitid["228787"]["analyst_note"])
+        self.assertIn("normalization of international master's enrollment", by_unitid["228787"]["analyst_note"])
+        self.assertIn("1,205 undergraduate nonresidents", by_unitid["228787"]["analyst_note"])
+        self.assertIn("clear only bounded direction- and graduate-concentration discussion", by_unitid["228787"]["analyst_note"])
         self.assertEqual(by_unitid["247834"]["publication_class"], "hold_for_confirmation")
         self.assertEqual(by_unitid["247834"]["disposition"], "confirmed_baseline_mismatch")
         self.assertIn("cds-2023-2024-collin-college.pdf", by_unitid["247834"]["evidence_url"])
