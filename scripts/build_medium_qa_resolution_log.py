@@ -29,7 +29,7 @@ FIELDS = (
     "analyst_note",
 )
 PUBLICATION_CLASSES = {"safe_with_context", "hold_for_confirmation"}
-SAFE_UNITIDS = {"110635", "111939", "114354", "115773", "127820", "129941", "139755", "145637", "146427", "151111", "152637", "154697", "155061", "157863", "159948", "164988", "174428", "186867", "187897", "224615", "228459", "228769", "230782", "243780", "244233", "417327"}
+SAFE_UNITIDS = {"110635", "111939", "114354", "115773", "127820", "129941", "139755", "145637", "146427", "151111", "152637", "154697", "155061", "157863", "159948", "164492", "164988", "174428", "186867", "187897", "224615", "228459", "228769", "230782", "243780", "244233", "417327"}
 
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -114,7 +114,7 @@ def build_rows() -> tuple[list[dict[str, object]], dict[str, object]]:
             f"Medium QA safe-with-context set changed: {sorted(safe_unitids)} != {sorted(SAFE_UNITIDS)}"
         )
     class_counts = Counter(str(row["publication_class"]) for row in joined)
-    if class_counts != Counter({"safe_with_context": 26, "hold_for_confirmation": 24}):
+    if class_counts != Counter({"safe_with_context": 27, "hold_for_confirmation": 23}):
         raise RuntimeError(f"Unexpected medium QA publication classes: {class_counts}")
     if any(
         row["publication_class"] == "safe_with_context"
