@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 23
-- **Held for confirmation:** 27
+- **Safe with context:** 24
+- **Held for confirmation:** 26
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -18,7 +18,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | City College-Altamonte Springs | FL | +0 | Structural Or Reporting | Expected structural change | Safe with context | [City College July 2024 teach-out announcement reported by Higher Ed Dive](https://www.highereddive.com/news/florida-for-profit-city-college-to-close/721917/) |
 | Indiana Wesleyan University-National & Global | IN | +855 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Indiana Wesleyan University President's Report 2024](https://www.indwes.edu/about/offices/administration/ADMIN_10067_Presidents-Annual-Report-2024.pdf) |
 | Valencia College | FL | +692 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Valencia Institutional Research international-student archive](https://valenciacollege.edu/academics/analytics-and-planning/analytics-and-reporting/reporting/internal/enrollment.php) |
-| Dallas College | TX | +628 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Dallas College 2023-24 Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/dallas-college-profile.pdf) |
+| Dallas College | TX | +628 | Absolute And Percentage | Corroborated direction | Safe with context | [Dallas College 2024-25 ACFR Fall Student Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/about-dallas-college/financial/reports/audited-financial-statements/2024-2025-ACFR.pdf) |
 | Chaffey College | CA | -611 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Chaffey institutional research reports](https://www.chaffey.edu/ir/reports-publications.php) |
 | Lindsey Wilson College | KY | +590 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf) |
 | Texas State University | TX | +558 | Absolute And Percentage | Corroborated external count | Safe with context | [Texas State strategic progress dashboard](https://www.president.txst.edu/strategic-vision/academic-progress.html) |
@@ -108,11 +108,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Dallas College · UNITID 224615
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
 - **Reviewed:** 2026-10-15
-- **Evidence:** [Dallas College 2023-24 Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/dallas-college-profile.pdf)
-- **Analyst note:** The project IPEDS series reports 2,127 U.S. nonresident students in Fall 2023 and 2,755 in Fall 2024, an increase of 628, with Fall-census all-student totals of 66,592 and 69,749. Dallas College's official profile explicitly spans Fall 2023, Spring 2024, and Summer 2024 and reports 127,854 total unduplicated students, including 103,241 credit students, with International students shown as 2% of the profile population. That academic-year unduplicated population is nearly twice the project Fall 2023 IPEDS headcount, so the profile's international percentage cannot be treated as a like-for-like Fall-census nonresident measure or converted into an IPEDS endpoint. Dallas College's 2024-25 annual financial report later states that international enrollment grew 25% to approximately 3,000 students over Fall 2024, confirming that the institution maintains an international-enrollment series but without publishing the comparable Fall 2024 base count or establishing definition identity with IPEDS U.S. nonresident status. Treat the institutional materials as a documented timing/population-scope mismatch, preserve IPEDS as the numerical authority, and keep the +628 institution-specific movement held.
+- **Evidence:** [Dallas College 2024-25 ACFR Fall Student Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/about-dallas-college/financial/reports/audited-financial-statements/2024-2025-ACFR.pdf)
+- **Analyst note:** The project IPEDS series reports 2,127 U.S. nonresident students in Fall 2023 and 2,755 in Fall 2024, an increase of 628 (+29.5%), with Fall-census all-student totals rising from 66,592 to 69,749. Dallas College's official 2024-25 Annual Comprehensive Financial Report publishes a two-year Fall Student Profile: the college's Ethnic Origin table reports 1,582 Foreign students among 68,860 total credit students in Fall 2023 and 2,399 among 71,418 in Fall 2024, an increase of 817 (+51.6%). The institutional Fall series therefore independently corroborates a large upward direction across the same two Fall endpoints. It is not a replacement series: the institutional total-credit frame exceeds project IPEDS totals by 2,268 students in 2023 and 1,669 in 2024, and the institutional Foreign counts are 545 and 356 below the IPEDS U.S. nonresident endpoints. The ACFR does not establish that its Foreign category is definition-identical to IPEDS U.S. nonresident status. Preserve IPEDS as the numerical authority, do not substitute the institutional counts or percentage change, and clear only bounded direction-level discussion that the project +628 movement is independently accompanied by a substantial increase in Dallas College's own Fall Foreign series.
 
 ### Chaffey College · UNITID 111939
 
