@@ -1,7 +1,7 @@
 {
   "source": "site/research-memo.html",
-  "source_sha256": "a9cbbbff6692bdc2983448b747899119a5938169783b982571e2fbeeaf41d62a",
-  "pdf_sha256": "80380e98d4309e264954e5282fb2e6210f0d7d6e54ef3eab9df3750534f244db",
-  "pdf_bytes": 117347,
+  "source_sha256": "9b400aedca8c51569ec4be36581b93ae4139c645fc76c413ab27b54a809ba50e",
+  "pdf_sha256": "e6c94da24dec62c80fd2b3e75f0f84dfa78069e45d9eab55ae128bab09324881",
+  "pdf_bytes": 117020,
   "page_count": 3
 }

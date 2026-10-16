@@ -526,8 +526,8 @@ class ResearchProductTests(unittest.TestCase):
         q01 = next(row for row in handoff if row["claim_id"] == "Q01")
         resolution = json.loads((ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8"))
         self.assertIn(str(resolution["reviewed_count"]), q01["public_copy"])
-        self.assertIn("16 safe with context", q01["public_copy"])
-        self.assertIn("11 held for confirmation", q01["public_copy"])
+        self.assertIn("17 safe with context", q01["public_copy"])
+        self.assertIn("10 held for confirmation", q01["public_copy"])
         self.assertEqual(q01["publication_status"], "READY WITH CLAIM-LEVEL HOLDS")
         q02 = next(row for row in handoff if row["claim_id"] == "Q02")
         self.assertIn("226 unique UNITIDs", q02["public_copy"])
@@ -639,7 +639,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(html.count('data-readiness-gate="'), 8)
         self.assertIn("READY_WITH_CLAIM_LEVEL_HOLDS", html)
         self.assertIn("HOLD_YEAR_ADVANCE", html)
-        self.assertIn("43</strong><span>institution-specific claims still held", html)
+        self.assertIn("42</strong><span>institution-specific claims still held", html)
 
     def test_freshness_monitor_preserves_release_gate_and_trigger_boundaries(self) -> None:
         snapshot = json.loads(
@@ -920,7 +920,7 @@ class ResearchProductTests(unittest.TestCase):
         high = [row for row in watchlist if row["current_review_priority"] == "high"]
         self.assertEqual(
             Counter(row["high_priority_publication_class"] for row in high),
-            Counter({"hold_for_confirmation": 11, "safe_with_context": 16}),
+            Counter({"hold_for_confirmation": 10, "safe_with_context": 17}),
         )
         medium = [row for row in watchlist if row["current_review_priority"] == "medium"]
         self.assertTrue(all(not row["high_priority_publication_class"] for row in medium))
@@ -1879,8 +1879,8 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(summary["coverage_pct"], 100.0)
         self.assertTrue(summary["required_high_priority_covered"])
         self.assertEqual(set(summary["required_high_priority_unitids"]), {row["unitid"] for row in high_priority})
-        self.assertEqual(summary["safe_with_context"], 16)
-        self.assertEqual(summary["hold_for_confirmation"], 11)
+        self.assertEqual(summary["safe_with_context"], 17)
+        self.assertEqual(summary["hold_for_confirmation"], 10)
         self.assertTrue(summary["required_top_10_covered"])
         expected_top_10 = [
             row["unitid"]
@@ -1898,6 +1898,11 @@ class ResearchProductTests(unittest.TestCase):
             {case["case_type"] for case in summary["case_studies"]},
             {"unresolved_anomaly", "corroborated_movement", "structural_change"},
         )
+        unresolved_case = next(
+            case for case in summary["case_studies"] if case["case_type"] == "unresolved_anomaly"
+        )
+        self.assertEqual(unresolved_case["unitid"], "228787")
+        self.assertEqual(unresolved_case["disposition"], "partial_component_corroboration")
         self.assertTrue(
             {case["unitid"] for case in summary["case_studies"]}.issubset(
                 {row["unitid"] for row in log}
@@ -1975,9 +1980,16 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(by_unitid["110778"]["publication_class"], "hold_for_confirmation")
         self.assertEqual(by_unitid["110778"]["disposition"], "partial_component_corroboration")
         self.assertIn("Official_Fall-Quick-Facts-2024.pdf", by_unitid["110778"]["evidence_url"])
-        self.assertEqual(by_unitid["217633"]["publication_class"], "hold_for_confirmation")
-        self.assertEqual(by_unitid["217633"]["disposition"], "unresolved_discontinuity")
-        self.assertIn("first-international-graduate-school-graduates", by_unitid["217633"]["evidence_url"])
+        self.assertEqual(by_unitid["217633"]["publication_class"], "safe_with_context")
+        self.assertEqual(by_unitid["217633"]["disposition"], "confirmed_reporting_discontinuity")
+        self.assertIn("center-for-global-engagement", by_unitid["217633"]["evidence_url"])
+        self.assertIn("176 in Fall 2023", by_unitid["217633"]["analyst_note"])
+        self.assertIn("zero again in Fall 2024", by_unitid["217633"]["analyst_note"])
+        self.assertIn("27 initial International Graduate School graduates", by_unitid["217633"]["analyst_note"])
+        self.assertIn("20 Fall graduates", by_unitid["217633"]["analyst_note"])
+        self.assertIn("more than 400 international students enrolled", by_unitid["217633"]["analyst_note"])
+        self.assertIn("literal disappearance interpretation", by_unitid["217633"]["analyst_note"])
+        self.assertIn("do not establish a like-for-like 2024 EFNRALT endpoint", by_unitid["217633"]["analyst_note"])
         self.assertEqual(by_unitid["217475"]["publication_class"], "hold_for_confirmation")
         self.assertEqual(by_unitid["217475"]["disposition"], "partial_component_corroboration")
         self.assertEqual(by_unitid["217475"]["evidence_url"], "https://www.ccri.edu/ie/")

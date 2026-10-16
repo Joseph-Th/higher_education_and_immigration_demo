@@ -214,7 +214,7 @@ def main() -> int:
             joined,
             case_type="unresolved_anomaly",
             publication_class="hold_for_confirmation",
-            disposition="unresolved_discontinuity",
+            disposition="partial_component_corroboration",
         ),
         featured_case(
             joined,

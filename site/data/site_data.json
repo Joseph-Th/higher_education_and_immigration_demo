@@ -1230,18 +1230,17 @@
     "reviewed_count": 27,
     "high_priority_total": 27,
     "coverage_pct": 100.0,
-    "safe_with_context": 16,
-    "hold_for_confirmation": 11,
+    "safe_with_context": 17,
+    "hold_for_confirmation": 10,
     "dispositions": {
       "confirmed_baseline_mismatch": 1,
       "confirmed_classification_change": 1,
-      "confirmed_reporting_discontinuity": 4,
+      "confirmed_reporting_discontinuity": 5,
       "corroborated_direction": 4,
       "corroborated_external_count": 6,
       "expected_structural_change": 1,
       "external_scope_mismatch": 4,
-      "partial_component_corroboration": 5,
-      "unresolved_discontinuity": 1
+      "partial_component_corroboration": 5
     },
     "reviewed_unitids": [
       "156541",
@@ -1318,15 +1317,15 @@
     "case_studies": [
       {
         "case_type": "unresolved_anomaly",
-        "unitid": "217633",
-        "institution": "Anderson University",
-        "state": "SC",
-        "absolute_change": -176,
-        "disposition": "unresolved_discontinuity",
+        "unitid": "228787",
+        "institution": "The University of Texas at Dallas",
+        "state": "TX",
+        "absolute_change": -1225,
+        "disposition": "partial_component_corroboration",
         "publication_class": "hold_for_confirmation",
-        "evidence_label": "Anderson University first International Graduate School graduates",
-        "evidence_url": "https://andersonuniversity.edu/news/anderson-university-celebrates-first-international-graduate-school-graduates/",
-        "analyst_note": "IPEDS reports zero U.S. nonresident students in 2022, 176 in 2023, and zero again in 2024, with the 2023 and 2024 values both marked reported. Anderson University's December 2024 announcement documents 27 initial International Graduate School graduates across the Summer and Fall terms, including 20 Fall graduates, primarily from India with students from Spain and France, and states that the school had offered classes since January 2023. That contemporaneous evidence confirms international graduate activity during 2024 but does not provide a fall-census U.S. nonresident headcount or resolve the IPEDS zero. Preserve the IPEDS series in aggregates and keep institution-specific interpretation held pending reconciliation."
+        "evidence_label": "UT Dallas Common Data Set 2024-2025",
+        "evidence_url": "https://dox.utdallas.edu/report44675",
+        "analyst_note": "IPEDS falls from 6,828 to 5,603 U.S. nonresident students. UT Dallas's official 2024-25 Common Data Set uses an IPEDS-aligned nonresident definition and reports 1,205 undergraduate nonresidents, exactly matching the project's 2024 IPEDS undergraduate component. The same source does not provide the corresponding graduate race/ethnicity count needed to reconcile the full 5,603 all-student total or the decline from 2023, so the component is corroborated while the institution-level movement remains held."
       },
       {
         "case_type": "corroborated_movement",

@@ -18,15 +18,15 @@ From 2023 to 2024, U.S. nonresident enrollment increased **+29,539 (+2.9%)**. Un
 
 ## Analyst judgment changes what gets published
 
-The automated queue identified **27 high-priority** latest-release records. The manual review layer now covers **27/27** of them: **16** are safe to discuss with explicit context and **11** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.
+The automated queue identified **27 high-priority** latest-release records. The manual review layer now covers **27/27** of them: **17** are safe to discuss with explicit context and **10** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.
 
-### Hold the anomaly: Anderson University
+### Hold the anomaly: The University of Texas at Dallas
 
-**Observed change:** -176  
+**Observed change:** -1,225  
 **Publication decision:** Hold institution-specific claim  
-**Evidence:** [Anderson University first International Graduate School graduates](https://andersonuniversity.edu/news/anderson-university-celebrates-first-international-graduate-school-graduates/)
+**Evidence:** [UT Dallas Common Data Set 2024-2025](https://dox.utdallas.edu/report44675)
 
-IPEDS reports zero U.S. nonresident students in 2022, 176 in 2023, and zero again in 2024, with the 2023 and 2024 values both marked reported. Anderson University's December 2024 announcement documents 27 initial International Graduate School graduates across the Summer and Fall terms, including 20 Fall graduates, primarily from India with students from Spain and France, and states that the school had offered classes since January 2023. That contemporaneous evidence confirms international graduate activity during 2024 but does not provide a fall-census U.S. nonresident headcount or resolve the IPEDS zero. Preserve the IPEDS series in aggregates and keep institution-specific interpretation held pending reconciliation.
+IPEDS falls from 6,828 to 5,603 U.S. nonresident students. UT Dallas's official 2024-25 Common Data Set uses an IPEDS-aligned nonresident definition and reports 1,205 undergraduate nonresidents, exactly matching the project's 2024 IPEDS undergraduate component. The same source does not provide the corresponding graduate race/ethnicity count needed to reconcile the full 5,603 all-student total or the decline from 2023, so the component is corroborated while the institution-level movement remains held.
 
 ### Corroborate the direction: Trine University-Regional/Non-Traditional Campuses
 

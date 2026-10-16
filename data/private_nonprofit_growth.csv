@@ -1210,7 +1210,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 217536,Salve Regina University,RI,RI,Private nonprofit in both endpoints,54,80,26,42,-16,none,,not high-priority in latest release queue,364,0.02,97.62,Other positive contributors
 217606,Northpoint Bible College,MA,MA,Private nonprofit in both endpoints,16,8,-8,-4,-4,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 217624,Allen University,SC,SC,Private nonprofit in both endpoints,1,9,8,8,0,none,,not high-priority in latest release queue,527,0.01,99.46,Other positive contributors
-217633,Anderson University,SC,SC,Private nonprofit in both endpoints,30,0,-30,-22,-8,high,hold_for_confirmation,hold_for_confirmation,,,,Nonpositive contribution
+217633,Anderson University,SC,SC,Private nonprofit in both endpoints,30,0,-30,-22,-8,high,safe_with_context,safe_with_context,,,,Nonpositive contribution
 217688,Charleston Southern University,SC,SC,Private nonprofit in both endpoints,22,102,80,52,28,none,,not high-priority in latest release queue,189,0.06,91.42,Other positive contributors
 217721,Benedict College,SC,SC,Private nonprofit in both endpoints,0,165,165,161,4,low,,not high-priority in latest release queue,114,0.12,85.37,Other positive contributors
 217749,Bob Jones University,,SC,Entered private-nonprofit endpoint universe,0,224,224,171,53,none,,not high-priority in latest release queue,97,0.16,83.08,Other positive contributors
