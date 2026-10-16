@@ -58,7 +58,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Monroe Community College | NY | +83 | Percentage Movement | External scope mismatch | Hold for confirmation | [Monroe Community College 2024-25 Facts Book and 2024 Self-Study Design](https://www.monroecc.edu/fileadmin/SiteFiles/GeneralContent/depts/admissions/documents/MCC-Facts-Book.pdf) |
 | University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Maine System Fall 2024 census enrollment report](https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2024/11/November-2024-BOT-Meeting-Book-Revised-11.8.24.pdf) |
 | New Mexico Highlands University | NM | -81 | Percentage Movement | Corroborated external count | Safe with context | [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/) |
-| Northeastern University Oakland | CA | +80 | Percentage Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2024 enrollment context](https://news.northeastern.edu/2024/09/12/enrollment-statistics-2024/) |
+| Northeastern University Oakland | CA | +80 | Percentage Movement | External scope mismatch | Hold for confirmation | [Northeastern University Oakland Fall 2024 admissions FAQ](https://admissions.northeastern.edu/wp-content/uploads/2023/12/FA24-NU-Oakland-Admission-FAQ-12.13-Update.pdf) |
 | Vincennes University | IN | +78 | Percentage Movement | Corroborated direction | Safe with context | [Vincennes University Fall 2024 enrollment announcement](https://www.vinu.edu/news/vu-welcomes-largest-incoming-class-since-2021.html) |
 | Ana G. Mendez University | FL | -76 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Ana G. Mendez University 2025 MSCHE Self-Study Report](https://documents.agmu.edu/docs/msche/AGMU-MSCHE-SSR-February-2025.pdf) |
 | Anna Maria College | MA | -68 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Anna Maria College 2024 presidential search profile](https://annamaria.edu/wp-content/uploads/2024/10/ASI-Anna-Maria-College-President-Profile.pdf) |
@@ -430,9 +430,9 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 - **Decision:** Hold for confirmation
 - **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Northeastern Fall 2024 enrollment context](https://news.northeastern.edu/2024/09/12/enrollment-statistics-2024/)
-- **Analyst note:** Northeastern's public enrollment release describes the network and Boston first-year population rather than a directly comparable Oakland all-student U.S. nonresident series. The +80 Oakland movement remains held.
+- **Reviewed:** 2026-10-15
+- **Evidence:** [Northeastern University Oakland Fall 2024 admissions FAQ](https://admissions.northeastern.edu/wp-content/uploads/2023/12/FA24-NU-Oakland-Admission-FAQ-12.13-Update.pdf)
+- **Analyst note:** The project IPEDS series reports Northeastern University Oakland at 658 total students and 139 U.S. nonresidents in Fall 2023 and 640 total students and 219 U.S. nonresidents in Fall 2024, an increase of 80 nonresidents. The Fall 2024 project level totals are 464 undergraduates and 176 graduate students. Northeastern's official Oakland admissions FAQ states that, as of the Fall 2024 semester, approximately 1,000 students were on the Oakland campus: about 800 first-year undergraduates, 180 graduate students, and 20 continuing Mills students. The campus-facing total is about 360 students above the project IPEDS all-student total, and the FAQ's 800 first-year undergraduates alone exceed the project IPEDS undergraduate total of 464. The official campus population therefore uses a materially broader reporting frame than the project UNITID-specific Fall Enrollment row. The FAQ does not publish a comparable U.S. nonresident or international endpoint within that narrower IPEDS frame, so it cannot validate the increase from 139 to 219. Preserve IPEDS as the numerical authority and keep the +80 institution-specific movement held as a documented reporting-scope mismatch; do not allocate students from the broader Oakland campus population into the project IPEDS categories.
 
 ### Vincennes University · UNITID 152637
 
