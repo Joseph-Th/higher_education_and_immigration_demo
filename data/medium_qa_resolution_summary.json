@@ -3,16 +3,15 @@
   "reviewed_count": 50,
   "coverage_pct": 100.0,
   "required_medium_priority_covered": true,
-  "safe_with_context": 28,
-  "hold_for_confirmation": 22,
+  "safe_with_context": 29,
+  "hold_for_confirmation": 21,
   "dispositions": {
     "expected_structural_change": 5,
     "external_scope_mismatch": 18,
-    "corroborated_direction": 10,
+    "corroborated_direction": 11,
     "corroborated_external_count": 10,
     "partial_component_corroboration": 3,
-    "confirmed_reporting_discontinuity": 3,
-    "baseline_corroborated_move_unresolved": 1
+    "confirmed_reporting_discontinuity": 3
   },
   "candidate_overlap_reviewed": 5,
   "safe_unitids": [
@@ -41,6 +40,7 @@
     "228459",
     "228769",
     "230782",
+    "232609",
     "243780",
     "244233",
     "417327"
