@@ -24,7 +24,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Campbellsville University | KY | -1,358 | corroborated_direction | safe_with_context | [Campbellsville University institutional enrollment reports](https://www.campbellsville.edu/academics/academic-affairs/officeofinstitutionalresearch-institutionalreviewboard.html) |
 | The University of Texas at Dallas | TX | -1,225 | corroborated_direction | safe_with_context | [University of Texas System FY 2026 Operating Budget Summary](https://www.utsystem.edu/sites/default/files/documents/report-state/2025/operating-budget-summary-system-fy-2026/fy-2026-operating-budget-summaries-of-8-22-2025-final.pdf) |
 | St. Francis College | NY | +1,220 | corroborated_external_count | safe_with_context | [St. Francis College institutional census archive](https://www.sfc.edu/why-sfc/office-of-institutional-effectiveness-accreditation/) |
-| Community College of Rhode Island | RI | +1,176 | partial_component_corroboration | hold_for_confirmation | [CCRI Institutional Effectiveness Enrollment Dashboard](https://www.ccri.edu/ie/) |
+| Community College of Rhode Island | RI | +1,176 | partial_component_corroboration | hold_for_confirmation | [CCRI Institutional Effectiveness dashboard and F-1 international-student definition](https://www.ccri.edu/ie/) |
 | University of North Texas | TX | -1,052 | corroborated_external_count | safe_with_context | [University of North Texas Fall fact-sheet archive](https://institutionalresearch.unt.edu/fact-book/index.html) |
 | Webster University | MO | +1,020 | corroborated_external_count | safe_with_context | [Webster University November 2024 international-enrollment report](https://news.webster.edu/2024/webster_ranked_for_international_students_2024.php) |
 | Sofia University | CA | +930 | partial_component_corroboration | hold_for_confirmation | [Sofia University Fall 2024 Quick Facts](https://www.sofia.edu/wp-content/uploads/2024/12/Official_Fall-Quick-Facts-2024.pdf) |
@@ -38,7 +38,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Norfolk State University | VA | +278 | corroborated_external_count | safe_with_context | [Norfolk State University Fact Book 2020-2024](https://www.nsu.edu/Academics/Research/Institutional-Research/Documents-and-Forms/FactBook_2020-2024.aspx) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
 | Oakwood University | AL | -192 | confirmed_reporting_discontinuity | safe_with_context | [Oakwood University Institutional Effectiveness enrollment statistics archive](https://oakwood.edu/our-story/institutional-effectiveness/) |
-| Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global international admissions definition](https://csuglobal.edu/admissions/international-students) |
+| Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global 2024 Annual Data Book and international admissions definition](https://csuglobal.edu/admissions/international-students) |
 | California Institute of Advanced Management | CA | +179 | partial_component_corroboration | hold_for_confirmation | [California BPPE CIAM 2023 Annual Report](https://www.bppe.ca.gov/webapplications/annualReports/2023/details/93197858) |
 | Anderson University | SC | -176 | confirmed_reporting_discontinuity | safe_with_context | [Anderson University Center for Global Engagement and 2024 International Graduate School evidence](https://andersonuniversity.edu/academics/center-for-global-engagement/) |
 | Reformed University | GA | -130 | confirmed_classification_change | safe_with_context | [Reformed University accreditation and authorization](https://www.runiv.edu/aboutru/main/accreditation) |
@@ -114,9 +114,9 @@ IPEDS rises from 1,791 to 3,011 U.S. nonresident students, almost entirely at th
 
 **Automated trigger:** absolute change is at least 1,000 students.
 
-IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. The dashboard's demographic view does not expose a comparable U.S. nonresident or international-status category, so the institutional totals are corroborated while the 12-to-1,188 nonresident jump remains unresolved. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure.
+IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. CCRI's official international-student admissions page separately defines an international student as a foreign national studying on an F-1 non-immigrant temporary visa and explicitly excludes U.S. citizens, permanent residents, eligible non-immigrant visa holders, refugees, asylees, and temporary protected status populations. That F-1-only admissions construct is narrower than the project IPEDS U.S. nonresident category, and the enrollment dashboard does not expose a directly comparable nonresident-status series. The exact all-student totals therefore corroborate the institutional frame while the explicit visa definition explains why CCRI's public international-student surface cannot validate the 12-to-1,188 nonresident jump. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
+**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-15.
 
 ### University of North Texas (UNITID 227216)
 
@@ -226,9 +226,9 @@ IPEDS falls from 192 U.S. nonresident students in 2023 to zero in 2024 while the
 
 **Automated trigger:** percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 130 to 313 U.S. nonresident students. CSU Global defines international applicants in part by prior foreign education or native language and explicitly states that it is fully online and not SEVP-certified, so its public 'international student' concept is not a direct proxy for IPEDS U.S. nonresident status. The institutional page is useful for scope interpretation but cannot validate the numeric movement.
+The project IPEDS series rises from 130 U.S. nonresident students in Fall 2023 to 313 in Fall 2024, an increase of 183. CSU Global's official international-student admissions page says students can earn a U.S. degree from their home country because the university is 100% online; it defines international applicants by prior education outside the United States or non-native English status and explicitly states that CSU Global is not SEVP-certified and does not issue or recertify student visas. The university's official 2024 Annual Data Book separately reports 14,857 students served across the 2022-23 academic year and says CSU Global serves students in all 50 states, six U.S. territories, and 52 countries. Those institution-defined international and academic-year populations intentionally include remote global learners and are not a Fall-census visa/residency measure comparable to IPEDS U.S. nonresident status. Preserve IPEDS as the numerical authority and keep the +183 institution-specific movement held; do not infer an IPEDS nonresident count from CSU Global's international-applicant, country-of-study, or academic-year service metrics.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-13.
+**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-15.
 
 ### California Institute of Advanced Management (UNITID 487649)
 
