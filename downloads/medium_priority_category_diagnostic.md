@@ -42,7 +42,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 3 | City College-Altamonte Springs | FL | Structural Or Reporting | +0 | R→P | — | — | Endpoint source status is not comparable for countermovement | safe_with_context |
 | 4 | Indiana Wesleyan University-National & Global | IN | Absolute And Percentage | +855 | R→R | 48 | 5.6% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 5 | Valencia College | FL | Absolute And Percentage | +692 | R→R | 146 | 21.1% | Countermovement below half of the nonresident change | hold_for_confirmation |
-| 6 | Dallas College | TX | Absolute And Percentage | +628 | R→R | 14 | 2.2% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| 6 | Dallas College | TX | Absolute And Percentage | +628 | R→R | 14 | 2.2% | Countermovement below half of the nonresident change | safe_with_context |
 | 7 | Chaffey College | CA | Absolute And Percentage | -611 | R→R | 2,494 | 408.2% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 8 | Lindsey Wilson College | KY | Absolute And Percentage | +590 | R→R | 491 | 83.2% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
 | 9 | Texas State University | TX | Absolute And Percentage | +558 | R→R | 358 | 64.2% | Countermovement at least half as large as the nonresident change | safe_with_context |
