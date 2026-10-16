@@ -48,7 +48,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Southeastern University | Continuing | +706 | R→R | +404 | 0.0% | Countermovement below half of the nonresident change | safe_with_context |
 | Belhaven University | Continuing | +470 | R→R | +127 | 1.1% | Countermovement below half of the nonresident change | safe_with_context |
 | Louisiana Tech University | Continuing | +342 | R→R | +104 | 128.9% | Countermovement at least as large as the nonresident change | safe_with_context |
-| Cumberland University | Continuing | +306 | R→R | +79 | 44.1% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| Cumberland University | Continuing | +306 | R→R | +79 | 44.1% | Countermovement below half of the nonresident change | safe_with_context |
 | Oakton College | Continuing | +299 | R→R | +998 | 0.0% | Countermovement below half of the nonresident change | safe_with_context |
 | Polk State College | Continuing | +288 | R→R | +2,067 | 677.1% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | Norfolk State University | Continuing | +278 | R→R | -270 | 100.7% | Countermovement at least as large as the nonresident change | safe_with_context |

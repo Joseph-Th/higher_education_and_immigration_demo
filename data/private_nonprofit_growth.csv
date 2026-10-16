@@ -1249,7 +1249,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 219806,Carson-Newman University,TN,TN,Private nonprofit in both endpoints,119,109,-10,4,-14,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 219833,Christian Brothers University,TN,TN,Private nonprofit in both endpoints,183,460,277,-1,278,none,,not high-priority in latest release queue,82,0.2,80.38,Other positive contributors
 219842,Pentecostal Theological Seminary,TN,TN,Private nonprofit in both endpoints,34,92,58,0,58,none,,not high-priority in latest release queue,245,0.04,94.19,Other positive contributors
-219949,Cumberland University,TN,TN,Private nonprofit in both endpoints,60,591,531,96,435,high,hold_for_confirmation,hold_for_confirmation,54,0.39,72.48,Other positive contributors
+219949,Cumberland University,TN,TN,Private nonprofit in both endpoints,60,591,531,96,435,high,safe_with_context,safe_with_context,54,0.39,72.48,Other positive contributors
 219976,Lipscomb University,TN,TN,Private nonprofit in both endpoints,79,131,52,31,21,none,,not high-priority in latest release queue,257,0.04,94.66,Other positive contributors
 220181,Fisk University,TN,TN,Private nonprofit in both endpoints,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 220206,Welch College,TN,TN,Private nonprofit in both endpoints,27,4,-23,-24,1,none,,not high-priority in latest release queue,,,,Nonpositive contribution
