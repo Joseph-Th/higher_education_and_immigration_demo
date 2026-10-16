@@ -20,7 +20,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | Ana G. Mendez University | Percentage Movement | -76 | R→R | -4 | 1,290 | 1697.4% | Hispanic / Latino (+1,269) | R→R | hold_for_confirmation |
 | Walden University | Percentage Movement | -396 | R→R | +5,218 | 5,630 | 1421.7% | Black / African American (+2,784) | R→R | hold_for_confirmation |
 | Barton County Community College | Percentage Movement | -155 | R→R | +699 | 862 | 556.1% | White (+388) | R→R | safe_with_context |
-| Chaffey College | Absolute And Percentage | -611 | R→R | +1,828 | 2,494 | 408.2% | Hispanic / Latino (+1,745) | R→R | hold_for_confirmation |
+| Chaffey College | Absolute And Percentage | -611 | R→R | +1,828 | 2,494 | 408.2% | Hispanic / Latino (+1,745) | R→R | safe_with_context |
 | University of Lynchburg | Percentage Movement | +91 | R→R | -276 | 367 | 403.3% | White (-215) | R→R | hold_for_confirmation |
 | Northeastern University | Absolute Movement | -616 | R→R | +1,394 | 2,019 | 327.8% | Asian (+667) | R→R | hold_for_confirmation |
 | Boston University | Absolute Movement | -558 | R→R | +1,113 | 1,672 | 299.6% | Race / ethnicity unknown (+551) | R→R | hold_for_confirmation |
@@ -43,7 +43,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 4 | Indiana Wesleyan University-National & Global | IN | Absolute And Percentage | +855 | R→R | 48 | 5.6% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 5 | Valencia College | FL | Absolute And Percentage | +692 | R→R | 146 | 21.1% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 6 | Dallas College | TX | Absolute And Percentage | +628 | R→R | 14 | 2.2% | Countermovement below half of the nonresident change | safe_with_context |
-| 7 | Chaffey College | CA | Absolute And Percentage | -611 | R→R | 2,494 | 408.2% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| 7 | Chaffey College | CA | Absolute And Percentage | -611 | R→R | 2,494 | 408.2% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 8 | Lindsey Wilson College | KY | Absolute And Percentage | +590 | R→R | 491 | 83.2% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
 | 9 | Texas State University | TX | Absolute And Percentage | +558 | R→R | 358 | 64.2% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | 10 | Sacred Heart University | CT | Absolute And Percentage | -508 | R→R | 360 | 70.9% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
