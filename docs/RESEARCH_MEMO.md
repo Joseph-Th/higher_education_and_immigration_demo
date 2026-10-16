@@ -18,7 +18,7 @@ From 2023 to 2024, U.S. nonresident enrollment increased **+29,539 (+2.9%)**. Un
 
 ## Analyst judgment changes what gets published
 
-The automated queue identified **27 high-priority** latest-release records. The manual review layer now covers **27/27** of them: **21** are safe to discuss with explicit context and **6** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.
+The automated queue identified **27 high-priority** latest-release records. The manual review layer now covers **27/27** of them: **22** are safe to discuss with explicit context and **5** remain held for institution-specific interpretation. The examples below show why a flag is a review request rather than an error label.
 
 ### Hold the anomaly: Community College of Rhode Island
 
@@ -28,13 +28,13 @@ The automated queue identified **27 high-priority** latest-release records. The 
 
 IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. CCRI's official international-student admissions page separately defines an international student as a foreign national studying on an F-1 non-immigrant temporary visa and explicitly excludes U.S. citizens, permanent residents, eligible non-immigrant visa holders, refugees, asylees, and temporary protected status populations. That F-1-only admissions construct is narrower than the project IPEDS U.S. nonresident category, and the enrollment dashboard does not expose a directly comparable nonresident-status series. The exact all-student totals therefore corroborate the institutional frame while the explicit visa definition explains why CCRI's public international-student surface cannot validate the 12-to-1,188 nonresident jump. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure.
 
-### Corroborate the direction: Trine University-Regional/Non-Traditional Campuses
+### Corroborate the direction: Collin County Community College District
 
-**Observed change:** +1,441  
+**Observed change:** +2,256  
 **Publication decision:** Publish with context  
-**Evidence:** [Trine University fall 2024 record-enrollment announcement](https://www.trine.edu/news/2024/record-enrollment.aspx)
+**Evidence:** [Collin College FY2025 ACFR Fall Student Profile](https://collin.edu/financials/documents/annual-comprehensive-financial-report-fy-2025.pdf)
 
-IPEDS reports 7,772 to 9,213 U.S. nonresident students and 8,230 to 9,868 total fall enrollment. Trine independently reported that fall 2024 enrollment across its locations and platforms was expected to rise about 18% from fall 2023, with substantial growth in graduate/hybrid programs. This corroborates the direction and scale of growth, though the institution-wide announcement is not an exact IPEDS U.S. nonresident reconciliation.
+IPEDS rises from 433 U.S. nonresident students in Fall 2023 to 2,689 in Fall 2024 (+2,256). Collin's FY2025 ACFR reports Fall headcount of 37,776 in Fall 2023 and 39,552 in Fall 2024, within four of IPEDS totals, and the Foreign category rising from 612 to 2,482. Its 2023-24 CDS reports 604 International (nonresident) students. Institutional labels are not assumed IPEDS-identical and counts are not substituted. Preserve IPEDS as numerical authority and clear only bounded direction-level discussion of the +2,256 movement.
 
 ### Explain the structural change: The College of Saint Rose
 

@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **21** are safe to discuss with explicit context.
-- **6** remain held for institution-specific interpretation.
+- **22** are safe to discuss with explicit context.
+- **5** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-16**.
 
@@ -17,7 +17,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Institution | State | Change | Disposition | Publication decision | Evidence |
 | --- | --- | ---: | --- | --- | --- |
 | University of the Cumberlands | KY | +4,616 | confirmed_reporting_discontinuity | safe_with_context | [ICE SEVP 2023 Top 500 F-1 Schools active-record table](https://www.ice.gov/doclib/sevis/btn/24_0510_hsi_sevp-sevis-btn-2023-top500-f1-schools.pdf) |
-| Collin County Community College District | TX | +2,256 | confirmed_baseline_mismatch | hold_for_confirmation | [Collin College Common Data Set 2023-2024](https://www.collin.edu/about/statistics/pdf_common_data_set/cds-2023-2024-collin-college.pdf) |
+| Collin County Community College District | TX | +2,256 | corroborated_direction | safe_with_context | [Collin College FY2025 ACFR Fall Student Profile](https://collin.edu/financials/documents/annual-comprehensive-financial-report-fy-2025.pdf) |
 | Broward College | FL | +2,005 | external_scope_mismatch | hold_for_confirmation | [Broward College Consumer Information Disclosures](https://www.broward.edu/admissions/financial-aid/_docs/consumer-information-disclosures.pdf) |
 | Miami Dade College | FL | +1,458 | external_scope_mismatch | hold_for_confirmation | [Miami Dade College 2024-25 Fact Book Credit Student Enrollment Profile](https://www.mdc.edu/media/miami-dade-college/institutional-research/documents/fb_credit_student_enrollment_profile.pdf) |
 | Trine University-Regional/Non-Traditional Campuses | IN | +1,441 | corroborated_direction | safe_with_context | [Trine University fall 2024 record-enrollment announcement](https://www.trine.edu/news/2024/record-enrollment.aspx) |
@@ -58,9 +58,9 @@ IPEDS reports 4,226 U.S. nonresident students in 2022, zero in 2023, and 4,616 i
 
 **Automated trigger:** absolute change is at least 1,000 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 433 to 2,689 U.S. nonresident students in one year. Collin's official 2023-24 Common Data Set reports 37,776 total Fall 2023 undergraduates, only four students above the project's 37,772 IPEDS total, but reports 604 International (nonresident) students versus the project's 433 U.S. nonresidents. The CDS uses the institution's official fall reporting date, directs the institution to report the racial/ethnic categories as it reports them to IPEDS, and defines nonresidents as students in the country on a student visa or temporary basis without the right to remain indefinitely. The near-identical total enrollment alongside a 171-student nonresident discrepancy confirms a baseline reporting/release mismatch rather than a broad population-frame difference. No reviewed 2024 like-for-like institutional count resolves the subsequent jump to 2,689, so preserve IPEDS in aggregates and keep the institution-specific growth interpretation held.
+IPEDS rises from 433 U.S. nonresident students in Fall 2023 to 2,689 in Fall 2024 (+2,256). Collin's FY2025 ACFR reports Fall headcount of 37,776 in Fall 2023 and 39,552 in Fall 2024, within four of IPEDS totals, and the Foreign category rising from 612 to 2,482. Its 2023-24 CDS reports 604 International (nonresident) students. Institutional labels are not assumed IPEDS-identical and counts are not substituted. Preserve IPEDS as numerical authority and clear only bounded direction-level discussion of the +2,256 movement.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `confirmed_baseline_mismatch` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_direction` · **Reviewed:** 2026-10-16.
 
 ### Broward College (UNITID 132709)
 
