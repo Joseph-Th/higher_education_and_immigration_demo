@@ -55,7 +55,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Grambling State University | Continuing | +264 | R→R | -228 | 91.3% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | Oakwood University | Continuing | -192 | R→Z | +99 | 127.6% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Colorado State University Global | Continuing | +183 | R→R | +567 | 206.0% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
-| California Institute of Advanced Management | Continuing | +179 | R→R | +2 | 0.0% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| California Institute of Advanced Management | Continuing | +179 | R→R | +2 | 0.0% | Countermovement below half of the nonresident change | safe_with_context |
 | Anderson University | Continuing | -176 | R→R | +561 | 334.1% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Reformed University | Left analytic universe | -130 | — | — | — | Analytic-universe change; category comparison not used | safe_with_context |
 | The College of Saint Rose | Left analytic universe | -115 | — | — | — | Analytic-universe change; category comparison not used | safe_with_context |
