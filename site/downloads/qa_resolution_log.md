@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **20** are safe to discuss with explicit context.
-- **7** remain held for institution-specific interpretation.
+- **21** are safe to discuss with explicit context.
+- **6** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-16**.
 
@@ -39,7 +39,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
 | Oakwood University | AL | -192 | confirmed_reporting_discontinuity | safe_with_context | [Oakwood University Institutional Effectiveness enrollment statistics archive](https://oakwood.edu/our-story/institutional-effectiveness/) |
 | Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global 2024 Annual Data Book and international admissions definition](https://csuglobal.edu/admissions/international-students) |
-| California Institute of Advanced Management | CA | +179 | partial_component_corroboration | hold_for_confirmation | [California BPPE CIAM 2023 Annual Report](https://www.bppe.ca.gov/webapplications/annualReports/2023/details/93197858) |
+| California Institute of Advanced Management | CA | +179 | confirmed_reporting_discontinuity | safe_with_context | [WSCUC June 2025 CIAM accreditation team report](https://www.wscuc.org/institutions/california-institute-of-advanced-management/) |
 | Anderson University | SC | -176 | confirmed_reporting_discontinuity | safe_with_context | [Anderson University Center for Global Engagement and 2024 International Graduate School evidence](https://andersonuniversity.edu/academics/center-for-global-engagement/) |
 | Reformed University | GA | -130 | confirmed_classification_change | safe_with_context | [Reformed University accreditation and authorization](https://www.runiv.edu/aboutru/main/accreditation) |
 | The College of Saint Rose | NY | -115 | expected_structural_change | safe_with_context | [New York State Education Department closure record](https://www.nysed.gov/college-university-evaluation/closures-degree-granting-institutions) |
@@ -234,9 +234,9 @@ The project IPEDS series rises from 130 U.S. nonresident students in Fall 2023 t
 
 **Automated trigger:** percentage change is at least 100% from a baseline of 100+.
 
-IPEDS reports 163 total students in Fall 2023, all at the graduate level, with 159 U.S. nonresidents, then rises to 344 total and 338 nonresidents in Fall 2024. CIAM's official California BPPE 2023 Annual Report records 211 students enrolled or active during January-December 2023 and reports all 211 in its single master's program. That state-regulatory filing independently corroborates the institution's small, exclusively graduate scale but uses an annual active-enrollment window, provides no international-status count, and does not cover the 2024 increase. Treat the graduate structure as corroborated while retaining the institution-specific movement on hold.
+The project IPEDS series reports 163 total students and 159 U.S. nonresidents in Fall 2023, then 344 total students and 338 U.S. nonresidents in Fall 2024, an increase of 179 nonresidents. WSCUC's official June 2025 accreditation team report independently states that CIAM enrollment grew from 163 in Fall 2023 to 346 in Fall 2024, exactly matching the project 2023 total and landing only two students above the project 2024 total. The same report says 97.5% of Fall 2023 students identified as U.S. Non-Residents, which on the reported 163-student total implies about 159 and reproduces the project baseline after rounding, but says only 24.6% identified as U.S. Non-Residents in Fall 2024, implying about 85 of 346 rather than the project IPEDS endpoint of 338. WSCUC also notes that more disaggregated country-of-origin, visa-status, and state-residency data would be useful for understanding CIAM's student population. The institutional percentages are rounded and are not substituted for the official IPEDS counts. The near-identical total-enrollment frame together with the sharply different latest-year U.S. Non-Resident composition establishes a reporting/classification discontinuity, so preserve IPEDS in aggregate calculations and clear only bounded discussion that the +179 movement is not independently confirmed as substantive nonresident growth.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `confirmed_reporting_discontinuity` · **Reviewed:** 2026-10-16.
 
 ### Anderson University (UNITID 217633)
 

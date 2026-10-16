@@ -1748,7 +1748,7 @@ unitid,institution,state_2015,state_2024,endpoint_status,nonresident_2015,nonres
 487311,Jones Technical Institute,,FL,Entered private-nonprofit endpoint universe,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 487524,Husson University,ME,ME,Private nonprofit in both endpoints,103,73,-30,-9,-21,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 487603,Northwest University-Center for Online and Extended Education,WA,WA,Private nonprofit in both endpoints,13,7,-6,-10,4,none,,not high-priority in latest release queue,,,,Nonpositive contribution
-487649,California Institute of Advanced Management,CA,CA,Private nonprofit in both endpoints,0,338,338,0,338,high,hold_for_confirmation,hold_for_confirmation,73,0.25,78.41,Other positive contributors
+487649,California Institute of Advanced Management,CA,CA,Private nonprofit in both endpoints,0,338,338,0,338,high,safe_with_context,safe_with_context,73,0.25,78.41,Other positive contributors
 487658,Academy of Interactive Entertainment,,LA,Entered private-nonprofit endpoint universe,0,0,0,0,0,none,,not high-priority in latest release queue,,,,Nonpositive contribution
 487667,Shepherd University,CA,,Left private-nonprofit endpoint universe,177,0,-177,-123,-54,not_in_latest_endpoint,,not high-priority in latest release queue,,,,Nonpositive contribution
 487746,Yeshiva Zichron Aryeh,,NY,Entered private-nonprofit endpoint universe,0,1,1,1,0,none,,not high-priority in latest release queue,728,0.0,100.0,Other positive contributors
