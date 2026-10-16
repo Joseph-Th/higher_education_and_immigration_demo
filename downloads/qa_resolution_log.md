@@ -7,10 +7,10 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **18** are safe to discuss with explicit context.
-- **9** remain held for institution-specific interpretation.
+- **19** are safe to discuss with explicit context.
+- **8** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
-- Latest review date: **2026-10-15**.
+- Latest review date: **2026-10-16**.
 
 ## Dispositions
 
@@ -32,7 +32,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Southeastern University | FL | +706 | confirmed_reporting_discontinuity | safe_with_context | [Southeastern University 2024-25 Fact Book Enrollment by Ethnicity](https://seu.edu/about/fact-book/2024-25/) |
 | Belhaven University | MS | +470 | corroborated_external_count | safe_with_context | [Belhaven University Fall 2024 Tartan enrollment summary](https://www.belhaven.edu/pdfs/archived/tartan-2024.pdf) |
 | Louisiana Tech University | LA | +342 | corroborated_direction | safe_with_context | [Louisiana Tech Fall 2024 enrollment announcement](https://www.latech.edu/news/louisiana-tech-celebrates-six-year-enrollment-milestone-and-record-setting-freshman-class.php) |
-| Cumberland University | TN | +306 | partial_component_corroboration | hold_for_confirmation | [TICUA Fall 2025 Characteristics enrollment trend](https://embed-rech-01.dialog.cm/readticua/docs/2026ticua_characteristicsreport_final_web) |
+| Cumberland University | TN | +306 | corroborated_direction | safe_with_context | [ICE SEVP 2024 Top 500 F-1 Schools active-record table](https://www.ice.gov/doclib/sevis/btn/2024/2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf) |
 | Oakton College | IL | +299 | confirmed_reporting_discontinuity | safe_with_context | [Oakton College Fall 2022-2026 Enrollment Comparison Report](https://www.oakton.edu/_pdfs/research-and-planning/fall_2022-fall_2026_enrollment_comparison_report.pdf) |
 | Polk State College | FL | +288 | external_scope_mismatch | hold_for_confirmation | [Polk State College Fall 2024 enrollment announcement](https://www.polk.edu/news/polk-state-celebrates-growing-enrollment-as-registration-continues-for-fall-2024-semester/) |
 | Norfolk State University | VA | +278 | corroborated_external_count | safe_with_context | [Norfolk State University Fact Book 2020-2024](https://www.nsu.edu/Academics/Research/Institutional-Research/Documents-and-Forms/FactBook_2020-2024.aspx) |
@@ -178,9 +178,9 @@ IPEDS rises from 209 to 551 U.S. nonresident students, with undergraduate enroll
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-IPEDS rises from 285 to 591 U.S. nonresident students from Fall 2023 to Fall 2024, driven primarily by graduate enrollment increasing from 169 to 447. The Tennessee Independent Colleges and Universities Association's Fall 2025 Characteristics report independently lists Cumberland University at 3,072 total students in 2023 and 3,457 in 2024, exactly matching the project IPEDS total-enrollment endpoints. That independently corroborates the institution-level enrollment frame and overall growth, but the report does not provide a directly comparable 2024 U.S. nonresident count that resolves the 285-to-591 movement. Treat total enrollment as a corroborated component, preserve IPEDS in aggregates, and keep the institution-specific nonresident growth interpretation held pending a matching source.
+The project IPEDS series reports 285 U.S. nonresident students in Fall 2023 and 591 in Fall 2024, an increase of 306, driven primarily by graduate nonresidents rising from 169 to 447; total enrollment rises from 3,072 to 3,457. TICUA's Fall 2025 Characteristics report independently reproduces those two total-enrollment endpoints exactly. ICE SEVP's official 2024 Top 500 F-1 Schools table separately lists Cumberland University at 656 active F-1 SEVIS records, only 65 above the project Fall 2024 U.S. nonresident endpoint. Cumberland University does not appear in ICE SEVP's official 2023 Top 500 table, whose lowest listed campus has 511 active records, so the same named Cumberland campus moved from below that 511-record threshold in 2023 to 656 in 2024. The SEVIS active-record population is visa-based and uses calendar-year timing rather than the IPEDS Fall-census U.S. nonresident definition, and the 2023 federal evidence supplies only an upper bound rather than an exact endpoint. Do not substitute the SEVIS count or infer the exact magnitude of change. The federal series nevertheless independently corroborates a material upward direction and approximate latest-year scale, so clear only bounded direction-level discussion of the +306 movement while IPEDS remains the numerical authority.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_direction` · **Reviewed:** 2026-10-16.
 
 ### Oakton College (UNITID 147800)
 

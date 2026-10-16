@@ -1230,17 +1230,17 @@
     "reviewed_count": 27,
     "high_priority_total": 27,
     "coverage_pct": 100.0,
-    "safe_with_context": 18,
-    "hold_for_confirmation": 9,
+    "safe_with_context": 19,
+    "hold_for_confirmation": 8,
     "dispositions": {
       "confirmed_baseline_mismatch": 1,
       "confirmed_classification_change": 1,
       "confirmed_reporting_discontinuity": 5,
-      "corroborated_direction": 5,
+      "corroborated_direction": 6,
       "corroborated_external_count": 6,
       "expected_structural_change": 1,
       "external_scope_mismatch": 4,
-      "partial_component_corroboration": 4
+      "partial_component_corroboration": 3
     },
     "reviewed_unitids": [
       "156541",
@@ -1352,7 +1352,7 @@
         "analyst_note": "The institution leaves the 2024 analytic universe after reporting 115 U.S. nonresident students in 2023. New York State Education Department records The College of Saint Rose as closed on December 31, 2024, with academic instruction ending earlier in 2024. The universe exit is therefore an expected structural event rather than an unexplained data disappearance."
       }
     ],
-    "latest_reviewed_on": "2026-10-15"
+    "latest_reviewed_on": "2026-10-16"
   },
   "state_series": {
     "AK": [
