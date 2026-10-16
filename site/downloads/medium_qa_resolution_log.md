@@ -29,14 +29,14 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | University of Illinois Urbana-Champaign | IL | +775 | Absolute Movement | Corroborated external count | Safe with context | [University of Illinois System Fall 2024 Data Book](https://www.pb.uillinois.edu/documents/databook/PB_Databook_Fall24.pdf) |
 | Syracuse University | NY | -760 | Absolute Movement | Corroborated direction | Safe with context | [Syracuse University-hosted S&P Global April 2025 credit report](https://ir.syr.edu/wp-content/uploads/2025/04/SP-Global-Detailed-Report-2025-04-08.pdf) |
 | University of Colorado Boulder | CO | -755 | Absolute Movement | External scope mismatch | Hold for confirmation | [CU Boulder international student statistics and enrollment definition](https://www.colorado.edu/isss/about-us/student-statistics) |
-| Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
+| Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2023-Fall 2024 international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
 | Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
 | Purdue University-Main Campus | IN | +580 | Absolute Movement | Corroborated external count | Safe with context | [Purdue ISS Fall 2024 international enrollment statistical report](https://purdue.edu/gpp/iss/_documents/EnrollmentReport/iss_statisticalreportfall24.pdf) |
 | University of New Haven | CT | -574 | Absolute Movement | Corroborated direction | Safe with context | [University of New Haven Summer 2025 internationalization report](https://www.newhaven.edu/news/blog/2025/global-campus.php) |
 | Boston University | MA | -558 | Absolute Movement | Corroborated direction | Safe with context | [Boston University Fact Book Student Enrollment dashboard and glossary](https://www.bu.edu/asir/bu-facts/fact-book/student-enrollment/) |
 | University of California-Berkeley | CA | -546 | Absolute Movement | Corroborated external count | Safe with context | [UC Berkeley Fall 2024 international enrollment report](https://internationaloffice.berkeley.edu/sites/default/files/student-stats2024.pdf) |
 | Midwestern Baptist Theological Seminary | MO | -458 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Association of Theological Schools annual data tables](https://www.ats.edu/Annual-Data-Tables) |
-| Walden University | MN | -396 | Percentage Movement | External scope mismatch | Hold for confirmation | [Walden international students](https://www.waldenu.edu/international-students) |
+| Walden University | MN | -396 | Percentage Movement | External scope mismatch | Hold for confirmation | [Walden University international-student support definition](https://academics.waldenu.edu/support-services/student-support-services) |
 | Weber State University | UT | +373 | Percentage Movement | Corroborated external count | Safe with context | [Weber State Fall 2024 international enrollment](https://www.weber.edu/wsutoday/090524-international-enrollment.html) |
 | Fort Hays State University | KS | -266 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Fort Hays State University 2023 assurance argument and Fall 2024 international enrollment](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week) |
 | Marywood University | PA | -260 | Percentage Movement | External scope mismatch | Hold for confirmation | [Marywood University 2024-25 Fact Book](https://www.marywood.edu/about/consumer-information/factbooks/Fall-2024-Factbook.pdf?language_id=1) |
@@ -198,9 +198,9 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 - **Decision:** Hold for confirmation
 - **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Northeastern international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/)
-- **Analyst note:** Northeastern reports a broader international population including F-1 visa holders and students on OPT, with Fall 2023 and Fall 2024 totals far above the IPEDS U.S. nonresident counts. That scope mismatch prevents corroborating the -616 movement.
+- **Reviewed:** 2026-10-16
+- **Evidence:** [Northeastern Fall 2023-Fall 2024 international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/)
+- **Analyst note:** The project IPEDS series reports 12,146 U.S. nonresident students in Fall 2023 and 11,530 in Fall 2024, a decline of 616, with graduate nonresidents falling from 9,725 to 9,104 while undergraduate nonresidents are nearly flat at 2,421 and 2,426. Northeastern's official October 31, 2025 enrollment report retrospectively publishes 23,298 international students in Fall 2023 and 25,580 in Fall 2024, an increase of 2,282, and explicitly defines that institutional total as including F-1 visa holders and students on Optional Practical Training. The institutional endpoints exceed the project IPEDS U.S. nonresident counts by 11,152 and 14,050 students and move in the opposite two-year direction. Those large level and direction differences are consistent with the university's explicitly broader F-1-plus-OPT population and establish a material population/reporting-scope mismatch rather than corroboration of the -616 IPEDS movement. Preserve IPEDS as the numerical authority, keep the institution-specific decline held, and do not substitute the university-wide international/OPT series or describe the IPEDS decline as independently confirmed.
 
 ### Stevens Institute of Technology · UNITID 186867
 
@@ -254,9 +254,9 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 - **Decision:** Hold for confirmation
 - **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-14
-- **Evidence:** [Walden international students](https://www.waldenu.edu/international-students)
-- **Analyst note:** Walden's international-student surface covers a global online population and is not a like-for-like measure of the IPEDS U.S. nonresident count. The -396 movement remains held.
+- **Reviewed:** 2026-10-16
+- **Evidence:** [Walden University international-student support definition](https://academics.waldenu.edu/support-services/student-support-services)
+- **Analyst note:** The project IPEDS series reports 689 U.S. nonresident students in Fall 2023 and 293 in Fall 2024, a decline of 396, while total enrollment rises from 44,223 to 49,441 and graduate nonresidents account for 375 of the decline. Walden University's official student-support guidance defines an international student to include a citizen of another nation who resides outside the United States, a member of the U.S. military serving overseas, or a U.S. citizen living overseas. Walden's separate international-admissions material describes a predominantly online global population and limits Form I-20 issuance to students entering the United States for required academic residencies. The university-defined international population therefore can include U.S. citizens abroad and is organized around residence/global-study support rather than the IPEDS U.S. nonresident definition. Because the reviewed institutional sources publish no like-for-like Fall 2023/Fall 2024 count under an IPEDS-aligned definition, preserve IPEDS as the numerical authority and keep the -396 institution-specific movement held as a documented population-scope mismatch; do not infer the movement from Walden's broader global-student population.
 
 ### Weber State University · UNITID 230782
 
