@@ -21,7 +21,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | Walden University | Percentage Movement | -396 | R→R | +5,218 | 5,630 | 1421.7% | Black / African American (+2,784) | R→R | hold_for_confirmation |
 | Barton County Community College | Percentage Movement | -155 | R→R | +699 | 862 | 556.1% | White (+388) | R→R | safe_with_context |
 | Chaffey College | Absolute And Percentage | -611 | R→R | +1,828 | 2,494 | 408.2% | Hispanic / Latino (+1,745) | R→R | safe_with_context |
-| University of Lynchburg | Percentage Movement | +91 | R→R | -276 | 367 | 403.3% | White (-215) | R→R | hold_for_confirmation |
+| University of Lynchburg | Percentage Movement | +91 | R→R | -276 | 367 | 403.3% | White (-215) | R→R | safe_with_context |
 | Northeastern University | Absolute Movement | -616 | R→R | +1,394 | 2,019 | 327.8% | Asian (+667) | R→R | hold_for_confirmation |
 | Boston University | Absolute Movement | -558 | R→R | +1,113 | 1,672 | 299.6% | Race / ethnicity unknown (+551) | R→R | safe_with_context |
 | Pikes Peak State College | Percentage Movement | -104 | R→R | +168 | 298 | 286.5% | Hispanic / Latino (+179) | R→R | safe_with_context |
@@ -78,7 +78,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 39 | Knox College | IL | Percentage Movement | +107 | R→R | 6 | 5.6% | Countermovement below half of the nonresident change | safe_with_context |
 | 40 | Pikes Peak State College | CO | Percentage Movement | -104 | R→R | 298 | 286.5% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 41 | America Evangelical University | CA | Percentage Movement | -92 | R→R | 210 | 228.3% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
-| 42 | University of Lynchburg | VA | Percentage Movement | +91 | R→R | 367 | 403.3% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| 42 | University of Lynchburg | VA | Percentage Movement | +91 | R→R | 367 | 403.3% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 43 | Monroe Community College | NY | Percentage Movement | +83 | R→R | 99 | 119.3% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 44 | University of Maine at Presque Isle | ME | Percentage Movement | +81 | R→R | 1 | 1.2% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 45 | New Mexico Highlands University | NM | Percentage Movement | -81 | R→R | 104 | 128.4% | Countermovement at least as large as the nonresident change | safe_with_context |
