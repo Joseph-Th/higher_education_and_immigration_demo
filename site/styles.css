@@ -433,11 +433,12 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .memo-cases .section-heading { margin-bottom: 18px; }
   .memo-cases .section-heading h2 { font-size: 28px; }
   .memo-cases .section-heading > p:last-child { font-size: 13px; margin-top: 10px; }
-  .qa-case-grid { grid-template-columns: 1fr; }
-  .qa-case-card { break-inside: avoid; box-shadow: none; padding: 18px; min-height: 0 !important; }
+  .qa-case-grid { grid-template-columns: 1fr; gap: 8px; }
+  .qa-case-card { break-inside: avoid; box-shadow: none; padding: 14px 18px; min-height: 0 !important; }
   .qa-case-card h3 { font-size: 17px; }
   .qa-case-card > p:not(.case-kicker):not(.case-change) { font-size: 10.5px; }
   .case-change { font-size: 20px; margin-top: 8px; }
+  .memo-cases .case-footer { padding-top: 10px; }
   .memo-methods { padding: 24px 0 0; break-before: page; }
   .memo-methods .section-heading h2 { font-size: 28px; }
   .memo-methods .method-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }

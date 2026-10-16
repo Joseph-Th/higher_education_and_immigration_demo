@@ -24,9 +24,9 @@ The automated queue identified **27 high-priority** latest-release records. The 
 
 **Observed change:** +1,176  
 **Publication decision:** Hold institution-specific claim  
-**Evidence:** [CCRI Institutional Effectiveness Enrollment Dashboard](https://www.ccri.edu/ie/)
+**Evidence:** [CCRI Institutional Effectiveness dashboard and F-1 international-student definition](https://www.ccri.edu/ie/)
 
-IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. The dashboard's demographic view does not expose a comparable U.S. nonresident or international-status category, so the institutional totals are corroborated while the 12-to-1,188 nonresident jump remains unresolved. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure.
+IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. CCRI's official international-student admissions page separately defines an international student as a foreign national studying on an F-1 non-immigrant temporary visa and explicitly excludes U.S. citizens, permanent residents, eligible non-immigrant visa holders, refugees, asylees, and temporary protected status populations. That F-1-only admissions construct is narrower than the project IPEDS U.S. nonresident category, and the enrollment dashboard does not expose a directly comparable nonresident-status series. The exact all-student totals therefore corroborate the institutional frame while the explicit visa definition explains why CCRI's public international-student surface cannot validate the 12-to-1,188 nonresident jump. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure.
 
 ### Corroborate the direction: Trine University-Regional/Non-Traditional Campuses
 
