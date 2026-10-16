@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **19** are safe to discuss with explicit context.
-- **8** remain held for institution-specific interpretation.
+- **20** are safe to discuss with explicit context.
+- **7** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-16**.
 
@@ -27,7 +27,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Community College of Rhode Island | RI | +1,176 | partial_component_corroboration | hold_for_confirmation | [CCRI Institutional Effectiveness dashboard and F-1 international-student definition](https://www.ccri.edu/ie/) |
 | University of North Texas | TX | -1,052 | corroborated_external_count | safe_with_context | [University of North Texas Fall fact-sheet archive](https://institutionalresearch.unt.edu/fact-book/index.html) |
 | Webster University | MO | +1,020 | corroborated_external_count | safe_with_context | [Webster University November 2024 international-enrollment report](https://news.webster.edu/2024/webster_ranked_for_international_students_2024.php) |
-| Sofia University | CA | +930 | partial_component_corroboration | hold_for_confirmation | [Sofia University Fall 2024 Quick Facts](https://www.sofia.edu/wp-content/uploads/2024/12/Official_Fall-Quick-Facts-2024.pdf) |
+| Sofia University | CA | +930 | corroborated_direction | safe_with_context | [ICE SEVP 2024 Top 500 F-1 Schools active-record table](https://www.ice.gov/doclib/sevis/btn/2024/2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf) |
 | Avila University | MO | +850 | corroborated_direction | safe_with_context | [Avila University reflection on Fall 2024 international recruitment](https://www.avila.edu/2025/07/29/three-years-at-avila-reflections-on-leadership-and-transformation-3/) |
 | Southeastern University | FL | +706 | confirmed_reporting_discontinuity | safe_with_context | [Southeastern University 2024-25 Fact Book Enrollment by Ethnicity](https://seu.edu/about/fact-book/2024-25/) |
 | Belhaven University | MS | +470 | corroborated_external_count | safe_with_context | [Belhaven University Fall 2024 Tartan enrollment summary](https://www.belhaven.edu/pdfs/archived/tartan-2024.pdf) |
@@ -138,9 +138,9 @@ IPEDS rises from 2,611 to 3,631 U.S. nonresident students, with most of the incr
 
 **Automated trigger:** absolute change is at least 500 students; zero/nonzero discontinuity conflicts with recent history.
 
-IPEDS reports 1,330 U.S. nonresident students in 2020, zero in 2021-2023, and 930 in 2024. Sofia's official Fall 2024 Quick Facts independently reports total enrollment of 1,145, exactly matching the IPEDS total, and separates 862 domestic-campus from 283 global-campus students; it also reports 953 graduate and 186 doctorate students, closely reproducing the overwhelmingly graduate-level institutional structure. Those institutional categories are not equivalent to IPEDS U.S. nonresident status and do not reconcile the 930 count or the prior zeros. Treat the 2024 total and level structure as corroborated components while keeping the institution-specific nonresident movement held.
+The project IPEDS series reports zero U.S. nonresident students in Fall 2023 and 930 in Fall 2024, with all 930 latest-year nonresidents in the graduate population; total enrollment rises from 1,037 to 1,145. Sofia's official Fall 2024 Quick Facts independently reproduces the 1,145 total and the overwhelmingly graduate-level institutional structure. ICE SEVP's official 2024 Top 500 F-1 Schools table separately lists Sofia University at 664 active F-1 SEVIS records. Sofia University does not appear in ICE SEVP's official 2023 Top 500 table, whose lowest listed campus has 511 active records, so the same named Sofia campus moved from below that 511-record threshold in 2023 to 664 in 2024. The SEVIS active-record population is visa-based and uses calendar-year timing rather than the IPEDS Fall-census U.S. nonresident definition, and the 2023 federal table supplies only an upper bound rather than an exact endpoint. Do not treat the federal evidence as validation of the reported IPEDS zero, substitute the 664 count for 930, or infer the exact magnitude of the +930 change. It nevertheless independently corroborates a material upward international-student direction into 2024 and a large latest-year international presence, so clear only bounded direction-level discussion while IPEDS remains the numerical authority.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `partial_component_corroboration` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_direction` · **Reviewed:** 2026-10-16.
 
 ### Avila University (UNITID 176628)
 

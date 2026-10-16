@@ -26,7 +26,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Community College of Rhode Island | +1,176 | R→R | -243 | 1,428 | 121.4% | Hispanic / Latino (-733) | R→R | hold_for_confirmation |
 | Norfolk State University | +278 | R→R | +8 | 280 | 100.7% | Black / African American (-221) | R→R | safe_with_context |
 | Grambling State University | +264 | R→R | +36 | 241 | 91.3% | Black / African American (-204) | R→R | safe_with_context |
-| Sofia University | +930 | R→R | +108 | 847 | 91.1% | Asian (-776) | R→R | hold_for_confirmation |
+| Sofia University | +930 | R→R | +108 | 847 | 91.1% | Asian (-776) | R→R | safe_with_context |
 
 ## Complete diagnostic
 
@@ -43,7 +43,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Community College of Rhode Island | Continuing | +1,176 | R→R | -1,419 | 121.4% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | University of North Texas | Continuing | -1,052 | R→R | +409 | 86.0% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | Webster University | Continuing | +1,020 | R→R | -366 | 40.8% | Countermovement below half of the nonresident change | safe_with_context |
-| Sofia University | Continuing | +930 | R→R | -822 | 91.1% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
+| Sofia University | Continuing | +930 | R→R | -822 | 91.1% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | Avila University | Continuing | +850 | R→R | +185 | 1.3% | Countermovement below half of the nonresident change | safe_with_context |
 | Southeastern University | Continuing | +706 | R→R | +404 | 0.0% | Countermovement below half of the nonresident change | safe_with_context |
 | Belhaven University | Continuing | +470 | R→R | +127 | 1.1% | Countermovement below half of the nonresident change | safe_with_context |
