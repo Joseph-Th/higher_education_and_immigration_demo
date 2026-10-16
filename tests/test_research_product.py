@@ -1529,6 +1529,23 @@ class ResearchProductTests(unittest.TestCase):
             f"and holds {summary['hold_for_confirmation']} for confirmation",
             reviewer_guide,
         )
+        medium_section = reviewer_guide.split(
+            "19. Open `site/medium-priority-review.html`", 1
+        )[1].split("\n20. Open `site/planning-scenarios.html`", 1)[0]
+        for row in resolution:
+            start = medium_section.find(row["institution"])
+            if start < 0:
+                continue
+            sentence_end = medium_section.find(". ", start)
+            first_sentence = medium_section[
+                start : sentence_end + 1 if sentence_end >= 0 else len(medium_section)
+            ].lower()
+            if row["publication_class"] == "safe_with_context":
+                self.assertNotIn("remains held", first_sentence, row["institution"])
+                self.assertNotIn("remain held", first_sentence, row["institution"])
+            else:
+                self.assertNotIn("bounded-safe", first_sentence, row["institution"])
+                self.assertNotIn("safe with context", first_sentence, row["institution"])
 
         rendered = (ROOT / "docs" / "MEDIUM_QA_RESOLUTION_LOG.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "medium-qa-review.html").read_text(encoding="utf-8")
