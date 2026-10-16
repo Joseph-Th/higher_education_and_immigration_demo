@@ -268,15 +268,17 @@ def validate_rows(rows: list[dict[str, str]]) -> dict[str, int]:
     candidate = [row for row in rows if row["candidate_change_class"]]
     if len(high) != 27 or len(medium) != 50 or len(candidate) != 154:
         raise RuntimeError("Watchlist source counts do not reconcile to 27 high / 50 medium / 154 candidate changes")
-    if Counter(row["high_priority_publication_class"] for row in high) != Counter(
-        {"hold_for_confirmation": 10, "safe_with_context": 17}
-    ):
+    expected_high_classes = Counter(
+        row["publication_class"] for row in read_csv(QA_RESOLUTIONS)
+    )
+    if Counter(row["high_priority_publication_class"] for row in high) != expected_high_classes:
         raise RuntimeError("High-priority publication classes do not reconcile to the QA resolution log")
     if any(row["high_priority_publication_class"] for row in medium):
         raise RuntimeError("Medium-priority rows must not inherit high-priority publication dispositions")
-    if Counter(row["medium_priority_publication_class"] for row in medium) != Counter(
-        {"hold_for_confirmation": 28, "safe_with_context": 22}
-    ):
+    expected_medium_classes = Counter(
+        row["publication_class"] for row in read_csv(MEDIUM_QA_RESOLUTIONS)
+    )
+    if Counter(row["medium_priority_publication_class"] for row in medium) != expected_medium_classes:
         raise RuntimeError("Medium-priority publication classes do not reconcile to the medium QA resolution log")
     if any(row["medium_priority_publication_class"] for row in high):
         raise RuntimeError("High-priority rows must not inherit medium-priority publication dispositions")

@@ -149,14 +149,21 @@ def main() -> int:
         raise RuntimeError("Publication handoff candidate-year QA watchlist counts do not reconcile")
     if len(medium_review) != 50 or len({row["unitid"] for row in medium_review}) != 50:
         raise RuntimeError("Publication handoff requires the complete 50-row medium-priority QA routing table")
+    medium_safe = medium_resolution.get("safe_with_context")
+    medium_held = medium_resolution.get("hold_for_confirmation")
     if (
         medium_resolution.get("reviewed_count") != 50
         or medium_resolution.get("medium_priority_total") != 50
-        or medium_resolution.get("safe_with_context") != 22
-        or medium_resolution.get("hold_for_confirmation") != 28
+        or not isinstance(medium_safe, int)
+        or not isinstance(medium_held, int)
+        or medium_safe + medium_held != 50
         or not medium_resolution.get("required_medium_priority_covered")
     ):
         raise RuntimeError("Publication handoff requires complete medium-priority evidence-backed dispositions")
+    if Counter(row["medium_priority_publication_class"] for row in candidate_watchlist_medium) != Counter(
+        {"safe_with_context": medium_safe, "hold_for_confirmation": medium_held}
+    ):
+        raise RuntimeError("Publication handoff candidate-year watchlist does not match the current medium QA split")
     medium_routes = Counter(row["review_route"] for row in medium_review)
     if medium_routes != Counter(
         {

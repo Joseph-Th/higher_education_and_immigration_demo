@@ -235,7 +235,7 @@ One row per institution in the current medium-priority annual QA queue. This is 
 
 `safe_with_context` is intentionally narrow: it permits only the bounded current-release interpretation recorded in the analyst note. Institution-defined international, visa, OPT, online-global, or other public populations are not assumed to equal IPEDS U.S. nonresident enrollment. Every disposition must be revalidated after the next complete Fall Enrollment release.
 
-`scripts/build_medium_qa_resolution_log.py` requires exact 50-row coverage in the routing-table order, validates evidence URLs and review dates, enforces the current 21 `safe_with_context` and 29 `hold_for_confirmation` decisions, and generates `data/medium_qa_resolution_summary.json`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`.
+`scripts/build_medium_qa_resolution_log.py` requires exact 50-row coverage in the routing-table order, validates evidence URLs and review dates, enforces the current safe-with-context UNITID set and publication-class split, and generates `data/medium_qa_resolution_summary.json`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`.
 
 ## `data/medium_priority_category_diagnostic.csv`
 
@@ -768,7 +768,7 @@ Eight generated release-control rows that consolidate the project's independent 
 
 `data/qa_resolution_summary.json` contains the full high-priority queue size, review coverage percentage, counts by publication class and disposition, reviewed UNITIDs, latest manual review date, and three deterministic featured case studies. The featured cases represent an unresolved anomaly, a corroborated movement, and a documented structural change; each carries the current queue change, evidence URL, analyst note, and publication class used by the public brief and research memo. The summary is generated from `qa_resolution_log.csv` only after every current high-priority queue record has a reconciled disposition.
 
-`data/medium_qa_resolution_summary.json` records complete medium-priority review coverage, the 22 safe-with-context and 28 held decisions, disposition counts, candidate-directory overlap coverage, and the exact safe UNITID set. It is generated from `medium_qa_resolution_log.csv` only after the source register reconciles one-for-one to all 50 current medium-priority routing rows.
+`data/medium_qa_resolution_summary.json` records complete medium-priority review coverage, the current safe-with-context and held decision counts, disposition counts, candidate-directory overlap coverage, and the exact safe UNITID set. It is generated from `medium_qa_resolution_log.csv` only after the source register reconciles one-for-one to all 50 current medium-priority routing rows.
 
 `data/state_profiles.json` contains the shareable state-profile payload used by `site/state.html`: coverage metadata plus 51 keyed profiles with latest metrics, change windows, top institutions, annual series, and corresponding Markdown filename. It is generated from `state_year.csv`, `state_change_summary.csv`, and the latest institution table rather than maintained independently.
 
