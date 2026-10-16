@@ -1544,6 +1544,39 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("1,058,964 to 1,086,816", rendered)
         self.assertEqual(html.count('data-scenario-id="'), 3)
 
+    def test_current_documentation_tracks_qa_publication_counts(self) -> None:
+        high = json.loads(
+            (ROOT / "data" / "qa_resolution_summary.json").read_text(encoding="utf-8")
+        )
+        medium = json.loads(
+            (ROOT / "data" / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")
+        )
+        data_readme = (ROOT / "data" / "README.md").read_text(encoding="utf-8")
+        validation = (ROOT / "docs" / "VALIDATION.md").read_text(encoding="utf-8")
+
+        self.assertIn(
+            f"{medium['safe_with_context']} current records are `safe_with_context` "
+            f"and {medium['hold_for_confirmation']} remain `hold_for_confirmation`",
+            data_readme,
+        )
+        self.assertIn(
+            f"retaining the {high['safe_with_context']} safe-with-context / "
+            f"{high['hold_for_confirmation']} held high-priority publication classes",
+            validation,
+        )
+        self.assertIn(
+            f"complete institution-QA rendering with 27/27 high-priority records, "
+            f"{high['safe_with_context']} context-cleared decisions, "
+            f"{high['hold_for_confirmation']} holds",
+            validation,
+        )
+        self.assertIn(
+            f"medium-priority evidence-review rendering with 50/50 coverage, "
+            f"{medium['safe_with_context']} safe-with-context decisions, "
+            f"{medium['hold_for_confirmation']} holds",
+            validation,
+        )
+
     def test_ad_hoc_analysis_casebook_is_reproducible_and_explicitly_simulated(self) -> None:
         case_rows = rows(ROOT / "data" / "ad_hoc_analysis_results.csv")
         self.assertEqual([row["case_id"] for row in case_rows], ["A01", "A02", "A03"])
