@@ -7,10 +7,10 @@
   "hold_for_confirmation": 24,
   "dispositions": {
     "expected_structural_change": 5,
-    "external_scope_mismatch": 18,
+    "external_scope_mismatch": 17,
     "corroborated_direction": 9,
     "corroborated_external_count": 10,
-    "partial_component_corroboration": 5,
+    "partial_component_corroboration": 6,
     "confirmed_reporting_discontinuity": 2,
     "baseline_corroborated_move_unresolved": 1
   },
