@@ -13,8 +13,8 @@ The project is designed as a compact, reproducible research product rather than 
 If you are reviewing this as a work sample, the core case should be clear in about five minutes:
 
 1. **[Live research publication](https://joseph-th.github.io/higher_education_and_immigration_demo/)** — scan the headline findings, state explorer, and latest-release QA judgment.
-2. **[`deliverables/research_brief.pdf`](deliverables/research_brief.pdf)** — three-page research/writing sample with findings, limitations, and source/QA trail.
-3. **[`deliverables/management_briefing_deck.pptx`](deliverables/management_briefing_deck.pptx)** — six-slide management briefing built from the same validated outputs.
+2. **[`deliverables/research_brief.pdf`](deliverables/research_brief.pdf)** — two-page research/writing sample with findings, limitations, and source/QA trail.
+3. **[`deliverables/management_briefing_deck.pptx`](deliverables/management_briefing_deck.pptx)** — five-slide management briefing built from the same validated outputs.
 
 For a technical check, open **[`deliverables/ipeds_portfolio_analysis.xlsx`](deliverables/ipeds_portfolio_analysis.xlsx)** or **[`site/sql-analysis.html`](site/sql-analysis.html)**. The rest of the repository is supporting audit trail and reproducibility evidence, not required reading.
 
@@ -26,8 +26,8 @@ How did fall enrollment of U.S. nonresident students change across the United St
 
 ## What is included
 
-- **Research publication:** an interactive national/state brief plus a three-page PDF writing sample.
-- **Management communication:** a six-slide PowerPoint briefing built from the same validated findings.
+- **Research publication:** an interactive national/state brief plus a two-page PDF writing sample.
+- **Management communication:** a five-slide PowerPoint briefing built from the same validated findings.
 - **Technical analysis:** a formula-driven Excel workbook, executable SQL analysis, and reproducible Python pipeline.
 - **QA/QC evidence:** cross-year schema checks, arithmetic reconciliation, 24 independent NCES benchmark checks, and evidence-backed review of high- and medium-priority institution anomalies.
 - **Methodological judgment:** explicit population/source boundaries so IPEDS U.S. nonresident, SEVIS international, immigrant-origin, undocumented, pipeline, and refugee/asylee measures are not treated as interchangeable.
@@ -133,7 +133,7 @@ python scripts/build_management_deck.py
 python scripts/validate_project.py
 ```
 
-`deliverables/management_briefing_manifest.json` binds the six-slide PPTX to the current deck builder and validated CSV/JSON sources by SHA-256.
+`deliverables/management_briefing_manifest.json` binds the five-slide PPTX to the current deck builder and validated CSV/JSON sources by SHA-256.
 
 For browser-level publication QA, install the optional development dependency and Chromium once, then run:
 

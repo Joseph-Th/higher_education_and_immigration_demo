@@ -6,9 +6,9 @@ Live publication: `https://joseph-th.github.io/higher_education_and_immigration_
 
 ## Five-minute review path
 
-1. **Read `deliverables/research_brief.pdf` (3 pages).** This is the primary writing sample. Look for the research question, the small number of defensible findings, and the interpretation boundaries carried with the results.
+1. **Read `deliverables/research_brief.pdf` (2 pages).** This is the primary writing sample. Look for the research question, the small number of defensible findings, and the interpretation boundaries carried with the results.
 2. **Scan the live publication.** Review the headline metrics, national and state findings, state explorer, and latest-release QA section. The page should stand on its own without requiring repository knowledge.
-3. **Open `deliverables/management_briefing_deck.pptx` (6 slides).** This shows how the same validated analysis is compressed for leadership: KPI summary, trend, geography, structural drivers, and QA/interpretation guardrails.
+3. **Open `deliverables/management_briefing_deck.pptx` (5 slides).** This shows how the same validated analysis is compressed for leadership: KPI summary, trend, geography, structural drivers, and QA/interpretation guardrails.
 
 If those three artifacts do not establish the value of the work, the supporting material should not be expected to rescue the presentation.
 
@@ -39,8 +39,8 @@ Those controls are visible in `site/qa-review.html`, `site/medium-qa-review.html
 | Quantitative analysis | National, state, student-level, institutional-control, and institution-continuity decompositions |
 | QA/QC and judgment | Reconciliation tests, external benchmarks, manual anomaly review, explicit claim holds |
 | Excel / SQL / Python | Formula-driven workbook, executable SQL pack, reproducible Python pipeline |
-| Research writing | Three-page brief and public research memo |
-| Leadership communication | Six-slide management briefing |
+| Research writing | Two-page brief and public research memo |
+| Leadership communication | Five-slide management briefing |
 | Publication discipline | Claim handoff, release readiness, source lineage, governed public outputs |
 
 ## Scope boundary

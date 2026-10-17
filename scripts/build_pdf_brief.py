@@ -83,8 +83,8 @@ def main() -> int:
     if len(payload) < 40_000:
         raise RuntimeError(f"Generated research brief is unexpectedly small: {len(payload)} bytes")
     page_count = len(re.findall(rb"/Type\s*/Page\b", payload))
-    if page_count != 3:
-        raise RuntimeError(f"Research brief must remain a concise three-page product; got {page_count} pages")
+    if page_count != 2:
+        raise RuntimeError(f"Research brief must remain a concise two-page product; got {page_count} pages")
 
     shutil.copy2(DELIVERABLE, PUBLIC_COPY)
     if DELIVERABLE.read_bytes() != PUBLIC_COPY.read_bytes():

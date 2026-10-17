@@ -1,6 +1,6 @@
 {
   "builder": "scripts/build_management_deck.py",
-  "builder_sha256": "1df833e157cd23ab5a46447adc002b51f78b38fd45c94a37401a6cd0108ea84a",
+  "builder_sha256": "58808aa7216e47b9fc79ba060e2d463b32a6ffc0b3cc9b02bbbaf6b0b56125d2",
   "source_sha256": {
     "data/processed/national_year.csv": "800c805dc4241c70070ff7962fb1abc7faa602735af6796adaca9de8bcc7f892",
     "data/processed/state_change_summary.csv": "943d1102a624dbcace52a371ba5c41d4ecbadf9e79e6475f140b28cd0a5f4edf",
@@ -10,9 +10,9 @@
     "data/findings.json": "c9c4f4948113353576e4be8b82ef3596b153059a77b600305f9ec569957544d7",
     "data/latest_update_review.json": "7a1d00482ff0fa998561b57dea3c45de495406e0e2a78e22ddb73c4b835ab69e"
   },
-  "pptx_sha256": "3addcf71d7edba6b194cb7a36e70fb9a8c7043dcc15a1382732b164957ba68c2",
-  "pptx_bytes": 43880,
-  "slide_count": 6,
+  "pptx_sha256": "f559f49217da70c152bbc6ebd75da7d0a76947e84a79ad0d2784ad8b6efd5ad7",
+  "pptx_bytes": 41817,
+  "slide_count": 5,
   "metrics": {
     "latest_nonresident": 1044137,
     "latest_year": 2024,
@@ -21,6 +21,6 @@
     "undergraduate_positive_states": 45,
     "undergraduate_latest_change": 31592,
     "decade_change": 63400,
-    "slide_count": 6
+    "slide_count": 5
   }
 }

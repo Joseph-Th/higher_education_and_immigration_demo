@@ -108,8 +108,8 @@ This design is deliberate: the external publication is a validation source, not 
 - `site/data/` containing exactly the two approved machine-readable site payloads and no unregistered extras;
 - stakeholder briefing note reproducing validated headline/latest-release values and interpretation boundaries;
 - Excel workbook ZIP integrity, required six-sheet structure, formula presence, and current headline value;
-- PowerPoint management deck ZIP integrity, exact six-slide count, expected management-briefing figures/text, exact public-copy equality, and source/builder/PPTX SHA-256 freshness;
-- PDF research brief structure, exact three-page count, exact public-copy equality, and SHA-256 freshness against the current generated research memo;
+- PowerPoint management deck ZIP integrity, exact five-slide count, expected management-briefing figures/text, exact public-copy equality, and source/builder/PPTX SHA-256 freshness;
+- PDF research brief structure, exact two-page count, exact public-copy equality, and SHA-256 freshness against the current generated research memo;
 - 51 state/DC profiles covering exactly the analytic geographies, reconciling their latest counts to the national total, publishing byte-identical Markdown copies, and matching the machine-readable state-profile dataset;
 - structured research agenda with unique IDs, valid priorities, both current-data and external-data questions, and matching generated documentation;
 - QA and external benchmark checks all passing;
@@ -188,9 +188,9 @@ The repository tests recalculate both hashes. This prevents a data or memo updat
 
 ## PowerPoint publication freshness
 
-`scripts/build_management_deck.py` generates the canonical six-slide `deliverables/management_briefing_deck.pptx` directly from validated CSV/JSON outputs and publishes an exact copy under `site/downloads/`. The builder writes `deliverables/management_briefing_manifest.json` with SHA-256 hashes for the deck builder, every analytical source used by the deck, and the generated PPTX plus its byte size and slide count.
+`scripts/build_management_deck.py` generates the canonical five-slide `deliverables/management_briefing_deck.pptx` directly from validated CSV/JSON outputs and publishes an exact copy under `site/downloads/`. The builder writes `deliverables/management_briefing_manifest.json` with SHA-256 hashes for the deck builder, every analytical source used by the deck, and the generated PPTX plus its byte size and slide count.
 
-The repository tests recalculate those hashes and inspect the PPTX package for six slide XML files plus the expected management figures and interpretation text. This prevents an older deck from remaining beside refreshed data or a changed deck builder. The deck remains a downstream presentation artifact; the validated CSV/JSON outputs remain authoritative.
+The repository tests recalculate those hashes and inspect the PPTX package for five slide XML files plus the expected management figures and interpretation text. This prevents an older deck from remaining beside refreshed data or a changed deck builder. The deck remains a downstream presentation artifact; the validated CSV/JSON outputs remain authoritative.
 
 ## Publication checks
 

@@ -318,31 +318,11 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
 
     blank = prs.slide_layouts[6]
 
-    # Slide 1: cover
+    # Slide 1: executive summary
     slide = prs.slides.add_slide(blank)
     slide.background.fill.solid()
     slide.background.fill.fore_color.rgb = PAPER
-    add_text(slide, "MANAGEMENT BRIEFING · PORTFOLIO DEMONSTRATION", 0.72, 0.72, 5.8, 0.25, size=9, color=ACCENT_DARK, bold=True)
-    add_text(slide, "U.S. nonresident\nenrollment", 0.72, 1.28, 7.2, 1.55, size=39, color=NAVY, bold=True)
-    add_text(slide, "What changed from 2015 to 2024, where recovery differs, and what a manager should know before using the figures.", 0.72, 3.04, 6.65, 1.0, size=17, color=INK_SOFT)
-    add_text(slide, "IPEDS Fall Enrollment · 50 states + DC · 2024 provisional", 0.72, 4.42, 6.4, 0.28, size=10, color=INK_SOFT, bold=True)
-    add_text(slide, "Not a measure of all immigrants or all international students.", 0.72, 4.84, 6.5, 0.35, size=10, color=ACCENT_DARK)
-    panel = add_box(slide, 8.45, 0.0, 4.883, 7.5, fill=NAVY, line=NAVY, radius=False)
-    panel.line.color.rgb = NAVY
-    add_text(slide, str(latest["year"]), 8.95, 1.12, 3.85, 0.34, size=12, color=MUTED, bold=True)
-    add_text(slide, fmt_int(int(latest["nonresident_enrollment"])), 8.95, 1.62, 3.85, 0.72, size=35, color=WHITE, bold=True)
-    add_text(slide, "U.S. nonresident students", 8.95, 2.42, 3.85, 0.28, size=11, color=RGBColor(0xD4, 0xDE, 0xE7))
-    add_rule(slide, 8.95, 3.14, 3.5, RGBColor(0x3A, 0x4B, 0x5B), 1.0)
-    add_text(slide, fmt_int(headline["change_since_2015"], signed=True), 8.95, 3.48, 3.85, 0.52, size=27, color=RGBColor(0x8E, 0xD9, 0xD0), bold=True)
-    add_text(slide, f"since 2015 ({fmt_pct(headline['change_since_2015_pct'], signed=True)})", 8.95, 4.04, 3.85, 0.3, size=10, color=RGBColor(0xD4, 0xDE, 0xE7))
-    add_text(slide, "Prepared as a reviewer-facing management deck from the same validated outputs used by the public brief, Excel workbook, and SQL analysis.", 8.95, 5.3, 3.7, 1.1, size=10.5, color=RGBColor(0xD4, 0xDE, 0xE7))
-    add_text(slide, "Higher Education Data Brief", 0.72, 6.78, 5.0, 0.22, size=8.5, color=INK_SOFT, bold=True)
-
-    # Slide 2: executive summary
-    slide = prs.slides.add_slide(blank)
-    slide.background.fill.solid()
-    slide.background.fill.fore_color.rgb = PAPER
-    add_heading(slide, "Executive summary", "The latest year rose, but the composition of growth changed.", "Four numbers establish the current reporting picture before deeper analysis.")
+    add_heading(slide, "U.S. nonresident enrollment · executive summary", "2024 growth shifted toward undergraduates.", "Long-run recovery is still graduate-heavy and uneven across states.")
     add_kpi_card(slide, 0.68, 2.05, 2.85, "2024 enrollment", fmt_int(int(latest["nonresident_enrollment"])), f"{fmt_pct(float(latest['nonresident_share_pct']))} of total enrollment", dark=True)
     add_kpi_card(slide, 3.68, 2.05, 2.85, "2023 → 2024", fmt_int(update["national"]["absolute_change"], signed=True), fmt_pct(update["national"]["pct_change"], signed=True))
     add_kpi_card(slide, 6.68, 2.05, 2.85, "Recovered vs 2019", f"{recovery['states_at_or_above_baseline']} of 51", f"{recovery['states_below_baseline']} remain below 2019")
@@ -353,9 +333,9 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     add_bullet(slide, 0.98, 4.48, 3.55, "Undergraduate growth led", f"Undergraduate enrollment increased {fmt_int(update['national']['undergraduate_change'], signed=True)} across {baseline_positive_states} of 51 states/DC; public institutions contributed {fmt_int(baseline_public_change, signed=True)}.", index="01")
     add_bullet(slide, 4.55, 4.48, 3.65, "Graduate enrollment edged down", f"Graduate enrollment changed {fmt_int(update['national']['graduate_change'], signed=True)}, so the net gain was not graduate-driven in the latest year.", index="02")
     add_bullet(slide, 8.35, 4.48, 3.85, "Existing institutions drove the gain", f"Continuing institutions accounted for {fmt_int(update['institution_accounting']['continuing_change'], signed=True)}; entry/exit netted {fmt_int(update['institution_accounting']['entry_exit_net'], signed=True)}.", index="03")
-    add_footer(slide, 2)
+    add_footer(slide, 1)
 
-    # Slide 3: national trend
+    # Slide 2: national trend
     slide = prs.slides.add_slide(blank)
     slide.background.fill.solid()
     slide.background.fill.fore_color.rgb = PAPER
@@ -375,9 +355,9 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     add_text(slide, fmt_pct(level["undergraduate_change_pct"], signed=True), 9.48, 4.92, 2.5, 0.22, size=9.5, color=RGBColor(0xD4, 0xDE, 0xE7))
     add_text(slide, "Net decade change", 9.48, 5.55, 1.8, 0.22, size=9, color=MUTED, bold=True)
     add_text(slide, fmt_int(level["net_change_students"], signed=True), 9.48, 5.84, 2.75, 0.42, size=22, color=RGBColor(0x8E, 0xD9, 0xD0), bold=True)
-    add_footer(slide, 3)
+    add_footer(slide, 2)
 
-    # Slide 4: geography
+    # Slide 3: geography
     slide = prs.slides.add_slide(blank)
     slide.background.fill.solid()
     slide.background.fill.fore_color.rgb = PAPER
@@ -398,9 +378,9 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     for idx, item in enumerate(shortfalls):
         add_horizontal_bar(slide, label=item["state"], value=item["absolute_change"], max_abs=short_max, x=6.75, y=3.65 + idx * 0.5, w=5.25)
     add_text(slide, "Interpretation: the national recovery does not imply a uniform state pattern. California remains the largest absolute shortfall from 2019, while Illinois and Texas show the largest gains.", 0.98, 6.25, 10.95, 0.4, size=9.5, color=INK_SOFT)
-    add_footer(slide, 4)
+    add_footer(slide, 3)
 
-    # Slide 5: drivers
+    # Slide 4: drivers
     slide = prs.slides.add_slide(blank)
     slide.background.fill.solid()
     slide.background.fill.fore_color.rgb = PAPER
@@ -423,13 +403,13 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     add_text(slide, "National decade change", 6.98, 4.69, 2.35, 0.22, size=9.5, color=RGBColor(0xD4, 0xDE, 0xE7), bold=True)
     add_text(slide, fmt_int(dynamics["national_change"], signed=True), 9.6, 4.49, 2.5, 0.48, size=25, color=RGBColor(0x8E, 0xD9, 0xD0), bold=True, align=PP_ALIGN.RIGHT)
     add_text(slide, "The increase was created inside continuing institutions, not by adding more institutions to the analytic universe.", 6.98, 5.45, 4.75, 0.85, size=10.5, color=RGBColor(0xD4, 0xDE, 0xE7))
-    add_footer(slide, 5)
+    add_footer(slide, 4)
 
-    # Slide 6: management use / QA
+    # Slide 5: management use / QA
     slide = prs.slides.add_slide(blank)
     slide.background.fill.solid()
     slide.background.fill.fore_color.rgb = PAPER
-    add_heading(slide, "Interpretation and QA", "Use the trend for reporting, but keep the definition and release boundaries visible.", "This deck is a management-facing presentation layer over validated analytical outputs.")
+    add_heading(slide, "Interpretation and QA", "Use the trend. Keep the boundaries visible.", "Management summary over validated analytical outputs; definitions, vintage, and institution-level QA still govern reuse.")
     add_box(slide, 0.68, 2.02, 5.85, 4.72, fill=WHITE, line=LINE)
     add_text(slide, "What a manager can take away", 1.0, 2.3, 4.8, 0.32, size=14, color=NAVY, bold=True)
     add_bullet(slide, 1.0, 2.9, 4.75, "Latest direction", f"2024 U.S. nonresident enrollment increased {fmt_int(update['national']['absolute_change'], signed=True)} ({fmt_pct(update['national']['pct_change'], signed=True)}) from 2023.")
@@ -448,7 +428,7 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     for idx, (title, body) in enumerate(guardrails):
         add_bullet(slide, 7.1, 2.93 + idx * 0.86, 4.75, title, body, index=f"0{idx + 1}")
     add_text(slide, "Source: NCES IPEDS Fall Enrollment and Institutional Characteristics, 2015–2024. Geography: 50 states + DC. Universe: degree-granting First Look/Digest Title IV institutions.", 7.1, 6.25, 4.85, 0.38, size=7.8, color=INK_SOFT)
-    add_footer(slide, 6)
+    add_footer(slide, 5)
 
     metrics = {
         "latest_nonresident": int(latest["nonresident_enrollment"]),

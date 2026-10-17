@@ -2528,7 +2528,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertGreater(len(payload), 40_000)
         self.assertTrue(payload.startswith(b"PK"))
         self.assertEqual(payload, public.read_bytes())
-        self.assertEqual(manifest["slide_count"], 6)
+        self.assertEqual(manifest["slide_count"], 5)
         self.assertEqual(manifest["pptx_bytes"], len(payload))
         self.assertEqual(manifest["pptx_sha256"], hashlib.sha256(payload).hexdigest())
         builder = ROOT / manifest["builder"]
@@ -2550,7 +2550,7 @@ class ResearchProductTests(unittest.TestCase):
                 for name in archive.namelist()
                 if re.fullmatch(r"ppt/slides/slide\d+\.xml", name)
             )
-            self.assertEqual(len(slide_names), 6)
+            self.assertEqual(len(slide_names), 5)
             text = "\n".join(
                 node.text or ""
                 for slide_name in slide_names
@@ -2559,6 +2559,7 @@ class ResearchProductTests(unittest.TestCase):
                 )
             )
         for expected in (
+            "2024 growth shifted toward undergraduates.",
             "1,044,137",
             "+29,539",
             "+31,592",
@@ -2591,10 +2592,10 @@ class ResearchProductTests(unittest.TestCase):
         self.assertGreater(len(payload), 40_000)
         self.assertTrue(payload.startswith(b"%PDF-"))
         self.assertIn(b"%%EOF", payload[-2048:])
-        self.assertEqual(len(re.findall(rb"/Type\s*/Page\b", payload)), 3)
+        self.assertEqual(len(re.findall(rb"/Type\s*/Page\b", payload)), 2)
         self.assertEqual(payload, public.read_bytes())
         self.assertEqual(manifest["pdf_bytes"], len(payload))
-        self.assertEqual(manifest["page_count"], 3)
+        self.assertEqual(manifest["page_count"], 2)
         self.assertEqual(manifest["pdf_sha256"], hashlib.sha256(payload).hexdigest())
         self.assertEqual(manifest["source_sha256"], hashlib.sha256(memo.read_bytes()).hexdigest())
         memo_text = (ROOT / "docs" / "RESEARCH_MEMO.md").read_text(encoding="utf-8")

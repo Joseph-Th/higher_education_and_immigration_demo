@@ -19,6 +19,12 @@ CASE_LABELS = {
     "structural_change": "Explain the structural change",
 }
 
+CASE_PRINT_SUMMARIES = {
+    "unresolved_anomaly": "Exact all-student totals corroborate the institutional frame, but the public source does not expose a comparable U.S. nonresident series. Keep the institution-specific claim held.",
+    "corroborated_movement": "Official Fall reporting shows a large same-direction increase on a nearly identical enrollment frame. Keep IPEDS as the numerical authority and publish only bounded direction-level context.",
+    "structural_change": "An official closure record explains the institution's exit from the analytic universe. Treat the movement as a structural event rather than unexplained enrollment loss.",
+}
+
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open("r", encoding="utf-8", newline="") as handle:
@@ -145,6 +151,13 @@ def main() -> int:
             </article>"""
         )
 
+    print_case_cards = []
+    for case in cases:
+        case_type = str(case["case_type"])
+        print_case_cards.append(
+            f"""<article><span>{html.escape(CASE_LABELS[case_type])}</span><h3>{html.escape(str(case['institution']))}</h3><strong>{html.escape(signed_int(int(case['absolute_change'])))} students · {html.escape(decision_copy(case))}</strong><p>{html.escape(CASE_PRINT_SUMMARIES[case_type])}</p></article>"""
+        )
+
     html_output = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -218,7 +231,10 @@ def main() -> int:
       </div>
       <div class="memo-actions"><a class="button button-primary" href="downloads/research_brief.pdf">Download PDF brief</a><a class="button button-secondary" href="methodology-crosswalk.html">Population crosswalk</a><a class="button button-secondary" href="downloads/research_memo.md">Memo notes</a><a class="button button-secondary" href="index.html#methods">Full methods</a></div>
       <div class="memo-print-notes print-only">
-        <h2>Methods and source trail</h2>
+        <p class="eyebrow">Analyst judgment</p>
+        <h2>Three flags, three publication decisions</h2>
+        <div class="memo-print-cases">{''.join(print_case_cards)}</div>
+        <h2 class="memo-print-methods-title">Methods and source trail</h2>
         <div class="memo-print-grid">
           <article><h3>Primary measure</h3><p>The series uses NCES/IPEDS Fall Enrollment <code>EFNRALT</code> for U.S. nonresident students. The analytic universe is degree-granting institutions in the First Look/Digest Title IV selection, located in the 50 states and District of Columbia.</p></article>
           <article><h3>Population comparability</h3><p>IPEDS U.S. nonresident, SEVIS international-student records, CPS immigrant-origin estimates, and ACS-derived undocumented-student estimates answer different questions. The project maintains a separate population/source crosswalk before any companion comparison is attempted.</p></article>
