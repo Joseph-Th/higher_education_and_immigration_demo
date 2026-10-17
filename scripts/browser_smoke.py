@@ -921,8 +921,20 @@ def inspect_medium_priority_review(browser, base_url: str, *, width: int, height
 
     routes = page.locator("#routes").inner_text()
     for expected in ("Structural / reporting", "3 rows", "Absolute + percentage", "8 rows", "Absolute movement", "11 rows", "Percentage movement", "28 rows", "none is a severity grade"):
-        if expected not in routes:
+        normalized = expected.replace(" rows", "") if expected.endswith(" rows") else expected
+        if normalized not in routes:
             raise AssertionError(f"Medium-priority QA route section is missing {expected}")
+    if page.locator("#routes [data-medium-route]").count() != 4:
+        raise AssertionError("Medium-priority QA route visual does not render all four exclusive routes")
+    if page.locator("#routes .medium-route-bar i").count() != 4:
+        raise AssertionError("Medium-priority QA route bar does not contain four segments")
+    direction = page.locator(".medium-direction-visual")
+    if direction.locator(".medium-direction-bar i").count() != 3:
+        raise AssertionError("Medium-priority QA direction visual does not contain gain, decline, and zero segments")
+    direction_text = direction.inner_text()
+    for expected in ("Gain rows", "25", "+7,806", "Decline rows", "23", "-9,241", "Zero-change rows", "2", "17,047", "-1,435"):
+        if expected not in direction_text:
+            raise AssertionError(f"Medium-priority QA direction visual is missing {expected}")
 
     body = page.locator("main").inner_text()
     for expected in ("25 gain rows", "+7,806", "23 decline rows", "-9,241", "17,047", "-1,435", "flagged subset only"):

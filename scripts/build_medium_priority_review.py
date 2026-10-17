@@ -354,6 +354,30 @@ def write_markdown(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
 
 
 def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
+    route_parts = (
+        ("percentage", "Percentage movement", summary["percentage_route"], "50%+ change from a 100+ baseline without a 500-student move"),
+        ("absolute", "Absolute movement", summary["absolute_route"], "500+ student move without the medium percentage trigger"),
+        ("combined", "Absolute + percentage", summary["combined_route"], "Both magnitude and percentage thresholds fired"),
+        ("structural", "Structural / reporting", summary["structural_route"], "Universe membership or non-R/Z reporting-status context"),
+    )
+    route_bar = "".join(
+        f'<i class="{css}" style="flex:{count}" title="{html.escape(label)}: {count}"></i>'
+        for css, label, count, _ in route_parts
+    )
+    route_legend = "".join(
+        f'<article data-medium-route="{css}"><span><i class="{css}"></i>{html.escape(label)}</span><strong>{count} rows</strong><small>{html.escape(note)}</small></article>'
+        for css, label, count, note in route_parts
+    )
+
+    direction_parts = (
+        ("gain", "Gain rows", summary["gain_rows"]),
+        ("decline", "Decline rows", summary["decline_rows"]),
+        ("zero", "Zero-change rows", summary["zero_rows"]),
+    )
+    direction_bar = "".join(
+        f'<i class="{css}" style="flex:{count}" title="{html.escape(label)}: {count}"></i>'
+        for css, label, count in direction_parts
+    )
     top_html = []
     for row in top_movement_rows(rows):
         top_html.append(
@@ -423,22 +447,13 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
 
     <section class="section shell" id="routes">
       <div class="section-heading"><p class="eyebrow">Review taxonomy</p><h2>Four routes describe the signal; none is a severity grade.</h2><p>The existing medium-priority threshold remains authoritative. This layer only makes the next analyst action explicit and reproducible.</p></div>
-      <div class="method-grid">
-        <article><h3>Structural / reporting</h3><p><strong>{summary['structural_route']} rows</strong><br>Universe membership or non-R/Z reporting-status transitions require structural evidence before interpretation.</p></article>
-        <article><h3>Absolute + percentage</h3><p><strong>{summary['combined_route']} rows</strong><br>Both count-scale and percentage thresholds fired; inspect history and institution/source context together.</p></article>
-        <article><h3>Absolute movement</h3><p><strong>{summary['absolute_route']} rows</strong><br>At least 500 students changed without a medium-level percentage trigger.</p></article>
-        <article><h3>Percentage movement</h3><p><strong>{summary['percentage_route']} rows</strong><br>At least 50% from a 100+ baseline without a 500-student change; denominator scale matters.</p></article>
-      </div>
+      <div class="medium-route-visual"><div class="medium-route-bar">{route_bar}</div><div class="medium-route-legend">{route_legend}</div></div>
+      <p class="medium-route-note"><strong>Routing only:</strong> the four segments partition the 50-row medium queue. They describe the evidence task, not severity, error probability, or publication clearance.</p>
     </section>
 
     <section class="section section-tinted"><div class="shell">
       <div class="section-heading"><p class="eyebrow">Queue accounting</p><h2>Mixed directions are another reason not to read the queue as a trend.</h2><p>{summary['gain_rows']} gain rows contribute +{summary['positive_movement']:,}; {summary['decline_rows']} decline rows contribute -{summary['negative_movement']:,}; {summary['zero_rows']} rows have zero enrollment change. Net movement is {summary['net_movement']:+,} across {summary['gross_movement']:,} of gross absolute movement. Those totals describe the flagged subset only.</p></div>
-      <div class="handoff-summary">
-        <article><strong>{summary['gain_rows']}</strong><span>gain rows</span></article>
-        <article><strong>{summary['decline_rows']}</strong><span>decline rows</span></article>
-        <article><strong>{summary['gross_movement']:,}</strong><span>gross absolute movement</span></article>
-        <article><strong>{summary['net_movement']:+,}</strong><span>net across medium rows</span></article>
-      </div>
+      <div class="medium-direction-visual"><div class="medium-direction-bar">{direction_bar}</div><div class="medium-direction-meta"><article><span>Gain rows</span><strong>{summary['gain_rows']}</strong><small>+{summary['positive_movement']:,} students</small></article><article><span>Decline rows</span><strong>{summary['decline_rows']}</strong><small>-{summary['negative_movement']:,} students</small></article><article><span>Zero-change rows</span><strong>{summary['zero_rows']}</strong><small>no annual enrollment movement</small></article><article><span>Gross / net movement</span><strong>{summary['gross_movement']:,}</strong><small>{summary['net_movement']:+,} net across flagged rows</small></article></div></div>
     </div></section>
 
     <section class="section shell" id="largest-movements">
