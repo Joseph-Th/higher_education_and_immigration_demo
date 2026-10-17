@@ -3,13 +3,13 @@
   "reviewed_count": 50,
   "coverage_pct": 100.0,
   "required_medium_priority_covered": true,
-  "safe_with_context": 32,
-  "hold_for_confirmation": 18,
+  "safe_with_context": 33,
+  "hold_for_confirmation": 17,
   "dispositions": {
     "expected_structural_change": 5,
-    "external_scope_mismatch": 14,
+    "corroborated_direction": 12,
     "corroborated_external_count": 12,
-    "corroborated_direction": 11,
+    "external_scope_mismatch": 13,
     "partial_component_corroboration": 4,
     "confirmed_reporting_discontinuity": 4
   },
@@ -46,6 +46,7 @@
     "232609",
     "243780",
     "244233",
-    "417327"
+    "417327",
+    "488679"
   ]
 }
