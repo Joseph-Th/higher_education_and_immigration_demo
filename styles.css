@@ -340,6 +340,16 @@ section[id] { scroll-margin-top: 76px; }
 .qa-case-meta strong { font-size: 12px; }
 .qa-case-card-hold { border-color: rgba(199,107,59,.4); background: #fffaf7; }
 .qa-audit-details { margin-top: 4px; }
+.medium-review-meta { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 14px; }
+.medium-review-meta article { padding: 17px 19px; border: 1px solid var(--line); border-radius: 14px; background: var(--wash); }
+.medium-review-meta strong { display: block; font-size: 24px; line-height: 1; letter-spacing: -.04em; }
+.medium-review-meta span { display: block; margin-top: 7px; color: var(--ink-soft); font-size: 11px; }
+.medium-held-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.medium-held-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 118px; padding: 19px; border: 1px solid rgba(199,107,59,.34); border-radius: 14px; background: #fffaf7; }
+.medium-held-card strong { display: block; font-size: 13px; line-height: 1.35; }
+.medium-held-card span { display: block; margin-top: 6px; color: var(--ink-soft); font-size: 10px; }
+.medium-held-card small { display: block; margin-top: 14px; color: #9b4d27; font-size: 10px; font-weight: 800; }
+.medium-qa-audit-details { margin-top: 4px; }
 
 .nonprofit-concentration-visual { padding: 24px 26px; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
 .nonprofit-concentration-head { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 16px; color: var(--ink-soft); font-size: 11px; }
@@ -557,6 +567,7 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .recovery-driver-summary { grid-template-columns: repeat(2,1fr); }
   .recovery-movement-grid { grid-template-columns: 1fr; }
   .qa-disposition-row { grid-template-columns: 170px minmax(0,1fr) 36px; }
+  .medium-held-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .nonprofit-movement-grid { grid-template-columns: repeat(2,1fr); }
   .nonprofit-contributor-row { grid-template-columns: 32px minmax(180px,1fr) minmax(150px,.8fr) 70px; }
   .nonprofit-contributor-row small { grid-column: 2 / -1; text-align: left; }
@@ -595,6 +606,9 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .qa-disposition-row > strong { grid-column: 1 / -1; }
   .qa-publication-balance { grid-template-columns: 1fr 1fr !important; }
   .qa-publication-balance strong { display: block; font-size: 18px; }
+  .medium-review-meta { grid-template-columns: 1fr; }
+  .medium-held-grid { grid-template-columns: 1fr; }
+  .medium-held-card { min-height: 0; }
   .nonprofit-concentration-visual { padding: 18px 16px; }
   .nonprofit-concentration-head { align-items: flex-start; flex-direction: column; gap: 4px; }
   .nonprofit-concentration-row { grid-template-columns: 52px minmax(0,1fr) 48px; gap: 8px; }
