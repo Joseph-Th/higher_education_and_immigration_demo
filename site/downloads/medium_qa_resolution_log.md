@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 33
-- **Held for confirmation:** 17
+- **Safe with context:** 34
+- **Held for confirmation:** 16
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -55,7 +55,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Pikes Peak State College | CO | -104 | Percentage Movement | Corroborated external count | Safe with context | [Pikes Peak State College 2025 Data Book](https://www.pikespeak.edu/about/institutional-effectiveness/_IE-uploads/Databook/PPSC-2025-Databook.pdf) |
 | America Evangelical University | CA | -92 | Percentage Movement | Partial component corroboration | Hold for confirmation | [California BPPE America Evangelical University 2023 and 2024 Annual Reports](https://www.bppe.ca.gov/webapplications/annualReports/2024/details/23621227) |
 | University of Lynchburg | VA | +91 | Percentage Movement | Corroborated direction | Safe with context | [University of Lynchburg Fall 2024 international-enrollment and Belonging reports](https://magazine.lynchburg.edu/article/a-new-path-to-belonging/) |
-| Monroe Community College | NY | +83 | Percentage Movement | External scope mismatch | Hold for confirmation | [Monroe Community College 2024-25 Facts Book and 2024 Self-Study Design](https://www.monroecc.edu/fileadmin/SiteFiles/GeneralContent/depts/admissions/documents/MCC-Facts-Book.pdf) |
+| Monroe Community College | NY | +83 | Percentage Movement | Corroborated direction | Safe with context | [SUNY System 2025-26 Executive Data Summary](https://system.suny.edu/institutional-research/resources/) |
 | University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Maine System Fall 2024 census enrollment report](https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2024/11/November-2024-BOT-Meeting-Book-Revised-11.8.24.pdf) |
 | New Mexico Highlands University | NM | -81 | Percentage Movement | Corroborated external count | Safe with context | [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/) |
 | Northeastern University Oakland | CA | +80 | Percentage Movement | External scope mismatch | Hold for confirmation | [Northeastern University Oakland Fall 2024 admissions FAQ](https://admissions.northeastern.edu/wp-content/uploads/2023/12/FA24-NU-Oakland-Admission-FAQ-12.13-Update.pdf) |
@@ -404,11 +404,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Monroe Community College · UNITID 193326
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
-- **Evidence:** [Monroe Community College 2024-25 Facts Book and 2024 Self-Study Design](https://www.monroecc.edu/fileadmin/SiteFiles/GeneralContent/depts/admissions/documents/MCC-Facts-Book.pdf)
-- **Analyst note:** The project IPEDS series reports 122 U.S. nonresident students in Fall 2023 and 205 in Fall 2024, an increase of 83, with total enrollment of 8,530 and 8,641. Monroe Community College's official 2024 Self-Study Design reports the same Fall 2023 credit enrollment total of 8,530 and says the college welcomes approximately 100 international students from more than 36 countries. Its official 2024-25 Facts Book reports the same Fall 2024 credit enrollment total of 8,641 and 116 international students, explicitly defining that population as non-U.S. citizens with nonimmigrant visas. Thus the institutional total-enrollment endpoints match IPEDS exactly while the narrower institutional international count is about 22 below IPEDS in 2023 and 89 below in 2024; the institutional series rises by roughly 16 rather than the +83 IPEDS U.S. nonresident movement. The exact total-enrollment reconciliation makes this a documented population-definition mismatch rather than a generic lack of institutional evidence. Preserve IPEDS as the analytical authority, keep the institution-specific +83 movement held, and do not substitute the visa-defined 116 count or describe the IPEDS increase as independently corroborated international growth.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
+- **Reviewed:** 2026-10-16
+- **Evidence:** [SUNY System 2025-26 Executive Data Summary](https://system.suny.edu/institutional-research/resources/)
+- **Analyst note:** The project IPEDS series reports 122 U.S. nonresident students in Fall 2023 and 205 in Fall 2024, an increase of 83, with total enrollment of 8,530 and 8,641 and nonresident shares of 1.4302% and 2.3724%. SUNY System Administration's official 2025-26 Institutional Research Executive Data Summary reports Monroe's exact same Fall 2023 and Fall 2024 total headcounts of 8,530 and 8,641 and reports Percent International rising from 1.4% to 2.4%. The source notes define Percent International as Fall Term, Home Institution Students with International Citizenship Residency. The published percentages exactly match the project IPEDS shares when rounded to one decimal and imply approximately 119 and 207 students on the SUNY headcounts, closely tracking the project endpoints and the +83 direction. Because the SUNY percentages are rounded and International Citizenship Residency is not assumed definition-identical to IPEDS U.S. nonresident status, do not substitute the implied counts or treat the measures as exact equivalents. Preserve IPEDS as the numerical authority and clear only bounded scale-and-direction discussion of the +83 movement.
 
 ### University of Maine at Presque Isle · UNITID 161341
 
