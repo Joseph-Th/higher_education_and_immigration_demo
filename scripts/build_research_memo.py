@@ -158,6 +158,26 @@ def main() -> int:
             f"""<article><span>{html.escape(CASE_LABELS[case_type])}</span><h3>{html.escape(str(case['institution']))}</h3><strong>{html.escape(signed_int(int(case['absolute_change'])))} students · {html.escape(decision_copy(case))}</strong><p>{html.escape(CASE_PRINT_SUMMARIES[case_type])}</p></article>"""
         )
 
+    latest_change_scale = max(
+        abs(int(latest["undergraduate_change"])),
+        abs(int(latest["graduate_change"])),
+        abs(int(latest["absolute_change"])),
+        1,
+    )
+
+    def change_bar_width(value: int) -> float:
+        return 50 * abs(value) / latest_change_scale
+
+    latest_change_rows = (
+        ("Undergraduate", int(latest["undergraduate_change"]), "positive"),
+        ("Graduate", int(latest["graduate_change"]), "negative"),
+        ("Net change", int(latest["absolute_change"]), "net"),
+    )
+    latest_change_visual = "".join(
+        f"""<div class="memo-change-row"><span>{html.escape(label)}</span><div class="memo-change-track"><i class="memo-change-bar {bar_class}" style="width:{change_bar_width(value):.1f}%"></i></div><strong>{html.escape(signed_int(value))}</strong></div>"""
+        for label, value, bar_class in latest_change_rows
+    )
+
     html_output = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -190,8 +210,13 @@ def main() -> int:
       <article class="memo-copy">
         <p class="eyebrow">Bottom line</p>
         <h2>Recovery is national. Its composition is not the same as before.</h2>
-        <p>U.S. nonresident enrollment reached <strong id="memo-total">{headline['latest_nonresident']:,}</strong> in Fall {end_year}, or <strong>{headline['latest_share_pct']:.2f}%</strong> of enrollment in the analytic universe. That is <strong>{signed_int(headline['change_since_2015'])}</strong> students above {start_year}.</p>
-        <p>The newest annual movement breaks with the decade-level pattern. Undergraduate enrollment increased <strong>{signed_int(latest['undergraduate_change'])}</strong> in <strong>{baseline_positive_states} of 51 states/DC</strong>, with public institutions contributing <strong>{signed_int(baseline_public_change)}</strong>; graduate enrollment declined <strong>{signed_int(latest['graduate_change'])}</strong>, producing a net <strong id="memo-latest-change">{signed_int(latest['absolute_change'])}</strong>. <strong>R01 remains a fixed baseline:</strong> call the shift broadly persistent only if the next complete release is positive nationally and in at least <strong>26 of 51 states/DC</strong>.</p>
+        <p>U.S. nonresident enrollment reached <strong id="memo-total">{headline['latest_nonresident']:,}</strong> in Fall {end_year}, or <strong>{headline['latest_share_pct']:.2f}%</strong> of the analytic universe and <strong>{signed_int(headline['change_since_2015'])}</strong> above {start_year}.</p>
+        <p>The newest annual movement breaks with the decade pattern: undergraduate enrollment rose <strong>{signed_int(latest['undergraduate_change'])}</strong> across <strong>{baseline_positive_states} of 51 states/DC</strong>, while graduate enrollment fell <strong>{signed_int(latest['graduate_change'])}</strong>, producing a net <strong id="memo-latest-change">{signed_int(latest['absolute_change'])}</strong>. <strong>R01 remains a fixed baseline:</strong> call the shift persistent only if the next complete release is positive nationally and in at least <strong>26 of 51 states/DC</strong>.</p>
+
+        <div class="memo-change-visual" aria-label="2023 to 2024 U.S. nonresident enrollment change by student level">
+          <div class="memo-change-head"><strong>{prior_year}→{end_year}</strong><span>Change in U.S. nonresident enrollment</span></div>
+          {latest_change_visual}
+        </div>
 
         <h2>Three findings that matter</h2>
         <div class="memo-findings">

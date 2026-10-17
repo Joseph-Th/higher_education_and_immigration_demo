@@ -1048,6 +1048,15 @@ def inspect_research_memo(browser, base_url: str, *, width: int, height: int) ->
         raise AssertionError(f"Research memo load failed at {width}px")
     if page.locator("#memo-total").inner_text().strip() != expected_int(SITE_DATA["headline"]["latest_nonresident"]):
         raise AssertionError("Research memo headline total does not match site data")
+    change_values = page.locator(".memo-change-row strong").all_inner_texts()
+    latest = SITE_DATA["latest_update_review"]["national"]
+    expected_changes = [
+        f"+{expected_int(latest['undergraduate_change'])}",
+        f"-{expected_int(abs(latest['graduate_change']))}",
+        f"+{expected_int(latest['absolute_change'])}",
+    ]
+    if change_values != expected_changes:
+        raise AssertionError("Research memo latest-year visual does not match site data")
     if page.locator("#memo-case-studies .qa-case-card").count() != 3:
         raise AssertionError("Research memo does not show three analyst case studies")
     expected_cases = [case["institution"] for case in SITE_DATA["qa_resolution_summary"]["case_studies"]]

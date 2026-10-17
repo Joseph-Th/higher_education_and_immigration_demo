@@ -225,6 +225,21 @@ section[id] { scroll-margin-top: 76px; }
 .memo-copy h2 { margin: 0 0 16px; font-size: clamp(30px,4vw,46px); line-height: 1.08; letter-spacing: -.04em; }
 .memo-copy > p { color: var(--ink-soft); font-size: 17px; }
 .memo-copy > h2:not(:first-of-type) { margin-top: 52px; }
+.memo-change-visual { margin: 26px 0 34px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: #f8fafb; }
+.memo-change-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.memo-change-head strong { font-size: 14px; }
+.memo-change-head span { color: var(--ink-soft); font-size: 11px; }
+.memo-change-row { display: grid; grid-template-columns: 105px minmax(130px,1fr) 70px; align-items: center; gap: 10px; min-height: 26px; }
+.memo-change-row > span { color: var(--ink-soft); font-size: 10px; font-weight: 750; }
+.memo-change-row > strong { font-size: 11px; text-align: right; }
+.memo-change-track { position: relative; height: 12px; }
+.memo-change-track::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: #9eacb8; }
+.memo-change-bar { position: absolute; top: 2px; height: 8px; border-radius: 2px; }
+.memo-change-bar.positive, .memo-change-bar.net { left: 50%; }
+.memo-change-bar.negative { right: 50%; }
+.memo-change-bar.positive { background: var(--accent); }
+.memo-change-bar.negative { background: var(--warm); }
+.memo-change-bar.net { background: var(--navy); }
 .memo-findings { display: grid; gap: 10px; }
 .memo-findings article { display: grid; grid-template-columns: 42px 1fr; column-gap: 12px; padding: 20px 0; border-top: 1px solid var(--line); }
 .memo-findings article > span { grid-row: 1 / span 2; color: var(--accent-dark); font-size: 12px; font-weight: 850; letter-spacing: .08em; }
@@ -448,6 +463,8 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .chart-card, .explorer-panel, .explorer-copy { padding: 20px; }
   .chart { min-height: 250px; }
   .chart-toolbar { flex-direction: column; }
+  .memo-change-head { align-items: flex-start; flex-direction: column; gap: 3px; }
+  .memo-change-row { grid-template-columns: 88px minmax(90px,1fr) 66px; gap: 7px; }
   .concentration-strip article { grid-template-columns: 1fr; gap: 4px; }
   .footer-inner { gap: 20px; }
 }
@@ -456,19 +473,29 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .site-header, .memo-actions, footer, .memo-cases, .memo-methods > .section-heading, .memo-methods > .method-grid { display: none !important; }
   body { background: white; }
   .shell { width: 100%; }
-  .memo-hero { padding: 8px 0 18px; background: white; }
+  .memo-hero { padding: 6px 0 14px; background: white; }
   .memo-hero h1 { font-size: 38px; line-height: 1.02; }
   .memo-hero .lede { font-size: 15px; margin-top: 14px; }
   .memo-meta { margin-top: 12px; }
-  .memo-layout { grid-template-columns: minmax(0,1.35fr) minmax(190px,.65fr); gap: 24px; padding: 14px 0 24px; }
+  .memo-layout { grid-template-columns: minmax(0,1.35fr) minmax(190px,.65fr); gap: 24px; padding: 10px 0 18px; }
   .memo-copy h2 { font-size: 27px; }
   .memo-copy > p { font-size: 13px; }
-  .memo-copy > h2:not(:first-of-type) { margin-top: 26px; }
-  .memo-findings article { padding: 11px 0; }
+  .memo-copy > h2:not(:first-of-type) { margin-top: 21px; }
+  .memo-change-visual { margin: 8px 0 10px; padding: 8px 11px; border-radius: 9px; }
+  .memo-change-head { flex-direction: row; align-items: baseline; margin-bottom: 7px; }
+  .memo-change-head strong { font-size: 10.5px; }
+  .memo-change-head span { font-size: 8px; }
+  .memo-change-row { grid-template-columns: 74px 1fr 52px; gap: 6px; min-height: 18px; }
+  .memo-change-row > span { font-size: 7.5px; }
+  .memo-change-row > strong { font-size: 8px; }
+  .memo-change-track { height: 9px; }
+  .memo-change-bar { top: 2px; height: 5px; }
+  .memo-findings article { padding: 8px 0; }
   .memo-findings h3 { font-size: 15px; }
   .memo-findings p { font-size: 11px; }
-  .memo-facts { position: static; padding: 18px; background: #f3f5f7; color: var(--ink); break-inside: avoid; }
-  .memo-facts dd { font-size: 19px; }
+  .memo-facts { position: static; padding: 14px; background: #f3f5f7; color: var(--ink); break-inside: avoid; }
+  .memo-facts dl > div { padding: 9px 0; }
+  .memo-facts dd { font-size: 18px; }
   .memo-facts .eyebrow, .memo-facts dt { color: var(--ink-soft); }
   .memo-facts dl > div { border-top-color: var(--line); }
   .memo-methods { display: block !important; padding: 6px 0 0; break-before: page; }
