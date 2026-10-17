@@ -386,6 +386,47 @@ def top_table_html(rows: list[dict[str, object]]) -> str:
     return "".join(rendered)
 
 
+def concentration_visual(summary: dict[str, object]) -> str:
+    checkpoints = (
+        ("Top 1", float(summary["top1_share_pct"])),
+        ("Top 5", float(summary["top5_share_pct"])),
+        ("Top 10", float(summary["top10_share_pct"])),
+        ("Top 25", float(summary["top25_share_pct"])),
+    )
+    rows = "".join(
+        f"""<div class="nonprofit-concentration-row{' decision-row' if label == 'Top 10' else ''}">
+          <strong>{html.escape(label)}</strong>
+          <div class="nonprofit-concentration-track"><i style="width:{share:.2f}%"></i><b class="threshold" aria-hidden="true"></b></div>
+          <span>{share:.1f}%</span>
+        </div>"""
+        for label, share in checkpoints
+    )
+    return f"""<div class="nonprofit-concentration-visual" aria-label="Cumulative share of gross positive movement by leading private nonprofit institutions">
+      <div class="nonprofit-concentration-head"><span>Cumulative share of gross positive movement</span><strong>50% concentration threshold</strong></div>
+      {rows}
+      <div class="nonprofit-concentration-split" style="grid-template-columns:{float(summary['top10_share_pct']):.2f}fr {float(summary['outside_top10_share_pct']):.2f}fr"><span><b>{float(summary['top10_share_pct']):.1f}%</b> top 10</span><span><b>{float(summary['outside_top10_share_pct']):.1f}%</b> outside top 10</span></div>
+    </div>"""
+
+
+def contributor_visual(rows: list[dict[str, object]]) -> str:
+    selected = rows[:10]
+    maximum = max(int(row["change_2015_2024"]) for row in selected)
+    body = []
+    for row in selected:
+        value = int(row["change_2015_2024"])
+        width = value / maximum * 100 if maximum else 0
+        body.append(
+            f"""<div class="nonprofit-contributor-row">
+              <span class="nonprofit-contributor-rank">{int(row['positive_rank']):02d}</span>
+              <strong class="nonprofit-contributor-name">{html.escape(str(row['institution']))}</strong>
+              <div class="nonprofit-contributor-track"><i style="width:{width:.2f}%"></i></div>
+              <span class="nonprofit-contributor-value">{signed(value)}</span>
+              <small>{float(row['cumulative_positive_share_pct']):.1f}% cumulative</small>
+            </div>"""
+        )
+    return '<div class="nonprofit-contributor-visual" aria-label="Ten largest positive private nonprofit institution contributions">' + "".join(body) + "</div>"
+
+
 def write_html(rows: list[dict[str, object]]) -> None:
     summary = summarize(rows)
     HTML_OUTPUT.write_text(
@@ -404,8 +445,8 @@ def write_html(rows: list[dict[str, object]]) -> None:
   <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Private nonprofit analysis navigation"><a href="index.html">Brief</a><a href="state-recovery.html">State recovery</a><a href="ad-hoc-analysis.html">Ad hoc</a><a href="data-governance.html">Governance</a></nav></div></header>
   <main id="main">
     <section class="handoff-hero"><div class="shell"><p class="eyebrow">Institutional-control research note</p><h1>Private nonprofit increase extends beyond the largest institutions.</h1><p class="lede">The sector added {summary['net']:,} U.S. nonresident students from 2015 to 2024. Concentration is measured against gross positive institution movement so declines elsewhere do not inflate the leading contributors' shares.</p><div class="hero-actions"><a class="button button-primary" href="#concentration">Review concentration</a><a class="button button-secondary" href="downloads/private_nonprofit_growth.csv">Download institution table</a></div><p class="release-note"><strong>Decision rule:</strong> classify the shift as concentrated only if the top 10 institutions account for at least 50% of gross positive movement. Current result: <strong>{html.escape(str(summary['decision']))}</strong>.</p><div class="handoff-summary"><article><strong>{signed(int(summary['net']))}</strong><span>private nonprofit net change</span></article><article><strong>{signed(int(summary['graduate_change']))}</strong><span>graduate contribution</span></article><article><strong>{summary['positive_count']}</strong><span>positive institution contributors</span></article><article><strong>{summary['top10_share_pct']:.1f}%</strong><span>top-10 share of gross positive movement</span></article></div></div></section>
-    <section class="section shell" id="concentration"><div class="section-heading"><p class="eyebrow">Concentration test</p><h2>{html.escape(str(summary['decision']))}.</h2><p>The top 10 account for {summary['top10_share_pct']:.1f}% of gross positive movement; {summary['outside_top10_share_pct']:.1f}% occurs outside them. The sector also contains {summary['negative_count']} institutions with negative endpoint contributions, totaling {summary['gross_negative']:,} students of offsetting movement.</p></div><div class="method-grid"><article><h3>Top 1 / top 5</h3><p><strong>{summary['top1_share_pct']:.1f}% / {summary['top5_share_pct']:.1f}%</strong><br>Share of gross positive institution movement.</p></article><article><h3>Top 10 / top 25</h3><p><strong>{summary['top10_share_pct']:.1f}% / {summary['top25_share_pct']:.1f}%</strong><br>Share of gross positive institution movement.</p></article><article><h3>Gross movement</h3><p><strong>{summary['gross_positive']:,} positive</strong><br>{summary['gross_negative']:,} negative; difference = {signed(int(summary['net']))} net.</p></article><article><h3>Effective contributors</h3><p><strong>{summary['effective_contributors']:.1f}</strong><br>Inverse-HHI equivalent count from positive institution contributions.</p></article></div></section>
-    <section class="section section-tinted"><div class="shell"><div class="section-heading"><p class="eyebrow">Largest positive contributors</p><h2>The leading institutions matter, but they do not necessarily define the sector result.</h2><p>Shares below use gross positive movement as the denominator. Endpoint status identifies contributors that entered the private-nonprofit sector universe, which can reflect control or universe change rather than institution-level enrollment growth. The QA gate is inherited from the current latest-release review so a held institution can remain in aggregate accounting without being treated as a cleared institution-specific narrative claim.</p></div><div class="table-wrap"><table><thead><tr><th>Rank</th><th>Institution</th><th>State</th><th>Change</th><th>UG / Grad change</th><th>Share</th><th>Cumulative</th><th>Endpoint status</th><th>Latest-release QA gate</th></tr></thead><tbody>{top_table_html(summary['positive'])}</tbody></table></div></div></section>
+    <section class="section shell" id="concentration"><div class="section-heading"><p class="eyebrow">Concentration test</p><h2>{html.escape(str(summary['decision']))}.</h2><p>The top 10 account for {summary['top10_share_pct']:.1f}% of gross positive movement, well below the project’s 50% concentration rule. {summary['outside_top10_share_pct']:.1f}% occurs outside the top 10 across {summary['positive_count']} positive contributors.</p></div>{concentration_visual(summary)}<div class="nonprofit-movement-grid"><article><span>Gross positive movement</span><strong>+{summary['gross_positive']:,}</strong><small>{summary['positive_count']} positive contributors</small></article><article><span>Offsetting declines</span><strong>-{summary['gross_negative']:,}</strong><small>{summary['negative_count']} negative contributors</small></article><article><span>Net sector change</span><strong>{signed(int(summary['net']))}</strong><small>positive minus negative movement</small></article><article><span>Effective contributors</span><strong>{summary['effective_contributors']:.1f}</strong><small>inverse-HHI equivalent count</small></article></div></section>
+    <section class="section section-tinted" id="leading-contributors"><div class="shell"><div class="section-heading"><p class="eyebrow">Largest positive contributors</p><h2>No single institution dominates the sector increase.</h2><p>The largest institution contributes {summary['top1_share_pct']:.1f}% of gross positive movement; even the ten largest reach only {summary['top10_share_pct']:.1f}%. The chart shows contribution size and cumulative share before the full endpoint/QA audit table.</p></div>{contributor_visual(summary['positive'])}<details class="evidence-details nonprofit-audit-details"><summary>Inspect endpoint status, student-level change, and QA gate for the top 10</summary><div class="table-wrap"><table><thead><tr><th>Rank</th><th>Institution</th><th>State</th><th>Change</th><th>UG / Grad change</th><th>Share</th><th>Cumulative</th><th>Endpoint status</th><th>Latest-release QA gate</th></tr></thead><tbody>{top_table_html(summary['positive'])}</tbody></table></div></details></div></section>
     <section class="section shell"><div class="section-heading compact"><p class="eyebrow">Accounting and interpretation</p><h2>The sector total is reconciled before concentration is interpreted.</h2></div><div class="method-grid"><article><h3>Student level</h3><p>Undergraduate {signed(int(summary['undergraduate_change']))} + graduate {signed(int(summary['graduate_change']))} = {signed(int(summary['net']))}.</p></article><article><h3>Endpoint accounting</h3><p>Continuing {signed(int(summary['continuing_change']))} + entering {summary['entered_enrollment']:,} - exiting {summary['exited_enrollment']:,} = {signed(int(summary['net']))}.</p></article><article><h3>QA boundary</h3><p>High-priority latest-release records retain their existing analyst publication gate; aggregate inclusion does not clear institution-specific interpretation.</p></article><article><h3>Threshold</h3><p>The top-10 majority rule is an explicit project decision rule, not a universal statistical standard.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/private_nonprofit_growth.csv">Download institution CSV</a><a class="button button-secondary" href="downloads/private_nonprofit_growth.md">Download analysis notes</a></div></section>
   </main>
   <footer><div class="shell footer-inner"><span>Private Nonprofit Growth · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>

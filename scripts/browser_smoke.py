@@ -305,7 +305,12 @@ def inspect_private_nonprofit_growth(browser, base_url: str, *, width: int, heig
     for expected in ("65.5%", "137,578", "54,753", "Broadly distributed beyond the top 10"):
         if expected not in concentration:
             raise AssertionError(f"Private nonprofit concentration section is missing {expected}")
-    table = page.locator(".section-tinted tbody")
+    if page.locator("#concentration .nonprofit-concentration-row").count() != 4:
+        raise AssertionError("Private nonprofit concentration visual does not render all four checkpoints")
+    if page.locator("#leading-contributors .nonprofit-contributor-row").count() != 10:
+        raise AssertionError("Private nonprofit contributor visual does not render the top 10")
+    page.locator("#leading-contributors details.nonprofit-audit-details").evaluate("el => el.open = true")
+    table = page.locator("#leading-contributors tbody")
     if table.locator("tr").count() != 10:
         raise AssertionError("Private nonprofit page does not render the ten leading contributors")
     first = table.locator("tr").first.inner_text()
