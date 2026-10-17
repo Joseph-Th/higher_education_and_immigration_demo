@@ -65,7 +65,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 26 | Fort Hays State University | KS | Percentage Movement | -266 | R→R | 547 | 205.6% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 27 | Marywood University | PA | Percentage Movement | -260 | R→R | 66 | 25.4% | Countermovement below half of the nonresident change | safe_with_context |
 | 28 | Dominican University of California | CA | Percentage Movement | -249 | R→R | 263 | 105.6% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
-| 29 | National Louis University | IL | Percentage Movement | +218 | R→R | 18 | 8.3% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| 29 | National Louis University | IL | Percentage Movement | +218 | R→R | 18 | 8.3% | Countermovement below half of the nonresident change | safe_with_context |
 | 30 | University of Rio Grande | OH | Percentage Movement | +181 | R→R | 154 | 85.1% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
 | 31 | Union Commonwealth University | KY | Percentage Movement | +179 | R→R | 76 | 42.5% | Countermovement below half of the nonresident change | safe_with_context |
 | 32 | FIDM-Fashion Institute of Design & Merchandising | CA | Percentage Movement | -166 | R→R | 2 | 1.2% | Countermovement below half of the nonresident change | safe_with_context |
