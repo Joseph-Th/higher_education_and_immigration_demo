@@ -22,7 +22,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | Barton County Community College | Percentage Movement | -155 | R→R | +699 | 862 | 556.1% | White (+388) | R→R | safe_with_context |
 | Chaffey College | Absolute And Percentage | -611 | R→R | +1,828 | 2,494 | 408.2% | Hispanic / Latino (+1,745) | R→R | safe_with_context |
 | University of Lynchburg | Percentage Movement | +91 | R→R | -276 | 367 | 403.3% | White (-215) | R→R | safe_with_context |
-| Northeastern University | Absolute Movement | -616 | R→R | +1,394 | 2,019 | 327.8% | Asian (+667) | R→R | hold_for_confirmation |
+| Northeastern University | Absolute Movement | -616 | R→R | +1,394 | 2,019 | 327.8% | Asian (+667) | R→R | safe_with_context |
 | Boston University | Absolute Movement | -558 | R→R | +1,113 | 1,672 | 299.6% | Race / ethnicity unknown (+551) | R→R | safe_with_context |
 | Pikes Peak State College | Percentage Movement | -104 | R→R | +168 | 298 | 286.5% | Hispanic / Latino (+179) | R→R | safe_with_context |
 | The University of Texas at Arlington | Absolute Movement | -846 | R→R | +964 | 1,959 | 231.6% | Hispanic / Latino (+823) | R→R | safe_with_context |
@@ -53,7 +53,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 14 | University of Illinois Urbana-Champaign | IL | Absolute Movement | +775 | R→R | 4 | 0.5% | Countermovement below half of the nonresident change | safe_with_context |
 | 15 | Syracuse University | NY | Absolute Movement | -760 | R→R | 405 | 53.3% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | 16 | University of Colorado Boulder | CO | Absolute Movement | -755 | R→R | 32 | 4.2% | Countermovement below half of the nonresident change | safe_with_context |
-| 17 | Northeastern University | MA | Absolute Movement | -616 | R→R | 2,019 | 327.8% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| 17 | Northeastern University | MA | Absolute Movement | -616 | R→R | 2,019 | 327.8% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 18 | Stevens Institute of Technology | NJ | Absolute Movement | -592 | R→R | 350 | 59.1% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | 19 | Purdue University-Main Campus | IN | Absolute Movement | +580 | R→R | 0 | 0.0% | Countermovement below half of the nonresident change | safe_with_context |
 | 20 | University of New Haven | CT | Absolute Movement | -574 | R→R | 96 | 16.7% | Countermovement below half of the nonresident change | safe_with_context |

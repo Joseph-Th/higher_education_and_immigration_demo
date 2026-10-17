@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 35
-- **Held for confirmation:** 15
+- **Safe with context:** 36
+- **Held for confirmation:** 14
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -29,7 +29,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | University of Illinois Urbana-Champaign | IL | +775 | Absolute Movement | Corroborated external count | Safe with context | [University of Illinois System Fall 2024 Data Book](https://www.pb.uillinois.edu/documents/databook/PB_Databook_Fall24.pdf) |
 | Syracuse University | NY | -760 | Absolute Movement | Corroborated direction | Safe with context | [Syracuse University-hosted S&P Global April 2025 credit report](https://ir.syr.edu/wp-content/uploads/2025/04/SP-Global-Detailed-Report-2025-04-08.pdf) |
 | University of Colorado Boulder | CO | -755 | Absolute Movement | Confirmed reporting discontinuity | Safe with context | [CU Boulder Fall international enrollment and Data & Analytics definition](https://www.colorado.edu/isss/about-us/student-statistics) |
-| Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2023-Fall 2024 international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
+| Northeastern University | MA | -616 | Absolute Movement | Confirmed reporting discontinuity | Safe with context | [Northeastern Fall 2023-Fall 2024 international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
 | Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
 | Purdue University-Main Campus | IN | +580 | Absolute Movement | Corroborated external count | Safe with context | [Purdue ISS Fall 2024 international enrollment statistical report](https://purdue.edu/gpp/iss/_documents/EnrollmentReport/iss_statisticalreportfall24.pdf) |
 | University of New Haven | CT | -574 | Absolute Movement | Corroborated direction | Safe with context | [University of New Haven Summer 2025 internationalization report](https://www.newhaven.edu/news/blog/2025/global-campus.php) |
@@ -196,11 +196,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Northeastern University · UNITID 167358
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
+- **Decision:** Safe with context
+- **Disposition:** Confirmed reporting discontinuity
 - **Reviewed:** 2026-10-16
 - **Evidence:** [Northeastern Fall 2023-Fall 2024 international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/)
-- **Analyst note:** The project IPEDS series reports 12,146 U.S. nonresident students in Fall 2023 and 11,530 in Fall 2024, a decline of 616, with graduate nonresidents falling from 9,725 to 9,104 while undergraduate nonresidents are nearly flat at 2,421 and 2,426. Northeastern's official October 31, 2025 enrollment report retrospectively publishes 23,298 international students in Fall 2023 and 25,580 in Fall 2024, an increase of 2,282, and explicitly defines that institutional total as including F-1 visa holders and students on Optional Practical Training. The institutional endpoints exceed the project IPEDS U.S. nonresident counts by 11,152 and 14,050 students and move in the opposite two-year direction. Those large level and direction differences are consistent with the university's explicitly broader F-1-plus-OPT population and establish a material population/reporting-scope mismatch rather than corroboration of the -616 IPEDS movement. Preserve IPEDS as the numerical authority, keep the institution-specific decline held, and do not substitute the university-wide international/OPT series or describe the IPEDS decline as independently confirmed.
+- **Analyst note:** The project IPEDS series reports 12,146 U.S. nonresident students in Fall 2023 and 11,530 in Fall 2024, a decline of 616, with graduate nonresidents falling from 9,725 to 9,104 while undergraduate nonresidents are nearly flat at 2,421 and 2,426. Northeastern's official October 31, 2025 enrollment report retrospectively publishes 23,298 international students in Fall 2023 and 25,580 in Fall 2024, an increase of 2,282, and explicitly defines that institutional total as including F-1 visa holders and students on Optional Practical Training. The institutional endpoints exceed the project IPEDS U.S. nonresident counts by 11,152 and 14,050 students and move in the opposite two-year direction. Those official observations establish a source-defined population/reporting discontinuity: Northeastern's broader F-1-plus-OPT population includes post-completion practical-training participants and is not a like-for-like Fall Enrollment headcount, so the difference does not prove either series incorrect or identify a source error. Preserve IPEDS as the numerical authority, do not substitute the university-wide international/OPT series, and clear only bounded reporting/population-discontinuity discussion: the -616 IPEDS movement cannot be described as independently confirmed substantive international-enrollment contraction.
 
 ### Stevens Institute of Technology · UNITID 186867
 
