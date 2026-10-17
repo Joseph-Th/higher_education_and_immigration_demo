@@ -1158,13 +1158,22 @@ def inspect_population_trends(browser, base_url: str, *, width: int, height: int
     for expected in ("+7.3%", "+107%", "+2.9%", "3"):
         if expected not in summary:
             raise AssertionError(f"Population trend summary is missing {expected}")
+    if page.locator("#trend-segments .population-segment-card").count() != 3:
+        raise AssertionError("Population trend page does not render all three bounded population segment cards")
+    if "NO 2021–2023 TREND" not in page.locator("#trend-segments").inner_text():
+        raise AssertionError("Population trend visual does not expose the undocumented vintage break")
     same_year = page.locator("#same-year").inner_text()
     for expected in ("1,014,598", "5,991,000", "510,000", "NOT ADDABLE"):
         if expected not in same_year:
             raise AssertionError(f"Population trend same-year section is missing {expected}")
+    if page.locator("#same-year .population-scale-row").count() != 3:
+        raise AssertionError("Population trend same-year visual does not show all three population measures")
     if "no 2021–2023 undocumented trend is calculated" not in page.locator("main").inner_text():
         raise AssertionError("Population trend page is missing its undocumented-vintage break")
-    if page.locator("table tbody tr").count() != 6:
+    if page.locator("#ipeds-context .population-ipeds-row").count() != 6:
+        raise AssertionError("Population trend page does not visualize the six-year IPEDS context")
+    page.locator("#ipeds-context details.population-ipeds-audit").evaluate("el => el.open = true")
+    if page.locator("#ipeds-context table tbody tr").count() != 6:
         raise AssertionError("Population trend page does not show the six-year IPEDS context")
     if page.locator('a[href="downloads/population_trend_comparison.csv"]').count() != 2:
         raise AssertionError("Population trend CSV links are missing")
