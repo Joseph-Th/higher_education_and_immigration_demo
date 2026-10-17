@@ -133,7 +133,7 @@ Generated routing table for all 50 current medium-priority rows in `processed/la
 
 ## `medium_qa_resolution_log.csv`
 
-Analyst-reviewed evidence decisions for every row in `medium_priority_review.csv`. The log records one public source, review date, disposition, publication class, and bounded note per medium-priority UNITID. 40 current records are `safe_with_context` and 10 remain `hold_for_confirmation`; neither class rewrites IPEDS or carries forward automatically. `scripts/build_medium_qa_resolution_log.py` validates exact 50-row coverage and generates `medium_qa_resolution_summary.json`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`.
+Analyst-reviewed evidence decisions for every row in `medium_priority_review.csv`. The log records one public source, review date, disposition, publication class, and bounded note per medium-priority UNITID. 41 current records are `safe_with_context` and 9 remain `hold_for_confirmation`; neither class rewrites IPEDS or carries forward automatically. `scripts/build_medium_qa_resolution_log.py` validates exact 50-row coverage and generates `medium_qa_resolution_summary.json`, `docs/MEDIUM_QA_RESOLUTION_LOG.md`, and `site/medium-qa-review.html`.
 
 ## `medium_priority_category_diagnostic.csv`
 

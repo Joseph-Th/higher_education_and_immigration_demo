@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 40
-- **Held for confirmation:** 10
+- **Safe with context:** 41
+- **Held for confirmation:** 9
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -42,7 +42,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Marywood University | PA | -260 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Marywood University 2024-25 and 2025-26 Fact Books](https://www.marywood.edu/about/consumer-information/factbooks/fall-2025-factbook.pdf) |
 | Dominican University of California | CA | -249 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Dominican University of California 2024-25 Common Data Set and University Facts](https://www.dominican.edu/about/student-success/university-facts) |
 | National Louis University | IL | +218 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [National Louis University HLC Mid-Cycle Review Assurance Argument](https://nl.edu/media/nledu/content-assets/documents/accreditation/NLU-HLC-Mid-Cycle-Review-Assurance-Argument---Spring-2026.pdf) |
-| University of Rio Grande | OH | +181 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth) |
+| University of Rio Grande | OH | +181 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth) |
 | Union Commonwealth University | KY | +179 | Percentage Movement | Corroborated direction | Safe with context | [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help) |
 | FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Expected structural change | Safe with context | [Arizona State University April 2023 FIDM transition announcement](https://newsroom.asu.edu/press-releases/asu-expands-fashion-program-through-asu-fidm) |
 | Barton County Community College | KS | -155 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Barton Community College 2024 and 2025 Community Reports](https://www.bartonccc.edu/community/boardoftrustees/report) |
@@ -61,7 +61,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Northeastern University Oakland | CA | +80 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Northeastern University Oakland Fall 2023 and Fall 2024 admissions FAQs](https://admissions.northeastern.edu/wp-content/uploads/2023/12/FA24-NU-Oakland-Admission-FAQ-12.13-Update.pdf) |
 | Vincennes University | IN | +78 | Percentage Movement | Corroborated direction | Safe with context | [Vincennes University Fall 2024 enrollment announcement](https://www.vinu.edu/news/vu-welcomes-largest-incoming-class-since-2021.html) |
 | Ana G. Mendez University | FL | -76 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Ana G. Mendez University 2025 MSCHE Self-Study Report](https://documents.agmu.edu/docs/msche/AGMU-MSCHE-SSR-February-2025.pdf) |
-| Anna Maria College | MA | -68 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Anna Maria College 2024 Alumni Magazine international-student statement](https://annamaria.edu/wp-content/uploads/2024/09/2sm_AMC_Magazine_2024_8.1_Rev2.2_hr.pdf) |
+| Anna Maria College | MA | -68 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Anna Maria College alumni publications archive and 2024 Alumni Magazine international-student statement](https://annamaria.edu/alumni/) |
 | Normandale Community College | MN | +60 | Percentage Movement | Corroborated external count | Safe with context | [Normandale Community College 2024-2025 Fact Book](https://www.normandale.edu/_files/documents/about/FACTBOOK-2024-25.pdf) |
 
 ## Analyst notes
@@ -300,11 +300,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### University of Rio Grande · UNITID 205203
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
+- **Decision:** Safe with context
+- **Disposition:** Confirmed reporting discontinuity
+- **Reviewed:** 2026-10-16
 - **Evidence:** [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth)
-- **Analyst note:** The project IPEDS series reports 231 U.S. nonresident students in Fall 2023 and 412 in Fall 2024, an increase of 181, with all-student totals of 2,168 and 2,258. Rio's official October 2, 2024 enrollment announcement explicitly reports a combined University of Rio Grande and Rio Grande Community College population, stating that enrollment increased 10% and the total student body reached 2,381. That published total is 123 above the project IPEDS Fall 2024 University of Rio Grande total, and the release provides no international or nonresident count. The university's September 2025 enrollment announcement continues the same combined University-plus-Community-College reporting frame, confirming that the public enrollment series is broader than the project UNITID-specific IPEDS row rather than a directly comparable institutional endpoint. Preserve IPEDS as the numerical authority, do not infer a nonresident count from the broader institutional total, and keep the +181 institution-specific movement held.
+- **Analyst note:** The project IPEDS series reports University of Rio Grande at 231 U.S. nonresident students in Fall 2023 and 412 in Fall 2024, an increase of 181, with all-student totals of 2,168 and 2,258. Rio's official October 2, 2024 enrollment announcement explicitly reports a combined University of Rio Grande and Rio Grande Community College population, stating that enrollment increased 10% and the total student body reached 2,381. That combined total is 123 above the project IPEDS Fall 2024 University-only total. Rio's official FAQ separately describes the institution as the nation's only combined public community college and private university, and the September 2025 enrollment announcement continues the same combined University-plus-Community-College reporting frame. Those source-defined organizational and reporting boundaries confirm that Rio's public total-enrollment series is not a like-for-like population for the project University-only IPEDS UNITID; the 123-student difference should not be treated as a source error or reconciled by allocating community-college students into the university row. None of the reviewed Rio sources publishes a definition-identical Fall 2023/Fall 2024 international or U.S. nonresident endpoint, so the +181 movement is not independently corroborated as substantive nonresident growth. Preserve IPEDS as the numerical authority, do not infer a nonresident count from the broader combined population, and clear only bounded reporting/population-discontinuity discussion.
 
 ### Union Commonwealth University · UNITID 157863
 
@@ -455,7 +455,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 - **Decision:** Safe with context
 - **Disposition:** Confirmed reporting discontinuity
 - **Reviewed:** 2026-10-15
-- **Evidence:** [Anna Maria College 2024 Alumni Magazine international-student statement](https://annamaria.edu/wp-content/uploads/2024/09/2sm_AMC_Magazine_2024_8.1_Rev2.2_hr.pdf)
+- **Evidence:** [Anna Maria College alumni publications archive and 2024 Alumni Magazine international-student statement](https://annamaria.edu/alumni/)
 - **Analyst note:** The project IPEDS series reports 114 U.S. nonresident students in Fall 2023 and 46 in Fall 2024, a decline of 68, with all-student enrollment falling from 1,332 to 1,202 and Fall 2024 undergraduate/graduate totals of 916 and 286. Anna Maria College's official 2024 presidential search profile independently places total enrollment at approximately 1,200 with just over 900 traditional undergraduates, closely matching the project Fall 2024 institutional footprint. More importantly, the official 2024 Alumni Magazine article by the Senior Vice President for Academic Affairs says that, as the college reorganized Academic Affairs 'starting this fall,' Anna Maria had more than 100 international students. That contemporaneous institutional statement is more than twice the project Fall 2024 U.S. nonresident endpoint of 46 and is directionally inconsistent with treating the 114-to-46 IPEDS movement as a literal disappearance of the institution's international population. The magazine does not establish that its institution-defined international population, reference date, or status coverage is definition-identical to the IPEDS Fall-census U.S. nonresident category, so do not substitute the 'more than 100' statement or infer an exact alternative count. Preserve IPEDS as the numerical authority, but treat the -68 movement as a confirmed reporting/population discontinuity for bounded discussion rather than independently confirmed substantive international-enrollment contraction.
 
 ### Normandale Community College · UNITID 174428
