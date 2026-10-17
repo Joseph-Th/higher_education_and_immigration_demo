@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 41
-- **Held for confirmation:** 9
+- **Safe with context:** 42
+- **Held for confirmation:** 8
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -22,7 +22,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Chaffey College | CA | -611 | Absolute And Percentage | Corroborated direction | Safe with context | [Chaffey College Fall 2023 and Fall 2024 First Census Fast Facts](https://www.chaffey.edu/ir/reports-publications.php) |
 | Lindsey Wilson College | KY | +590 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf) |
 | Texas State University | TX | +558 | Absolute And Percentage | Corroborated external count | Safe with context | [Texas State strategic progress dashboard](https://www.president.txst.edu/strategic-vision/academic-progress.html) |
-| Sacred Heart University | CT | -508 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Sacred Heart University November 2024 graduate and international enrollment context](https://www.sacredheart.edu/news-room/news-listing/kristof-zaba-helps-shus-international-and-grad-students-succeed/) |
+| Sacred Heart University | CT | -508 | Absolute And Percentage | Confirmed reporting discontinuity | Safe with context | [ICE SEVP 2023-2024 active F-1 records + Sacred Heart international definition](https://www.ice.gov/doclib/sevis/btn/2024/2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf) |
 | Indiana University-Indianapolis | IN | -504 | Absolute And Percentage | Expected structural change | Safe with context | [IU Indianapolis IUPUI transition overview](https://indianapolis.iu.edu/about/iupui-transition/) |
 | The University of Texas at Arlington | TX | -846 | Absolute Movement | Corroborated direction | Safe with context | [UTA Faculty Senate approved September 4, 2024 minutes](https://cdn.web.uta.edu/-/media/project/website/administration/faculty-senate/documents/meeting_minutes/2025/facsen-minutes-9-4-24_approved.ashx) |
 | Georgia Institute of Technology-Main Campus | GA | +835 | Absolute Movement | Corroborated external count | Safe with context | [Georgia Tech Fact Book archive](https://irp.gatech.edu/fact-book) |
@@ -140,11 +140,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Sacred Heart University · UNITID 130253
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
-- **Evidence:** [Sacred Heart University November 2024 graduate and international enrollment context](https://www.sacredheart.edu/news-room/news-listing/kristof-zaba-helps-shus-international-and-grad-students-succeed/)
-- **Analyst note:** The project IPEDS series reports 1,971 U.S. nonresident students in Fall 2023 and 1,463 in Fall 2024, a decline of 508, with graduate nonresidents falling from 1,896 to 1,375 while undergraduate nonresidents rise modestly from 75 to 88; graduate enrollment overall also falls from 4,219 to 3,818. In Sacred Heart University's official November 18, 2024 profile of its executive director of international and graduate student life, the university states that it has experienced recent growth in graduate and international student enrollments and describes the resulting need for expanded support services. A July 1, 2025 university report further describes a graduate population of more than 3,000 students and says the graduate and international student-life office expanded its resources over the prior year, but it does not publish a comparable Fall 2024 international headcount. The contemporaneous institutional growth description moves in the opposite direction from the project Fall 2023-to-Fall 2024 graduate and U.S. nonresident series and does not specify a census date, comparison window, or population definition. Treat that difference as evidence of a timing and/or population-scope mismatch rather than as a correction to IPEDS: preserve IPEDS as the numerical authority and keep the -508 institution-specific movement held.
+- **Decision:** Safe with context
+- **Disposition:** Confirmed reporting discontinuity
+- **Reviewed:** 2026-10-17
+- **Evidence:** [ICE SEVP 2023-2024 active F-1 records + Sacred Heart international definition](https://www.ice.gov/doclib/sevis/btn/2024/2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf)
+- **Analyst note:** The project IPEDS series reports 1,971 U.S. nonresident students in Fall 2023 and 1,463 in Fall 2024, a decline of 508, with graduate nonresidents falling from 1,896 to 1,375 while undergraduate nonresidents rise modestly from 75 to 88; graduate enrollment overall also falls from 4,219 to 3,818. ICE SEVP's official Top 500 F-1 school tables list Sacred Heart University at 3,051 active F-1 SEVIS records in 2023 and 3,348 in 2024, an increase of 297 for the same named campus. SEVP describes F-1 students as foreign students enrolled in academic programs at SEVP-certified schools. Sacred Heart's own international-admissions documentation likewise classifies international students as students who do not hold U.S. citizenship or U.S. permanent residency and who require F-1 status to study in the United States. The federal F-1 series is materially larger than the project IPEDS U.S. nonresident endpoints and moves in the opposite two-year direction. Sacred Heart's November 2024 institutional profile independently says the university had experienced recent growth in graduate and international student enrollments, consistent with the federal direction rather than a literal reading of the IPEDS -508 as a confirmed contraction. The SEVP values are calendar-year active-record counts rather than Fall-census headcounts and are not definition-identical to IPEDS U.S. nonresident enrollment, so they cannot replace the project values or establish the magnitude of any Fall enrollment change. Together, however, the same-campus federal series, the university's F-1-oriented definition, and the contemporaneous growth statement confirm a population/timing reporting discontinuity. Preserve IPEDS as the numerical authority and clear only bounded discussion of that discontinuity; do not describe the -508 movement as independently confirmed substantive international-enrollment contraction.
 
 ### Indiana University-Indianapolis · UNITID 151111
 
