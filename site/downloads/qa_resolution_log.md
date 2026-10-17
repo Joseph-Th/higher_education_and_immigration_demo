@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **25** are safe to discuss with explicit context.
-- **2** remain held for institution-specific interpretation.
+- **26** are safe to discuss with explicit context.
+- **1** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-16**.
 
@@ -38,7 +38,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Norfolk State University | VA | +278 | corroborated_external_count | safe_with_context | [Norfolk State University Fact Book archive](https://www.nsu.edu/factbook) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
 | Oakwood University | AL | -192 | confirmed_reporting_discontinuity | safe_with_context | [Oakwood University Institutional Effectiveness enrollment statistics archive](https://oakwood.edu/our-story/institutional-effectiveness/) |
-| Colorado State University Global | CO | +183 | external_scope_mismatch | hold_for_confirmation | [CSU Global 2024 Annual Data Book and international admissions definition](https://csuglobal.edu/admissions/international-students) |
+| Colorado State University Global | CO | +183 | confirmed_reporting_discontinuity | safe_with_context | [CSU Global 2024 Annual Data Book and international admissions definition](https://csuglobal.edu/admissions/international-students) |
 | California Institute of Advanced Management | CA | +179 | confirmed_reporting_discontinuity | safe_with_context | [WSCUC June 2025 CIAM accreditation team report](https://www.wscuc.org/institutions/california-institute-of-advanced-management/) |
 | Anderson University | SC | -176 | confirmed_reporting_discontinuity | safe_with_context | [Anderson University Center for Global Engagement and 2024 International Graduate School evidence](https://andersonuniversity.edu/academics/center-for-global-engagement/) |
 | Reformed University | GA | -130 | confirmed_classification_change | safe_with_context | [Reformed University accreditation and authorization](https://www.runiv.edu/aboutru/main/accreditation) |
@@ -226,9 +226,9 @@ IPEDS falls from 192 U.S. nonresident students in 2023 to zero in 2024 while the
 
 **Automated trigger:** percentage change is at least 100% from a baseline of 100+.
 
-The project IPEDS series rises from 130 U.S. nonresident students in Fall 2023 to 313 in Fall 2024, an increase of 183. CSU Global's official international-student admissions page says students can earn a U.S. degree from their home country because the university is 100% online; it defines international applicants by prior education outside the United States or non-native English status and explicitly states that CSU Global is not SEVP-certified and does not issue or recertify student visas. The university's official 2024 Annual Data Book separately reports 14,857 students served across the 2022-23 academic year and says CSU Global serves students in all 50 states, six U.S. territories, and 52 countries. Those institution-defined international and academic-year populations intentionally include remote global learners and are not a Fall-census visa/residency measure comparable to IPEDS U.S. nonresident status. Preserve IPEDS as the numerical authority and keep the +183 institution-specific movement held; do not infer an IPEDS nonresident count from CSU Global's international-applicant, country-of-study, or academic-year service metrics.
+The project IPEDS series rises from 130 U.S. nonresident students in Fall 2023 to 313 in Fall 2024, an increase of 183. CSU Global's official international-student admissions page says students can earn a U.S. degree from their home country because the university is 100% online; it defines international applicants by prior education outside the United States or non-native English status and explicitly states that CSU Global is not SEVP-certified and does not issue or recertify student visas. The university's official 2024 Annual Data Book, linked from its Special Initiatives page, separately reports 14,857 students served across the 2022-23 academic year and says CSU Global serves students in all 50 states, six U.S. territories, and 52 countries. Those institution-defined international and academic-year populations intentionally include remote global learners and are not a Fall-census visa/residency measure comparable to IPEDS U.S. nonresident status. The explicit definition, delivery model, and academic-year reporting frame therefore confirm a reporting/definition discontinuity rather than a directly comparable institutional count series. Preserve IPEDS as the numerical authority, do not infer or substitute a nonresident count from CSU Global's international-applicant, country-of-study, or academic-year service metrics, and clear only bounded reporting/definition-discontinuity discussion; the +183 movement is not independently corroborated as substantive nonresident growth.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-15.
+**Decision:** `safe_with_context` · **Disposition:** `confirmed_reporting_discontinuity` · **Reviewed:** 2026-10-16.
 
 ### California Institute of Advanced Management (UNITID 487649)
 

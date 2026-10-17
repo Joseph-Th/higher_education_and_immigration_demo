@@ -1669,10 +1669,11 @@ class ResearchProductTests(unittest.TestCase):
             f"{high['hold_for_confirmation']} held high-priority publication classes",
             validation,
         )
+        high_hold_label = "hold" if high["hold_for_confirmation"] == 1 else "holds"
         self.assertIn(
             f"complete institution-QA rendering with 27/27 high-priority records, "
             f"{high['safe_with_context']} context-cleared decisions, "
-            f"{high['hold_for_confirmation']} holds",
+            f"{high['hold_for_confirmation']} {high_hold_label}",
             validation,
         )
         self.assertIn(
@@ -2115,8 +2116,8 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(summary["coverage_pct"], 100.0)
         self.assertTrue(summary["required_high_priority_covered"])
         self.assertEqual(set(summary["required_high_priority_unitids"]), {row["unitid"] for row in high_priority})
-        self.assertEqual(summary["safe_with_context"], 25)
-        self.assertEqual(summary["hold_for_confirmation"], 2)
+        self.assertEqual(summary["safe_with_context"], 26)
+        self.assertEqual(summary["hold_for_confirmation"], 1)
         self.assertTrue(summary["required_top_10_covered"])
         expected_top_10 = [
             row["unitid"]
@@ -2257,8 +2258,8 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("eligible non-immigrant visa holders", by_unitid["217475"]["analyst_note"])
         self.assertIn("F-1-only admissions construct is narrower", by_unitid["217475"]["analyst_note"])
         self.assertIn("cannot validate the 12-to-1,188 nonresident jump", by_unitid["217475"]["analyst_note"])
-        self.assertEqual(by_unitid["476975"]["publication_class"], "hold_for_confirmation")
-        self.assertEqual(by_unitid["476975"]["disposition"], "external_scope_mismatch")
+        self.assertEqual(by_unitid["476975"]["publication_class"], "safe_with_context")
+        self.assertEqual(by_unitid["476975"]["disposition"], "confirmed_reporting_discontinuity")
         self.assertIn("admissions/international-students", by_unitid["476975"]["evidence_url"])
         self.assertIn("130 U.S. nonresident students in Fall 2023", by_unitid["476975"]["analyst_note"])
         self.assertIn("313 in Fall 2024", by_unitid["476975"]["analyst_note"])
@@ -2266,7 +2267,9 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("not SEVP-certified", by_unitid["476975"]["analyst_note"])
         self.assertIn("14,857 students served", by_unitid["476975"]["analyst_note"])
         self.assertIn("six U.S. territories, and 52 countries", by_unitid["476975"]["analyst_note"])
-        self.assertIn("keep the +183 institution-specific movement held", by_unitid["476975"]["analyst_note"])
+        self.assertIn("confirm a reporting/definition discontinuity", by_unitid["476975"]["analyst_note"])
+        self.assertIn("clear only bounded reporting/definition-discontinuity discussion", by_unitid["476975"]["analyst_note"])
+        self.assertIn("not independently corroborated as substantive nonresident growth", by_unitid["476975"]["analyst_note"])
         self.assertEqual(by_unitid["487649"]["publication_class"], "safe_with_context")
         self.assertEqual(by_unitid["487649"]["disposition"], "confirmed_reporting_discontinuity")
         self.assertIn("wscuc.org/institutions/california-institute-of-advanced-management", by_unitid["487649"]["evidence_url"])

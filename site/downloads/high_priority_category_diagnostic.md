@@ -19,7 +19,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | --- | ---: | --- | ---: | ---: | ---: | --- | --- | --- |
 | Polk State College | +288 | R→R | +2,355 | 1,950 | 677.1% | White (-1,192) | R→R | safe_with_context |
 | Anderson University | -176 | R→R | +385 | 588 | 334.1% | Race / ethnicity unknown (+365) | R→R | safe_with_context |
-| Colorado State University Global | +183 | R→R | +750 | 377 | 206.0% | Race / ethnicity unknown (-279) | R→R | hold_for_confirmation |
+| Colorado State University Global | +183 | R→R | +750 | 377 | 206.0% | Race / ethnicity unknown (-279) | R→R | safe_with_context |
 | University of the Cumberlands | +4,616 | R→R | +1,793 | 7,086 | 153.5% | Asian (-3,593) | R→R | safe_with_context |
 | Louisiana Tech University | +342 | R→R | +446 | 441 | 128.9% | Race / ethnicity unknown (-329) | R→R | safe_with_context |
 | Oakwood University | -192 | R→Z | -93 | 245 | 127.6% | Race / ethnicity unknown (+227) | R→R | safe_with_context |
@@ -54,7 +54,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Norfolk State University | Continuing | +278 | R→R | -270 | 100.7% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Grambling State University | Continuing | +264 | R→R | -228 | 91.3% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | Oakwood University | Continuing | -192 | R→Z | +99 | 127.6% | Countermovement at least as large as the nonresident change | safe_with_context |
-| Colorado State University Global | Continuing | +183 | R→R | +567 | 206.0% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| Colorado State University Global | Continuing | +183 | R→R | +567 | 206.0% | Countermovement at least as large as the nonresident change | safe_with_context |
 | California Institute of Advanced Management | Continuing | +179 | R→R | +2 | 0.0% | Countermovement below half of the nonresident change | safe_with_context |
 | Anderson University | Continuing | -176 | R→R | +561 | 334.1% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Reformed University | Left analytic universe | -130 | — | — | — | Analytic-universe change; category comparison not used | safe_with_context |
