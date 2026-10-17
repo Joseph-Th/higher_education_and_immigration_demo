@@ -539,8 +539,8 @@ class ResearchProductTests(unittest.TestCase):
         q03 = next(row for row in handoff if row["claim_id"] == "Q03")
         self.assertIn("All 50 current medium-priority institution flags", q03["public_copy"])
         self.assertIn("28 percentage-movement", q03["public_copy"])
-        self.assertIn("41 are safe with context", q03["public_copy"])
-        self.assertIn("9 remain held for confirmation", q03["public_copy"])
+        self.assertIn("42 are safe with context", q03["public_copy"])
+        self.assertIn("8 remain held for confirmation", q03["public_copy"])
         self.assertIn("data/medium_qa_resolution_log.csv", q03["authority"])
         self.assertIn("does not correct IPEDS values", q03["release_disclosure"])
         self.assertIn("standing approval", q03["release_disclosure"])
@@ -1130,12 +1130,12 @@ class ResearchProductTests(unittest.TestCase):
         )
         self.assertEqual(
             Counter(row["publication_class"] for row in resolution),
-            Counter({"hold_for_confirmation": 9, "safe_with_context": 41}),
+            Counter({"hold_for_confirmation": 8, "safe_with_context": 42}),
         )
         safe_unitids = {
             row["unitid"] for row in resolution if row["publication_class"] == "safe_with_context"
         }
-        self.assertEqual(safe_unitids, {"110635", "111939", "114354", "115773", "118888", "122205", "126614", "127820", "129941", "138187", "139755", "145637", "146427", "147536", "151111", "152637", "154697", "155061", "157863", "159948", "161341", "164492", "164988", "167358", "174428", "186867", "187897", "193326", "196413", "205203", "213826", "219602", "224615", "228459", "228769", "230782", "232609", "243780", "244233", "417327", "488679"})
+        self.assertEqual(safe_unitids, {"110635", "111939", "114354", "115773", "118888", "122205", "126614", "127820", "129941", "130253", "138187", "139755", "145637", "146427", "147536", "151111", "152637", "154697", "155061", "157863", "159948", "161341", "164492", "164988", "167358", "174428", "186867", "187897", "193326", "196413", "205203", "213826", "219602", "224615", "228459", "228769", "230782", "232609", "243780", "244233", "417327", "488679"})
         self.assertTrue(all(row["evidence_url"].startswith("https://") for row in resolution))
         self.assertTrue(all(row["analyst_note"].strip() for row in resolution))
 
@@ -1451,15 +1451,17 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("source-defined academic-year window", by_unitid["147536"]["analyst_note"])
         self.assertIn("does not independently corroborate the +218 one-year IPEDS movement", by_unitid["147536"]["analyst_note"])
         self.assertIn("clear only bounded reporting/timing-discontinuity discussion", by_unitid["147536"]["analyst_note"])
-        self.assertEqual(by_unitid["130253"]["publication_class"], "hold_for_confirmation")
-        self.assertEqual(by_unitid["130253"]["disposition"], "external_scope_mismatch")
-        self.assertIn("kristof-zaba-helps-shus-international-and-grad-students-succeed", by_unitid["130253"]["evidence_url"])
+        self.assertEqual(by_unitid["130253"]["publication_class"], "safe_with_context")
+        self.assertEqual(by_unitid["130253"]["disposition"], "confirmed_reporting_discontinuity")
+        self.assertIn("2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf", by_unitid["130253"]["evidence_url"])
         self.assertIn("1,971 U.S. nonresident students in Fall 2023", by_unitid["130253"]["analyst_note"])
         self.assertIn("1,463 in Fall 2024", by_unitid["130253"]["analyst_note"])
         self.assertIn("graduate nonresidents falling from 1,896 to 1,375", by_unitid["130253"]["analyst_note"])
-        self.assertIn("recent growth in graduate and international student enrollments", by_unitid["130253"]["analyst_note"])
-        self.assertIn("timing and/or population-scope mismatch", by_unitid["130253"]["analyst_note"])
-        self.assertIn("keep the -508 institution-specific movement held", by_unitid["130253"]["analyst_note"])
+        self.assertIn("3,051 active F-1 SEVIS records in 2023 and 3,348 in 2024", by_unitid["130253"]["analyst_note"])
+        self.assertIn("increase of 297", by_unitid["130253"]["analyst_note"])
+        self.assertIn("calendar-year active-record counts rather than Fall-census headcounts", by_unitid["130253"]["analyst_note"])
+        self.assertIn("confirm a population/timing reporting discontinuity", by_unitid["130253"]["analyst_note"])
+        self.assertIn("do not describe the -508 movement as independently confirmed substantive international-enrollment contraction", by_unitid["130253"]["analyst_note"])
         self.assertEqual(by_unitid["224615"]["publication_class"], "safe_with_context")
         self.assertEqual(by_unitid["224615"]["disposition"], "corroborated_direction")
         self.assertIn("2024-2025-ACFR.pdf", by_unitid["224615"]["evidence_url"])
@@ -1572,11 +1574,11 @@ class ResearchProductTests(unittest.TestCase):
         )
         self.assertEqual(summary["reviewed_count"], 50)
         self.assertEqual(summary["coverage_pct"], 100.0)
-        self.assertEqual(summary["safe_with_context"], 41)
-        self.assertEqual(summary["hold_for_confirmation"], 9)
-        self.assertEqual(summary["dispositions"]["external_scope_mismatch"], 6)
+        self.assertEqual(summary["safe_with_context"], 42)
+        self.assertEqual(summary["hold_for_confirmation"], 8)
+        self.assertEqual(summary["dispositions"]["external_scope_mismatch"], 5)
         self.assertEqual(summary["dispositions"]["corroborated_external_count"], 12)
-        self.assertEqual(summary["dispositions"]["confirmed_reporting_discontinuity"], 11)
+        self.assertEqual(summary["dispositions"]["confirmed_reporting_discontinuity"], 12)
         self.assertNotIn("context_only", summary["dispositions"])
         self.assertEqual(summary["dispositions"]["corroborated_direction"], 13)
         self.assertEqual(summary["dispositions"]["partial_component_corroboration"], 3)
@@ -1605,15 +1607,15 @@ class ResearchProductTests(unittest.TestCase):
         html = (ROOT / "site" / "medium-qa-review.html").read_text(encoding="utf-8")
         for expected in (
             "50/50 current medium-priority institution flags",
-            "Safe with context:** 41",
-            "Held for confirmation:** 9",
+            "Safe with context:** 42",
+            "Held for confirmation:** 8",
             "Texas State University",
             "University of California-Berkeley",
             "not standing approval for the next release",
         ):
             self.assertIn(expected, rendered)
         self.assertIn("50/50</strong><span>medium-priority records reviewed", html)
-        self.assertIn("41 records have enough corroboration", html)
+        self.assertIn("42 records have enough corroboration", html)
         self.assertIn("not standing approval for a future release", html)
         self.assertEqual(html.count('target="_blank"'), 50)
 
@@ -2594,10 +2596,10 @@ class ResearchProductTests(unittest.TestCase):
             "-3,581",
             "+63,400",
             "Guardrails before reuse",
-            "The aggregate result is publishable. Ten institution claims remain held.",
+            "The aggregate result is publishable. 9 institution claims remain held.",
             "27/27",
             "50/50",
-            "10",
+            "9",
         ):
             self.assertIn(expected, text)
         self.assertEqual(manifest["metrics"]["latest_nonresident"], 1_044_137)
@@ -2606,7 +2608,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(manifest["metrics"]["undergraduate_latest_change"], 31_592)
         self.assertEqual(manifest["metrics"]["high_priority_reviewed"], 27)
         self.assertEqual(manifest["metrics"]["medium_priority_reviewed"], 50)
-        self.assertEqual(manifest["metrics"]["institution_claim_holds"], 10)
+        self.assertEqual(manifest["metrics"]["institution_claim_holds"], 9)
         self.assertIn("data/undergraduate_shift_baseline.csv", manifest["source_sha256"])
         self.assertIn("data/qa_resolution_summary.json", manifest["source_sha256"])
         self.assertIn("data/medium_qa_resolution_summary.json", manifest["source_sha256"])

@@ -1,6 +1,6 @@
 {
   "builder": "scripts/build_management_deck.py",
-  "builder_sha256": "b9870607128e2bf389f5dd0c8eb705373ae83d003482b85fb34f033cecd8e7d2",
+  "builder_sha256": "fc1340ed7f76e72480f8569de7eb0ea6a0aad99736312129ee7a074157377f39",
   "source_sha256": {
     "data/processed/national_year.csv": "800c805dc4241c70070ff7962fb1abc7faa602735af6796adaca9de8bcc7f892",
     "data/processed/state_change_summary.csv": "943d1102a624dbcace52a371ba5c41d4ecbadf9e79e6475f140b28cd0a5f4edf",
@@ -10,10 +10,10 @@
     "data/findings.json": "c9c4f4948113353576e4be8b82ef3596b153059a77b600305f9ec569957544d7",
     "data/latest_update_review.json": "7a1d00482ff0fa998561b57dea3c45de495406e0e2a78e22ddb73c4b835ab69e",
     "data/qa_resolution_summary.json": "2845c78eb7c65f1bf299e91beb6601959b80dff942576bf2adbad77279d51fc7",
-    "data/medium_qa_resolution_summary.json": "ce4b95532bf05d9a39b774a5a82845d74a5cb05be84bd4081ca1b3a44a24875b"
+    "data/medium_qa_resolution_summary.json": "12cc4a13b0b7b2ca750ad55b699a9475fa6325f5a9dc8dfb0d6cf94dac97676a"
   },
-  "pptx_sha256": "406b038f4f74021dfb2289b19df6be55193f2b6f70b7c5bb4d24ac09825e44ad",
-  "pptx_bytes": 42249,
+  "pptx_sha256": "af29a06a82da7397c7fa71369238f36adff44252b7c707cc903cec0544e4b78a",
+  "pptx_bytes": 42247,
   "slide_count": 5,
   "metrics": {
     "latest_nonresident": 1044137,
@@ -25,7 +25,7 @@
     "decade_change": 63400,
     "high_priority_reviewed": 27,
     "medium_priority_reviewed": 50,
-    "institution_claim_holds": 10,
+    "institution_claim_holds": 9,
     "slide_count": 5
   }
 }

@@ -46,7 +46,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 7 | Chaffey College | CA | Absolute And Percentage | -611 | R→R | 2,494 | 408.2% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 8 | Lindsey Wilson College | KY | Absolute And Percentage | +590 | R→R | 491 | 83.2% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
 | 9 | Texas State University | TX | Absolute And Percentage | +558 | R→R | 358 | 64.2% | Countermovement at least half as large as the nonresident change | safe_with_context |
-| 10 | Sacred Heart University | CT | Absolute And Percentage | -508 | R→R | 360 | 70.9% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
+| 10 | Sacred Heart University | CT | Absolute And Percentage | -508 | R→R | 360 | 70.9% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | 11 | Indiana University-Indianapolis | IN | Absolute And Percentage | -504 | R→R | 4 | 0.8% | Countermovement below half of the nonresident change | safe_with_context |
 | 12 | The University of Texas at Arlington | TX | Absolute Movement | -846 | R→R | 1,959 | 231.6% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 13 | Georgia Institute of Technology-Main Campus | GA | Absolute Movement | +835 | R→R | 1 | 0.1% | Countermovement below half of the nonresident change | safe_with_context |

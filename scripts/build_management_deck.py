@@ -471,7 +471,7 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     slide = prs.slides.add_slide(blank)
     slide.background.fill.solid()
     slide.background.fill.fore_color.rgb = PAPER
-    add_heading(slide, "Publication judgment", "The aggregate result is publishable. Ten institution claims remain held.", "Automated flags trigger evidence review; unresolved institution interpretation stays out of public narrative.")
+    add_heading(slide, "Publication judgment", f"The aggregate result is publishable. {total_claim_holds} institution claims remain held.", "Automated flags trigger evidence review; unresolved institution interpretation stays out of public narrative.")
     add_kpi_card(slide, 0.68, 2.02, 3.75, "High-priority reviewed", f"{qa_resolution['reviewed_count']}/{qa_resolution['high_priority_total']}", f"{qa_resolution['safe_with_context']} safe with context · {qa_resolution['hold_for_confirmation']} held")
     add_kpi_card(slide, 4.62, 2.02, 3.75, "Medium-priority reviewed", f"{medium_qa_resolution['reviewed_count']}/{medium_qa_resolution['medium_priority_total']}", f"{medium_qa_resolution['safe_with_context']} safe with context · {medium_qa_resolution['hold_for_confirmation']} held")
     add_kpi_card(slide, 8.56, 2.02, 4.12, "Institution-specific claims held", str(total_claim_holds), "retained in aggregates · excluded from unsupported narrative", dark=True)
