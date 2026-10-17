@@ -10,87 +10,30 @@ The project is designed as a compact, reproducible research product rather than 
 
 ## Start here
 
-For a quick review of the finished work:
+If you are reviewing this as a work sample, the core case should be clear in about five minutes:
 
-1. [Live research publication](https://joseph-th.github.io/higher_education_and_immigration_demo/) - interactive national/state analysis, methods, QA, and public downloads.
-2. [`deliverables/research_brief.pdf`](deliverables/research_brief.pdf) - three-page policy/research writing sample with findings, analyst QA decisions, and methods/source trail.
-3. [`docs/POPULATION_CROSSWALK.md`](docs/POPULATION_CROSSWALK.md) - source-selection guide distinguishing IPEDS, immigrant-origin, SEVIS international, undocumented, pipeline, and refugee/asylee concepts.
-4. [`docs/RECURRING_REPORT_REGISTER.md`](docs/RECURRING_REPORT_REGISTER.md) - portfolio operations model for partner intake, methodology-change review, QA, publication gating, and institutional-knowledge handoff across the three recurring reports named in the target role.
-5. [`site/production-cycle.html`](site/production-cycle.html) - seven-stage partner-production control model with evidence-based gates plus a validated blank live-cycle log template.
-6. [`site/research-library.html`](site/research-library.html) - searchable Research Library with population/topic, resource-type, publisher, and workflow-stage metadata.
-7. [`site/publication-handoff.html`](site/publication-handoff.html) - pre-publication claim register tying public copy to analytical authority, source, QA gate, disclosure, and publication status.
-8. [`site/data-governance.html`](site/data-governance.html) - executable public-release governance showing data minimization, artifact classification, and the exact public allowlist.
-9. [`deliverables/ipeds_portfolio_analysis.xlsx`](deliverables/ipeds_portfolio_analysis.xlsx) - formula-driven Excel review workbook with state lookup, reconciliation, benchmark QA, and source metadata.
-10. [`deliverables/management_briefing_deck.pptx`](deliverables/management_briefing_deck.pptx) - six-slide PowerPoint management briefing with KPI, trend, geography, driver, and QA views generated from validated outputs.
-11. [`site/sql-analysis.html`](site/sql-analysis.html) - read-only SQLite query portfolio showing joins, grouping, CTEs, ranking, window functions, and independent reconciliation.
-12. [`site/ad-hoc-analysis.html`](site/ad-hoc-analysis.html) - three explicitly simulated management questions showing a request-to-response workflow with source authority and reconciliation.
-13. [`site/state-recovery.html`](site/state-recovery.html) - 2019-2024 state recovery decomposition by student level, institutional control, institution continuity, and concentration among leading institution contributors.
-14. [`site/undergraduate-shift.html`](site/undergraduate-shift.html) - fixed 2023-2024 R01 baseline showing undergraduate growth breadth, institutional-control and continuity accounting, concentration, and the pre-specified next-release persistence rule.
-15. [`site/private-nonprofit-growth.html`](site/private-nonprofit-growth.html) - 2015-2024 private-nonprofit institution contribution analysis with concentration metrics, student-level decomposition, and inherited latest-release QA gates.
-16. [`site/qa-review.html`](site/qa-review.html) - complete 27-record high-priority latest-release QA review with evidence-backed publication dispositions and explicit claim holds.
-17. [`site/medium-priority-review.html`](site/medium-priority-review.html) - complete 50-record medium-priority QA routing layer with four reason-derived evidence routes and candidate-directory overlap context, without inventing a new risk score or publication clearance.
-18. [`site/medium-qa-review.html`](site/medium-qa-review.html) - evidence-backed review of all 50 medium-priority flags, with bounded `safe_with_context` decisions, explicit holds, one public evidence source per row, and next-release revalidation.
-19. [`site/medium-priority-category-diagnostic.html`](site/medium-priority-category-diagnostic.html) - internal IPEDS composition reconciliation across all 50 medium-priority records, with 47 source-status-comparable countermovement ratios, 2 carry-forward-imputed continuing endpoints retained without a ratio, and 1 structural universe entry.
-20. [`site/population-trends.html`](site/population-trends.html) and [`site/undocumented-pipeline.html`](site/undocumented-pipeline.html) - bounded population comparisons that preserve source-vintage, non-addability, ecological, stock/flow, and non-causal boundaries.
-21. [`site/planning-scenarios.html`](site/planning-scenarios.html) - forecast-vs-actual backtest plus three non-predictive planning scenarios derived from transparent historical growth assumptions.
-22. [`site/freshness-monitor.html`](site/freshness-monitor.html) - dated next-release readiness, source-review, and recurring-product trigger monitor that preserves the partial 2025 NCES package observation without treating it as permission to advance the analysis year.
-23. [`site/candidate-directory-preflight.html`](site/candidate-directory-preflight.html) - bounded structural review of the available 2025 institutional directory/dictionary, including required-field continuity, eligible-frame continuity, archive hashes, and an explicit no-year-advance boundary.
-24. [`site/candidate-directory-changes.html`](site/candidate-directory-changes.html) - institution-level candidate-directory QA queue separating structural frame entry/exit from shared control, state, and name changes while using current-year enrollment only to prioritize later review.
-25. [`site/candidate-year-watchlist.html`](site/candidate-year-watchlist.html) - 226-UNITID carry-forward QA union combining the current high/medium review queue with candidate-directory structural changes and explicit next-release revalidation rules.
-26. [`site/release-readiness.html`](site/release-readiness.html) - consolidated eight-gate control matrix separating current-publication readiness from permission to advance the IPEDS analysis year.
-27. [`site/source-update-triage.html`](site/source-update-triage.html) - R07 source-change routing across all maintained Research Library resources, separating routine refreshes from methodology, research-question, governance, monitor-only, and archival paths.
-28. [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) - evidence map from research responsibilities to specific files, scripts, and validation outputs.
+1. **[Live research publication](https://joseph-th.github.io/higher_education_and_immigration_demo/)** — scan the headline findings, state explorer, and latest-release QA judgment.
+2. **[`deliverables/research_brief.pdf`](deliverables/research_brief.pdf)** — three-page research/writing sample with findings, limitations, and source/QA trail.
+3. **[`deliverables/management_briefing_deck.pptx`](deliverables/management_briefing_deck.pptx)** — six-slide management briefing built from the same validated outputs.
 
-The interactive publication is under [`site/`](site/); deployment instructions are in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+For a technical check, open **[`deliverables/ipeds_portfolio_analysis.xlsx`](deliverables/ipeds_portfolio_analysis.xlsx)** or **[`site/sql-analysis.html`](site/sql-analysis.html)**. The rest of the repository is supporting audit trail and reproducibility evidence, not required reading.
+
+See [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) for the compact reviewer path and role-to-evidence map.
 
 ## Research question
 
 How did fall enrollment of U.S. nonresident students change across the United States from 2015 through 2024, and how did those changes vary by state and student level?
 
-## Outputs
+## What is included
 
-- A polished static research brief in [`site/`](site/) with national, level, state, and institution views.
-- Interactive charts and a state explorer designed for nontechnical readers.
-- Reproducible source-data collection and transformation scripts.
-- A transparent methodology and data-quality record.
-- Downloadable analysis tables, source lineage, schema audit, and external benchmark audit.
-- A generated latest-release review packet with reason-coded institution-level QA triage.
-- A complete medium-priority QA routing layer that maps all 50 current medium rows to four existing-trigger evidence routes, quantifies mixed-direction movement, and surfaces candidate-directory overlap without adding a new score or publication disposition.
-- An analyst-reviewed QA resolution log that documents evidence, disposition, and publication decisions for every current high-priority flag without rewriting source values.
-- A reproducible high-priority IPEDS category-countermovement diagnostic that reconciles all-student race/ethnicity categories to total enrollment, measures opposite-category movement for 25 continuing flags, and keeps the arithmetic explicitly separate from publication clearance or source correction.
-- A separate medium-priority evidence-resolution log covering all 50 routed records, with bounded contextual clearances and explicit institution-specific holds, while preserving IPEDS as the analytical authority.
-- A standalone research memo in Markdown and HTML that combines validated findings, interpretation boundaries, and three evidence-backed analyst case studies.
-- A reviewer-ready three-page PDF research brief generated from the validated memo, with a source/PDF SHA-256 manifest that detects stale publication copies.
-- A generated stakeholder briefing note that translates validated findings into a concise management-facing update.
-- A reviewer-ready Excel workbook with formula-driven KPIs, state lookup, reconciliation checks, benchmark QA, and source metadata.
-- A six-slide PowerPoint management briefing generated from the validated outputs, with KPI, trend, geography, driver, and interpretation/QA views plus a source/builder freshness manifest.
-- A six-query SQL analysis pack executed against an in-memory SQLite database rebuilt from validated CSV outputs, with query-level independent reconciliation checks.
-- A three-case ad hoc analysis casebook that answers bounded simulated management questions from validated outputs and makes the source, calculation, reconciliation, and response explicit without inventing a requester or SLA.
-- A state recovery decomposition that explains the 2019-2024 state split with exact student-level, institutional-control, and institution-continuity accounting, plus concentration among the leading institution contributors in each state's net direction.
-- A fixed 2023-2024 R01 undergraduate-shift baseline that reconciles state, institutional-control, and institution-continuity movement, quantifies geographic and institution concentration, places the shift in the 2015-2024 annual history, and pre-specifies the next-release breadth test without claiming persistence early.
-- A private-nonprofit growth concentration analysis that reconciles the sector's 2015-2024 change, separates undergraduate and graduate contributions, measures concentration against gross positive institution movement, and preserves current latest-release QA holds for named institutions.
-- A bounded national population-trend comparison that keeps IPEDS U.S. nonresident, immigrant-origin, and undocumented higher-education measures separate, compares change only within method-compatible source segments, and blocks cross-population arithmetic.
-- A bounded 2023 undocumented pipeline context that compares the ten states with explicit same-year high-school-graduate and higher-education estimates, measures geographic concentration, and explicitly prevents stock/annual-flow scale from being interpreted as a transition rate.
-- A planning-scenario and variance artifact that backtests a simple historical-growth baseline against the known 2024 actual and presents three transparent 2025 planning cases without treating them as predictions.
-- A dated release/freshness monitor that preserves the current four-file NCES next-year availability check, applies an explicit year-advance gate, and combines it with source-review dates and recurring-product monitoring triggers.
-- A candidate-directory structural preflight that uses the already-available 2025 HD data/dictionary to verify the six current join/filter fields, 51-state/DC coverage, UNITID uniqueness, directory-eligible frame continuity, control changes, schema delta, and archive hashes without treating the partial package as a 2025 enrollment release.
-- A hashed candidate-directory institution-change review covering all 154 affected UNITIDs, classifying frame entry/exit reasons and shared control/state/name changes, and attaching only current-year enrollment exposure so the eventual full-package QA pass can be prioritized without inventing 2025 enrollment values.
-- A candidate-year QA carry-forward watchlist that reconciles 27 current high-priority rows, 50 medium-priority rows, and 154 candidate-directory structural changes to 226 unique UNITIDs, surfaces five medium/directory overlaps, carries both current evidence-review layers only as context, and requires prior publication decisions to be revalidated rather than inherited.
-- A consolidated release-readiness matrix that combines analytical QA, benchmark, high- and medium-priority evidence review, publication handoff, public-release registration, presentation freshness, source routing, and candidate-year package status while keeping current-publication and year-advance decisions separate.
-- A source-update triage register covering all 17 maintained Research Library sources with baseline routing, methodology-escalation triggers, new-research triggers, and a zero-inferred-deadline boundary.
-- Fifty-one generated state/DC research profiles linked directly from the interactive state explorer.
-- A structured population/source crosswalk covering IPEDS U.S. nonresident, immigrant-origin, SEVIS international, undocumented higher-education, undocumented high-school-graduate, and refugee/asylee research concepts.
-- A relational recurring-report register for the three named research products, linked to the Research Library and population crosswalk rather than maintained as disconnected prose.
-- A seven-stage production-cycle register that makes partner coordination inspectable as entry conditions, required records, blockers, exit conditions, and retained handoff evidence rather than narrative workflow prose alone.
-- A blank 16-field production-cycle coordination log plus a validator that enforces report/stage foreign keys, controlled record types/materiality/status values, ISO dates, closure rules, and a nonpublic-by-default boundary for completed partner logs.
-- A structured research agenda/data-needs register that separates immediately answerable IPEDS questions from work requiring partner or population-specific data.
-- A structured Research Library describing source scope, update pattern, project use, and review date.
-- A searchable public Research Library with population/topic tags and workflow-stage metadata, so related sources can be filtered without losing the structured CSV authority.
-- A generated publication-handoff register that traces 17 public claims/controls to their analytical authority, Research Library source, QA gate, required disclosure, and publication decision, including the R01 fixed baseline, R04 non-addability/vintage gate, R06 stock-versus-flow boundary, R07 source-update routing control, R08 candidate-year QA carry-forward gate, and R09 medium-priority evidence-review gate.
-- A governed public-release register covering 74 artifact families / 124 downloadable files, with a fail-closed allowlist that rejects unregistered files from `site/downloads/` and `site/data/`.
-- An explicit data-minimization boundary: the current portfolio contains no person-level records or observed immigration-status field, and future restricted partner inputs are nonpublic by default.
-- A documented annual update workflow and deployment path.
-- Separate offline data validation and browser-level publication QA lanes.
+- **Research publication:** an interactive national/state brief plus a three-page PDF writing sample.
+- **Management communication:** a six-slide PowerPoint briefing built from the same validated findings.
+- **Technical analysis:** a formula-driven Excel workbook, executable SQL analysis, and reproducible Python pipeline.
+- **QA/QC evidence:** cross-year schema checks, arithmetic reconciliation, 24 independent NCES benchmark checks, and evidence-backed review of high- and medium-priority institution anomalies.
+- **Methodological judgment:** explicit population/source boundaries so IPEDS U.S. nonresident, SEVIS international, immigrant-origin, undocumented, pipeline, and refugee/asylee measures are not treated as interchangeable.
+- **Publication discipline:** source lineage, claim-level holds, release-readiness controls, and a governed public output tree.
+
+Detailed supporting artifacts remain under `docs/`, `data/`, and `site/` for technical or audit review. They are intentionally secondary to the brief, live publication, management deck, workbook, and SQL sample.
 
 ## Data
 

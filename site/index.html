@@ -22,12 +22,11 @@
         <span>Higher Education Data Brief</span>
       </a>
       <nav aria-label="Primary navigation">
+        <a href="#review-package">Review package</a>
         <a href="#findings">Findings</a>
         <a href="#states">States</a>
-        <a href="research-memo.html">Memo</a>
-        <a href="research-library.html">Library</a>
+        <a href="#latest-update">QA</a>
         <a href="#methods">Methods</a>
-        <a href="#downloads">Data</a>
       </nav>
     </div>
   </header>
@@ -36,15 +35,15 @@
     <section class="hero" id="top">
       <div class="shell hero-grid">
         <div>
-          <p class="eyebrow">NCES / IPEDS · Fall Enrollment · 2015–2024</p>
-          <h1>U.S. nonresident enrollment recovered. Its center of gravity changed.</h1>
-          <p class="lede">A reproducible analysis of degree-granting institutions in the 50 states and District of Columbia, using the same IPEDS universe NCES uses for First Look and Digest tables.</p>
+          <p class="eyebrow">Portfolio research demonstration · NCES / IPEDS · 2015–2024</p>
+          <h1>U.S. nonresident enrollment recovered. The latest growth shifted toward undergraduates.</h1>
+          <p class="lede">A reproducible research brief demonstrating source selection, quantitative analysis, QA/QC, and publication judgment using official NCES/IPEDS data for degree-granting institutions in the 50 states and District of Columbia.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#findings">Explore findings</a>
-            <a class="button button-secondary" href="research-memo.html">Read research memo</a>
-            <a class="button button-secondary" href="downloads/research_brief.pdf">PDF brief</a>
+            <a class="button button-primary" href="downloads/research_brief.pdf">Read the 3-page brief</a>
+            <a class="button button-secondary" href="#findings">See key findings</a>
+            <a class="button button-secondary" href="#latest-update">See QA judgment</a>
           </div>
-          <p class="release-note">Latest year: <strong>Fall 2024 provisional</strong>. Latest Fall Enrollment file available as of October 13, 2026.</p>
+          <p class="release-note">Current analysis: <strong>Fall 2024 provisional</strong>. The 2025 analysis year remains gated until the complete IPEDS package is available and reviewed.</p>
         </div>
         <aside class="hero-note" aria-label="Definition note">
           <span class="note-label">Important definition</span>
@@ -74,6 +73,35 @@
         <strong class="metric-value" id="metric-decline">—</strong>
         <span class="metric-detail">pandemic-era break</span>
       </article>
+    </section>
+
+    <section class="section review-path shell" id="review-package">
+      <div class="section-heading compact">
+        <p class="eyebrow">Five-minute review path</p>
+        <h2>See the strongest evidence first</h2>
+        <p>The project is deep by design, but a hiring reviewer should not need to inspect the full audit trail. Start with the three artifacts that show research, judgment, and communication.</p>
+      </div>
+      <div class="review-grid">
+        <article class="review-card">
+          <span class="review-step">01 · Research writing</span>
+          <h3>Three-page research brief</h3>
+          <p>Headline findings, interpretation boundaries, and a compact source/QA trail.</p>
+          <a href="downloads/research_brief.pdf">Open PDF brief</a>
+        </article>
+        <article class="review-card">
+          <span class="review-step">02 · Leadership communication</span>
+          <h3>Six-slide management briefing</h3>
+          <p>The same validated outputs compressed into KPIs, trend, geography, drivers, and QA guardrails.</p>
+          <a href="downloads/management_briefing_deck.pptx">Open PowerPoint deck</a>
+        </article>
+        <article class="review-card">
+          <span class="review-step">03 · Technical proof</span>
+          <h3>Inspect the calculations</h3>
+          <p>Use the Excel workbook for formula-driven review or the SQL page for executable query and reconciliation evidence.</p>
+          <div class="review-links"><a href="downloads/ipeds_portfolio_analysis.xlsx">Excel workbook</a><a href="sql-analysis.html">SQL analysis</a></div>
+        </article>
+      </div>
+      <p class="review-skill-line">Research judgment · Python / SQL / Excel · QA/QC · policy writing · publication discipline</p>
     </section>
 
     <section class="section shell" id="findings">
@@ -432,109 +460,22 @@
     <section class="section section-dark" id="downloads">
       <div class="shell download-layout">
         <div>
-          <p class="eyebrow">Reproduce it</p>
-          <h2>Data, lineage, and audit outputs are public</h2>
-          <p>The raw IPEDS archives are reproducibly downloaded from NCES and kept out of the repository. These compact outputs are enough to inspect the analysis and trace its source lineage.</p>
+          <p class="eyebrow">Reviewer package</p>
+          <h2>Six artifacts are enough to evaluate the work</h2>
+          <p>Start with the brief and management deck. Use the workbook, SQL, QA review, or population crosswalk only if you want to inspect a specific capability. The larger repository remains available as supporting audit trail.</p>
+          <div class="hero-actions">
+            <a class="button button-secondary" href="research-library.html">Research library</a>
+            <a class="button button-secondary" href="publication-handoff.html">Publication handoff</a>
+            <a class="button button-secondary" href="release-readiness.html">Release readiness</a>
+          </div>
         </div>
         <div class="download-list">
-          <a href="research-memo.html"><span>Research memo</span><small>HTML · findings + analyst case studies</small></a>
-          <a href="downloads/research_brief.pdf"><span>Research brief</span><small>PDF · reviewer-ready publication</small></a>
-          <a href="downloads/research_memo.md"><span>Research memo notes</span><small>Markdown · portable writing sample</small></a>
-          <a href="methodology-crosswalk.html"><span>Population & source crosswalk</span><small>HTML · definitions / comparability / source selection</small></a>
-          <a href="downloads/population_crosswalk.csv"><span>Population crosswalk data</span><small>CSV · six population/source definitions</small></a>
-          <a href="downloads/population_crosswalk.md"><span>Population crosswalk notes</span><small>Markdown · methodology reference</small></a>
-          <a href="population-trends.html"><span>Population trend comparison</span><small>HTML · separate measures / compatible segments / non-addability</small></a>
-          <a href="downloads/population_trend_comparison.csv"><span>Population trend comparison data</span><small>CSV · 12 national population-year observations</small></a>
-          <a href="downloads/population_trend_comparison.md"><span>Population trend comparison notes</span><small>Markdown · source-vintage and interpretation boundaries</small></a>
-          <a href="undocumented-pipeline.html"><span>Undocumented pipeline context</span><small>HTML · 2023 state geography / stock-vs-flow / not-a-rate boundary</small></a>
-          <a href="downloads/undocumented_pipeline_comparison.csv"><span>Undocumented pipeline comparison</span><small>CSV · ten same-year state aggregate comparisons</small></a>
-          <a href="downloads/undocumented_pipeline_context.md"><span>Undocumented pipeline context notes</span><small>Markdown · ecological / non-causal interpretation boundary</small></a>
-          <a href="research-operations.html"><span>Recurring research operations</span><small>HTML · partner intake / QA / publication lifecycle</small></a>
-          <a href="production-cycle.html"><span>Partner production cycle</span><small>HTML · seven stage gates / blockers / handoff evidence</small></a>
-          <a href="downloads/production_cycle_register.csv"><span>Production cycle register</span><small>CSV · evidence-based stage controls</small></a>
-          <a href="downloads/production_cycle.md"><span>Production cycle notes</span><small>Markdown · coordination packet + advancement rules</small></a>
-          <a href="downloads/production_cycle_log_template.csv"><span>Blank production cycle log</span><small>CSV · validated live-cycle coordination template</small></a>
-          <a href="publication-handoff.html"><span>Publication handoff</span><small>HTML · claim / source / QA / disclosure register</small></a>
-          <a href="downloads/publication_handoff.csv"><span>Publication handoff register</span><small>CSV · pre-publication claim controls</small></a>
-          <a href="release-readiness.html"><span>Release readiness</span><small>HTML · current publication / year advance / blocker scope</small></a>
-          <a href="downloads/release_readiness.csv"><span>Release readiness matrix</span><small>CSV · eight release controls / evidence / next action</small></a>
-          <a href="downloads/release_readiness.md"><span>Release readiness note</span><small>Markdown · current-release vs candidate-year decision boundary</small></a>
-          <a href="data-governance.html"><span>Data governance</span><small>HTML · minimization / allowlist / release controls</small></a>
-          <a href="downloads/public_release_register.csv"><span>Public release register</span><small>CSV · governed public artifact allowlist</small></a>
-          <a href="downloads/data_governance.md"><span>Data governance note</span><small>Markdown · handling boundary + release rules</small></a>
-          <a href="downloads/recurring_report_register.csv"><span>Recurring report register</span><small>CSV · three recurring research products</small></a>
-          <a href="downloads/recurring_report_register.md"><span>Recurring report operations notes</span><small>Markdown · handoff / QA / archive model</small></a>
+          <a href="downloads/research_brief.pdf"><span>Research brief</span><small>PDF · 3 pages</small></a>
+          <a href="downloads/management_briefing_deck.pptx"><span>Management briefing</span><small>PPTX · 6 slides</small></a>
           <a href="downloads/ipeds_portfolio_analysis.xlsx"><span>Excel analysis workbook</span><small>XLSX · formulas / QA / state lookup</small></a>
-          <a href="downloads/management_briefing_deck.pptx"><span>PowerPoint management briefing</span><small>PPTX · six-slide KPI / trend / geography / QA deck</small></a>
-          <a href="sql-analysis.html"><span>SQL analysis</span><small>HTML · CTEs / joins / window functions / reconciliation</small></a>
-          <a href="ad-hoc-analysis.html"><span>Ad hoc analyst cases</span><small>HTML · three simulated management questions / QA / response</small></a>
-          <a href="downloads/ad_hoc_analysis_results.csv"><span>Ad hoc case results</span><small>CSV · answers / source authority / reconciliation</small></a>
-          <a href="downloads/ad_hoc_analysis.md"><span>Ad hoc casebook notes</span><small>Markdown · request-to-response working pattern</small></a>
-          <a href="state-recovery.html"><span>State recovery decomposition</span><small>HTML · 2019–2024 level / institution accounting / concentration</small></a>
-          <a href="downloads/state_recovery_analysis.csv"><span>State recovery analysis</span><small>CSV · 51 state/DC decompositions and reconciliation controls</small></a>
-          <a href="downloads/state_recovery_analysis.md"><span>State recovery analysis notes</span><small>Markdown · comparative findings and interpretation boundaries</small></a>
-          <a href="undergraduate-shift.html"><span>Undergraduate shift baseline</span><small>HTML · fixed 2023–2024 breadth / control / institution baseline for R01</small></a>
-          <a href="downloads/undergraduate_shift_baseline.csv"><span>Undergraduate shift baseline data</span><small>CSV · 51 state/DC decompositions and concentration controls</small></a>
-          <a href="downloads/undergraduate_shift_baseline.md"><span>Undergraduate shift baseline notes</span><small>Markdown · annual context / persistence decision boundary</small></a>
-          <a href="private-nonprofit-growth.html"><span>Private nonprofit growth concentration</span><small>HTML · 2015–2024 institution contributions / concentration / QA gates</small></a>
-          <a href="downloads/private_nonprofit_growth.csv"><span>Private nonprofit contribution table</span><small>CSV · 1,831 endpoint institutions / ranks / QA context</small></a>
-          <a href="downloads/private_nonprofit_growth.md"><span>Private nonprofit growth notes</span><small>Markdown · concentration decision rule and reconciliation</small></a>
-          <a href="planning-scenarios.html"><span>Planning scenarios and variance</span><small>HTML · backtest / sensitivity range / forecast-vs-actual</small></a>
-          <a href="downloads/planning_scenarios.csv"><span>Planning scenario table</span><small>CSV · assumptions / planned values / variance</small></a>
-          <a href="downloads/planning_scenarios.md"><span>Planning scenario notes</span><small>Markdown · transparent non-predictive planning frame</small></a>
-          <a href="freshness-monitor.html"><span>Release and freshness monitor</span><small>HTML · next-year availability / update gate / recurring triggers</small></a>
-          <a href="downloads/freshness_monitor.csv"><span>Freshness monitoring register</span><small>CSV · observations / triggers / next actions</small></a>
-          <a href="downloads/release_monitor_snapshot.json"><span>NCES release snapshot</span><small>JSON · dated next-year HTTP availability check</small></a>
-          <a href="downloads/freshness_monitor.md"><span>Freshness monitor notes</span><small>Markdown · release gate / source review / trigger rules</small></a>
-          <a href="candidate-directory-preflight.html"><span>Candidate directory preflight</span><small>HTML · 2025 HD fields / eligible-frame continuity / schema delta / HOLD boundary</small></a>
-          <a href="downloads/candidate_directory_preflight.json"><span>Candidate directory preflight snapshot</span><small>JSON · archive hashes / required fields / continuity controls</small></a>
-          <a href="downloads/candidate_directory_preflight.md"><span>Candidate directory preflight notes</span><small>Markdown · partial-package readiness and no-year-advance boundary</small></a>
-          <a href="candidate-directory-changes.html"><span>Candidate directory change review</span><small>HTML · entry / exit / control / state / name continuity QA</small></a>
-          <a href="downloads/candidate_directory_change_review.csv"><span>Candidate directory change review data</span><small>CSV · 154 affected UNITIDs / structural reasons / current exposure</small></a>
-          <a href="downloads/candidate_directory_change_review.md"><span>Candidate directory change review notes</span><small>Markdown · pre-analysis QA queue / no-future-enrollment boundary</small></a>
-          <a href="candidate-year-watchlist.html"><span>Candidate-year QA carry-forward</span><small>HTML · 226-UNITID next-release review union / cross-signal overlaps</small></a>
-          <a href="downloads/candidate_year_qa_watchlist.csv"><span>Candidate-year QA watchlist</span><small>CSV · 27 high / 50 medium / 154 directory changes / 5 overlaps</small></a>
-          <a href="downloads/candidate_year_qa_watchlist.md"><span>Candidate-year QA watchlist notes</span><small>Markdown · revalidation rules / no disposition inheritance</small></a>
-          <a href="source-update-triage.html"><span>Source update triage</span><small>HTML · routine refresh / method review / research-question routing</small></a>
-          <a href="downloads/source_update_triage.csv"><span>Source update routing register</span><small>CSV · all 17 maintained sources / escalation rules</small></a>
-          <a href="downloads/source_update_triage.md"><span>Source update routing notes</span><small>Markdown · R07 decision ladder / portfolio boundary</small></a>
-          <a href="downloads/portfolio_queries.sql"><span>SQL query pack</span><small>SQL · six read-only analyst queries</small></a>
-          <a href="downloads/sql_analysis_audit.csv"><span>SQL audit</span><small>CSV · independent query reconciliation checks</small></a>
-          <a href="downloads/sql_analysis.md"><span>SQL analysis notes</span><small>Markdown · query catalog + sample results</small></a>
-          <a href="downloads/state_profile_index.csv"><span>State profile index</span><small>CSV · 50 states + DC</small></a>
-          <a href="downloads/national_year.csv"><span>National series</span><small>CSV · 2015–2024</small></a>
-          <a href="downloads/state_year.csv"><span>State series</span><small>CSV · 50 states + DC</small></a>
-          <a href="downloads/state_change_summary.csv"><span>State change summary</span><small>CSV · 2015 / 2019 / 2024</small></a>
-          <a href="downloads/control_year.csv"><span>Institutional control series</span><small>CSV · public / nonprofit / for-profit</small></a>
-          <a href="downloads/institution_change_summary.csv"><span>Institution change accounting</span><small>CSV · 2015 / 2024 UNITID panel</small></a>
-          <a href="downloads/latest_release_institution_review.csv"><span>Latest release QA queue</span><small>CSV · 2023 / 2024 reason-coded triage</small></a>
-          <a href="downloads/latest_update_review.md"><span>Latest release review memo</span><small>Markdown · generated update packet</small></a>
-          <a href="qa-review.html"><span>Complete high-priority QA review</span><small>HTML · 27/27 evidence-backed institution dispositions</small></a>
-          <a href="downloads/qa_resolution_log.md"><span>QA resolution log</span><small>Markdown · evidence + publication decisions</small></a>
-          <a href="downloads/qa_resolution_log.csv"><span>QA resolution data</span><small>CSV · complete high-priority review queue</small></a>
-          <a href="high-priority-category-diagnostic.html"><span>High-priority category diagnostic</span><small>HTML · 25 continuing rows / internal countermovement QA</small></a>
-          <a href="downloads/high_priority_category_diagnostic.csv"><span>High-priority category diagnostic data</span><small>CSV · category identity / countermovement signal / publication context</small></a>
-          <a href="downloads/high_priority_category_diagnostic.md"><span>High-priority category diagnostic notes</span><small>Markdown · 8 strong / 3 material / 14 limited / 2 structural N/A</small></a>
-          <a href="medium-priority-review.html"><span>Medium-priority QA triage</span><small>HTML · 50 rows / four evidence routes / candidate-directory overlap</small></a>
-          <a href="downloads/medium_priority_review.csv"><span>Medium-priority QA routing table</span><small>CSV · existing triggers / review route / next evidence step</small></a>
-          <a href="downloads/medium_priority_review.md"><span>Medium-priority QA triage notes</span><small>Markdown · mixed-direction accounting / no-clearance boundary</small></a>
-          <a href="medium-qa-review.html"><span>Medium-priority QA evidence review</span><small>HTML · 50/50 reviewed / evidence-backed publication decisions</small></a>
-          <a href="downloads/medium_qa_resolution_log.csv"><span>Medium-priority QA resolution data</span><small>CSV · evidence source / disposition / publication class</small></a>
-          <a href="downloads/medium_qa_resolution_log.md"><span>Medium-priority QA resolution notes</span><small>Markdown · analyst boundaries / next-release revalidation</small></a>
-          <a href="medium-priority-category-diagnostic.html"><span>Medium-priority category diagnostic</span><small>HTML · 47 R/Z-comparable ratios / 2 imputed endpoints withheld / 1 structural</small></a>
-          <a href="downloads/medium_priority_category_diagnostic.csv"><span>Medium-priority category diagnostic data</span><small>CSV · route / category identity / countermovement / publication context</small></a>
-          <a href="downloads/medium_priority_category_diagnostic.md"><span>Medium-priority category diagnostic notes</span><small>Markdown · 18 strong / 9 material / 20 limited / 2 status-withheld / 1 structural</small></a>
-          <a href="downloads/briefing_note.md"><span>Stakeholder briefing note</span><small>Markdown · executive synthesis + next questions</small></a>
-          <a href="research-library.html"><span>Research Library</span><small>HTML · searchable source catalog</small></a>
-          <a href="downloads/research_library.csv"><span>Research Library</span><small>CSV · structured source metadata</small></a>
-          <a href="downloads/research_library.md"><span>Research Library guide</span><small>Markdown · source scope and project role</small></a>
-          <a href="downloads/research_agenda.md"><span>Research agenda</span><small>Markdown · questions / data needs / decision rules</small></a>
-          <a href="downloads/research_agenda.csv"><span>Research-needs register</span><small>CSV · structured research backlog</small></a>
-          <a href="downloads/institutions_2024.csv"><span>2024 institution detail</span><small>CSV · degree-granting universe</small></a>
-          <a href="downloads/source_manifest.csv"><span>Source manifest</span><small>CSV · URLs + SHA-256</small></a>
-          <a href="downloads/schema_audit.csv"><span>Schema audit</span><small>CSV · cross-year checks</small></a>
-          <a href="downloads/benchmark_audit.csv"><span>External benchmark audit</span><small>CSV · 24 consistency checks</small></a>
-          <a href="downloads/nces_digest_2025_306_10.csv"><span>Benchmark reference</span><small>CSV · NCES Digest values</small></a>
+          <a href="sql-analysis.html"><span>SQL analysis</span><small>HTML · queries / reconciliation</small></a>
+          <a href="qa-review.html"><span>Institution QA review</span><small>HTML · evidence-backed publication decisions</small></a>
+          <a href="methodology-crosswalk.html"><span>Population & source crosswalk</span><small>HTML · definitions / comparability</small></a>
         </div>
       </div>
     </section>

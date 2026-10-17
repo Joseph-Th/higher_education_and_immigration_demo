@@ -154,6 +154,10 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
         raise AssertionError("Institution table does not contain the expected 10 rows")
     if page.locator("#benchmark-table tr").count() != 4:
         raise AssertionError("Benchmark table does not contain the expected 4 rows")
+    if page.locator("#review-package .review-card").count() != 3:
+        raise AssertionError("Homepage reviewer path must contain exactly three primary cards")
+    if page.locator("#downloads .download-list a").count() != 6:
+        raise AssertionError("Homepage reviewer package must remain limited to six primary artifacts")
 
     chart_ids = (
         "national-chart",

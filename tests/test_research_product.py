@@ -1585,28 +1585,19 @@ class ResearchProductTests(unittest.TestCase):
         self.assertEqual(summary["candidate_overlap_reviewed"], 5)
 
         reviewer_guide = (ROOT / "docs" / "REVIEWER_GUIDE.md").read_text(encoding="utf-8")
+        self.assertIn("## Five-minute review path", reviewer_guide)
+        self.assertIn("deliverables/research_brief.pdf", reviewer_guide)
+        self.assertIn("deliverables/management_briefing_deck.pptx", reviewer_guide)
+        self.assertIn("deliverables/ipeds_portfolio_analysis.xlsx", reviewer_guide)
+        self.assertIn("site/sql-analysis.html", reviewer_guide)
+        self.assertIn("24/24", reviewer_guide)
         self.assertIn(
-            f"clears {summary['safe_with_context']} only for bounded contextual discussion, "
-            f"and holds {summary['hold_for_confirmation']} for confirmation",
+            f"{summary['safe_with_context']} safe with context, "
+            f"{summary['hold_for_confirmation']} held for confirmation",
             reviewer_guide,
         )
-        medium_section = reviewer_guide.split(
-            "19. Open `site/medium-priority-review.html`", 1
-        )[1].split("\n20. Open `site/planning-scenarios.html`", 1)[0]
-        for row in resolution:
-            start = medium_section.find(row["institution"])
-            if start < 0:
-                continue
-            sentence_end = medium_section.find(". ", start)
-            first_sentence = medium_section[
-                start : sentence_end + 1 if sentence_end >= 0 else len(medium_section)
-            ].lower()
-            if row["publication_class"] == "safe_with_context":
-                self.assertNotIn("remains held", first_sentence, row["institution"])
-                self.assertNotIn("remain held", first_sentence, row["institution"])
-            else:
-                self.assertNotIn("bounded-safe", first_sentence, row["institution"])
-                self.assertNotIn("safe with context", first_sentence, row["institution"])
+        numbered_steps = re.findall(r"^\d+\. ", reviewer_guide, flags=re.MULTILINE)
+        self.assertEqual(len(numbered_steps), 3)
 
         rendered = (ROOT / "docs" / "MEDIUM_QA_RESOLUTION_LOG.md").read_text(encoding="utf-8")
         html = (ROOT / "site" / "medium-qa-review.html").read_text(encoding="utf-8")
