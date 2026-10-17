@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 31
-- **Held for confirmation:** 19
+- **Safe with context:** 32
+- **Held for confirmation:** 18
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -39,7 +39,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Walden University | MN | -396 | Percentage Movement | External scope mismatch | Hold for confirmation | [Walden University international-student support definition](https://academics.waldenu.edu/support-services/student-support-services) |
 | Weber State University | UT | +373 | Percentage Movement | Corroborated external count | Safe with context | [Weber State Fall 2024 international enrollment](https://www.weber.edu/wsutoday/090524-international-enrollment.html) |
 | Fort Hays State University | KS | -266 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Fort Hays State University 2023 assurance argument and Fall 2024 international enrollment](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week) |
-| Marywood University | PA | -260 | Percentage Movement | External scope mismatch | Hold for confirmation | [Marywood University 2024-25 Fact Book](https://www.marywood.edu/about/consumer-information/factbooks/Fall-2024-Factbook.pdf?language_id=1) |
+| Marywood University | PA | -260 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Marywood University 2024-25 and 2025-26 Fact Books](https://www.marywood.edu/about/consumer-information/factbooks/fall-2025-factbook.pdf) |
 | Dominican University of California | CA | -249 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Dominican University of California 2024-25 Common Data Set and University Facts](https://www.dominican.edu/about/student-success/university-facts) |
 | National Louis University | IL | +218 | Percentage Movement | External scope mismatch | Hold for confirmation | [National Louis University HLC Mid-Cycle Review Assurance Argument](https://nl.edu/media/nledu/content-assets/documents/accreditation/NLU-HLC-Mid-Cycle-Review-Assurance-Argument---Spring-2026.pdf) |
 | University of Rio Grande | OH | +181 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth) |
@@ -276,11 +276,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Marywood University · UNITID 213826
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
-- **Evidence:** [Marywood University 2024-25 Fact Book](https://www.marywood.edu/about/consumer-information/factbooks/Fall-2024-Factbook.pdf?language_id=1)
-- **Analyst note:** The project IPEDS series reports 315 U.S. nonresident students in Fall 2023 and 55 in Fall 2024, a decline of 260, with undergraduate/graduate components of 14/301 and 8/47 and all-student totals of 2,850 and 2,530. Marywood University's official 2024-25 Fact Book applies an IPEDS headcount definition to its Fall 2023 and Fall 2024 headcount tables and exactly reproduces the project Fall 2023 level totals of 1,874 undergraduates and 976 graduate students. For Fall 2024, however, the Fact Book reports 1,834 undergraduates and 1,060 graduate students, compared with project IPEDS totals of 1,833 and 697. Its Fall 2024 ethnicity/race table reports 8 undergraduate Non-resident Aliens, exactly matching the project undergraduate component, but 399 graduate Non-resident Aliens (188 full-time and 211 part-time), versus 47 in project IPEDS. A separately sourced International Student Enrollment table reports 95 international students in Fall 2023 (39 undergraduate, 56 graduate) and 131 in Fall 2024 (88 undergraduate, 43 graduate), with 80 of the 2024 undergraduate international students identified as IEP students. The exact 2023 total structure and 2024 undergraduate nonresident component show that the institutional material is relevant, but the much larger graduate headcount/nonresident population and the separately defined international series establish a material reporting-scope mismatch. Preserve IPEDS as the analytical authority and keep the -260 institution-specific movement held; do not substitute either Marywood institutional series for IPEDS.
+- **Decision:** Safe with context
+- **Disposition:** Confirmed reporting discontinuity
+- **Reviewed:** 2026-10-16
+- **Evidence:** [Marywood University 2024-25 and 2025-26 Fact Books](https://www.marywood.edu/about/consumer-information/factbooks/fall-2025-factbook.pdf)
+- **Analyst note:** The project IPEDS series reports 315 U.S. nonresident students in Fall 2023 and 55 in Fall 2024, a decline of 260, with undergraduate/graduate components of 14/301 and 8/47 and all-student totals of 2,850 and 2,530. Marywood University's official 2024-25 Fact Book reports 8 undergraduate Non-resident Aliens in Fall 2024, exactly matching the project undergraduate component, but 399 graduate Non-resident Aliens versus 47 in project IPEDS; its separate International Student Enrollment table rises from 95 students in Fall 2023 to 131 in Fall 2024, including 80 Fall 2024 undergraduate IEP students. Marywood's official 2025-26 Fact Book then explicitly documents a new alternate headcount that joins global initiatives students who would have been excluded and brings back students excluded under IPEDS headcount rules, while directing readers to the Data Book dashboards for continuing IPEDS headcount reporting. The same retroactive Fall 2024 table lists 689 standard graduate students plus 371 auxiliary graduate students for an Aux + Graduate Total of 1,060, and a departmental note says auxiliary undergraduate and graduate counts include atypical programs such as Enrichment, IEP, or HESA while Global Initiatives populations are maintained separately. Those explicit source-defined reporting populations explain why Marywood's public fact-book graduate and international series are not like-for-like IPEDS populations, and the institutional international series rises rather than falls across the comparison window. Preserve IPEDS as the numerical authority, do not substitute Marywood's alternate values, and clear only bounded reporting/population-discontinuity discussion; do not describe the -260 IPEDS movement as independently confirmed substantive international-enrollment contraction.
 
 ### Dominican University of California · UNITID 113698
 

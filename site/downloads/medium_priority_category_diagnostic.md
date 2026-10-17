@@ -63,7 +63,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 24 | Walden University | MN | Percentage Movement | -396 | R→R | 5,630 | 1421.7% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 25 | Weber State University | UT | Percentage Movement | +373 | R→R | 327 | 87.7% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | 26 | Fort Hays State University | KS | Percentage Movement | -266 | R→R | 547 | 205.6% | Countermovement at least as large as the nonresident change | safe_with_context |
-| 27 | Marywood University | PA | Percentage Movement | -260 | R→R | 66 | 25.4% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| 27 | Marywood University | PA | Percentage Movement | -260 | R→R | 66 | 25.4% | Countermovement below half of the nonresident change | safe_with_context |
 | 28 | Dominican University of California | CA | Percentage Movement | -249 | R→R | 263 | 105.6% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 29 | National Louis University | IL | Percentage Movement | +218 | R→R | 18 | 8.3% | Countermovement below half of the nonresident change | hold_for_confirmation |
 | 30 | University of Rio Grande | OH | Percentage Movement | +181 | R→R | 154 | 85.1% | Countermovement at least half as large as the nonresident change | hold_for_confirmation |
