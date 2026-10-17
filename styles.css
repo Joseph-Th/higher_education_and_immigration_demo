@@ -459,6 +459,26 @@ section[id] { scroll-margin-top: 76px; }
 .watchlist-decision-context strong { display: block; margin-top: 5px; font-size: 13px; }
 .watchlist-union-note { margin: 12px 0 0; color: var(--ink-soft); font-size: 10px; }
 
+.category-signal-visual { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
+.category-signal-bar { display: flex; gap: 4px; height: 24px; overflow: hidden; border-radius: 999px; background: var(--wash); }
+.category-signal-bar i { display: block; min-width: 4px; }
+.category-signal-bar i.strong, .category-signal-legend i.strong { background: var(--warm); }
+.category-signal-bar i.material, .category-signal-legend i.material { background: #d7a07f; }
+.category-signal-bar i.limited, .category-signal-legend i.limited { background: var(--accent); }
+.category-signal-bar i.withheld, .category-signal-legend i.withheld { background: #7f91a1; }
+.category-signal-bar i.structural, .category-signal-legend i.structural { background: var(--navy); }
+.category-signal-legend { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 10px; margin-top: 16px; }
+.category-signal-legend article { min-width: 0; padding: 13px 14px; border-radius: 12px; background: var(--wash); }
+.category-signal-legend article > span { display: flex; align-items: center; gap: 6px; color: var(--ink-soft); font-size: 9px; font-weight: 800; }
+.category-signal-legend article > span i { flex: 0 0 9px; width: 9px; height: 9px; border-radius: 50%; }
+.category-signal-legend strong { display: block; margin-top: 7px; font-size: 24px; line-height: 1; letter-spacing: -.04em; }
+.category-signal-legend small { display: block; margin-top: 6px; color: var(--ink-soft); font-size: 9px; line-height: 1.35; }
+.category-control-strip { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-top: 12px; }
+.category-control-strip span { padding: 13px 15px; border: 1px solid var(--line); border-radius: 12px; background: #f9fbfb; color: var(--ink-soft); font-size: 10px; }
+.category-control-strip strong { color: var(--ink); }
+.category-signal-note { margin: 12px 0 0; color: var(--ink-soft); font-size: 10px; }
+.category-audit-details { margin-top: 4px; }
+
 .nonprofit-concentration-visual { padding: 24px 26px; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
 .nonprofit-concentration-head { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 16px; color: var(--ink-soft); font-size: 11px; }
 .nonprofit-concentration-head strong { color: var(--warm); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; }
@@ -683,6 +703,8 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .freshness-package-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .watchlist-union-legend { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .watchlist-decision-context { grid-template-columns: 1fr; }
+  .category-signal-legend { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .category-control-strip { grid-template-columns: 1fr; }
   .nonprofit-movement-grid { grid-template-columns: repeat(2,1fr); }
   .nonprofit-contributor-row { grid-template-columns: 32px minmax(180px,1fr) minmax(150px,.8fr) 70px; }
   .nonprofit-contributor-row small { grid-column: 2 / -1; text-align: left; }
@@ -753,6 +775,11 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .watchlist-union-legend { grid-template-columns: 1fr 1fr; gap: 7px; }
   .watchlist-union-legend article { padding: 11px; }
   .watchlist-union-legend strong { font-size: 20px; }
+  .category-signal-visual { padding: 16px; }
+  .category-signal-bar { height: 18px; gap: 2px; }
+  .category-signal-legend { grid-template-columns: 1fr 1fr; gap: 7px; }
+  .category-signal-legend article { padding: 11px; }
+  .category-signal-legend strong { font-size: 20px; }
   .nonprofit-concentration-visual { padding: 18px 16px; }
   .nonprofit-concentration-head { align-items: flex-start; flex-direction: column; gap: 4px; }
   .nonprofit-concentration-row { grid-template-columns: 52px minmax(0,1fr) 48px; gap: 8px; }
