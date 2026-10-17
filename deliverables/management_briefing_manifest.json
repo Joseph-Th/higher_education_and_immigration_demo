@@ -9,10 +9,10 @@
     "data/undergraduate_shift_baseline.csv": "2de0abda5110b4b2352a028440dcadc527c84a6bc452a30149765985cba87de0",
     "data/findings.json": "c9c4f4948113353576e4be8b82ef3596b153059a77b600305f9ec569957544d7",
     "data/latest_update_review.json": "7a1d00482ff0fa998561b57dea3c45de495406e0e2a78e22ddb73c4b835ab69e",
-    "data/qa_resolution_summary.json": "814634669d8ac77639ab52f5ee77091c4b575b4234da336ba511b57c7b5014f3",
+    "data/qa_resolution_summary.json": "2845c78eb7c65f1bf299e91beb6601959b80dff942576bf2adbad77279d51fc7",
     "data/medium_qa_resolution_summary.json": "ce4b95532bf05d9a39b774a5a82845d74a5cb05be84bd4081ca1b3a44a24875b"
   },
-  "pptx_sha256": "c3737e908d386b1ef1d045623a0436d36652b1c823ce53d1c390ff8b4ee0e1d7",
+  "pptx_sha256": "406b038f4f74021dfb2289b19df6be55193f2b6f70b7c5bb4d24ac09825e44ad",
   "pptx_bytes": 42249,
   "slide_count": 5,
   "metrics": {

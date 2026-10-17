@@ -2,7 +2,7 @@
 
 **Latest data:** Fall 2024 (provisional)  
 **Universe:** degree-granting institutions in the IPEDS First Look/Digest Title IV universe, 50 states + DC  
-**QA review date:** 2026-10-16
+**QA review date:** 2026-10-17
 
 ## Bottom line
 
@@ -24,9 +24,9 @@ The automated queue identified **27 high-priority** latest-release records. The 
 
 **Observed change:** +1,176  
 **Publication decision:** Hold institution-specific claim  
-**Evidence:** [CCRI Institutional Effectiveness dashboard and F-1 international-student definition](https://www.ccri.edu/ie/)
+**Evidence:** [CCRI Institutional Effectiveness enrollment dashboard + NECHE self-study + F-1 definition](https://www.ccri.edu/ie/)
 
-IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. CCRI's official international-student admissions page separately defines an international student as a foreign national studying on an F-1 non-immigrant temporary visa and explicitly excludes U.S. citizens, permanent residents, eligible non-immigrant visa holders, refugees, asylees, and temporary protected status populations. That F-1-only admissions construct is narrower than the project IPEDS U.S. nonresident category, and the enrollment dashboard does not expose a directly comparable nonresident-status series. The exact all-student totals therefore corroborate the institutional frame while the explicit visa definition explains why CCRI's public international-student surface cannot validate the 12-to-1,188 nonresident jump. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure.
+IPEDS jumps from 12 to 1,188 U.S. nonresident students between Fall 2023 and Fall 2024. CCRI's official Institutional Effectiveness enrollment dashboard independently reports total enrollment of 12,518 in Fall 2023 and 12,275 in Fall 2024, exactly matching the project IPEDS totals for both years. The same dashboard's Race/Ethnicity table assigns the full census headcount to ordinary racial/ethnic buckets and does not expose a U.S. Nonresident or Nonresident Alien row; in Fall 2024 those displayed race/ethnicity buckets still sum to all 12,275 students even though IPEDS separately reports 1,188 students in its mutually exclusive U.S. Nonresident category and 11,087 across the remaining federal race/ethnicity categories. CCRI's 2024 NECHE self-study shows the same institutional taxonomy historically: its Fall 2022 race/ethnicity table totals the complete 12,263-student census population without a separate nonresident category. These two institutional sources establish that CCRI's public race/ethnicity taxonomy is not definition-identical to the mutually exclusive IPEDS race/ethnicity identity, so the dashboard category counts cannot be substituted for federal category counts or used to infer which students entered the IPEDS U.S. Nonresident category. CCRI's official international-student admissions page separately defines an international student as a foreign national studying on an F-1 non-immigrant temporary visa and explicitly excludes U.S. citizens, permanent residents, eligible non-immigrant visa holders, refugees, asylees, and temporary protected status populations. That F-1-only admissions construct is narrower than the project IPEDS U.S. nonresident category. The stronger evidence therefore confirms a category-scope mismatch around the exact institutional headcount, but neither public surface exposes a directly comparable 2023/2024 residency or citizenship series that can validate or contradict the 12-to-1,188 status change. Preserve IPEDS in aggregates and keep institution-specific interpretation held pending a directly comparable residency/citizenship measure.
 
 ### Corroborate the direction: Collin County Community College District
 
