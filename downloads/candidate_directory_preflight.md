@@ -2,7 +2,7 @@
 
 This is a **partial-package structural preflight**, not an analysis-year advance. It uses the available candidate-year IPEDS institutional directory and dictionary to reduce directory-side uncertainty while Fall Enrollment remains unavailable.
 
-- **Captured:** 2026-10-15T02:55:06+00:00
+- **Captured:** 2026-10-17T11:37:28+00:00
 - **Preflight status:** PASS
 - **Current published analysis year:** 2024
 - **Candidate year:** 2025

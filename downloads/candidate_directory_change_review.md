@@ -2,7 +2,7 @@
 
 This review expands the candidate-directory preflight from aggregate counts to the affected public institution records. It remains **directory-side readiness evidence only**. A change in directory eligibility, institutional control, state, or name is not evidence of a campus opening/closure or a candidate-year enrollment change.
 
-- **Captured preflight:** `2026-10-15T02:55:06+00:00`
+- **Captured preflight:** `2026-10-17T11:37:28+00:00`
 - **Current analysis year:** 2024
 - **Candidate year:** 2025
 - **Affected UNITIDs:** 154
