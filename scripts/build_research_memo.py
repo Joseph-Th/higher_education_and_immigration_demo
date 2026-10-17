@@ -180,7 +180,7 @@ def main() -> int:
     <section class="memo-hero">
       <div class="shell">
         <p class="eyebrow">Research memo · Fall {end_year}</p>
-        <h1>Enrollment recovered. The latest growth looks different.</h1>
+        <h1>Enrollment recovered. The latest growth was undergraduate-led.</h1>
         <p class="lede">A concise research and publication-QA memo on U.S. nonresident enrollment at degree-granting U.S. institutions.</p>
         <div class="memo-meta"><span>Fall {end_year} {html.escape(str(coverage['latest_data_status']))}</span><span>{start_year}-{end_year}</span><span>50 states + DC</span></div>
       </div>
@@ -207,8 +207,8 @@ def main() -> int:
           <div><dt>Fall {end_year}</dt><dd>{headline['latest_nonresident']:,}</dd></div>
           <div><dt>Change since {start_year}</dt><dd>{signed_pct(headline['change_since_2015_pct'])}</dd></div>
           <div><dt>{prior_year}-{end_year}</dt><dd>{signed_pct(latest['pct_change'])}</dd></div>
-          <div><dt>High-priority QA flags</dt><dd>{review['review_queue']['high']}</dd></div>
-          <div><dt>Manually reviewed</dt><dd>{resolution['reviewed_count']}</dd></div>
+          <div><dt>Undergraduate change</dt><dd>{signed_int(latest['undergraduate_change'])}</dd></div>
+          <div><dt>High-priority QA reviewed</dt><dd>{resolution['reviewed_count']}/{resolution['high_priority_total']}</dd></div>
           <div><dt>NCES benchmark checks</dt><dd>{len(benchmark)}/{len(benchmark)}</dd></div>
         </dl>
       </aside>
