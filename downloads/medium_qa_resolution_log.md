@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 30
-- **Held for confirmation:** 20
+- **Safe with context:** 31
+- **Held for confirmation:** 19
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -46,7 +46,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Union Commonwealth University | KY | +179 | Percentage Movement | Corroborated direction | Safe with context | [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help) |
 | FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Expected structural change | Safe with context | [Arizona State University April 2023 FIDM transition announcement](https://newsroom.asu.edu/press-releases/asu-expands-fashion-program-through-asu-fidm) |
 | Barton County Community College | KS | -155 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Barton Community College 2024 and 2025 Community Reports](https://www.bartonccc.edu/community/boardoftrustees/report) |
-| Saddleback College | CA | +152 | Percentage Movement | External scope mismatch | Hold for confirmation | [Saddleback College F-1 international-student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student) |
+| Saddleback College | CA | +152 | Percentage Movement | Corroborated external count | Safe with context | [California Community Colleges Data Mart Citizenship Status Summary](https://datamart.cccco.edu/students/Citizenship_Status_Summary.aspx) |
 | Durham Technical Community College | NC | +129 | Percentage Movement | External scope mismatch | Hold for confirmation | [Durham Tech non-U.S. student enrollment definitions](https://www.durhamtech.edu/admissions-and-enrollment/non-us-student) |
 | Prairie View A & M University | TX | +125 | Percentage Movement | External scope mismatch | Hold for confirmation | [Prairie View A&M University 2024-25 Fact Book](https://www.pvamu.edu/marcomm/wp-content/uploads/sites/114/PVAMU-Fact-Book-2024-DRAFT_v10_SPREAD.pdf) |
 | Humphreys University-Stockton and Modesto Campuses | CA | +116 | Percentage Movement | Corroborated direction | Safe with context | [Humphreys University 2024 WSCUC Special Visit team report](https://www.humphreys.edu/wp-content/uploads/2026/04/WSCUC_Team_Report_SV_SP24.pdf) |
@@ -332,11 +332,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Saddleback College · UNITID 122205
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
-- **Evidence:** [Saddleback College F-1 international-student admissions](https://www.saddleback.edu/apply-pay/how-apply/international-student)
-- **Analyst note:** The project IPEDS series reports 248 U.S. nonresident students in Fall 2023 and 400 in Fall 2024, an increase of 152, with all-student enrollment rising from 18,370 to 20,764. Saddleback College's official international-student admissions page is operationally tied to F-1/M-1 student-visa selection, I-20 issuance, financial-support requirements, and F-1 status, while its 2024-25 catalog states that applicants with visa types other than F-1 apply through the general Admissions and Records process. The college's public international-student construct therefore does not represent a complete like-for-like public endpoint for the IPEDS U.S. nonresident category. Because the reviewed materials provide no comparable Fall 2023/Fall 2024 count under an aligned definition, preserve IPEDS as the numerical authority and keep the +152 institution-specific movement held as an explicit population-scope mismatch; do not infer an IPEDS nonresident count from the F-1 international program.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated external count
+- **Reviewed:** 2026-10-16
+- **Evidence:** [California Community Colleges Data Mart Citizenship Status Summary](https://datamart.cccco.edu/students/Citizenship_Status_Summary.aspx)
+- **Analyst note:** The project IPEDS series reports 248 U.S. nonresident students in Fall 2023 and 400 in Fall 2024, an increase of 152, with all-student enrollment rising from 18,370 to 20,764. In the California Community Colleges Chancellor's Office Data Mart Citizenship Status Summary, a Collegewide search for Saddleback College reports Student Visa (F-1 or M-1 visa) counts of 253 in Fall 2023 and 405 in Fall 2024, also an increase of 152. The linked SB06 Student-Citizenship definition explicitly defines Student Visa Status as a person admitted for academic or vocational study under an F-1 or M-1 visa. The same Data Mart query reports broader all-student headcounts of 25,238 and 28,545, and the report notes that its full-term headcount uses CCCCO STD7 reporting criteria, so neither the institutional headcount frame nor the Student Visa category is assumed definition-identical to the IPEDS Fall-census U.S. nonresident measure. Do not substitute the Data Mart values for IPEDS. The external endpoints differ from IPEDS by only five students in each year and reproduce the +152 movement exactly, independently corroborating the scale and direction and clearing bounded institution-specific discussion with the scope caveat retained.
 
 ### Durham Technical Community College · UNITID 198455
 
