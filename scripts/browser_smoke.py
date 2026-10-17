@@ -247,6 +247,13 @@ def inspect_medium_priority_category_diagnostic(browser, base_url: str, *, width
     for expected in ("47", "18", "2", "1"):
         if expected not in summary:
             raise AssertionError(f"Medium category diagnostic summary is missing {expected}")
+    if page.locator("#medium-signal-distribution [data-category-signal]").count() != 5:
+        raise AssertionError("Medium category diagnostic does not render all five signal classes")
+    distribution_text = page.locator("#medium-signal-distribution").inner_text()
+    for expected in ("At least 100%", "18", "50% to 100%", "9", "Below 50%", "20", "Status withheld", "2", "Universe change", "1"):
+        if expected not in distribution_text:
+            raise AssertionError(f"Medium category diagnostic distribution is missing {expected}")
+    page.locator("#diagnostic-table details.category-audit-details").evaluate("el => el.open = true")
     table = page.locator("#diagnostic-table tbody")
     if table.locator("tr").count() != 47:
         raise AssertionError("Medium category diagnostic does not render all 47 source-status-comparable rows")
@@ -405,6 +412,13 @@ def inspect_high_priority_category_diagnostic(browser, base_url: str, *, width: 
     for expected in ("25", "8", "3", "2"):
         if expected not in summary:
             raise AssertionError(f"Category diagnostic summary is missing {expected}")
+    if page.locator("#signal-distribution [data-category-signal]").count() != 4:
+        raise AssertionError("Category diagnostic does not render all four signal classes")
+    distribution_text = page.locator("#signal-distribution").inner_text()
+    for expected in ("At least 100%", "8", "50% to 100%", "3", "Below 50%", "14", "Universe change", "2"):
+        if expected not in distribution_text:
+            raise AssertionError(f"Category diagnostic distribution is missing {expected}")
+    page.locator("#diagnostic-table details.category-audit-details").evaluate("el => el.open = true")
     table = page.locator("#diagnostic-table tbody")
     if table.locator("tr").count() != 25:
         raise AssertionError("Category diagnostic does not render all 25 comparable continuing rows")
