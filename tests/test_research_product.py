@@ -2226,7 +2226,7 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("exactly matching project IPEDS", by_unitid["132709"]["analyst_note"])
         self.assertEqual(by_unitid["232937"]["publication_class"], "safe_with_context")
         self.assertEqual(by_unitid["232937"]["disposition"], "corroborated_external_count")
-        self.assertIn("FactBook_2020-2024.aspx", by_unitid["232937"]["evidence_url"])
+        self.assertIn("Institutional-Research/University-Fact-Book", by_unitid["232937"]["evidence_url"])
         self.assertEqual(by_unitid["219949"]["publication_class"], "safe_with_context")
         self.assertEqual(by_unitid["219949"]["disposition"], "corroborated_direction")
         self.assertIn("2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf", by_unitid["219949"]["evidence_url"])
