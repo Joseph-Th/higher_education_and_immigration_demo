@@ -381,16 +381,12 @@ def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
 
     release_cards = []
     for row in release_rows:
-        css = "handoff-status-ready" if row.status == "AVAILABLE" else "handoff-status-hold"
+        css = "available" if row.status == "AVAILABLE" else "missing"
         release_cards.append(f"""
-          <article class="handoff-card" data-monitor-id="{row.monitor_id}">
-            <div class="handoff-card-head"><span>{row.monitor_id}</span><span class="handoff-status {css}">{html.escape(row.status)}</span></div>
-            <p class="case-kicker">NCES candidate-year asset</p>
-            <h2>{html.escape(row.subject)}</h2>
-            <dl class="handoff-meta">
-              <div><dt>Evidence</dt><dd>{html.escape(row.evidence)}</dd></div>
-              <div><dt>Next action</dt><dd>{html.escape(row.next_action)}</dd></div>
-            </dl>
+          <article class="freshness-asset-tile {css}" data-monitor-id="{row.monitor_id}">
+            <div class="freshness-asset-head"><span>{row.monitor_id}</span><strong>{html.escape(row.status)}</strong></div>
+            <h3>{html.escape(row.subject)}</h3>
+            <p>{html.escape(row.evidence)}</p>
           </article>""")
 
     report_cards = []
@@ -438,7 +434,7 @@ def write_html(rows: list[MonitorRow], snapshot: dict[str, object]) -> None:
     </section>
     <section class="section shell" id="release-readiness">
       <div class="section-heading"><p class="eyebrow">Candidate {candidate} package</p><h2>{html.escape(release_heading)}</h2><p>{html.escape(release_copy)}</p></div>
-      <div class="handoff-grid">{''.join(release_cards)}</div>
+      <div class="freshness-package-strip" aria-label="Four required candidate-year IPEDS assets">{''.join(release_cards)}</div>
       <div class="methods-crosswalk-callout"><div><p class="eyebrow">Decision gate</p><h3>{html.escape(gate.status)}</h3><p>{html.escape(gate.evidence)} {html.escape(gate.next_action)}</p></div><a class="button button-secondary" href="downloads/release_monitor_snapshot.json">Download captured NCES check</a></div>
     </section>
     <section class="section section-tinted" id="directory-preflight">

@@ -576,6 +576,16 @@ def inspect_release_readiness(browser, base_url: str, *, width: int, height: int
         raise AssertionError("Release readiness current-publication machine decision is incorrect")
     if hero.get_attribute("data-year-decision") != "HOLD_YEAR_ADVANCE":
         raise AssertionError("Release readiness year-advance machine decision is incorrect")
+    if page.locator("#decision-separation .readiness-lane").count() != 2:
+        raise AssertionError("Release readiness does not show the two decision lanes")
+    if page.locator("#decision-separation .readiness-gate-track i").count() != 7:
+        raise AssertionError("Release readiness current-release lane does not show all seven gates")
+    if page.locator("#decision-separation .readiness-gate-track i.claim-hold").count() != 2:
+        raise AssertionError("Release readiness current-release lane does not preserve both claim-hold gates")
+    if page.locator("#decision-separation .readiness-package-track i").count() != 4:
+        raise AssertionError("Release readiness year-advance lane does not show all four candidate assets")
+    if page.locator("#decision-separation .readiness-package-track i.available").count() != 2:
+        raise AssertionError("Release readiness year-advance lane does not show two available assets")
     summary = page.locator(".handoff-summary").inner_text()
     held_claims = (
         SITE_DATA["qa_resolution_summary"]["hold_for_confirmation"]
@@ -651,6 +661,14 @@ def inspect_freshness_monitor(browser, base_url: str, *, width: int, height: int
         raise AssertionError(f"Freshness monitor page failed at {width}px")
     if page.locator('[data-monitor-id]').count() != 4:
         raise AssertionError("Freshness monitor does not render all four candidate-year assets")
+    if page.locator("#release-readiness .freshness-asset-tile.available").count() != 2:
+        raise AssertionError("Freshness monitor does not show two available candidate-year assets")
+    if page.locator("#release-readiness .freshness-asset-tile.missing").count() != 2:
+        raise AssertionError("Freshness monitor does not show two missing candidate-year assets")
+    asset_text = page.locator("#release-readiness .freshness-package-strip").inner_text()
+    for expected in ("2025 Fall Enrollment data", "2025 Fall Enrollment dictionary", "2025 Institutional directory data", "2025 Institutional directory dictionary"):
+        if expected not in asset_text:
+            raise AssertionError(f"Freshness monitor candidate package strip is missing {expected}")
     if page.locator('[data-product-monitor]').count() != 3:
         raise AssertionError("Freshness monitor does not render all three recurring-product triggers")
     summary = page.locator(".handoff-hero .handoff-summary").inner_text()
