@@ -80,7 +80,7 @@ This diagnostic adds the same internal source-data arithmetic check used for hig
 | 41 | America Evangelical University | CA | Percentage Movement | -92 | R→R | 210 | 228.3% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
 | 42 | University of Lynchburg | VA | Percentage Movement | +91 | R→R | 367 | 403.3% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 43 | Monroe Community College | NY | Percentage Movement | +83 | R→R | 99 | 119.3% | Countermovement at least as large as the nonresident change | safe_with_context |
-| 44 | University of Maine at Presque Isle | ME | Percentage Movement | +81 | R→R | 1 | 1.2% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| 44 | University of Maine at Presque Isle | ME | Percentage Movement | +81 | R→R | 1 | 1.2% | Countermovement below half of the nonresident change | safe_with_context |
 | 45 | New Mexico Highlands University | NM | Percentage Movement | -81 | R→R | 104 | 128.4% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 46 | Northeastern University Oakland | CA | Percentage Movement | +80 | R→R | 100 | 125.0% | Countermovement at least as large as the nonresident change | safe_with_context |
 | 47 | Vincennes University | IN | Percentage Movement | +78 | R→R | 170 | 217.9% | Countermovement at least as large as the nonresident change | safe_with_context |

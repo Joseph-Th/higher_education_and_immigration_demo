@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 38
-- **Held for confirmation:** 12
+- **Safe with context:** 39
+- **Held for confirmation:** 11
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -56,7 +56,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | America Evangelical University | CA | -92 | Percentage Movement | Partial component corroboration | Hold for confirmation | [California BPPE America Evangelical University 2023 and 2024 Annual Reports](https://www.bppe.ca.gov/webapplications/annualReports/2024/details/23621227) |
 | University of Lynchburg | VA | +91 | Percentage Movement | Corroborated direction | Safe with context | [University of Lynchburg Fall 2024 international-enrollment and Belonging reports](https://magazine.lynchburg.edu/article/a-new-path-to-belonging/) |
 | Monroe Community College | NY | +83 | Percentage Movement | Corroborated direction | Safe with context | [SUNY System 2025-26 Executive Data Summary](https://system.suny.edu/institutional-research/resources/) |
-| University of Maine at Presque Isle | ME | +81 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Maine System Fall 2024 census enrollment report](https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2024/11/November-2024-BOT-Meeting-Book-Revised-11.8.24.pdf) |
+| University of Maine at Presque Isle | ME | +81 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [University of Maine System Fall 2024 census and FY25 budget enrollment reports](https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2024/11/November-2024-BOT-Meeting-Book-Revised-11.8.24.pdf) |
 | New Mexico Highlands University | NM | -81 | Percentage Movement | Corroborated external count | Safe with context | [NMHU Fall 2023 and Fall 2024 end-of-term ethnicity reports](https://www.nmhu.edu/institutional-research/enrollment-and-retention/) |
 | Northeastern University Oakland | CA | +80 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Northeastern University Oakland Fall 2023 and Fall 2024 admissions FAQs](https://admissions.northeastern.edu/wp-content/uploads/2023/12/FA24-NU-Oakland-Admission-FAQ-12.13-Update.pdf) |
 | Vincennes University | IN | +78 | Percentage Movement | Corroborated direction | Safe with context | [Vincennes University Fall 2024 enrollment announcement](https://www.vinu.edu/news/vu-welcomes-largest-incoming-class-since-2021.html) |
@@ -412,11 +412,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### University of Maine at Presque Isle · UNITID 161341
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
-- **Evidence:** [University of Maine System Fall 2024 census enrollment report](https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2024/11/November-2024-BOT-Meeting-Book-Revised-11.8.24.pdf)
-- **Analyst note:** The project IPEDS series reports 137 U.S. nonresident students in Fall 2023 and 218 in Fall 2024, an increase of 81, with all-student enrollment rising from 2,187 to 2,873. The University of Maine System's official Fall 2024 Census Enrollment Update reports University of Maine at Presque Isle enrollment rising from 1,509 in Fall 2023 to 2,171 in Fall 2024, an increase of 662 (43.9%), and states that YourPace students make up 62.3% of UMPI enrollment. The institutional-system totals are 678 and 702 below the corresponding project IPEDS totals even though both series show strong overall enrollment growth. The same system report publishes only system-wide Canadian and non-Canadian international counts, not a UMPI-specific international/nonresident endpoint, so those values cannot be allocated to the campus or used to validate the project +81 movement. The materially different total-enrollment frame establishes a reporting-scope mismatch rather than count corroboration. Preserve IPEDS as the numerical authority and keep the +81 institution-specific movement held; do not infer a campus nonresident count from system-wide international totals.
+- **Decision:** Safe with context
+- **Disposition:** Confirmed reporting discontinuity
+- **Reviewed:** 2026-10-16
+- **Evidence:** [University of Maine System Fall 2024 census and FY25 budget enrollment reports](https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2024/11/November-2024-BOT-Meeting-Book-Revised-11.8.24.pdf)
+- **Analyst note:** The project IPEDS series reports 137 U.S. nonresident students in Fall 2023 and 218 in Fall 2024, an increase of 81, with all-student enrollment rising from 2,187 to 2,873. The University of Maine System's official Fall 2024 Census Enrollment Update reports University of Maine at Presque Isle enrollment rising from 1,509 in Fall 2023 to 2,171 in Fall 2024, an increase of 662 (43.9%), and states that YourPace students make up 62.3% of UMPI enrollment. Those institutional-system totals are 678 and 702 below the corresponding project IPEDS totals. UMS FY25 budget materials separately state that system credit-hour enrollment excludes UMPI YourPace because the program is based on a flat fee per session rather than credit hours, and that YourPace actuals are measured at end of term rather than census because of the timing of session II enrollment. UMPI's admissions materials likewise describe YourPace as an 8-week-session program. Those source-defined program and timing distinctions confirm that the public UMS census/YourPace population is not a like-for-like reporting frame for the project IPEDS Fall Enrollment series; the total-enrollment gaps should not be treated as errors or reconciled by allocating students between the frames. The UMS census report still publishes only system-wide Canadian and non-Canadian international counts, not a UMPI-specific international/nonresident endpoint, so it does not independently corroborate the +81 U.S. nonresident movement. Preserve IPEDS as the numerical authority, do not infer a campus nonresident count from system-wide international totals, and clear only bounded reporting/timing-discontinuity discussion rather than describing the +81 as independently confirmed substantive international-enrollment growth.
 
 ### New Mexico Highlands University · UNITID 187897
 
