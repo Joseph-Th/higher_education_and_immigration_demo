@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 34
-- **Held for confirmation:** 16
+- **Safe with context:** 35
+- **Held for confirmation:** 15
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -28,7 +28,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Georgia Institute of Technology-Main Campus | GA | +835 | Absolute Movement | Corroborated external count | Safe with context | [Georgia Tech Fact Book archive](https://irp.gatech.edu/fact-book) |
 | University of Illinois Urbana-Champaign | IL | +775 | Absolute Movement | Corroborated external count | Safe with context | [University of Illinois System Fall 2024 Data Book](https://www.pb.uillinois.edu/documents/databook/PB_Databook_Fall24.pdf) |
 | Syracuse University | NY | -760 | Absolute Movement | Corroborated direction | Safe with context | [Syracuse University-hosted S&P Global April 2025 credit report](https://ir.syr.edu/wp-content/uploads/2025/04/SP-Global-Detailed-Report-2025-04-08.pdf) |
-| University of Colorado Boulder | CO | -755 | Absolute Movement | External scope mismatch | Hold for confirmation | [CU Boulder international student statistics and enrollment definition](https://www.colorado.edu/isss/about-us/student-statistics) |
+| University of Colorado Boulder | CO | -755 | Absolute Movement | Confirmed reporting discontinuity | Safe with context | [CU Boulder Fall international enrollment and Data & Analytics definition](https://www.colorado.edu/isss/about-us/student-statistics) |
 | Northeastern University | MA | -616 | Absolute Movement | External scope mismatch | Hold for confirmation | [Northeastern Fall 2023-Fall 2024 international enrollment context](https://news.northeastern.edu/2025/10/31/enrollment-financial-aid-2025-26/) |
 | Stevens Institute of Technology | NJ | -592 | Absolute Movement | Corroborated direction | Safe with context | [Stevens 2023-24 and 2024-25 institutional fact sheets](https://www.stevens.edu/office-of-institutional-research-and-effectiveness/facts-and-figures) |
 | Purdue University-Main Campus | IN | +580 | Absolute Movement | Corroborated external count | Safe with context | [Purdue ISS Fall 2024 international enrollment statistical report](https://purdue.edu/gpp/iss/_documents/EnrollmentReport/iss_statisticalreportfall24.pdf) |
@@ -188,11 +188,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### University of Colorado Boulder · UNITID 126614
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
-- **Evidence:** [CU Boulder international student statistics and enrollment definition](https://www.colorado.edu/isss/about-us/student-statistics)
-- **Analyst note:** The project IPEDS series reports 3,250 U.S. nonresident students in Fall 2023 and 2,495 in Fall 2024, a decline of 755, with undergraduate/graduate components moving from 880/2,370 to 833/1,662. CU Boulder International Student and Scholar Services instead reports 2,541 enrolled international students in Fall 2023 and 2,559 in Fall 2024, an increase of 18. The university's Data & Analytics documentation defines that international enrollment report as Fall headcount of students on a temporary student visa only and explicitly excludes permanent residents, U.S. citizens with dual citizenship, and students whose only international indicator is a home address outside the United States. The institutional Fall 2024 count is only 64 above the project IPEDS endpoint, but the Fall 2023 institutional count is 709 below IPEDS and the two-year direction is opposite. The same-label timing but materially different baseline and movement establish a population/reporting-scope mismatch rather than corroboration of the -755 IPEDS decline. Preserve IPEDS as the numerical authority, keep the institution-specific movement held, and do not substitute the visa-only institutional series or describe the IPEDS decline as independently confirmed.
+- **Decision:** Safe with context
+- **Disposition:** Confirmed reporting discontinuity
+- **Reviewed:** 2026-10-16
+- **Evidence:** [CU Boulder Fall international enrollment and Data & Analytics definition](https://www.colorado.edu/isss/about-us/student-statistics)
+- **Analyst note:** The project IPEDS series reports 3,250 U.S. nonresident students in Fall 2023 and 2,495 in Fall 2024, a decline of 755, with undergraduate/graduate components moving from 880/2,370 to 833/1,662. CU Boulder International Student and Scholar Services instead reports 2,541 enrolled international students in Fall 2023 and 2,559 in Fall 2024, an increase of 18. The university's Data & Analytics documentation defines that institutional series as a Fall headcount of students on a temporary student visa only and explicitly excludes permanent residents, U.S. citizens with dual citizenship, and students whose only international indicator is a home address outside the United States. The institutional Fall 2024 count is only 64 above the project IPEDS endpoint, but the Fall 2023 institutional count is 709 below IPEDS and the two-year direction is opposite. Those official same-Fall observations establish a source-defined population/reporting discontinuity: they do not prove either series incorrect or identify why the populations diverge, but they directly block reading the -755 IPEDS movement as independently confirmed substantive international-enrollment contraction. Preserve IPEDS as the numerical authority, do not substitute the visa-only institutional counts, and clear only bounded reporting/population-discontinuity discussion of the project movement.
 
 ### Northeastern University · UNITID 167358
 
