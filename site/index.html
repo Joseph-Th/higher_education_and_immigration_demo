@@ -56,22 +56,22 @@
       <article class="metric-card">
         <span class="metric-label">Fall 2024 U.S. nonresident students</span>
         <strong class="metric-value" id="metric-total">—</strong>
-        <span class="metric-detail">degree-granting institutions</span>
+        <span class="metric-detail" id="metric-share-detail">—</span>
       </article>
       <article class="metric-card">
-        <span class="metric-label">Share of all fall enrollment</span>
-        <strong class="metric-value" id="metric-share">—</strong>
-        <span class="metric-detail">2024 provisional</span>
+        <span class="metric-label">Change from 2023 to 2024</span>
+        <strong class="metric-value" id="metric-latest-change">—</strong>
+        <span class="metric-detail" id="metric-latest-change-pct">—</span>
       </article>
       <article class="metric-card">
-        <span class="metric-label">Change since 2015</span>
-        <strong class="metric-value" id="metric-change">—</strong>
-        <span class="metric-detail" id="metric-change-count">—</span>
+        <span class="metric-label">Undergraduate change, 2023 to 2024</span>
+        <strong class="metric-value" id="metric-undergrad-change">—</strong>
+        <span class="metric-detail" id="metric-undergrad-breadth">—</span>
       </article>
       <article class="metric-card metric-card-dark">
-        <span class="metric-label">Largest one-year decline</span>
-        <strong class="metric-value" id="metric-decline">—</strong>
-        <span class="metric-detail">pandemic-era break</span>
+        <span class="metric-label">Change from 2015 to 2024</span>
+        <strong class="metric-value" id="metric-decade-change">—</strong>
+        <span class="metric-detail" id="metric-decade-change-pct">—</span>
       </article>
     </section>
 
@@ -106,29 +106,46 @@
 
     <section class="section shell" id="findings">
       <div class="section-heading">
-        <p class="eyebrow">Finding 01</p>
-        <h2>The national count is above its pre-pandemic peak</h2>
-        <p>U.S. nonresident enrollment fell sharply in 2020, then recovered in three successive years. The 2024 total is now above every year in this ten-year series.</p>
+        <p class="eyebrow">Finding 01 · national story</p>
+        <h2>The recovery is real. The latest growth changed composition.</h2>
+        <p>The 2024 total reached a new ten-year high. But the latest increase was undergraduate-led: undergraduate enrollment rose while graduate enrollment edged down.</p>
       </div>
-      <div class="chart-card">
-        <div class="chart-toolbar">
-          <div>
-            <h3>U.S. nonresident fall enrollment</h3>
-            <p>Degree-granting institutions, 50 states + DC</p>
+      <div class="story-grid story-grid-primary">
+        <div class="chart-card">
+          <div class="chart-toolbar">
+            <div>
+              <h3>U.S. nonresident fall enrollment</h3>
+              <p>2015–2024 · degree-granting institutions, 50 states + DC</p>
+            </div>
+            <span class="status-pill">2024 provisional</span>
           </div>
-          <span class="status-pill">2024 provisional</span>
+          <div id="national-chart" class="chart" aria-live="polite"></div>
+          <p class="chart-note">Source: NCES/IPEDS Fall Enrollment. Earlier years use final/revised files where available.</p>
         </div>
-        <div id="national-chart" class="chart" aria-live="polite"></div>
-        <p class="chart-note">Source: NCES/IPEDS Fall Enrollment. 2024 is provisional; earlier years use final/revised files where available.</p>
+        <div class="chart-card latest-year-card">
+          <div class="chart-toolbar">
+            <div>
+              <h3>What changed in 2024?</h3>
+              <p>2023→2024 change by student level</p>
+            </div>
+            <span class="status-pill" id="update-change-pct">—</span>
+          </div>
+          <div id="update-change-chart" class="chart chart-update"></div>
+          <div class="latest-year-facts" aria-label="Latest-year change summary">
+            <article><span>Net</span><strong id="update-total-change">—</strong></article>
+            <article><span>Undergraduate</span><strong id="update-undergrad-change">—</strong></article>
+            <article><span>Graduate</span><strong id="update-grad-change">—</strong></article>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section section-tinted">
       <div class="shell">
         <div class="section-heading">
-          <p class="eyebrow">Finding 02</p>
-          <h2>The recovery became graduate-heavy</h2>
-          <p>Graduate U.S. nonresident enrollment grew substantially over the decade, while undergraduate enrollment remained below its 2015 level. Graduate enrollment overtook undergraduate enrollment in 2022.</p>
+          <p class="eyebrow">Finding 02 · composition</p>
+          <h2>The decade recovered through graduate growth. The latest year did not.</h2>
+          <p>Graduate U.S. nonresident enrollment added 138,765 students from 2015 to 2024 while undergraduate enrollment remained 75,365 below 2015. Graduate enrollment overtook undergraduate enrollment in 2022.</p>
         </div>
         <div class="split-layout">
           <div class="chart-card">
@@ -137,9 +154,9 @@
             <div id="level-chart" class="chart"></div>
           </div>
           <div class="finding-panel">
-            <p class="finding-kicker">Composition shift</p>
+            <p class="finding-kicker">2024 composition</p>
             <strong id="graduate-share" class="finding-number">—</strong>
-            <p>of U.S. nonresident students in 2024 were graduate students.</p>
+            <p>of U.S. nonresident students were graduate students.</p>
             <dl class="delta-list">
               <div>
                 <dt>Graduate change, 2015–2024</dt>
@@ -174,26 +191,34 @@
 
     <section class="section shell" id="states">
       <div class="section-heading">
-        <p class="eyebrow">Finding 03</p>
-        <h2>National growth masks large state-level divergence</h2>
-        <p>New York and California still enroll the largest numbers, but their trajectories differ. Several states gained substantially while California, Oregon, Idaho, Washington, and others remained below 2015 levels.</p>
+        <p class="eyebrow">Finding 03 · geography</p>
+        <h2>Recovery reached 33 of 51 states/DC, but the gaps are large.</h2>
+        <p>Most states are at or above their 2019 level, yet the national total masks sharply different paths. Illinois and Texas posted the largest gains; California remains the largest absolute shortfall.</p>
       </div>
-      <div class="chart-card">
-        <div class="chart-toolbar">
-          <div>
-            <h3>Largest state totals in 2024</h3>
-            <p>U.S. nonresident fall enrollment</p>
-          </div>
-          <span class="status-pill" id="top5-share">—</span>
+      <div class="recovery-layout">
+        <div class="recovery-summary">
+          <article>
+            <strong id="states-recovered">—</strong>
+            <span>states + DC at or above 2019</span>
+          </article>
+          <article>
+            <strong id="states-below">—</strong>
+            <span>states + DC still below 2019</span>
+          </article>
+          <p>Bars compare the largest absolute gains and shortfalls from the same 2019 baseline.</p>
         </div>
-        <div id="state-bars" class="chart chart-bars"></div>
+        <div class="chart-card recovery-chart-card">
+          <h3>Largest changes since 2019</h3>
+          <p class="chart-subtitle">Change in U.S. nonresident fall enrollment</p>
+          <div id="recovery-chart" class="chart chart-recovery"></div>
+        </div>
       </div>
 
       <div class="state-explorer">
         <div class="explorer-copy">
           <p class="eyebrow">State explorer</p>
-          <h3>Inspect a state’s ten-year path</h3>
-          <p>The state series uses institution location, not student legal residence or country of origin.</p>
+          <h3>Inspect any state’s ten-year path</h3>
+          <p>The series uses institution location, not student legal residence or country of origin.</p>
           <label for="state-select">Choose a state or DC</label>
           <select id="state-select"></select>
           <a id="state-profile-link" class="button button-secondary explorer-download" href="state.html?state=AZ">Open Arizona state profile</a>
@@ -210,170 +235,94 @@
       </div>
     </section>
 
-    <section class="section section-tinted" id="recovery">
+    <section class="section section-tinted" id="drivers">
       <div class="shell">
         <div class="section-heading">
-          <p class="eyebrow">Finding 04</p>
-          <h2>The rebound is broad, but it is not complete</h2>
-          <p>Comparing 2024 with the pre-pandemic 2019 baseline shows that most states have recovered, while a meaningful minority remain below their earlier U.S. nonresident enrollment.</p>
+          <p class="eyebrow">Supporting decomposition</p>
+          <h2>Two checks show where the decade gain came from.</h2>
+          <p>Private nonprofit institutions supplied the net sector growth, and the national increase came from institutions present at both endpoints rather than from a larger analytic universe.</p>
         </div>
-        <div class="recovery-layout">
-          <div class="recovery-summary">
-            <article>
-              <strong id="states-recovered">—</strong>
-              <span>states + DC at or above 2019</span>
-            </article>
-            <article>
-              <strong id="states-below">—</strong>
-              <span>states + DC still below 2019</span>
-            </article>
-            <p>Bars show the largest absolute gains and shortfalls from 2019 to 2024. Positive and negative labels supplement color so the direction is explicit.</p>
-          </div>
-          <div class="chart-card recovery-chart-card">
-            <h3>Largest changes since 2019</h3>
-            <p class="chart-subtitle">Change in U.S. nonresident fall enrollment</p>
-            <div id="recovery-chart" class="chart chart-recovery"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section shell" id="control">
-      <div class="section-heading">
-        <p class="eyebrow">Finding 05</p>
-        <h2>The decade’s growth shifted toward private nonprofit institutions</h2>
-        <p>Private nonprofit institutions added U.S. nonresident students from 2015 to 2024 while public and private for-profit institutions declined overall. The nonprofit increase was overwhelmingly graduate enrollment.</p>
-      </div>
-      <div class="control-layout">
-        <div class="chart-card">
-          <h3>Change by institutional control, 2015–2024</h3>
-          <p class="chart-subtitle">Change in U.S. nonresident fall enrollment</p>
-          <div id="control-change-chart" class="chart chart-control"></div>
-        </div>
-        <aside class="control-panel">
-          <p class="finding-kicker">Private nonprofit shift</p>
-          <strong id="nonprofit-share-shift" class="finding-number control-finding-number">—</strong>
-          <p>share of national U.S. nonresident enrollment, 2015 → 2024</p>
-          <dl class="delta-list">
-            <div>
-              <dt>Private nonprofit graduate change</dt>
-              <dd id="nonprofit-grad-change">—</dd>
-            </div>
-            <div>
-              <dt>Private nonprofit total change</dt>
-              <dd id="nonprofit-total-change">—</dd>
-            </div>
-          </dl>
-        </aside>
-      </div>
-      <p class="chart-note control-note">Institutional control comes from the same-year IPEDS directory file. Public, private nonprofit, and private for-profit totals reconcile exactly to the national series.</p>
-    </section>
-
-    <section class="section section-tinted" id="dynamics">
-      <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">Finding 06</p>
-          <h2>The increase came from continuing institutions, not a bigger universe</h2>
-          <p>Matching institutions by IPEDS UNITID shows that the decade-level gain survives changes in the set of institutions included in the analytic universe. Institutions present in both 2015 and 2024 account for more growth than the national net increase, while entry and exit from the universe net slightly negative.</p>
-        </div>
-        <div class="dynamics-layout">
+        <div class="driver-grid">
           <div class="chart-card">
-            <h3>Accounting for the 2015–2024 national change</h3>
-            <p class="chart-subtitle">Contribution to change in U.S. nonresident fall enrollment</p>
+            <h3>Change by institutional control</h3>
+            <p class="chart-subtitle">2015→2024 change in U.S. nonresident enrollment</p>
+            <div id="control-change-chart" class="chart chart-control"></div>
+          </div>
+          <div class="chart-card">
+            <h3>Institution-universe accounting</h3>
+            <p class="chart-subtitle">Contribution to the 2015→2024 national change</p>
             <div id="dynamics-chart" class="chart chart-dynamics"></div>
           </div>
-          <aside class="dynamics-panel">
-            <p class="finding-kicker">Stable institution panel</p>
-            <strong id="dynamics-continuing-count" class="finding-number dynamics-finding-number">—</strong>
-            <p>institutions were in the analytic universe in both 2015 and 2024.</p>
-            <dl class="delta-list">
-              <div>
-                <dt>Continuing institutions that grew</dt>
-                <dd id="dynamics-grew">—</dd>
-              </div>
-              <div>
-                <dt>Continuing institutions that declined</dt>
-                <dd id="dynamics-declined">—</dd>
-              </div>
-              <div>
-                <dt>Net effect of universe entry / exit</dt>
-                <dd id="dynamics-entry-exit-net">—</dd>
-              </div>
-            </dl>
-          </aside>
         </div>
-        <p class="chart-note dynamics-note">“Entered” and “left” describe membership in this IPEDS analytic universe between endpoint years. They can reflect mergers, UNITID restructuring, eligibility changes, or classification changes as well as actual institutional openings or closures.</p>
+        <div class="driver-facts" aria-label="Decade driver summary">
+          <article><span>Private nonprofit change</span><strong id="nonprofit-total-change">—</strong><small id="nonprofit-share-shift">—</small></article>
+          <article><span>Private nonprofit graduate change</span><strong id="nonprofit-grad-change">—</strong><small>graduate growth explains the sector increase</small></article>
+          <article><span>Continuing-institution change</span><strong id="dynamics-continuing-change">—</strong><small><span id="dynamics-continuing-count">—</span> institutions at both endpoints</small></article>
+          <article><span>Universe entry / exit net</span><strong id="dynamics-entry-exit-net">—</strong><small>slightly reduces the decade gain</small></article>
+        </div>
+        <p class="chart-note driver-note">Institutional control comes from same-year IPEDS directory files. “Entered” and “left” describe membership in this analytic universe and can reflect mergers, UNITID restructuring, eligibility changes, or classification changes as well as actual openings or closures.</p>
       </div>
     </section>
 
     <section class="section" id="institutions">
       <div class="shell">
         <div class="section-heading">
-          <p class="eyebrow">Institution detail</p>
-          <h2>Where 2024 enrollment is concentrated</h2>
-          <p>This table is a drill-down, not a ranking of institutional performance.</p>
+          <p class="eyebrow">Supporting detail · concentration</p>
+          <h2>A relatively small set of institutions holds a large share of enrollment.</h2>
+          <p>Use the concentration metrics first. The institution table is available as a drill-down, not as a ranking of performance.</p>
         </div>
         <div class="concentration-strip">
           <article><strong id="top10-inst-share">—</strong><span>of 2024 U.S. nonresident enrollment is at the 10 largest institutions</span></article>
           <article><strong id="top100-inst-share">—</strong><span>is at the 100 largest institutions, showing how concentrated the national total remains</span></article>
         </div>
-        <div class="table-wrap">
-          <table>
-            <caption class="sr-only">Ten institutions with the largest U.S. nonresident enrollment in the 2024 analytic universe</caption>
-            <thead>
-              <tr><th>Institution</th><th>State</th><th>U.S. nonresident</th><th>Share of enrollment</th></tr>
-            </thead>
-            <tbody id="institution-table"></tbody>
-          </table>
-        </div>
+        <details class="evidence-details">
+          <summary>Inspect the 10 largest 2024 institution totals</summary>
+          <div class="table-wrap">
+            <table>
+              <caption class="sr-only">Ten institutions with the largest U.S. nonresident enrollment in the 2024 analytic universe</caption>
+              <thead>
+                <tr><th>Institution</th><th>State</th><th>U.S. nonresident</th><th>Share of enrollment</th></tr>
+              </thead>
+              <tbody id="institution-table"></tbody>
+            </table>
+          </div>
+        </details>
       </div>
     </section>
 
     <section class="section section-tinted" id="latest-update">
       <div class="shell">
         <div class="section-heading">
-          <p class="eyebrow">Latest release review</p>
-          <h2>The newest growth shifted back toward undergraduate enrollment</h2>
-          <p>Before treating a new annual file as publication-ready, the pipeline compares it with the prior year, reconciles the change across student level, state, and institution membership, and creates a reason-coded QA triage queue.</p>
+          <p class="eyebrow">QA · publication judgment</p>
+          <h2>The aggregate result is publishable. Ten institution-specific claims remain held.</h2>
+          <p>Automated flags trigger evidence review; they do not rewrite source values or automatically become public claims. Aggregate results remain in the analysis while unresolved institution-specific interpretation stays out of narrative.</p>
         </div>
-        <div class="update-layout">
-          <div class="chart-card">
-            <h3>What changed from 2023 to 2024?</h3>
-            <p class="chart-subtitle">Change in U.S. nonresident fall enrollment</p>
-            <div id="update-change-chart" class="chart chart-update"></div>
-          </div>
-          <aside class="update-panel">
-            <p class="finding-kicker">Latest national movement</p>
-            <strong id="update-change-pct" class="finding-number update-finding-number">—</strong>
-            <p id="update-total-change-copy">from 2023 to 2024</p>
-            <dl class="delta-list">
-              <div>
-                <dt>Undergraduate change</dt>
-                <dd id="update-undergrad-change">—</dd>
-              </div>
-              <div>
-                <dt>Graduate change</dt>
-                <dd id="update-grad-change">—</dd>
-              </div>
-            </dl>
-          </aside>
+        <div class="qa-decision-grid" aria-label="Institution QA publication decisions">
+          <article>
+            <span>High priority reviewed</span>
+            <strong id="resolution-reviewed">—</strong>
+            <small><b id="resolution-safe">—</b> safe with context · <b id="resolution-held">—</b> held</small>
+          </article>
+          <article>
+            <span>Medium priority reviewed</span>
+            <strong id="medium-resolution-reviewed">—</strong>
+            <small><b id="medium-resolution-safe">—</b> safe with context · <b id="medium-resolution-held">—</b> held</small>
+          </article>
+          <article class="qa-hold-card">
+            <span>Institution-specific claims held</span>
+            <strong id="total-resolution-held">—</strong>
+            <small>retained in official aggregates; excluded from unsupported institution narrative</small>
+          </article>
         </div>
-        <div class="release-review-strip" aria-label="Latest release quality review metrics">
-          <article><strong id="update-high-priority">—</strong><span>high-priority institution records for analyst review</span></article>
-          <article><strong id="update-medium-priority">—</strong><span>medium-priority institution records for analyst review</span></article>
-          <article><strong id="update-entry-exit-net">—</strong><span>net enrollment effect of institutions entering/leaving the analytic universe</span></article>
-          <article><strong id="update-top-state">—</strong><span>largest state contribution to the latest national increase</span></article>
-        </div>
-        <div class="resolution-callout" aria-label="Manual analyst review summary">
+        <div class="resolution-callout qa-boundary-callout" aria-label="Manual analyst review boundary">
           <div>
             <p class="eyebrow">Analyst disposition layer</p>
             <h3>Automated flags are reviewed before they become institution-level claims</h3>
             <p>The source values remain untouched. External evidence is used to decide whether a flagged movement is safe to discuss with context or should stay out of institution-specific narrative pending direct confirmation.</p>
           </div>
-          <div class="resolution-stats">
-            <article><strong id="resolution-reviewed">—</strong><span>high-priority records manually reviewed</span></article>
-            <article><strong id="resolution-safe">—</strong><span>safe to discuss with explicit context</span></article>
-            <article><strong id="resolution-held">—</strong><span>held for direct confirmation</span></article>
+          <div class="qa-review-links">
+            <a class="button button-secondary" href="qa-review.html">High-priority review</a>
+            <a class="button button-secondary" href="medium-qa-review.html">Medium-priority review</a>
           </div>
         </div>
         <div class="case-study-heading">
@@ -382,7 +331,7 @@
           <p>The featured cases show how the same automated queue can produce a hold, a contextual publication decision, or a documented structural explanation.</p>
         </div>
         <div id="qa-case-studies" class="qa-case-grid" aria-live="polite"></div>
-        <p class="chart-note update-note">Review priority is deterministic triage, not an error label. Rules include large absolute changes, large percentage changes above a minimum baseline, analytic-universe entry/exit, material imputation/status changes, and discontinuities against recent history. The full reason-coded review queue is downloadable below.</p>
+        <p class="chart-note update-note">Review priority is deterministic triage, not an error label. The full evidence logs remain available for audit, while the homepage shows only the decision outcome needed to interpret the published results.</p>
       </div>
     </section>
 

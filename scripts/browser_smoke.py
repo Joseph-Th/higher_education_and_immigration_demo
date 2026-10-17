@@ -142,6 +142,15 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
     expected_total = expected_int(SITE_DATA["headline"]["latest_nonresident"])
     if page.locator("#metric-total").inner_text().strip() != expected_total:
         raise AssertionError("Rendered headline total does not match site_data.json")
+    update = SITE_DATA["latest_update_review"]
+    shift = SITE_DATA["undergraduate_shift_summary"]
+    if page.locator("#metric-latest-change").inner_text().strip() != f"+{expected_int(update['national']['absolute_change'])}":
+        raise AssertionError("Rendered latest-year change does not match site_data.json")
+    if page.locator("#metric-undergrad-change").inner_text().strip() != f"+{expected_int(update['national']['undergraduate_change'])}":
+        raise AssertionError("Rendered undergraduate change does not match site_data.json")
+    breadth = page.locator("#metric-undergrad-breadth").inner_text().strip()
+    if f"{shift['positive_states']} of {shift['geographies']}" not in breadth:
+        raise AssertionError("Rendered undergraduate state breadth does not match site_data.json")
     if page.locator("#state-select option").count() != 51:
         raise AssertionError("State explorer does not contain all 50 states plus DC")
     page.locator("#state-select").select_option("CA")
@@ -162,7 +171,6 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
     chart_ids = (
         "national-chart",
         "level-chart",
-        "state-bars",
         "state-chart",
         "recovery-chart",
         "control-change-chart",
@@ -178,17 +186,23 @@ def inspect_viewport(browser, base_url: str, *, width: int, height: int) -> None
     if continuing_text != expected_int(dynamics["continuing_institutions"]):
         raise AssertionError("Institution dynamics count does not match site data")
 
-    update = SITE_DATA["latest_update_review"]
-    high_text = page.locator("#update-high-priority").inner_text().strip()
-    if high_text != expected_int(update["review_queue"]["high"]):
-        raise AssertionError("Latest-release high-priority count does not match site data")
     resolution = SITE_DATA["qa_resolution_summary"]
-    if page.locator("#resolution-reviewed").inner_text().strip() != expected_int(resolution["reviewed_count"]):
+    medium_resolution = SITE_DATA["medium_qa_resolution_summary"]
+    if page.locator("#resolution-reviewed").inner_text().strip() != f"{resolution['reviewed_count']}/{resolution['high_priority_total']}":
         raise AssertionError("QA resolution reviewed count does not match site data")
     if page.locator("#resolution-safe").inner_text().strip() != expected_int(resolution["safe_with_context"]):
         raise AssertionError("QA resolution safe count does not match site data")
     if page.locator("#resolution-held").inner_text().strip() != expected_int(resolution["hold_for_confirmation"]):
         raise AssertionError("QA resolution held count does not match site data")
+    if page.locator("#medium-resolution-reviewed").inner_text().strip() != f"{medium_resolution['reviewed_count']}/{medium_resolution['medium_priority_total']}":
+        raise AssertionError("Medium QA resolution reviewed count does not match site data")
+    if page.locator("#medium-resolution-safe").inner_text().strip() != expected_int(medium_resolution["safe_with_context"]):
+        raise AssertionError("Medium QA resolution safe count does not match site data")
+    if page.locator("#medium-resolution-held").inner_text().strip() != expected_int(medium_resolution["hold_for_confirmation"]):
+        raise AssertionError("Medium QA resolution held count does not match site data")
+    total_holds = resolution["hold_for_confirmation"] + medium_resolution["hold_for_confirmation"]
+    if page.locator("#total-resolution-held").inner_text().strip() != expected_int(total_holds):
+        raise AssertionError("Total institution claim hold count does not match site data")
     if page.locator("#qa-case-studies .qa-case-card").count() != 3:
         raise AssertionError("National brief does not render the three analyst case studies")
     rendered_cases = page.locator("#qa-case-studies .qa-case-card h3").all_inner_texts()

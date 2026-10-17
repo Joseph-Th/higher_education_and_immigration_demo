@@ -116,7 +116,7 @@ This design is deliberate: the external publication is a validation source, not 
 - public download files exactly matching the generated source outputs;
 - local site assets existing and HTML IDs remaining unique.
 
-The current suite contains **50 tests**.
+The current suite contains **51 tests**.
 
 ## One-command validation
 

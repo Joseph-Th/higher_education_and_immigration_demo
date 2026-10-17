@@ -37,6 +37,13 @@ def main() -> int:
     qa_resolution_summary = json.loads(
         (DATA / "qa_resolution_summary.json").read_text(encoding="utf-8")
     )
+    medium_qa_resolution_summary = json.loads(
+        (DATA / "medium_qa_resolution_summary.json").read_text(encoding="utf-8")
+    )
+    undergraduate_shift_rows = read_csv(DATA / "undergraduate_shift_baseline.csv")
+    undergraduate_positive_states = sum(
+        row["undergraduate_direction"] == "Increase" for row in undergraduate_shift_rows
+    )
     qa = json.loads((DATA / "qa_report.json").read_text(encoding="utf-8"))
     state_rows = read_csv(PROCESSED / "state_year.csv")
     source_manifest = read_csv(DATA / "source_manifest.csv")
@@ -66,6 +73,12 @@ def main() -> int:
         **findings,
         "latest_update_review": latest_update_review,
         "qa_resolution_summary": qa_resolution_summary,
+        "medium_qa_resolution_summary": medium_qa_resolution_summary,
+        "undergraduate_shift_summary": {
+            "positive_states": undergraduate_positive_states,
+            "geographies": len(undergraduate_shift_rows),
+            "national_change": latest_update_review["national"]["undergraduate_change"],
+        },
         "state_series": dict(sorted(state_series.items())),
         "quality": {
             "source_archives": len(source_manifest),
