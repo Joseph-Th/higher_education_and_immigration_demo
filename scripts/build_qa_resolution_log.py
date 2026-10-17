@@ -102,13 +102,39 @@ def write_html(joined: list[dict[str, object]], summary: dict[str, object]) -> N
             "</tr>"
         )
 
-    disposition_cards = []
-    for disposition, count in sorted(
+    disposition_items = sorted(
         dict(summary["dispositions"]).items(), key=lambda item: (-int(item[1]), item[0])
-    ):
-        disposition_cards.append(
-            f"<article><h3>{html.escape(disposition_label(disposition))}</h3>"
-            f"<p><strong>{int(count)}</strong><br>high-priority records.</p></article>"
+    )
+    disposition_max = max(int(count) for _, count in disposition_items)
+    disposition_rows = []
+    for disposition, count in disposition_items:
+        width = int(count) / disposition_max * 100 if disposition_max else 0
+        disposition_rows.append(
+            f"""<div class="qa-disposition-row">
+              <strong>{html.escape(disposition_label(disposition))}</strong>
+              <div class="qa-disposition-track"><i style="width:{width:.2f}%"></i></div>
+              <span>{int(count)}</span>
+            </div>"""
+        )
+
+    case_labels = {
+        "unresolved_anomaly": ("Held anomaly", "Why one institution remains out of narrative"),
+        "corroborated_movement": ("Corroborated movement", "How external evidence supports bounded discussion"),
+        "structural_change": ("Structural change", "How a known structural event changes interpretation"),
+    }
+    case_cards = []
+    for case in summary["case_studies"]:
+        label, subtitle = case_labels[str(case["case_type"])]
+        decision_css = " qa-case-card-hold" if case["publication_class"] == "hold_for_confirmation" else ""
+        case_cards.append(
+            f"""<article class="qa-case-card{decision_css}" data-qa-case="{html.escape(str(case['case_type']))}">
+              <p class="case-kicker">{html.escape(label)}</p>
+              <h3>{html.escape(str(case['institution']))}</h3>
+              <p class="case-change">{int(case['absolute_change']):+,}</p>
+              <p>{html.escape(subtitle)}.</p>
+              <div class="qa-case-meta"><span>{html.escape(disposition_label(case['disposition']))}</span><strong>{html.escape(decision_label(case['publication_class']))}</strong></div>
+              <div class="case-footer"><a href="{html.escape(str(case['evidence_url']), quote=True)}" target="_blank" rel="noopener">Review evidence</a><span class="case-decision">{html.escape(str(case['state']))}</span></div>
+            </article>"""
         )
 
     HTML_OUTPUT.write_text(
@@ -127,8 +153,9 @@ def write_html(joined: list[dict[str, object]], summary: dict[str, object]) -> N
   <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Back to project home"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="QA review navigation"><a href="index.html">Brief</a><a href="private-nonprofit-growth.html">Private nonprofit</a><a href="publication-handoff.html">Handoff</a><a href="data-governance.html">Governance</a></nav></div></header>
   <main id="main">
     <section class="handoff-hero"><div class="shell"><p class="eyebrow">Latest-release analyst review</p><h1>Every high-priority institution flag now has an evidence-backed publication decision.</h1><p class="lede">The automated queue identifies unusual 2023–2024 institution movements. The analyst layer reviews all {int(summary['high_priority_total'])} high-priority records without changing source values, then separates records that are safe to discuss with context from records that remain held for institution-specific interpretation.</p><div class="hero-actions"><a class="button button-primary" href="#dispositions">Review dispositions</a><a class="button button-secondary" href="downloads/qa_resolution_log.csv">Download resolution log</a></div><p class="release-note"><strong>Boundary:</strong> a flag is a request for review, not an error label. Aggregate IPEDS values remain authoritative even when an institution-specific narrative claim is held.</p><div class="handoff-summary"><article><strong>{int(summary['reviewed_count'])}/{int(summary['high_priority_total'])}</strong><span>high-priority records reviewed</span></article><article><strong>{int(summary['safe_with_context'])}</strong><span>safe with explicit context</span></article><article><strong>{int(summary['hold_for_confirmation'])}</strong><span>held for confirmation</span></article><article><strong>{float(summary['coverage_pct']):.0f}%</strong><span>high-priority queue coverage</span></article></div></div></section>
-    <section class="section shell" id="dispositions"><div class="section-heading"><p class="eyebrow">Disposition pattern</p><h2>Most unusual movements remain intentionally gated.</h2><p>Outside evidence can corroborate direction, scale, or a structural event, but broader international-student counts are not assumed to equal IPEDS U.S. nonresident enrollment. The distribution below shows the analyst outcome across the complete high-priority queue.</p></div><div class="method-grid">{''.join(disposition_cards)}</div></section>
-    <section class="section section-tinted"><div class="shell"><div class="section-heading"><p class="eyebrow">Complete high-priority queue</p><h2>Publication decisions remain attached to the institution record.</h2><p>Each row preserves the current IPEDS movement, the analyst disposition, the publication gate, and the external evidence used to evaluate whether an institution-specific interpretation is defensible.</p></div><div class="table-wrap"><table><thead><tr><th>Institution</th><th>State</th><th>2023–2024 change</th><th>Disposition</th><th>Publication decision</th><th>Evidence</th></tr></thead><tbody>{''.join(table_rows)}</tbody></table></div></div></section>
+    <section class="section shell" id="dispositions"><div class="section-heading"><p class="eyebrow">Disposition pattern</p><h2>Evidence resolves most flags into bounded, explainable categories.</h2><p>Outside evidence can corroborate direction, scale, or a structural event without rewriting IPEDS. The bar lengths show the six analyst dispositions across all 27 high-priority records.</p></div><div class="qa-disposition-visual" aria-label="High-priority QA dispositions by reviewed record count">{''.join(disposition_rows)}</div><div class="qa-publication-balance" style="grid-template-columns:{int(summary['safe_with_context'])}fr {int(summary['hold_for_confirmation'])}fr"><span><strong>{int(summary['safe_with_context'])}</strong> safe with context</span><span><strong>{int(summary['hold_for_confirmation'])}</strong> held for confirmation</span></div></section>
+    <section class="section section-tinted" id="qa-cases"><div class="shell"><div class="section-heading"><p class="eyebrow">Representative decisions</p><h2>Three cases show what the gate changes in practice.</h2><p>The cases are selected deterministically from the reviewed queue: the largest held anomaly, the largest corroborated-direction case, and the structural-change case.</p></div><div class="qa-case-grid">{''.join(case_cards)}</div></div></section>
+    <section class="section shell" id="complete-queue"><div class="section-heading"><p class="eyebrow">Complete high-priority queue</p><h2>Publication decisions remain attached to the institution record.</h2><p>The full 27-row evidence trail remains available for audit, including the IPEDS movement, analyst disposition, publication gate, and outside source.</p></div><details class="evidence-details qa-audit-details"><summary>Inspect all 27 institution decisions and evidence links</summary><div class="table-wrap"><table><thead><tr><th>Institution</th><th>State</th><th>2023–2024 change</th><th>Disposition</th><th>Publication decision</th><th>Evidence</th></tr></thead><tbody>{''.join(table_rows)}</tbody></table></div></details></section>
     <section class="section shell"><div class="section-heading compact"><p class="eyebrow">Interpretation rule</p><h2>Evidence can clear a narrative claim without rewriting the source data.</h2></div><div class="method-grid"><article><h3>Safe with context</h3><p>External evidence supports the direction, approximate scale, or structural event strongly enough for bounded discussion.</p></article><article><h3>Hold for confirmation</h3><p>The IPEDS value remains in aggregates, but the institution-specific movement should not be explained as substantive change without a directly comparable source.</p></article><article><h3>Scope control</h3><p>International, F-1, SEVIS, and institution-defined global counts may use different populations or dates from IPEDS U.S. nonresident enrollment.</p></article><article><h3>Internal composition check</h3><p>The companion category diagnostic measures opposite movement inside the IPEDS race/ethnicity identity. It prioritizes review but cannot change a publication decision by itself.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/qa_resolution_log.csv">Download resolution CSV</a><a class="button button-secondary" href="downloads/qa_resolution_log.md">Download review notes</a><a class="button button-secondary" href="high-priority-category-diagnostic.html">Open category diagnostic</a></div></section>
   </main>
   <footer><div class="shell footer-inner"><span>Institution QA Review · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>

@@ -357,7 +357,16 @@ def inspect_qa_review(browser, base_url: str, *, width: int, height: int) -> Non
     ):
         if expected not in summary:
             raise AssertionError(f"QA review summary is missing {expected}")
-    table = page.locator(".section-tinted tbody")
+    if page.locator("#dispositions .qa-disposition-row").count() != 6:
+        raise AssertionError("QA review disposition visual does not render all six outcomes")
+    if page.locator("#qa-cases [data-qa-case]").count() != 3:
+        raise AssertionError("QA review does not render all three representative decision cases")
+    case_text = page.locator("#qa-cases").text_content() or ""
+    for expected in ("Held anomaly", "Corroborated movement", "Structural change", "Community College of Rhode Island"):
+        if expected not in case_text:
+            raise AssertionError(f"QA review representative cases are missing {expected}")
+    page.locator("#complete-queue details.qa-audit-details").evaluate("el => el.open = true")
+    table = page.locator("#complete-queue tbody")
     if table.locator("tr").count() != 27:
         raise AssertionError("QA review page does not render all 27 high-priority records")
     table_text = table.inner_text()
