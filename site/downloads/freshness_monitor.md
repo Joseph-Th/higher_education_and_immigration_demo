@@ -2,7 +2,7 @@
 
 This is a **dated portfolio monitoring snapshot**, not a continuously live dashboard. The NCES availability observation is captured by the separate online release checker; the offline build preserves and validates that observation without making network access a reproducibility dependency.
 
-- **Captured check:** 2026-10-15T02:55:02+00:00
+- **Captured check:** 2026-10-17T11:37:24+00:00
 - **Current analysis end year:** 2024
 - **Candidate next year:** 2025
 - **Candidate package:** 2/4 required files available
@@ -12,12 +12,12 @@ This is a **dated portfolio monitoring snapshot**, not a continuously live dashb
 
 | ID | Area | Subject | Observed | Status | Next action |
 | --- | --- | --- | --- | --- | --- |
-| R01 | NCES release package | 2025 Fall Enrollment data | 2026-10-15 | NOT AVAILABLE | Continue monitoring; do not substitute a partial next-year package into the analysis. |
-| R02 | NCES release package | 2025 Fall Enrollment dictionary | 2026-10-15 | NOT AVAILABLE | Continue monitoring; do not substitute a partial next-year package into the analysis. |
-| R03 | NCES release package | 2025 Institutional directory data | 2026-10-15 | AVAILABLE | Preserve the observation and include the file in schema review after the full package is ready. |
-| R04 | NCES release package | 2025 Institutional directory dictionary | 2026-10-15 | AVAILABLE | Preserve the observation and include the file in schema review after the full package is ready. |
-| D01 | Candidate directory preflight | 2025 directory structural compatibility | 2026-10-15 | PASS | Retain this as directory-side readiness evidence; do not calculate candidate-year enrollment or advance END_YEAR until Fall Enrollment data/dictionary arrive and full schema review passes. |
-| G01 | Annual release gate | Advance analysis from 2024 to 2025 | 2026-10-15 | HOLD YEAR ADVANCE | Keep END_YEAR=2024; rerun the live release check later and advance only after the complete package is available. |
+| R01 | NCES release package | 2025 Fall Enrollment data | 2026-10-17 | NOT AVAILABLE | Continue monitoring; do not substitute a partial next-year package into the analysis. |
+| R02 | NCES release package | 2025 Fall Enrollment dictionary | 2026-10-17 | NOT AVAILABLE | Continue monitoring; do not substitute a partial next-year package into the analysis. |
+| R03 | NCES release package | 2025 Institutional directory data | 2026-10-17 | AVAILABLE | Preserve the observation and include the file in schema review after the full package is ready. |
+| R04 | NCES release package | 2025 Institutional directory dictionary | 2026-10-17 | AVAILABLE | Preserve the observation and include the file in schema review after the full package is ready. |
+| D01 | Candidate directory preflight | 2025 directory structural compatibility | 2026-10-17 | PASS | Retain this as directory-side readiness evidence; do not calculate candidate-year enrollment or advance END_YEAR until Fall Enrollment data/dictionary arrive and full schema review passes. |
+| G01 | Annual release gate | Advance analysis from 2024 to 2025 | 2026-10-17 | HOLD YEAR ADVANCE | Keep END_YEAR=2024; rerun the live release check later and advance only after the complete package is available. |
 | S01 | Source review | Research Library | 2026-10-13 | REVIEW RECORDED | Perform a human source review before changing last_checked metadata; URL health alone does not refresh it. |
 | S02 | Source review | Population/source crosswalk | 2026-10-13 | REVIEW RECORDED | Re-review the affected source before using it in a companion comparison or changing public interpretation. |
 | P01 | Recurring product | Undocumented Students in U.S. Higher Education | 2026-10-13 | MONITOR TRIGGER | At kickoff, confirm partner timeline, exact ACS vintage, method changes, delivery format, review milestones, and final sign-off owner |
