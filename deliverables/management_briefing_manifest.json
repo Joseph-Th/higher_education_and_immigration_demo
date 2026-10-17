@@ -1,6 +1,6 @@
 {
   "builder": "scripts/build_management_deck.py",
-  "builder_sha256": "58808aa7216e47b9fc79ba060e2d463b32a6ffc0b3cc9b02bbbaf6b0b56125d2",
+  "builder_sha256": "b9870607128e2bf389f5dd0c8eb705373ae83d003482b85fb34f033cecd8e7d2",
   "source_sha256": {
     "data/processed/national_year.csv": "800c805dc4241c70070ff7962fb1abc7faa602735af6796adaca9de8bcc7f892",
     "data/processed/state_change_summary.csv": "943d1102a624dbcace52a371ba5c41d4ecbadf9e79e6475f140b28cd0a5f4edf",
@@ -8,10 +8,12 @@
     "data/processed/institution_change_summary.csv": "28e029794f53bf1076c1f623108a8a376656aafc2fa8694b79335decc609b932",
     "data/undergraduate_shift_baseline.csv": "2de0abda5110b4b2352a028440dcadc527c84a6bc452a30149765985cba87de0",
     "data/findings.json": "c9c4f4948113353576e4be8b82ef3596b153059a77b600305f9ec569957544d7",
-    "data/latest_update_review.json": "7a1d00482ff0fa998561b57dea3c45de495406e0e2a78e22ddb73c4b835ab69e"
+    "data/latest_update_review.json": "7a1d00482ff0fa998561b57dea3c45de495406e0e2a78e22ddb73c4b835ab69e",
+    "data/qa_resolution_summary.json": "814634669d8ac77639ab52f5ee77091c4b575b4234da336ba511b57c7b5014f3",
+    "data/medium_qa_resolution_summary.json": "ce4b95532bf05d9a39b774a5a82845d74a5cb05be84bd4081ca1b3a44a24875b"
   },
-  "pptx_sha256": "f559f49217da70c152bbc6ebd75da7d0a76947e84a79ad0d2784ad8b6efd5ad7",
-  "pptx_bytes": 41817,
+  "pptx_sha256": "c3737e908d386b1ef1d045623a0436d36652b1c823ce53d1c390ff8b4ee0e1d7",
+  "pptx_bytes": 42249,
   "slide_count": 5,
   "metrics": {
     "latest_nonresident": 1044137,
@@ -21,6 +23,9 @@
     "undergraduate_positive_states": 45,
     "undergraduate_latest_change": 31592,
     "decade_change": 63400,
+    "high_priority_reviewed": 27,
+    "medium_priority_reviewed": 50,
+    "institution_claim_holds": 10,
     "slide_count": 5
   }
 }

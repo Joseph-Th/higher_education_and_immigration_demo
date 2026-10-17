@@ -36,6 +36,8 @@ SOURCE_PATHS = (
     "data/undergraduate_shift_baseline.csv",
     "data/findings.json",
     "data/latest_update_review.json",
+    "data/qa_resolution_summary.json",
+    "data/medium_qa_resolution_summary.json",
 )
 
 SLIDE_W = 13.333
@@ -237,6 +239,53 @@ def add_horizontal_bar(
     add_text(slide, fmt_int(value, signed=True), x + w - 0.9, y - 0.02, 0.88, 0.24, size=8.5, color=INK_SOFT, bold=True, align=PP_ALIGN.RIGHT)
 
 
+def add_diverging_change_row(
+    slide,
+    *,
+    label: str,
+    value: int,
+    max_abs: int,
+    x: float,
+    y: float,
+    w: float,
+    net: bool = False,
+) -> None:
+    label_w = 1.34
+    value_w = 1.02
+    track_x = x + label_w + 0.18
+    track_w = w - label_w - value_w - 0.38
+    center_x = track_x + track_w / 2
+    half_w = track_w / 2 - 0.04
+    extent = max(0.05, half_w * abs(value) / max_abs)
+    bar_x = center_x if value >= 0 else center_x - extent
+    bar_color = NAVY if net else (ACCENT if value >= 0 else WARM)
+
+    add_text(slide, label, x, y - 0.02, label_w, 0.24, size=9.2, color=NAVY, bold=True)
+    add_box(slide, track_x, y + 0.02, track_w, 0.16, fill=WASH, line=WASH, radius=False)
+    center = slide.shapes.add_connector(
+        MSO_CONNECTOR.STRAIGHT,
+        Inches(center_x),
+        Inches(y - 0.02),
+        Inches(center_x),
+        Inches(y + 0.22),
+    )
+    center.line.color.rgb = MUTED
+    center.line.width = Pt(0.8)
+    add_box(slide, bar_x, y + 0.02, extent, 0.16, fill=bar_color, line=bar_color, radius=False)
+    add_text(
+        slide,
+        fmt_int(value, signed=True),
+        x + w - value_w,
+        y - 0.03,
+        value_w,
+        0.24,
+        size=9.0,
+        color=NAVY if net else INK_SOFT,
+        bold=True,
+        align=PP_ALIGN.RIGHT,
+    )
+
+
 def add_line_chart(slide, rows: list[dict[str, str]], x: float, y: float, w: float, h: float) -> None:
     values = [int(row["nonresident_enrollment"]) for row in rows]
     years = [int(row["year"]) for row in rows]
@@ -288,6 +337,8 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     national = read_csv(PROCESSED / "national_year.csv")
     findings = json.loads((DATA / "findings.json").read_text(encoding="utf-8"))
     update = json.loads((DATA / "latest_update_review.json").read_text(encoding="utf-8"))
+    qa_resolution = json.loads((DATA / "qa_resolution_summary.json").read_text(encoding="utf-8"))
+    medium_qa_resolution = json.loads((DATA / "medium_qa_resolution_summary.json").read_text(encoding="utf-8"))
     undergraduate_baseline = read_csv(DATA / "undergraduate_shift_baseline.csv")
 
     headline = findings["headline"]
@@ -304,6 +355,7 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     baseline_public_change = sum(int(row["public_undergraduate_change"]) for row in undergraduate_baseline)
     if baseline_undergraduate_change != update["national"]["undergraduate_change"]:
         raise RuntimeError("Management deck undergraduate baseline does not reconcile to latest-year change")
+    total_claim_holds = qa_resolution["hold_for_confirmation"] + medium_qa_resolution["hold_for_confirmation"]
 
     prs = Presentation()
     prs.slide_width = Inches(SLIDE_W)
@@ -325,14 +377,24 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     add_heading(slide, "U.S. nonresident enrollment · executive summary", "2024 growth shifted toward undergraduates.", "Long-run recovery is still graduate-heavy and uneven across states.")
     add_kpi_card(slide, 0.68, 2.05, 2.85, "2024 enrollment", fmt_int(int(latest["nonresident_enrollment"])), f"{fmt_pct(float(latest['nonresident_share_pct']))} of total enrollment", dark=True)
     add_kpi_card(slide, 3.68, 2.05, 2.85, "2023 → 2024", fmt_int(update["national"]["absolute_change"], signed=True), fmt_pct(update["national"]["pct_change"], signed=True))
-    add_kpi_card(slide, 6.68, 2.05, 2.85, "Recovered vs 2019", f"{recovery['states_at_or_above_baseline']} of 51", f"{recovery['states_below_baseline']} remain below 2019")
+    add_kpi_card(slide, 6.68, 2.05, 2.85, "Undergraduate change", fmt_int(update["national"]["undergraduate_change"], signed=True), f"{baseline_positive_states} of 51 states/DC increased")
     add_kpi_card(slide, 9.68, 2.05, 2.85, "2015 → 2024", fmt_int(headline["change_since_2015"], signed=True), fmt_pct(headline["change_since_2015_pct"], signed=True))
 
-    add_box(slide, 0.68, 3.7, 12.0, 2.75, fill=WHITE, line=LINE)
-    add_text(slide, "What changed in the latest release", 0.98, 3.98, 4.2, 0.32, size=15, color=NAVY, bold=True)
-    add_bullet(slide, 0.98, 4.48, 3.55, "Undergraduate growth led", f"Undergraduate enrollment increased {fmt_int(update['national']['undergraduate_change'], signed=True)} across {baseline_positive_states} of 51 states/DC; public institutions contributed {fmt_int(baseline_public_change, signed=True)}.", index="01")
-    add_bullet(slide, 4.55, 4.48, 3.65, "Graduate enrollment edged down", f"Graduate enrollment changed {fmt_int(update['national']['graduate_change'], signed=True)}, so the net gain was not graduate-driven in the latest year.", index="02")
-    add_bullet(slide, 8.35, 4.48, 3.85, "Existing institutions drove the gain", f"Continuing institutions accounted for {fmt_int(update['institution_accounting']['continuing_change'], signed=True)}; entry/exit netted {fmt_int(update['institution_accounting']['entry_exit_net'], signed=True)}.", index="03")
+    add_box(slide, 0.68, 3.7, 7.55, 2.75, fill=WHITE, line=LINE)
+    add_text(slide, "What changed from 2023 to 2024?", 0.98, 3.98, 4.6, 0.32, size=15, color=NAVY, bold=True)
+    add_text(slide, "Change in U.S. nonresident enrollment by student level", 0.98, 4.31, 5.5, 0.22, size=9, color=INK_SOFT)
+    latest_max = max(abs(update["national"]["undergraduate_change"]), abs(update["national"]["graduate_change"]), abs(update["national"]["absolute_change"]))
+    add_diverging_change_row(slide, label="Undergraduate", value=update["national"]["undergraduate_change"], max_abs=latest_max, x=0.98, y=4.76, w=6.85)
+    add_diverging_change_row(slide, label="Graduate", value=update["national"]["graduate_change"], max_abs=latest_max, x=0.98, y=5.27, w=6.85)
+    add_diverging_change_row(slide, label="Net change", value=update["national"]["absolute_change"], max_abs=latest_max, x=0.98, y=5.78, w=6.85, net=True)
+
+    add_box(slide, 8.48, 3.7, 4.2, 2.75, fill=NAVY, line=NAVY)
+    add_text(slide, "LATEST-YEAR READ", 8.8, 3.98, 2.8, 0.22, size=8.5, color=RGBColor(0x8E, 0xD9, 0xD0), bold=True)
+    add_text(slide, fmt_int(baseline_public_change, signed=True), 8.8, 4.4, 2.4, 0.4, size=22, color=WHITE, bold=True)
+    add_text(slide, "undergraduate change at public institutions", 8.8, 4.82, 3.2, 0.35, size=9.2, color=RGBColor(0xD4, 0xDE, 0xE7))
+    add_rule(slide, 8.8, 5.3, 3.1, RGBColor(0x3A, 0x4B, 0x5B), 1.0)
+    add_text(slide, fmt_int(update["institution_accounting"]["continuing_change"], signed=True), 8.8, 5.55, 2.4, 0.38, size=20, color=RGBColor(0x8E, 0xD9, 0xD0), bold=True)
+    add_text(slide, "change at continuing institutions", 8.8, 5.92, 3.2, 0.3, size=9.2, color=RGBColor(0xD4, 0xDE, 0xE7))
     add_footer(slide, 1)
 
     # Slide 2: national trend
@@ -405,29 +467,30 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
     add_text(slide, "The increase was created inside continuing institutions, not by adding more institutions to the analytic universe.", 6.98, 5.45, 4.75, 0.85, size=10.5, color=RGBColor(0xD4, 0xDE, 0xE7))
     add_footer(slide, 4)
 
-    # Slide 5: management use / QA
+    # Slide 5: publication decision / QA
     slide = prs.slides.add_slide(blank)
     slide.background.fill.solid()
     slide.background.fill.fore_color.rgb = PAPER
-    add_heading(slide, "Interpretation and QA", "Use the trend. Keep the boundaries visible.", "Management summary over validated analytical outputs; definitions, vintage, and institution-level QA still govern reuse.")
-    add_box(slide, 0.68, 2.02, 5.85, 4.72, fill=WHITE, line=LINE)
-    add_text(slide, "What a manager can take away", 1.0, 2.3, 4.8, 0.32, size=14, color=NAVY, bold=True)
-    add_bullet(slide, 1.0, 2.9, 4.75, "Latest direction", f"2024 U.S. nonresident enrollment increased {fmt_int(update['national']['absolute_change'], signed=True)} ({fmt_pct(update['national']['pct_change'], signed=True)}) from 2023.")
-    add_bullet(slide, 1.0, 3.78, 4.75, "Recovery pattern", f"{recovery['states_at_or_above_baseline']} states/DC are at or above 2019, but {recovery['states_below_baseline']} remain below the pre-pandemic baseline.")
-    add_bullet(slide, 1.0, 4.66, 4.75, "Structural driver", "Over the full decade, growth was graduate-heavy and concentrated in private nonprofit institutions and continuing institutions.")
-    add_bullet(slide, 1.0, 5.54, 4.75, "Next reporting cycle", "R01 is pre-specified: call the undergraduate shift broadly persistent only if the next complete release is positive nationally and in at least 26 of 51 states/DC.")
+    add_heading(slide, "Publication judgment", "The aggregate result is publishable. Ten institution claims remain held.", "Automated flags trigger evidence review; unresolved institution interpretation stays out of public narrative.")
+    add_kpi_card(slide, 0.68, 2.02, 3.75, "High-priority reviewed", f"{qa_resolution['reviewed_count']}/{qa_resolution['high_priority_total']}", f"{qa_resolution['safe_with_context']} safe with context · {qa_resolution['hold_for_confirmation']} held")
+    add_kpi_card(slide, 4.62, 2.02, 3.75, "Medium-priority reviewed", f"{medium_qa_resolution['reviewed_count']}/{medium_qa_resolution['medium_priority_total']}", f"{medium_qa_resolution['safe_with_context']} safe with context · {medium_qa_resolution['hold_for_confirmation']} held")
+    add_kpi_card(slide, 8.56, 2.02, 4.12, "Institution-specific claims held", str(total_claim_holds), "retained in aggregates · excluded from unsupported narrative", dark=True)
 
-    add_box(slide, 6.78, 2.02, 5.9, 4.72, fill=WASH, line=LINE)
-    add_text(slide, "Guardrails before reuse", 7.1, 2.3, 4.9, 0.32, size=14, color=NAVY, bold=True)
+    add_box(slide, 0.68, 3.67, 5.85, 3.05, fill=WHITE, line=LINE)
+    add_text(slide, "What can be used now", 1.0, 3.94, 4.8, 0.32, size=14, color=NAVY, bold=True)
+    add_bullet(slide, 1.0, 4.48, 4.75, "Aggregate direction", f"2024 enrollment increased {fmt_int(update['national']['absolute_change'], signed=True)} ({fmt_pct(update['national']['pct_change'], signed=True)}), led by undergraduate growth.")
+    add_bullet(slide, 1.0, 5.2, 4.75, "Geographic context", f"{recovery['states_at_or_above_baseline']} states/DC are at or above 2019; {recovery['states_below_baseline']} remain below.")
+    add_bullet(slide, 1.0, 5.92, 4.75, "Next-release persistence gate", "Call the undergraduate shift broadly persistent only if the next complete release is positive nationally and in at least 26 of 51 states/DC.")
+
+    add_box(slide, 6.78, 3.67, 5.9, 3.05, fill=WASH, line=LINE)
+    add_text(slide, "Guardrails before reuse", 7.1, 3.94, 4.9, 0.32, size=14, color=NAVY, bold=True)
     guardrails = [
         ("Population", "IPEDS U.S. nonresident is not interchangeable with immigrant-origin, undocumented, refugee/asylee, or all international-student populations."),
         ("Vintage", "2024 is treated as provisional and can differ slightly from earlier Digest releases built from earlier files."),
-        ("Institution flags", "Large institution-level movements are triaged and evidence-reviewed before they support institution-specific public claims."),
         ("Authority", "CSV/JSON outputs remain authoritative; this PPTX, the Excel workbook, PDF, and website are downstream presentation artifacts."),
     ]
     for idx, (title, body) in enumerate(guardrails):
-        add_bullet(slide, 7.1, 2.93 + idx * 0.86, 4.75, title, body, index=f"0{idx + 1}")
-    add_text(slide, "Source: NCES IPEDS Fall Enrollment and Institutional Characteristics, 2015–2024. Geography: 50 states + DC. Universe: degree-granting First Look/Digest Title IV institutions.", 7.1, 6.25, 4.85, 0.38, size=7.8, color=INK_SOFT)
+        add_bullet(slide, 7.1, 4.48 + idx * 0.72, 4.75, title, body, index=f"0{idx + 1}")
     add_footer(slide, 5)
 
     metrics = {
@@ -438,6 +501,9 @@ def make_deck() -> tuple[Presentation, dict[str, object]]:
         "undergraduate_positive_states": baseline_positive_states,
         "undergraduate_latest_change": baseline_undergraduate_change,
         "decade_change": headline["change_since_2015"],
+        "high_priority_reviewed": qa_resolution["reviewed_count"],
+        "medium_priority_reviewed": medium_qa_resolution["reviewed_count"],
+        "institution_claim_holds": total_claim_holds,
         "slide_count": len(prs.slides),
     }
     return prs, metrics

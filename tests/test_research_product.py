@@ -2587,13 +2587,22 @@ class ResearchProductTests(unittest.TestCase):
             "-3,581",
             "+63,400",
             "Guardrails before reuse",
+            "The aggregate result is publishable. Ten institution claims remain held.",
+            "27/27",
+            "50/50",
+            "10",
         ):
             self.assertIn(expected, text)
         self.assertEqual(manifest["metrics"]["latest_nonresident"], 1_044_137)
         self.assertEqual(manifest["metrics"]["states_recovered"], 33)
         self.assertEqual(manifest["metrics"]["undergraduate_positive_states"], 45)
         self.assertEqual(manifest["metrics"]["undergraduate_latest_change"], 31_592)
+        self.assertEqual(manifest["metrics"]["high_priority_reviewed"], 27)
+        self.assertEqual(manifest["metrics"]["medium_priority_reviewed"], 50)
+        self.assertEqual(manifest["metrics"]["institution_claim_holds"], 10)
         self.assertIn("data/undergraduate_shift_baseline.csv", manifest["source_sha256"])
+        self.assertIn("data/qa_resolution_summary.json", manifest["source_sha256"])
+        self.assertIn("data/medium_qa_resolution_summary.json", manifest["source_sha256"])
 
     def test_pdf_research_brief_is_valid_and_published(self) -> None:
         pdf = ROOT / "deliverables" / "research_brief.pdf"
