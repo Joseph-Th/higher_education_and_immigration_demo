@@ -525,11 +525,57 @@ def history_table(history: list[dict[str, object]]) -> str:
     )
 
 
+def history_visual(history: list[dict[str, object]]) -> str:
+    max_abs = max(abs(int(item["undergraduate_change"])) for item in history)
+    rows = []
+    for item in history:
+        value = int(item["undergraduate_change"])
+        breadth = int(item["states_with_undergraduate_growth"])
+        bar_width = 50 * abs(value) / max_abs if max_abs else 0
+        breadth_width = breadth / 51 * 100
+        direction = "positive" if value >= 0 else "negative"
+        latest = " latest" if int(item["end_year"]) == BASELINE_YEAR else ""
+        rows.append(
+            f"""<div class="shift-history-row{latest}">
+              <span class="shift-history-period">{html.escape(str(item['period']))}</span>
+              <div class="shift-change-cell"><div class="shift-diverging-track"><i class="shift-diverging-bar {direction}" style="width:{bar_width:.2f}%"></i></div><strong>{signed(value)}</strong></div>
+              <div class="shift-breadth-cell"><div class="shift-breadth-track"><i style="width:{breadth_width:.2f}%"></i></div><strong>{breadth}/51</strong></div>
+            </div>"""
+        )
+    return (
+        '<div class="shift-history-visual" aria-label="Annual undergraduate enrollment change and state breadth from 2015-2016 through 2023-2024">'
+        '<div class="shift-history-head"><span>Period</span><span>Undergraduate change</span><span>States/DC with growth</span></div>'
+        + "".join(rows)
+        + "</div>"
+    )
+
+
+def state_bar_panel(title: str, rows: list[dict[str, object]], max_abs: int, *, positive: bool) -> str:
+    direction = "positive" if positive else "negative"
+    body = "".join(
+        f"""<div class="shift-state-bar-row">
+          <strong>{html.escape(str(row['state']))}</strong>
+          <div class="shift-state-bar-track"><i class="{direction}" style="width:{(abs(int(row['undergraduate_change'])) / max_abs * 100 if max_abs else 0):.2f}%"></i></div>
+          <span>{signed(int(row['undergraduate_change']))}</span>
+        </div>"""
+        for row in rows
+    )
+    return f'<article class="shift-state-panel"><h3>{html.escape(title)}</h3>{body}</article>'
+
+
 def write_html(rows: list[dict[str, object]]) -> None:
     summary = summarize(rows)
     controls = summary["control_changes"]
     positive = summary["positive_states"]
     negative = summary["negative_states"]
+    state_visual_positive = positive[:6]
+    state_visual_negative = negative
+    state_visual_max = max(
+        abs(int(row["undergraduate_change"]))
+        for row in [*state_visual_positive, *state_visual_negative]
+    )
+    breadth_positive_pct = len(positive) / 51 * 100
+    breadth_negative_pct = len(negative) / 51 * 100
     HTML_OUTPUT.write_text(
         f"""<!doctype html>
 <html lang="en">
@@ -547,8 +593,8 @@ def write_html(rows: list[dict[str, object]]) -> None:
   <main id="main">
     <section class="handoff-hero"><div class="shell"><p class="eyebrow">R01 current-data baseline</p><h1>The next release will test persistence. This fixes the baseline before it arrives.</h1><p class="lede">The {PRIOR_YEAR}-{BASELINE_YEAR} undergraduate increase is decomposed by geography, institutional control, and institution continuity, then placed in the fixed {START_YEAR}-{BASELINE_YEAR} annual history.</p><div class="hero-actions"><a class="button button-primary" href="#annual-context">Review annual context</a><a class="button button-secondary" href="downloads/undergraduate_shift_baseline.csv">Download 51-state baseline</a></div><p class="release-note"><strong>Interpretation boundary:</strong> this analysis does not establish persistence or causation. R01 remains open until the next complete Fall Enrollment package passes schema review and the comparison is repeated.</p><div class="handoff-summary"><article><strong>{signed(int(summary['undergraduate_change']))}</strong><span>undergraduate change, {PRIOR_YEAR}-{BASELINE_YEAR}</span></article><article><strong>{len(positive)}/51</strong><span>states/DC with undergraduate growth</span></article><article><strong>{int(summary['consecutive_positive_undergraduate_years'])}</strong><span>consecutive annual undergraduate gains</span></article><article><strong>{float(summary['top10_institution_share_pct']):.1f}%</strong><span>top-10 institution share of gross positive movement</span></article></div></div></section>
     <section class="section shell"><div class="section-heading"><p class="eyebrow">What changed</p><h2>The latest undergraduate increase is unusually large and geographically broad.</h2><p>Undergraduate enrollment rose in {len(positive)} states/DC, the widest breadth in the observed annual series. The national undergraduate increase is also the largest positive annual undergraduate movement since {START_YEAR}. Those facts strengthen the baseline for monitoring, but they do not substitute for a second post-{BASELINE_YEAR} observation.</p></div><div class="method-grid"><article><h3>Student level</h3><p><strong>{signed(int(summary['undergraduate_change']))}</strong> undergraduate plus <strong>{signed(int(summary['graduate_change']))}</strong> graduate = <strong>{signed(int(summary['total_change']))}</strong> total.</p></article><article><h3>Institutional control</h3><p>Public <strong>{signed(int(controls['Public']))}</strong>; private nonprofit <strong>{signed(int(controls['Private nonprofit']))}</strong>; private for-profit <strong>{signed(int(controls['Private for-profit']))}</strong>.</p></article><article><h3>Institution continuity</h3><p>Continuing institutions <strong>{signed(int(summary['continuing_change']))}</strong>; entry/exit nets to <strong>{signed(int(summary['entered_enrollment']) - int(summary['exited_enrollment']))}</strong>.</p></article><article><h3>Institution concentration</h3><p>Gross positive movement is {int(summary['gross_positive_institution']):,}; gross negative movement is {int(summary['gross_negative_institution']):,}. The ten largest gains account for {float(summary['top10_institution_share_pct']):.1f}% of gross positive movement.</p></article></div></section>
-    <section class="section section-tinted" id="annual-context"><div class="shell"><div class="section-heading"><p class="eyebrow">Annual context</p><h2>Positive undergraduate direction predates 2024; the scale and composition shift are new.</h2><p>The latest year is the third consecutive undergraduate increase. What changed sharply in 2024 is magnitude, state breadth, and the combination of undergraduate growth with a graduate decline.</p></div><div class="table-wrap"><table><thead><tr><th>Period</th><th>Undergraduate</th><th>Graduate</th><th>Net</th><th>States/DC with UG growth</th></tr></thead><tbody>{history_table(summary['history'])}</tbody></table></div></div></section>
-    <section class="section shell" id="state-breadth"><div class="section-heading"><p class="eyebrow">State breadth</p><h2>Most states moved up, but positive movement is not evenly distributed.</h2><p>Gross positive state movement is {int(summary['gross_positive_state']):,}, offset by {int(summary['gross_negative_state']):,} of state declines. The five largest positive states account for {float(summary['top5_state_share_pct']):.1f}% of gross positive state movement.</p></div><h3>Ten largest undergraduate increases</h3><div class="table-wrap"><table><thead><tr><th>State</th><th>UG change</th><th>Graduate</th><th>Net</th><th>Public UG</th><th>Private nonprofit UG</th><th>Top-3 institution share</th></tr></thead><tbody>{state_table(positive[:10])}</tbody></table></div><h3>States with undergraduate declines</h3><div class="table-wrap"><table><thead><tr><th>State</th><th>UG change</th><th>Graduate</th><th>Net</th><th>Public UG</th><th>Private nonprofit UG</th><th>Top-3 institution share</th></tr></thead><tbody>{state_table(negative)}</tbody></table></div></section>
+    <section class="section section-tinted" id="annual-context"><div class="shell"><div class="section-heading"><p class="eyebrow">Annual context</p><h2>Positive undergraduate direction predates 2024; the scale and breadth are new.</h2><p>The latest year is the third consecutive undergraduate increase. Its +31,592 change is the largest positive undergraduate movement in this annual series, and 45 of 51 states/DC moved up.</p></div>{history_visual(summary['history'])}<details class="evidence-details shift-audit-details"><summary>Inspect all nine annual intervals and student-level components</summary><div class="table-wrap"><table><thead><tr><th>Period</th><th>Undergraduate</th><th>Graduate</th><th>Net</th><th>States/DC with UG growth</th></tr></thead><tbody>{history_table(summary['history'])}</tbody></table></div></details></div></section>
+    <section class="section shell" id="state-breadth"><div class="section-heading"><p class="eyebrow">State breadth</p><h2>Forty-five states/DC increased; only six declined.</h2><p>Gross positive state movement is {int(summary['gross_positive_state']):,}, offset by {int(summary['gross_negative_state']):,} of declines. Florida and Texas lead the gains, while California is the largest undergraduate decline.</p></div><div class="shift-breadth-summary" aria-label="45 states and DC increased undergraduate U.S. nonresident enrollment while 6 declined"><div class="shift-breadth-balance"><i class="positive" style="width:{breadth_positive_pct:.2f}%"></i><i class="negative" style="width:{breadth_negative_pct:.2f}%"></i></div><div class="shift-breadth-labels"><span><strong>{len(positive)}</strong> increased</span><span><strong>{len(negative)}</strong> declined</span></div></div><div class="shift-state-visual" aria-label="Largest state undergraduate gains and all state undergraduate declines">{state_bar_panel('Largest undergraduate gains', state_visual_positive, state_visual_max, positive=True)}{state_bar_panel('All undergraduate declines', state_visual_negative, state_visual_max, positive=False)}</div><p class="shift-visual-note">Bars use the same scale across both panels. The five largest positive states account for {float(summary['top5_state_share_pct']):.1f}% of gross positive state movement.</p><details class="evidence-details shift-audit-details"><summary>Inspect full state accounting tables</summary><h3>Ten largest undergraduate increases</h3><div class="table-wrap"><table><thead><tr><th>State</th><th>UG change</th><th>Graduate</th><th>Net</th><th>Public UG</th><th>Private nonprofit UG</th><th>Top-3 institution share</th></tr></thead><tbody>{state_table(positive[:10])}</tbody></table></div><h3>States with undergraduate declines</h3><div class="table-wrap"><table><thead><tr><th>State</th><th>UG change</th><th>Graduate</th><th>Net</th><th>Public UG</th><th>Private nonprofit UG</th><th>Top-3 institution share</th></tr></thead><tbody>{state_table(negative)}</tbody></table></div></details></section>
     <section class="section section-tinted"><div class="shell"><div class="section-heading compact"><p class="eyebrow">Next-release rule</p><h2>The baseline is fixed; the persistence judgment is still pending.</h2></div><div class="method-grid"><article><h3>Do not overwrite the baseline</h3><p>The incomplete candidate-year directory package is not used here. This baseline remains fixed at {PRIOR_YEAR}-{BASELINE_YEAR} even after the project later advances to a new data year.</p></article><article><h3>Repeat the same measures</h3><p>The next update should recompute national undergraduate/graduate change, state breadth, control decomposition, and institution continuity before comparing with this baseline.</p></article><article><h3>Preserve schema review</h3><p>A new release enters variable/code and universe review before any year-over-year persistence conclusion is published.</p></article><article><h3>Keep interpretation bounded</h3><p>A repeated enrollment pattern would establish persistence in the observed series, not a cause or immigration-policy effect.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/undergraduate_shift_baseline.csv">Download baseline CSV</a><a class="button button-secondary" href="downloads/undergraduate_shift_baseline.md">Download baseline note</a><a class="button button-secondary" href="freshness-monitor.html">Candidate-year freshness</a></div></div></section>
   </main>
   <footer><div class="shell footer-inner"><span>Undergraduate Shift Baseline · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>

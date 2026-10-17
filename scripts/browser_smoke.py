@@ -471,8 +471,18 @@ def inspect_undergraduate_shift(browser, base_url: str, *, width: int, height: i
     for expected in ("+31,592", "45/51", "3", "20.6%"):
         if expected not in summary:
             raise AssertionError(f"Undergraduate shift summary is missing {expected}")
+    if page.locator("#annual-context .shift-history-row").count() != 9:
+        raise AssertionError("Undergraduate shift annual visual does not contain all nine intervals")
+    if page.locator("#annual-context .shift-history-row.latest").count() != 1:
+        raise AssertionError("Undergraduate shift annual visual does not identify the latest baseline interval")
     if page.locator("#annual-context tbody tr").count() != 9:
         raise AssertionError("Undergraduate shift annual context does not contain all nine intervals")
+    if page.locator("#state-breadth .shift-state-bar-row").count() != 12:
+        raise AssertionError("Undergraduate shift state visual does not contain six gains and six declines")
+    breadth_text = page.locator("#state-breadth .shift-breadth-summary").inner_text()
+    if "45 increased" not in breadth_text or "6 declined" not in breadth_text:
+        raise AssertionError("Undergraduate shift state breadth visual does not show the 45/6 split")
+    page.locator("#state-breadth details.shift-audit-details").evaluate("el => el.open = true")
     tables = page.locator("#state-breadth tbody")
     if tables.count() != 2 or tables.nth(0).locator("tr").count() != 10 or tables.nth(1).locator("tr").count() != 6:
         raise AssertionError("Undergraduate shift state tables do not contain 10 gains and 6 declines")
