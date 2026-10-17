@@ -303,6 +303,36 @@ section[id] { scroll-margin-top: 76px; }
 .shift-state-bar-track i.negative { background: var(--warm); }
 .shift-visual-note { margin: 12px 0 0; color: var(--ink-soft); font-size: 12px; }
 
+.nonprofit-concentration-visual { padding: 24px 26px; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
+.nonprofit-concentration-head { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 16px; color: var(--ink-soft); font-size: 11px; }
+.nonprofit-concentration-head strong { color: var(--warm); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; }
+.nonprofit-concentration-row { display: grid; grid-template-columns: 65px minmax(0,1fr) 58px; gap: 12px; align-items: center; min-height: 42px; }
+.nonprofit-concentration-row > strong { font-size: 11px; }
+.nonprofit-concentration-row > span { color: var(--ink-soft); font-size: 11px; font-weight: 800; text-align: right; }
+.nonprofit-concentration-row.decision-row > strong, .nonprofit-concentration-row.decision-row > span { color: var(--accent-dark); }
+.nonprofit-concentration-track { position: relative; height: 14px; overflow: visible; border-radius: 999px; background: var(--wash); }
+.nonprofit-concentration-track i { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
+.nonprofit-concentration-track .threshold { position: absolute; top: -5px; bottom: -5px; left: 50%; width: 2px; background: var(--warm); }
+.nonprofit-concentration-split { display: grid; margin-top: 15px; overflow: hidden; border-radius: 12px; }
+.nonprofit-concentration-split span { padding: 12px 14px; background: #e8f3f1; color: var(--accent-dark); font-size: 11px; }
+.nonprofit-concentration-split span + span { background: var(--navy); color: white; text-align: right; }
+.nonprofit-concentration-split b { font-size: 18px; }
+.nonprofit-movement-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 16px; }
+.nonprofit-movement-grid article { padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--wash); }
+.nonprofit-movement-grid span, .nonprofit-movement-grid small { display: block; color: var(--ink-soft); font-size: 11px; }
+.nonprofit-movement-grid strong { display: block; margin: 6px 0 4px; font-size: 25px; letter-spacing: -.04em; }
+
+.nonprofit-contributor-visual { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
+.nonprofit-contributor-row { display: grid; grid-template-columns: 36px minmax(220px,1.1fr) minmax(190px,1fr) 76px 92px; gap: 12px; align-items: center; min-height: 58px; padding: 10px 18px; border-top: 1px solid var(--line); }
+.nonprofit-contributor-row:first-child { border-top: 0; }
+.nonprofit-contributor-rank { color: var(--accent-dark); font-size: 10px; font-weight: 850; }
+.nonprofit-contributor-name { min-width: 0; font-size: 12px; line-height: 1.3; }
+.nonprofit-contributor-track { height: 12px; overflow: hidden; border-radius: 999px; background: var(--wash); }
+.nonprofit-contributor-track i { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
+.nonprofit-contributor-value { font-size: 11px; font-weight: 800; text-align: right; }
+.nonprofit-contributor-row small { color: var(--ink-soft); font-size: 10px; text-align: right; }
+.nonprofit-audit-details { margin-top: 16px; }
+
 .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
 table { width: 100%; border-collapse: collapse; min-width: 720px; }
 .compact-table table { min-width: 0; }
@@ -486,6 +516,9 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .library-search-control { grid-column: 1 / -1; }
   .methods-crosswalk-callout { align-items: flex-start; flex-direction: column; }
   .shift-state-visual { grid-template-columns: 1fr; }
+  .nonprofit-movement-grid { grid-template-columns: repeat(2,1fr); }
+  .nonprofit-contributor-row { grid-template-columns: 32px minmax(180px,1fr) minmax(150px,.8fr) 70px; }
+  .nonprofit-contributor-row small { grid-column: 2 / -1; text-align: left; }
   .explorer-copy { border-right: 0; border-bottom: 1px solid var(--line); }
   .section { padding: 76px 0; }
 }
@@ -512,6 +545,17 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--ink-so
   .shift-breadth-labels strong { font-size: 17px; }
   .shift-state-panel { padding: 18px; }
   .shift-state-bar-row { grid-template-columns: 30px minmax(0,1fr) 62px; gap: 7px; }
+  .nonprofit-concentration-visual { padding: 18px 16px; }
+  .nonprofit-concentration-head { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .nonprofit-concentration-row { grid-template-columns: 52px minmax(0,1fr) 48px; gap: 8px; }
+  .nonprofit-concentration-split { grid-template-columns: 1fr 1fr; }
+  .nonprofit-concentration-split b { display: block; font-size: 16px; }
+  .nonprofit-movement-grid { grid-template-columns: 1fr; }
+  .nonprofit-contributor-row { grid-template-columns: 28px minmax(0,1fr) 64px; gap: 7px 8px; padding: 11px 12px; }
+  .nonprofit-contributor-name { font-size: 11px; }
+  .nonprofit-contributor-track { grid-column: 2 / 3; }
+  .nonprofit-contributor-value { grid-column: 3; grid-row: 2; }
+  .nonprofit-contributor-row small { grid-column: 2 / -1; font-size: 9px; }
   .concentration-strip article { grid-template-columns: 1fr; gap: 4px; }
   .footer-inner { gap: 20px; }
 }
