@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 39
-- **Held for confirmation:** 11
+- **Safe with context:** 40
+- **Held for confirmation:** 10
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -41,7 +41,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Fort Hays State University | KS | -266 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Fort Hays State University 2023 assurance argument and Fall 2024 international enrollment](https://www.fhsu.edu/news/2024/11/heart-of-a-tiger-celebrating-international-education-week) |
 | Marywood University | PA | -260 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Marywood University 2024-25 and 2025-26 Fact Books](https://www.marywood.edu/about/consumer-information/factbooks/fall-2025-factbook.pdf) |
 | Dominican University of California | CA | -249 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Dominican University of California 2024-25 Common Data Set and University Facts](https://www.dominican.edu/about/student-success/university-facts) |
-| National Louis University | IL | +218 | Percentage Movement | External scope mismatch | Hold for confirmation | [National Louis University HLC Mid-Cycle Review Assurance Argument](https://nl.edu/media/nledu/content-assets/documents/accreditation/NLU-HLC-Mid-Cycle-Review-Assurance-Argument---Spring-2026.pdf) |
+| National Louis University | IL | +218 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [National Louis University HLC Mid-Cycle Review Assurance Argument](https://nl.edu/media/nledu/content-assets/documents/accreditation/NLU-HLC-Mid-Cycle-Review-Assurance-Argument---Spring-2026.pdf) |
 | University of Rio Grande | OH | +181 | Percentage Movement | External scope mismatch | Hold for confirmation | [University of Rio Grande Fall 2024 combined enrollment announcement](https://www.rio.edu/news/fall-2024-enrollment-growth) |
 | Union Commonwealth University | KY | +179 | Percentage Movement | Corroborated direction | Safe with context | [Union Commonwealth University May 2024 international-student share](https://www.unionky.edu/moschetta-brazil-flood-victims-need-our-help) |
 | FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Percentage Movement | Expected structural change | Safe with context | [Arizona State University April 2023 FIDM transition announcement](https://newsroom.asu.edu/press-releases/asu-expands-fashion-program-through-asu-fidm) |
@@ -292,11 +292,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### National Louis University · UNITID 147536
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
+- **Decision:** Safe with context
+- **Disposition:** Confirmed reporting discontinuity
+- **Reviewed:** 2026-10-16
 - **Evidence:** [National Louis University HLC Mid-Cycle Review Assurance Argument](https://nl.edu/media/nledu/content-assets/documents/accreditation/NLU-HLC-Mid-Cycle-Review-Assurance-Argument---Spring-2026.pdf)
-- **Analyst note:** The project IPEDS series reports 318 U.S. nonresident students in Fall 2023 and 536 in Fall 2024, an increase of 218, with Fall 2024 undergraduate/graduate totals of 4,471 and 4,444 and all-student enrollment of 8,915. National Louis University's official HLC Mid-Cycle Review Assurance Argument reports that in academic year 2024-25 NLU enrolled 12,613 students, including 6,083 undergraduates and 6,530 graduate students, and that international students accounted for 743 students after growing fivefold from 145 in AY2021-22. Those academic-year figures exceed the project Fall 2024 frame by 3,698 students overall, 1,612 undergraduates, 2,086 graduate students, and 207 international/U.S.-nonresident students. The same report describes delivery across Illinois locations, a growing Tampa location, and online/low-residency modalities, reinforcing that its academic-year enrollment profile is a broader timing and service-population frame than the single Fall-census IPEDS row. The institutional report independently confirms a sizable and growing international population but does not provide like-for-like Fall 2023 and Fall 2024 international/nonresident endpoints. Preserve IPEDS as the numerical authority, do not substitute the 743 academic-year international count for the Fall 2024 U.S. nonresident endpoint, and keep the +218 institution-specific movement held as a documented timing/reporting-scope mismatch.
+- **Analyst note:** The project IPEDS series reports 318 U.S. nonresident students in Fall 2023 and 536 in Fall 2024, an increase of 218, with Fall 2024 undergraduate/graduate totals of 4,471 and 4,444 and all-student enrollment of 8,915. National Louis University's official HLC Mid-Cycle Review Assurance Argument explicitly reports an academic-year rather than Fall-census population: in academic year 2024-25 NLU enrolled 12,613 students, including 6,083 undergraduates and 6,530 graduate students, and international students accounted for 743 students after growing fivefold from 145 in AY2021-22. Those academic-year figures exceed the project Fall 2024 frame by 3,698 students overall, 1,612 undergraduates, 2,086 graduate students, and 207 international/U.S.-nonresident students. The same report describes delivery across Illinois locations, a growing Tampa location, and online/low-residency modalities. The source-defined academic-year window and materially larger student population confirm that the HLC profile is not a like-for-like reporting frame for the project IPEDS Fall Enrollment row; the difference should not be treated as a source error or reconciled by substituting the broader HLC counts. The report confirms a sizable international population and longer-run growth but does not provide definition-identical Fall 2023 and Fall 2024 international/nonresident endpoints, so it does not independently corroborate the +218 one-year IPEDS movement. Preserve IPEDS as the numerical authority, do not substitute the 743 academic-year international count for the Fall 2024 U.S. nonresident endpoint, and clear only bounded reporting/timing-discontinuity discussion rather than describing the +218 as independently confirmed substantive nonresident growth.
 
 ### University of Rio Grande · UNITID 205203
 
