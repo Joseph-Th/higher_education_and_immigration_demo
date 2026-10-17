@@ -933,6 +933,15 @@ def inspect_medium_qa_review(browser, base_url: str, *, width: int, height: int)
     for expected in ("50/50", "41", "9", "100%"):
         if expected not in summary:
             raise AssertionError(f"Medium-priority evidence summary is missing {expected}")
+    if page.locator("#decisions .qa-disposition-row").count() != 6:
+        raise AssertionError("Medium-priority evidence disposition visual does not render all six outcomes")
+    if page.locator("#held-claims .medium-held-card").count() != 9:
+        raise AssertionError("Medium-priority evidence page does not surface all nine held claims")
+    held_text = page.locator("#held-claims").inner_text()
+    for expected in ("Lindsey Wilson College", "Midwestern Baptist Theological Seminary", "Walden University", "Prairie View A & M University"):
+        if expected not in held_text:
+            raise AssertionError(f"Medium-priority held-claim summary is missing {expected}")
+    page.locator("#complete-queue details.medium-qa-audit-details").evaluate("el => el.open = true")
     table = page.locator("#complete-queue tbody")
     if table.locator("tr").count() != 50:
         raise AssertionError("Medium-priority evidence page does not render all 50 reviewed records")

@@ -215,13 +215,29 @@ def write_html(rows: list[dict[str, object]], summary: dict[str, object]) -> Non
             "</tr>"
         )
 
-    disposition_cards = []
-    for disposition, count in sorted(
+    disposition_items = sorted(
         dict(summary["dispositions"]).items(), key=lambda item: (-int(item[1]), item[0])
-    ):
-        disposition_cards.append(
-            f"<article><h3>{html.escape(disposition_label(disposition))}</h3>"
-            f"<p><strong>{int(count)}</strong><br>medium-priority records.</p></article>"
+    )
+    disposition_max = max(int(count) for _, count in disposition_items)
+    disposition_rows = []
+    for disposition, count in disposition_items:
+        width = int(count) / disposition_max * 100 if disposition_max else 0
+        disposition_rows.append(
+            f"""<div class="qa-disposition-row">
+              <strong>{html.escape(disposition_label(disposition))}</strong>
+              <div class="qa-disposition-track"><i style="width:{width:.2f}%"></i></div>
+              <span>{int(count)}</span>
+            </div>"""
+        )
+
+    held_rows = [row for row in rows if row["publication_class"] == "hold_for_confirmation"]
+    held_cards = []
+    for row in held_rows:
+        held_cards.append(
+            f"""<article class="medium-held-card">
+              <div><strong>{html.escape(str(row['institution']))}</strong><span>{html.escape(str(row['state']))} · {int(row['absolute_change']):+,}</span></div>
+              <small>{html.escape(disposition_label(row['disposition']))}</small>
+            </article>"""
         )
 
     HTML_OUTPUT.write_text(
@@ -240,8 +256,9 @@ def write_html(rows: list[dict[str, object]], summary: dict[str, object]) -> Non
   <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html"><span class="brand-mark">IE</span><span>Higher Education Data Brief</span></a><nav aria-label="Medium QA evidence navigation"><a href="index.html">Brief</a><a href="medium-priority-review.html">Medium routing</a><a href="qa-review.html">High-priority QA</a><a href="candidate-year-watchlist.html">Next-release watchlist</a></nav></div></header>
   <main id="main">
     <section class="handoff-hero"><div class="shell"><p class="eyebrow">Medium-priority evidence review</p><h1>Every medium-priority flag now has an evidence-backed publication decision.</h1><p class="lede">The 50-row routing queue has been reviewed against institution-level public context. {int(summary['safe_with_context'])} records have enough corroboration for bounded discussion; {int(summary['hold_for_confirmation'])} remain held because the outside source is non-comparable, incomplete, structural only, or otherwise insufficient to explain the IPEDS movement.</p><div class="hero-actions"><a class="button button-primary" href="#decisions">Review decisions</a><a class="button button-secondary" href="downloads/medium_qa_resolution_log.csv">Download resolution log</a></div><p class="release-note"><strong>Boundary:</strong> evidence can clear a bounded narrative claim without rewriting IPEDS. Current decisions must be revalidated on the next complete Fall Enrollment release.</p><div class="handoff-summary"><article><strong>{int(summary['reviewed_count'])}/{int(summary['medium_priority_total'])}</strong><span>medium-priority records reviewed</span></article><article><strong>{int(summary['safe_with_context'])}</strong><span>safe with explicit context</span></article><article><strong>{int(summary['hold_for_confirmation'])}</strong><span>held for confirmation</span></article><article><strong>{float(summary['coverage_pct']):.0f}%</strong><span>medium-priority queue coverage</span></article></div></div></section>
-    <section class="section shell" id="decisions"><div class="section-heading"><p class="eyebrow">Disposition pattern</p><h2>Most medium signals remain intentionally gated after evidence review.</h2><p>A public international-student page is not automatically comparable to IPEDS U.S. nonresident enrollment. The analyst decision distinguishes exact or close count corroboration and documented structural discontinuities from sources that use a different population or do not publish the needed endpoints.</p></div><div class="method-grid">{''.join(disposition_cards)}</div></section>
-    <section class="section section-tinted" id="complete-queue"><div class="shell"><div class="section-heading"><p class="eyebrow">Complete medium-priority queue</p><h2>Each routing signal now has a publication decision and evidence source.</h2><p>The route still describes why the deterministic threshold fired. The publication decision is a separate analyst layer and never changes the source value or current priority.</p></div><div class="table-wrap"><table><thead><tr><th>Institution</th><th>State</th><th>Change</th><th>Route</th><th>Disposition</th><th>Publication decision</th><th>Evidence</th></tr></thead><tbody>{''.join(table_rows)}</tbody></table></div></div></section>
+    <section class="section shell" id="decisions"><div class="section-heading"><p class="eyebrow">Disposition pattern</p><h2>The evidence layer separates corroborated movement from unresolved scope mismatch.</h2><p>A public international-student page is not automatically comparable to IPEDS U.S. nonresident enrollment. The bars show the six evidence outcomes across all 50 medium-priority records.</p></div><div class="qa-disposition-visual" aria-label="Medium-priority QA dispositions by reviewed record count">{''.join(disposition_rows)}</div><div class="qa-publication-balance" style="grid-template-columns:{int(summary['safe_with_context'])}fr {int(summary['hold_for_confirmation'])}fr"><span><strong>{int(summary['safe_with_context'])}</strong> safe with context</span><span><strong>{int(summary['hold_for_confirmation'])}</strong> held for confirmation</span></div><div class="medium-review-meta"><article><strong>{int(summary['candidate_overlap_reviewed'])}</strong><span>candidate-directory overlaps already reviewed</span></article><article><strong>{int(summary['reviewed_count'])}</strong><span>records that must be re-evaluated on the next complete release</span></article></div></section>
+    <section class="section section-tinted" id="held-claims"><div class="shell"><div class="section-heading"><p class="eyebrow">Nine institution claims remain held</p><h2>The unresolved set is explicit rather than buried in the 50-row audit table.</h2><p>These institutions remain in official aggregate calculations, but the current evidence does not support an uncaveated institution-specific explanation of the IPEDS movement.</p></div><div class="medium-held-grid">{''.join(held_cards)}</div></div></section>
+    <section class="section shell" id="complete-queue"><div class="section-heading"><p class="eyebrow">Complete medium-priority queue</p><h2>Each routing signal retains its publication decision and evidence source.</h2><p>The full 50-row evidence trail remains available for audit. The route describes why the deterministic threshold fired; the publication decision is a separate analyst layer and never changes the source value or current priority.</p></div><details class="evidence-details medium-qa-audit-details"><summary>Inspect all 50 medium-priority decisions and evidence links</summary><div class="table-wrap"><table><thead><tr><th>Institution</th><th>State</th><th>Change</th><th>Route</th><th>Disposition</th><th>Publication decision</th><th>Evidence</th></tr></thead><tbody>{''.join(table_rows)}</tbody></table></div></details></section>
     <section class="section shell"><div class="section-heading compact"><p class="eyebrow">Interpretation rule</p><h2>Current evidence is not standing approval for a future release.</h2></div><div class="method-grid"><article><h3>Safe with context</h3><p>Independent evidence supports the count scale, direction, or a documented structural event strongly enough for bounded discussion.</p></article><article><h3>Hold for confirmation</h3><p>The official IPEDS value remains in aggregates, but an institution-specific explanation is not independently established.</p></article><article><h3>Scope control</h3><p>F-1, OPT, international-office, online-global, and institution-defined populations may not equal IPEDS U.S. nonresident enrollment.</p></article><article><h3>Next release</h3><p>All 50 rows are re-evaluated after the complete next Fall Enrollment build; no current disposition is inherited automatically.</p></article></div><div class="memo-actions"><a class="button button-primary" href="downloads/medium_qa_resolution_log.csv">Download resolution CSV</a><a class="button button-secondary" href="downloads/medium_qa_resolution_log.md">Download review notes</a><a class="button button-secondary" href="medium-priority-category-diagnostic.html">Review category diagnostic</a><a class="button button-secondary" href="medium-priority-review.html">Review routing layer</a></div></section>
   </main>
   <footer><div class="shell footer-inner"><span>Medium-Priority QA Review · Portfolio Demonstration</span><a href="index.html">National brief</a></div></footer>
