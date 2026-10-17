@@ -416,6 +416,22 @@ def write_markdown(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
 
 
 def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
+    medium_only_count = summary["medium_count"] - summary["medium_candidate_overlap"]
+    union_parts = (
+        ("high", "Current high", summary["high_count"], "Existing high-priority QA queue"),
+        ("medium", "Current medium only", medium_only_count, "Medium-priority QA without directory overlap"),
+        ("overlap", "Medium + directory", summary["medium_candidate_overlap"], "Both current QA and candidate structural signal"),
+        ("directory", "Directory only", summary["candidate_only_count"], "Candidate structural change outside current high/medium QA"),
+    )
+    union_bar = "".join(
+        f'<i class="{css}" style="flex:{count}" title="{html.escape(label)}: {count}"></i>'
+        for css, label, count, _ in union_parts
+    )
+    union_legend = "".join(
+        f'<article data-watchlist-segment="{css}"><span><i class="{css}"></i>{html.escape(label)}</span><strong>{count}</strong><small>{html.escape(note)}</small></article>'
+        for css, label, count, note in union_parts
+    )
+
     overlap_html = []
     for row in overlap_rows(rows):
         overlap_html.append(
@@ -482,14 +498,11 @@ def write_html(rows: list[dict[str, str]], summary: dict[str, int]) -> None:
       </div>
     </div></section>
 
-    <section class="section shell">
+    <section class="section shell" id="union-accounting">
       <div class="section-heading"><p class="eyebrow">Exact union</p><h2>226 is a reconciled union, not a second independent flagging system.</h2><p>{summary['high_count']} current high-priority rows + {summary['medium_count']} current medium-priority rows + {summary['candidate_count']} candidate directory changes - {summary['medium_candidate_overlap']} overlaps = {summary['row_count']} unique UNITIDs. No current high-priority record overlaps the captured candidate directory changes.</p></div>
-      <div class="method-grid">
-        <article><h3>Current high-priority layer</h3><p><strong>{summary['high_safe']} safe with context / {summary['high_held']} held</strong><br>The current evidence-backed disposition is retained only as context for the next review.</p></article>
-        <article><h3>Current medium-priority layer</h3><p><strong>{summary['medium_safe']} safe with context / {summary['medium_held']} held</strong><br>The current evidence-backed disposition is retained only as context for the next review.</p></article>
-        <article><h3>Candidate directory layer</h3><p><strong>{summary['candidate_count']} rows</strong><br>Structural entry, exit, name, state, and control changes are carried forward before Fall Enrollment arrives.</p></article>
-        <article><h3>No new risk score</h3><p>The watchlist preserves existing high/medium priority, surfaces cross-signal overlap, then orders candidate-only rows by current-year exposure.</p></article>
-      </div>
+      <div class="watchlist-union-visual" aria-label="Exact 226 institution carry-forward partition"><div class="watchlist-union-bar">{union_bar}</div><div class="watchlist-union-legend">{union_legend}</div></div>
+      <div class="watchlist-decision-context"><article><span>Current high-priority evidence context</span><strong>{summary['high_safe']} safe with context / {summary['high_held']} held</strong></article><article><span>Current medium-priority evidence context</span><strong>{summary['medium_safe']} safe with context / {summary['medium_held']} held</strong></article><article><span>Candidate-year interpretation</span><strong>No enrollment values yet</strong></article></div>
+      <p class="watchlist-union-note"><strong>Review-order tool, not a risk score:</strong> the four segments partition the exact union. Current dispositions remain context only and candidate-directory structure does not predict {END_YEAR + 1} enrollment.</p>
     </section>
 
     <section class="section section-tinted" id="overlap"><div class="shell">

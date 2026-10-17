@@ -822,6 +822,15 @@ def inspect_candidate_year_watchlist(browser, base_url: str, *, width: int, heig
     for expected in ("27 current high-priority rows + 50 current medium-priority rows + 154 candidate directory changes - 5 overlaps = 226", "No current high-priority record overlaps", "41 safe with context / 9 held"):
         if expected not in main_text:
             raise AssertionError(f"Candidate-year QA watchlist union is missing {expected}")
+    union = page.locator("#union-accounting")
+    if union.locator("[data-watchlist-segment]").count() != 4:
+        raise AssertionError("Candidate-year QA watchlist union visual does not render all four exclusive segments")
+    union_text = union.inner_text()
+    for expected in ("Current high", "27", "Current medium only", "45", "Medium + directory", "5", "Directory only", "149", "No enrollment values yet", "not a risk score"):
+        if expected not in union_text:
+            raise AssertionError(f"Candidate-year QA watchlist union visual is missing {expected}")
+    if union.locator(".watchlist-union-bar i").count() != 4:
+        raise AssertionError("Candidate-year QA watchlist union bar does not contain four segments")
 
     overlap = page.locator("#overlap")
     if overlap.locator("tbody tr").count() != 5:
