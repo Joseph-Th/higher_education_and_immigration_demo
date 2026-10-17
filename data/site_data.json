@@ -1230,15 +1230,15 @@
     "reviewed_count": 27,
     "high_priority_total": 27,
     "coverage_pct": 100.0,
-    "safe_with_context": 22,
-    "hold_for_confirmation": 5,
+    "safe_with_context": 25,
+    "hold_for_confirmation": 2,
     "dispositions": {
       "confirmed_classification_change": 1,
       "confirmed_reporting_discontinuity": 6,
       "corroborated_direction": 8,
-      "corroborated_external_count": 6,
+      "corroborated_external_count": 9,
       "expected_structural_change": 1,
-      "external_scope_mismatch": 4,
+      "external_scope_mismatch": 1,
       "partial_component_corroboration": 1
     },
     "reviewed_unitids": [
