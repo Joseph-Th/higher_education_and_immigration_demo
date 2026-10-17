@@ -774,6 +774,15 @@ def inspect_candidate_directory_changes(browser, base_url: str, *, width: int, h
     for expected in ("New directory record", "35", "Title IV / First Look status became ineligible", "38", "Directory record absent", "15"):
         if expected not in frame_text:
             raise AssertionError(f"Candidate directory frame-turnover section is missing {expected}")
+    if page.locator("#frame-turnover [data-directory-change-class]").count() != 3:
+        raise AssertionError("Candidate directory frame-turnover visual does not show all three exclusive change classes")
+    class_text = page.locator("#frame-turnover .directory-class-legend").inner_text()
+    for expected in ("Entered eligible frame", "52", "Left eligible frame", "56", "Shared attribute change", "46"):
+        if expected not in class_text:
+            raise AssertionError(f"Candidate directory class partition is missing {expected}")
+    if page.locator("#frame-turnover .directory-reason-row").count() < 6:
+        raise AssertionError("Candidate directory frame-turnover visual does not render the reason distribution")
+    page.locator("#frame-turnover details.directory-reason-audit").evaluate("el => el.open = true")
     leaver_text = page.locator("#leaver-exposure").inner_text()
     for expected in ("FIDM-Fashion Institute of Design & Merchandising", "128", "17,593", "not projected 2025 losses"):
         if expected not in leaver_text:

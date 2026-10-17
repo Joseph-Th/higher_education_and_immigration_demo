@@ -471,6 +471,31 @@ def write_html(rows: list[dict[str, str]], snapshot: dict[str, object], summary:
     state_changes = sort_exposure([row for row in shared if row["state_changed"] == "Yes"])
     name_changes = sort_exposure([row for row in shared if row["name_changed"] == "Yes"])
 
+    class_parts = (
+        ("entered", "Entered eligible frame", int(summary["entered"]), "Directory-side eligibility in the candidate capture"),
+        ("left", "Left eligible frame", int(summary["left"]), "Directory-side eligibility no longer met in the candidate capture"),
+        ("shared", "Shared attribute change", int(summary["shared_attribute"]), "Same eligible UNITID with name, state, or control change"),
+    )
+    class_bar = "".join(
+        f'<i class="{css}" style="flex:{count}" title="{html.escape(label)}: {count}"></i>'
+        for css, label, count, _ in class_parts
+    )
+    class_legend = "".join(
+        f'<article data-directory-change-class="{css}"><span><i class="{css}"></i>{html.escape(label)}</span><strong>{count}</strong><small>{html.escape(note)}</small></article>'
+        for css, label, count, note in class_parts
+    )
+
+    reason_max = max(
+        [int(count) for count in summary["entry_reasons"].values()]
+        + [int(count) for count in summary["exit_reasons"].values()]
+    )
+
+    def reason_visual(counter: Counter[str], css: str) -> str:
+        return "".join(
+            f'<div class="directory-reason-row"><span>{html.escape(REASON_LABELS[reason])}</span><div class="directory-reason-track"><i class="{css}" style="width:{int(count) / reason_max * 100:.2f}%"></i></div><strong>{int(count)}</strong></div>'
+            for reason, count in sorted(counter.items(), key=lambda item: (-item[1], item[0]))
+        )
+
     def table_rows(records: list[dict[str, str]], render) -> str:
         return "".join(f"<tr>{render(row)}</tr>" for row in records)
 
@@ -546,10 +571,9 @@ def write_html(rows: list[dict[str, str]], snapshot: dict[str, object], summary:
 
     <section class="section shell" id="frame-turnover">
       <div class="section-heading"><p class="eyebrow">Eligible-frame turnover</p><h2>Entry and exit reasons are structural and auditable.</h2><p>Reason counts can overlap when a UNITID changes more than one eligibility field. A record entering or leaving the directory-side eligible frame does not establish an opening, closure, or enrollment change.</p></div>
-      <div class="method-grid">
-        <article><h3>Entry reasons</h3><div class="table-wrap compact-table"><table><thead><tr><th>Reason</th><th>UNITIDs</th></tr></thead><tbody>{entry_reason_rows}</tbody></table></div></article>
-        <article><h3>Exit reasons</h3><div class="table-wrap compact-table"><table><thead><tr><th>Reason</th><th>UNITIDs</th></tr></thead><tbody>{exit_reason_rows}</tbody></table></div></article>
-      </div>
+      <div class="directory-change-visual"><div class="directory-class-bar">{class_bar}</div><div class="directory-class-legend">{class_legend}</div></div>
+      <div class="directory-reason-grid"><article><h3>Entry reasons</h3><p>Reason counts may overlap within the {int(summary['entered'])} entering UNITIDs.</p>{reason_visual(summary['entry_reasons'], 'entered')}</article><article><h3>Exit reasons</h3><p>Reason counts may overlap within the {int(summary['left'])} leaving UNITIDs.</p>{reason_visual(summary['exit_reasons'], 'left')}</article></div>
+      <details class="evidence-details directory-reason-audit"><summary>Inspect raw entry and exit reason counts</summary><div class="method-grid"><article><h3>Entry reason table</h3><div class="table-wrap compact-table"><table><thead><tr><th>Reason</th><th>UNITIDs</th></tr></thead><tbody>{entry_reason_rows}</tbody></table></div></article><article><h3>Exit reason table</h3><div class="table-wrap compact-table"><table><thead><tr><th>Reason</th><th>UNITIDs</th></tr></thead><tbody>{exit_reason_rows}</tbody></table></div></article></div></details>
     </section>
 
     <section class="section section-tinted" id="leaver-exposure">
