@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 42
-- **Held for confirmation:** 8
+- **Safe with context:** 43
+- **Held for confirmation:** 7
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -20,7 +20,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Valencia College | FL | +692 | Absolute And Percentage | Corroborated external count | Safe with context | [Florida Department of Education 2024 and 2025 Florida College System Fact Books](https://www.fldoe.org/accountability/data-sys/CCTCMIS/reports) |
 | Dallas College | TX | +628 | Absolute And Percentage | Corroborated direction | Safe with context | [Dallas College 2024-25 ACFR Fall Student Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/about-dallas-college/financial/reports/audited-financial-statements/2024-2025-ACFR.pdf) |
 | Chaffey College | CA | -611 | Absolute And Percentage | Corroborated direction | Safe with context | [Chaffey College Fall 2023 and Fall 2024 First Census Fast Facts](https://www.chaffey.edu/ir/reports-publications.php) |
-| Lindsey Wilson College | KY | +590 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf) |
+| Lindsey Wilson College | KY | +590 | Absolute And Percentage | Corroborated direction | Safe with context | [ICE SEVP 2023-2024 active F-1 records + Lindsey Wilson international-student context](https://www.ice.gov/doclib/sevis/btn/2024/2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf) |
 | Texas State University | TX | +558 | Absolute And Percentage | Corroborated external count | Safe with context | [Texas State strategic progress dashboard](https://www.president.txst.edu/strategic-vision/academic-progress.html) |
 | Sacred Heart University | CT | -508 | Absolute And Percentage | Confirmed reporting discontinuity | Safe with context | [ICE SEVP 2023-2024 active F-1 records + Sacred Heart international definition](https://www.ice.gov/doclib/sevis/btn/2024/2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf) |
 | Indiana University-Indianapolis | IN | -504 | Absolute And Percentage | Expected structural change | Safe with context | [IU Indianapolis IUPUI transition overview](https://indianapolis.iu.edu/about/iupui-transition/) |
@@ -61,7 +61,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | Northeastern University Oakland | CA | +80 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Northeastern University Oakland Fall 2023 and Fall 2024 admissions FAQs](https://admissions.northeastern.edu/wp-content/uploads/2023/12/FA24-NU-Oakland-Admission-FAQ-12.13-Update.pdf) |
 | Vincennes University | IN | +78 | Percentage Movement | Corroborated direction | Safe with context | [Vincennes University Fall 2024 enrollment announcement](https://www.vinu.edu/news/vu-welcomes-largest-incoming-class-since-2021.html) |
 | Ana G. Mendez University | FL | -76 | Percentage Movement | Partial component corroboration | Hold for confirmation | [Ana G. Mendez University 2025 MSCHE Self-Study Report](https://documents.agmu.edu/docs/msche/AGMU-MSCHE-SSR-February-2025.pdf) |
-| Anna Maria College | MA | -68 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Anna Maria College alumni publications archive and 2024 Alumni Magazine international-student statement](https://annamaria.edu/alumni/) |
+| Anna Maria College | MA | -68 | Percentage Movement | Confirmed reporting discontinuity | Safe with context | [Anna Maria College 2024 Alumni Magazine international-student statement](https://www.annamaria.edu/wp-content/uploads/2024/09/2sm_AMC_Magazine_2024_8.1_Rev2.2_hr.pdf) |
 | Normandale Community College | MN | +60 | Percentage Movement | Corroborated external count | Safe with context | [Normandale Community College 2024-2025 Fact Book](https://www.normandale.edu/_files/documents/about/FACTBOOK-2024-25.pdf) |
 
 ## Analyst notes
@@ -124,11 +124,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Lindsey Wilson College · UNITID 157216
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
-- **Evidence:** [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf)
-- **Analyst note:** The project IPEDS Fall 2023 row reports 1,437 U.S. nonresident students, split between 45 undergraduates and 1,392 graduate students. Lindsey Wilson's official Fall 2023 institutional fact book instead reports 978 international students from 50 foreign countries, including 156 undergraduates and 822 graduate students. The institutional count is 459 below the IPEDS all-student nonresident baseline, and the level distribution differs materially in both directions. Because the fact-book international population is not definition-identical to IPEDS U.S. nonresident status, this establishes a baseline population/reporting-scope mismatch rather than a source correction. The reviewed Fall 2024 enrollment announcement establishes continued record enrollment and international geographic breadth but does not provide a like-for-like international count to resolve the IPEDS increase from 1,437 to 2,027. Preserve IPEDS as the numerical authority and keep the +590 institution-specific movement held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated direction
+- **Reviewed:** 2026-10-17
+- **Evidence:** [ICE SEVP 2023-2024 active F-1 records + Lindsey Wilson international-student context](https://www.ice.gov/doclib/sevis/btn/2024/2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf)
+- **Analyst note:** The project IPEDS series reports 1,437 U.S. nonresident students in Fall 2023 and 2,027 in Fall 2024, an increase of 590, with the 2023 baseline split between 45 undergraduates and 1,392 graduate students. ICE SEVP's official Top 500 F-1 school tables list Lindsey Wilson College at 2,334 active F-1 SEVIS records in 2023 and 2,505 in 2024, an increase of 171 for the same named school. Lindsey Wilson's official international-student page states that the institution is authorized under federal law to enroll non-immigrant alien students, while its Fall 2023 institutional fact book reports a much narrower 978 international students from 50 foreign countries, including 156 undergraduates and 822 graduate students. The large count differences across the institutional fact-book, SEVP active-record, and IPEDS Fall-census populations show that these sources are not definition-identical and cannot be substituted for one another. The 2024 institutional enrollment announcement reports record Fall enrollment of 4,147 students, students from 49 countries and six continents, and a graduate/doctoral share of about 60%, but it does not publish a comparable Fall international-status count. SEVP's calendar-year active-record series therefore does not validate the +590 magnitude or the level distribution. It does, however, independently show a material same-direction increase in the school's F-1 population across 2023-2024. Preserve IPEDS as the numerical authority and clear only bounded direction-level discussion of the increase; do not substitute the SEVP counts, treat the +590 as externally reconciled, or infer a common population definition.
 
 ### Texas State University · UNITID 228459
 
@@ -455,7 +455,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 - **Decision:** Safe with context
 - **Disposition:** Confirmed reporting discontinuity
 - **Reviewed:** 2026-10-15
-- **Evidence:** [Anna Maria College alumni publications archive and 2024 Alumni Magazine international-student statement](https://annamaria.edu/alumni/)
+- **Evidence:** [Anna Maria College 2024 Alumni Magazine international-student statement](https://www.annamaria.edu/wp-content/uploads/2024/09/2sm_AMC_Magazine_2024_8.1_Rev2.2_hr.pdf)
 - **Analyst note:** The project IPEDS series reports 114 U.S. nonresident students in Fall 2023 and 46 in Fall 2024, a decline of 68, with all-student enrollment falling from 1,332 to 1,202 and Fall 2024 undergraduate/graduate totals of 916 and 286. Anna Maria College's official 2024 presidential search profile independently places total enrollment at approximately 1,200 with just over 900 traditional undergraduates, closely matching the project Fall 2024 institutional footprint. More importantly, the official 2024 Alumni Magazine article by the Senior Vice President for Academic Affairs says that, as the college reorganized Academic Affairs 'starting this fall,' Anna Maria had more than 100 international students. That contemporaneous institutional statement is more than twice the project Fall 2024 U.S. nonresident endpoint of 46 and is directionally inconsistent with treating the 114-to-46 IPEDS movement as a literal disappearance of the institution's international population. The magazine does not establish that its institution-defined international population, reference date, or status coverage is definition-identical to the IPEDS Fall-census U.S. nonresident category, so do not substitute the 'more than 100' statement or infer an exact alternative count. Preserve IPEDS as the numerical authority, but treat the -68 movement as a confirmed reporting/population discontinuity for bounded discussion rather than independently confirmed substantive international-enrollment contraction.
 
 ### Normandale Community College · UNITID 174428

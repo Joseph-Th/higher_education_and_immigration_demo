@@ -10,9 +10,9 @@
     "data/findings.json": "c9c4f4948113353576e4be8b82ef3596b153059a77b600305f9ec569957544d7",
     "data/latest_update_review.json": "7a1d00482ff0fa998561b57dea3c45de495406e0e2a78e22ddb73c4b835ab69e",
     "data/qa_resolution_summary.json": "2845c78eb7c65f1bf299e91beb6601959b80dff942576bf2adbad77279d51fc7",
-    "data/medium_qa_resolution_summary.json": "12cc4a13b0b7b2ca750ad55b699a9475fa6325f5a9dc8dfb0d6cf94dac97676a"
+    "data/medium_qa_resolution_summary.json": "a301c9c1921d999b630556114a4a6dfa982ccbee4d00943d8721e3d502886dcc"
   },
-  "pptx_sha256": "af29a06a82da7397c7fa71369238f36adff44252b7c707cc903cec0544e4b78a",
+  "pptx_sha256": "4ed061b75f3ff5fde11a867c69b158cd17f9e041877cc4282b45eb9d7ce38446",
   "pptx_bytes": 42247,
   "slide_count": 5,
   "metrics": {
@@ -25,7 +25,7 @@
     "decade_change": 63400,
     "high_priority_reviewed": 27,
     "medium_priority_reviewed": 50,
-    "institution_claim_holds": 9,
+    "institution_claim_holds": 8,
     "slide_count": 5
   }
 }

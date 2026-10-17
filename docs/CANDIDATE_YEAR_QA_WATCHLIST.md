@@ -11,7 +11,7 @@ This pre-release watchlist combines the current 2023-2024 high/medium institutio
 - **Current medium + candidate directory overlaps:** 5
 - **Unique union:** 27 + 50 + 154 - 5 = **226**
 
-The existing high-priority evidence review remains **26 safe with context / 1 held for confirmation**, and the medium-priority evidence review remains **42 safe with context / 8 held**, for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
+The existing high-priority evidence review remains **26 safe with context / 1 held for confirmation**, and the medium-priority evidence review remains **43 safe with context / 7 held**, for the current 2024 publication. Those decisions are carried as context only and must be revalidated after the next complete Fall Enrollment build; they are not automatically inherited by 2025.
 
 ## Medium-priority rows that also changed in the candidate directory
 
@@ -19,7 +19,7 @@ Five current medium-priority rows also have a candidate directory structural sig
 
 | Institution | State | 2023-2024 change | Current publication class | Candidate directory signal | 2024 nonresident |
 | --- | --- | ---: | --- | --- | ---: |
-| Lindsey Wilson College | KY | +590 | Hold for confirmation | Shared attribute change: institution_name_changed | 2,027 |
+| Lindsey Wilson College | KY | +590 | Safe with context | Shared attribute change: institution_name_changed | 2,027 |
 | FIDM-Fashion Institute of Design & Merchandising | CA | -166 | Safe with context | Left directory eligible: title_iv_first_look_status_lost | 128 |
 | Humphreys University-Stockton and Modesto Campuses | CA | +116 | Safe with context | Shared attribute change: institution_name_changed | 288 |
 | City College-Hollywood | FL | 0 | Safe with context | Left directory eligible: title_iv_first_look_status_lost | 0 |

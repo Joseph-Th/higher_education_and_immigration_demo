@@ -25,8 +25,8 @@ The strongest part of the project is not the number of artifacts. It is the deci
 
 - **24/24** NCES Digest benchmark checks pass.
 - **27/27** high-priority institution flags have manual evidence-backed dispositions: **26 safe with context, 1 held for confirmation**.
-- **50/50** medium-priority flags are evidence-reviewed: **42 safe with context, 8 held for confirmation**.
-- The **9 held institution-specific claims remain in official aggregate calculations but are kept out of unsupported institution-level narrative**.
+- **50/50** medium-priority flags are evidence-reviewed: **43 safe with context, 7 held for confirmation**.
+- The **8 held institution-specific claims remain in official aggregate calculations but are kept out of unsupported institution-level narrative**.
 - The project separates current-publication readiness from permission to advance to the next data year. A partial next-year package does not silently become a new analysis vintage.
 
 Those controls are visible in `site/qa-review.html`, `site/medium-qa-review.html`, `site/publication-handoff.html`, and `site/release-readiness.html` if a reviewer wants to go deeper.
