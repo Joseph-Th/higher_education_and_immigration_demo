@@ -7,8 +7,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 ## Review summary
 
 - **27/27** high-priority records manually reviewed (**100% coverage**).
-- **22** are safe to discuss with explicit context.
-- **5** remain held for institution-specific interpretation.
+- **25** are safe to discuss with explicit context.
+- **2** remain held for institution-specific interpretation.
 - Three representative cases are promoted into the public research memo: an unresolved anomaly, a corroborated movement, and a confirmed structural change.
 - Latest review date: **2026-10-16**.
 
@@ -18,8 +18,8 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | --- | --- | ---: | --- | --- | --- |
 | University of the Cumberlands | KY | +4,616 | confirmed_reporting_discontinuity | safe_with_context | [ICE SEVP 2023 Top 500 F-1 Schools active-record table](https://www.ice.gov/doclib/sevis/btn/24_0510_hsi_sevp-sevis-btn-2023-top500-f1-schools.pdf) |
 | Collin County Community College District | TX | +2,256 | corroborated_direction | safe_with_context | [Collin College FY2025 ACFR Fall Student Profile](https://collin.edu/financials/documents/annual-comprehensive-financial-report-fy-2025.pdf) |
-| Broward College | FL | +2,005 | external_scope_mismatch | hold_for_confirmation | [Broward College Consumer Information Disclosures](https://www.broward.edu/admissions/financial-aid/_docs/consumer-information-disclosures.pdf) |
-| Miami Dade College | FL | +1,458 | external_scope_mismatch | hold_for_confirmation | [Miami Dade College 2024-25 Fact Book Credit Student Enrollment Profile](https://www.mdc.edu/media/miami-dade-college/institutional-research/documents/fb_credit_student_enrollment_profile.pdf) |
+| Broward College | FL | +2,005 | corroborated_external_count | safe_with_context | [Florida Department of Education 2024 and 2025 Florida College System Fact Books](https://www.fldoe.org/accountability/data-sys/CCTCMIS/reports) |
+| Miami Dade College | FL | +1,458 | corroborated_external_count | safe_with_context | [Florida Department of Education 2024 and 2025 Florida College System Fact Books](https://www.fldoe.org/accountability/data-sys/CCTCMIS/reports) |
 | Trine University-Regional/Non-Traditional Campuses | IN | +1,441 | corroborated_direction | safe_with_context | [Trine University fall 2024 record-enrollment announcement](https://www.trine.edu/news/2024/record-enrollment.aspx) |
 | Campbellsville University | KY | -1,358 | corroborated_direction | safe_with_context | [Campbellsville University institutional enrollment reports](https://www.campbellsville.edu/academics/academic-affairs/officeofinstitutionalresearch-institutionalreviewboard.html) |
 | The University of Texas at Dallas | TX | -1,225 | corroborated_direction | safe_with_context | [University of Texas System FY 2026 Operating Budget Summary](https://www.utsystem.edu/sites/default/files/documents/report-state/2025/operating-budget-summary-system-fy-2026/fy-2026-operating-budget-summaries-of-8-22-2025-final.pdf) |
@@ -34,7 +34,7 @@ A disposition never overwrites IPEDS. `safe_with_context` means outside evidence
 | Louisiana Tech University | LA | +342 | corroborated_direction | safe_with_context | [Louisiana Tech Fall 2024 enrollment announcement](https://www.latech.edu/news/louisiana-tech-celebrates-six-year-enrollment-milestone-and-record-setting-freshman-class.php) |
 | Cumberland University | TN | +306 | corroborated_direction | safe_with_context | [ICE SEVP 2024 Top 500 F-1 Schools active-record table](https://www.ice.gov/doclib/sevis/btn/2024/2024_Top500_F1_HigherEducationSchoolsByNumberActiveSevisRecords.pdf) |
 | Oakton College | IL | +299 | confirmed_reporting_discontinuity | safe_with_context | [Oakton College Fall 2022-2026 Enrollment Comparison Report](https://www.oakton.edu/_pdfs/research-and-planning/fall_2022-fall_2026_enrollment_comparison_report.pdf) |
-| Polk State College | FL | +288 | external_scope_mismatch | hold_for_confirmation | [Polk State College Fall 2024 enrollment announcement](https://www.polk.edu/news/polk-state-celebrates-growing-enrollment-as-registration-continues-for-fall-2024-semester/) |
+| Polk State College | FL | +288 | corroborated_external_count | safe_with_context | [Florida Department of Education 2024 and 2025 Florida College System Fact Books](https://www.fldoe.org/accountability/data-sys/CCTCMIS/reports) |
 | Norfolk State University | VA | +278 | corroborated_external_count | safe_with_context | [Norfolk State University Fact Book 2020-2024](https://www.nsu.edu/Academics/Research/Institutional-Research/Documents-and-Forms/FactBook_2020-2024.aspx) |
 | Grambling State University | LA | +264 | corroborated_external_count | safe_with_context | [Grambling State University campus overview and enrollment snapshot](https://www.gram.edu/aboutus/campusoverview.php) |
 | Oakwood University | AL | -192 | confirmed_reporting_discontinuity | safe_with_context | [Oakwood University Institutional Effectiveness enrollment statistics archive](https://oakwood.edu/our-story/institutional-effectiveness/) |
@@ -66,17 +66,17 @@ IPEDS rises from 433 U.S. nonresident students in Fall 2023 to 2,689 in Fall 202
 
 **Automated trigger:** absolute change is at least 1,000 students; percentage change is at least 50% from a baseline of 100+.
 
-IPEDS rises from 3,369 to 5,374 U.S. nonresident students from Fall 2023 to Fall 2024. Broward College's official consumer-information disclosure reports Nonresident Alien as 2% of full-time certificate/degree-seeking students in Fall 2023, while the project IPEDS measure covers all fall-enrolled students and reports 3,369 of 29,140 students (11.6%) as U.S. nonresidents. The institutional disclosure explicitly uses a narrower student population, so it establishes a population-scope mismatch rather than corroborating or refuting the IPEDS count. Retain IPEDS in aggregates and keep the institution-specific 2024 increase held pending a comparable all-student source.
+Project IPEDS rises from 3,369 U.S. nonresident students in Fall 2023 to 5,374 in Fall 2024. Florida Department of Education's official Florida College System Fact Books report Broward Non-Resident Alien counts of 2,007 female plus 1,362 male in Fall 2023 and 3,240 female plus 2,134 male in Fall 2024, summing exactly to 3,369 and 5,374. The same tables report total headcounts of 29,140 and 30,728, also exactly matching project IPEDS. The FDOE tables are beginning-of-term reports built from college-submitted data used for state and federal reporting. Preserve IPEDS as the analytical authority, but the exact two-year nonresident and total-enrollment matches independently clear bounded discussion of the +2,005 movement.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_external_count` · **Reviewed:** 2026-10-16.
 
 ### Miami Dade College (UNITID 135717)
 
 **Automated trigger:** absolute change is at least 1,000 students; percentage change is at least 25% from a baseline of 100+.
 
-IPEDS rises from 2,947 to 4,405 U.S. nonresident students. Miami Dade College's official 2024-25 Fact Book instead reports 1,051 students in its Out of State - International residency category among 94,297 academic-year credit students. The institutional measure uses an academic-year credit population and a residency classification rather than the IPEDS fall U.S. nonresident definition, and its level is materially smaller than the IPEDS count. That direct institutional evidence confirms a scope mismatch rather than numerically corroborating the jump, so retain IPEDS in aggregates and keep institution-specific interpretation held.
+Project IPEDS rises from 2,947 U.S. nonresident students in Fall 2023 to 4,405 in Fall 2024. Florida Department of Education's official Florida College System Fact Books report Miami Dade Non-Resident Alien counts of 1,798 female plus 1,149 male in Fall 2023 and 2,597 female plus 1,808 male in Fall 2024, summing exactly to 2,947 and 4,405. FDOE all-student totals are 39,178 and 58,954 versus project IPEDS 39,139 and 58,941, differences of only 39 and 13 students. The FDOE tables are beginning-of-term reports built from college-submitted data used for state and federal reporting. Preserve IPEDS as the analytical authority and do not substitute the slightly different total population, but the exact two-year Non-Resident Alien endpoints independently clear bounded discussion of the +1,458 movement.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-14.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_external_count` · **Reviewed:** 2026-10-16.
 
 ### Trine University-Regional/Non-Traditional Campuses (UNITID 414878)
 
@@ -194,9 +194,9 @@ IPEDS reports zero U.S. nonresident students in 2020-2022, then 167 in 2023 and 
 
 **Automated trigger:** absolute change is at least 250 students; percentage change is at least 100% from a baseline of 100+.
 
-The project IPEDS series reports 110 U.S. nonresident students in Fall 2023 and 398 in Fall 2024, an increase of 288, while total fall enrollment rises from 7,963 to 10,318. Polk State College's official September 16, 2024 enrollment announcement instead reports a 3.7% increase compared with the same point a year earlier and says Fall 2024 headcount had already exceeded 11,000 while registration was still open for eight-week classes beginning October 9. The college's official 2024 Facts & Figures separately reports an annual unduplicated headcount of 14,515 covering Summer 2023, Fall 2023, and Spring 2024, rather than a single fall-census population. Those institution-defined totals use different timing and population windows from the project IPEDS Fall Enrollment endpoints and neither source publishes a comparable Fall 2023/Fall 2024 U.S. nonresident count. Preserve IPEDS as the numerical authority and keep the +288 institution-specific movement held as a documented timing/population-scope mismatch; do not infer a nonresident count from the broader or still-open institutional enrollment figures.
+Project IPEDS rises from 110 U.S. nonresident students in Fall 2023 to 398 in Fall 2024. Florida Department of Education's official Florida College System Fact Books report Polk State Non-Resident Alien counts of 70 female plus 40 male in Fall 2023 and 255 female plus 143 male in Fall 2024, summing exactly to 110 and 398. The same beginning-of-term tables report total headcounts of 7,963 and 10,318, also exactly matching project IPEDS. Because the state fact books are built from college-submitted data used for state and federal reporting, they independently corroborate both endpoints and the +288 movement. Preserve IPEDS as the analytical authority and clear bounded discussion of the increase.
 
-**Decision:** `hold_for_confirmation` · **Disposition:** `external_scope_mismatch` · **Reviewed:** 2026-10-15.
+**Decision:** `safe_with_context` · **Disposition:** `corroborated_external_count` · **Reviewed:** 2026-10-16.
 
 ### Norfolk State University (UNITID 232937)
 

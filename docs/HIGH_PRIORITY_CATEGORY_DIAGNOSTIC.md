@@ -17,7 +17,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 
 | Institution | NR change | NR status | Total change | Opposite-category movement | Ratio to NR change | Largest opposite category | Category status | Publication gate |
 | --- | ---: | --- | ---: | ---: | ---: | --- | --- | --- |
-| Polk State College | +288 | R→R | +2,355 | 1,950 | 677.1% | White (-1,192) | R→R | hold_for_confirmation |
+| Polk State College | +288 | R→R | +2,355 | 1,950 | 677.1% | White (-1,192) | R→R | safe_with_context |
 | Anderson University | -176 | R→R | +385 | 588 | 334.1% | Race / ethnicity unknown (+365) | R→R | safe_with_context |
 | Colorado State University Global | +183 | R→R | +750 | 377 | 206.0% | Race / ethnicity unknown (-279) | R→R | hold_for_confirmation |
 | University of the Cumberlands | +4,616 | R→R | +1,793 | 7,086 | 153.5% | Asian (-3,593) | R→R | safe_with_context |
@@ -34,8 +34,8 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | --- | --- | ---: | --- | ---: | ---: | --- | --- |
 | University of the Cumberlands | Continuing | +4,616 | R→R | -2,823 | 153.5% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Collin County Community College District | Continuing | +2,256 | R→R | -480 | 46.0% | Countermovement below half of the nonresident change | safe_with_context |
-| Broward College | Continuing | +2,005 | R→R | -417 | 45.6% | Countermovement below half of the nonresident change | hold_for_confirmation |
-| Miami Dade College | Continuing | +1,458 | R→R | +18,344 | 0.1% | Countermovement below half of the nonresident change | hold_for_confirmation |
+| Broward College | Continuing | +2,005 | R→R | -417 | 45.6% | Countermovement below half of the nonresident change | safe_with_context |
+| Miami Dade College | Continuing | +1,458 | R→R | +18,344 | 0.1% | Countermovement below half of the nonresident change | safe_with_context |
 | Trine University-Regional/Non-Traditional Campuses | Continuing | +1,441 | R→R | +197 | 0.8% | Countermovement below half of the nonresident change | safe_with_context |
 | Campbellsville University | Continuing | -1,358 | R→R | -257 | 41.4% | Countermovement below half of the nonresident change | safe_with_context |
 | The University of Texas at Dallas | Continuing | -1,225 | R→R | +226 | 48.8% | Countermovement below half of the nonresident change | safe_with_context |
@@ -50,7 +50,7 @@ This diagnostic adds an internal source-data check to the 27-record high-priorit
 | Louisiana Tech University | Continuing | +342 | R→R | +104 | 128.9% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Cumberland University | Continuing | +306 | R→R | +79 | 44.1% | Countermovement below half of the nonresident change | safe_with_context |
 | Oakton College | Continuing | +299 | R→R | +998 | 0.0% | Countermovement below half of the nonresident change | safe_with_context |
-| Polk State College | Continuing | +288 | R→R | +2,067 | 677.1% | Countermovement at least as large as the nonresident change | hold_for_confirmation |
+| Polk State College | Continuing | +288 | R→R | +2,067 | 677.1% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Norfolk State University | Continuing | +278 | R→R | -270 | 100.7% | Countermovement at least as large as the nonresident change | safe_with_context |
 | Grambling State University | Continuing | +264 | R→R | -228 | 91.3% | Countermovement at least half as large as the nonresident change | safe_with_context |
 | Oakwood University | Continuing | -192 | R→Z | +99 | 127.6% | Countermovement at least as large as the nonresident change | safe_with_context |
