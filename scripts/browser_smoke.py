@@ -752,7 +752,7 @@ def inspect_candidate_year_watchlist(browser, base_url: str, *, width: int, heig
             raise AssertionError(f"Candidate-year QA watchlist boundary is missing {expected}")
 
     main_text = page.locator("main").inner_text()
-    for expected in ("27 current high-priority rows + 50 current medium-priority rows + 154 candidate directory changes - 5 overlaps = 226", "No current high-priority record overlaps", "30 safe with context / 20 held"):
+    for expected in ("27 current high-priority rows + 50 current medium-priority rows + 154 candidate directory changes - 5 overlaps = 226", "No current high-priority record overlaps", "31 safe with context / 19 held"):
         if expected not in main_text:
             raise AssertionError(f"Candidate-year QA watchlist union is missing {expected}")
 
@@ -881,7 +881,7 @@ def inspect_medium_qa_review(browser, base_url: str, *, width: int, height: int)
         raise AssertionError(f"Medium-priority evidence review page failed at {width}px")
 
     summary = page.locator(".handoff-hero .handoff-summary").inner_text()
-    for expected in ("50/50", "30", "20", "100%"):
+    for expected in ("50/50", "31", "19", "100%"):
         if expected not in summary:
             raise AssertionError(f"Medium-priority evidence summary is missing {expected}")
     table = page.locator("#complete-queue tbody")
@@ -1273,7 +1273,7 @@ def inspect_publication_handoff(browser, base_url: str, *, width: int, height: i
     if "1,044,137" not in page.locator(".handoff-card").first.inner_text():
         raise AssertionError("Publication handoff headline card does not contain the validated national total")
     handoff_text = page.locator("#handoff-register").inner_text()
-    for expected in ("N06", "Q02", "Q03", "M02", "P01", "G01", "+31,592", "45 of 51 states/DC", "226 unique UNITIDs", "five medium/directory overlaps", "no high/directory overlap", "All 50 current medium-priority institution flags", "28 percentage-movement", "30 are safe with context", "20 remain held for confirmation", "standing approval", "70.7%", "70.4%", "not addable", "zero inferred internal deadlines"):
+    for expected in ("N06", "Q02", "Q03", "M02", "P01", "G01", "+31,592", "45 of 51 states/DC", "226 unique UNITIDs", "five medium/directory overlaps", "no high/directory overlap", "All 50 current medium-priority institution flags", "28 percentage-movement", "31 are safe with context", "19 remain held for confirmation", "standing approval", "70.7%", "70.4%", "not addable", "zero inferred internal deadlines"):
         if expected not in handoff_text:
             raise AssertionError(f"Publication handoff is missing expanded control {expected}")
     overflow = page.evaluate("document.documentElement.scrollWidth - document.documentElement.clientWidth")

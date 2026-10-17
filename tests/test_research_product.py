@@ -539,8 +539,8 @@ class ResearchProductTests(unittest.TestCase):
         q03 = next(row for row in handoff if row["claim_id"] == "Q03")
         self.assertIn("All 50 current medium-priority institution flags", q03["public_copy"])
         self.assertIn("28 percentage-movement", q03["public_copy"])
-        self.assertIn("30 are safe with context", q03["public_copy"])
-        self.assertIn("20 remain held for confirmation", q03["public_copy"])
+        self.assertIn("31 are safe with context", q03["public_copy"])
+        self.assertIn("19 remain held for confirmation", q03["public_copy"])
         self.assertIn("data/medium_qa_resolution_log.csv", q03["authority"])
         self.assertIn("does not correct IPEDS values", q03["release_disclosure"])
         self.assertIn("standing approval", q03["release_disclosure"])
@@ -1130,12 +1130,12 @@ class ResearchProductTests(unittest.TestCase):
         )
         self.assertEqual(
             Counter(row["publication_class"] for row in resolution),
-            Counter({"hold_for_confirmation": 20, "safe_with_context": 30}),
+            Counter({"hold_for_confirmation": 19, "safe_with_context": 31}),
         )
         safe_unitids = {
             row["unitid"] for row in resolution if row["publication_class"] == "safe_with_context"
         }
-        self.assertEqual(safe_unitids, {"110635", "111939", "114354", "115773", "127820", "129941", "138187", "139755", "145637", "146427", "151111", "152637", "154697", "155061", "157863", "159948", "164492", "164988", "174428", "186867", "187897", "196413", "224615", "228459", "228769", "230782", "232609", "243780", "244233", "417327"})
+        self.assertEqual(safe_unitids, {"110635", "111939", "114354", "115773", "122205", "127820", "129941", "138187", "139755", "145637", "146427", "151111", "152637", "154697", "155061", "157863", "159948", "164492", "164988", "174428", "186867", "187897", "196413", "224615", "228459", "228769", "230782", "232609", "243780", "244233", "417327"})
         self.assertTrue(all(row["evidence_url"].startswith("https://") for row in resolution))
         self.assertTrue(all(row["analyst_note"].strip() for row in resolution))
 
@@ -1170,6 +1170,15 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("academic-year headcounts are broader than the IPEDS Fall census", by_unitid["154697"]["analyst_note"])
         self.assertIn("confirmed reporting/scope discontinuity", by_unitid["154697"]["analyst_note"])
         self.assertIn("do not describe the decline as independently corroborated international-enrollment loss", by_unitid["154697"]["analyst_note"])
+        self.assertEqual(by_unitid["122205"]["publication_class"], "safe_with_context")
+        self.assertEqual(by_unitid["122205"]["disposition"], "corroborated_external_count")
+        self.assertIn("datamart.cccco.edu/students/Citizenship_Status_Summary.aspx", by_unitid["122205"]["evidence_url"])
+        self.assertIn("253 in Fall 2023 and 405 in Fall 2024", by_unitid["122205"]["analyst_note"])
+        self.assertIn("also an increase of 152", by_unitid["122205"]["analyst_note"])
+        self.assertIn("25,238 and 28,545", by_unitid["122205"]["analyst_note"])
+        self.assertIn("STD7 reporting criteria", by_unitid["122205"]["analyst_note"])
+        self.assertIn("only five students in each year", by_unitid["122205"]["analyst_note"])
+        self.assertIn("clearing bounded institution-specific discussion", by_unitid["122205"]["analyst_note"])
         self.assertEqual(by_unitid["228459"]["disposition"], "corroborated_external_count")
         self.assertEqual(by_unitid["151111"]["disposition"], "expected_structural_change")
         self.assertEqual(by_unitid["159948"]["publication_class"], "safe_with_context")
@@ -1461,13 +1470,12 @@ class ResearchProductTests(unittest.TestCase):
         self.assertIn("asylees, DACA recipients, permanent residents/green card holders", by_unitid["198455"]["analyst_note"])
         self.assertIn("students who require F-1 status", by_unitid["198455"]["analyst_note"])
         self.assertIn("keep the +129 institution-specific movement held", by_unitid["198455"]["analyst_note"])
-        self.assertEqual(by_unitid["122205"]["publication_class"], "hold_for_confirmation")
-        self.assertEqual(by_unitid["122205"]["disposition"], "external_scope_mismatch")
-        self.assertIn("apply-pay/how-apply/international-student", by_unitid["122205"]["evidence_url"])
-        self.assertIn("248 U.S. nonresident students in Fall 2023", by_unitid["122205"]["analyst_note"])
-        self.assertIn("400 in Fall 2024", by_unitid["122205"]["analyst_note"])
-        self.assertIn("visa types other than F-1 apply through the general Admissions and Records process", by_unitid["122205"]["analyst_note"])
-        self.assertIn("keep the +152 institution-specific movement held", by_unitid["122205"]["analyst_note"])
+        self.assertEqual(by_unitid["122205"]["publication_class"], "safe_with_context")
+        self.assertEqual(by_unitid["122205"]["disposition"], "corroborated_external_count")
+        self.assertIn("248 U.S. nonresident students in Fall 2023 and 400 in Fall 2024", by_unitid["122205"]["analyst_note"])
+        self.assertIn("Student Visa (F-1 or M-1 visa) counts of 253 in Fall 2023 and 405 in Fall 2024", by_unitid["122205"]["analyst_note"])
+        self.assertIn("is assumed definition-identical to the IPEDS Fall-census U.S. nonresident measure", by_unitid["122205"]["analyst_note"])
+        self.assertIn("Do not substitute the Data Mart values for IPEDS", by_unitid["122205"]["analyst_note"])
         self.assertEqual(by_unitid["490081"]["publication_class"], "hold_for_confirmation")
         self.assertEqual(by_unitid["490081"]["disposition"], "partial_component_corroboration")
         self.assertIn("annualReports/2024/details/23621227", by_unitid["490081"]["evidence_url"])
@@ -1531,10 +1539,10 @@ class ResearchProductTests(unittest.TestCase):
         )
         self.assertEqual(summary["reviewed_count"], 50)
         self.assertEqual(summary["coverage_pct"], 100.0)
-        self.assertEqual(summary["safe_with_context"], 30)
-        self.assertEqual(summary["hold_for_confirmation"], 20)
-        self.assertEqual(summary["dispositions"]["external_scope_mismatch"], 16)
-        self.assertEqual(summary["dispositions"]["corroborated_external_count"], 11)
+        self.assertEqual(summary["safe_with_context"], 31)
+        self.assertEqual(summary["hold_for_confirmation"], 19)
+        self.assertEqual(summary["dispositions"]["external_scope_mismatch"], 15)
+        self.assertEqual(summary["dispositions"]["corroborated_external_count"], 12)
         self.assertEqual(summary["dispositions"]["confirmed_reporting_discontinuity"], 3)
         self.assertNotIn("context_only", summary["dispositions"])
         self.assertEqual(summary["dispositions"]["corroborated_direction"], 11)
@@ -1573,15 +1581,15 @@ class ResearchProductTests(unittest.TestCase):
         html = (ROOT / "site" / "medium-qa-review.html").read_text(encoding="utf-8")
         for expected in (
             "50/50 current medium-priority institution flags",
-            "Safe with context:** 30",
-            "Held for confirmation:** 20",
+            "Safe with context:** 31",
+            "Held for confirmation:** 19",
             "Texas State University",
             "University of California-Berkeley",
             "not standing approval for the next release",
         ):
             self.assertIn(expected, rendered)
         self.assertIn("50/50</strong><span>medium-priority records reviewed", html)
-        self.assertIn("30 records have enough corroboration", html)
+        self.assertIn("31 records have enough corroboration", html)
         self.assertIn("not standing approval for a future release", html)
         self.assertEqual(html.count('target="_blank"'), 50)
 
