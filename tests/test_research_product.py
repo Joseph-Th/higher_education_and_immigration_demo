@@ -1679,6 +1679,21 @@ class ResearchProductTests(unittest.TestCase):
             validation,
         )
 
+    def test_readme_preserves_compact_reviewer_path(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertLessEqual(len(readme.splitlines()), 100)
+        start_here = readme.split("## Start here", 1)[1].split("## Research question", 1)[0]
+        numbered_steps = re.findall(r"^\d+\. ", start_here, flags=re.MULTILINE)
+        self.assertEqual(len(numbered_steps), 3)
+        for expected in (
+            "Live research publication",
+            "deliverables/research_brief.pdf",
+            "deliverables/management_briefing_deck.pptx",
+            "deliverables/ipeds_portfolio_analysis.xlsx",
+            "site/sql-analysis.html",
+        ):
+            self.assertIn(expected, readme)
+
     def test_ad_hoc_analysis_casebook_is_reproducible_and_explicitly_simulated(self) -> None:
         case_rows = rows(ROOT / "data" / "ad_hoc_analysis_results.csv")
         self.assertEqual([row["case_id"] for row in case_rows], ["A01", "A02", "A03"])
