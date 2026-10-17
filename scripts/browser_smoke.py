@@ -1236,6 +1236,15 @@ def inspect_undocumented_pipeline(browser, base_url: str, *, width: int, height:
     for expected in ("70.7%", "70.4%", "10", "NOT A RATE"):
         if expected not in summary:
             raise AssertionError(f"Undocumented pipeline summary is missing {expected}")
+    if page.locator("#state-comparison .pipeline-state-row").count() != 10:
+        raise AssertionError("Undocumented pipeline visual does not contain ten state rows")
+    if page.locator("#state-comparison .pipeline-state-row.leader").count() != 4:
+        raise AssertionError("Undocumented pipeline visual does not identify the shared four leading states")
+    comparison_text = page.locator("#state-comparison").text_content() or ""
+    for expected in ("Texas", "California", "16.00%", "20.18%", "HS #1", "HE #1", "NOT A RATE"):
+        if expected not in comparison_text:
+            raise AssertionError(f"Undocumented pipeline state visual is missing {expected}")
+    page.locator("#state-comparison details.pipeline-audit-details").evaluate("el => el.open = true")
     if page.locator("#state-comparison tbody tr").count() != 10:
         raise AssertionError("Undocumented pipeline table does not contain ten state rows")
     if page.locator(".handoff-gates li").count() != 5:
