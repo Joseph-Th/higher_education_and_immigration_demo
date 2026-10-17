@@ -9,9 +9,9 @@
     "expected_structural_change": 5,
     "corroborated_direction": 13,
     "corroborated_external_count": 12,
-    "external_scope_mismatch": 5,
+    "external_scope_mismatch": 6,
     "confirmed_reporting_discontinuity": 11,
-    "partial_component_corroboration": 4
+    "partial_component_corroboration": 3
   },
   "candidate_overlap_reviewed": 5,
   "safe_unitids": [
