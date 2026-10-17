@@ -18,7 +18,7 @@
         <h1>Know what changed before advancing the analysis year.</h1>
         <p class="lede">A dated monitoring snapshot separates source availability from publication permission: detect a release, preserve the observation, then run schema and methodology review before using it.</p>
         <div class="hero-actions"><a class="button button-primary" href="#release-readiness">Review release gate</a><a class="button button-secondary" href="downloads/freshness_monitor.csv">Download monitoring register</a></div>
-        <p class="release-note"><strong>Snapshot boundary:</strong> checked 2026-10-17T11:37:24+00:00. This page is not continuously live, and recurring-product deadlines are not inferred from prior publication dates.</p>
+        <p class="release-note"><strong>Snapshot boundary:</strong> checked 2026-10-17T15:12:57+00:00. This page is not continuously live, and recurring-product deadlines are not inferred from prior publication dates.</p>
         <div class="handoff-summary">
           <article><strong>2/4</strong><span>2025 package assets available</span></article>
           <article><strong>HOLD YEAR ADVANCE</strong><span>analysis-year decision</span></article>
@@ -29,42 +29,26 @@
     </section>
     <section class="section shell" id="release-readiness">
       <div class="section-heading"><p class="eyebrow">Candidate 2025 package</p><h2>Incomplete availability does not advance the project year.</h2><p>2/4 required 2025 assets are available. The analysis therefore remains pinned to Fall 2024; continue monitoring until the complete package is available for schema review.</p></div>
-      <div class="handoff-grid">
-          <article class="handoff-card" data-monitor-id="R01">
-            <div class="handoff-card-head"><span>R01</span><span class="handoff-status handoff-status-hold">NOT AVAILABLE</span></div>
-            <p class="case-kicker">NCES candidate-year asset</p>
-            <h2>2025 Fall Enrollment data</h2>
-            <dl class="handoff-meta">
-              <div><dt>Evidence</dt><dd>HTTP 404 at the NCES Complete Data Files endpoint</dd></div>
-              <div><dt>Next action</dt><dd>Continue monitoring; do not substitute a partial next-year package into the analysis.</dd></div>
-            </dl>
+      <div class="freshness-package-strip" aria-label="Four required candidate-year IPEDS assets">
+          <article class="freshness-asset-tile missing" data-monitor-id="R01">
+            <div class="freshness-asset-head"><span>R01</span><strong>NOT AVAILABLE</strong></div>
+            <h3>2025 Fall Enrollment data</h3>
+            <p>HTTP 404 at the NCES Complete Data Files endpoint</p>
           </article>
-          <article class="handoff-card" data-monitor-id="R02">
-            <div class="handoff-card-head"><span>R02</span><span class="handoff-status handoff-status-hold">NOT AVAILABLE</span></div>
-            <p class="case-kicker">NCES candidate-year asset</p>
-            <h2>2025 Fall Enrollment dictionary</h2>
-            <dl class="handoff-meta">
-              <div><dt>Evidence</dt><dd>HTTP 404 at the NCES Complete Data Files endpoint</dd></div>
-              <div><dt>Next action</dt><dd>Continue monitoring; do not substitute a partial next-year package into the analysis.</dd></div>
-            </dl>
+          <article class="freshness-asset-tile missing" data-monitor-id="R02">
+            <div class="freshness-asset-head"><span>R02</span><strong>NOT AVAILABLE</strong></div>
+            <h3>2025 Fall Enrollment dictionary</h3>
+            <p>HTTP 404 at the NCES Complete Data Files endpoint</p>
           </article>
-          <article class="handoff-card" data-monitor-id="R03">
-            <div class="handoff-card-head"><span>R03</span><span class="handoff-status handoff-status-ready">AVAILABLE</span></div>
-            <p class="case-kicker">NCES candidate-year asset</p>
-            <h2>2025 Institutional directory data</h2>
-            <dl class="handoff-meta">
-              <div><dt>Evidence</dt><dd>HTTP 200 at the NCES Complete Data Files endpoint; Content-Length 1009677 bytes</dd></div>
-              <div><dt>Next action</dt><dd>Preserve the observation and include the file in schema review after the full package is ready.</dd></div>
-            </dl>
+          <article class="freshness-asset-tile available" data-monitor-id="R03">
+            <div class="freshness-asset-head"><span>R03</span><strong>AVAILABLE</strong></div>
+            <h3>2025 Institutional directory data</h3>
+            <p>HTTP 200 at the NCES Complete Data Files endpoint; Content-Length 1009677 bytes</p>
           </article>
-          <article class="handoff-card" data-monitor-id="R04">
-            <div class="handoff-card-head"><span>R04</span><span class="handoff-status handoff-status-ready">AVAILABLE</span></div>
-            <p class="case-kicker">NCES candidate-year asset</p>
-            <h2>2025 Institutional directory dictionary</h2>
-            <dl class="handoff-meta">
-              <div><dt>Evidence</dt><dd>HTTP 200 at the NCES Complete Data Files endpoint; Content-Length 139157 bytes</dd></div>
-              <div><dt>Next action</dt><dd>Preserve the observation and include the file in schema review after the full package is ready.</dd></div>
-            </dl>
+          <article class="freshness-asset-tile available" data-monitor-id="R04">
+            <div class="freshness-asset-head"><span>R04</span><strong>AVAILABLE</strong></div>
+            <h3>2025 Institutional directory dictionary</h3>
+            <p>HTTP 200 at the NCES Complete Data Files endpoint; Content-Length 139157 bytes</p>
           </article></div>
       <div class="methods-crosswalk-callout"><div><p class="eyebrow">Decision gate</p><h3>HOLD YEAR ADVANCE</h3><p>2/4 required candidate-year files available in the captured NCES check; candidate directory structural preflight PASS. Keep END_YEAR=2024; rerun the live release check later and advance only after the complete package is available.</p></div><a class="button button-secondary" href="downloads/release_monitor_snapshot.json">Download captured NCES check</a></div>
     </section>
