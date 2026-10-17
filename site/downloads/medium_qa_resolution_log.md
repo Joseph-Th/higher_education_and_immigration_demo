@@ -2,8 +2,8 @@
 
 All **50/50 current medium-priority institution flags** now have an evidence-backed analyst disposition. The review preserves the official IPEDS values and separates bounded institution-specific discussion from records that still require directly comparable confirmation.
 
-- **Safe with context:** 29
-- **Held for confirmation:** 21
+- **Safe with context:** 30
+- **Held for confirmation:** 20
 - **Candidate-directory overlaps reviewed:** 5
 - **Coverage:** 100%
 
@@ -17,7 +17,7 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 | City College-Hollywood | FL | +0 | Structural Or Reporting | Expected structural change | Safe with context | [City College July 2024 teach-out announcement reported by Higher Ed Dive](https://www.highereddive.com/news/florida-for-profit-city-college-to-close/721917/) |
 | City College-Altamonte Springs | FL | +0 | Structural Or Reporting | Expected structural change | Safe with context | [City College July 2024 teach-out announcement reported by Higher Ed Dive](https://www.highereddive.com/news/florida-for-profit-city-college-to-close/721917/) |
 | Indiana Wesleyan University-National & Global | IN | +855 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Indiana Wesleyan University President's Report 2024](https://www.indwes.edu/about/offices/administration/ADMIN_10067_Presidents-Annual-Report-2024.pdf) |
-| Valencia College | FL | +692 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Valencia Institutional Research international-student archive](https://valenciacollege.edu/academics/analytics-and-planning/analytics-and-reporting/reporting/internal/enrollment.php) |
+| Valencia College | FL | +692 | Absolute And Percentage | Corroborated external count | Safe with context | [Florida Department of Education 2024 and 2025 Florida College System Fact Books](https://www.fldoe.org/accountability/data-sys/CCTCMIS/reports) |
 | Dallas College | TX | +628 | Absolute And Percentage | Corroborated direction | Safe with context | [Dallas College 2024-25 ACFR Fall Student Profile](https://www.dallascollege.edu/media/dallas-college/content-assets/documents/about-dallas-college/financial/reports/audited-financial-statements/2024-2025-ACFR.pdf) |
 | Chaffey College | CA | -611 | Absolute And Percentage | Corroborated direction | Safe with context | [Chaffey College Fall 2023 and Fall 2024 First Census Fast Facts](https://www.chaffey.edu/ir/reports-publications.php) |
 | Lindsey Wilson College | KY | +590 | Absolute And Percentage | External scope mismatch | Hold for confirmation | [Lindsey Wilson Fall 2023 institutional fact book](https://www.lindsey.edu/about-lwc/Offices-and-Services/img/lwcfactbook.pdf) |
@@ -100,11 +100,11 @@ All **50/50 current medium-priority institution flags** now have an evidence-bac
 
 ### Valencia College · UNITID 138187
 
-- **Decision:** Hold for confirmation
-- **Disposition:** External scope mismatch
-- **Reviewed:** 2026-10-15
-- **Evidence:** [Valencia Institutional Research international-student archive](https://valenciacollege.edu/academics/analytics-and-planning/analytics-and-reporting/reporting/internal/enrollment.php)
-- **Analyst note:** The project IPEDS series reports 2,671 U.S. nonresident students in Fall 2023 and 3,363 in Fall 2024, an increase of 692. Valencia College Institutional Research publishes term-specific Summary Report of Students with Non-Immigrant Visas files for both endpoints. The Fall 2023 report lists 1,288 students in its combined SEVIS and NON-SEVIS population, including 1,173 SEVIS students and 115 NON-SEVIS students; the Fall 2024 report lists 1,433 total, including 1,257 SEVIS and 176 NON-SEVIS students. The reports define SEVIS as F- and J-visa students and NON-SEVIS as other visa types / students who are not U.S. citizens or permanent residents, making the institutional series explicitly visa-oriented. It increases by 145 in the same direction as IPEDS, but its endpoint levels are 1,383 and 1,930 below the IPEDS counts, and its growth is far smaller than the +692 IPEDS movement. Treat this as a documented population/reporting-scope mismatch rather than count corroboration; preserve IPEDS as the numerical authority and keep the institution-specific movement held.
+- **Decision:** Safe with context
+- **Disposition:** Corroborated external count
+- **Reviewed:** 2026-10-16
+- **Evidence:** [Florida Department of Education 2024 and 2025 Florida College System Fact Books](https://www.fldoe.org/accountability/data-sys/CCTCMIS/reports)
+- **Analyst note:** The project IPEDS series reports 2,671 U.S. nonresident students in Fall 2023 and 3,363 in Fall 2024, an increase of 692, with all-student totals of 42,524 and 47,425. Florida Department of Education's official Florida College System Fact Books report Valencia Non-Resident Alien counts of 1,540 female plus 1,131 male in Fall 2023 and 2,000 female plus 1,363 male in Fall 2024, summing exactly to 2,671 and 3,363. The same beginning-of-term tables report total headcounts of 25,130 female plus 17,394 male in Fall 2023 and 28,015 female plus 19,410 male in Fall 2024, summing exactly to 42,524 and 47,425. The state fact books are built from college-submitted data used for state and federal reporting. Preserve IPEDS as the analytical authority, but the exact two-year Non-Resident Alien and total-enrollment matches independently corroborate both endpoints and the +692 movement, clearing bounded institution-specific discussion.
 
 ### Dallas College · UNITID 224615
 
