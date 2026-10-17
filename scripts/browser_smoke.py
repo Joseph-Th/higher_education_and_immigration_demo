@@ -438,6 +438,13 @@ def inspect_state_recovery(browser, base_url: str, *, width: int, height: int) -
     for expected in ("33", "18", "27", "+71,079"):
         if expected not in summary:
             raise AssertionError(f"State recovery summary is missing {expected}")
+    if page.locator("#largest-movements .recovery-movement-row").count() != 16:
+        raise AssertionError("State recovery visual does not render eight gains and eight shortfalls")
+    visual_text = page.locator("#largest-movements .recovery-movement-grid").inner_text()
+    for expected in ("IL", "+14,464", "CA", "-33,282", "Graduate", "Public"):
+        if expected not in visual_text:
+            raise AssertionError(f"State recovery visual is missing {expected}")
+    page.locator("#largest-movements details.recovery-audit-details").evaluate("el => el.open = true")
     tables = page.locator("#largest-movements tbody")
     if tables.count() != 2 or tables.nth(0).locator("tr").count() != 8 or tables.nth(1).locator("tr").count() != 8:
         raise AssertionError("State recovery page does not render both eight-state comparison tables")
