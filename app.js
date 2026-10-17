@@ -13,8 +13,9 @@ const svgEl = (name, attrs = {}) => {
 };
 
 function lineChart(container, series, options = {}) {
-  const width = 900, height = options.height || 330;
-  const margin = { top: 24, right: 30, bottom: 42, left: 72 };
+  const compact = container.clientWidth > 0 && container.clientWidth < 520;
+  const width = compact ? 620 : 900, height = options.height || (compact ? 300 : 330);
+  const margin = compact ? { top: 24, right: 22, bottom: 38, left: 58 } : { top: 24, right: 30, bottom: 42, left: 72 };
   const plotW = width - margin.left - margin.right;
   const plotH = height - margin.top - margin.bottom;
   const values = series.flatMap(s => s.values.map(d => d.value));
@@ -56,7 +57,8 @@ function lineChart(container, series, options = {}) {
     s.values.forEach(d => svg.appendChild(svgEl('circle', { cx:x(d.year), cy:y(d.value), r:4.2, class:`series-point ${idx ? 'secondary' : ''}` })));
     const last = s.values[s.values.length-1];
     const label = svgEl('text', { x:x(last.year)-5, y:y(last.value)-12, 'text-anchor':'end', class:'chart-title-label' });
-    label.textContent = s.name;
+    const formattedLast = options.valueFormatter ? options.valueFormatter(last.value) : fmtInt.format(Math.round(last.value));
+    label.textContent = options.showEndValue === false ? s.name : `${s.name} · ${formattedLast}`;
     svg.appendChild(label);
   });
   container.replaceChildren(svg);
@@ -69,7 +71,7 @@ function dynamicsChart(container, dynamics) {
     {label:'Left universe',value:-dynamics.left_enrollment},
     {label:'Net national change',value:dynamics.national_change,net:true}
   ];
-  const width=900, height=330, margin={top:18,right:125,bottom:28,left:190};
+  const width=650, height=330, margin={top:18,right:92,bottom:28,left:160};
   const center=width*.5;
   const usable=Math.min(center-margin.left-20,width-margin.right-center-20);
   const rowH=(height-margin.top-margin.bottom)/rows.length;
@@ -96,7 +98,7 @@ function updateChangeChart(container, review) {
     {label:'Graduate',value:review.national.graduate_change},
     {label:'Net change',value:review.national.absolute_change,net:true}
   ];
-  const width=900, height=290, margin={top:22,right:120,bottom:30,left:165};
+  const width=560, height=300, margin={top:22,right:88,bottom:30,left:132};
   const center=width*.49;
   const usable=Math.min(center-margin.left-24,width-margin.right-center-24);
   const rowH=(height-margin.top-margin.bottom)/rows.length;
@@ -119,7 +121,7 @@ function updateChangeChart(container, review) {
 }
 
 function controlChangeChart(container, rows) {
-  const width=900, height=300, margin={top:22,right:110,bottom:34,left:170};
+  const width=650, height=300, margin={top:22,right:92,bottom:34,left:150};
   const center=width*.48;
   const usable=Math.min(center-margin.left-24,width-margin.right-center-24);
   const rowH=(height-margin.top-margin.bottom)/rows.length;
@@ -142,7 +144,8 @@ function controlChangeChart(container, rows) {
 
 function divergingBarChart(container, gains, shortfalls) {
   const rows=[...gains.slice(0,6), ...shortfalls.slice(0,6)];
-  const width=900, height=430, margin={top:12,right:92,bottom:30,left:72};
+  const compact = container.clientWidth > 0 && container.clientWidth < 520;
+  const width=compact?620:900, height=430, margin=compact?{top:12,right:72,bottom:30,left:58}:{top:12,right:92,bottom:30,left:72};
   const center=width/2;
   const usable=Math.min(center-margin.left-22, width-margin.right-center-22);
   const rowH=(height-margin.top-margin.bottom)/rows.length;
@@ -189,6 +192,12 @@ const CASE_LABELS = {
   structural_change:'Explain the structural change'
 };
 
+const CASE_SUMMARIES = {
+  partial_component_corroboration:'Public evidence validates part of the frame, but not a directly comparable status count. Keep the institution-specific claim held.',
+  corroborated_direction:'Official reporting supports the direction of movement, but not a one-for-one IPEDS count match. Publish only with context.',
+  expected_structural_change:'Official records document the structural event behind the analytic-universe change. Publish with structural context.'
+};
+
 function renderQaCases(container, cases) {
   const decision = value => value === 'safe_with_context' ? 'Publish with context' : 'Hold institution-specific claim';
   cases.forEach(caseRow=>{
@@ -196,7 +205,7 @@ function renderQaCases(container, cases) {
     const kicker=document.createElement('p'); kicker.className='case-kicker'; kicker.textContent=CASE_LABELS[caseRow.case_type]||'Analyst review';
     const title=document.createElement('h3'); title.textContent=caseRow.institution;
     const change=document.createElement('p'); change.className='case-change'; change.textContent=`${signedInt(Number(caseRow.absolute_change))} students`;
-    const note=document.createElement('p'); note.textContent=caseRow.analyst_note;
+    const note=document.createElement('p'); note.textContent=CASE_SUMMARIES[caseRow.disposition]||caseRow.evidence_label;
     const footer=document.createElement('div'); footer.className='case-footer';
     const badge=document.createElement('span'); badge.className='case-decision'; badge.textContent=decision(caseRow.publication_class);
     const evidence=document.createElement('a'); evidence.href=caseRow.evidence_url; evidence.target='_blank'; evidence.rel='noopener'; evidence.textContent='Review evidence';
@@ -223,19 +232,28 @@ async function init() {
   if (!response.ok) throw new Error(`Data load failed: ${response.status}`);
   const data=await response.json();
   const h=data.headline;
+  const update=data.latest_update_review;
+  const undergraduateShift=data.undergraduate_shift_summary;
   document.querySelector('#metric-total').textContent=fmtInt.format(h.latest_nonresident);
-  document.querySelector('#metric-share').textContent=`${fmtPct.format(h.latest_share_pct)}%`;
-  document.querySelector('#metric-change').textContent=signedPct(h.change_since_2015_pct);
-  document.querySelector('#metric-change-count').textContent=`${h.change_since_2015 >= 0 ? '+' : ''}${fmtInt.format(h.change_since_2015)} students`;
-  document.querySelector('#metric-decline').textContent=`${fmtPct.format(h.largest_yoy_decline.pct)}%`;
-  document.querySelector('#top5-share').textContent=`Top 5 states: ${fmtPct.format(h.top5_state_share_pct)}% of total`;
+  document.querySelector('#metric-share-detail').textContent=`${fmtPct.format(h.latest_share_pct)}% of all fall enrollment`;
+  document.querySelector('#metric-latest-change').textContent=signedInt(update.national.absolute_change);
+  document.querySelector('#metric-latest-change-pct').textContent=`${signedPct(update.national.pct_change)} from ${update.coverage.prior_year}`;
+  document.querySelector('#metric-undergrad-change').textContent=signedInt(update.national.undergraduate_change);
+  document.querySelector('#metric-undergrad-breadth').textContent=`${undergraduateShift.positive_states} of ${undergraduateShift.geographies} states/DC increased`;
+  document.querySelector('#metric-decade-change').textContent=signedInt(h.change_since_2015);
+  document.querySelector('#metric-decade-change-pct').textContent=`${signedPct(h.change_since_2015_pct)} since 2015`;
 
   const national=data.national_series;
   lineChart(document.querySelector('#national-chart'), [{name:'U.S. nonresident',values:national.map(d=>({year:d.year,value:d.nonresident}))}], {annotationYear:2020,annotationLabel:'2020 decline',ariaLabel:'National U.S. nonresident fall enrollment from 2015 through 2024',valueFormatter:v=>`${(v/1e6).toFixed(1)}M`});
+  updateChangeChart(document.querySelector('#update-change-chart'),update);
+  document.querySelector('#update-change-pct').textContent=signedPct(update.national.pct_change);
+  document.querySelector('#update-total-change').textContent=signedInt(update.national.absolute_change);
+  document.querySelector('#update-undergrad-change').textContent=signedInt(update.national.undergraduate_change);
+  document.querySelector('#update-grad-change').textContent=signedInt(update.national.graduate_change);
   lineChart(document.querySelector('#level-chart'), [
     {name:'Graduate',values:national.map(d=>({year:d.year,value:d.graduate_nonresident}))},
     {name:'Undergraduate',values:national.map(d=>({year:d.year,value:d.undergraduate_nonresident}))}
-  ], {ariaLabel:'Graduate and undergraduate U.S. nonresident fall enrollment from 2015 through 2024',valueFormatter:v=>`${Math.round(v/1000)}k`});
+  ], {annotationYear:2022,annotationLabel:'Graduate > undergraduate',ariaLabel:'Graduate and undergraduate U.S. nonresident fall enrollment from 2015 through 2024',valueFormatter:v=>`${Math.round(v/1000)}k`});
 
   const first=national[0], last=national[national.length-1];
   document.querySelector('#graduate-share').textContent=`${fmtPct.format(last.graduate_nonresident/last.nonresident*100)}%`;
@@ -245,7 +263,6 @@ async function init() {
   document.querySelector('#undergrad-change-count').textContent=signedInt(data.level_decomposition.undergraduate_change_students);
   document.querySelector('#net-change-count').textContent=signedInt(data.level_decomposition.net_change_students);
 
-  barChart(document.querySelector('#state-bars'),data.top_states_latest);
   document.querySelector('#states-recovered').textContent=data.recovery.states_at_or_above_baseline;
   document.querySelector('#states-below').textContent=data.recovery.states_below_baseline;
   divergingBarChart(document.querySelector('#recovery-chart'),data.recovery.largest_gains,data.recovery.largest_shortfalls);
@@ -259,26 +276,19 @@ async function init() {
 
   const dynamics=data.institution_dynamics.decade;
   dynamicsChart(document.querySelector('#dynamics-chart'),dynamics);
+  document.querySelector('#dynamics-continuing-change').textContent=signedInt(dynamics.continuing_change);
   document.querySelector('#dynamics-continuing-count').textContent=fmtInt.format(dynamics.continuing_institutions);
-  document.querySelector('#dynamics-grew').textContent=fmtInt.format(dynamics.continuing_grew);
-  document.querySelector('#dynamics-declined').textContent=fmtInt.format(dynamics.continuing_declined);
   document.querySelector('#dynamics-entry-exit-net').textContent=signedInt(dynamics.entry_exit_net);
 
-  const update=data.latest_update_review;
-  updateChangeChart(document.querySelector('#update-change-chart'),update);
-  document.querySelector('#update-change-pct').textContent=signedPct(update.national.pct_change);
-  document.querySelector('#update-total-change-copy').textContent=`${signedInt(update.national.absolute_change)} students from ${update.coverage.prior_year} to ${update.coverage.latest_year}`;
-  document.querySelector('#update-undergrad-change').textContent=signedInt(update.national.undergraduate_change);
-  document.querySelector('#update-grad-change').textContent=signedInt(update.national.graduate_change);
-  document.querySelector('#update-high-priority').textContent=fmtInt.format(update.review_queue.high);
-  document.querySelector('#update-medium-priority').textContent=fmtInt.format(update.review_queue.medium);
-  document.querySelector('#update-entry-exit-net').textContent=signedInt(update.institution_accounting.entry_exit_net);
-  const topUpdateState=update.state_change.largest_gains[0];
-  document.querySelector('#update-top-state').textContent=`${topUpdateState.state} ${signedInt(topUpdateState.absolute_change)}`;
   const resolution=data.qa_resolution_summary;
-  document.querySelector('#resolution-reviewed').textContent=fmtInt.format(resolution.reviewed_count);
+  const mediumResolution=data.medium_qa_resolution_summary;
+  document.querySelector('#resolution-reviewed').textContent=`${fmtInt.format(resolution.reviewed_count)}/${fmtInt.format(resolution.high_priority_total)}`;
   document.querySelector('#resolution-safe').textContent=fmtInt.format(resolution.safe_with_context);
   document.querySelector('#resolution-held').textContent=fmtInt.format(resolution.hold_for_confirmation);
+  document.querySelector('#medium-resolution-reviewed').textContent=`${fmtInt.format(mediumResolution.reviewed_count)}/${fmtInt.format(mediumResolution.medium_priority_total)}`;
+  document.querySelector('#medium-resolution-safe').textContent=fmtInt.format(mediumResolution.safe_with_context);
+  document.querySelector('#medium-resolution-held').textContent=fmtInt.format(mediumResolution.hold_for_confirmation);
+  document.querySelector('#total-resolution-held').textContent=fmtInt.format(resolution.hold_for_confirmation+mediumResolution.hold_for_confirmation);
   renderQaCases(document.querySelector('#qa-case-studies'),resolution.case_studies);
 
   const select=document.querySelector('#state-select');
