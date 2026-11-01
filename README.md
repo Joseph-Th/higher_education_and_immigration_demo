@@ -70,6 +70,8 @@ See [`TESTING.md`](TESTING.md) and [`docs/VALIDATION.md`](docs/VALIDATION.md) fo
 
 ## Go deeper only if useful
 
+- [`docs/README.md`](docs/README.md) — index of every maintained document and the question it owns.
+
 - [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) — compact reviewer path and role-to-evidence map.
 - [`docs/FINDINGS.md`](docs/FINDINGS.md) — current analytical findings and exact supporting figures.
 - [`docs/QA_RESOLUTION_LOG.md`](docs/QA_RESOLUTION_LOG.md) and [`docs/MEDIUM_QA_RESOLUTION_LOG.md`](docs/MEDIUM_QA_RESOLUTION_LOG.md) — evidence-backed institution-level publication decisions.
