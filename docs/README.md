@@ -55,6 +55,10 @@ question; the root [README](../README.md) routes the short review path and the l
 | [RECURRING_REPORT_REGISTER.md](RECURRING_REPORT_REGISTER.md) | Register of generated recurring reports. |
 | [RELEASE_READINESS.md](RELEASE_READINESS.md) | Current-publication readiness. |
 
+## Generated state profiles
+
+`state_profiles/<ST>.md` holds one generated publication profile per state and territory. [`../scripts/build_state_profiles.py`](../scripts/build_state_profiles.py) owns generation; [`DATA_GOVERNANCE.md`](DATA_GOVERNANCE.md) owns the publication allowlist, and `../site/state.html` plus `../data/state_profiles.json` are the reader-facing index. Do not hand-edit a profile; change its validated inputs and rebuild.
+
 ## Reviewer and communication artifacts
 
 | Document | Owns |
